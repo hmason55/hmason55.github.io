@@ -54,14 +54,11 @@ public class Terrain : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void OnPointerClick(PointerEventData eventData) {
+		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
 		if(readyCast) {
-			Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
-			hotbar.activeSpell.ResetTiles();
-			hotbar.activeSpell.ShowEffectRange(_tile.position);
-			Debug.Log(_tile.name);
+			hotbar.ReadyCast(_tile.position);
 		} else if(confirmCast) {
-			Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
-			hotbar.activeSpell.ConfirmSpellCast();
+			hotbar.ConfirmCast();
 		}
 		//DetectQuadrant(new Vector2Int((int)Input.mousePosition.x, (int)Input.mousePosition.y));
 	}

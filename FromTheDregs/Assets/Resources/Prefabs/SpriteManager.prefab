@@ -173,6 +173,21 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 148ccf2a28008f144a2ec98937242973, type: 3}
     - {fileID: 21300000, guid: f3ab14eb1aa9d2e40a17c4b484445ea0, type: 3}
     - {fileID: 21300000, guid: a713022e6f915484689b3a115b380174, type: 3}
+  unitGreenSlime1:
+    hit:
+    - {fileID: 21300000, guid: 29fd909450c0aa340b2345dfd2185113, type: 3}
+    idle:
+    - {fileID: 21300000, guid: 202c4254262539a4e9477d9831216190, type: 3}
+    - {fileID: 21300000, guid: ddf7ab84a5e05aa4b8a2ecec5dd38eb0, type: 3}
+    - {fileID: 21300000, guid: 67ff381f70dbc3d45b02d280fe6c2115, type: 3}
+    - {fileID: 21300000, guid: 9f9316243d6188e41b8859d78fa24227, type: 3}
+  unitSandBehemoth1:
+    hit: []
+    idle:
+    - {fileID: 21300000, guid: cd97569488a8f4244a2ff623cf373d98, type: 3}
+    - {fileID: 21300000, guid: 00fb22d5cbaa2a14f82b2027bf3ef34b, type: 3}
+    - {fileID: 21300000, guid: 8c06896dfc6d2b748ac70beaae3da6b2, type: 3}
+    - {fileID: 21300000, guid: 356b003195feadb458bc5940d0b36ad7, type: 3}
   unitSandworm1:
     hit: []
     idle:

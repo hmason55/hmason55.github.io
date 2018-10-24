@@ -5,7 +5,9 @@ using UnityEngine;
 public class Spell {
 
 	public enum Preset {
-		BurningHands
+		
+		BurningHands,
+		Move
 	}
 
 	public enum EffectDirection {
@@ -24,6 +26,7 @@ public class Spell {
 	}
 
 	public enum TargetUnitType {
+		None,
 		Self,
 		Enemy,
 		Ally,
@@ -35,6 +38,9 @@ public class Spell {
 	Tile[,] _tiles;
 	string _spellName;
 	int _damage = 5;
+	int _essenceCost = 1;
+	bool _autoRecast = false;
+	bool _createsEffect = true;
 
 	// Casting
 	string _castParticlePath;
@@ -45,7 +51,6 @@ public class Spell {
 	bool _castRequiresTarget = false;
 	bool _castCanTargetSelf = false;
 	TargetUnitType _castTargetUnitType = TargetUnitType.Enemy;
-	
 
 	// Effect
 	string _effectParticlePath;
@@ -61,6 +66,10 @@ public class Spell {
 	public string spellName {
 		get {return _spellName;}
 	}
+
+	public int essenceCost {
+		get {return _essenceCost;}
+	}
 	#endregion
 
 	// Constructors
@@ -74,10 +83,17 @@ public class Spell {
 		CreateFromPreset(spell);
 	}
 
+	#region Spells
 	public void CreateFromPreset(Preset spell) {
 		switch(spell) {
-			case Preset.BurningHands:
+			#region Burning Hands
+			case Preset.BurningHands:	
 				_spellName = "Burning Hands";
+
+				_damage = 1;
+				_essenceCost = 2;
+				_autoRecast = false;
+				_createsEffect = true;
 				
 				_castParticlePath = "";
 				_castRadius = 1;
@@ -96,8 +112,30 @@ public class Spell {
 				_effectDirection = EffectDirection.Up;
 				_effectTargetUnitType = TargetUnitType.Enemy;
 			break;
+			#endregion
+
+			#region Move
+			case Preset.Move:
+				_spellName = "Move";
+
+				_damage = 0;
+				_essenceCost = 1;
+				_autoRecast = false;
+				_createsEffect = false;
+				
+				_castParticlePath = "";
+				_castRadius = 1;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castRequiresTarget = false;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.None;
+			break;
+			#endregion
 		}
 	}
+	#endregion
 
 	public void ResetTiles() {
 		int dimension = DungeonGenerator.dungeonDimension * DungeonGenerator.chunkDimension;
@@ -426,6 +464,11 @@ public class Spell {
 
 
 		SpawnEffectParticles(_effectOrigin, zrot);
+		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
+		Hotkey[] hotkeys = hotbar.GetComponentsInChildren<Hotkey>();
+		foreach(Hotkey hotkey in hotkeys) {
+			hotkey.showCastRange = false;
+		}
 		ResetTiles();
 	}
 

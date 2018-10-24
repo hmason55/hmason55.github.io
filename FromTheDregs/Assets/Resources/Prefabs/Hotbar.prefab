@@ -692,6 +692,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9452d984a56a74f8b1227739d457e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tapController: {fileID: 0}
+  _essenceUI: {fileID: 0}
 --- !u!114 &114486493235142858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -981,7 +983,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hotbar: {fileID: 114388619891749220}
-  _tapController: {fileID: 0}
   _image: {fileID: 114274242963226322}
   _text: {fileID: 114042067943777898}
   _preset: 0

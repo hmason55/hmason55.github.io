@@ -10,7 +10,10 @@ public class BaseUnit {
 	}
 
 	public enum SpritePreset {
-		knight
+		knight,
+		wizard,
+		greenslime,
+		sandbehemoth
 	}
 
 	#region Stats
@@ -20,6 +23,7 @@ public class BaseUnit {
 	int _baseConstitution;
 	int _baseWisdom;
 	int _baseCharisma;
+	int _baseSpeed;
 
 	int _modStrength;
 	int _modDexterity;
@@ -27,7 +31,13 @@ public class BaseUnit {
 	int _modConstitution;
 	int _modWisdom;
 	int _modCharisma;
+	int _modSpeed;
 	#endregion
+
+	
+	int _baseEssence;
+	int _turnEssence;
+	int _currentEssence;
 
 	bool _playerControlled = false;
 
@@ -58,6 +68,16 @@ public class BaseUnit {
 		get {return _spritePreset;}
 	}
 
+	public int baseEssence {
+		get {return _baseEssence;}
+	}
+	public int turnEssence {
+		get {return _turnEssence;}
+	}
+	public int currentEssence {
+		get {return _currentEssence;}
+	}
+
 	public BaseUnit(bool player, StatPreset stats, SpritePreset sprite, Tile tile) {
 		_playerControlled = player;
 		_statPreset = stats;
@@ -65,6 +85,8 @@ public class BaseUnit {
 		_tile = tile;
 		EvaluateStatPreset();
 		UpdateModifiers();
+
+		_currentEssence = _baseEssence;
 
 		if(playerControlled) {
 			SetAsCameraTarget();
@@ -82,6 +104,8 @@ public class BaseUnit {
 				_baseConstitution = 10;
 				_baseWisdom = 10;
 				_baseCharisma = 10;
+				_baseSpeed = 3;
+				_baseEssence = 4;
 			break;
 		}
 	}
@@ -93,6 +117,7 @@ public class BaseUnit {
 		_modConstitution = (_baseConstitution - 10) / 2;
 		_modWisdom = (_baseWisdom - 10) / 2;
 		_modCharisma = (_baseCharisma - 10) / 2;
+		_modSpeed = (_baseDexterity - 10) / 3;
 	}
 
 	public void Move(int dx, int dy) {
@@ -120,6 +145,10 @@ public class BaseUnit {
 				return;
 			}
 		}
+	}
+
+	public void Cast(int essenceCost) {
+		_currentEssence -= essenceCost;
 	}
 
 	public void SetAsCameraTarget() {
