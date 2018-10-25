@@ -37,7 +37,9 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 			_hotbar.tapController.image.raycastTarget = false;
 			_hotbar.activeSpell = _spell;
 			_hotbar.essenceUI.PreviewUsage(_hotbar.baseUnit.currentEssence, _spell.essenceCost);
+			_hotbar.castOptionsUI.ShowUI();
 			_spell.ShowCastRange();
+			
 		/* 
 		if(!_showCastRange) {
 			_showCastRange = true;

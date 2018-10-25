@@ -694,6 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tapController: {fileID: 0}
   _essenceUI: {fileID: 0}
+  _castOptionsUI: {fileID: 0}
 --- !u!114 &114486493235142858
 MonoBehaviour:
   m_ObjectHideFlags: 1
