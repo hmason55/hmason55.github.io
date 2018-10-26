@@ -9,7 +9,7 @@ public class TapController : MonoBehaviour, IPointerClickHandler {
 	[SerializeField] Image _image;
 	Vector2Int _origin;
 	float _width = 1080f;
-	float _height = 1320f;
+	float _height = 1480f;
 
 	BaseUnit _baseUnit;
 	

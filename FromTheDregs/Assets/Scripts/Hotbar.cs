@@ -43,18 +43,26 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	public void ReadyCast(Vector2Int position) {
-		_activeSpell.ResetTiles();
-		_activeSpell.ShowEffectRange(position);
+		if(_activeSpell.requireCastConfirmation) {
+			_activeSpell.ResetTiles();
+			_activeSpell.ShowEffectRange(position);
+		} else {
+			_activeSpell.effectOrigin = position;
+			ConfirmCast(true);
+		}
 		//_essenceUI.PreviewUsage(_baseUnit.currentEssence, _activeSpell.essenceCost);
 	}
 
-	public void ConfirmCast() {
-		_activeSpell.ResetTiles();
+	public void ConfirmCast(bool recast = false) {
 		_activeSpell.ConfirmSpellCast();
 		_baseUnit.Cast(_activeSpell.essenceCost);
 		_essenceUI.SetFilledEssence(_baseUnit.currentEssence);
-		_tapController.image.raycastTarget = true;
-		_castOptionsUI.HideUI();
+		
+		if(!recast || _activeSpell.essenceCost > _baseUnit.currentEssence) {	// Cancel recast if insufficient essence or recast is disabled.
+			_activeSpell.ResetTiles();
+			_tapController.image.raycastTarget = true;
+			_castOptionsUI.HideUI();
+		}
 	}
 
 }

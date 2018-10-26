@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour {
 	RectTransform _rectTransform;
 
 	[SerializeField] DungeonGenerator _dungeonGenerator;
+	TapController _tapController;
 
 	public float deadzone = 1.0f;
 	public bool limitView = false;
@@ -29,9 +30,14 @@ public class CameraController : MonoBehaviour {
 	void Awake() {
 		_target = new Vector2(0, 0);
 		_rectTransform = GetComponent<RectTransform>();
+		_tapController = GameObject.FindObjectOfType<TapController>();
 		_halfScreenWidth = Screen.width / 2;
 		_halfScreenHeight = Screen.height / 2;
 		_scale = _rectTransform.localScale.x;
+	}
+
+	void Start() {
+
 	}
 
 	float CalcDistance(float x1, float y1, float x2, float y2) {
@@ -41,7 +47,6 @@ public class CameraController : MonoBehaviour {
 	public void MoveToTarget() {
 		float targetTrueX = _halfScreenWidth - (_target.x * _scale * 48 + _scale * 24);
 		float targetTrueY = _halfScreenHeight - (_target.y * _scale * 48 + _scale * 24);
-		_rectTransform.anchoredPosition = new Vector2(targetTrueX, targetTrueY);
-		
+		_rectTransform.anchoredPosition = new Vector2(targetTrueX, targetTrueY + _tapController.GetComponent<RectTransform>().anchoredPosition.y);
 	}
 }

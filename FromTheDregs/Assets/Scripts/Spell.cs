@@ -36,9 +36,11 @@ public class Spell {
 	// Base
 	BaseUnit _caster;
 	Tile[,] _tiles;
+	Preset _preset;
 	string _spellName;
 	int _damage = 5;
 	int _essenceCost = 1;
+	bool _requireCastConfirmation = false;
 	bool _autoRecast = false;
 	bool _createsEffect = true;
 
@@ -47,6 +49,7 @@ public class Spell {
 	int _castRadius = 0;
 	bool _castThroughWalls = false;
 	bool _castOnWalls = false;
+	bool _castOnUnits = false;
 	bool _castRequiresLineOfSight =  false;
 	bool _castRequiresTarget = false;
 	bool _castCanTargetSelf = false;
@@ -70,6 +73,16 @@ public class Spell {
 	public int essenceCost {
 		get {return _essenceCost;}
 	}
+
+	public bool requireCastConfirmation {
+		get {return _requireCastConfirmation;}
+	}
+
+	public Vector2Int effectOrigin {
+		get {return _effectOrigin;}
+		set {_effectOrigin = value;}
+	}
+
 	#endregion
 
 	// Constructors
@@ -85,6 +98,7 @@ public class Spell {
 
 	#region Spells
 	public void CreateFromPreset(Preset spell) {
+		_preset = spell;
 		switch(spell) {
 			#region Burning Hands
 			case Preset.BurningHands:	
@@ -93,12 +107,14 @@ public class Spell {
 				_damage = 1;
 				_essenceCost = 2;
 				_autoRecast = false;
+				_requireCastConfirmation = true;
 				_createsEffect = true;
 				
 				_castParticlePath = "";
 				_castRadius = 1;
 				_castThroughWalls = false;
 				_castOnWalls = false;
+				_castOnUnits = true;
 				_castRequiresTarget = false;
 				_castRequiresLineOfSight = true;
 				_castCanTargetSelf = false;
@@ -120,13 +136,15 @@ public class Spell {
 
 				_damage = 0;
 				_essenceCost = 1;
-				_autoRecast = false;
+				_autoRecast = true;
+				_requireCastConfirmation = false;
 				_createsEffect = false;
 				
 				_castParticlePath = "";
 				_castRadius = 1;
 				_castThroughWalls = false;
 				_castOnWalls = false;
+				_castOnUnits = false;
 				_castRequiresTarget = false;
 				_castRequiresLineOfSight = true;
 				_castCanTargetSelf = false;
@@ -462,15 +480,28 @@ public class Spell {
 			break;
 		}
 
+		OnCast();
 
-		SpawnEffectParticles(_effectOrigin, zrot);
+
+		if(_createsEffect) {
+			SpawnEffectParticles(_effectOrigin, zrot);
+		}
+
 		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
 		Hotkey[] hotkeys = hotbar.GetComponentsInChildren<Hotkey>();
 		foreach(Hotkey hotkey in hotkeys) {
-			hotkey.showCastRange = false;
+			if(hotkey.preset == _preset && _autoRecast) {
+				hotkey.PreviewCast();
+			} else {
+				hotkey.showCastRange = false;
+			}
 		}
-		ResetTiles();
+
+		if(!_autoRecast) {
+			ResetTiles();
+		}
 	}
+	
 
 	void SpawnEffectParticles(Vector2Int position, float zrotation) {
 		GameObject effectParticleGO = GameObject.Instantiate(Resources.Load<GameObject>(_effectParticlePath));
@@ -484,6 +515,20 @@ public class Spell {
 
 		effectRT.anchoredPosition = new Vector2(tileRT.anchoredPosition.x + DungeonGenerator.TileWidth/2, tileRT.anchoredPosition.y + DungeonGenerator.TileHeight/2);
 		effectRT.localEulerAngles = new Vector3(0f, 0f, zrotation);
+	}
+
+	void OnCast() {
+		switch(_preset) {
+			case Preset.Move:
+				Move();
+			break;
+		}
+	}
+
+
+	void Move() {
+		Debug.Log(_effectOrigin);
+		_caster.tile.unit.baseUnit.Move(_effectOrigin.x - _caster.tile.position.x, _effectOrigin.y - _caster.tile.position.y);
 	}
 
 
