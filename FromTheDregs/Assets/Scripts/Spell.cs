@@ -7,6 +7,7 @@ public class Spell {
 	public enum Preset {
 		
 		BurningHands,
+		Fireball,
 		Move
 	}
 
@@ -42,10 +43,11 @@ public class Spell {
 	int _essenceCost = 1;
 	bool _requireCastConfirmation = false;
 	bool _autoRecast = false;
+	bool _createsProjectile = false;
 	bool _createsEffect = true;
 
+
 	// Casting
-	string _castParticlePath;
 	int _castRadius = 0;
 	bool _castThroughWalls = false;
 	bool _castOnWalls = false;
@@ -54,9 +56,18 @@ public class Spell {
 	bool _castRequiresTarget = false;
 	bool _castCanTargetSelf = false;
 	TargetUnitType _castTargetUnitType = TargetUnitType.Enemy;
+	GameObject _castParticle;
+	string _castParticlePath;
+
+
+	// Projectile
+	int _projCount;
+	float _projSpeed;
+	List<GameObject> _projectiles;
+	string _projParticlePath;
+
 
 	// Effect
-	string _effectParticlePath;
 	Vector2Int _effectOrigin;
 	int _effectRadius = 0;
 	bool _effectIgnoresWalls = false;
@@ -64,6 +75,8 @@ public class Spell {
 	EffectShape _effectShape = EffectShape.Cone45;
 	EffectDirection _effectDirection = EffectDirection.Right;
 	TargetUnitType _effectTargetUnitType = TargetUnitType.Enemy;
+	GameObject _effectParticle;
+	string _effectParticlePath;
 
 	#region Accessors
 	public string spellName {
@@ -108,9 +121,10 @@ public class Spell {
 				_essenceCost = 2;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
+				_createsProjectile = false;
 				_createsEffect = true;
 				
-				_castParticlePath = "";
+				_castParticlePath = "Prefabs/Effects/Fire Casting";
 				_castRadius = 1;
 				_castThroughWalls = false;
 				_castOnWalls = false;
@@ -130,6 +144,41 @@ public class Spell {
 			break;
 			#endregion
 
+			#region Fireball
+			case Preset.Fireball:	
+				_spellName = "Fireball";
+
+				_damage = 1;
+				_essenceCost = 0;
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsProjectile = true;
+				_createsEffect = true;
+				
+				_castParticlePath = "Prefabs/Effects/Fire Casting";
+				_castRadius = 5;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = false;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.All;
+
+				_projCount = 1;
+				_projParticlePath = "Prefabs/Effects/Fireball";
+				_projSpeed = 196f;
+
+				_effectParticlePath = "Prefabs/Effects/Fireball Impact";
+				_effectRadius = 1;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.All;
+			break;
+			#endregion
+
 			#region Move
 			case Preset.Move:
 				_spellName = "Move";
@@ -138,6 +187,7 @@ public class Spell {
 				_essenceCost = 1;
 				_autoRecast = true;
 				_requireCastConfirmation = false;
+				_createsProjectile = false;
 				_createsEffect = false;
 				
 				_castParticlePath = "";
@@ -229,6 +279,9 @@ public class Spell {
 		}
 
 		PopulateCastRange(_caster.tile.position.x, _caster.tile.position.y, visitedTiles, _caster.tile.position.x, _caster.tile.position.y);
+		if(_castParticlePath != null) {
+			SpawnCastParticles(_caster.tile.position, 0f);
+		}
 	}
 
 	void PopulateCastRange(int x, int y, bool[,] visited, int ox, int oy) {
@@ -482,8 +535,14 @@ public class Spell {
 
 		OnCast();
 
+		DestroyCastParticles();
 
-		if(_createsEffect) {
+		if(_createsProjectile) {
+			_projectiles = new List<GameObject>();
+			for(int i = 0; i < _projCount; i++) {
+				SpawnProjectileParticles(_caster.tile.position, effectOrigin, 0f);
+			}
+		} else if(_createsEffect) {
 			SpawnEffectParticles(_effectOrigin, zrot);
 		}
 
@@ -502,8 +561,54 @@ public class Spell {
 		}
 	}
 	
+	#region Particles
+	void SpawnCastParticles(Vector2Int position, float zrotation) {
+		GameObject castParticleGO = GameObject.Instantiate(Resources.Load<GameObject>(_castParticlePath));
+		CameraController dungeon = GameObject.FindObjectOfType<CameraController>();
+		castParticleGO.transform.SetParent(dungeon.transform);
+		castParticleGO.transform.SetAsLastSibling();
 
-	void SpawnEffectParticles(Vector2Int position, float zrotation) {
+		_castParticle = castParticleGO;
+
+		RectTransform tileRT = _tiles[position.x, position.y].GetComponent<RectTransform>();
+
+		RectTransform castRT = castParticleGO.GetComponent<RectTransform>();
+
+		castRT.anchoredPosition = new Vector2(tileRT.anchoredPosition.x + DungeonGenerator.TileWidth/2, tileRT.anchoredPosition.y + DungeonGenerator.TileHeight/2);
+		castRT.localEulerAngles = new Vector3(0f, 0f, zrotation);
+	}
+
+	public void DestroyCastParticles() {
+		if(_castParticle != null) {
+			ParticleSystem ps = _castParticle.GetComponent<ParticleSystem>();
+			ps.Stop();
+			GameObject.Destroy(_castParticle, ps.main.startLifetime.constant);
+			_castParticle = null;
+		}
+	}
+
+	void SpawnProjectileParticles(Vector2Int start, Vector2Int end, float zrotation) {
+		GameObject projParticleGO = GameObject.Instantiate(Resources.Load<GameObject>(_projParticlePath));
+		CameraController dungeon = GameObject.FindObjectOfType<CameraController>();
+		projParticleGO.transform.SetParent(dungeon.transform);
+		projParticleGO.transform.SetAsLastSibling();
+
+		Projectile proj = projParticleGO.GetComponent<Projectile>();
+		float theta = Mathf.Atan2(end.y - start.y, end.x - start.x);
+		float distance = Mathf.Sqrt((end.x - start.x)*(end.x - start.x) + (end.y - start.y)*(end.y - start.y)) * DungeonGenerator.TileWidth;
+		proj.velocity = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta)) * _projSpeed;
+		proj.spell = this;
+		proj.end = end;
+		_projectiles.Add(projParticleGO);
+		GameObject.Destroy(projParticleGO, distance/_projSpeed);
+
+		RectTransform tileRT = _tiles[start.x, start.y].GetComponent<RectTransform>();
+		RectTransform projRT = projParticleGO.GetComponent<RectTransform>();
+		projRT.anchoredPosition = new Vector2(tileRT.anchoredPosition.x + DungeonGenerator.TileWidth/2, tileRT.anchoredPosition.y + DungeonGenerator.TileHeight/2);
+		projRT.localEulerAngles = new Vector3(0f, 0f, theta * Mathf.Rad2Deg - 90f);
+	}
+
+	public void SpawnEffectParticles(Vector2Int position, float zrotation) {
 		GameObject effectParticleGO = GameObject.Instantiate(Resources.Load<GameObject>(_effectParticlePath));
 		CameraController dungeon = GameObject.FindObjectOfType<CameraController>();
 		effectParticleGO.transform.SetParent(dungeon.transform);
@@ -516,6 +621,7 @@ public class Spell {
 		effectRT.anchoredPosition = new Vector2(tileRT.anchoredPosition.x + DungeonGenerator.TileWidth/2, tileRT.anchoredPosition.y + DungeonGenerator.TileHeight/2);
 		effectRT.localEulerAngles = new Vector3(0f, 0f, zrotation);
 	}
+	#endregion
 
 	void OnCast() {
 		switch(_preset) {

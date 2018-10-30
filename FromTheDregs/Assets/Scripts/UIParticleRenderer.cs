@@ -184,7 +184,8 @@ namespace SpriteParticleEmitter
                 if (textureSheetAnimation.enabled)
                 {
                     #if UNITY_5_5_OR_NEWER
-                    float frameProgress = textureSheetAnimation.frameOverTime.curveMin.Evaluate(1 - (particle.remainingLifetime / particle.startLifetime));
+                    float frameProgress = 1 - (particle.remainingLifetime / particle.startLifetime);
+                    //float frameProgress = textureSheetAnimation.frameOverTime.curveMin.Evaluate(1 - (particle.remainingLifetime / particle.startLifetime));
                     #else
                     float frameProgress = 1 - (particle.lifetime / particle.startLifetime);
                     #endif

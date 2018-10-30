@@ -39,6 +39,7 @@ public class Hotbar : MonoBehaviour {
 	public void CancelPreview() {
 		_tapController.image.raycastTarget = true;
 		_activeSpell.ResetTiles();
+		_activeSpell.DestroyCastParticles();
 		_essenceUI.ResetAll();
 	}
 
