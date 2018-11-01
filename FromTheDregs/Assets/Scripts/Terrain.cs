@@ -72,6 +72,7 @@ public class Terrain : MonoBehaviour, IPointerClickHandler {
 				LoadTexture();
 			break;
 			
+			case "FF0000":  // Red
 			case "0000FF":	// Blue
 			case "FFFF00":	// Yellow
 			case "FF00FF": 	// Magenta

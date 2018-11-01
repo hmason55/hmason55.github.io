@@ -50,7 +50,26 @@ public class Unit : MonoBehaviour {
 	public void LoadSprites() {
 		if(_baseUnit != null) {
 			_idleAnimation = new Sprite[IdleAnimationLength];
-			_idleAnimation = _tile.spriteManager.unitHumanWizard1.idle.ToArray();
+
+			switch(_baseUnit.spritePreset) {
+				case BaseUnit.SpritePreset.knight:
+					//_idleAnimation = _tile.spriteManager.unit.idle.ToArray();
+				break;
+
+				case BaseUnit.SpritePreset.wizard:
+					_idleAnimation = _tile.spriteManager.unitHumanWizard1.idle.ToArray();
+				break;
+
+				case BaseUnit.SpritePreset.sandbehemoth:
+					_idleAnimation = _tile.spriteManager.unitSandBehemoth1.idle.ToArray();
+				break;
+
+				case BaseUnit.SpritePreset.greenslime:
+				default:
+					_idleAnimation = _tile.spriteManager.unitGreenSlime1.idle.ToArray();
+				break;
+			}
+			
 		}
 	}
 

@@ -421,6 +421,12 @@ public class Spell {
 							return;
 						}
 					break;
+
+					case EffectShape.Circle:	// Circle
+						if(CheckManhattanDistance(ox, oy, x, y) > _effectRadius) {
+							return;
+						}
+					break;
 				}
 			break;
 
@@ -428,6 +434,12 @@ public class Spell {
 				switch(_effectShape) {
 					case EffectShape.Cone45:	// Cone 45deg					
 						if(Mathf.Abs(y - oy) <	Mathf.Abs(x - ox) || (y - oy > 0)) {
+							return;
+						}
+					break;
+
+					case EffectShape.Circle:	// Circle
+						if(CheckManhattanDistance(ox, oy, x, y) > _effectRadius) {
 							return;
 						}
 					break;
@@ -441,6 +453,12 @@ public class Spell {
 							return;
 						}
 					break;
+
+					case EffectShape.Circle:	// Circle
+						if(CheckManhattanDistance(ox, oy, x, y) > _effectRadius) {
+							return;
+						}
+					break;
 				}
 			break;
 
@@ -451,14 +469,20 @@ public class Spell {
 							return;
 						}
 					break;
+
+					case EffectShape.Circle:	// Circle
+						if(CheckManhattanDistance(ox, oy, x, y) > _effectRadius) {
+							return;
+						}
+					break;
 				}
 			break;
 		}
 
 
-		if(CheckManhattanDistance(ox, oy, x, y) > _effectRadius) {
+		//if(CheckManhattanDistance(ox, oy, x, y) > _effectRadius) {
 			//return;
-		}
+		//}
 
 		
 

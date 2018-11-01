@@ -157,13 +157,18 @@ public class DungeonGenerator : MonoBehaviour {
 					tile.terrain.ParseColor(color);
 					string hexColor = ColorUtility.ToHtmlStringRGB(color);
 
-					// Decorations
-					if(hexColor == "0000FF" && i <= 1) {
+					if(hexColor == "FF0000") {	// Red (Enemy)
+						// Spawn enemy accoring to biome type
+						tile.SpawnUnit(new BaseUnit(false, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.greenslime, tile));
+
+					} else if(hexColor == "0000FF" && i <= 1) {	// Blue (Entrance/Exit)
 						
 						if(i == 0) {
 							// Entrance	
 							tile.decoration.decorationType = Decoration.DecorationType.entrance;
-							tile.SpawnUnit(new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.knight, tile));
+
+							// Spawn player at entrance
+							tile.SpawnUnit(new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.wizard, tile));
 							Debug.Log("Spawned at " + tile.position);
 						} else if(i == 1) {
 							// Exit
@@ -171,7 +176,7 @@ public class DungeonGenerator : MonoBehaviour {
 						}
 						
 						tile.decoration.Init(tile.terrain.walkable);
-					} else if(hexColor == "FFFF00") {
+					} else if(hexColor == "FFFF00") {		// Yellow	(Containers)
 
 						// Container decorations
 						float containerDecorationRoll = Random.Range(0f, 100f);
@@ -179,7 +184,7 @@ public class DungeonGenerator : MonoBehaviour {
 							tile.decoration.decorationType = Decoration.DecorationType.container;
 							tile.decoration.Init(tile.terrain.walkable);
 						}
-					} else if(hexColor == "FF00FF") {
+					} else if(hexColor == "FF00FF") {		// Magenta	(Traps)
 
 						// Trap decorations
 						float containerDecorationRoll = Random.Range(0f, 100f);
