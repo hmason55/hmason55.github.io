@@ -9,6 +9,13 @@ public class Biome {
 	int _y;
 	int _radius;
 
+	float commonEnemySpawnRate = 100f;
+	float rareEnemySpawnRate = 0f;
+
+
+	List<BaseUnit.SpritePreset> commonEnemySpawnTable;
+	List<BaseUnit.SpritePreset> rareEnemySpawnTable;
+
 	public enum BiomeType {
 		forsaken,
 		dungeon
@@ -39,5 +46,26 @@ public class Biome {
 		_y = y;
 		_radius = radius;
 		_biomeType = BiomeType.forsaken;
+
+		switch(_biomeType) {
+			case BiomeType.dungeon:
+			break;
+
+			case BiomeType.forsaken:
+			break;
+		}
+	}
+
+	public BaseUnit.SpritePreset GetEnemySpritePreset() {
+		float rollSpawnRate = Random.Range(0f, 100f);
+		int rollEnemyType = 0;
+		if(rollSpawnRate <= commonEnemySpawnRate) {
+			rollEnemyType = Random.Range(0, commonEnemySpawnTable.Count);
+			return commonEnemySpawnTable[rollEnemyType];
+		} else if(rollSpawnRate <= commonEnemySpawnRate + rareEnemySpawnRate) {
+			rollEnemyType = Random.Range(0, rareEnemySpawnTable.Count);
+			return rareEnemySpawnTable[rollEnemyType];
+		}
+		return BaseUnit.SpritePreset.none;
 	}
 }

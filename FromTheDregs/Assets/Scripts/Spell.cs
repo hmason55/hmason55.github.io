@@ -5,10 +5,16 @@ using UnityEngine;
 public class Spell {
 
 	public enum Preset {
-		
+		Bite,
 		BurningHands,
 		Fireball,
 		Move
+	}
+
+	public enum Scaling {
+		Strength,
+		Dexterity,
+		Intelligence
 	}
 
 	public enum EffectDirection {
@@ -39,12 +45,15 @@ public class Spell {
 	Tile[,] _tiles;
 	Preset _preset;
 	string _spellName;
-	int _damage = 5;
+	int _damageDice = 1;
+	int _damageSides = 4;
 	int _essenceCost = 1;
 	bool _requireCastConfirmation = false;
 	bool _autoRecast = false;
 	bool _createsProjectile = false;
 	bool _createsEffect = true;
+	Scaling _scaling = Scaling.Strength;
+	int _modSizeDamage = 0;
 
 
 	// Casting
@@ -76,6 +85,8 @@ public class Spell {
 	EffectDirection _effectDirection = EffectDirection.Right;
 	TargetUnitType _effectTargetUnitType = TargetUnitType.Enemy;
 	GameObject _effectParticle;
+	List<Tile> _hitTiles;
+
 	string _effectParticlePath;
 
 	#region Accessors
@@ -96,6 +107,10 @@ public class Spell {
 		set {_effectOrigin = value;}
 	}
 
+	public List<Tile> hitTiles {
+		get {return _hitTiles;}
+		set {_hitTiles = value;}
+	}
 	#endregion
 
 	// Constructors
@@ -112,17 +127,55 @@ public class Spell {
 	#region Spells
 	public void CreateFromPreset(Preset spell) {
 		_preset = spell;
-		switch(spell) {
-			#region Burning Hands
-			case Preset.BurningHands:	
-				_spellName = "Burning Hands";
+		_hitTiles = new List<Tile>();
 
-				_damage = 1;
+		switch(spell) {
+			
+			#region Bite
+			case Preset.Bite:	
+				_spellName = "Bite";
+
 				_essenceCost = 2;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
 				_createsProjectile = false;
 				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_modSizeDamage = 0;
+				
+				_castParticlePath = "";
+				_castRadius = 1;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = true;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.All;
+
+				_effectParticlePath = "Prefabs/Effects/Burning Hands";
+				_effectRadius = 1;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Cone45;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.Enemy;
+			break;
+			#endregion
+
+			#region Burning Hands
+			case Preset.BurningHands:	
+				_spellName = "Burning Hands";
+
+				_damageDice = 1;
+				_damageSides = 4;
+				_essenceCost = 2;
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Intelligence;
+				_modSizeDamage = 0;
 				
 				_castParticlePath = "Prefabs/Effects/Fire Casting";
 				_castRadius = 1;
@@ -148,12 +201,15 @@ public class Spell {
 			case Preset.Fireball:	
 				_spellName = "Fireball";
 
-				_damage = 1;
+				_damageDice = 1;
+				_damageSides = 6;
 				_essenceCost = 0;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
 				_createsProjectile = true;
 				_createsEffect = true;
+				_scaling = Scaling.Intelligence;
+				_modSizeDamage = 0;
 				
 				_castParticlePath = "Prefabs/Effects/Fire Casting";
 				_castRadius = 5;
@@ -183,7 +239,6 @@ public class Spell {
 			case Preset.Move:
 				_spellName = "Move";
 
-				_damage = 0;
 				_essenceCost = 1;
 				_autoRecast = true;
 				_requireCastConfirmation = false;
@@ -385,6 +440,7 @@ public class Spell {
 			_effectDirection = EffectDirection.Up;
 		}
 
+		_hitTiles = new List<Tile>();
 		PopulateEffectRange(_effectOrigin.x, _effectOrigin.y, visitedTiles, _effectOrigin.x, _effectOrigin.y);
 	}
 
@@ -525,6 +581,7 @@ public class Spell {
 			_tile.terrain.readyCast = false;
 			_tile.terrain.confirmCast = true;
 			_tile.terrain.image.color = new Color(1f, 0.75f, 0.75f);
+			_hitTiles.Add(_tile);
 		}
 		
 
@@ -538,6 +595,7 @@ public class Spell {
 
 
 	public void ConfirmSpellCast() {
+		
 		float zrot = 0f;
 		switch(_effectDirection) {
 			case EffectDirection.Right:
@@ -644,6 +702,15 @@ public class Spell {
 
 		effectRT.anchoredPosition = new Vector2(tileRT.anchoredPosition.x + DungeonGenerator.TileWidth/2, tileRT.anchoredPosition.y + DungeonGenerator.TileHeight/2);
 		effectRT.localEulerAngles = new Vector3(0f, 0f, zrotation);
+
+		if(!_createsProjectile) {
+			foreach(Tile tile in _hitTiles) {
+				if(tile.unit.baseUnit != null) {
+					int damage = CalcSpellDamage();
+					tile.unit.baseUnit.SpawnDamageText(damage.ToString(), Color.white);
+				}
+			}
+		}
 	}
 	#endregion
 
@@ -655,6 +722,36 @@ public class Spell {
 		}
 	}
 
+	public int CalcSpellDamage() {
+		CalcModSizeDamage();
+		int totalDamage = 0;
+		switch(_scaling) {
+			case Scaling.Strength:
+				totalDamage = Dice.Roll(_damageDice, _damageSides) + _caster.modStrength + _modSizeDamage;
+			break;
+
+			case Scaling.Dexterity:
+				totalDamage = Dice.Roll(_damageDice, _damageSides) + _caster.modDexterity + _modSizeDamage;
+			break;
+
+			case Scaling.Intelligence:
+				totalDamage = Dice.Roll(_damageDice, _damageSides) + _caster.modIntelligence + _modSizeDamage;
+			break;
+		}
+
+		return totalDamage;
+	}
+
+	void CalcModSizeDamage() {
+		switch(_preset) {
+			case Preset.Bite:
+				_modSizeDamage = Dice.Roll(1+((int)_caster.size)/2, 1+((int)_caster.size));
+			break;
+			default:
+				_modSizeDamage = 0;
+			break;
+		}
+	}
 
 	void Move() {
 		Debug.Log(_effectOrigin);

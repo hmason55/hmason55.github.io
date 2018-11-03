@@ -6,14 +6,32 @@ using UnityEngine;
 public class BaseUnit {
 
 	public enum StatPreset {
-		Human
+		Human,
+		Spider
 	}
 
 	public enum SpritePreset {
+		none,
+		direrat,
 		knight,
 		wizard,
 		greenslime,
-		sandbehemoth
+		sandbehemoth,
+		sandworm,
+		spider,
+		spidersmall,
+		widow,
+		widowsmall
+	}
+
+	public enum Size {
+		Tiny,
+		Small,
+		Medium,
+		Large,
+		Huge,
+		Gargantuan,
+		Colossal
 	}
 
 	#region Stats
@@ -24,6 +42,12 @@ public class BaseUnit {
 	int _baseWisdom;
 	int _baseCharisma;
 	int _baseSpeed;
+	
+	
+	int _baseHitPoints;
+	int _hpScaling;
+	int _armorClass;
+	Size _size;
 
 	int _modStrength;
 	int _modDexterity;
@@ -38,6 +62,7 @@ public class BaseUnit {
 	int _baseEssence;
 	int _turnEssence;
 	int _currentEssence;
+	int _hitPoints;
 
 	bool _playerControlled = false;
 
@@ -46,7 +71,6 @@ public class BaseUnit {
 	SpritePreset _spritePreset = SpritePreset.knight;
 
 	StatPreset _statPreset = StatPreset.Human;
-
 
 	public bool playerControlled {
 		set {_playerControlled = value;}
@@ -78,6 +102,26 @@ public class BaseUnit {
 		get {return _currentEssence;}
 	}
 
+	public int armorClass {
+		get {return _armorClass;}
+	}
+
+	public Size size {
+		get {return _size;}
+	}
+
+	public int modStrength {
+		get {return _modStrength;}
+	}
+
+	public int modDexterity {
+		get {return _modDexterity;}
+	}
+
+	public int modIntelligence {
+		get {return _modIntelligence;}
+	}
+
 	public BaseUnit(bool player, StatPreset stats, SpritePreset sprite, Tile tile) {
 		_playerControlled = player;
 		_statPreset = stats;
@@ -85,6 +129,11 @@ public class BaseUnit {
 		_tile = tile;
 		EvaluateStatPreset();
 		UpdateModifiers();
+		UpdateArmorClass();
+
+		// Set starting health
+		_baseHitPoints = _hpScaling + _modConstitution;
+		UpdateHitPoints();
 
 		_currentEssence = _baseEssence;
 
@@ -106,6 +155,20 @@ public class BaseUnit {
 				_baseCharisma = 10;
 				_baseSpeed = 3;
 				_baseEssence = 4;
+				_hpScaling = 8;
+				_size = Size.Medium;
+			break;
+
+			case StatPreset.Spider:
+				_baseStrength = 10;
+				_baseDexterity = 15;
+				_baseIntelligence = 0;
+				_baseConstitution = 12;
+				_baseWisdom = 10;
+				_baseCharisma = 2;
+				_baseSpeed = 5;
+				_baseEssence = 4;
+				_size = Size.Small;
 			break;
 		}
 	}
@@ -118,6 +181,14 @@ public class BaseUnit {
 		_modWisdom = (_baseWisdom - 10) / 2;
 		_modCharisma = (_baseCharisma - 10) / 2;
 		_modSpeed = (_baseDexterity - 10) / 3;
+	}
+
+	void UpdateHitPoints() {
+		_hitPoints = _baseHitPoints;
+	}
+
+	void UpdateArmorClass() {
+		_armorClass = 10 + _modDexterity;
 	}
 
 	public void Move(int dx, int dy) {
@@ -175,6 +246,12 @@ public class BaseUnit {
 		if(hotbar != null) {
 			hotbar.baseUnit = this;
 		}
+	}
+
+	public void SpawnDamageText(string text, Color color) {
+		GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Damage Text"));
+		DamageText damageText = go.GetComponent<DamageText>();
+		damageText.Init(_tile.GetComponent<RectTransform>().anchoredPosition, text, color);
 	}
 
 }
