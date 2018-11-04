@@ -7,6 +7,7 @@ public class BaseUnit {
 
 	public enum StatPreset {
 		Human,
+		Slime,
 		Spider
 	}
 
@@ -61,7 +62,9 @@ public class BaseUnit {
 	
 	int _baseEssence;
 	int _turnEssence;
+	int _experience;
 	int _currentEssence;
+	int _currentHitPoints;
 	int _hitPoints;
 
 	bool _playerControlled = false;
@@ -134,6 +137,9 @@ public class BaseUnit {
 		// Set starting health
 		_baseHitPoints = _hpScaling + _modConstitution;
 		UpdateHitPoints();
+		_currentHitPoints = _hitPoints;
+		_experience = 0;
+		
 
 		_currentEssence = _baseEssence;
 
@@ -168,6 +174,7 @@ public class BaseUnit {
 				_baseCharisma = 2;
 				_baseSpeed = 5;
 				_baseEssence = 4;
+				_hpScaling = 16;
 				_size = Size.Small;
 			break;
 		}
@@ -246,6 +253,32 @@ public class BaseUnit {
 		if(hotbar != null) {
 			hotbar.baseUnit = this;
 		}
+	}
+
+	public void ReceiveDamage(BaseUnit dealer, int damage, Spell.DamageType type) {
+		Color color = Color.white;
+		switch(type) {
+			case Spell.DamageType.Fire:
+				color = new Color(1f, 165f/255f, 0f);
+			break;
+		}
+		SpawnDamageText(damage.ToString(), color);
+		if(_currentHitPoints-damage > 0) {
+			_currentHitPoints -= damage;
+		} else {
+			if(dealer != null) {
+				dealer.GrantExperience(10);
+			}
+			Kill();
+		}
+	}
+
+	public void Kill() {
+		_tile.unit.Kill();
+	}
+
+	public void GrantExperience(int exp) {
+		_experience += exp;
 	}
 
 	public void SpawnDamageText(string text, Color color) {

@@ -111,4 +111,21 @@ public class Unit : MonoBehaviour {
 		GetComponent<Image>().sprite = null;
 		GetComponent<Image>().enabled = false;
 	}
+
+	public void Kill() {
+		_baseUnit = null;
+		ClearAssets();
+	}
+
+	public void SpawnSpellProjectiles(Spell spell) {
+		StartCoroutine(ESpawnSpellProjectiles(spell));
+	}
+
+	IEnumerator ESpawnSpellProjectiles(Spell spell) {
+		for(int i = 0; i < spell.projCount; i++) {
+			yield return new WaitForSeconds(spell.projPreSpawnDelay);
+			spell.SpawnProjectileParticles(spell.caster.tile.position, spell.effectOrigin, 0f);
+			yield return new WaitForSeconds(spell.projPostSpawnDelay);
+		}
+	}
 }

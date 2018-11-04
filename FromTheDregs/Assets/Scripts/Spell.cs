@@ -11,6 +11,15 @@ public class Spell {
 		Move
 	}
 
+	public enum DamageType {
+		Slashing,
+		Piercing,
+		Crushing,
+		Fire,
+		Ice,
+		Lightning
+	}
+
 	public enum Scaling {
 		Strength,
 		Dexterity,
@@ -52,6 +61,7 @@ public class Spell {
 	bool _autoRecast = false;
 	bool _createsProjectile = false;
 	bool _createsEffect = true;
+	DamageType _damageType;
 	Scaling _scaling = Scaling.Strength;
 	int _modSizeDamage = 0;
 
@@ -72,6 +82,8 @@ public class Spell {
 	// Projectile
 	int _projCount;
 	float _projSpeed;
+	float _projPreSpawnDelay;
+	float _projPostSpawnDelay;
 	List<GameObject> _projectiles;
 	string _projParticlePath;
 
@@ -90,8 +102,15 @@ public class Spell {
 	string _effectParticlePath;
 
 	#region Accessors
+	public BaseUnit caster {
+		get {return _caster;}
+	}
 	public string spellName {
 		get {return _spellName;}
+	}
+
+	public DamageType damageType {
+		get {return _damageType;}
 	}
 
 	public int essenceCost {
@@ -100,6 +119,18 @@ public class Spell {
 
 	public bool requireCastConfirmation {
 		get {return _requireCastConfirmation;}
+	}
+
+	public int projCount {
+		get {return _projCount;}
+	}
+
+	public float projPreSpawnDelay {
+		get {return _projPreSpawnDelay;}
+	}
+
+	public float projPostSpawnDelay {
+		get {return _projPostSpawnDelay;}
 	}
 
 	public Vector2Int effectOrigin {
@@ -136,6 +167,7 @@ public class Spell {
 				_spellName = "Bite";
 
 				_essenceCost = 2;
+				_damageType = DamageType.Piercing;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
 				_createsProjectile = false;
@@ -169,6 +201,7 @@ public class Spell {
 
 				_damageDice = 1;
 				_damageSides = 4;
+				_damageType = DamageType.Fire;
 				_essenceCost = 2;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
@@ -203,7 +236,8 @@ public class Spell {
 
 				_damageDice = 1;
 				_damageSides = 6;
-				_essenceCost = 0;
+				_damageType = DamageType.Fire;
+				_essenceCost = 2;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
 				_createsProjectile = true;
@@ -223,7 +257,7 @@ public class Spell {
 
 				_projCount = 1;
 				_projParticlePath = "Prefabs/Effects/Fireball";
-				_projSpeed = 196f;
+				_projSpeed = 192f;
 
 				_effectParticlePath = "Prefabs/Effects/Fireball Impact";
 				_effectRadius = 1;
@@ -621,9 +655,7 @@ public class Spell {
 
 		if(_createsProjectile) {
 			_projectiles = new List<GameObject>();
-			for(int i = 0; i < _projCount; i++) {
-				SpawnProjectileParticles(_caster.tile.position, effectOrigin, 0f);
-			}
+			_caster.tile.unit.SpawnSpellProjectiles(this);
 		} else if(_createsEffect) {
 			SpawnEffectParticles(_effectOrigin, zrot);
 		}
@@ -669,7 +701,7 @@ public class Spell {
 		}
 	}
 
-	void SpawnProjectileParticles(Vector2Int start, Vector2Int end, float zrotation) {
+	public void SpawnProjectileParticles(Vector2Int start, Vector2Int end, float zrotation) {
 		GameObject projParticleGO = GameObject.Instantiate(Resources.Load<GameObject>(_projParticlePath));
 		CameraController dungeon = GameObject.FindObjectOfType<CameraController>();
 		projParticleGO.transform.SetParent(dungeon.transform);
@@ -707,7 +739,7 @@ public class Spell {
 			foreach(Tile tile in _hitTiles) {
 				if(tile.unit.baseUnit != null) {
 					int damage = CalcSpellDamage();
-					tile.unit.baseUnit.SpawnDamageText(damage.ToString(), Color.white);
+					tile.unit.baseUnit.ReceiveDamage(_caster, damage, _damageType);
 				}
 			}
 		}

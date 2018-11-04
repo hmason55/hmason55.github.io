@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour {
 		foreach(Tile tile in _spell.hitTiles) {
 			if(tile.unit.baseUnit != null) {
 				int damage = _spell.CalcSpellDamage();
-				tile.unit.baseUnit.SpawnDamageText(damage.ToString(), Color.white);
+				tile.unit.baseUnit.ReceiveDamage(_spell.caster, damage, _spell.damageType);
 			}
 		}
 	}
