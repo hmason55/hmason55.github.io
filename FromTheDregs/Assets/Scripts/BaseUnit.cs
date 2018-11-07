@@ -7,22 +7,28 @@ public class BaseUnit {
 
 	public enum StatPreset {
 		Human,
+		DireRat,
+		DireRatSmall,
 		Slime,
-		Spider
+		Spider,
+		SpiderSmall,
+		Widow,
+		WidowSmall
 	}
 
 	public enum SpritePreset {
 		none,
 		direrat,
-		knight,
-		wizard,
+		direratsmall,
 		greenslime,
+		knight,
 		sandbehemoth,
 		sandworm,
 		spider,
 		spidersmall,
 		widow,
-		widowsmall
+		widowsmall,
+		wizard
 	}
 
 	public enum Size {
@@ -75,6 +81,8 @@ public class BaseUnit {
 
 	StatPreset _statPreset = StatPreset.Human;
 
+	string _deathParticlesPath;
+
 	public bool playerControlled {
 		set {_playerControlled = value;}
 		get {return _playerControlled;}
@@ -93,6 +101,11 @@ public class BaseUnit {
 	public SpritePreset spritePreset {
 		set {_spritePreset = value;}
 		get {return _spritePreset;}
+	}
+
+	public string deathParticlesPath {
+		set {_deathParticlesPath = value;}
+		get {return _deathParticlesPath;}
 	}
 
 	public int baseEssence {
@@ -125,11 +138,65 @@ public class BaseUnit {
 		get {return _modIntelligence;}
 	}
 
+
+	public BaseUnit(bool player, SpritePreset sprite) {
+		_playerControlled = player;
+		_spritePreset = sprite;
+
+		switch(sprite) {
+			case SpritePreset.direrat:
+				_statPreset = StatPreset.DireRat;
+				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
+			break;
+
+			case SpritePreset.direratsmall:
+				_statPreset = StatPreset.DireRatSmall;
+				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
+			break;
+
+			case SpritePreset.greenslime:
+				_statPreset = StatPreset.Slime;
+				_deathParticlesPath = "Prefabs/Effects/Death Green Particles";
+			break;
+
+			case SpritePreset.spider:
+				_statPreset = StatPreset.Spider;
+				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
+			break;
+
+			case SpritePreset.spidersmall:
+				_statPreset = StatPreset.SpiderSmall;
+				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
+			break;
+
+			case SpritePreset.widow:
+				_statPreset = StatPreset.Widow;
+				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
+			break;
+
+			case SpritePreset.widowsmall:
+				_statPreset = StatPreset.WidowSmall;
+				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
+			break;
+
+			default:
+				_statPreset = StatPreset.Human;
+				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
+			break;
+		}
+
+		Init();
+	}
+
 	public BaseUnit(bool player, StatPreset stats, SpritePreset sprite, Tile tile) {
 		_playerControlled = player;
 		_statPreset = stats;
 		_spritePreset = sprite;
 		_tile = tile;
+		Init();
+	}
+
+	void Init() {
 		EvaluateStatPreset();
 		UpdateModifiers();
 		UpdateArmorClass();
@@ -151,6 +218,7 @@ public class BaseUnit {
 	}
 
 	void EvaluateStatPreset() {
+		
 		switch(_statPreset) {
 			case StatPreset.Human:
 				_baseStrength = 10;
@@ -163,9 +231,10 @@ public class BaseUnit {
 				_baseEssence = 4;
 				_hpScaling = 8;
 				_size = Size.Medium;
+				
 			break;
 
-			case StatPreset.Spider:
+			case StatPreset.Slime:
 				_baseStrength = 10;
 				_baseDexterity = 15;
 				_baseIntelligence = 0;
@@ -175,6 +244,58 @@ public class BaseUnit {
 				_baseSpeed = 5;
 				_baseEssence = 4;
 				_hpScaling = 16;
+				_size = Size.Small;
+			break;
+
+			case StatPreset.Spider:
+				_baseStrength = 11;
+				_baseDexterity = 17;
+				_baseIntelligence = 0;
+				_baseConstitution = 12;
+				_baseWisdom = 10;
+				_baseCharisma = 2;
+				_baseSpeed = 5;
+				_baseEssence = 4;
+				_hpScaling = 16;
+				_size = Size.Medium;
+			break;
+
+			case StatPreset.SpiderSmall:
+				_baseStrength = 10;
+				_baseDexterity = 15;
+				_baseIntelligence = 0;
+				_baseConstitution = 12;
+				_baseWisdom = 10;
+				_baseCharisma = 2;
+				_baseSpeed = 5;
+				_baseEssence = 3;
+				_hpScaling = 11;
+				_size = Size.Small;
+			break;
+
+			case StatPreset.Widow:
+				_baseStrength = 11;
+				_baseDexterity = 17;
+				_baseIntelligence = 0;
+				_baseConstitution = 12;
+				_baseWisdom = 10;
+				_baseCharisma = 2;
+				_baseSpeed = 5;
+				_baseEssence = 4;
+				_hpScaling = 16;
+				_size = Size.Medium;
+			break;
+
+			case StatPreset.WidowSmall:
+				_baseStrength = 10;
+				_baseDexterity = 15;
+				_baseIntelligence = 0;
+				_baseConstitution = 12;
+				_baseWisdom = 10;
+				_baseCharisma = 2;
+				_baseSpeed = 5;
+				_baseEssence = 3;
+				_hpScaling = 11;
 				_size = Size.Small;
 			break;
 		}
@@ -262,6 +383,7 @@ public class BaseUnit {
 				color = new Color(1f, 165f/255f, 0f);
 			break;
 		}
+		_tile.unit.BeginHitAnimation();
 		SpawnDamageText(damage.ToString(), color);
 		if(_currentHitPoints-damage > 0) {
 			_currentHitPoints -= damage;

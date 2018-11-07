@@ -40,7 +40,8 @@ public class DungeonGenerator : MonoBehaviour {
 	[HideInInspector][SerializeField] Chunk[] _serializedChunks;
 
 
-	[SerializeField] Biome.BiomeType biome = Biome.BiomeType.forsaken;
+	[SerializeField] Biome.BiomeType biomeType = Biome.BiomeType.forsaken;
+	Biome _biome;
 
 	List<Biome> biomes;
 
@@ -127,6 +128,7 @@ public class DungeonGenerator : MonoBehaviour {
 	}
 
 	void SpawnTiles(List<Vector2Int> nodes) {
+
 		// Spawn tiles
 		for(int i = 0; i < nodes.Count; i++) {
 			Vector2Int node = nodes[i];
@@ -141,13 +143,13 @@ public class DungeonGenerator : MonoBehaviour {
 					tile.position = new Vector2Int(node.x * chunkDimension + x, node.y * chunkDimension + y);
 
 					// Biome
-					tile.terrain.biome = biome;
-					tile.decoration.biome = biome;
+					tile.terrain.biome = _biome;
+					tile.decoration.biome = _biome;
 
 					foreach(Biome b in biomes) {
 						if(CheckDistance(x * TileWidth + offsetX, y * TileHeight + offsetY, b.x, b.y) < b.radius) {
-							tile.terrain.biome = b.biomeType;
-							tile.decoration.biome = b.biomeType;
+							tile.terrain.biome = b;
+							tile.decoration.biome = b;
 						}
 					}
 
@@ -159,7 +161,9 @@ public class DungeonGenerator : MonoBehaviour {
 
 					if(hexColor == "FF0000") {	// Red (Enemy)
 						// Spawn enemy accoring to biome type
-						tile.SpawnUnit(new BaseUnit(false, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.greenslime, tile));
+						BaseUnit enemy = tile.terrain.biome.GetEnemySpawn();
+						enemy.tile = tile;
+						tile.SpawnUnit(enemy);
 
 					} else if(hexColor == "0000FF" && i <= 1) {	// Blue (Entrance/Exit)
 						
@@ -398,6 +402,12 @@ public class DungeonGenerator : MonoBehaviour {
 	}
 
 	void SpawnBiomes() {
+		// Global biome
+		_biome = new Biome(0, 0, 0);
+		_biome.biomeType = biomeType;
+
+
+		// Smaller biomes
 		int numBiomes = Random.Range(minimumBiomes, maximumBiomes);
 		for(int i = 0; i < numBiomes; i++) {
 			Debug.Log("Spawned biome");

@@ -47,25 +47,41 @@ public class Biome {
 		_radius = radius;
 		_biomeType = BiomeType.forsaken;
 
+		commonEnemySpawnTable = new List<BaseUnit.SpritePreset>();
+		rareEnemySpawnTable = new List<BaseUnit.SpritePreset>();
+
 		switch(_biomeType) {
 			case BiomeType.dungeon:
+
 			break;
 
 			case BiomeType.forsaken:
+				commonEnemySpawnRate = 75f;
+				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.greenslime);
+				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.spidersmall);
+				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.spider);
+				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.widowsmall);
+				
+				rareEnemySpawnRate = 25f;
+				rareEnemySpawnTable.Add(BaseUnit.SpritePreset.widow);
 			break;
 		}
 	}
 
-	public BaseUnit.SpritePreset GetEnemySpritePreset() {
+	public BaseUnit GetEnemySpawn() {
 		float rollSpawnRate = Random.Range(0f, 100f);
 		int rollEnemyType = 0;
+
+		BaseUnit.SpritePreset spritePreset = BaseUnit.SpritePreset.direrat;
 		if(rollSpawnRate <= commonEnemySpawnRate) {
 			rollEnemyType = Random.Range(0, commonEnemySpawnTable.Count);
-			return commonEnemySpawnTable[rollEnemyType];
+			spritePreset = commonEnemySpawnTable[rollEnemyType];
 		} else if(rollSpawnRate <= commonEnemySpawnRate + rareEnemySpawnRate) {
 			rollEnemyType = Random.Range(0, rareEnemySpawnTable.Count);
-			return rareEnemySpawnTable[rollEnemyType];
+			spritePreset = rareEnemySpawnTable[rollEnemyType];
 		}
-		return BaseUnit.SpritePreset.none;
+
+		BaseUnit baseUnit = new BaseUnit(false, spritePreset);
+		return baseUnit;
 	}
 }

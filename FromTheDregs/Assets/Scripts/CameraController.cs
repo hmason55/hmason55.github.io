@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour {
 	RectTransform _rectTransform;
 
 	[SerializeField] DungeonGenerator _dungeonGenerator;
+
 	TapController _tapController;
 
 	public float deadzone = 1.0f;
@@ -21,6 +22,7 @@ public class CameraController : MonoBehaviour {
 	int _halfScreenHeight = 960;
 
 	float _scale = 4f;
+
 
 	public Vector2 target {
 		get {return _target;}
@@ -36,8 +38,7 @@ public class CameraController : MonoBehaviour {
 		_scale = _rectTransform.localScale.x;
 	}
 
-	void Start() {
-
+	void Update() {
 	}
 
 	float CalcDistance(float x1, float y1, float x2, float y2) {

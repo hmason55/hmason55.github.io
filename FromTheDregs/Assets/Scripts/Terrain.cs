@@ -18,7 +18,7 @@ public class Terrain : MonoBehaviour, IPointerClickHandler {
 	[SerializeField] Image _image;
 
 	Sprite _sprite;
-	Biome.BiomeType _biome = Biome.BiomeType.forsaken;
+	Biome _biome;
 
 	public enum TerrainType {
 		wall_top,
@@ -40,7 +40,7 @@ public class Terrain : MonoBehaviour, IPointerClickHandler {
 		set {_terrainType = value;}
 	}
 
-	public Biome.BiomeType biome {
+	public Biome biome {
 		get {return _biome;}
 		set {_biome = value;}
 	}
@@ -88,7 +88,7 @@ public class Terrain : MonoBehaviour, IPointerClickHandler {
 		init = true;
 		List<Sprite> sprites = new List<Sprite>();
 
-		switch(_biome) {
+		switch(_biome.biomeType) {
 			case Biome.BiomeType.dungeon:
 				switch(_terrainType) {
 					case TerrainType.ground:

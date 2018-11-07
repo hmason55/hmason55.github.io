@@ -8,7 +8,7 @@ public class Decoration : MonoBehaviour {
 
 	[SerializeField] Image _image;
 	Sprite _sprite;
-	Biome.BiomeType _biome;
+	Biome _biome;
 	Usage _usage = Usage.None;
 
 	DecorationType _decorationType;
@@ -26,7 +26,7 @@ public class Decoration : MonoBehaviour {
 	public enum Usage {
 		None
 	}
-	public Biome.BiomeType biome {
+	public Biome biome {
 		get {return _biome;}
 		set {_biome = value;}
 	}
@@ -54,7 +54,7 @@ public class Decoration : MonoBehaviour {
 		//DirectoryInfo dir = new DirectoryInfo(Application.dataPath + "/Resources/Sprites/biomes/" + _biome.ToString() + "/");
  		//FileInfo[] info = dir.GetFiles(_biome.ToString() + "_" + _decorationType.ToString() + "_" + "*.png");
 		List<Sprite> sprites = new List<Sprite>();
-		switch(_biome) {
+		switch(_biome.biomeType) {
 			case Biome.BiomeType.dungeon:
 				switch(_decorationType) {
 					case DecorationType.container:

@@ -7,8 +7,12 @@ public class Unit : MonoBehaviour {
 	
 	BaseUnit _baseUnit;
 	Sprite[] _idleAnimation;
+	Sprite[] _hitAnimation;
 	static int IdleAnimationLength = 4;
-	int _animationFrame = 0;
+	static int HitAnimationLength = 1;
+	int _animationFrame = -1;
+	int _hitFrame = -1;
+	int _hitFrameSkip = 8;
 
 	Sprite _sprite;
 
@@ -27,9 +31,19 @@ public class Unit : MonoBehaviour {
 		set {_idleAnimation = value;}
 	}
 
+	public Sprite[] hitAnimation {
+		get {return _hitAnimation;}
+		set {_hitAnimation = value;}
+	}
+
 	public int animationFrame {
 		get {return _animationFrame;}
 		set {_animationFrame = value;}
+	}
+
+	public int hitFrame {
+		get {return _hitFrame;}
+		set {_hitFrame = value;}
 	}
 
 	public Image image {
@@ -56,17 +70,50 @@ public class Unit : MonoBehaviour {
 					//_idleAnimation = _tile.spriteManager.unit.idle.ToArray();
 				break;
 
-				case BaseUnit.SpritePreset.wizard:
-					_idleAnimation = _tile.spriteManager.unitHumanWizard1.idle.ToArray();
+				case BaseUnit.SpritePreset.direrat:
+					_idleAnimation = _tile.spriteManager.unitDireRat1.idle.ToArray();
+					_hitAnimation = _tile.spriteManager.unitDireRat1.hit.ToArray();
+				break;
+
+				case BaseUnit.SpritePreset.direratsmall:
+					_idleAnimation = _tile.spriteManager.unitDireRatSmall1.idle.ToArray();
+					_hitAnimation = _tile.spriteManager.unitDireRatSmall1.hit.ToArray();
 				break;
 
 				case BaseUnit.SpritePreset.sandbehemoth:
 					_idleAnimation = _tile.spriteManager.unitSandBehemoth1.idle.ToArray();
+					_hitAnimation = _tile.spriteManager.unitSandBehemoth1.hit.ToArray();
+				break;
+
+				case BaseUnit.SpritePreset.spider:
+					_idleAnimation = _tile.spriteManager.unitSpider1.idle.ToArray();
+					_hitAnimation = _tile.spriteManager.unitSpider1.hit.ToArray();
+				break;
+
+				case BaseUnit.SpritePreset.spidersmall:
+					_idleAnimation = _tile.spriteManager.unitSpiderSmall1.idle.ToArray();
+					_hitAnimation = _tile.spriteManager.unitSpiderSmall1.hit.ToArray();
+				break;
+
+				case BaseUnit.SpritePreset.widow:
+					_idleAnimation = _tile.spriteManager.unitWidow1.idle.ToArray();
+					_hitAnimation = _tile.spriteManager.unitWidow1.hit.ToArray();
+				break;
+
+				case BaseUnit.SpritePreset.widowsmall:
+					_idleAnimation = _tile.spriteManager.unitWidowSmall1.idle.ToArray();
+					_hitAnimation = _tile.spriteManager.unitWidowSmall1.hit.ToArray();
+				break;
+
+				case BaseUnit.SpritePreset.wizard:
+					_idleAnimation = _tile.spriteManager.unitHumanWizard1.idle.ToArray();
+					_hitAnimation = _tile.spriteManager.unitHumanWizard1.hit.ToArray();
 				break;
 
 				case BaseUnit.SpritePreset.greenslime:
 				default:
 					_idleAnimation = _tile.spriteManager.unitGreenSlime1.idle.ToArray();
+					_hitAnimation = _tile.spriteManager.unitGreenSlime1.hit.ToArray();
 				break;
 			}
 			
@@ -76,8 +123,12 @@ public class Unit : MonoBehaviour {
 	public void IncrementAnimation() {
 		_animationFrame = _baseUnit.tile.animationController.animationFrame;
 
-		// Idle animation
-		if(_idleAnimation != null) {
+		if(_hitAnimation != null && _hitFrame > -1 && _hitFrame < _hitFrameSkip) {
+			_sprite = _hitAnimation[0];
+			_hitFrame++;
+		} else if(_idleAnimation != null) {
+			_hitFrame = -1;
+
 			if(_animationFrame < 10) {
 				_sprite = _idleAnimation[0];
 			} else if(_animationFrame < 11) {
@@ -88,7 +139,15 @@ public class Unit : MonoBehaviour {
 				_sprite = _idleAnimation[3];
 			}
 		}
+	}
 
+	public void BeginHitAnimation() {
+		_hitFrame = 0;
+		
+	}
+
+	public void EndHitAnimation() {
+		_hitFrame = -1;
 	}
 
 	public void UpdateSprite() {
@@ -113,6 +172,7 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void Kill() {
+		SpawnDeathParticles();
 		_baseUnit = null;
 		ClearAssets();
 	}
@@ -127,5 +187,19 @@ public class Unit : MonoBehaviour {
 			spell.SpawnProjectileParticles(spell.caster.tile.position, spell.effectOrigin, 0f);
 			yield return new WaitForSeconds(spell.projPostSpawnDelay);
 		}
+	}
+
+	public void SpawnDeathParticles() {
+		GameObject deathParticlesGO = GameObject.Instantiate(Resources.Load<GameObject>(baseUnit.deathParticlesPath));
+		CameraController dungeon = GameObject.FindObjectOfType<CameraController>();
+		deathParticlesGO.transform.SetParent(dungeon.transform);
+		deathParticlesGO.transform.SetAsLastSibling();
+
+		RectTransform tileRT = baseUnit.tile.dungeonGenerator.tiles[baseUnit.tile.position.x, baseUnit.tile.position.y].GetComponent<RectTransform>();
+		RectTransform particleRT = deathParticlesGO.GetComponent<RectTransform>();
+		particleRT.anchoredPosition = new Vector2(tileRT.anchoredPosition.x + DungeonGenerator.TileWidth/2, tileRT.anchoredPosition.y + DungeonGenerator.TileHeight/2);
+
+		ParticleSystem ps = deathParticlesGO.GetComponent<ParticleSystem>();
+		GameObject.Destroy(deathParticlesGO, ps.main.startLifetime.constantMax);
 	}
 }
