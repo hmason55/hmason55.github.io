@@ -14,6 +14,10 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 
 	[SerializeField] Spell.Preset _preset;
 
+	[SerializeField] Button _moreInfo;
+
+	[SerializeField] Text _costText;
+
 	Spell _spell;
 
 	bool _showCastRange = false;
@@ -33,25 +37,25 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 		_spell = new Spell(_preset);
 		_text.text = _spell.spellName;
 		gameObject.name = _spell.spellName;
+
+		UpdateCost();
 	}
 
 	public void OnPointerClick(PointerEventData eventData) {
 		PreviewCast();
-			
-		/* 
-		if(!_showCastRange) {
-			_showCastRange = true;
-			_hotbar.tapController.image.raycastTarget = false;
-			_hotbar.activeSpell = _spell;
-			_spell.ShowCastRange();
-			_hotbar.essenceUI.PreviewUsage(_hotbar.baseUnit.baseEssence, _spell.essenceCost);
-		} else {
-			_showCastRange = false;
-			_hotbar.tapController.image.raycastTarget = true;
-			_spell.ResetTiles();
-			_hotbar.essenceUI.ResetAll();
-		}*/
 
+	}
+
+	public void ShowMoreInfo() {
+		Debug.Log("Show info");
+	}
+
+	public void HideMoreInfo() {
+		Debug.Log("Hide info");
+	}
+
+	public void UpdateCost() {
+		_costText.text = _spell.essenceCost.ToString();
 	}
 
 	public void PreviewCast() {

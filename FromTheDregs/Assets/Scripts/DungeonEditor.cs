@@ -4,20 +4,21 @@ using UnityEngine;
 using UnityEditor;
 
 #if (UNITY_EDITOR) 
-[CustomEditor(typeof(DungeonGenerator))]
+[CustomEditor(typeof(DungeonManager))]
 public class DungeonEditor : Editor {
     public override void OnInspectorGUI() {
         DrawDefaultInspector();
         
-        DungeonGenerator myScript = (DungeonGenerator)target;
-        if(GUILayout.Button("Build Tile Grid")) {
-            myScript.BuildTileGrid();
+        DungeonManager dungeonManager = (DungeonManager)target;
+        if(GUILayout.Button("Build Object Pools")) {
+            dungeonManager.BuildObjectPools();
         }
 
-		if(GUILayout.Button("Check Size")) {
-            myScript.CheckTileSize();
+        if(GUILayout.Button("Clear Object Pools")) {
+            dungeonManager.ClearObjectPools();
         }
-		EditorUtility.SetDirty(myScript);
+
+		EditorUtility.SetDirty(dungeonManager);
     }
 }
 #endif

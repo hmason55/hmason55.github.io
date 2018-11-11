@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DamageText : MonoBehaviour {
 
-
 	Vector2 _velocity;
 	Vector2 _gravity;
 
@@ -26,14 +25,14 @@ public class DamageText : MonoBehaviour {
 	void Awake() {
 		transform.SetParent(GameObject.FindObjectOfType<CameraController>().transform);
 		_rectTransform = GetComponent<RectTransform>();
-		_originalScale = _rectTransform.localScale;
 		_velocity = new Vector2(0f, 20f);
 		_spawntime = Time.realtimeSinceStartup;
 		Destroy(gameObject, _lifetime);
 	}
 
 	public void Init(Vector2 position, string text, Color color) {
-		_rectTransform.anchoredPosition = new Vector2(position.x + DungeonGenerator.TileWidth/2, position.y + DungeonGenerator.TileWidth/2);
+		_rectTransform.anchoredPosition = new Vector2(position.x + DungeonManager.TileWidth/2, position.y + DungeonManager.TileWidth/2);
+		_originalScale = _rectTransform.localScale;
 		Text t = GetComponent<Text>();
 		t.text = text;
 		t.color = color;

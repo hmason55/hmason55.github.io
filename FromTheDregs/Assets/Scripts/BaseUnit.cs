@@ -83,6 +83,16 @@ public class BaseUnit {
 
 	string _deathParticlesPath;
 
+	Sprite[] _idleAnimation;
+	Sprite[] _hitAnimation;
+	static int IdleAnimationLength = 4;
+	static int HitAnimationLength = 1;
+	int _animationFrame = -1;
+	int _hitFrame = -1;
+	int _hitFrameSkip = 8;
+
+	Sprite _sprite;
+
 	public bool playerControlled {
 		set {_playerControlled = value;}
 		get {return _playerControlled;}
@@ -91,6 +101,11 @@ public class BaseUnit {
 	public Tile tile {
 		set {_tile = value;}
 		get {return _tile;}
+	}
+	
+	public Sprite sprite {
+		set {_sprite = value;}
+		get {return _sprite;}
 	}
 
 	public StatPreset statPreset {
@@ -136,6 +151,26 @@ public class BaseUnit {
 
 	public int modIntelligence {
 		get {return _modIntelligence;}
+	}
+
+	public Sprite[] idleAnimation {
+		get {return _idleAnimation;}
+		set {_idleAnimation = value;}
+	}
+
+	public Sprite[] hitAnimation {
+		get {return _hitAnimation;}
+		set {_hitAnimation = value;}
+	}
+
+	public int animationFrame {
+		get {return _animationFrame;}
+		set {_animationFrame = value;}
+	}
+
+	public int hitFrame {
+		get {return _hitFrame;}
+		set {_hitFrame = value;}
 	}
 
 
@@ -322,26 +357,41 @@ public class BaseUnit {
 	public void Move(int dx, int dy) {
 		int x = _tile.position.x + dx;
 		int y = _tile.position.y + dy;
-		int mapWidth = DungeonGenerator.chunkDimension * DungeonGenerator.dungeonDimension;
-		int mapHeight = DungeonGenerator.chunkDimension * DungeonGenerator.dungeonDimension;
+		int mapWidth = DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
+		int mapHeight = DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
 
 		if(x < 0 || x >= mapWidth || y < 0 || y >= mapHeight) {
 			Debug.Log("Out of bounds " + x + ", " + y);
 			return;
 		}
 
-		Tile nextTile = _tile.dungeonGenerator.tiles[x, y];
+		Tile nextTile = _tile.dungeonManager.tiles[x, y];
 		if(nextTile != null) {
-			if(nextTile.terrain.walkable && nextTile.unit.baseUnit == null) {
-				_tile.unit.TransferUnit(nextTile.unit);
-				nextTile.unit.baseUnit = this;
-				_tile.unit.baseUnit = null;
-				_tile = nextTile;
-				SetAsCameraTarget();
-				SetAsHotbarTarget();
-				Debug.Log("Moved " + dx + ", " + dy);
-			} else {
-				return;
+			if(nextTile.baseTerrain != null) {
+				if(nextTile.baseTerrain.walkable && nextTile.baseUnit == null) {
+					nextTile.baseUnit = this;
+					_tile.baseUnit = null;
+					
+					if(_tile.unit != null) {
+						_tile.unit.image.enabled = false;
+						_tile.unit.image.sprite = null;
+					}
+
+					_tile = nextTile;
+
+					SetAsCameraTarget();
+					SetAsHotbarTarget();
+
+					if(_tile.unit != null) {
+						_tile.unit.baseUnit = this;
+						_tile.unit.image.enabled = true;
+						_tile.unit.UpdateSprite();
+						//Debug.Log(tile.position);
+						//_tile.unit.image.sprite = _tile.baseUnit.sprite;
+					}
+					
+					Debug.Log("Moved " + dx + ", " + dy);
+				}
 			}
 		}
 	}
@@ -354,9 +404,10 @@ public class BaseUnit {
 		CameraController cameraController = GameObject.FindObjectOfType<CameraController>();
 		cameraController.target = _tile.position;
 		if(_playerControlled) {
-			if(_tile.dungeonGenerator.limitRendering) {
-				_tile.dungeonGenerator.RenderTiles();
-			}
+			//if(_tile.dungeonManager.limitRendering) {
+				_tile.dungeonManager.renderOrigin = _tile.position;
+				_tile.dungeonManager.UpdateObjectPool();
+			//}
 			
 			cameraController.MoveToTarget();
 		}
@@ -383,7 +434,7 @@ public class BaseUnit {
 				color = new Color(1f, 165f/255f, 0f);
 			break;
 		}
-		_tile.unit.BeginHitAnimation();
+		_tile.baseUnit.BeginHitAnimation();
 		SpawnDamageText(damage.ToString(), color);
 		if(_currentHitPoints-damage > 0) {
 			_currentHitPoints -= damage;
@@ -406,7 +457,94 @@ public class BaseUnit {
 	public void SpawnDamageText(string text, Color color) {
 		GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Damage Text"));
 		DamageText damageText = go.GetComponent<DamageText>();
-		damageText.Init(_tile.GetComponent<RectTransform>().anchoredPosition, text, color);
+		go.GetComponent<RectTransform>().localScale = new Vector3(0.25f, 0.25f, 0.25f);
+		damageText.Init(_tile.unit.GetComponent<RectTransform>().anchoredPosition, text, color);
+	}
+
+	public void LoadSprites(SpriteManager spriteManager) {
+		_idleAnimation = new Sprite[IdleAnimationLength];
+
+		switch(spritePreset) {
+			case BaseUnit.SpritePreset.knight:
+				//_idleAnimation = _tile.spriteManager.unit.idle.ToArray();
+			break;
+
+			case BaseUnit.SpritePreset.direrat:
+				_idleAnimation = spriteManager.unitDireRat1.idle.ToArray();
+				_hitAnimation = spriteManager.unitDireRat1.hit.ToArray();
+			break;
+
+			case BaseUnit.SpritePreset.direratsmall:
+				_idleAnimation = spriteManager.unitDireRatSmall1.idle.ToArray();
+				_hitAnimation = spriteManager.unitDireRatSmall1.hit.ToArray();
+			break;
+
+			case BaseUnit.SpritePreset.sandbehemoth:
+				_idleAnimation = spriteManager.unitSandBehemoth1.idle.ToArray();
+				_hitAnimation = spriteManager.unitSandBehemoth1.hit.ToArray();
+			break;
+
+			case BaseUnit.SpritePreset.spider:
+				_idleAnimation = spriteManager.unitSpider1.idle.ToArray();
+				_hitAnimation = spriteManager.unitSpider1.hit.ToArray();
+			break;
+
+			case BaseUnit.SpritePreset.spidersmall:
+				_idleAnimation = spriteManager.unitSpiderSmall1.idle.ToArray();
+				_hitAnimation = spriteManager.unitSpiderSmall1.hit.ToArray();
+			break;
+
+			case BaseUnit.SpritePreset.widow:
+				_idleAnimation = spriteManager.unitWidow1.idle.ToArray();
+				_hitAnimation = spriteManager.unitWidow1.hit.ToArray();
+			break;
+
+			case BaseUnit.SpritePreset.widowsmall:
+				_idleAnimation = spriteManager.unitWidowSmall1.idle.ToArray();
+				_hitAnimation = spriteManager.unitWidowSmall1.hit.ToArray();
+			break;
+
+			case BaseUnit.SpritePreset.wizard:
+				_idleAnimation = spriteManager.unitHumanWizard1.idle.ToArray();
+				_hitAnimation = spriteManager.unitHumanWizard1.hit.ToArray();
+			break;
+
+			case BaseUnit.SpritePreset.greenslime:
+			default:
+				_idleAnimation = spriteManager.unitGreenSlime1.idle.ToArray();
+				_hitAnimation = spriteManager.unitGreenSlime1.hit.ToArray();
+			break;
+		}
+	}
+
+	public void BeginHitAnimation() {
+		_hitFrame = 0;
+		
+	}
+
+	public void EndHitAnimation() {
+		_hitFrame = -1;
+	}
+
+	public void IncrementAnimation() {
+		_animationFrame = _tile.animationController.animationFrame;
+
+		if(_hitAnimation != null && _hitFrame > -1 && _hitFrame < _hitFrameSkip) {
+			_sprite = _hitAnimation[0];
+			_hitFrame++;
+		} else if(_idleAnimation != null) {
+			_hitFrame = -1;
+
+			if(_animationFrame < 10) {
+				_sprite = _idleAnimation[0];
+			} else if(_animationFrame < 11) {
+				_sprite = _idleAnimation[1];
+			} else if(_animationFrame < 22) {
+				_sprite = _idleAnimation[2];
+			} else {
+				_sprite = _idleAnimation[3];
+			}
+		}
 	}
 
 }

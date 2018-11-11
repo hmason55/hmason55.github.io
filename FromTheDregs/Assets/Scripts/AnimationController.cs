@@ -4,23 +4,34 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour {
 
-	public float _animationFrame = 0f;
-
+	[SerializeField] DungeonManager _dungeonManager;
+	float _animationFrame = 0f;
+	float _animationSpeed = 1f;
 	public static int AnimationLength = 26;
-	public float animationSpeed = 1f;
 
 	public int animationFrame {
 		get {return (int)_animationFrame;}
 	}
 
-	// Use this for initialization
-	void Start () {
-		
+	public float animationSpeed {
+		get {return _animationSpeed;}
+		set {_animationSpeed = value;}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		_animationFrame += (animationSpeed * AnimationLength * Time.deltaTime);
 		_animationFrame %= AnimationLength;
+	}
+
+	void LateUpdate() {
+		int dimension = DungeonManager.dungeonDimension * DungeonManager.chunkDimension;
+		for(int y = 0; y < dimension; y++) {
+			for(int x = 0; x < dimension; x++) {
+				if(_dungeonManager.tiles[x, y] != null) {
+					_dungeonManager.tiles[x, y].AnimateUnit();
+				}
+			}
+		}
 	}
 }

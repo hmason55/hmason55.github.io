@@ -4,43 +4,31 @@ using UnityEngine.UI;
 using UnityEngine;
 
 [System.Serializable]
-public class Tile : MonoBehaviour {
+public class Tile {
 	public bool renderFlag = false;
 
-	[HideInInspector][SerializeField] SpriteManager _spriteManager;
+	SpriteManager _spriteManager;
+	DungeonManager _dungeonManager;
+	AnimationController _animationController;
 
-	[HideInInspector][SerializeField] DungeonGenerator _dungeonGenerator;
-	[HideInInspector][SerializeField] AnimationController _animationController;
+	TerrainBehaviour _terrain;
+	DecorationBehaviour _decoration;
+	UnitBehaviour _unit;
 
-	[SerializeField] Terrain _terrain;
-
-	[SerializeField] Decoration _decoration;
-	[SerializeField] Unit _unit;
+	BaseTerrain _baseTerrain;
+	BaseDecoration _baseDecoration;
+	BaseUnit _baseUnit;
 
 	Vector2Int _position;
-
-	public Terrain terrain {
-		set {_terrain = value;}
-		get {return _terrain;}
-	}
-	public Decoration decoration {
-		set {_decoration = value;}
-		get {return _decoration;}
-	}
-
-	public Unit unit {
-		set {_unit = value;}
-		get {return _unit;}
-	}
-
+	
 	public SpriteManager spriteManager {
 		set {_spriteManager = value;}
 		get {return _spriteManager;}
 	}
 
-	public DungeonGenerator dungeonGenerator {
-		set {_dungeonGenerator = value;}
-		get {return _dungeonGenerator;}
+	public DungeonManager dungeonManager {
+		set {_dungeonManager = value;}
+		get {return _dungeonManager;}
 	}
 
 	public AnimationController animationController {
@@ -48,44 +36,75 @@ public class Tile : MonoBehaviour {
 		get {return _animationController;}
 	}
 
+	public TerrainBehaviour terrain {
+		set {_terrain = value;}
+		get {return _terrain;}
+	}
+	public DecorationBehaviour decoration {
+		set {_decoration = value;}
+		get {return _decoration;}
+	}
+
+	public UnitBehaviour unit {
+		set {_unit = value;}
+		get {return _unit;}
+	}
+
+	public BaseTerrain baseTerrain {
+		set {_baseTerrain = value;}
+		get {return _baseTerrain;}
+	}
+	public BaseDecoration baseDecoration {
+		set {_baseDecoration = value;}
+		get {return _baseDecoration;}
+	}
+
+	public BaseUnit baseUnit {
+		set {_baseUnit = value;}
+		get {return _baseUnit;}
+	}
+
 	public Vector2Int position {
 		set {_position = value;}
 		get {return _position;}
 	}
 
-	void LateUpdate() {
-		if(_unit != null) {
-			if(_unit.baseUnit != null) {
-				_unit.IncrementAnimation();
+	public Tile(int x, int y) {
+		position = new Vector2Int(x, y);
+	}
+
+	public void AnimateUnit() {
+		if(_baseUnit != null) {
+			_baseUnit.IncrementAnimation();
+			if(_unit != null) {
 				_unit.UpdateSprite();
 			}
 		}
 	}
 
 	public void SpawnUnit(BaseUnit baseUnit) {
-		if(_unit != null) {
-			if(_unit.baseUnit == null) {
+		if(_baseUnit == null) {
+			_baseUnit = baseUnit;
+			_baseUnit.tile = this;
+			_baseUnit.LoadSprites(_spriteManager);
+			if(_unit != null) {
 				_unit.baseUnit = baseUnit;
-				_unit.baseUnit.tile = this;
-				_unit.GetComponent<Image>().enabled = true;
-				_unit.LoadSprites();
-				GameObject.FindObjectOfType<CameraController>().target = _position;
-			} else {
-				Debug.Log("A unit already exists at " + _position);
 			}
+		} else {
+			Debug.Log("A unit already exists at " + _position);
 		}
 	}
 
 	public void EnableRendering() {
-		if(_terrain.sprite != null) {
+		if(_baseTerrain.sprite != null) {
 			_terrain.GetComponent<Image>().enabled = true;
 		}
 		
-		if(_decoration.sprite != null) {
+		if(_baseDecoration != null) {
 			_decoration.GetComponent<Image>().enabled = true;
 		}
 
-		if(_unit.baseUnit != null) {
+		if(_baseUnit != null) {
 			_unit.GetComponent<Image>().enabled = true;
 		}
 	}

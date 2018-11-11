@@ -59,6 +59,7 @@ public class Spell {
 	int _essenceCost = 1;
 	bool _requireCastConfirmation = false;
 	bool _autoRecast = false;
+	bool _createsCastParticle = false;
 	bool _createsProjectile = false;
 	bool _createsEffect = true;
 	DamageType _damageType;
@@ -151,7 +152,7 @@ public class Spell {
 
 	public Spell(BaseUnit caster, Preset spell) {
 		_caster = caster;
-		_tiles = _caster.tile.dungeonGenerator.tiles;
+		_tiles = _caster.tile.dungeonManager.tiles;
 		CreateFromPreset(spell);
 	}
 
@@ -170,6 +171,7 @@ public class Spell {
 				_damageType = DamageType.Piercing;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
+				_createsCastParticle = false;
 				_createsProjectile = false;
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
@@ -205,6 +207,7 @@ public class Spell {
 				_essenceCost = 2;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
+				_createsCastParticle = true;
 				_createsProjectile = false;
 				_createsEffect = true;
 				_scaling = Scaling.Intelligence;
@@ -240,6 +243,7 @@ public class Spell {
 				_essenceCost = 2;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
+				_createsCastParticle = true;
 				_createsProjectile = true;
 				_createsEffect = true;
 				_scaling = Scaling.Intelligence;
@@ -273,13 +277,13 @@ public class Spell {
 			case Preset.Move:
 				_spellName = "Move";
 
-				_essenceCost = 1;
+				_essenceCost = 0;
 				_autoRecast = true;
 				_requireCastConfirmation = false;
+				_createsCastParticle = false;
 				_createsProjectile = false;
 				_createsEffect = false;
 				
-				_castParticlePath = "";
 				_castRadius = 1;
 				_castThroughWalls = false;
 				_castOnWalls = false;
@@ -295,13 +299,15 @@ public class Spell {
 	#endregion
 
 	public void ResetTiles() {
-		int dimension = DungeonGenerator.dungeonDimension * DungeonGenerator.chunkDimension;
+		int dimension = DungeonManager.dungeonDimension * DungeonManager.chunkDimension;
 		for(int y = 0; y < dimension; y++) {
 			for(int x = 0; x < dimension; x++) {
-				Tile _tile = _caster.tile.dungeonGenerator.tiles[x, y];
-				_tile.terrain.readyCast = false;
-				_tile.terrain.confirmCast = false;
-				_tile.terrain.image.color = Color.white;
+				Tile _tile = _caster.tile.dungeonManager.tiles[x, y];
+				if(_tile.terrain != null) {
+					_tile.terrain.readyCast = false;
+					_tile.terrain.confirmCast = false;
+					_tile.terrain.image.color = Color.white;
+				}
 			}
 		}
 	}
@@ -333,7 +339,7 @@ public class Spell {
 
 		while(true) {
 
-			if(!_tiles[x1, y1].terrain.walkable) {
+			if(!_tiles[x1, y1].baseTerrain.walkable) {
 				return false;
 			}
 
@@ -357,18 +363,20 @@ public class Spell {
 
 	#region Casting
 	public void ShowCastRange() {
-		int dimension = DungeonGenerator.dungeonDimension * DungeonGenerator.chunkDimension;
+		int dimension = DungeonManager.dungeonDimension * DungeonManager.chunkDimension;
 		bool[,] visitedTiles = new bool[dimension, dimension];
 
 		for(int y = 0; y < dimension; y++) {
 			for(int x = 0; x < dimension; x++) {
 				visitedTiles[x, y] = false;
-				_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
+				if(_tiles[x, y].terrain != null) {
+					_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
+				}
 			}
 		}
 
 		PopulateCastRange(_caster.tile.position.x, _caster.tile.position.y, visitedTiles, _caster.tile.position.x, _caster.tile.position.y);
-		if(_castParticlePath != null) {
+		if(_createsCastParticle) {
 			SpawnCastParticles(_caster.tile.position, 0f);
 		}
 	}
@@ -378,8 +386,8 @@ public class Spell {
 		// Check map bounds
 		if(	x < 0 ||
 		 	y < 0 ||
-		 	x >= (DungeonGenerator.dungeonDimension * DungeonGenerator.chunkDimension)-1 || 
-			y >= (DungeonGenerator.dungeonDimension * DungeonGenerator.chunkDimension)-1) { 
+		 	x >= (DungeonManager.dungeonDimension * DungeonManager.chunkDimension)-1 || 
+			y >= (DungeonManager.dungeonDimension * DungeonManager.chunkDimension)-1) { 
 			return;
 		}
 
@@ -400,11 +408,13 @@ public class Spell {
 			return;
 		}
 
-		Tile _tile = _caster.tile.dungeonGenerator.tiles[x, y];
+		Tile _tile = _caster.tile.dungeonManager.tiles[x, y];
 
 		// Check wall collision
-		if((!_castThroughWalls && !_castOnWalls) && !_tile.terrain.walkable) {
-			return;
+		if(_tile.baseTerrain != null) {
+			if((!_castThroughWalls && !_castOnWalls) && !_tile.baseTerrain.walkable) {
+				return;
+			}
 		}
 
 		bool flagTile = false;
@@ -417,7 +427,7 @@ public class Spell {
 		} else {
 
 			// Allow casting on walls
-			if(!_tile.terrain.walkable) {
+			if(!_tile.baseTerrain.walkable) {
 				if(_castThroughWalls && _castOnWalls) {
 					flagTile = true;
 				} else if(_castOnWalls) {
@@ -452,13 +462,15 @@ public class Spell {
 	
 	#region Effects
 	public void ShowEffectRange(Vector2Int origin) {
-		int dimension = DungeonGenerator.dungeonDimension * DungeonGenerator.chunkDimension;
+		int dimension = DungeonManager.dungeonDimension * DungeonManager.chunkDimension;
 		bool[,] visitedTiles = new bool[dimension, dimension];
 
 		for(int y = 0; y < dimension; y++) {
 			for(int x = 0; x < dimension; x++) {
 				visitedTiles[x, y] = false;
-				_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
+				if(_tiles[x, y].terrain != null) {
+					_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
+				}
 			}
 		}
 
@@ -483,8 +495,8 @@ public class Spell {
 		// Check map bounds
 		if(	x < 0 ||
 		 	y < 0 ||
-		 	x >= (DungeonGenerator.dungeonDimension * DungeonGenerator.chunkDimension)-1 || 
-			y >= (DungeonGenerator.dungeonDimension * DungeonGenerator.chunkDimension)-1) { 
+		 	x >= (DungeonManager.dungeonDimension * DungeonManager.chunkDimension)-1 || 
+			y >= (DungeonManager.dungeonDimension * DungeonManager.chunkDimension)-1) { 
 			return;
 		}
 
@@ -500,7 +512,7 @@ public class Spell {
 
 		visited[x, y] = true;
 
-		Tile _tile = _caster.tile.dungeonGenerator.tiles[x, y];
+		Tile _tile = _caster.tile.dungeonManager.tiles[x, y];
 		bool flagTile = false;
 
 		switch(_effectDirection) {
@@ -577,14 +589,14 @@ public class Spell {
 		
 
 		// Check wall collision
-		if(!_effectIgnoresWalls && !_tile.terrain.walkable) {
+		if(!_effectIgnoresWalls && !_tile.baseTerrain.walkable) {
 			return;
 		}
 
 		
 
 		// Allow effects through walls
-		if(!_tile.terrain.walkable) {
+		if(!_tile.baseTerrain.walkable) {
 			if(_effectIgnoresWalls) {
 				flagTile = true;
 			}
@@ -684,12 +696,13 @@ public class Spell {
 
 		_castParticle = castParticleGO;
 
-		RectTransform tileRT = _tiles[position.x, position.y].GetComponent<RectTransform>();
+		RectTransform unitRT = _tiles[position.x, position.y].unit.GetComponent<RectTransform>();
 
 		RectTransform castRT = castParticleGO.GetComponent<RectTransform>();
 
-		castRT.anchoredPosition = new Vector2(tileRT.anchoredPosition.x + DungeonGenerator.TileWidth/2, tileRT.anchoredPosition.y + DungeonGenerator.TileHeight/2);
+		castRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileHeight/2);
 		castRT.localEulerAngles = new Vector3(0f, 0f, zrotation);
+		castRT.localScale = new Vector3(0.25f, 0.25f, 0.25f);
 	}
 
 	public void DestroyCastParticles() {
@@ -709,17 +722,18 @@ public class Spell {
 
 		Projectile proj = projParticleGO.GetComponent<Projectile>();
 		float theta = Mathf.Atan2(end.y - start.y, end.x - start.x);
-		float distance = Mathf.Sqrt((end.x - start.x)*(end.x - start.x) + (end.y - start.y)*(end.y - start.y)) * DungeonGenerator.TileWidth;
+		float distance = Mathf.Sqrt((end.x - start.x)*(end.x - start.x) + (end.y - start.y)*(end.y - start.y)) * DungeonManager.TileWidth;
 		proj.velocity = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta)) * _projSpeed;
 		proj.spell = this;
 		proj.end = end;
 		_projectiles.Add(projParticleGO);
 		GameObject.Destroy(projParticleGO, distance/_projSpeed);
 
-		RectTransform tileRT = _tiles[start.x, start.y].GetComponent<RectTransform>();
+		RectTransform unitRT = _tiles[start.x, start.y].unit.GetComponent<RectTransform>();
 		RectTransform projRT = projParticleGO.GetComponent<RectTransform>();
-		projRT.anchoredPosition = new Vector2(tileRT.anchoredPosition.x + DungeonGenerator.TileWidth/2, tileRT.anchoredPosition.y + DungeonGenerator.TileHeight/2);
+		projRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileHeight/2);
 		projRT.localEulerAngles = new Vector3(0f, 0f, theta * Mathf.Rad2Deg - 90f);
+		projRT.localScale = new Vector3(0.25f, 0.25f, 0.25f);
 	}
 
 	public void SpawnEffectParticles(Vector2Int position, float zrotation) {
@@ -728,12 +742,13 @@ public class Spell {
 		effectParticleGO.transform.SetParent(dungeon.transform);
 		effectParticleGO.transform.SetAsLastSibling();
 
-		RectTransform tileRT = _tiles[position.x, position.y].GetComponent<RectTransform>();
+		RectTransform unitRT = _tiles[position.x, position.y].unit.GetComponent<RectTransform>();
 
 		RectTransform effectRT = effectParticleGO.GetComponent<RectTransform>();
 
-		effectRT.anchoredPosition = new Vector2(tileRT.anchoredPosition.x + DungeonGenerator.TileWidth/2, tileRT.anchoredPosition.y + DungeonGenerator.TileHeight/2);
+		effectRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileHeight/2);
 		effectRT.localEulerAngles = new Vector3(0f, 0f, zrotation);
+		effectRT.localScale = new Vector3(0.25f, 0.25f, 0.25f);
 
 		if(!_createsProjectile) {
 			foreach(Tile tile in _hitTiles) {
@@ -786,8 +801,7 @@ public class Spell {
 	}
 
 	void Move() {
-		Debug.Log(_effectOrigin);
-		_caster.tile.unit.baseUnit.Move(_effectOrigin.x - _caster.tile.position.x, _effectOrigin.y - _caster.tile.position.y);
+		_caster.Move(_effectOrigin.x - _caster.tile.position.x, _effectOrigin.y - _caster.tile.position.y);
 	}
 
 

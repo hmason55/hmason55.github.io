@@ -24,13 +24,7 @@ public class TapController : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void Start() {
-		RectTransform rectTransform = GetComponent<RectTransform>();
-		int ox = (int)(rectTransform.anchoredPosition.x + Screen.width / 2f);
-		int oy = (int)(rectTransform.anchoredPosition.y + Screen.height / 2f);
-		_origin = new Vector2Int(ox, oy);
-
-		_width = rectTransform.sizeDelta.x;
-		_height = rectTransform.sizeDelta.y;
+		CalculateOrigin();
 	}
 
 	public void OnPointerClick(PointerEventData eventData) {
@@ -38,8 +32,10 @@ public class TapController : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void DetectQuadrant(Vector2Int location) {
+		CalculateOrigin();
 		int x = location.x - _origin.x;
 		int y = location.y - _origin.y;
+
 		float slope = _height / _width;
 		if(Mathf.Abs(x * slope) >= Mathf.Abs(y) && x < 0) {
 			// Left
@@ -54,6 +50,16 @@ public class TapController : MonoBehaviour, IPointerClickHandler {
 			// Right
 			Move(1, 0);	
 		}
+	}
+
+	void CalculateOrigin() {
+		int shortcutPanelHeight = 152;
+		int hotbarPanelHeight = 288;
+		int ox = (int)(Screen.width / 2f);
+		int oy = (int)(Screen.height / 2f);
+		_origin = new Vector2Int(ox, oy);
+		_width = Screen.width;
+		_height = Screen.height - shortcutPanelHeight - hotbarPanelHeight;
 	}
 
 	void Move(int dx, int dy) {
