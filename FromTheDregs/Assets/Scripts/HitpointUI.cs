@@ -8,6 +8,13 @@ public class HitpointUI : MonoBehaviour {
 	[SerializeField] Image hitpointFillImage;
 	[SerializeField] Text hitpointText;
 
+	BaseUnit _baseUnit;
+	
+	public BaseUnit baseUnit {
+		get {return _baseUnit;}
+		set {_baseUnit = value;}
+	}
+
 	public void UpdateHitpoints(int current, int max) {
 
 		// Adjust the hitpoint fill.

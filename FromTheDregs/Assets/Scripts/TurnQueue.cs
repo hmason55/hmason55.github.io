@@ -10,6 +10,14 @@ public class TurnQueue {
 		get {return _queue;}
 	}
 
+    public TurnQueue() {
+        _queue = new List<Turn>();
+    }
+
+    public void Add(Turn turn) {
+        _queue.Add(turn);
+    }
+
 	public void RemoveTurns(BaseUnit baseUnit) {
 		if(_queue == null) {return;}
 		if(_queue.Count <= 0) {return;}
@@ -72,6 +80,14 @@ public class TurnQueue {
 		_queue.RemoveAt(0);
 		NextTurn();
 	}
+
+    public void BeginCombat() {
+
+    }
+
+    public void EndCombat() {
+        ClearTurns();
+    }
 
 	void ClearTurns() {
 		_queue = new List<Turn>();

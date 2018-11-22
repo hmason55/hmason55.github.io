@@ -36,15 +36,32 @@ public class BaseTerrain {
 
 	public BaseTerrain(Biome b, SpriteManager s, string c) {
 		_biome = b;
-		ParseColor(s, c);
+		//ParseColor(s, c);
 	}
 
-	void ParseColor(SpriteManager spriteManager, string color) {
+	public BaseTerrain(Biome b, SpriteManager s, string c, DungeonManager d, int x, int y) {
+		_biome = b;
+		ParseColor(s, c, d, x, y);
+	}
+
+	void ParseColor(SpriteManager spriteManager, string color, DungeonManager dungeonManager, int x, int y) {
 	//string colorAsString = ColorUtility.ToHtmlStringRGB(color);
 		switch(color) {
 			case "000000":	// Black
 				_walkable = false;
 				_terrainType = TerrainType.wall_top;
+
+				if(y > 0) {
+					
+					Tile t1 = dungeonManager.tiles[x, y];
+					Tile t2 = dungeonManager.tiles[x, y-1];
+					if(t2.baseTerrain != null) {
+						if(t2.baseTerrain.terrainType == TerrainType.ground) {
+							_terrainType = TerrainType.wall_side;
+						}
+					}
+				}
+
 				LoadTexture(spriteManager);
 			break;
 			

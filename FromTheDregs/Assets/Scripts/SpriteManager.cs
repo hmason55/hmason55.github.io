@@ -8,7 +8,9 @@ public class SpriteManager : MonoBehaviour {
 	public BiomeSprites biomeDungeon;
 	public BiomeSprites biomeForsaken;
 
-
+	public Sprite shadowSmall;
+	public Sprite shadowMedium;
+	public Sprite shadowLarge;
 	public UnitSprites unitDireRat1;
 	public UnitSprites unitDireRatSmall1;
 	public UnitSprites unitHumanWizard1;

@@ -10,8 +10,15 @@ public class EssenceUI : MonoBehaviour {
 	[SerializeField] GameObject _essencePrefabFilled;
 	Image[] _images;
 
+	BaseUnit _baseUnit;
+
 	public Image[] images {
 		get {return _images;}
+	}
+
+	public BaseUnit baseUnit {
+		get {return _baseUnit;}
+		set {_baseUnit = value;}
 	}
 
 	void Start () {

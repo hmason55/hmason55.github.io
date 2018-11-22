@@ -9,6 +9,7 @@ public class Tile {
 
 	SpriteManager _spriteManager;
 	DungeonManager _dungeonManager;
+	CombatManager _combatManager;
 	AnimationController _animationController;
 
 	TerrainBehaviour _terrain;
@@ -29,6 +30,11 @@ public class Tile {
 	public DungeonManager dungeonManager {
 		set {_dungeonManager = value;}
 		get {return _dungeonManager;}
+	}
+
+	public CombatManager combatManager {
+		set {_combatManager = value;}
+		get {return _combatManager;}
 	}
 
 	public AnimationController animationController {

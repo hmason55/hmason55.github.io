@@ -31,8 +31,8 @@ public class DecorationBehaviour : MonoBehaviour {
 	}
 
 	public void Transfer(Tile t, BaseDecoration b) {
-		float x = t.position.x * DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
-		float y = t.position.y * DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
+		float x = t.position.x * DungeonManager.dimension;
+		float y = t.position.y * DungeonManager.dimension;
 		_rectTransform.anchoredPosition = new Vector2(x, y);
 
 		_renderFlag = true;

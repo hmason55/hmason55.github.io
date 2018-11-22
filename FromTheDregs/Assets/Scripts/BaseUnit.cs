@@ -50,7 +50,6 @@ public class BaseUnit {
 	int _baseCharisma;
 	int _baseSpeed;
 	
-	
 	int _baseHitPoints;
 	int _hpScaling;
 	int _armorClass;
@@ -64,7 +63,6 @@ public class BaseUnit {
 	int _modCharisma;
 	int _modSpeed;
 	#endregion
-
 	
 	int _baseEssence;
 	int _turnEssence;
@@ -72,6 +70,7 @@ public class BaseUnit {
 	int _currentEssence;
 	int _currentHitPoints;
 	int _hitPoints;
+	Turn _myTurn;
 
 	bool _playerControlled = false;
 
@@ -92,6 +91,7 @@ public class BaseUnit {
 	int _hitFrameSkip = 8;
 
 	Sprite _sprite;
+	Sprite _shadowSprite;
 
 	public bool playerControlled {
 		set {_playerControlled = value;}
@@ -107,6 +107,12 @@ public class BaseUnit {
 		set {_sprite = value;}
 		get {return _sprite;}
 	}
+
+	public Sprite shadowSprite {
+		set {_shadowSprite = value;}
+		get {return _shadowSprite;}
+	}
+
 
 	public StatPreset statPreset {
 		set {_statPreset = value;}
@@ -151,6 +157,11 @@ public class BaseUnit {
 
 	public int modIntelligence {
 		get {return _modIntelligence;}
+	}
+
+	public Turn myTurn {
+		get {return _myTurn;}
+		set {_myTurn = value;}
 	}
 
 	public Sprite[] idleAnimation {
@@ -246,9 +257,10 @@ public class BaseUnit {
 		_currentEssence = _baseEssence;
 
 		if(playerControlled) {
+			_myTurn = new Turn(this, _modSpeed);
+			tile.combatManager.turnQueue.Add(_myTurn);
 			SetAsCameraTarget();
-			SetAsTapControllerTarget();
-			SetAsHotbarTarget();
+			SetAsInterfaceTarget();
 		}
 	}
 
@@ -266,7 +278,6 @@ public class BaseUnit {
 				_baseEssence = 4;
 				_hpScaling = 8;
 				_size = Size.Medium;
-				
 			break;
 
 			case StatPreset.Slime:
@@ -357,8 +368,8 @@ public class BaseUnit {
 	public void Move(int dx, int dy) {
 		int x = _tile.position.x + dx;
 		int y = _tile.position.y + dy;
-		int mapWidth = DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
-		int mapHeight = DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
+		int mapWidth = DungeonManager.dimension;
+		int mapHeight = DungeonManager.dimension;
 
 		if(x < 0 || x >= mapWidth || y < 0 || y >= mapHeight) {
 			Debug.Log("Out of bounds " + x + ", " + y);
@@ -373,18 +384,24 @@ public class BaseUnit {
 					_tile.baseUnit = null;
 					
 					if(_tile.unit != null) {
-						_tile.unit.image.enabled = false;
-						_tile.unit.image.sprite = null;
+						_tile.unit.baseUnit = null;
+						_tile.unit.unitImage.enabled = false;
+						_tile.unit.unitImage.sprite = null;
+
+						_tile.unit.shadowImage.enabled = false;
+						_tile.unit.shadowImage.sprite = null;
+						_tile.unit.UpdateSprite();
 					}
 
 					_tile = nextTile;
 
 					SetAsCameraTarget();
-					SetAsHotbarTarget();
+					SetAsInterfaceTarget();
 
 					if(_tile.unit != null) {
 						_tile.unit.baseUnit = this;
-						_tile.unit.image.enabled = true;
+						_tile.unit.unitImage.enabled = true;
+						_tile.unit.shadowImage.enabled = true;
 						_tile.unit.UpdateSprite();
 						//Debug.Log(tile.position);
 						//_tile.unit.image.sprite = _tile.baseUnit.sprite;
@@ -413,17 +430,25 @@ public class BaseUnit {
 		}
 	}
 
-	public void SetAsTapControllerTarget() {
+	public void SetAsInterfaceTarget() {
+		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
+		if(hotbar != null) {
+			hotbar.baseUnit = this;
+		}
+
 		TapController tapController = GameObject.FindObjectOfType<TapController>();
 		if(tapController != null) {
 			tapController.baseUnit = this;
 		}
-	}
 
-	public void SetAsHotbarTarget() {
-		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
-		if(hotbar != null) {
-			hotbar.baseUnit = this;
+		HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
+		if(hitpointUI != null) {
+			hitpointUI.baseUnit = this;
+		}
+
+		EssenceUI essenceUI = GameObject.FindObjectOfType<EssenceUI>();
+		if(essenceUI != null) {
+			essenceUI.baseUnit = this;
 		}
 	}
 
@@ -438,6 +463,13 @@ public class BaseUnit {
 		SpawnDamageText(damage.ToString(), color);
 		if(_currentHitPoints-damage > 0) {
 			_currentHitPoints -= damage;
+			if(_playerControlled) {
+				HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
+				if(hitpointUI.baseUnit == this) {
+					Debug.Log("Equal!");
+					hitpointUI.UpdateHitpoints(_currentHitPoints, _hitPoints);
+				}
+			}
 		} else {
 			if(dealer != null) {
 				dealer.GrantExperience(10);
@@ -470,47 +502,56 @@ public class BaseUnit {
 			break;
 
 			case BaseUnit.SpritePreset.direrat:
+				_shadowSprite = spriteManager.shadowLarge;
 				_idleAnimation = spriteManager.unitDireRat1.idle.ToArray();
 				_hitAnimation = spriteManager.unitDireRat1.hit.ToArray();
 			break;
 
 			case BaseUnit.SpritePreset.direratsmall:
+				_shadowSprite = spriteManager.shadowSmall;
 				_idleAnimation = spriteManager.unitDireRatSmall1.idle.ToArray();
 				_hitAnimation = spriteManager.unitDireRatSmall1.hit.ToArray();
 			break;
 
 			case BaseUnit.SpritePreset.sandbehemoth:
+				_shadowSprite = spriteManager.shadowLarge;
 				_idleAnimation = spriteManager.unitSandBehemoth1.idle.ToArray();
 				_hitAnimation = spriteManager.unitSandBehemoth1.hit.ToArray();
 			break;
 
 			case BaseUnit.SpritePreset.spider:
+				_shadowSprite = spriteManager.shadowLarge;
 				_idleAnimation = spriteManager.unitSpider1.idle.ToArray();
 				_hitAnimation = spriteManager.unitSpider1.hit.ToArray();
 			break;
 
 			case BaseUnit.SpritePreset.spidersmall:
+				_shadowSprite = spriteManager.shadowSmall;
 				_idleAnimation = spriteManager.unitSpiderSmall1.idle.ToArray();
 				_hitAnimation = spriteManager.unitSpiderSmall1.hit.ToArray();
 			break;
 
 			case BaseUnit.SpritePreset.widow:
+				_shadowSprite = spriteManager.shadowLarge;
 				_idleAnimation = spriteManager.unitWidow1.idle.ToArray();
 				_hitAnimation = spriteManager.unitWidow1.hit.ToArray();
 			break;
 
 			case BaseUnit.SpritePreset.widowsmall:
+				_shadowSprite = spriteManager.shadowSmall;
 				_idleAnimation = spriteManager.unitWidowSmall1.idle.ToArray();
 				_hitAnimation = spriteManager.unitWidowSmall1.hit.ToArray();
 			break;
 
 			case BaseUnit.SpritePreset.wizard:
+				_shadowSprite = spriteManager.shadowMedium;
 				_idleAnimation = spriteManager.unitHumanWizard1.idle.ToArray();
 				_hitAnimation = spriteManager.unitHumanWizard1.hit.ToArray();
 			break;
 
 			case BaseUnit.SpritePreset.greenslime:
 			default:
+				_shadowSprite = spriteManager.shadowMedium;
 				_idleAnimation = spriteManager.unitGreenSlime1.idle.ToArray();
 				_hitAnimation = spriteManager.unitGreenSlime1.hit.ToArray();
 			break;
@@ -547,4 +588,185 @@ public class BaseUnit {
 		}
 	}
 
+	#region AI
+	void BotTurn() {
+		if(_myTurn == null) {
+			return;
+		}
+
+		if(_playerControlled) {
+			//return;
+		}
+
+
+	}
+	#endregion
+
+	#region Pathfinding
+	public List<PathNode> FindPath(Vector2Int startPosition, Vector2Int endPosition, bool ignoreUnits = false) {
+		PathNode currentNode = null;
+		PathNode startNode = new PathNode(startPosition);
+		PathNode endNode = new PathNode(endPosition);
+		List<PathNode> openNodes = new List<PathNode>();
+		List<PathNode> closedNodes = new List<PathNode>();
+		bool[,] walkableTiles = GetWalkableTiles(startPosition, endPosition, ignoreUnits);
+		int distanceFromStart = 0;
+		openNodes.Add(startNode);
+
+		while(openNodes.Count > 0) {
+			int lowest = int.MaxValue;
+			foreach(PathNode node in openNodes) {
+				int distance = node.totalDistance;
+				if(distance < lowest) {
+					lowest = distance;
+					currentNode = node;
+				}
+			}
+
+			closedNodes.Add(currentNode);
+			openNodes.Remove(currentNode);
+
+			foreach(PathNode node in closedNodes) {
+				if(	node.position.x == endNode.position.x &&
+					node.position.y == endNode.position.y) {
+					goto createPath;
+				}
+			}
+
+			List<PathNode> neighborNodes = GetWalkableNeighborNodes(currentNode.position, walkableTiles, ignoreUnits);
+			distanceFromStart++;
+
+			foreach(PathNode neighborNode in neighborNodes) {
+
+				// If closed nodes already contain this node then skip it
+				foreach(PathNode node in closedNodes) {
+					if(	node.position.x == neighborNode.position.x &&
+						node.position.y == neighborNode.position.y) {
+						goto nextNeighbor;
+					}
+				}
+
+				// Check if it's in the open list
+				bool inOpenNodes = false;
+				foreach(PathNode node in openNodes) {
+					if(	node.position.x == neighborNode.position.x &&
+						node.position.y == neighborNode.position.y) {
+						inOpenNodes = true;
+						break;
+					}
+				}
+
+				if(inOpenNodes) {
+					// Check if this is a better path
+					if(distanceFromStart + neighborNode.trueDistanceFromEnd < neighborNode.totalDistance) {
+						neighborNode.distanceFromStart = distanceFromStart;
+						neighborNode.totalDistance = neighborNode.distanceFromStart + neighborNode.trueDistanceFromEnd;
+						neighborNode.parentNode = currentNode;
+					}
+				} else {
+					neighborNode.distanceFromStart = distanceFromStart;
+					neighborNode.trueDistanceFromEnd = GetTrueNodeDistance(neighborNode, endNode);
+					neighborNode.totalDistance = neighborNode.distanceFromStart + neighborNode.trueDistanceFromEnd;
+					neighborNode.parentNode = currentNode;
+					openNodes.Insert(0, neighborNode);
+				}
+
+				nextNeighbor:{}
+			}
+		}
+
+		// Create path
+		createPath:
+		List<PathNode> path = new List<PathNode>();
+		while(currentNode != null) {
+			path.Add(currentNode);
+			currentNode = currentNode.parentNode;
+		}
+
+		return path;
+	}
+
+	bool[,] GetWalkableTiles(Vector2Int start, Vector2Int end, bool ignoreUnits = false) {
+		Tile[,] tiles = _tile.dungeonManager.tiles;
+		bool[,] walkableTiles = new bool[DungeonManager.dimension, DungeonManager.dimension];
+		for(int y = 0; y < DungeonManager.dimension; y++) {
+			for(int x = 0; x < DungeonManager.dimension; x++) {
+				if(tiles[x, y] == null) {
+					walkableTiles[x, y] = false;
+					continue;
+				}
+				
+				if(tiles[x, y].baseTerrain == null) {
+					walkableTiles[x, y] = false;
+					continue;
+				}
+
+				if(!tiles[x, y].baseTerrain.walkable) {
+					walkableTiles[x, y] = false;
+					continue;
+				}
+
+				if(ignoreUnits) {
+					walkableTiles[x, y] = true;
+					continue;	
+				} else {
+					if(tiles[x, y].baseUnit == null) {
+						walkableTiles[x, y] = true;
+						continue;	
+					}
+				}
+
+				if(	x == start.x && y == start.y ||
+					x == end.x && y == end.y) {
+					walkableTiles[x, y] = true;
+               		continue;	
+				}
+			}
+		}
+		return walkableTiles;
+	}
+
+	List<PathNode> GetWalkableNeighborNodes(Vector2Int position, bool[,] walkableTiles, bool ignoreUnits = false) {
+		List<PathNode> testNodes = new List<PathNode>();
+		if(position.y > 0) {
+			testNodes.Add(new PathNode(new Vector2Int(position.x, position.y-1)));
+		}
+
+		if(position.y < DungeonManager.dimension-1) {
+			testNodes.Add(new PathNode(new Vector2Int(position.x, position.y+1)));
+		}
+
+		if(position.x > 0) {
+			testNodes.Add(new PathNode(new Vector2Int(position.x-1, position.y)));
+		}
+
+		if(position.x < DungeonManager.dimension-1) {
+			testNodes.Add(new PathNode(new Vector2Int(position.x+1, position.y)));
+		}
+
+		Tile[,] tiles = _tile.dungeonManager.tiles;
+
+		// Validate test nodes
+		for(int i = testNodes.Count-1; i >= 0; i--) {
+			int x = testNodes[i].position.x;
+			int y = testNodes[i].position.y;
+			if(!walkableTiles[x, y]) {
+				testNodes.RemoveAt(i);
+				continue;
+			}
+
+			if(!ignoreUnits) {
+				if(tiles[x, y].baseUnit != null) {
+					testNodes.RemoveAt(i);
+					continue;
+				}
+			}
+		}
+		return testNodes;
+	}
+
+	int GetTrueNodeDistance(PathNode a, PathNode b) {
+		return Mathf.Abs(b.position.x - a.position.x) + Mathf.Abs(b.position.y - a.position.y);
+	}
+	#endregion
 }

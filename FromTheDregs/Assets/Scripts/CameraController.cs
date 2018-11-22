@@ -24,6 +24,10 @@ public class CameraController : MonoBehaviour {
 	float _aspectRatio = 1.778f;
 	float _canvasWidth = 1080f;
 	float _canvasHeight = 1920f;
+
+	float _cachedWidth;
+	float _cachedHeight;
+	
 	
 	float _scale = 4f;
 	
@@ -56,6 +60,13 @@ public class CameraController : MonoBehaviour {
 		UpdateResolution();
 	}
 
+	void Update() {
+		if(_cachedWidth != Screen.width || _cachedHeight != Screen.height) {
+			UpdateResolution();
+			SnapToTarget();
+		}
+	}
+
 	void LateUpdate() {
 		Vector2 distanceVector = new Vector2(trueTarget.x - _rectTransform.anchoredPosition.x, trueTarget.y - _rectTransform.anchoredPosition.y);
 		if(distanceVector.magnitude > _deadzone) {
@@ -68,6 +79,8 @@ public class CameraController : MonoBehaviour {
 	}
 
 	public void UpdateResolution() {
+		_cachedWidth = Screen.width;
+		_cachedHeight = Screen.height;
 		float referenceWidth = 1080f;
 		float referenceHeight = 1920f;
 

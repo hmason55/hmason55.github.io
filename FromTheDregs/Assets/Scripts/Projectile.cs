@@ -39,12 +39,8 @@ public class Projectile : MonoBehaviour {
 	}
 
 	void OnDestroy() {
-		_spell.SpawnEffectParticles(_end, 0f);
-		foreach(Tile tile in _spell.hitTiles) {
-			if(tile.unit.baseUnit != null) {
-				int damage = _spell.CalcSpellDamage();
-				tile.unit.baseUnit.ReceiveDamage(_spell.caster, damage, _spell.damageType);
-			}
+		if(_spell.caster.tile.unit != null) {
+			_spell.caster.tile.unit.SpawnSpellEffect(_spell);
 		}
 	}
 }

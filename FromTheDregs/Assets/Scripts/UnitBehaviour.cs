@@ -7,7 +7,9 @@ public class UnitBehaviour : MonoBehaviour {
 	
 	BaseUnit _baseUnit;
 
-	Image _image;
+	[SerializeField] Image _unitImage;
+	[SerializeField] Image _shadowImage;
+
 	RectTransform _rectTransform;
 	
 	Tile _tile;
@@ -23,8 +25,12 @@ public class UnitBehaviour : MonoBehaviour {
 		get {return _baseUnit;}
 	}
 
-	public Image image {
-		get {return _image;}
+	public Image unitImage {
+		get {return _unitImage;}
+	}
+
+	public Image shadowImage {
+		get {return _shadowImage;}
 	}
 
 	public bool renderFlag {
@@ -32,34 +38,45 @@ public class UnitBehaviour : MonoBehaviour {
 		set {_renderFlag = value;}
 	}
 
+	public string u;
+	public Vector2Int p;
 
 
 	void Awake() {
-		_image = GetComponent<Image>();
 		_rectTransform = GetComponent<RectTransform>();
 	}
 
 	public void UpdateSprite() {
 		if(_baseUnit != null) {
-			_image.sprite = _baseUnit.sprite;
+			_unitImage.sprite = _baseUnit.sprite;
+			_shadowImage.sprite = _baseUnit.shadowSprite;
+			u = _baseUnit.spritePreset.ToString();
+		} else {
+			u = null;
 		}
 	}
 
 	public void Transfer(Tile t, BaseUnit b) {
-		float x = t.position.x * DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
-		float y = t.position.y * DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
+		float x = t.position.x * DungeonManager.dimension;
+		float y = t.position.y * DungeonManager.dimension;
 		_rectTransform.anchoredPosition = new Vector2(x, y);
 
 		_renderFlag = true;
 		_tile = t;
 		_tile.unit = this;
+
+		p = _tile.position;
 	
 		if(b != null) {
 			_tile.baseUnit = b;
 			_baseUnit = b;
 			_baseUnit.tile = t;
-			_image.enabled = true;
-			_image.sprite = _baseUnit.sprite;
+
+			_unitImage.enabled = true;
+			_unitImage.sprite = _baseUnit.sprite;
+
+			_shadowImage.enabled = true;
+			_shadowImage.sprite = _baseUnit.shadowSprite;
 		}
 	}
 
@@ -71,8 +88,11 @@ public class UnitBehaviour : MonoBehaviour {
 		_tile.unit = null;
 		_tile = null;
 		
-		_image.sprite = null;
-		_image.enabled = false;
+		_unitImage.sprite = null;
+		_unitImage.enabled = false;
+
+		_shadowImage.sprite = null;
+		_shadowImage.enabled = false;
 	}
 
 	public void Kill() {
@@ -85,12 +105,23 @@ public class UnitBehaviour : MonoBehaviour {
 		StartCoroutine(ESpawnSpellProjectiles(spell));
 	}
 
+	public void SpawnSpellEffect(Spell spell) {
+		StartCoroutine(ESpawnSpellEffect(spell));
+	}
+
 	IEnumerator ESpawnSpellProjectiles(Spell spell) {
 		for(int i = 0; i < spell.projCount; i++) {
 			yield return new WaitForSeconds(spell.projPreSpawnDelay);
 			spell.SpawnProjectileParticles(spell.caster.tile.position, spell.effectOrigin, 0f);
 			yield return new WaitForSeconds(spell.projPostSpawnDelay);
 		}
+	}
+
+	IEnumerator ESpawnSpellEffect(Spell spell) {
+		yield return new WaitForSeconds(spell.effectPreSpawnDelay);
+		spell.SpawnEffectParticles(spell.effectOrigin, 0f);
+		yield return new WaitForSeconds(spell.effectDamageDelay);
+		spell.DealDamage();
 	}
 
 	public void SpawnDeathParticles() {
@@ -102,6 +133,7 @@ public class UnitBehaviour : MonoBehaviour {
 		RectTransform unitRT = _baseUnit.tile.dungeonManager.tiles[_baseUnit.tile.position.x, _baseUnit.tile.position.y].unit.GetComponent<RectTransform>();
 		RectTransform particleRT = deathParticlesGO.GetComponent<RectTransform>();
 		particleRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileHeight/2);
+		particleRT.localScale = new Vector3(0.25f, 0.25f, 0.25f);
 
 		ParticleSystem ps = deathParticlesGO.GetComponent<ParticleSystem>();
 		GameObject.Destroy(deathParticlesGO, ps.main.startLifetime.constantMax);

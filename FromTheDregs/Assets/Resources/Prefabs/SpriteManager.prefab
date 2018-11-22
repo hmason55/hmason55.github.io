@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1099490811101282}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1099490811101282
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4538295933546774}
   - component: {fileID: 114898416551054290}
@@ -30,7 +30,7 @@ GameObject:
 --- !u!4 &4538295933546774
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099490811101282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -43,7 +43,7 @@ Transform:
 --- !u!114 &114898416551054290
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099490811101282}
   m_Enabled: 1
@@ -188,6 +188,9 @@ MonoBehaviour:
     - {fileID: 21300000, guid: ddb3610ee7fa4b74e9931cc50fcdd0ef, type: 3}
     - {fileID: 21300000, guid: 665226085b8ea084dbe3c0970eb988bb, type: 3}
     - {fileID: 21300000, guid: b9d60160795618b49829cd18733cd8b0, type: 3}
+  shadowSmall: {fileID: 21300000, guid: d6b08c9e363e38046a35f369a29f8767, type: 3}
+  shadowMedium: {fileID: 21300000, guid: 8e68d94ab9c083e47b6ce842022ff859, type: 3}
+  shadowLarge: {fileID: 21300000, guid: 637cb94e519bb3941b627cccaed08aa3, type: 3}
   unitDireRat1:
     hit:
     - {fileID: 21300000, guid: ac316fb56bd162e4bae031ddae626973, type: 3}
@@ -205,7 +208,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: bc5d69f0f49847c46bf8f725e87c7529, type: 3}
     - {fileID: 21300000, guid: e7e8c285e8288ea4f8002ecb8db08322, type: 3}
   unitHumanWizard1:
-    hit: []
+    hit:
+    - {fileID: 21300000, guid: dc37d321eb58b524ea8adcc103e77799, type: 3}
     idle:
     - {fileID: 21300000, guid: b470ac26220365541b065a61d554815c, type: 3}
     - {fileID: 21300000, guid: 148ccf2a28008f144a2ec98937242973, type: 3}

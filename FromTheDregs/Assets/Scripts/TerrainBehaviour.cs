@@ -13,6 +13,7 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 
 	RectTransform _rectTransform;
 	Image _image;
+	Shadow _shadow;
 	 
 	bool init = false;
 	bool _renderFlag = false;
@@ -41,6 +42,7 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 
 	void Awake() {
 		_rectTransform = GetComponent<RectTransform>();
+		_shadow = GetComponent<Shadow>();
 		_image = GetComponent<Image>();
 	}
 
@@ -54,20 +56,24 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 	}
 
 	void UpdateSprite() {
-
+		
 	}
 
 	public void Transfer(Tile t, BaseTerrain b) {
-		float x = t.position.x * DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
-		float y = t.position.y * DungeonManager.chunkDimension * DungeonManager.dungeonDimension;
+		float x = t.position.x * DungeonManager.dimension;
+		float y = t.position.y * DungeonManager.dimension;
 		_rectTransform.anchoredPosition = new Vector2(x, y);
 
 		_renderFlag = true;
+
 		_tile = t;
 		_tile.terrain = this;
 
 		if(b != null) {
 			_baseTerrain = b;
+			if(baseTerrain.terrainType == BaseTerrain.TerrainType.wall_side) {
+				_shadow.enabled = true;
+			}
 			_image.enabled = true;
 			_image.sprite = _baseTerrain.sprite;
 			_image.color = Color.white;
@@ -79,9 +85,12 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 		_rectTransform.anchoredPosition = new Vector2(-256f, -256f);
 
 		_renderFlag = false;
+		readyCast = false;
+		confirmCast = false;
 		_tile.terrain = null;
 		_tile = null;
 		_baseTerrain = null;
+		_shadow.enabled = false;
 		_image.sprite = null;
 		_image.enabled = false;
 	}

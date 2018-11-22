@@ -8,6 +8,7 @@ public class DungeonManager : MonoBehaviour {
 
 	[SerializeField] AnimationController animationController;
 	[SerializeField] SpriteManager spriteManager;
+	[SerializeField] CombatManager combatManager;
 	
 	[SerializeField] GameObject _dungeonPrefab;
 	[SerializeField] GameObject _terrainPrefab;
@@ -19,6 +20,9 @@ public class DungeonManager : MonoBehaviour {
 
 	public static int dungeonDimension = 3;
 	public static int chunkDimension = 16;
+	public static int dimension = dungeonDimension * chunkDimension;
+
+	public Vector2Int exitPosition;
 	[SerializeField] int minimumPathSize = 4;
 
 	[SerializeField] int minimumBiomes = 0;
@@ -87,6 +91,7 @@ public class DungeonManager : MonoBehaviour {
 			for(int x = 0; x < dimension; x++) {
 				Tile tile = new Tile(x, y);
 				tile.dungeonManager = this;
+				tile.combatManager = combatManager;
 				tile.animationController = animationController;
 				tile.spriteManager = spriteManager;
 				_tiles[x, y] = tile;
@@ -182,7 +187,7 @@ public class DungeonManager : MonoBehaviour {
 					string hexColor = ColorUtility.ToHtmlStringRGB(pixels[(chunkDimension * y + x)]);
 
 					// Initialize Terrain
-					tile.baseTerrain = new BaseTerrain(nearestBiome, spriteManager, hexColor);
+					tile.baseTerrain = new BaseTerrain(nearestBiome, spriteManager, hexColor, this, (node.x * chunkDimension + x), (node.y * chunkDimension + y));
 
 					switch(hexColor) {
 						case "FF0000":	// Enemy (Red)
@@ -203,11 +208,11 @@ public class DungeonManager : MonoBehaviour {
 								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Entrance, spriteManager);
 								// Spawn player here
 								tile.SpawnUnit(new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.wizard, tile));
-								
+								combatManager.BeginCombat();
 								_renderOrigin = tile.position;
-								Debug.Log("Render origin" + _renderOrigin);
 							} else if(i == 1) {
 								tile.baseDecoration = new BaseDecoration(nearestBiome,  BaseDecoration.DecorationType.Exit, spriteManager);
+								exitPosition = tile.position;
 							}
 						break;
 
@@ -226,6 +231,8 @@ public class DungeonManager : MonoBehaviour {
 							}
 						break;
 					}
+
+
 
 					// Initialize Unit
 
@@ -302,6 +309,7 @@ public class DungeonManager : MonoBehaviour {
 								if(_tiles[x, y].baseTerrain != null) {
 									_terrainPool[x, y] = _terrainStack[_terrainIndex++];
 									_terrainPool[x, y].Transfer(_tiles[x, y], _tiles[x, y].baseTerrain);
+									_terrainPool[x, y].transform.SetAsLastSibling();
 								}
 							}
 						}
@@ -347,7 +355,7 @@ public class DungeonManager : MonoBehaviour {
 				_unitStack.RemoveAt(i);
 			}
 		}
-		Debug.Log(_unitStack.Count);
+		//Debug.Log(_unitStack.Count);
 	}
 
 	public void AllocateUnit(Vector2Int position) {
@@ -527,28 +535,7 @@ public class DungeonManager : MonoBehaviour {
 			}
 		}
 
-		for(int y = 0; y < dungeonDimension * chunkDimension; y++) {
-			for(int x = 0; x < dungeonDimension * chunkDimension; x++) {
 
-				if(y > 0) {
-					Tile tile = _tiles[x, y];
-
-					if(tile != null) {
-						if(tile.terrain.terrainType == TerrainBehaviour.TerrainType.wall_top) {
-
-							if(_tiles[x, y-1] != null) {
-								if(_tiles[x, y-1].terrain.terrainType == TerrainBehaviour.TerrainType.ground) {
-									tile.terrain.terrainType = TerrainBehaviour.TerrainType.wall_side;
-									tile.terrain.LoadTexture();
-								}
-							}
-
-						}
-					}
-
-				}
-
-			}
 		}
 
 		Debug.Log("Spawned " + nodes.Count + " rooms.");

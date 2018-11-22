@@ -25,9 +25,8 @@ public class AnimationController : MonoBehaviour {
 	}
 
 	void LateUpdate() {
-		int dimension = DungeonManager.dungeonDimension * DungeonManager.chunkDimension;
-		for(int y = 0; y < dimension; y++) {
-			for(int x = 0; x < dimension; x++) {
+		for(int y = 0; y < DungeonManager.dimension; y++) {
+			for(int x = 0; x < DungeonManager.dimension; x++) {
 				if(_dungeonManager.tiles[x, y] != null) {
 					_dungeonManager.tiles[x, y].AnimateUnit();
 				}

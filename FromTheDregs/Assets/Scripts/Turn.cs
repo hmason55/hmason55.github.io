@@ -16,9 +16,8 @@ public class Turn {
 		set {_baseUnit = value;}
 	}
 
-
-	public Turn(BaseUnit unit, int p) {
-		_baseUnit = unit;
+	public Turn(BaseUnit b, int p) {
+		_baseUnit = b;
 		_priority = p;
 	}
 }

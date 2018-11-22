@@ -91,7 +91,10 @@ public class Spell {
 
 	// Effect
 	Vector2Int _effectOrigin;
+	float _effectPreSpawnDelay;
+	float _effectDamageDelay;
 	int _effectRadius = 0;
+	bool _effectRotateToDirection = true;
 	bool _effectIgnoresWalls = false;
 	bool _effectRequiresLineOfSight = false;
 	EffectShape _effectShape = EffectShape.Cone45;
@@ -99,7 +102,6 @@ public class Spell {
 	TargetUnitType _effectTargetUnitType = TargetUnitType.Enemy;
 	GameObject _effectParticle;
 	List<Tile> _hitTiles;
-
 	string _effectParticlePath;
 
 	#region Accessors
@@ -137,6 +139,14 @@ public class Spell {
 	public Vector2Int effectOrigin {
 		get {return _effectOrigin;}
 		set {_effectOrigin = value;}
+	}
+
+	public float effectPreSpawnDelay {
+		get {return _effectPreSpawnDelay;}
+	}
+
+	public float effectDamageDelay {
+		get {return _effectDamageDelay;}
 	}
 
 	public List<Tile> hitTiles {
@@ -187,11 +197,13 @@ public class Spell {
 				_castCanTargetSelf = false;
 				_castTargetUnitType = TargetUnitType.All;
 
-				_effectParticlePath = "Prefabs/Effects/Burning Hands";
-				_effectRadius = 1;
+				_effectParticlePath = "Prefabs/Effects/Bite Impact";
+				_effectDamageDelay = 1.5f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
 				_effectRequiresLineOfSight = true;
-				_effectShape = Spell.EffectShape.Cone45;
+				_effectShape = Spell.EffectShape.Circle;
 				_effectDirection = EffectDirection.Up;
 				_effectTargetUnitType = TargetUnitType.Enemy;
 			break;
@@ -224,6 +236,7 @@ public class Spell {
 				_castTargetUnitType = TargetUnitType.All;
 
 				_effectParticlePath = "Prefabs/Effects/Burning Hands";
+				_effectDamageDelay = 1.25f;
 				_effectRadius = 1;
 				_effectIgnoresWalls = false;
 				_effectRequiresLineOfSight = true;
@@ -299,9 +312,8 @@ public class Spell {
 	#endregion
 
 	public void ResetTiles() {
-		int dimension = DungeonManager.dungeonDimension * DungeonManager.chunkDimension;
-		for(int y = 0; y < dimension; y++) {
-			for(int x = 0; x < dimension; x++) {
+		for(int y = 0; y < DungeonManager.dimension; y++) {
+			for(int x = 0; x < DungeonManager.dimension; x++) {
 				Tile _tile = _caster.tile.dungeonManager.tiles[x, y];
 				if(_tile.terrain != null) {
 					_tile.terrain.readyCast = false;
@@ -363,11 +375,10 @@ public class Spell {
 
 	#region Casting
 	public void ShowCastRange() {
-		int dimension = DungeonManager.dungeonDimension * DungeonManager.chunkDimension;
-		bool[,] visitedTiles = new bool[dimension, dimension];
+		bool[,] visitedTiles = new bool[DungeonManager.dimension, DungeonManager.dimension];
 
-		for(int y = 0; y < dimension; y++) {
-			for(int x = 0; x < dimension; x++) {
+		for(int y = 0; y < DungeonManager.dimension; y++) {
+			for(int x = 0; x < DungeonManager.dimension; x++) {
 				visitedTiles[x, y] = false;
 				if(_tiles[x, y].terrain != null) {
 					_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
@@ -386,8 +397,8 @@ public class Spell {
 		// Check map bounds
 		if(	x < 0 ||
 		 	y < 0 ||
-		 	x >= (DungeonManager.dungeonDimension * DungeonManager.chunkDimension)-1 || 
-			y >= (DungeonManager.dungeonDimension * DungeonManager.chunkDimension)-1) { 
+		 	x >= (DungeonManager.dimension)-1 || 
+			y >= (DungeonManager.dimension)-1) { 
 			return;
 		}
 
@@ -462,11 +473,10 @@ public class Spell {
 	
 	#region Effects
 	public void ShowEffectRange(Vector2Int origin) {
-		int dimension = DungeonManager.dungeonDimension * DungeonManager.chunkDimension;
-		bool[,] visitedTiles = new bool[dimension, dimension];
+		bool[,] visitedTiles = new bool[DungeonManager.dimension, DungeonManager.dimension];
 
-		for(int y = 0; y < dimension; y++) {
-			for(int x = 0; x < dimension; x++) {
+		for(int y = 0; y < DungeonManager.dimension; y++) {
+			for(int x = 0; x < DungeonManager.dimension; x++) {
 				visitedTiles[x, y] = false;
 				if(_tiles[x, y].terrain != null) {
 					_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
@@ -495,8 +505,8 @@ public class Spell {
 		// Check map bounds
 		if(	x < 0 ||
 		 	y < 0 ||
-		 	x >= (DungeonManager.dungeonDimension * DungeonManager.chunkDimension)-1 || 
-			y >= (DungeonManager.dungeonDimension * DungeonManager.chunkDimension)-1) { 
+		 	x >= (DungeonManager.dimension)-1 || 
+			y >= (DungeonManager.dimension)-1) { 
 			return;
 		}
 
@@ -643,22 +653,24 @@ public class Spell {
 	public void ConfirmSpellCast() {
 		
 		float zrot = 0f;
-		switch(_effectDirection) {
-			case EffectDirection.Right:
-				zrot = 270f;
-			break;
+		if(_effectRotateToDirection) {
+			switch(_effectDirection) {
+				case EffectDirection.Right:
+					zrot = 270f;
+				break;
 
-			case EffectDirection.Down:
-				zrot = 180f;
-			break;
+				case EffectDirection.Down:
+					zrot = 180f;
+				break;
 
-			case EffectDirection.Left:
-				zrot = 90f;
-			break;
+				case EffectDirection.Left:
+					zrot = 90f;
+				break;
 
-			case EffectDirection.Up:
-				zrot = 0f;
-			break;
+				case EffectDirection.Up:
+					zrot = 0f;
+				break;
+			}
 		}
 
 		OnCast();
@@ -669,8 +681,10 @@ public class Spell {
 			_projectiles = new List<GameObject>();
 			_caster.tile.unit.SpawnSpellProjectiles(this);
 		} else if(_createsEffect) {
-			SpawnEffectParticles(_effectOrigin, zrot);
+			_caster.tile.unit.SpawnSpellEffect(this);
 		}
+
+		ResetTiles();
 
 		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
 		Hotkey[] hotkeys = hotbar.GetComponentsInChildren<Hotkey>();
@@ -680,10 +694,6 @@ public class Spell {
 			} else {
 				hotkey.showCastRange = false;
 			}
-		}
-
-		if(!_autoRecast) {
-			ResetTiles();
 		}
 	}
 	
@@ -749,17 +759,16 @@ public class Spell {
 		effectRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileHeight/2);
 		effectRT.localEulerAngles = new Vector3(0f, 0f, zrotation);
 		effectRT.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+	}
+	#endregion
 
-		if(!_createsProjectile) {
-			foreach(Tile tile in _hitTiles) {
-				if(tile.unit.baseUnit != null) {
-					int damage = CalcSpellDamage();
-					tile.unit.baseUnit.ReceiveDamage(_caster, damage, _damageType);
-				}
+	public void DealDamage() {
+		foreach(Tile tile in _hitTiles) {
+			if(tile.unit.baseUnit != null) {
+				tile.unit.baseUnit.ReceiveDamage(_caster, CalcSpellDamage(), _damageType);
 			}
 		}
 	}
-	#endregion
 
 	void OnCast() {
 		switch(_preset) {
