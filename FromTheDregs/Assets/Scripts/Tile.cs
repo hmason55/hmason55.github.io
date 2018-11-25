@@ -92,10 +92,11 @@ public class Tile {
 		if(_baseUnit == null) {
 			_baseUnit = baseUnit;
 			_baseUnit.tile = this;
-			_baseUnit.LoadSprites(_spriteManager);
 			if(_unit != null) {
 				_unit.baseUnit = baseUnit;
+				
 			}
+			_baseUnit.LoadSprites(_spriteManager);
 		} else {
 			Debug.Log("A unit already exists at " + _position);
 		}

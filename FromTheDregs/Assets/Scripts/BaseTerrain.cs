@@ -34,35 +34,17 @@ public class BaseTerrain {
 		get {return _sprite;}
 	}
 
-	public BaseTerrain(Biome b, SpriteManager s, string c) {
+	public BaseTerrain(Biome b, string c) {
 		_biome = b;
-		//ParseColor(s, c);
+		ParseColor(c);
 	}
 
-	public BaseTerrain(Biome b, SpriteManager s, string c, DungeonManager d, int x, int y) {
-		_biome = b;
-		ParseColor(s, c, d, x, y);
-	}
-
-	void ParseColor(SpriteManager spriteManager, string color, DungeonManager dungeonManager, int x, int y) {
+	void ParseColor(string color) {
 	//string colorAsString = ColorUtility.ToHtmlStringRGB(color);
 		switch(color) {
 			case "000000":	// Black
 				_walkable = false;
 				_terrainType = TerrainType.wall_top;
-
-				if(y > 0) {
-					
-					Tile t1 = dungeonManager.tiles[x, y];
-					Tile t2 = dungeonManager.tiles[x, y-1];
-					if(t2.baseTerrain != null) {
-						if(t2.baseTerrain.terrainType == TerrainType.ground) {
-							_terrainType = TerrainType.wall_side;
-						}
-					}
-				}
-
-				LoadTexture(spriteManager);
 			break;
 			
 			case "FF0000":  // Red
@@ -72,8 +54,23 @@ public class BaseTerrain {
 			case "00FF00":	// Green
 				_walkable = true;
 				_terrainType = TerrainType.ground;
-				LoadTexture(spriteManager);
 			break;
+		}
+	}
+	
+	public void Initialize(SpriteManager spriteManager, DungeonManager dungeonManager, int x, int y) {
+		if(_terrainType == TerrainType.wall_top && y > 0) {
+			Tile t1 = dungeonManager.tiles[x, y];
+			Tile t2 = dungeonManager.tiles[x, y-1];
+			if(t2.baseTerrain != null) {
+				if(t2.baseTerrain.terrainType == TerrainType.ground) {
+					_terrainType = TerrainType.wall_side;
+				}
+			}
+		}
+		LoadTexture(spriteManager);
+		if(dungeonManager.tiles[x, y].terrain != null) {
+			dungeonManager.tiles[x, y].terrain.UpdateSprite();
 		}
 	}
 

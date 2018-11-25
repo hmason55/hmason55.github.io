@@ -14,6 +14,16 @@ public class TurnQueue {
         _queue = new List<Turn>();
     }
 
+    public int Length {
+        get {
+            if(_queue != null) {
+                return _queue.Count;
+            } else {
+                return 0;
+            }
+        }
+    }
+
     public void Add(Turn turn) {
         _queue.Add(turn);
     }
@@ -22,15 +32,10 @@ public class TurnQueue {
 		if(_queue == null) {return;}
 		if(_queue.Count <= 0) {return;}
 
+        // Remove instances of this unit from the queue.
 		for(int i = _queue.Count-1; i >= 0; i--) {
-            Turn turn = _queue[i];
-
-            if(turn != null) {
-                if(turn.baseUnit != null) {
-                    if(turn.baseUnit == baseUnit) {
-                        _queue[i].baseUnit = null;
-                    }
-                }
+            if(_queue[i].baseUnit == baseUnit) {
+                _queue.RemoveAt(i);
             }
 		}
 
@@ -43,21 +48,15 @@ public class TurnQueue {
         for(int i = _queue.Count-1; i >= 0; i--) {
             Turn turn = _queue[i];
             
-            // Remove null instances of turns from the queue.
-            if(turn == null) {
-                _queue.Remove(turn);
-            } else if(turn.baseUnit == null) {
-                _queue.Remove(turn);
-            } else {
-                // Older turns will have decreased priority and will eventually be moved to the front of the queue.
-                turn.priority--;
-            }
+            // Older turns will have decreased priority and will eventually be moved to the front of the queue.
+            turn.priority--;
+            
 		}
 
 		SortTurns();
 	}
 
-	void SortTurns() {
+	public void SortTurns() {
 		// Insertion sort based on turn priority. (ascending)
         if(_queue == null) {return;}
 		if(_queue.Count < 2) {return;}
@@ -76,9 +75,20 @@ public class TurnQueue {
 		}
 	}
 
-	void EndTurn() {
-		_queue.RemoveAt(0);
-		NextTurn();
+    public bool UnitInQueue(BaseUnit b) {
+        foreach(Turn t in _queue) {
+            if(t.baseUnit == b) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+	public void EndTurn() {
+        if(_queue.Count > 0) {
+		    _queue.RemoveAt(0);
+        }
 	}
 
     public void BeginCombat() {
@@ -92,6 +102,12 @@ public class TurnQueue {
 	void ClearTurns() {
 		_queue = new List<Turn>();
 	}
+
+    public void PrintTurns() {
+        foreach(Turn turn in _queue) {
+            Debug.Log(turn.baseUnit.spritePreset.ToString() + ", " + turn.priority);
+        }
+    }
 
 
 }

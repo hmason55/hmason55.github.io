@@ -25,6 +25,14 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 
 	public Spell.Preset preset {
 		get {return _preset;}
+		set {
+			_preset = value;
+			_spell = new Spell(_preset);
+			_text.text = _spell.spellName;
+			gameObject.name = _spell.spellName;
+
+			UpdateCost();
+		}
 	}
 
 	public bool showCastRange {
@@ -40,6 +48,8 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 
 		UpdateCost();
 	}
+
+	
 
 	public void OnPointerClick(PointerEventData eventData) {
 		PreviewCast();

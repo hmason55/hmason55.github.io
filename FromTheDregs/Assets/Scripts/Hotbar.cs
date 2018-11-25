@@ -9,6 +9,7 @@ public class Hotbar : MonoBehaviour {
 	[SerializeField] TapController _tapController;
 	[SerializeField] EssenceUI _essenceUI;
 	[SerializeField] CastOptionsUI _castOptionsUI;
+	List<Hotkey> _hotkeys;
 	BaseUnit _baseUnit;
 	Spell _activeSpell;
 
@@ -34,6 +35,33 @@ public class Hotbar : MonoBehaviour {
 
 	public CastOptionsUI castOptionsUI {
 		get {return _castOptionsUI;}
+	}
+
+	void Awake() {
+		InitHotkeys();
+	}
+
+	void InitHotkeys() {
+		_hotkeys = new List<Hotkey>();
+		for(int i = 0; i < transform.childCount; i++) {
+			Hotkey hotkey = transform.GetChild(i).GetComponent<Hotkey>();
+			if(hotkey != null) {
+				_hotkeys.Add(hotkey);
+			}
+		}
+	}
+
+	public void SyncUnit(BaseUnit b) {
+		_baseUnit = b;
+		for(int i = 0; i < _hotkeys.Count; i++) {
+			if(i < _baseUnit.spells.Count) {
+				Hotkey hotkey = _hotkeys[i];
+				hotkey.gameObject.SetActive(true);
+				hotkey.preset = _baseUnit.spells[i];
+			} else {
+				_hotkeys[i].gameObject.SetActive(false);
+			}
+		}
 	}
 
 	public void CancelPreview() {

@@ -55,8 +55,15 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 		}
 	}
 
-	void UpdateSprite() {
-		
+	public void UpdateSprite() {
+		if(_renderFlag && _baseTerrain != null) {
+			if(baseTerrain.terrainType == BaseTerrain.TerrainType.wall_side) {
+				_shadow.enabled = true;
+			}
+			_image.enabled = true;
+			_image.sprite = _baseTerrain.sprite;
+			_image.color = Color.white;
+		}
 	}
 
 	public void Transfer(Tile t, BaseTerrain b) {

@@ -187,7 +187,7 @@ public class DungeonManager : MonoBehaviour {
 					string hexColor = ColorUtility.ToHtmlStringRGB(pixels[(chunkDimension * y + x)]);
 
 					// Initialize Terrain
-					tile.baseTerrain = new BaseTerrain(nearestBiome, spriteManager, hexColor, this, (node.x * chunkDimension + x), (node.y * chunkDimension + y));
+					tile.baseTerrain = new BaseTerrain(nearestBiome, hexColor);
 
 					switch(hexColor) {
 						case "FF0000":	// Enemy (Red)
@@ -207,7 +207,9 @@ public class DungeonManager : MonoBehaviour {
 							if(i == 0) {
 								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Entrance, spriteManager);
 								// Spawn player here
-								tile.SpawnUnit(new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.wizard, tile));
+								BaseUnit player = new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.greenslime, tile);
+								player.tile = tile;
+								tile.SpawnUnit(player);
 								combatManager.BeginCombat();
 								_renderOrigin = tile.position;
 							} else if(i == 1) {
@@ -245,6 +247,17 @@ public class DungeonManager : MonoBehaviour {
 					//_tiles[x, y] = _serializedTiles[y * dimension + x];
 					//
 					//_tiles[x, y] = new Tile();
+				}
+			}
+		}
+
+		// Load textures
+		for(int y = 0; y < dimension; y++) {
+			for(int x = 0; x < dimension; x++) {
+				if(_tiles[x, y] != null) {
+					if(_tiles[x, y].baseTerrain != null) {
+						_tiles[x, y].baseTerrain.Initialize(spriteManager, this, x, y);
+					}
 				}
 			}
 		}
@@ -295,6 +308,8 @@ public class DungeonManager : MonoBehaviour {
 		int _terrainIndex = 0;
 		int _decorationIndex = 0;
 		int _unitIndex = 0;
+		int offsetX = 0;
+		int offsetY = 0;
 
 		for(int y = 0; y < dimension; y++) {
 			for(int x = 0; x < dimension; x++) {
@@ -303,6 +318,14 @@ public class DungeonManager : MonoBehaviour {
 						x >  _renderOrigin.x - renderDistance &&
 						y <  _renderOrigin.y + renderDistance &&
 						y >  _renderOrigin.y - renderDistance) {
+
+						if(offsetX == 0) {
+							offsetX = x;
+						}
+
+						if(offsetY == 0) {
+							offsetY = y;
+						}
 						
 						if(_terrainPool[x, y] == null) {
 							if(_terrainStack.Count > _terrainIndex) {
@@ -310,6 +333,7 @@ public class DungeonManager : MonoBehaviour {
 									_terrainPool[x, y] = _terrainStack[_terrainIndex++];
 									_terrainPool[x, y].Transfer(_tiles[x, y], _tiles[x, y].baseTerrain);
 									_terrainPool[x, y].transform.SetAsLastSibling();
+									_terrainPool[x, y].gameObject.name = "Terrain (" + x + ", " + y + ")"; 
 								}
 							}
 						}

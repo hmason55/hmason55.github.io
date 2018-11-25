@@ -57,6 +57,8 @@ public class Spell {
 	int _damageDice = 1;
 	int _damageSides = 4;
 	int _essenceCost = 1;
+	int _chargesRemaining = 1;
+	int _chargesMax;
 	bool _requireCastConfirmation = false;
 	bool _autoRecast = false;
 	bool _createsCastParticle = false;
@@ -118,6 +120,14 @@ public class Spell {
 
 	public int essenceCost {
 		get {return _essenceCost;}
+	}
+
+	public int chargesRemaining {
+		get {return _chargesRemaining;}
+	}
+
+	public int chargesMax {
+		get {return _chargesMax;}
 	}
 
 	public bool requireCastConfirmation {
@@ -428,6 +438,7 @@ public class Spell {
 			}
 		}
 
+
 		bool flagTile = false;
 
 		// Allow self target
@@ -436,6 +447,13 @@ public class Spell {
 				flagTile = true;
 			}
 		} else {
+
+			// Allow unit target
+			if(_tile.baseUnit != null) {
+				if(_castTargetUnitType == TargetUnitType.None) {
+					return;
+				}
+			}
 
 			// Allow casting on walls
 			if(!_tile.baseTerrain.walkable) {

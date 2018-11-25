@@ -70,7 +70,11 @@ public class BaseUnit {
 	int _currentEssence;
 	int _currentHitPoints;
 	int _hitPoints;
+	List<Spell.Preset> _spells;
+	//List<Spell.Preset> _equippedSpells;
 	Turn _myTurn;
+	bool _inCombat;
+	int _combatAlliance;
 
 	bool _playerControlled = false;
 
@@ -92,6 +96,16 @@ public class BaseUnit {
 
 	Sprite _sprite;
 	Sprite _shadowSprite;
+
+	public int combatAlliance {
+		set {_combatAlliance = value;}
+		get {return _combatAlliance;}
+	}
+
+	public bool inCombat {
+		set {_inCombat = value;}
+		get {return _inCombat;}
+	}
 
 	public bool playerControlled {
 		set {_playerControlled = value;}
@@ -159,6 +173,16 @@ public class BaseUnit {
 		get {return _modIntelligence;}
 	}
 
+	public int modSpeed {
+		get {return _modSpeed;}
+	}
+
+	public List<Spell.Preset> spells {
+		get {return _spells;}
+	}
+
+	
+
 	public Turn myTurn {
 		get {return _myTurn;}
 		set {_myTurn = value;}
@@ -183,6 +207,7 @@ public class BaseUnit {
 		get {return _hitFrame;}
 		set {_hitFrame = value;}
 	}
+
 
 
 	public BaseUnit(bool player, SpritePreset sprite) {
@@ -255,17 +280,23 @@ public class BaseUnit {
 		
 
 		_currentEssence = _baseEssence;
+		//_myTurn = new Turn(this, _modSpeed);
 
-		if(playerControlled) {
-			_myTurn = new Turn(this, _modSpeed);
-			tile.combatManager.turnQueue.Add(_myTurn);
+		if(_playerControlled) {
+			tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
 			SetAsCameraTarget();
 			SetAsInterfaceTarget();
+			_combatAlliance = 0;
+		} else {
+			_combatAlliance = 1;
 		}
 	}
 
 	void EvaluateStatPreset() {
-		
+		_spells = new List<Spell.Preset>();
+		_spells.Add(Spell.Preset.Move);
+		_spells.Add(Spell.Preset.Bite);
+
 		switch(_statPreset) {
 			case StatPreset.Human:
 				_baseStrength = 10;
@@ -366,6 +397,9 @@ public class BaseUnit {
 	}
 
 	public void Move(int dx, int dy) {
+		if(tile.combatManager.turnQueue.Length == 0) {return;}
+		if(tile.combatManager.turnQueue.queue[0].baseUnit != this) {Debug.Log("Not Your Turn!"); return;}
+
 		int x = _tile.position.x + dx;
 		int y = _tile.position.y + dy;
 		int mapWidth = DungeonManager.dimension;
@@ -395,8 +429,12 @@ public class BaseUnit {
 
 					_tile = nextTile;
 
+					// Move camera to target
 					SetAsCameraTarget();
-					SetAsInterfaceTarget();
+					if(_playerControlled) {
+						SetAsInterfaceTarget();
+					}
+					tile.combatManager.CheckCombatStatus();
 
 					if(_tile.unit != null) {
 						_tile.unit.baseUnit = this;
@@ -405,9 +443,19 @@ public class BaseUnit {
 						_tile.unit.UpdateSprite();
 						//Debug.Log(tile.position);
 						//_tile.unit.image.sprite = _tile.baseUnit.sprite;
+					}	
+					
+					
+					if(_playerControlled) {
+						tile.combatManager.turnQueue.EndTurn();
+						tile.combatManager.turnQueue.NextTurn();
+						tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
 					}
+
+
 					
 					Debug.Log("Moved " + dx + ", " + dy);
+					
 				}
 			}
 		}
@@ -433,7 +481,7 @@ public class BaseUnit {
 	public void SetAsInterfaceTarget() {
 		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
 		if(hotbar != null) {
-			hotbar.baseUnit = this;
+			hotbar.SyncUnit(this);
 		}
 
 		TapController tapController = GameObject.FindObjectOfType<TapController>();
@@ -479,6 +527,8 @@ public class BaseUnit {
 	}
 
 	public void Kill() {
+		_tile.combatManager.turnQueue.RemoveTurns(this);
+		_tile.baseUnit = null;
 		_tile.unit.Kill();
 	}
 
@@ -603,7 +653,7 @@ public class BaseUnit {
 	#endregion
 
 	#region Pathfinding
-	public List<PathNode> FindPath(Vector2Int startPosition, Vector2Int endPosition, bool ignoreUnits = false) {
+	public List<PathNode> FindPath(Vector2Int startPosition, Vector2Int endPosition, bool ignoreUnits = false, int excludeNodesFromEnd = 0) {
 		PathNode currentNode = null;
 		PathNode startNode = new PathNode(startPosition);
 		PathNode endNode = new PathNode(endPosition);
@@ -633,7 +683,7 @@ public class BaseUnit {
 				}
 			}
 
-			List<PathNode> neighborNodes = GetWalkableNeighborNodes(currentNode.position, walkableTiles, ignoreUnits);
+			List<PathNode> neighborNodes = GetWalkableNeighborNodes(currentNode.position, endPosition, walkableTiles,ignoreUnits);
 			distanceFromStart++;
 
 			foreach(PathNode neighborNode in neighborNodes) {
@@ -683,7 +733,22 @@ public class BaseUnit {
 			currentNode = currentNode.parentNode;
 		}
 
-		return path;
+		Debug.Log("Path");
+		for(int i = 0; i < path.Count; i++) {
+			Debug.Log(path[i].position);
+		}
+
+		if(excludeNodesFromEnd > 0) {
+			List<PathNode>pathFinal = new List<PathNode>();
+			for(int i = 0; i < path.Count; i++) {
+				if(i > excludeNodesFromEnd-1) {
+					pathFinal.Add(path[i]);
+				}
+			}
+			return pathFinal;
+		} else {
+			return path;
+		}
 	}
 
 	bool[,] GetWalkableTiles(Vector2Int start, Vector2Int end, bool ignoreUnits = false) {
@@ -706,6 +771,12 @@ public class BaseUnit {
 					continue;
 				}
 
+				// End is always valid
+				if(	x == end.x && y == end.y) {
+					walkableTiles[x, y] = true;
+               		continue;	
+				}
+
 				if(ignoreUnits) {
 					walkableTiles[x, y] = true;
 					continue;	
@@ -716,17 +787,18 @@ public class BaseUnit {
 					}
 				}
 
-				if(	x == start.x && y == start.y ||
-					x == end.x && y == end.y) {
+				// Start is always valid
+				if(	x == start.x && y == start.y) {
 					walkableTiles[x, y] = true;
                		continue;	
 				}
+
 			}
 		}
 		return walkableTiles;
 	}
 
-	List<PathNode> GetWalkableNeighborNodes(Vector2Int position, bool[,] walkableTiles, bool ignoreUnits = false) {
+	List<PathNode> GetWalkableNeighborNodes(Vector2Int position, Vector2Int end, bool[,] walkableTiles, bool ignoreUnits = false) {
 		List<PathNode> testNodes = new List<PathNode>();
 		if(position.y > 0) {
 			testNodes.Add(new PathNode(new Vector2Int(position.x, position.y-1)));
@@ -750,6 +822,11 @@ public class BaseUnit {
 		for(int i = testNodes.Count-1; i >= 0; i--) {
 			int x = testNodes[i].position.x;
 			int y = testNodes[i].position.y;
+
+			if(	x == end.x && y == end.y) {
+				continue;
+			}
+
 			if(!walkableTiles[x, y]) {
 				testNodes.RemoveAt(i);
 				continue;

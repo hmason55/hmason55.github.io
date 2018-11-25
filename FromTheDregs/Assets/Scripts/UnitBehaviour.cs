@@ -48,8 +48,19 @@ public class UnitBehaviour : MonoBehaviour {
 
 	public void UpdateSprite() {
 		if(_baseUnit != null) {
+
+			_unitImage.enabled = true;
 			_unitImage.sprite = _baseUnit.sprite;
+
+			_shadowImage.enabled = true;
 			_shadowImage.sprite = _baseUnit.shadowSprite;
+
+			if(_baseUnit.inCombat) {
+				_unitImage.color = Color.red;
+			} else {
+				_unitImage.color = Color.white;
+			}
+
 			u = _baseUnit.spritePreset.ToString();
 		} else {
 			u = null;
@@ -80,10 +91,11 @@ public class UnitBehaviour : MonoBehaviour {
 		}
 	}
 
-	public void Clear() {		
+	public void Clear(bool preserveRenderState = false) {
+		
 		_rectTransform.anchoredPosition = new Vector2(-256f, -256f);
-
 		_renderFlag = false;
+
 		_baseUnit = null;
 		_tile.unit = null;
 		_tile = null;
@@ -97,8 +109,13 @@ public class UnitBehaviour : MonoBehaviour {
 
 	public void Kill() {
 		SpawnDeathParticles();
+		_tile.baseUnit = null;
 		_baseUnit = null;
-		Clear();
+		_unitImage.sprite = null;
+		_unitImage.enabled = false;
+
+		_shadowImage.sprite = null;
+		_shadowImage.enabled = false;
 	}
 
 	public void SpawnSpellProjectiles(Spell spell) {
