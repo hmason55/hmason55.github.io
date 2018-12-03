@@ -137,6 +137,7 @@ public class UnitBehaviour : MonoBehaviour {
 	IEnumerator ESpawnSpellEffect(Spell spell) {
 		yield return new WaitForSeconds(spell.effectPreSpawnDelay);
 		spell.SpawnEffectParticles(spell.effectOrigin, 0f);
+		spell.PlayEffectSound(spell.effectOrigin);
 		yield return new WaitForSeconds(spell.effectDamageDelay);
 		spell.DealDamage();
 	}

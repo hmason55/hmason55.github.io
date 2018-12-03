@@ -67,6 +67,7 @@ public class Spell {
 	DamageType _damageType;
 	Scaling _scaling = Scaling.Strength;
 	int _modSizeDamage = 0;
+	string _damageSoundPath;
 
 
 	// Casting
@@ -80,6 +81,7 @@ public class Spell {
 	TargetUnitType _castTargetUnitType = TargetUnitType.Enemy;
 	GameObject _castParticle;
 	string _castParticlePath;
+	string _castSoundPath;
 
 
 	// Projectile
@@ -89,6 +91,7 @@ public class Spell {
 	float _projPostSpawnDelay;
 	List<GameObject> _projectiles;
 	string _projParticlePath;
+	string _projSoundPath;
 
 
 	// Effect
@@ -105,6 +108,8 @@ public class Spell {
 	GameObject _effectParticle;
 	List<Tile> _hitTiles;
 	string _effectParticlePath;
+	string _effectSoundPath;
+	float _effectSoundDelay;
 
 	#region Accessors
 	public BaseUnit caster {
@@ -189,6 +194,7 @@ public class Spell {
 
 				_essenceCost = 2;
 				_damageType = DamageType.Piercing;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
 				_requireCastConfirmation = true;
 				_createsCastParticle = false;
@@ -208,7 +214,9 @@ public class Spell {
 				_castTargetUnitType = TargetUnitType.All;
 
 				_effectParticlePath = "Prefabs/Effects/Bite Impact";
-				_effectDamageDelay = 1.5f;
+				_effectSoundPath = "Sounds/sfx/bite_impact_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.75f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
@@ -450,7 +458,30 @@ public class Spell {
 
 			// Allow unit target
 			if(_tile.baseUnit != null) {
-				if(_castTargetUnitType == TargetUnitType.None) {
+				if(_castRequiresTarget) {
+					switch(_castTargetUnitType) {
+						case TargetUnitType.None:
+							return;
+						
+						case TargetUnitType.Enemy:
+							if(_tile.baseUnit.combatAlliance != _caster.combatAlliance) {
+								flagTile = true;
+							} else {
+								flagTile = false;
+							}
+						break;
+
+						case TargetUnitType.All:
+							flagTile = true;
+						break;
+
+
+					}
+				} else {
+					flagTile = true;
+				}
+			} else {
+				if(_castRequiresTarget) {
 					return;
 				}
 			}
@@ -780,9 +811,26 @@ public class Spell {
 	}
 	#endregion
 
+	#region Sounds
+	public void PlayEffectSound(Vector2Int position) {
+		if(_effectSoundPath == null) {return;}
+		AudioManager audioManager = GameObject.FindObjectOfType<AudioManager>();
+		audioManager.LoadSound(_effectSoundPath);
+		audioManager.PlaySound(0.5f, _effectSoundDelay);
+	}
+
+	public void PlayDamageSound(Vector2Int position) {
+		if(_damageSoundPath == null) {return;}
+		AudioManager audioManager = GameObject.FindObjectOfType<AudioManager>();
+		audioManager.LoadSound(_damageSoundPath);
+		audioManager.PlaySound();
+	}
+	#endregion
+
 	public void DealDamage() {
 		foreach(Tile tile in _hitTiles) {
 			if(tile.unit.baseUnit != null) {
+				PlayDamageSound(tile.position);
 				tile.unit.baseUnit.ReceiveDamage(_caster, CalcSpellDamage(), _damageType);
 			}
 		}

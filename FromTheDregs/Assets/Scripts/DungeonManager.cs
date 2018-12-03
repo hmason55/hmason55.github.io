@@ -207,7 +207,7 @@ public class DungeonManager : MonoBehaviour {
 							if(i == 0) {
 								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Entrance, spriteManager);
 								// Spawn player here
-								BaseUnit player = new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.greenslime, tile);
+								BaseUnit player = new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.wizard, tile);
 								player.tile = tile;
 								tile.SpawnUnit(player);
 								combatManager.BeginCombat();
