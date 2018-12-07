@@ -307,7 +307,7 @@ public class BaseUnit {
 				_baseCharisma = 10;
 				_baseSpeed = 3;
 				_baseEssence = 4;
-				_hpScaling = 8;
+				_hpScaling = 50;	//8 default
 				_size = Size.Medium;
 			break;
 
@@ -445,14 +445,11 @@ public class BaseUnit {
 						//_tile.unit.image.sprite = _tile.baseUnit.sprite;
 					}	
 					
-					
-					if(_playerControlled) {
-						tile.combatManager.turnQueue.EndTurn();
-						tile.combatManager.turnQueue.NextTurn();
-						tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
+					if(_playerControlled && !_inCombat) {
+						//tile.combatManager.turnQueue.EndTurn();
+						//tile.combatManager.turnQueue.NextTurn();
+						//tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
 					}
-
-
 					
 					Debug.Log("Moved " + dx + ", " + dy);
 					
@@ -514,7 +511,6 @@ public class BaseUnit {
 			if(_playerControlled) {
 				HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
 				if(hitpointUI.baseUnit == this) {
-					Debug.Log("Equal!");
 					hitpointUI.UpdateHitpoints(_currentHitPoints, _hitPoints);
 				}
 			}

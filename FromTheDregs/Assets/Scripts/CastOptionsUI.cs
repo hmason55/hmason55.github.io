@@ -13,6 +13,7 @@ public class CastOptionsUI : MonoBehaviour {
 	}
 
 	public void ShowUI() {
+		_hotbar.HideHotkeys();
 		_image.enabled = true;
 		_cancelCastButton.gameObject.SetActive(true);
 	}
@@ -20,9 +21,11 @@ public class CastOptionsUI : MonoBehaviour {
 	public void HideUI() {
 		_image.enabled = false;
 		_cancelCastButton.gameObject.SetActive(false);
+		_hotbar.ShowHotkeys();
 	}
 
 	public void CancelCast() {
+		Debug.Log("Cancel cast");
 		_hotbar.CancelPreview();
 		HideUI();
 	}

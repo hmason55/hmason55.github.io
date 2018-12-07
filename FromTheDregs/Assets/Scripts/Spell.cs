@@ -524,11 +524,13 @@ public class Spell {
 	public void ShowEffectRange(Vector2Int origin) {
 		bool[,] visitedTiles = new bool[DungeonManager.dimension, DungeonManager.dimension];
 
-		for(int y = 0; y < DungeonManager.dimension; y++) {
-			for(int x = 0; x < DungeonManager.dimension; x++) {
-				visitedTiles[x, y] = false;
-				if(_tiles[x, y].terrain != null) {
-					_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
+		if(_caster.playerControlled) {
+			for(int y = 0; y < DungeonManager.dimension; y++) {
+				for(int x = 0; x < DungeonManager.dimension; x++) {
+					visitedTiles[x, y] = false;
+					if(_tiles[x, y].terrain != null) {
+						_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
+					}
 				}
 			}
 		}
@@ -683,9 +685,12 @@ public class Spell {
 		end:
 		// Change tile color
 		if(flagTile) {
+			if(_caster.playerControlled) {
+				_tile.terrain.image.color = new Color(1f, 0.75f, 0.75f);
+			}
+
 			_tile.terrain.readyCast = false;
 			_tile.terrain.confirmCast = true;
-			_tile.terrain.image.color = new Color(1f, 0.75f, 0.75f);
 			_hitTiles.Add(_tile);
 		}
 		
@@ -733,15 +738,17 @@ public class Spell {
 			_caster.tile.unit.SpawnSpellEffect(this);
 		}
 
-		ResetTiles();
+		if(_caster.playerControlled) {
+			ResetTiles();
 
-		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
-		Hotkey[] hotkeys = hotbar.GetComponentsInChildren<Hotkey>();
-		foreach(Hotkey hotkey in hotkeys) {
-			if(hotkey.preset == _preset && _autoRecast) {
-				hotkey.PreviewCast();
-			} else {
-				hotkey.showCastRange = false;
+			Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
+			Hotkey[] hotkeys = hotbar.GetComponentsInChildren<Hotkey>();
+			foreach(Hotkey hotkey in hotkeys) {
+				if(hotkey.preset == _preset && _autoRecast) {
+					hotkey.PreviewCast();
+				} else {
+					hotkey.showCastRange = false;
+				}
 			}
 		}
 	}

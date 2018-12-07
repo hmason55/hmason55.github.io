@@ -5,33 +5,75 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour {
 
 	[SerializeField] DungeonManager dungeonManager;
+	CastOptionsUI _castOptionsUI;
+	ShortcutUI _shortcutUI;
+
 
 	// Use this for initialization
 	void Awake () {
 		_turnQueue = new TurnQueue();
+		_castOptionsUI = FindObjectOfType<CastOptionsUI>();
+		_shortcutUI = FindObjectOfType<ShortcutUI>();
 	}
 
 	TurnQueue _turnQueue;
+
+	Coroutine _turnLoopCoroutine;
+	bool _inCombat = false;
 
 
 	public TurnQueue turnQueue {
 		get {return _turnQueue;}
 	}
 
+	public void BeginTurnLoop() {
+		_turnLoopCoroutine = StartCoroutine(ETurnLoop());
+	}
+
 	public void BeginCombat() {
 		Debug.Log("Begin Combat");
-		
-		StartCoroutine(ECombatCycle());
+		_castOptionsUI.CancelCast();
+		_inCombat = true;
 	}
-	IEnumerator ECombatCycle() {
+
+	public void EndCombat() {
+		Debug.Log("End Combat");
+		foreach(Turn turn in _turnQueue.queue) {
+			turn.baseUnit.inCombat = false;
+		}
+		_inCombat = false;
+	}
+
+	IEnumerator ETurnLoop() {
 		while(true) {
 			if(_turnQueue.Length > 0) {
+
+				// Check if there is combat
+				if(_inCombat) {
+					int alliance1 = -5;
+					int alliance2 = -5;
+					foreach(Turn turn in _turnQueue.queue) {
+						if(alliance1 == -5) {
+							alliance1 = turn.baseUnit.combatAlliance;
+						} else if(	alliance2 == -5 && 
+									turn.baseUnit.combatAlliance != alliance1) {
+							alliance2 = turn.baseUnit.combatAlliance;
+						}
+					}
+
+					if(	alliance2 == -5) {
+						EndCombat();
+					}
+				}
+
+				// Turn select
 				BaseUnit baseUnit = _turnQueue.queue[0].baseUnit;
-				Debug.Log(baseUnit.spritePreset.ToString() + "'s turn...");
 				if(!baseUnit.playerControlled) {
+					yield return new WaitForSeconds(0.5f);
 					// Do AI stuff
 
 					// Choose spell (melee for this case)
+					Spell spell = new Spell(baseUnit, Spell.Preset.Bite);
 
 					// Target nearest with melee
 					BaseUnit target = GetNearestUnit(baseUnit, false, 1, false);
@@ -43,11 +85,14 @@ public class CombatManager : MonoBehaviour {
 							Debug.Log("Moving");
 							baseUnit.Move(path[path.Count-2].position.x - baseUnit.tile.position.x, path[path.Count-2].position.y - baseUnit.tile.position.y);
 							EndTurn(baseUnit);
-						} else {
-							
+						} else if(path.Count == 1) {
+							Debug.Log("Attacking");
+							spell.ShowEffectRange(target.tile.position);
+							spell.ConfirmSpellCast();
+							EndTurn(baseUnit);
 						}
 					}
-					yield return new WaitForSeconds(0.1f);
+					yield return new WaitForSeconds(0.5f);
 				} else {
 					yield return new WaitForSeconds(0.1f);
 				}
@@ -57,10 +102,22 @@ public class CombatManager : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 	}
 
-	void EndTurn(BaseUnit b) {
+
+	public void EndTurn(BaseUnit b) {
+
 		turnQueue.EndTurn();
 		turnQueue.NextTurn();
 		turnQueue.Add(new Turn(b, b.modSpeed));
+
+		// if it's the player's turn
+		if(_turnQueue.queue.Count > 0) {
+			Turn turn = _turnQueue.queue[0];
+			if(turn.baseUnit.playerControlled) {
+				turn.baseUnit.SetAsCameraTarget();
+				turn.baseUnit.SetAsInterfaceTarget();
+				_shortcutUI.BeginTurn();
+			}
+		}
 	}
 
 	public bool ValidateMoveTile(Tile tile) {
@@ -193,6 +250,10 @@ public class CombatManager : MonoBehaviour {
 						if(!_turnQueue.UnitInQueue(b2)) {
 						_turnQueue.Add(new Turn(b2, b2.modSpeed));
 					}
+
+					if(!_inCombat) {
+						BeginCombat();
+					}
 				} else {
 
 					// Chain onto nearby units
@@ -205,6 +266,10 @@ public class CombatManager : MonoBehaviour {
 						b2.inCombat = true;
 							if(!_turnQueue.UnitInQueue(b2)) {
 							_turnQueue.Add(new Turn(b2, b2.modSpeed));
+						}
+
+						if(!_inCombat) {
+							BeginCombat();
 						}
 					}
 				}

@@ -58,8 +58,11 @@ public class Hotbar : MonoBehaviour {
 				Hotkey hotkey = _hotkeys[i];
 				hotkey.gameObject.SetActive(true);
 				hotkey.preset = _baseUnit.spells[i];
+				hotkey.hidden = false;
 			} else {
-				_hotkeys[i].gameObject.SetActive(false);
+				Hotkey hotkey = _hotkeys[i];
+				hotkey.gameObject.SetActive(false);
+				hotkey.hidden = true;
 			}
 		}
 	}
@@ -86,11 +89,43 @@ public class Hotbar : MonoBehaviour {
 		_activeSpell.ConfirmSpellCast();
 		_baseUnit.Cast(_activeSpell.essenceCost);
 		_essenceUI.SetFilledEssence(_baseUnit.currentEssence);
+		Debug.Log(_baseUnit.inCombat);
 		
 		if(!recast || _activeSpell.essenceCost > _baseUnit.currentEssence) {	// Cancel recast if insufficient essence or recast is disabled.
+			Debug.Log(_baseUnit.inCombat);
 			_activeSpell.ResetTiles();
 			_tapController.image.raycastTarget = true;
 			_castOptionsUI.HideUI();
+		}
+
+		if(_baseUnit.playerControlled) {
+			//_baseUnit.tile.combatManager.turnQueue.EndTurn();
+			//_baseUnit.tile.combatManager.turnQueue.NextTurn();
+			//_baseUnit.tile.combatManager.turnQueue.Add(new Turn(_baseUnit, _baseUnit.modSpeed));
+		}
+	}
+
+	public void ShowHotkeys() {
+		foreach(Hotkey hotkey in _hotkeys) {
+			hotkey.gameObject.SetActive(!hotkey.hidden);
+		}
+	}
+
+	public void HideHotkeys() {
+		foreach(Hotkey hotkey in _hotkeys) {
+			hotkey.gameObject.SetActive(false);
+		}
+	}
+
+	public void EnableHotkeys() {
+		foreach(Hotkey hotkey in _hotkeys) {
+			hotkey.Enable();
+		}
+	}
+
+	public void DisableHotkeys() {
+		foreach(Hotkey hotkey in _hotkeys) {
+			hotkey.Disable();
 		}
 	}
 

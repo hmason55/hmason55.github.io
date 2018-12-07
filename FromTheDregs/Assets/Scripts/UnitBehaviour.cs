@@ -68,8 +68,8 @@ public class UnitBehaviour : MonoBehaviour {
 	}
 
 	public void Transfer(Tile t, BaseUnit b) {
-		float x = t.position.x * DungeonManager.dimension;
-		float y = t.position.y * DungeonManager.dimension;
+		float x = t.position.x * DungeonManager.TileWidth;
+		float y = t.position.y * DungeonManager.TileWidth;
 		_rectTransform.anchoredPosition = new Vector2(x, y);
 
 		_renderFlag = true;

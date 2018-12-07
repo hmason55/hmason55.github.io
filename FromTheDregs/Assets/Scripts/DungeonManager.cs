@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections;
+using System.IO;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEditor;
+
 
 public class DungeonManager : MonoBehaviour {
 
@@ -22,7 +24,8 @@ public class DungeonManager : MonoBehaviour {
 	public static int chunkDimension = 16;
 	public static int dimension = dungeonDimension * chunkDimension;
 
-	public Vector2Int exitPosition;
+	Vector2Int entrancePosition = new Vector2Int(-1, -1);
+	public Vector2Int exitPosition = new Vector2Int(-1, -1);
 	[SerializeField] int minimumPathSize = 4;
 
 	[SerializeField] int minimumBiomes = 0;
@@ -210,8 +213,9 @@ public class DungeonManager : MonoBehaviour {
 								BaseUnit player = new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.wizard, tile);
 								player.tile = tile;
 								tile.SpawnUnit(player);
-								combatManager.BeginCombat();
+								combatManager.BeginTurnLoop();
 								_renderOrigin = tile.position;
+								entrancePosition = tile.position;
 							} else if(i == 1) {
 								tile.baseDecoration = new BaseDecoration(nearestBiome,  BaseDecoration.DecorationType.Exit, spriteManager);
 								exitPosition = tile.position;
@@ -250,6 +254,8 @@ public class DungeonManager : MonoBehaviour {
 				}
 			}
 		}
+
+		ExportMap();
 
 		// Load textures
 		for(int y = 0; y < dimension; y++) {
@@ -394,177 +400,6 @@ public class DungeonManager : MonoBehaviour {
 		}
 	}
 
-	/* 
-	public void BuildTileGrid() {
-
-		// Remove existing dungeon
-		DestroyImmediate(_dungeon);
-
-		// Create a new dungeon
-		_dungeon = GameObject.Instantiate(_dungeonPrefab);
-		_dungeon.name = "Dungeon";
-		_dungeon.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform);
-		_dungeon.transform.SetAsFirstSibling();
-
-		// Get render layer references
-		CameraController cameraController = _dungeon.GetComponent<CameraController>();
-
-		// Create serialized array
-		_serializedTiles = new Tile[dungeonDimension*dungeonDimension * chunkDimension*chunkDimension];
-
-		for(int y = 0; y < chunkDimension * dungeonDimension; y++) {
-			for(int x = 0; x < chunkDimension * dungeonDimension; x++) {
-
-				// Terrain Layer
-				GameObject terrainGO = GameObject.Instantiate(_terrainPrefab);
-				terrainGO.name = "Terrain (" + x +  ", " + y + ")";
-
-				RectTransform terrainRT = terrainGO.GetComponent<RectTransform>();
-				terrainRT.SetParent(cameraController.terrainLayer);
-				terrainRT.anchoredPosition = new Vector3(x * TileWidth, y * TileHeight, 0f);
-				terrainRT.localScale = new Vector3(1f, 1f, 1f);
-
-
-				// Decoration Layer
-				GameObject decorationGO = GameObject.Instantiate(_decorationPrefab);
-				decorationGO.name = "Decoration (" + x +  ", " + y + ")";
-
-				RectTransform decorationRT = decorationGO.GetComponent<RectTransform>();
-				decorationRT.SetParent(cameraController.decorationLayer);
-				decorationRT.anchoredPosition = new Vector3(x * TileWidth, y * TileHeight, 0f);
-				decorationRT.localScale = new Vector3(1f, 1f, 1f);
-				
-				
-				// Unit Layer
-				GameObject unitGO = GameObject.Instantiate(_unitPrefab);
-				unitGO.name = "Unit (" + x +  ", " + y + ")";
-
-				RectTransform unitRT = unitGO.GetComponent<RectTransform>();
-				unitRT.SetParent(cameraController.unitLayer);
-				unitRT.anchoredPosition = new Vector3(x * TileWidth, y * TileHeight, 0f);
-				unitRT.localScale = new Vector3(1f, 1f, 1f);
-				
-
-				// Create the tile.
-				Tile tile = new Tile(	
-					terrainGO.GetComponent<TerrainBehaviour>(),
-				 	decorationGO.GetComponent<DecorationBehaviour>(), 
-					unitGO.GetComponent<UnitBehaviour>()
-				);
-
-				if(x == 0 && y == 0) {
-					Debug.Log(tile.terrain);
-				}
-
-				// Set tile references
-				tile.animationController = animationController;
-				tile.dungeonManager = this;
-				tile.spriteManager = spriteManager;
-
-				// Serialize
-				_serializedTiles[y * chunkDimension * dungeonDimension + x] = tile;
-			}
-		}
-		Debug.Log("Dungeon build complete.");
-	}
-	*/
-
-
-	/* 
-	void SpawnTiles(List<Vector2Int> nodes) {
-
-		// Spawn tiles
-		for(int i = 0; i < nodes.Count; i++) {
-			Vector2Int node = nodes[i];
-
-			int offsetX = node.x * chunkDimension * TileWidth;
-			int offsetY = node.y * chunkDimension * TileHeight;
-			Color[] pixels = _chunks[node.x, node.y].template.texture.GetPixels();
-
-			for(int y = 0; y < chunkDimension; y++) {
-				for(int x = 0; x < chunkDimension; x++) {
-					Tile tile = _tiles[(node.x * chunkDimension + x), (node.y * chunkDimension + y)];
-					tile.position = new Vector2Int(node.x * chunkDimension + x, node.y * chunkDimension + y);
-
-					// Biome
-
-					Debug.Log(tile);
-					Debug.Log(tile.terrain);
-					tile.terrain.biome = _biome;
-					tile.decoration.biome = _biome;
-
-					foreach(Biome b in biomes) {
-						if(CheckDistance(x * TileWidth + offsetX, y * TileHeight + offsetY, b.x, b.y) < b.radius) {
-							tile.terrain.biome = b;
-							tile.decoration.biome = b;
-						}
-					}
-
-					Color color = pixels[(chunkDimension * y + x)];
-
-					// Parse Chunk Template
-					tile.terrain.ParseColor(color);
-					string hexColor = ColorUtility.ToHtmlStringRGB(color);
-
-					if(hexColor == "FF0000") {	// Red (Enemy)
-						// Spawn enemy accoring to biome type
-						BaseUnit enemy = tile.terrain.biome.GetEnemySpawn();
-						enemy.tile = tile;
-						tile.SpawnUnit(enemy);
-
-					} else if(hexColor == "0000FF" && i <= 1) {	// Blue (Entrance/Exit)
-						
-						if(i == 0) {
-							// Entrance	
-							tile.decoration.decorationType = DecorationBehaviour.DecorationType.entrance;
-
-							// Spawn player at entrance
-							tile.SpawnUnit(new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.wizard, tile));
-							Debug.Log("Spawned at " + tile.position);
-						} else if(i == 1) {
-							// Exit
-							tile.decoration.decorationType = DecorationBehaviour.DecorationType.exit;
-						}
-						
-						tile.decoration.Init(tile.terrain.walkable);
-					} else if(hexColor == "FFFF00") {		// Yellow	(Containers)
-
-						// Container decorations
-						float containerDecorationRoll = Random.Range(0f, 100f);
-						if(containerDecorationRoll <= containerDecorationDensity) {
-							tile.decoration.decorationType = DecorationBehaviour.DecorationType.container;
-							tile.decoration.Init(tile.terrain.walkable);
-						}
-					} else if(hexColor == "FF00FF") {		// Magenta	(Traps)
-
-						// Trap decorations
-						float containerDecorationRoll = Random.Range(0f, 100f);
-						if(containerDecorationRoll <= trapDecorationDensity) {
-							tile.decoration.decorationType = DecorationBehaviour.DecorationType.trap;
-							tile.decoration.Init(tile.terrain.walkable);
-						}
-					}
-
-
-					if(tile.decoration.decorationType == DecorationBehaviour.DecorationType.none) {
-						// Small decorations
-						float smallDecorationRoll = Random.Range(0f, 100f);
-						if(smallDecorationRoll <= smallDecorationDensity) {
-							tile.decoration.decorationType = DecorationBehaviour.DecorationType.small;
-							tile.decoration.Init(tile.terrain.walkable);
-						}
-					}
-
-				}
-			}
-		}
-
-
-		}
-
-		Debug.Log("Spawned " + nodes.Count + " rooms.");
-	}
-	*/
 	void SpawnUnit(int x, int y, UnitBehaviour unit) {
 		_tiles[x, y].unit = unit;
 	}
@@ -746,6 +581,64 @@ public class DungeonManager : MonoBehaviour {
 
 	int CheckDistance(int x1, int y1, int x2, int y2) {
 		return (int)Mathf.Sqrt(Mathf.Pow(x2 - x1, 2) + Mathf.Pow(y2 - y1, 2));
+	}
+
+	void ExportMap() {
+		Texture2D texture = new Texture2D(dimension, dimension, TextureFormat.RGB24, false);
+
+		for(int y = 0; y < dungeonDimension; y++) {
+			for(int x = 0; x < dungeonDimension; x++) {
+
+				bool hasTexture = true;
+				Chunk chunk = _chunks[x, y];
+				Sprite src = null;
+
+
+				if(chunk != null) {
+					src = chunk.template;
+				}
+
+				if(src == null) {
+					hasTexture = false;
+				}
+				
+
+				for(int j = 0; j < chunkDimension; j++) {
+					for(int i = 0; i < chunkDimension; i++) {
+						
+						Color color = Color.black;
+						if(hasTexture) {
+
+							color = src.texture.GetPixel(i, j);
+							if(	color.r == 0f &&
+								color.g == 0f &&
+								color.b == 1f) {
+
+								if(x == entrancePosition.x/chunkDimension && y == entrancePosition.y/chunkDimension ) {
+									// do nothing
+								} else if(x == exitPosition.x/chunkDimension  && y == exitPosition.y/chunkDimension ) {
+									// do nothing
+								} else {
+									color = Color.green;
+								}
+							}
+						}
+
+						texture.SetPixel(x*chunkDimension + i, y*chunkDimension + j, color);
+					}
+				}
+
+			}	
+		}
+
+		byte[] bytes = texture.EncodeToPNG();
+		string dirPath = Application.dataPath + "/../map/";
+
+		if(!Directory.Exists(dirPath)) {
+			Directory.CreateDirectory(dirPath);
+		}
+
+		File.WriteAllBytes(dirPath + "recent" + ".png", bytes);
 	}
 }
 
