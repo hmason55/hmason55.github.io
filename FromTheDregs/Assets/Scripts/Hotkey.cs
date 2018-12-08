@@ -26,14 +26,18 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 	bool _showCastRange = false;
 	bool _showEffectRange = false;
 
+	public Spell spell {
+		get {return _spell;}
+	}
+
 	public Spell.Preset preset {
 		get {return _preset;}
 		set {
+			Debug.Log("NEW SPELL");
 			_preset = value;
 			_spell = new Spell(_preset);
 			_text.text = _spell.spellName;
 			gameObject.name = _spell.spellName;
-
 			UpdateCost();
 		}
 	}
@@ -83,7 +87,7 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void PreviewCast() {
-		_spell = new Spell(_hotbar.baseUnit, _preset);
+		_spell.SyncWithCaster(_hotbar.baseUnit);
 		_hotbar.tapController.image.raycastTarget = false;
 		_hotbar.activeSpell = _spell;
 		_hotbar.essenceUI.PreviewUsage(_hotbar.baseUnit.currentEssence, _spell.essenceCost);

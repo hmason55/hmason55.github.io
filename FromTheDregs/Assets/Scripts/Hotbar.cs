@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Hotbar : MonoBehaviour {
 
-	//public List<Spell> spells;
 	[SerializeField] TapController _tapController;
 	[SerializeField] EssenceUI _essenceUI;
 	[SerializeField] CastOptionsUI _castOptionsUI;
+	CombatManager _combatManager;
 	List<Hotkey> _hotkeys;
 	BaseUnit _baseUnit;
 	Spell _activeSpell;
@@ -38,6 +38,7 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	void Awake() {
+		_combatManager = FindObjectOfType<CombatManager>();
 		InitHotkeys();
 	}
 
@@ -52,12 +53,25 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	public void SyncUnit(BaseUnit b) {
-		_baseUnit = b;
+		bool newUnit = false;
+		if(_baseUnit != b) {
+			_baseUnit = b;
+			newUnit = true;
+		}
 		for(int i = 0; i < _hotkeys.Count; i++) {
 			if(i < _baseUnit.spells.Count) {
 				Hotkey hotkey = _hotkeys[i];
 				hotkey.gameObject.SetActive(true);
-				hotkey.preset = _baseUnit.spells[i];
+
+				if(newUnit) {
+					hotkey.preset = _baseUnit.spells[i];
+				}
+
+				if(hotkey.spell.essenceCost > _baseUnit.currentEssence) {
+					hotkey.Disable();
+				} else {
+					hotkey.Enable();
+				}
 				hotkey.hidden = false;
 			} else {
 				Hotkey hotkey = _hotkeys[i];
@@ -86,22 +100,21 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	public void ConfirmCast(bool recast = false) {
+		bool combatStatus = _baseUnit.inCombat;
+
 		_activeSpell.ConfirmSpellCast();
 		_baseUnit.Cast(_activeSpell.essenceCost);
 		_essenceUI.SetFilledEssence(_baseUnit.currentEssence);
-		Debug.Log(_baseUnit.inCombat);
+		_activeSpell.SyncWithCaster(_baseUnit);
 		
-		if(!recast || _activeSpell.essenceCost > _baseUnit.currentEssence) {	// Cancel recast if insufficient essence or recast is disabled.
-			Debug.Log(_baseUnit.inCombat);
-			_activeSpell.ResetTiles();
-			_tapController.image.raycastTarget = true;
-			_castOptionsUI.HideUI();
-		}
-
-		if(_baseUnit.playerControlled) {
-			//_baseUnit.tile.combatManager.turnQueue.EndTurn();
-			//_baseUnit.tile.combatManager.turnQueue.NextTurn();
-			//_baseUnit.tile.combatManager.turnQueue.Add(new Turn(_baseUnit, _baseUnit.modSpeed));
+		if(_baseUnit.inCombat == combatStatus) {	// If combat status is unchanged, allow auto recast.
+			if(!recast || _activeSpell.essenceCost > _baseUnit.currentEssence) {	// Cancel recast if insufficient essence or recast is disabled.
+				_activeSpell.ResetTiles();
+				_tapController.image.raycastTarget = true;
+				_castOptionsUI.HideUI();
+			}
+		} else {
+			_castOptionsUI.CancelCast();
 		}
 	}
 

@@ -57,7 +57,7 @@ public class Spell {
 	int _damageDice = 1;
 	int _damageSides = 4;
 	int _essenceCost = 1;
-	int _chargesRemaining = 1;
+	int _chargesRemaining = 0;
 	int _chargesMax;
 	bool _requireCastConfirmation = false;
 	bool _autoRecast = false;
@@ -181,8 +181,9 @@ public class Spell {
 		CreateFromPreset(spell);
 	}
 
+
 	#region Spells
-	public void CreateFromPreset(Preset spell) {
+	public void CreateFromPreset(Preset spell, bool sync = false) {
 		_preset = spell;
 		_hitTiles = new List<Tile>();
 
@@ -307,8 +308,20 @@ public class Spell {
 			#region Move
 			case Preset.Move:
 				_spellName = "Move";
+				
+				
+				if(!sync) {	// Base settings
+					_chargesMax = 0;
+				} else {
+					if(_caster != null) {
+						_chargesMax = _caster.speed - 1;
+					}
+				}
+				
+				if(!sync) {	// Base settings
+					_essenceCost = 1;
+				}
 
-				_essenceCost = 0;
 				_autoRecast = true;
 				_requireCastConfirmation = false;
 				_createsCastParticle = false;
@@ -882,8 +895,45 @@ public class Spell {
 		}
 	}
 
+
+	public void SyncWithCaster(BaseUnit caster) {
+		if(_caster != null) {
+			CreateFromPreset(_preset, true);
+		} else {
+			if(caster != null) {
+				_caster = caster;
+				_tiles = _caster.tile.dungeonManager.tiles;
+				CreateFromPreset(_preset);
+			}
+		}
+	}
+
 	void Move() {
+
+		Debug.Log("Charges: " + _chargesRemaining + " / " + _chargesMax);
+
+		if(_chargesRemaining > 0) {
+			Debug.Log("Charge Used");
+			_chargesRemaining -= 1;
+		} else {
+			Debug.Log("ES Used");
+			_chargesRemaining = _chargesMax;
+		}
+		
 		_caster.Move(_effectOrigin.x - _caster.tile.position.x, _effectOrigin.y - _caster.tile.position.y);
+
+		Debug.Log("inCombat: " + _caster.inCombat);
+		Debug.Log("Caster ES: " + _caster.currentEssence);
+
+		if(_chargesRemaining > 0) {
+			_essenceCost = 0;
+			
+			Debug.Log("Charges Set!");
+		} else {
+			_essenceCost = 1;
+		}
+
+		Debug.Log("Charges: " + _chargesRemaining + " / " + _chargesMax);
 	}
 
 

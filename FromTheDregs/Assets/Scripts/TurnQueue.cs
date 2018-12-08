@@ -54,6 +54,8 @@ public class TurnQueue {
 		}
 
 		SortTurns();
+        
+        _queue[0].baseUnit.BeginTurn();
 	}
 
 	public void SortTurns() {

@@ -21,7 +21,6 @@ public class CombatManager : MonoBehaviour {
 	Coroutine _turnLoopCoroutine;
 	bool _inCombat = false;
 
-
 	public TurnQueue turnQueue {
 		get {return _turnQueue;}
 	}
@@ -32,7 +31,6 @@ public class CombatManager : MonoBehaviour {
 
 	public void BeginCombat() {
 		Debug.Log("Begin Combat");
-		_castOptionsUI.CancelCast();
 		_inCombat = true;
 	}
 
@@ -69,7 +67,6 @@ public class CombatManager : MonoBehaviour {
 				// Turn select
 				BaseUnit baseUnit = _turnQueue.queue[0].baseUnit;
 				if(!baseUnit.playerControlled) {
-					yield return new WaitForSeconds(0.5f);
 					// Do AI stuff
 
 					// Choose spell (melee for this case)
@@ -77,18 +74,26 @@ public class CombatManager : MonoBehaviour {
 
 					// Target nearest with melee
 					BaseUnit target = GetNearestUnit(baseUnit, false, 1, false);
+					
 					if(target != null) {
 						List<PathNode> path = baseUnit.FindPath(baseUnit.tile.position, target.tile.position, false, 1);
 
 						// Move / Attack
-						if(path.Count > 1) {
+						if(path.Count > 1 && baseUnit.currentEssence > 0) {
 							Debug.Log("Moving");
 							baseUnit.Move(path[path.Count-2].position.x - baseUnit.tile.position.x, path[path.Count-2].position.y - baseUnit.tile.position.y);
-							EndTurn(baseUnit);
-						} else if(path.Count == 1) {
+							baseUnit.currentEssence -= 1;
+							Debug.Log("Current ES: " + baseUnit.currentEssence);
+							//EndTurn(baseUnit);
+						} else if(path.Count == 1 && baseUnit.currentEssence > 0) {
 							Debug.Log("Attacking");
 							spell.ShowEffectRange(target.tile.position);
 							spell.ConfirmSpellCast();
+							baseUnit.currentEssence -= 1;
+							Debug.Log("Current ES: " + baseUnit.currentEssence);
+							//EndTurn(baseUnit);
+						} else {
+							Debug.Log("Current ES: " + baseUnit.currentEssence);
 							EndTurn(baseUnit);
 						}
 					}
@@ -134,16 +139,14 @@ public class CombatManager : MonoBehaviour {
 	}
 
 	public void CheckCombatStatus() {
+
 		// Flag all units within range of another unit
 		List<BaseUnit> baseUnits = GetAllBaseUnits();
 		foreach(BaseUnit baseUnit in baseUnits) {
-			//if(baseUnit.inCombat) {
-				bool[,] visitedTiles = new bool[DungeonManager.dimension, DungeonManager.dimension];
-				AggroNearbyUnits(baseUnit.tile.position.x, baseUnit.tile.position.y, visitedTiles, baseUnit.tile.position.x, baseUnit.tile.position.y, 4);
-			//}
+			bool[,] visitedTiles = new bool[DungeonManager.dimension, DungeonManager.dimension];
+			AggroNearbyUnits(baseUnit.tile.position.x, baseUnit.tile.position.y, visitedTiles, baseUnit.tile.position.x, baseUnit.tile.position.y, 4);
 		}
 
-		//_turnQueue.SortTurns();
 		Debug.Log("Turn Queue (" + _turnQueue.Length + "):");
 		_turnQueue.PrintTurns();
 	}

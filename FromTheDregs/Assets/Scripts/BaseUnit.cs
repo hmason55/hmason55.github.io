@@ -151,6 +151,7 @@ public class BaseUnit {
 	}
 	public int currentEssence {
 		get {return _currentEssence;}
+		set {_currentEssence = value;}
 	}
 
 	public int armorClass {
@@ -177,11 +178,13 @@ public class BaseUnit {
 		get {return _modSpeed;}
 	}
 
+	public int speed {
+		get {return _baseSpeed + _modSpeed;}
+	}
+
 	public List<Spell.Preset> spells {
 		get {return _spells;}
 	}
-
-	
 
 	public Turn myTurn {
 		get {return _myTurn;}
@@ -207,8 +210,6 @@ public class BaseUnit {
 		get {return _hitFrame;}
 		set {_hitFrame = value;}
 	}
-
-
 
 	public BaseUnit(bool player, SpritePreset sprite) {
 		_playerControlled = player;
@@ -280,6 +281,7 @@ public class BaseUnit {
 		
 
 		_currentEssence = _baseEssence;
+		_turnEssence = _baseEssence;
 		//_myTurn = new Turn(this, _modSpeed);
 
 		if(_playerControlled) {
@@ -305,7 +307,7 @@ public class BaseUnit {
 				_baseConstitution = 10;
 				_baseWisdom = 10;
 				_baseCharisma = 10;
-				_baseSpeed = 3;
+				_baseSpeed = 4;
 				_baseEssence = 4;
 				_hpScaling = 50;	//8 default
 				_size = Size.Medium;
@@ -319,7 +321,7 @@ public class BaseUnit {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 4;
+				_baseEssence = 2;
 				_hpScaling = 16;
 				_size = Size.Small;
 			break;
@@ -332,7 +334,7 @@ public class BaseUnit {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 4;
+				_baseEssence = 2;
 				_hpScaling = 16;
 				_size = Size.Medium;
 			break;
@@ -345,7 +347,7 @@ public class BaseUnit {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 3;
+				_baseEssence = 2;
 				_hpScaling = 11;
 				_size = Size.Small;
 			break;
@@ -358,7 +360,7 @@ public class BaseUnit {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 4;
+				_baseEssence = 2;
 				_hpScaling = 16;
 				_size = Size.Medium;
 			break;
@@ -371,7 +373,7 @@ public class BaseUnit {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 3;
+				_baseEssence = 2;
 				_hpScaling = 11;
 				_size = Size.Small;
 			break;
@@ -394,6 +396,10 @@ public class BaseUnit {
 
 	void UpdateArmorClass() {
 		_armorClass = 10 + _modDexterity;
+	}
+
+	public void BeginTurn() {
+		_currentEssence = _turnEssence;
 	}
 
 	public void Move(int dx, int dy) {
@@ -459,7 +465,9 @@ public class BaseUnit {
 	}
 
 	public void Cast(int essenceCost) {
-		_currentEssence -= essenceCost;
+		if(_inCombat) {
+			_currentEssence -= essenceCost;
+		}
 	}
 
 	public void SetAsCameraTarget() {
