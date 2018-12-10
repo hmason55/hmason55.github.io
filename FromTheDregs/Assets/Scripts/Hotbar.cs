@@ -42,6 +42,12 @@ public class Hotbar : MonoBehaviour {
 		InitHotkeys();
 	}
 
+	void Update() {
+		if(Input.GetKeyDown(KeyCode.Space)) {
+			UpdateHotkeys();
+		}
+	}
+
 	void InitHotkeys() {
 		_hotkeys = new List<Hotkey>();
 		for(int i = 0; i < transform.childCount; i++) {
@@ -96,17 +102,18 @@ public class Hotbar : MonoBehaviour {
 			_activeSpell.effectOrigin = position;
 			ConfirmCast(true);
 		}
-		//_essenceUI.PreviewUsage(_baseUnit.currentEssence, _activeSpell.essenceCost);
 	}
 
 	public void ConfirmCast(bool recast = false) {
 		bool combatStatus = _baseUnit.inCombat;
 
-		_activeSpell.ConfirmSpellCast();
-		_baseUnit.Cast(_activeSpell.essenceCost);
+		if(combatStatus == true) {
+			_baseUnit.Cast(_activeSpell.essenceCost);
+		}
 		_essenceUI.SetFilledEssence(_baseUnit.currentEssence);
-		_activeSpell.SyncWithCaster(_baseUnit);
+		_activeSpell.ConfirmSpellCast();
 		
+
 		if(_baseUnit.inCombat == combatStatus) {	// If combat status is unchanged, allow auto recast.
 			if(!recast || _activeSpell.essenceCost > _baseUnit.currentEssence) {	// Cancel recast if insufficient essence or recast is disabled.
 				_activeSpell.ResetTiles();
@@ -116,16 +123,28 @@ public class Hotbar : MonoBehaviour {
 		} else {
 			_castOptionsUI.CancelCast();
 		}
+		
+	}
+
+	public void UpdateHotkeys() {
+		for(int i = 0; i < _hotkeys.Count; i++) {
+			if(_hotkeys[i].spell != null) {
+				_hotkeys[i].UpdateName();
+				_hotkeys[i].UpdateCost();
+			}
+		}
 	}
 
 	public void ShowHotkeys() {
 		foreach(Hotkey hotkey in _hotkeys) {
 			hotkey.gameObject.SetActive(!hotkey.hidden);
 		}
+		//UpdateHotkeys();
 	}
 
 	public void HideHotkeys() {
 		foreach(Hotkey hotkey in _hotkeys) {
+			hotkey.UpdateCost();
 			hotkey.gameObject.SetActive(false);
 		}
 	}
@@ -134,12 +153,14 @@ public class Hotbar : MonoBehaviour {
 		foreach(Hotkey hotkey in _hotkeys) {
 			hotkey.Enable();
 		}
+		//UpdateHotkeys();
 	}
 
 	public void DisableHotkeys() {
 		foreach(Hotkey hotkey in _hotkeys) {
 			hotkey.Disable();
 		}
+		//UpdateHotkeys();
 	}
 
 }

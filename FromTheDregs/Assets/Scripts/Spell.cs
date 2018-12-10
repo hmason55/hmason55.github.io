@@ -112,6 +112,12 @@ public class Spell {
 	float _effectSoundDelay;
 
 	#region Accessors
+
+	public int id;
+	public Preset preset {
+		get {return _preset;}
+		set {_preset = value;}
+	}
 	public BaseUnit caster {
 		get {return _caster;}
 	}
@@ -172,10 +178,12 @@ public class Spell {
 
 	// Constructors
 	public Spell(Preset spell) {
+		id = Random.Range(0, 1000);
 		CreateFromPreset(spell);
 	}
 
 	public Spell(BaseUnit caster, Preset spell) {
+		id = Random.Range(0, 1000);
 		_caster = caster;
 		_tiles = _caster.tile.dungeonManager.tiles;
 		CreateFromPreset(spell);
@@ -909,31 +917,18 @@ public class Spell {
 	}
 
 	void Move() {
-
-		Debug.Log("Charges: " + _chargesRemaining + " / " + _chargesMax);
-
-		if(_chargesRemaining > 0) {
-			Debug.Log("Charge Used");
-			_chargesRemaining -= 1;
-		} else {
-			Debug.Log("ES Used");
-			_chargesRemaining = _chargesMax;
-		}
-		
 		_caster.Move(_effectOrigin.x - _caster.tile.position.x, _effectOrigin.y - _caster.tile.position.y);
 
-		Debug.Log("inCombat: " + _caster.inCombat);
-		Debug.Log("Caster ES: " + _caster.currentEssence);
-
-		if(_chargesRemaining > 0) {
-			_essenceCost = 0;
-			
-			Debug.Log("Charges Set!");
-		} else {
-			_essenceCost = 1;
+		if(_caster.inCombat) {
+			if(_chargesRemaining > 0) {
+				_chargesRemaining -= 1;
+				_essenceCost = 0;
+			} else {
+				_chargesRemaining = _chargesMax;
+				_essenceCost = 1;
+			}
 		}
 
-		Debug.Log("Charges: " + _chargesRemaining + " / " + _chargesMax);
 	}
 
 

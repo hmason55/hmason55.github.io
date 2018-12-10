@@ -487,6 +487,7 @@ public class BaseUnit {
 		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
 		if(hotbar != null) {
 			hotbar.SyncUnit(this);
+			hotbar.UpdateHotkeys();
 		}
 
 		TapController tapController = GameObject.FindObjectOfType<TapController>();

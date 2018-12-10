@@ -25,7 +25,6 @@ public class CastOptionsUI : MonoBehaviour {
 	}
 
 	public void CancelCast() {
-		Debug.Log("Cancel cast");
 		_hotbar.CancelPreview();
 		HideUI();
 	}

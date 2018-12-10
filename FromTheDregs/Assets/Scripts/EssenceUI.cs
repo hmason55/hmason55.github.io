@@ -35,7 +35,7 @@ public class EssenceUI : MonoBehaviour {
 	public void PreviewUsage(int filled, int usage) {
 		for(int i = 0; i < filled; i++) {
 			if(i >= filled-usage) {
-				_images[i].color = new Color(1f, 1f, 1f, 0.5f);
+				_images[i].color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
 			}
 		}
 	}
