@@ -6,6 +6,7 @@ public class CombatManager : MonoBehaviour {
 
 	[SerializeField] DungeonManager dungeonManager;
 	CastOptionsUI _castOptionsUI;
+	Hotbar _hotbar;
 	ShortcutUI _shortcutUI;
 
 
@@ -13,6 +14,7 @@ public class CombatManager : MonoBehaviour {
 	void Awake () {
 		_turnQueue = new TurnQueue();
 		_castOptionsUI = FindObjectOfType<CastOptionsUI>();
+		_hotbar = FindObjectOfType<Hotbar>();
 		_shortcutUI = FindObjectOfType<ShortcutUI>();
 	}
 
@@ -38,6 +40,7 @@ public class CombatManager : MonoBehaviour {
 		Debug.Log("End Combat");
 		foreach(Turn turn in _turnQueue.queue) {
 			turn.baseUnit.inCombat = false;
+			turn.baseUnit.currentEssence = turn.baseUnit.baseEssence;
 		}
 		_inCombat = false;
 	}
@@ -109,7 +112,10 @@ public class CombatManager : MonoBehaviour {
 
 
 	public void EndTurn(BaseUnit b) {
-
+		if(b.playerControlled) {
+			_hotbar.ClearCharges();
+		}
+		
 		turnQueue.EndTurn();
 		turnQueue.NextTurn();
 		turnQueue.Add(new Turn(b, b.modSpeed));
@@ -121,6 +127,7 @@ public class CombatManager : MonoBehaviour {
 				turn.baseUnit.SetAsCameraTarget();
 				turn.baseUnit.SetAsInterfaceTarget();
 				_shortcutUI.BeginTurn();
+				_hotbar.essenceUI.SetFilledEssence(turn.baseUnit.currentEssence);
 			}
 		}
 	}
@@ -138,20 +145,19 @@ public class CombatManager : MonoBehaviour {
 		return false;
 	}
 
-	public void CheckCombatStatus() {
+	public void CheckCombatStatus(List<BaseUnit> baseUnits) {
 
 		// Flag all units within range of another unit
-		List<BaseUnit> baseUnits = GetAllBaseUnits();
 		foreach(BaseUnit baseUnit in baseUnits) {
 			bool[,] visitedTiles = new bool[DungeonManager.dimension, DungeonManager.dimension];
-			AggroNearbyUnits(baseUnit.tile.position.x, baseUnit.tile.position.y, visitedTiles, baseUnit.tile.position.x, baseUnit.tile.position.y, 4);
+			AggroNearbyUnits(baseUnit.tile.position.x, baseUnit.tile.position.y, visitedTiles, baseUnit.tile.position.x, baseUnit.tile.position.y, baseUnit.aggroRadius);
 		}
 
 		Debug.Log("Turn Queue (" + _turnQueue.Length + "):");
 		_turnQueue.PrintTurns();
 	}
 
-	List<BaseUnit> GetAllBaseUnits() {
+	public List<BaseUnit> GetAllBaseUnits() {
 		List<BaseUnit> allBaseUnits = new List<BaseUnit>();
 		for(int y = 0; y < DungeonManager.dimension; y++) {
 			for(int x = 0; x < DungeonManager.dimension; x++) {
@@ -250,7 +256,7 @@ public class CombatManager : MonoBehaviour {
 					}
 
 					b2.inCombat = true;
-						if(!_turnQueue.UnitInQueue(b2)) {
+					if(!_turnQueue.UnitInQueue(b2)) {
 						_turnQueue.Add(new Turn(b2, b2.modSpeed));
 					}
 
@@ -278,7 +284,7 @@ public class CombatManager : MonoBehaviour {
 				}
 
 			}
-		} 
+		}
 		
 		AggroNearbyUnits(x+1, y  , visited, ox, oy, radius);
 		AggroNearbyUnits(x  , y-1, visited, ox, oy, radius);

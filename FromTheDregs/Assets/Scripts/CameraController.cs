@@ -70,7 +70,7 @@ public class CameraController : MonoBehaviour {
 	void LateUpdate() {
 		Vector2 distanceVector = new Vector2(trueTarget.x - _rectTransform.anchoredPosition.x, trueTarget.y - _rectTransform.anchoredPosition.y);
 		if(distanceVector.magnitude > _deadzone) {
-			_rectTransform.anchoredPosition += distanceVector.normalized * _panSpeed * Time.deltaTime;
+			_rectTransform.anchoredPosition += distanceVector.normalized * (distanceVector.magnitude * _panSpeed) * Time.deltaTime;
 		}
 	}
 

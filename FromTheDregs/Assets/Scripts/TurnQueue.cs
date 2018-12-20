@@ -50,7 +50,6 @@ public class TurnQueue {
             
             // Older turns will have decreased priority and will eventually be moved to the front of the queue.
             turn.priority--;
-            
 		}
 
 		SortTurns();

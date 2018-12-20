@@ -68,10 +68,9 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 		UpdateCost();
 	}
 
-	
-
 	public void OnPointerClick(PointerEventData eventData) {
 		if(_enabled) {
+			EventSystem.current.SetSelectedGameObject(null);
 			PreviewCast();
 		}
 	}
@@ -96,6 +95,13 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 	public void UpdateCost() {
 		if(_spell != null) {
 			_costText.text = _spell.essenceCost.ToString();
+		}
+	}
+
+	public void ClearCharges() {
+		if(_spell != null) {
+			_spell.essenceCost = 1;
+			_spell.chargesRemaining = 0;
 		}
 	}
 

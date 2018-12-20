@@ -131,10 +131,12 @@ public class Spell {
 
 	public int essenceCost {
 		get {return _essenceCost;}
+		set {_essenceCost = value;}
 	}
 
 	public int chargesRemaining {
 		get {return _chargesRemaining;}
+		set {_chargesRemaining = value;}
 	}
 
 	public int chargesMax {
@@ -367,6 +369,10 @@ public class Spell {
 		return Mathf.Abs(x1 - x2) + Mathf.Abs(y1 - y2);
 	}
 
+	float CheckTrueDistance(Vector2Int start, Vector2Int end) {
+		return Mathf.Sqrt((end.x - start.x)*(end.x - start.x) + (end.y - start.y)*(end.y - start.y)) * DungeonManager.TileWidth;
+	}
+
 	bool RayTrace(int x1, int y1, int x2, int y2) {
 		int dx = Mathf.Abs(x2 - x1);
 		int sx = -1;
@@ -420,7 +426,7 @@ public class Spell {
 			for(int x = 0; x < DungeonManager.dimension; x++) {
 				visitedTiles[x, y] = false;
 				if(_tiles[x, y].terrain != null) {
-					_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
+					_tiles[x, y].terrain.image.color = new Color(1f, 1f, 1f);
 				}
 			}
 		}
@@ -512,7 +518,7 @@ public class Spell {
 				if(_castThroughWalls && _castOnWalls) {
 					flagTile = true;
 				} else if(_castOnWalls) {
-					_tile.terrain.image.color = new Color(0.75f, 0.75f, 1f);
+					_tile.terrain.image.color = new Color(0.85f, 0.85f, 1f);
 					return;
 				}
 			} else {
@@ -531,7 +537,7 @@ public class Spell {
 		if(flagTile) {
 			_tile.terrain.readyCast = true;
 			_tile.terrain.confirmCast = false;
-			_tile.terrain.image.color = new Color(0.75f, 0.75f, 1f);
+			_tile.terrain.image.color = new Color(0.85f, 0.85f, 1f);
 		}
 
 		PopulateCastRange(x+1, y  , visited, ox, oy);
@@ -550,7 +556,7 @@ public class Spell {
 				for(int x = 0; x < DungeonManager.dimension; x++) {
 					visitedTiles[x, y] = false;
 					if(_tiles[x, y].terrain != null) {
-						_tiles[x, y].terrain.image.color = new Color(0.5f, 0.5f, 0.5f);
+						_tiles[x, y].terrain.image.color = new Color(1f, 1f, 1f);
 					}
 				}
 			}
@@ -707,7 +713,7 @@ public class Spell {
 		// Change tile color
 		if(flagTile) {
 			if(_caster.playerControlled) {
-				_tile.terrain.image.color = new Color(1f, 0.75f, 0.75f);
+				_tile.terrain.image.color = new Color(1f, 0.85f, 0.85f);
 			}
 
 			_tile.terrain.readyCast = false;
@@ -758,6 +764,8 @@ public class Spell {
 		} else if(_createsEffect) {
 			_caster.tile.unit.SpawnSpellEffect(this);
 		}
+
+		
 
 		if(_caster.playerControlled) {
 			ResetTiles();
@@ -865,6 +873,26 @@ public class Spell {
 	}
 
 	void OnCast() {
+		float spellDuration = 0.25f;
+
+		if(_createsProjectile) {
+			for(int i = 0; i < _projCount; i++) {
+				spellDuration += _projPreSpawnDelay;
+				spellDuration += _projPostSpawnDelay;
+			}
+
+			float dist = CheckTrueDistance(_caster.tile.position, _effectOrigin);
+			spellDuration += dist/_projSpeed;
+			Debug.Log(dist/_projSpeed);
+		}
+
+		if(_createsEffect) {
+			spellDuration += _effectPreSpawnDelay;
+			spellDuration += _effectDamageDelay;
+		}
+
+		_caster.tile.unit.SetInputCooldown(_caster, spellDuration, _autoRecast);
+
 		switch(_preset) {
 			case Preset.Move:
 				Move();

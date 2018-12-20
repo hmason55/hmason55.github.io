@@ -64,6 +64,7 @@ public class BaseUnit {
 	int _modSpeed;
 	#endregion
 	
+	int _aggroRadius;
 	int _baseEssence;
 	int _turnEssence;
 	int _experience;
@@ -74,8 +75,8 @@ public class BaseUnit {
 	//List<Spell.Preset> _equippedSpells;
 	Turn _myTurn;
 	bool _inCombat;
+	bool _isCasting;
 	int _combatAlliance;
-
 	bool _playerControlled = false;
 
 	Tile _tile;
@@ -107,6 +108,11 @@ public class BaseUnit {
 		get {return _inCombat;}
 	}
 
+	public bool isCasting {
+		get {return _isCasting;}
+		set {_isCasting = value;}
+	}
+
 	public bool playerControlled {
 		set {_playerControlled = value;}
 		get {return _playerControlled;}
@@ -126,7 +132,6 @@ public class BaseUnit {
 		set {_shadowSprite = value;}
 		get {return _shadowSprite;}
 	}
-
 
 	public StatPreset statPreset {
 		set {_statPreset = value;}
@@ -180,6 +185,10 @@ public class BaseUnit {
 
 	public int speed {
 		get {return _baseSpeed + _modSpeed;}
+	}
+
+	public int aggroRadius {
+		get {return _aggroRadius;}
 	}
 
 	public List<Spell.Preset> spells {
@@ -279,7 +288,7 @@ public class BaseUnit {
 		_currentHitPoints = _hitPoints;
 		_experience = 0;
 		
-
+		_aggroRadius = 4;
 		_currentEssence = _baseEssence;
 		_turnEssence = _baseEssence;
 		//_myTurn = new Turn(this, _modSpeed);
@@ -297,7 +306,7 @@ public class BaseUnit {
 	void EvaluateStatPreset() {
 		_spells = new List<Spell.Preset>();
 		_spells.Add(Spell.Preset.Move);
-		_spells.Add(Spell.Preset.Bite);
+		_spells.Add(Spell.Preset.Fireball);
 
 		switch(_statPreset) {
 			case StatPreset.Human:
@@ -307,7 +316,7 @@ public class BaseUnit {
 				_baseConstitution = 10;
 				_baseWisdom = 10;
 				_baseCharisma = 10;
-				_baseSpeed = 4;
+				_baseSpeed = 2;
 				_baseEssence = 4;
 				_hpScaling = 50;	//8 default
 				_size = Size.Medium;
@@ -324,6 +333,7 @@ public class BaseUnit {
 				_baseEssence = 2;
 				_hpScaling = 16;
 				_size = Size.Small;
+				_aggroRadius = 6;
 			break;
 
 			case StatPreset.Spider:
@@ -440,7 +450,7 @@ public class BaseUnit {
 					if(_playerControlled) {
 						SetAsInterfaceTarget();
 					}
-					tile.combatManager.CheckCombatStatus();
+					tile.combatManager.CheckCombatStatus(tile.combatManager.GetAllBaseUnits());
 
 					if(_tile.unit != null) {
 						_tile.unit.baseUnit = this;
@@ -513,6 +523,7 @@ public class BaseUnit {
 				color = new Color(1f, 165f/255f, 0f);
 			break;
 		}
+
 		_tile.baseUnit.BeginHitAnimation();
 		SpawnDamageText(damage.ToString(), color);
 		if(_currentHitPoints-damage > 0) {
@@ -523,6 +534,28 @@ public class BaseUnit {
 					hitpointUI.UpdateHitpoints(_currentHitPoints, _hitPoints);
 				}
 			}
+
+			// Aggro this unit if it's not in combat
+			if(dealer != null) {
+				CombatManager cm = _tile.combatManager;
+				if(dealer != this && !cm.turnQueue.UnitInQueue(this)) {
+					
+					// Add self to turn queue
+					if(!_inCombat) {
+						_inCombat = true;
+						cm.turnQueue.Add(new Turn(this, modSpeed));
+						cm.CheckCombatStatus(new List<BaseUnit> {this});
+						cm.CheckCombatStatus(cm.GetAllBaseUnits());
+					}
+
+					// Add dealer to to turn queue
+					if(!dealer.inCombat && !cm.turnQueue.UnitInQueue(dealer)) {
+						dealer.inCombat = true;
+						cm.turnQueue.Add(new Turn(dealer, dealer.modSpeed));
+					}
+				}
+			}
+
 		} else {
 			if(dealer != null) {
 				dealer.GrantExperience(10);

@@ -41,6 +41,7 @@ public class UnitBehaviour : MonoBehaviour {
 	public string u;
 	public Vector2Int p;
 
+	Coroutine _inputCooldownCoroutine;
 
 	void Awake() {
 		_rectTransform = GetComponent<RectTransform>();
@@ -118,12 +119,38 @@ public class UnitBehaviour : MonoBehaviour {
 		_shadowImage.enabled = false;
 	}
 
+	public void SetInputCooldown(BaseUnit bUnit, float delay = 0.5f, bool recast = false) {
+		if(_inputCooldownCoroutine != null || _baseUnit == null) {return;}
+		StartCoroutine(ESetInputCooldown(bUnit, delay, recast));
+	}
+
 	public void SpawnSpellProjectiles(Spell spell) {
 		StartCoroutine(ESpawnSpellProjectiles(spell));
 	}
 
 	public void SpawnSpellEffect(Spell spell) {
 		StartCoroutine(ESpawnSpellEffect(spell));
+	}
+
+	IEnumerator ESetInputCooldown(BaseUnit bUnit, float delay = 0.5f, bool recast = false) {
+		bUnit.isCasting = true;
+		yield return new WaitForSeconds(delay);
+		Debug.Log(bUnit);
+		if(bUnit == null) {yield break;}
+		bUnit.isCasting = false;
+
+		// Re-enable hotbar after cooldown is done.
+		if(bUnit.playerControlled) {
+			if(bUnit == _tile.combatManager.turnQueue.queue[0].baseUnit) {
+				Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
+				if(hotbar != null) {
+					hotbar.EnableHotkeys();
+					if(recast) {
+						hotbar.Recast(_tile.position);
+					}
+				}
+			}
+		}
 	}
 
 	IEnumerator ESpawnSpellProjectiles(Spell spell) {

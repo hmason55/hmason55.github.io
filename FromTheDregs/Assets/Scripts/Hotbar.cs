@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -100,11 +101,11 @@ public class Hotbar : MonoBehaviour {
 			_activeSpell.ShowEffectRange(position);
 		} else {
 			_activeSpell.effectOrigin = position;
-			ConfirmCast(true);
+			ConfirmCast();
 		}
 	}
 
-	public void ConfirmCast(bool recast = false) {
+	public void ConfirmCast() {
 		bool combatStatus = _baseUnit.inCombat;
 
 		if(combatStatus == true) {
@@ -113,8 +114,14 @@ public class Hotbar : MonoBehaviour {
 		_essenceUI.SetFilledEssence(_baseUnit.currentEssence);
 		_activeSpell.ConfirmSpellCast();
 		
+		if(_baseUnit.isCasting) {
+			DisableHotkeys();
+		}
 
-		if(_baseUnit.inCombat == combatStatus) {	// If combat status is unchanged, allow auto recast.
+		_activeSpell.ResetTiles();
+		_castOptionsUI.HideUI();
+
+		/* if(_baseUnit.inCombat == combatStatus) {	// If combat status is unchanged, allow auto recast.
 			if(!recast || _activeSpell.essenceCost > _baseUnit.currentEssence) {	// Cancel recast if insufficient essence or recast is disabled.
 				_activeSpell.ResetTiles();
 				_tapController.image.raycastTarget = true;
@@ -122,8 +129,28 @@ public class Hotbar : MonoBehaviour {
 			}
 		} else {
 			_castOptionsUI.CancelCast();
-		}
+		}*/
 		
+	}
+
+	public void Recast(Vector2Int position) {
+		if(_activeSpell.essenceCost <= _baseUnit.currentEssence) {
+			Debug.Log("Recast");
+			_activeSpell.ResetTiles();
+			_castOptionsUI.ShowUI();
+			_activeSpell.ShowCastRange();
+		}
+		EventSystem.current.SetSelectedGameObject(null);
+	}
+
+	public void ClearCharges() {
+		for(int i = 0; i < _hotkeys.Count; i++) {
+			if(_hotkeys[i].spell != null) {
+				_hotkeys[i].ClearCharges();
+				_hotkeys[i].UpdateName();
+				_hotkeys[i].UpdateCost();
+			}
+		}
 	}
 
 	public void UpdateHotkeys() {
@@ -133,6 +160,7 @@ public class Hotbar : MonoBehaviour {
 				_hotkeys[i].UpdateCost();
 			}
 		}
+		EventSystem.current.SetSelectedGameObject(null);
 	}
 
 	public void ShowHotkeys() {
@@ -149,9 +177,13 @@ public class Hotbar : MonoBehaviour {
 		}
 	}
 
-	public void EnableHotkeys() {
+	public void EnableHotkeys(bool forceEnable = false) {
 		foreach(Hotkey hotkey in _hotkeys) {
-			hotkey.Enable();
+			if(hotkey.spell != null) {
+				if(hotkey.spell.essenceCost <= _baseUnit.currentEssence || forceEnable) {
+					hotkey.Enable();
+				}
+			}
 		}
 		//UpdateHotkeys();
 	}
