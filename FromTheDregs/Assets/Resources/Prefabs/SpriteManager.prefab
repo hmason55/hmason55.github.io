@@ -269,3 +269,64 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 3384cd35a5d1db149b7c9ad2b8d8949e, type: 3}
     - {fileID: 21300000, guid: 84d90d31658eae84cba3e58c050e3a67, type: 3}
     - {fileID: 21300000, guid: fe6d9aabf421abd43bf10be431c831eb, type: 3}
+  items:
+    lightArmorBody:
+    - {fileID: 21300000, guid: 5b4945a73aa6c1a46acdcf3cc760763e, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    lightArmorFeet:
+    - {fileID: 21300000, guid: 978d4051c3fe1144393447cd86409ada, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    lightArmorHands:
+    - {fileID: 21300000, guid: 094c004416f7f7548b8731de72139767, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    lightArmorHead:
+    - {fileID: 21300000, guid: fd72f3166fd278e4f9c1c5a9859267c0, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    lightArmorLegs:
+    - {fileID: 21300000, guid: 910042287f79ead48b643b1ee4d04aa5, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    mediumArmorBody:
+    - {fileID: 21300000, guid: 96aa524d83b4b464ab55605fc4aa7f39, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    mediumArmorFeet:
+    - {fileID: 21300000, guid: 327b266b4f02f46459989b853454d641, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    mediumArmorHands:
+    - {fileID: 21300000, guid: d6e47f77ab8bafc42b84eafa111c805c, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    mediumArmorHead:
+    - {fileID: 21300000, guid: 6a4a22e6e142adc4897f8203a058d250, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    mediumArmorLegs:
+    - {fileID: 21300000, guid: e13dbdbbfcef29541b8e0bf50cf26dd8, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    heavyArmorBody:
+    - {fileID: 21300000, guid: d9bf73fc7248f0c4eafacc9710154d9d, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    heavyArmorFeet:
+    - {fileID: 21300000, guid: 1807aec0b5248174bbefa5ffe6a02875, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    heavyArmorHands:
+    - {fileID: 21300000, guid: 949030d8e72304c4ebeefd13c4bec727, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    heavyArmorHead:
+    - {fileID: 21300000, guid: 2cbfb97126debc145b1ec874d4450b27, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    heavyArmorLegs:
+    - {fileID: 21300000, guid: 98955d98bc955614c941e19b1fb697f3, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}

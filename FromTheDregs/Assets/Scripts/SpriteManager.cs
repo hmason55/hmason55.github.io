@@ -22,5 +22,5 @@ public class SpriteManager : MonoBehaviour {
 	public UnitSprites unitWidow1;
 	public UnitSprites unitWidowSmall1;
 
-	
+	public ItemSprites items;
 }
