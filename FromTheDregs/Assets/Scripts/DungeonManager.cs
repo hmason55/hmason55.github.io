@@ -1,12 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Collections;
 using System.IO;
+using UnityEditor;
+using UnityEngine.SceneManagement;	
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEditor;
+
 
 
 public class DungeonManager : MonoBehaviour {
+
+	public enum LoadState {
+		Unloaded,
+		Unloading,
+		Loading,
+		Loaded
+	}
+
+	LoadState _loadState = LoadState.Unloaded;
 
 	[SerializeField] AnimationController animationController;
 	[SerializeField] SpriteManager spriteManager;
@@ -52,7 +63,6 @@ public class DungeonManager : MonoBehaviour {
 
 	Vector2Int _renderOrigin;
 
-
 	[SerializeField] Biome.BiomeType biomeType = Biome.BiomeType.forsaken;
 	Biome _biome;
 
@@ -73,18 +83,37 @@ public class DungeonManager : MonoBehaviour {
 	}
 
 	void Awake() {
-		biomes = new List<Biome>();
+		_loadState = LoadState.Unloaded;
 	}
 
 	void Start () {
+		Load();
+	}
+
+	void Load() {
+		_loadState = LoadState.Loading;
 		InitializeGrid();
 		InitializeObjectPools();
 		SpawnBiomes();
 		CreateMainPath();
 		_limitRendering = true;
+		_loadState = LoadState.Loaded;
 		Debug.Log(Time.realtimeSinceStartup);
 	}
-	
+
+	void Unload() {
+		_loadState = LoadState.Unloading;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	void Update() {
+		if(Input.GetKeyDown(KeyCode.Space)) {
+			if(_loadState == LoadState.Loaded) {
+				Unload();
+			}
+		}
+	}
+
 	void InitializeGrid() {
 		int dimension = chunkDimension * dungeonDimension;
 		_tiles = new Tile[dimension, dimension];
@@ -310,7 +339,6 @@ public class DungeonManager : MonoBehaviour {
 	}
 
 	public void AllocateObjects() {
-		int dimension = chunkDimension * dungeonDimension;
 		int _terrainIndex = 0;
 		int _decorationIndex = 0;
 		int _unitIndex = 0;
@@ -338,7 +366,6 @@ public class DungeonManager : MonoBehaviour {
 								if(_tiles[x, y].baseTerrain != null) {
 									_terrainPool[x, y] = _terrainStack[_terrainIndex++];
 									_terrainPool[x, y].Transfer(_tiles[x, y], _tiles[x, y].baseTerrain);
-									_terrainPool[x, y].transform.SetAsLastSibling();
 									_terrainPool[x, y].gameObject.name = "Terrain (" + x + ", " + y + ")"; 
 								}
 							}
@@ -367,7 +394,6 @@ public class DungeonManager : MonoBehaviour {
 			}
 		}
 
-
 		for(int i = _terrainStack.Count-1; i >= 0; i--) {
 			if(_terrainStack[i].renderFlag) {
 				_terrainStack.RemoveAt(i);
@@ -385,7 +411,49 @@ public class DungeonManager : MonoBehaviour {
 				_unitStack.RemoveAt(i);
 			}
 		}
-		//Debug.Log(_unitStack.Count);
+
+		SortTerrainObjects();
+	}
+
+	void SortTerrainObjects() {
+		
+		List<TerrainBehaviour> terrainObjects = new List<TerrainBehaviour>();
+
+		// Get a list of valid terrain objects
+		for(int i = 0; i < _terrainLayer.transform.childCount; i++) {
+			TerrainBehaviour tb = _terrainLayer.transform.GetChild(i).GetComponent<TerrainBehaviour>();
+			if(tb != null) {
+				if(tb.tile != null) {
+					terrainObjects.Add(tb);
+				} else {
+					tb.transform.SetAsFirstSibling();
+				}
+			}
+		}
+
+		// Sort terrain by depth (ascending insertion sort)
+		if(terrainObjects.Count >= 2) {
+			int i = 1;
+			while(i < terrainObjects.Count) {
+				int j = i;
+				
+				while(j > 0 && (dimension * terrainObjects[j - 1].tile.position.y + terrainObjects[j - 1].tile.position.x) > (dimension * terrainObjects[j].tile.position.y + terrainObjects[j].tile.position.x)) {
+					int siblingNdx = terrainObjects[j - 1].transform.GetSiblingIndex();
+					TerrainBehaviour tempBehaviour = terrainObjects[j - 1];
+
+					// Swap transform depth
+					terrainObjects[j - 1].transform.SetSiblingIndex(terrainObjects[j].transform.GetSiblingIndex());
+					terrainObjects[j].transform.SetSiblingIndex(siblingNdx);
+					
+					// Swap behaviour order
+					terrainObjects[j - 1] = terrainObjects[j];
+					terrainObjects[j] = tempBehaviour;
+
+					j--;
+				}
+				i++;
+			}
+		}
 	}
 
 	public void AllocateUnit(Vector2Int position) {
@@ -563,6 +631,8 @@ public class DungeonManager : MonoBehaviour {
 	}
 
 	void SpawnBiomes() {
+		biomes = new List<Biome>();
+
 		// Global biome
 		_biome = new Biome(0, 0, 0);
 		_biome.biomeType = biomeType;

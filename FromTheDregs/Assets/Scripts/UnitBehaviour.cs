@@ -119,6 +119,11 @@ public class UnitBehaviour : MonoBehaviour {
 		_shadowImage.enabled = false;
 	}
 
+	public void MoveFromTo(Vector2Int from, Vector2Int to, float duration) {
+		ResetPosition();
+		StartCoroutine(EMoveFromTo(from, to, duration));
+	}
+
 	public void SetInputCooldown(BaseUnit bUnit, float delay = 0.5f, bool recast = false) {
 		if(_inputCooldownCoroutine != null || _baseUnit == null) {return;}
 		StartCoroutine(ESetInputCooldown(bUnit, delay, recast));
@@ -130,6 +135,38 @@ public class UnitBehaviour : MonoBehaviour {
 
 	public void SpawnSpellEffect(Spell spell) {
 		StartCoroutine(ESpawnSpellEffect(spell));
+	}
+
+	public void ResetPosition() {
+		_rectTransform.anchoredPosition = _tile.position * DungeonManager.dimension;
+	}
+
+	IEnumerator EMoveFromTo(Vector2Int from, Vector2Int to, float duration) {
+		float deadzone = 0f;
+		float _panSpeed = 16f;
+		float delay = 0.01f;
+		_rectTransform.anchoredPosition = from * DungeonManager.dimension;
+		to *= DungeonManager.dimension;
+
+		float startTime = Time.timeSinceLevelLoad;
+		bool done = false;
+		
+		while(!done) {
+			Vector2 distanceVector = new Vector2(to.x - _rectTransform.anchoredPosition.x, to.y - _rectTransform.anchoredPosition.y);
+			if(distanceVector.magnitude > deadzone) {
+				_rectTransform.anchoredPosition += distanceVector.normalized * (distanceVector.magnitude * _panSpeed) * Time.deltaTime;
+			} else if(distanceVector.magnitude != 0f){
+				done = true;
+			}
+
+			if(Time.timeSinceLevelLoad - startTime > duration) {
+				done = true;
+			}
+			yield return new WaitForSeconds(delay);
+		}
+
+		ResetPosition();
+		yield break;
 	}
 
 	IEnumerator ESetInputCooldown(BaseUnit bUnit, float delay = 0.5f, bool recast = false) {

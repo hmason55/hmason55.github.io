@@ -270,63 +270,81 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 84d90d31658eae84cba3e58c050e3a67, type: 3}
     - {fileID: 21300000, guid: fe6d9aabf421abd43bf10be431c831eb, type: 3}
   items:
+    unknown: {fileID: 21300000, guid: c6b657970ed01be44a44a8dc9521953c, type: 3}
+    unknownNeck: {fileID: 21300000, guid: 3c2362545bee25d489f6cffcecd01b0b, type: 3}
+    unknownHead: {fileID: 21300000, guid: 0048055bccaf1f24ab1d340b49e1b63a, type: 3}
+    unknownFinger: {fileID: 21300000, guid: 8712bf59f30d4994ca8b1f056e1bffb1, type: 3}
+    unknownPrimary: {fileID: 21300000, guid: f38f61675f4fcb44998baca9a1b83506, type: 3}
+    unknownBody: {fileID: 21300000, guid: 921d0dbc2fd83dd40ae0c26720dff0c2, type: 3}
+    unknownSecondary: {fileID: 21300000, guid: dc9dde646607dc740ac2be0e66129ca8, type: 3}
+    unknownHands: {fileID: 21300000, guid: 109903dd065ff3445849fb0463bb1046, type: 3}
+    unknownLegs: {fileID: 21300000, guid: cbeec4add8885754f9d96defa0e3ea42, type: 3}
+    unknownFeet: {fileID: 21300000, guid: 9c74f2df2c1e8354c829e780a5e6c753, type: 3}
     lightArmorBody:
     - {fileID: 21300000, guid: 5b4945a73aa6c1a46acdcf3cc760763e, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: b39fa716db2ee2345bc768ffa061205d, type: 3}
+    - {fileID: 21300000, guid: 56b3eda6fb542cc4783c55a41b2f43b0, type: 3}
     lightArmorFeet:
     - {fileID: 21300000, guid: 978d4051c3fe1144393447cd86409ada, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: c913f7eecf564564680a3c24173489e3, type: 3}
+    - {fileID: 21300000, guid: 3c1da8ef749014f409774c61428ea32b, type: 3}
     lightArmorHands:
     - {fileID: 21300000, guid: 094c004416f7f7548b8731de72139767, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 622b242db51ad1e499f9e2c671affbc3, type: 3}
+    - {fileID: 21300000, guid: 5ccfef6ce8d375d489b6cb92fdc25e36, type: 3}
     lightArmorHead:
     - {fileID: 21300000, guid: fd72f3166fd278e4f9c1c5a9859267c0, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 09ee0bb62da4f5945b132e89ae8cb414, type: 3}
+    - {fileID: 21300000, guid: 8ce59b3e18831a24d8bc83ce9114766d, type: 3}
     lightArmorLegs:
     - {fileID: 21300000, guid: 910042287f79ead48b643b1ee4d04aa5, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 5a2ae5f7676b9d842ab7101ce6e17784, type: 3}
+    - {fileID: 21300000, guid: 3e664825e22735649af9f8eaa7327c82, type: 3}
     mediumArmorBody:
     - {fileID: 21300000, guid: 96aa524d83b4b464ab55605fc4aa7f39, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: a40b9865f2a044c458367c344fb80de7, type: 3}
     - {fileID: 0}
     mediumArmorFeet:
     - {fileID: 21300000, guid: 327b266b4f02f46459989b853454d641, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: a0f58b5ec98b47f4ba36ed758ba876bd, type: 3}
     - {fileID: 0}
     mediumArmorHands:
     - {fileID: 21300000, guid: d6e47f77ab8bafc42b84eafa111c805c, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: e66eabfd66dd8db4f913764cd64b4083, type: 3}
     - {fileID: 0}
     mediumArmorHead:
     - {fileID: 21300000, guid: 6a4a22e6e142adc4897f8203a058d250, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 4c1cf8a8829595f4f8743573475a016f, type: 3}
     - {fileID: 0}
     mediumArmorLegs:
     - {fileID: 21300000, guid: e13dbdbbfcef29541b8e0bf50cf26dd8, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: e8bcbad1fc8755b4db6156ec3d89eef5, type: 3}
     - {fileID: 0}
     heavyArmorBody:
     - {fileID: 21300000, guid: d9bf73fc7248f0c4eafacc9710154d9d, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 4dad14b0e4d0f894c8c20126adab9ab2, type: 3}
     - {fileID: 0}
     heavyArmorFeet:
     - {fileID: 21300000, guid: 1807aec0b5248174bbefa5ffe6a02875, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 63921543e1bdbf842ad69fb1f73b870d, type: 3}
     - {fileID: 0}
     heavyArmorHands:
     - {fileID: 21300000, guid: 949030d8e72304c4ebeefd13c4bec727, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 771815e0a6772884281c9ba2ead52f6e, type: 3}
     - {fileID: 0}
     heavyArmorHead:
     - {fileID: 21300000, guid: 2cbfb97126debc145b1ec874d4450b27, type: 3}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: 383034f0dc7443043822e42847215c70, type: 3}
     - {fileID: 0}
     heavyArmorLegs:
     - {fileID: 21300000, guid: 98955d98bc955614c941e19b1fb697f3, type: 3}
+    - {fileID: 21300000, guid: 97a0ecdf840ccef4f86d34eef2913fe7, type: 3}
     - {fileID: 0}
-    - {fileID: 0}
+    jewelryNeck:
+    - {fileID: 21300000, guid: b6cc9e7aec1279547b5e9a5b37caf2f9, type: 3}
+    - {fileID: 21300000, guid: 3f77422bb8382e945a1ee20466d4a488, type: 3}
+    - {fileID: 21300000, guid: 99b5baa96877e254f8bb96bc4e2eacbe, type: 3}
+    jewelryFinger:
+    - {fileID: 21300000, guid: daf95fa93ee39ec4f9ac4889fd1c58a9, type: 3}
+    - {fileID: 21300000, guid: 585147f583639df4c9d93971c78a19e6, type: 3}
+    - {fileID: 21300000, guid: 335814f33ca42e94aa8ee327ad91be7f, type: 3}

@@ -46,9 +46,6 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 	void Awake() {
 		_spriteManager = GameObject.FindObjectOfType<SpriteManager>();
 		_bagBehaviour = GameObject.FindObjectOfType<BagBehaviour>();
-		if(_slotCategory == BaseItem.Category.Unknown) {
-			_item = new BaseItem(BaseItem.Category.Body_Armor, 1);
-		}
 		
 		UpdateImage();
 	}
@@ -70,6 +67,10 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 
 
 	public void UpdateImage() {
+		if(_spriteManager == null) {
+			_spriteManager = GameObject.FindObjectOfType<SpriteManager>();
+		}
+
 		if(_item != null) {
 			_item.LoadSprite(_spriteManager);
 
@@ -82,13 +83,9 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 			if(_item.sprite != null) {
 				_image.sprite = _item.sprite;
 			} else {
-				_image.GetComponent<Outline>().enabled = true;
-				_image.GetComponent<Shadow>().enabled = true;
 				_image.sprite = _spriteManager.items.unknown;
 			}
 		} else {
-			_image.GetComponent<Outline>().enabled = false;
-			_image.GetComponent<Shadow>().enabled = false;
 
 			_equipped = false;
 			GetComponent<Image>().sprite = _defaultSprite;

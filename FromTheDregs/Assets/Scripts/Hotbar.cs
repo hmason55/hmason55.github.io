@@ -43,12 +43,6 @@ public class Hotbar : MonoBehaviour {
 		InitHotkeys();
 	}
 
-	void Update() {
-		if(Input.GetKeyDown(KeyCode.Space)) {
-			UpdateHotkeys();
-		}
-	}
-
 	void InitHotkeys() {
 		_hotkeys = new List<Hotkey>();
 		for(int i = 0; i < transform.childCount; i++) {

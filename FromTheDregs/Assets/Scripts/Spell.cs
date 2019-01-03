@@ -56,6 +56,7 @@ public class Spell {
 	string _spellName;
 	int _damageDice = 1;
 	int _damageSides = 4;
+	float _damageMultiplier = 1.0f;
 	int _essenceCost = 1;
 	int _chargesRemaining = 0;
 	int _chargesMax;
@@ -212,6 +213,7 @@ public class Spell {
 				_createsProjectile = false;
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
+				_damageMultiplier = 1.25f;
 				_modSizeDamage = 0;
 				
 				_castParticlePath = "";
@@ -252,6 +254,7 @@ public class Spell {
 				_createsProjectile = false;
 				_createsEffect = true;
 				_scaling = Scaling.Intelligence;
+				_damageMultiplier = 1.20f;
 				_modSizeDamage = 0;
 				
 				_castParticlePath = "Prefabs/Effects/Fire Casting";
@@ -289,6 +292,7 @@ public class Spell {
 				_createsProjectile = true;
 				_createsEffect = true;
 				_scaling = Scaling.Intelligence;
+				_damageMultiplier = 1.00f;
 				_modSizeDamage = 0;
 				
 				_castParticlePath = "Prefabs/Effects/Fire Casting";
@@ -905,15 +909,15 @@ public class Spell {
 		int totalDamage = 0;
 		switch(_scaling) {
 			case Scaling.Strength:
-				totalDamage = Dice.Roll(_damageDice, _damageSides) + _caster.modStrength + _modSizeDamage;
+				totalDamage = Dice.Roll(_damageDice, _damageSides) + Mathf.FloorToInt((_caster.modStrength + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
 			break;
 
 			case Scaling.Dexterity:
-				totalDamage = Dice.Roll(_damageDice, _damageSides) + _caster.modDexterity + _modSizeDamage;
+				totalDamage = Dice.Roll(_damageDice, _damageSides) +  Mathf.FloorToInt((_caster.modDexterity + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
 			break;
 
 			case Scaling.Intelligence:
-				totalDamage = Dice.Roll(_damageDice, _damageSides) + _caster.modIntelligence + _modSizeDamage;
+				totalDamage = Dice.Roll(_damageDice, _damageSides) +  Mathf.FloorToInt((_caster.modIntelligence + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
 			break;
 		}
 

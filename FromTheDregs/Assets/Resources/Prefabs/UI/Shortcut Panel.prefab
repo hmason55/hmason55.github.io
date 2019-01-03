@@ -598,6 +598,7 @@ MonoBehaviour:
   _characterShortcut: {fileID: 114451270219460096}
   _bagShortcut: {fileID: 114722821648163174}
   _endTurnShortcut: {fileID: 114940013188371012}
+  _bagBehaviour: {fileID: 0}
 --- !u!114 &114722821648163174
 MonoBehaviour:
   m_ObjectHideFlags: 1

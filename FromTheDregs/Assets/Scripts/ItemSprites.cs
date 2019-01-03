@@ -37,6 +37,8 @@ public class ItemSprites {
 	#endregion
 
 	#region Jewelry
+	public List<Sprite> jewelryNeck;
+	public List<Sprite> jewelryFinger;
 	#endregion
 
 	#region Weapons

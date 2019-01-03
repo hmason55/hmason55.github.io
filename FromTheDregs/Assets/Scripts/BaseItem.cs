@@ -27,8 +27,10 @@ public class BaseItem {
 	}
 
 	public enum LightArmorTier {
-		Cloth,
-		Silk
+		Cotton,
+		Trimmed_Cotton,
+		Silk,
+		Trimmed_Silk
 	}
 
 	public enum MediumArmorTier {
@@ -41,6 +43,12 @@ public class BaseItem {
 		Iron_Plate
 	}
 
+	public enum JewelryTier {
+		Copper,
+		Silver,
+		Gold
+	}
+
 	Category _category;
 	int _id;
 	int _tier;
@@ -48,10 +56,20 @@ public class BaseItem {
 
 	#region Attributes
 	// Equipment Attributes
-	int _physicalAttack;
-	int _magicalAttack;
-	int _physicalDefense;
-	int _magicalDefense;
+	int _attack;
+	int _defense;
+
+	int _healthTotal;
+	int _healthRecovery;
+
+	int _essenceTotal;
+	int _essenceRecovery;
+
+	int _movementSpeed;
+	//int _physicalAttack;
+	//int _magicalAttack;
+	//int _physicalDefense;
+	//int _magicalDefense;
 	ArmorWeight _armorWeight;
 
 	// Consumable Attributes
@@ -59,6 +77,7 @@ public class BaseItem {
 	Sprite _sprite;
 	#endregion
 
+	#region Accessors
 	public int tier {
 		get {return _tier;}
 	}
@@ -71,34 +90,124 @@ public class BaseItem {
 		get {return _sprite;}
 	}
 
+	public int attack {
+		get {return _attack;}
+	}
+
+	public int defense {
+		get {return _defense;}
+	}
+
+	public int healthTotal {
+		get {return _healthTotal;}
+	}
+
+	public int healthRecovery {
+		get {return _healthRecovery;}
+	}
+	
+	public int essenceTotal {
+		get {return _essenceTotal;}
+	}
+
+	public int essenceRecovery {
+		get {return _essenceRecovery;}
+	}
+
+	public int movementSpeed {
+		get {return _movementSpeed;}
+	}
+	#endregion
+
+	// Any
 	public BaseItem(Category c, int t) {
 		_category = c;
 		_tier = t;
-		RollCategory();
 
 		switch(_category) {
+			case Category.Neck_Jewelry:
+				_attack = 1 * _tier;
+				//_physicalAttack = 2 * _tier;
+				//_magicalAttack =  2 * _tier;
+			break;
+
+			case Category.Finger_Jewelry:
+				_attack = 1 * _tier;
+				//_physicalAttack = 1 * _tier;
+				//_magicalAttack =  1 * _tier;
+			break;
+
 			case Category.Body_Armor:
 			case Category.Foot_Armor:
 			case Category.Hand_Armor:
 			case Category.Head_Armor:
 			case Category.Leg_Armor:
 				RollArmorWeight();
-				
-				_physicalAttack = (3 - ((int)_armorWeight)) * (_tier);
-				_magicalAttack =  (3 - ((int)_armorWeight)) * (_tier);
 
-				_physicalDefense = ((int)_armorWeight + 1) * (_tier);
-				_magicalDefense =  ((int)_armorWeight + 1) * (_tier);
+				_attack = (2 - ((int)_armorWeight)) * (_tier);
+				//_physicalAttack = (3 - ((int)_armorWeight)) * (_tier);
+				//_magicalAttack =  (3 - ((int)_armorWeight)) * (_tier);
+
+				_defense = ((int)_armorWeight) * (_tier);
+				//_physicalDefense = ((int)_armorWeight + 1) * (_tier);
+				//_magicalDefense =  ((int)_armorWeight + 1) * (_tier);
 			break;
 		}
+	}
 
-		Debug.Log(NameToString());
+	// Armor
+	public BaseItem(Category c, ArmorWeight w, int t) {
+		_category = c;
+		_armorWeight = w;
+		_tier = t;
+
+		Init();
+	}
+
+	void Init() {
+		switch(_category) {
+			case Category.Neck_Jewelry:
+				_attack = 1 * _tier;
+				//_physicalAttack = 2 * _tier;
+				//_magicalAttack =  2 * _tier;
+			break;
+
+			case Category.Finger_Jewelry:
+				_attack = 1 * _tier;
+				//_physicalAttack = 1 * _tier;
+				//_magicalAttack =  1 * _tier;
+			break;
+
+			case Category.Body_Armor:
+			case Category.Foot_Armor:
+			case Category.Hand_Armor:
+			case Category.Head_Armor:
+			case Category.Leg_Armor:
+				
+				_attack = (2 - ((int)_armorWeight)) * (_tier);
+				//_physicalAttack = (3 - ((int)_armorWeight)) * (_tier);
+				//_magicalAttack =  (3 - ((int)_armorWeight)) * (_tier);
+
+				_defense = ((int)_armorWeight) * (_tier);
+				//_physicalDefense = ((int)_armorWeight + 1) * (_tier);
+				//_magicalDefense =  ((int)_armorWeight + 1) * (_tier);
+			break;
+		}
 	}
 
 	public void LoadSprite(SpriteManager spriteManager) {
 		if(spriteManager == null) {return;}
 
 		switch(_category) {
+
+			case Category.Neck_Jewelry:
+				_sprite = spriteManager.items.jewelryNeck[_tier-1];
+			break;
+			
+			case Category.Finger_Jewelry:
+				_sprite = spriteManager.items.jewelryFinger[_tier-1];
+			break;
+
 			case Category.Primary_Weapon:
 			case Category.Secondary_Weapon:
 			break;
@@ -191,7 +300,7 @@ public class BaseItem {
 	}
 
 	void RollCategory() {
-		int ndx = UnityEngine.Random.Range(3, 7);
+		int ndx = UnityEngine.Random.Range(3, 8);
 		_category = (Category)ndx;
 	}
 
@@ -222,6 +331,11 @@ public class BaseItem {
 						type = ((HeavyArmorTier)_tier - 1).ToString();
 					break;
 				}
+			break;
+
+			case Category.Finger_Jewelry:
+			case Category.Neck_Jewelry:
+				type = ((JewelryTier)_tier - 1).ToString();
 			break;
 		}
 
@@ -306,6 +420,14 @@ public class BaseItem {
 					break;
 				}
 			break;
+
+			case Category.Neck_Jewelry:
+				piece = "Necklace";
+			break;
+
+			case Category.Finger_Jewelry:
+				piece = "Ring";
+			break;
 		}
 
 		if(type != "") {
@@ -327,28 +449,66 @@ public class BaseItem {
 		return "Tier " + _tier.ToString() + " " + _category.ToString().Replace("_", " ");
 	}
 
-	public string AttributesToString() {
+	public string AttributeCategoriesToString() {
 		string attributeString = "";
 
-
-		if(_physicalAttack != 0) {
-			attributeString += _physicalAttack + " Physical Attack\n";
+		if(_attack > 0) {
+			attributeString += "<b><color=cyan>Attack</color></b>\n";
+		} else if(_attack < 0) {
+			attributeString += "<b><color=red>Attack</color></b>\n";
+		} else {
+			attributeString += "Attack\n";
 		}
 
-		if(_magicalAttack != 0) {
-			attributeString += _magicalAttack + " Magical Attack\n";
+		if(_defense > 0) {
+			attributeString += "<b><color=cyan>Defense</color></b>\n";
+		} else if(_defense < 0) {
+			attributeString += "<b><color=red>Defense</color></b>\n";
+		} else {
+			attributeString += "Defense\n";
 		}
-		
+
+		attributeString += "\n";
+		attributeString += "Health Total\n";
+		attributeString += "Health Recovery\n";
+		attributeString += "\n";
+		attributeString += "Essence Total\n";
+		attributeString += "Essence Recovery\n";
+		attributeString += "\n";
+		attributeString += "Movement Speed\n";
+
+		return attributeString;
+	}
+
+	public string AttributeValuesToString() {
+		string attributeString = "";
+
+		if(_attack > 0) {
+			attributeString += "<b><color=cyan>+ " + (_attack) + "</color></b>\n";
+		} else if(_attack < 0) {
+			attributeString += "<b><color=red>- " + Mathf.Abs(_attack) + "</color></b>\n";
+		} else {
+			attributeString += _attack + "\n";
+		}
+
+		if(_defense > 0) {
+			attributeString += "<b><color=cyan>+ " + _defense + "</color></b>\n";
+		} else if(_defense < 0) {
+			attributeString += "<b><color=red>- " + Mathf.Abs(_defense) + "</color></b>\n";
+		} else {
+			attributeString += _defense + "\n";
+		}
+
 		attributeString += "\n";
 
-		if(_physicalDefense != 0) {
-			attributeString += _physicalDefense + " Physical Defense\n";
-		}
+		attributeString += _healthTotal + "\n";
+		attributeString += _healthRecovery + "\n";
+		attributeString += "\n";
+		attributeString += _essenceTotal + "\n";
+		attributeString += _essenceRecovery + "\n";
+		attributeString += "\n";
+		attributeString += _movementSpeed + "\n";
 
-		if(_magicalDefense != 0) {
-			attributeString += _magicalDefense + " Magical Defense\n";
-		}
-		
 		return attributeString;
 	}
 }

@@ -78,6 +78,7 @@ public class BaseUnit {
 	bool _isCasting;
 	int _combatAlliance;
 	bool _playerControlled = false;
+	Bag _bag;
 
 	Tile _tile;
 
@@ -200,6 +201,11 @@ public class BaseUnit {
 		set {_myTurn = value;}
 	}
 
+	public Bag bag {
+		get {return _bag;}
+		set {_bag = value;}
+	}
+
 	public Sprite[] idleAnimation {
 		get {return _idleAnimation;}
 		set {_idleAnimation = value;}
@@ -293,7 +299,33 @@ public class BaseUnit {
 		_turnEssence = _baseEssence;
 		//_myTurn = new Turn(this, _modSpeed);
 
+		// Equip items
+		_bag = new Bag();
+		
+
 		if(_playerControlled) {
+			
+			_bag.Add(new BaseItem(BaseItem.Category.Head_Armor, BaseItem.ArmorWeight.Heavy, 2));
+			_bag.Add(new BaseItem(BaseItem.Category.Body_Armor, BaseItem.ArmorWeight.Heavy, 2));
+			_bag.Add(new BaseItem(BaseItem.Category.Hand_Armor, BaseItem.ArmorWeight.Heavy, 2));
+			_bag.Add(new BaseItem(BaseItem.Category.Leg_Armor, BaseItem.ArmorWeight.Heavy, 2));
+			_bag.Add(new BaseItem(BaseItem.Category.Foot_Armor, BaseItem.ArmorWeight.Heavy, 2));
+
+			_bag.Add(new BaseItem(BaseItem.Category.Head_Armor, BaseItem.ArmorWeight.Light, 3));
+			_bag.Add(new BaseItem(BaseItem.Category.Body_Armor, BaseItem.ArmorWeight.Light, 3));
+			_bag.Add(new BaseItem(BaseItem.Category.Hand_Armor, BaseItem.ArmorWeight.Light, 3));
+			_bag.Add(new BaseItem(BaseItem.Category.Leg_Armor, BaseItem.ArmorWeight.Light, 3));
+			_bag.Add(new BaseItem(BaseItem.Category.Foot_Armor, BaseItem.ArmorWeight.Light, 3));
+
+			_bag.Add(new BaseItem(BaseItem.Category.Neck_Jewelry, 1));
+			_bag.Add(new BaseItem(BaseItem.Category.Neck_Jewelry, 2));
+			_bag.Add(new BaseItem(BaseItem.Category.Neck_Jewelry, 3));
+
+			_bag.Add(new BaseItem(BaseItem.Category.Finger_Jewelry, 1));
+			_bag.Add(new BaseItem(BaseItem.Category.Finger_Jewelry, 2));
+			_bag.Add(new BaseItem(BaseItem.Category.Finger_Jewelry, 3));
+
+
 			tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
 			SetAsCameraTarget();
 			SetAsInterfaceTarget();
@@ -430,6 +462,8 @@ public class BaseUnit {
 		if(nextTile != null) {
 			if(nextTile.baseTerrain != null) {
 				if(nextTile.baseTerrain.walkable && nextTile.baseUnit == null) {
+					Vector2Int prevPosition = _tile.position;
+
 					nextTile.baseUnit = this;
 					_tile.baseUnit = null;
 					
@@ -457,6 +491,8 @@ public class BaseUnit {
 						_tile.unit.unitImage.enabled = true;
 						_tile.unit.shadowImage.enabled = true;
 						_tile.unit.UpdateSprite();
+						//_tile.unit.GetComponent<RectTransform>().localPosition = new Vector3(prevPosition.x, prevPosition.y, 0f) * DungeonManager.dimension;
+						_tile.unit.MoveFromTo(prevPosition, _tile.position, 0.5f);
 						//Debug.Log(tile.position);
 						//_tile.unit.image.sprite = _tile.baseUnit.sprite;
 					}	
@@ -498,6 +534,11 @@ public class BaseUnit {
 		if(hotbar != null) {
 			hotbar.SyncUnit(this);
 			hotbar.UpdateHotkeys();
+		}
+
+		BagBehaviour bagBehaviour = GameObject.FindObjectOfType<BagBehaviour>();
+		if(bagBehaviour != null) {
+			bagBehaviour.baseUnit = this;
 		}
 
 		TapController tapController = GameObject.FindObjectOfType<TapController>();
