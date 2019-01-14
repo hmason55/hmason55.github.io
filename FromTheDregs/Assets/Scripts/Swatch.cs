@@ -17,17 +17,35 @@ public class Swatch {
 		"#666666FF",
 		"#4D4D4DFF",
 		"#333333FF",
-		"#1A1A1AFF"
+		"#1A1A1AFF",
 	};
 
 	#region Skin
+	public static string[] skinElfDark = new string[] {
+		"#FFFFFFFF",
+		"#688AA2FF",
+		"#63839BFF",
+		"#59768BFF",
+		"#435969FF",
+		"#31404CFF",
+	};
+
+	public static string[] skinHumanDark = new string[] {
+		"#FFFFFFFF",
+		"#D7B38BFF",
+		"#BFA07CFF",
+		"#A38B6CFF",
+		"#706443FF",
+		"#46412DFF",
+	};
+
 	public static string[] skinHumanLight = new string[] {
 		"#FFFFFFFF",
 		"#FFFFD9FF",
 		"#F5F5BAFF",
 		"#DFDF92FF",
 		"#B3A36BFF",
-		"#807655FF"
+		"#807655FF",
 	};
 
 	public static string[] skinHumanMedium = new string[] {
@@ -36,41 +54,84 @@ public class Swatch {
 		"#DDB07DFF",
 		"#C19E72FF",
 		"#938252FF",
-		"#6A6346FF"
+		"#6A6346FF",
 	};
 	
-	public static string[] skinHumanDark = new string[] {
+	public static string[] skinOrcMedium = new string[] {
 		"#FFFFFFFF",
-		"#D7B38BFF",
-		"#BFA07CFF",
-		"#A38B6CFF",
-		"#706443FF",
-		"#46412DFF"
+		"#99D58CFF",
+		"#87BD7DFF",
+		"#74A26DFF",
+		"#446F46FF",
+		"#2D452FFF",
 	};
 	#endregion
 
 	#region Hair
-	public static string[] hairBrown = new string[] {
-		"#9E8D54FF",
-		"#807655FF",
-		"#635C42FF"
+	public static string[] hairPlatinum = new string[] {
+		"#FFFFFFFF",
+		"#EEEFCBFF",
+		"#D6DBA4FF",
+		"#D6DBA4FF",
+	};
+	public static string[] hairBlonde = new string[] {
+		"#FBF992FF",
+		"#E1DE60FF",
+		"#C3C057FF",
+		"#C3C057FF",
 	};
 
-	public static string[] hairWhite = new string[] {
-		"#FFFFFFFF",
-		"#E3F6FBFF",
-		"#CCDDE1FF"
+	public static string[] hairAmber = new string[] {
+		"#9E8D54FF",
+		"#807655FF",
+		"#635C42FF",
+		"#383630FF",
+	};
+
+	public static string[] hairChestnut = new string[] {
+		"#665B37FF",
+		"#4C4633FF",
+		"#332F22FF",
+		"#332F22FF",
+	};
+
+	public static string[] hairChocolate = new string[] {
+		"#332E22FF",
+		"#262319FF",
+		"#191711FF",
+		"#191711FF"
+	};
+
+	public static string[] hairAuburn = new string[] {
+		"#993420FF",
+		"#7F2B1AFF",
+		"#662215FF",
+		"#662215FF"
 	};
 
 	public static string[] hairRed = new string[] {
 		"#E52E2EFF",
 		"#C12626FF",
+		"#AA2323FF",
 		"#AA2323FF"
+	};
+
+	public static string[] hairGray = new string[] {
+		"#CCC8C1FF",
+		"#B2AFA9FF",
+		"#999691FF",
+		"#999691FF",
+	};
+
+	public static string[] hairWhite = new string[] {
+		"#FFFFFFFF",
+		"#E3F6FBFF",
+		"#CCDDE1FF",
+		"#CCDDE1FF",
 	};
 	#endregion
 
 	public static Color SwapToColor(Color templateColor, Color[] swatch) {
-		//Debug.Log(ColorUtility.ToHtmlStringRGB(templateColor));
 		switch(ColorUtility.ToHtmlStringRGB(templateColor)) {
 			case "FFFFFF":
 				return swatch[0];

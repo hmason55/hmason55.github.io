@@ -109,7 +109,7 @@ public class DungeonManager : MonoBehaviour {
 	void Update() {
 		if(Input.GetKeyDown(KeyCode.Space)) {
 			if(_loadState == LoadState.Loaded) {
-				Unload();
+				//Unload();
 			}
 		}
 	}
