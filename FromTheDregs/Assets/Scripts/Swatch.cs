@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Swatch {
 
-	public static int size = 10;
+	public static int size = 13;
 
 	// Grayscale
 	public static string[] template = new string[] {
@@ -18,6 +18,9 @@ public class Swatch {
 		"#4D4D4DFF",
 		"#333333FF",
 		"#1A1A1AFF",
+		"#000000FF",
+		"#FF00FFFF",
+		"#E600E6FF",
 	};
 
 	#region Skin
@@ -131,6 +134,46 @@ public class Swatch {
 	};
 	#endregion
 
+	#region Warrior
+	public static string[] armorWarriorT1 = new string[] {
+		"#FFFFFFFF",
+		"#EBEBEBFF",
+		"#D8D8D7FF",
+		"#ADADADFF",
+		"#929292FF",
+		"#636363FF",
+		"#F9F925FF",
+		"#815714FF",
+		"#58360BFF",
+		"#462B08FF",
+		"#6175BAFF",
+		"#325ABBFF",
+		"#242A4EFF",
+	};
+	#endregion
+
+	public static string[] GetSkinSwatch(Character.SkinColor skinColor) {
+		switch(skinColor) {
+			case Character.SkinColor.Elf_Dark:
+				return skinElfDark;
+			
+			case Character.SkinColor.Human_Dark:
+				return skinHumanDark;
+			
+			case Character.SkinColor.Human_Light:
+				return skinHumanLight;
+			
+			case Character.SkinColor.Human_Medium:
+				return skinHumanMedium;
+
+			case Character.SkinColor.Orc_Medium:
+				return skinOrcMedium;
+
+			default:
+				return skinHumanLight;
+		}
+	}
+
 	public static Color SwapToColor(Color templateColor, Color[] swatch) {
 		switch(ColorUtility.ToHtmlStringRGB(templateColor)) {
 			case "FFFFFF":
@@ -162,9 +205,18 @@ public class Swatch {
 
 			case "1A1A1A":
 				return swatch[9];
+			
+			case "000000":
+				return swatch[10];
+			
+			case "FF00FF":
+				return swatch[11];
+			
+			case "E600E6":
+				return swatch[12];
 
 			default:
-				return swatch[9];
+				return swatch[12];
 		}
 	}
 

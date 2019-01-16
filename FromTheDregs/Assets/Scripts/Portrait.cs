@@ -85,14 +85,6 @@ public class Portrait : MonoBehaviour {
 	}
 
 	public void Init() {
-		skinSwatches = new List<Color[]> {
-			ParseColor(Swatch.skinElfDark),
-			ParseColor(Swatch.skinHumanDark),
-			ParseColor(Swatch.skinHumanLight),
-			ParseColor(Swatch.skinHumanMedium),
-			ParseColor(Swatch.skinOrcMedium),	
-		};
-
 		hairSwatches = new List<Color[]> {
 			ParseColor(Swatch.hairPlatinum),
 			ParseColor(Swatch.hairBlonde),
@@ -109,16 +101,16 @@ public class Portrait : MonoBehaviour {
 	void ApplySwatches() {
 
 		// Face
-		ApplySwatch(faceImage, faceTemplates[(int)_faceType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 
 		// Mouth
-		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 
 		// Beard
 		ApplySwatch(beardImage, beardTemplates[(int)_beardType], hairSwatches[(int)_hairColor]);
 
 		// Nose
-		ApplySwatch(noseImage, noseTemplates[(int)_noseType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 
 		// Eyebrows
 		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], hairSwatches[(int)_hairColor]);
@@ -225,7 +217,7 @@ public class Portrait : MonoBehaviour {
 			_faceType = 0;
 		}
 
-		ApplySwatch(faceImage, faceTemplates[(int)_faceType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 	}
 
 	public void PrevFace() {
@@ -234,7 +226,7 @@ public class Portrait : MonoBehaviour {
 			_faceType = (Character.FaceType)Enum.GetValues(typeof(Character.FaceType)).Length-1;
 		}
 
-		ApplySwatch(faceImage, faceTemplates[(int)_faceType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 	}
 
 	public void NextMouth() {
@@ -243,7 +235,7 @@ public class Portrait : MonoBehaviour {
 			_mouthType = 0;
 		}
 
-		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 	}
 
 	public void PrevMouth() {
@@ -252,7 +244,7 @@ public class Portrait : MonoBehaviour {
 			_mouthType = (Character.MouthType)Enum.GetValues(typeof(Character.MouthType)).Length-1;
 		}
 
-		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 	}
 
 	public void NextBeard() {
@@ -279,7 +271,7 @@ public class Portrait : MonoBehaviour {
 			_noseType = 0;
 		}
 
-		ApplySwatch(noseImage, noseTemplates[(int)_noseType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 	}
 
 	public void PrevNose() {
@@ -288,7 +280,7 @@ public class Portrait : MonoBehaviour {
 			_noseType = (Character.NoseType)Enum.GetValues(typeof(Character.NoseType)).Length-1;
 		}
 
-		ApplySwatch(noseImage, noseTemplates[(int)_noseType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 	}
 
 	public void NextEyebrows() {
@@ -355,9 +347,9 @@ public class Portrait : MonoBehaviour {
 			_skinColor = 0;
 		}
 
-		ApplySwatch(faceImage, faceTemplates[(int)_faceType], skinSwatches[(int)_skinColor]);
-		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], skinSwatches[(int)_skinColor]);
-		ApplySwatch(noseImage, noseTemplates[(int)_noseType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 	}
 
 	public void PrevSkinColor() {
@@ -366,9 +358,9 @@ public class Portrait : MonoBehaviour {
 			_skinColor = (Character.SkinColor)Enum.GetValues(typeof(Character.SkinColor)).Length-1;
 		}
 
-		ApplySwatch(faceImage, faceTemplates[(int)_faceType], skinSwatches[(int)_skinColor]);
-		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], skinSwatches[(int)_skinColor]);
-		ApplySwatch(noseImage, noseTemplates[(int)_noseType], skinSwatches[(int)_skinColor]);
+		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 	}
 	#endregion
 	

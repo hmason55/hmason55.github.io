@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour {
 
 	[SerializeField] DungeonManager _dungeonManager;
+	[SerializeField] UnitBehaviour _previewUnit;
 	float _animationFrame = 0f;
 	float _animationSpeed = 1f;
 	public static int AnimationLength = 26;
@@ -30,6 +31,14 @@ public class AnimationController : MonoBehaviour {
 				if(_dungeonManager.tiles[x, y] != null) {
 					_dungeonManager.tiles[x, y].AnimateUnit();
 				}
+
+				if(_previewUnit != null) {
+					if(_previewUnit.baseUnit != null) {
+						_previewUnit.baseUnit.IncrementAnimation((int)_animationFrame);
+						_previewUnit.UpdateSprite();
+					}
+				}
+				
 			}
 		}
 	}

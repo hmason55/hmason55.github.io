@@ -19,6 +19,7 @@ public class SpriteManager : MonoBehaviour {
 	public UnitSprites unitSandworm1;
 	public UnitSprites unitSpider1;
 	public UnitSprites unitSpiderSmall1;
+	public UnitSprites unitWarrior1;
 	public UnitSprites unitWidow1;
 	public UnitSprites unitWidowSmall1;
 

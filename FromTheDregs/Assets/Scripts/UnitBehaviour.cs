@@ -7,8 +7,13 @@ public class UnitBehaviour : MonoBehaviour {
 	
 	BaseUnit _baseUnit;
 
+	[SerializeField] Image _unitPrimaryImage;
+	[SerializeField] Image _unitSecondaryImage;
+	[SerializeField] Image _unitArmorImage;
+	[SerializeField] Image _unitSkinImage;
 	[SerializeField] Image _unitImage;
 	[SerializeField] Image _shadowImage;
+	[SerializeField] bool _previewUnit = false;
 
 	RectTransform _rectTransform;
 	
@@ -38,20 +43,31 @@ public class UnitBehaviour : MonoBehaviour {
 		set {_renderFlag = value;}
 	}
 
-	public string u;
 	public Vector2Int p;
 
 	Coroutine _inputCooldownCoroutine;
 
 	void Awake() {
 		_rectTransform = GetComponent<RectTransform>();
+		if(_previewUnit) {
+			SpriteManager spriteManager = GameObject.FindObjectOfType<SpriteManager>();
+			_baseUnit = new BaseUnit(false, BaseUnit.SpritePreset.warrior, true);
+			_baseUnit.character = new Character();
+			_baseUnit.character.skinColor = Character.SkinColor.Orc_Medium;
+			_baseUnit.LoadSprites(spriteManager);
+			
+			UpdateSprite();
+		}
 	}
 
 	public void UpdateSprite() {
 		if(_baseUnit != null) {
 
-			_unitImage.enabled = true;
-			_unitImage.sprite = _baseUnit.sprite;
+			if(_baseUnit.useCustomSprites) {
+				UseCustomSprite();
+			} else {
+				UseFallbackSprite();
+			}
 
 			_shadowImage.enabled = true;
 			_shadowImage.sprite = _baseUnit.shadowSprite;
@@ -61,11 +77,53 @@ public class UnitBehaviour : MonoBehaviour {
 			} else {
 				_unitImage.color = Color.white;
 			}
-
-			u = _baseUnit.spritePreset.ToString();
-		} else {
-			u = null;
 		}
+	}
+
+	void UseCustomSprite() {
+		if(_unitSkinImage != null) {
+			//_unitSkinImage.enabled = true;
+			_unitSkinImage.sprite = _baseUnit.spriteSkin;
+		}
+
+		if(_unitArmorImage != null) {
+			//_unitArmorImage.enabled = true;
+			_unitArmorImage.sprite = _baseUnit.spriteArmor;
+		}
+
+		if(_unitSecondaryImage != null) {
+			//_unitSecondaryImage.enabled = true;
+			_unitSecondaryImage.sprite = _baseUnit.spriteSecondary;
+		}
+
+		if(_unitPrimaryImage != null) {
+			//_unitPrimaryImage.enabled = true;
+			_unitPrimaryImage.sprite = _baseUnit.spritePrimary;
+		}
+
+		_unitImage.enabled = false;
+		
+	}
+
+	void UseFallbackSprite() {
+		if(_unitSkinImage != null) {
+			_unitSkinImage.enabled = false;
+		}
+
+		if(_unitArmorImage != null) {
+			_unitArmorImage.enabled = false;
+		}
+
+		if(_unitSecondaryImage != null) {
+			_unitSecondaryImage.enabled = false;
+		}
+
+		if(_unitPrimaryImage != null) {
+			_unitPrimaryImage.enabled = false;
+		}
+
+		_unitImage.enabled = true;
+		_unitImage.sprite = _baseUnit.sprite;
 	}
 
 	public void Transfer(Tile t, BaseUnit b) {
@@ -155,7 +213,7 @@ public class UnitBehaviour : MonoBehaviour {
 			Vector2 distanceVector = new Vector2(to.x - _rectTransform.anchoredPosition.x, to.y - _rectTransform.anchoredPosition.y);
 			if(distanceVector.magnitude > deadzone) {
 				_rectTransform.anchoredPosition += distanceVector.normalized * (distanceVector.magnitude * _panSpeed) * Time.deltaTime;
-			} else if(distanceVector.magnitude != 0f){
+			} else if(distanceVector.magnitude != 0f) {
 				done = true;
 			}
 

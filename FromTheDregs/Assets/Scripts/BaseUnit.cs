@@ -26,9 +26,11 @@ public class BaseUnit {
 		sandworm,
 		spider,
 		spidersmall,
+		warrior,
 		widow,
 		widowsmall,
-		wizard
+		wizard,
+		
 	}
 
 	public enum Size {
@@ -77,6 +79,7 @@ public class BaseUnit {
 	bool _inCombat;
 	bool _isCasting;
 	int _combatAlliance;
+	Character _character;
 	bool _playerControlled = false;
 	Bag _bag;
 
@@ -87,8 +90,13 @@ public class BaseUnit {
 	StatPreset _statPreset = StatPreset.Human;
 
 	string _deathParticlesPath;
-
+	bool _useCustomSprites;
+	
 	Sprite[] _idleAnimation;
+	Sprite[] _idleSkinAnimation;
+	Sprite[] _idleArmorAnimation;
+	Sprite[] _idleSecondaryAnimation;
+	Sprite[] _idlePrimaryAnimation;
 	Sprite[] _hitAnimation;
 	static int IdleAnimationLength = 4;
 	static int HitAnimationLength = 1;
@@ -97,8 +105,14 @@ public class BaseUnit {
 	int _hitFrameSkip = 8;
 
 	Sprite _sprite;
+	Sprite _spriteSkin;
+	Sprite _spriteArmor;
+	Sprite _spriteSecondary;
+	Sprite _spritePrimary;
+	
 	Sprite _shadowSprite;
 
+	#region Accessors
 	public int combatAlliance {
 		set {_combatAlliance = value;}
 		get {return _combatAlliance;}
@@ -119,6 +133,11 @@ public class BaseUnit {
 		get {return _playerControlled;}
 	}
 
+	public Character character {
+		set {_character = value;}
+		get {return _character;}
+	}
+
 	public Tile tile {
 		set {_tile = value;}
 		get {return _tile;}
@@ -127,6 +146,26 @@ public class BaseUnit {
 	public Sprite sprite {
 		set {_sprite = value;}
 		get {return _sprite;}
+	}
+
+	public Sprite spriteSkin {
+		set {_spriteSkin = value;}
+		get {return _spriteSkin;}
+	}
+
+	public Sprite spriteArmor {
+		set {_spriteArmor = value;}
+		get {return _spriteArmor;}
+	}
+
+	public Sprite spriteSecondary {
+		set {_spriteSecondary = value;}
+		get {return _spriteSecondary;}
+	}
+
+	public Sprite spritePrimary {
+		set {_spritePrimary = value;}
+		get {return _spritePrimary;}
 	}
 
 	public Sprite shadowSprite {
@@ -205,11 +244,35 @@ public class BaseUnit {
 		get {return _bag;}
 		set {_bag = value;}
 	}
+	public bool useCustomSprites {
+		get {return _useCustomSprites;}
+		set {_useCustomSprites = value;}
+	}
 
 	public Sprite[] idleAnimation {
 		get {return _idleAnimation;}
 		set {_idleAnimation = value;}
 	}
+
+	public Sprite[] idleSkinAnimation {
+		get {return _idleSkinAnimation;}
+		set {_idleSkinAnimation = value;}
+	}
+
+	public Sprite[] idleArmorAnimation {
+		get {return _idleArmorAnimation;}
+		set {_idleArmorAnimation = value;}
+	}
+
+	public Sprite[] idleSecondaryAnimation {
+		get {return _idleSecondaryAnimation;}
+		set {_idleSecondaryAnimation = value;}
+	}
+
+	public Sprite[] idlePrimaryAnimation {
+		get {return _idlePrimaryAnimation;}
+		set {_idlePrimaryAnimation = value;}
+	}	
 
 	public Sprite[] hitAnimation {
 		get {return _hitAnimation;}
@@ -225,10 +288,12 @@ public class BaseUnit {
 		get {return _hitFrame;}
 		set {_hitFrame = value;}
 	}
+	#endregion
 
-	public BaseUnit(bool player, SpritePreset sprite) {
+	public BaseUnit(bool player, SpritePreset sprite, bool customSprite = false) {
 		_playerControlled = player;
 		_spritePreset = sprite;
+		_useCustomSprites = customSprite;
 
 		switch(sprite) {
 			case SpritePreset.direrat:
@@ -275,11 +340,12 @@ public class BaseUnit {
 		Init();
 	}
 
-	public BaseUnit(bool player, StatPreset stats, SpritePreset sprite, Tile tile) {
+	public BaseUnit(bool player, StatPreset stats, SpritePreset sprite, Tile tile, bool customSprite = false) {
 		_playerControlled = player;
 		_statPreset = stats;
 		_spritePreset = sprite;
 		_tile = tile;
+		_useCustomSprites = customSprite;
 		Init();
 	}
 
@@ -623,62 +689,146 @@ public class BaseUnit {
 	}
 
 	public void LoadSprites(SpriteManager spriteManager) {
+		if(_useCustomSprites) {
+			LoadCustomSprite(spriteManager);
+		} else {
+			LoadFallbackSprite(spriteManager);
+		}
+	}
+
+	void LoadCustomSprite(SpriteManager spriteManager) {
 		_idleAnimation = new Sprite[IdleAnimationLength];
+		_idleSkinAnimation = new Sprite[IdleAnimationLength];
+		_idleArmorAnimation = new Sprite[IdleAnimationLength];
+		_idleSecondaryAnimation = new Sprite[IdleAnimationLength];
+		_idlePrimaryAnimation = new Sprite[IdleAnimationLength];
 
 		switch(spritePreset) {
-			case BaseUnit.SpritePreset.knight:
+			case SpritePreset.warrior:
+				_shadowSprite = spriteManager.shadowMedium;
+				_idleSecondaryAnimation = spriteManager.unitWarrior1.secondaryT1.ToArray();
+				Debug.Log(_idleSecondaryAnimation[0]);
+				_idlePrimaryAnimation = spriteManager.unitWarrior1.primaryT1.ToArray();
+				Debug.Log(_idlePrimaryAnimation[0]);
+			break;
+		}
+		ApplySwatches(spriteManager);
+	}
+	
+	void ApplySwatches(SpriteManager spriteManager) {
+		Sprite[] skinTemplate = spriteManager.unitWarrior1.skin.ToArray();
+		Sprite[] armorTemplate = spriteManager.unitWarrior1.armorT1.ToArray();
+		for(int i = 0; i < IdleAnimationLength; i++) {
+
+			// Skin
+			if(_character != null) {
+				_idleSkinAnimation[i] = ApplySwatch(skinTemplate[i], ParseColor(Swatch.GetSkinSwatch(_character.skinColor)));
+			} else {
+				_idleSkinAnimation[i] = ApplySwatch(skinTemplate[i], ParseColor(Swatch.skinHumanLight));
+			}
+
+			// Armor
+			_idleArmorAnimation[i] = ApplySwatch(armorTemplate[i], ParseColor(Swatch.armorWarriorT1));
+		}
+		Debug.Log("Swatches applied.");
+	}
+
+	Sprite ApplySwatch(Sprite template, Color[] swatch) {
+		if(template == null || swatch == null) {return null;}
+
+		Texture2D texture = new Texture2D(48, 48);
+
+		Color[] colors = template.texture.GetPixels();
+		for(int i = 0; i < colors.Length; i++) {
+			if(colors[i].a > 0f) {
+				colors[i] = Swatch.SwapToColor(colors[i], swatch);
+			}	
+		}
+		
+		texture.SetPixels(colors);
+		texture.Apply();
+
+		Sprite sprite = Sprite.Create(texture, new Rect(0, 0, 48, 48), new Vector2(0.5f, 0.5f), 48f);
+		sprite.texture.filterMode = FilterMode.Point;
+		Debug.Log(sprite);
+		return sprite;
+	}
+
+	Color[] ParseColor(string[] arr) {
+		Color[] palette = new Color[Swatch.size];
+
+		for(int i = 0; i < Swatch.size; i++) {
+			if(i >= arr.Length) {
+				ColorUtility.TryParseHtmlString(Swatch.template[i], out palette[i]);
+			} else {
+				ColorUtility.TryParseHtmlString(arr[i], out palette[i]);
+			}
+		}
+		
+		return palette;
+	}
+
+	void LoadFallbackSprite(SpriteManager spriteManager) {
+		_idleAnimation = new Sprite[IdleAnimationLength];
+		switch(spritePreset) {
+			case SpritePreset.knight:
 				//_idleAnimation = _tile.spriteManager.unit.idle.ToArray();
 			break;
 
-			case BaseUnit.SpritePreset.direrat:
+			case SpritePreset.direrat:
 				_shadowSprite = spriteManager.shadowLarge;
 				_idleAnimation = spriteManager.unitDireRat1.idle.ToArray();
 				_hitAnimation = spriteManager.unitDireRat1.hit.ToArray();
 			break;
 
-			case BaseUnit.SpritePreset.direratsmall:
+			case SpritePreset.direratsmall:
 				_shadowSprite = spriteManager.shadowSmall;
 				_idleAnimation = spriteManager.unitDireRatSmall1.idle.ToArray();
 				_hitAnimation = spriteManager.unitDireRatSmall1.hit.ToArray();
 			break;
 
-			case BaseUnit.SpritePreset.sandbehemoth:
+			case SpritePreset.sandbehemoth:
 				_shadowSprite = spriteManager.shadowLarge;
 				_idleAnimation = spriteManager.unitSandBehemoth1.idle.ToArray();
 				_hitAnimation = spriteManager.unitSandBehemoth1.hit.ToArray();
 			break;
 
-			case BaseUnit.SpritePreset.spider:
+			case SpritePreset.spider:
 				_shadowSprite = spriteManager.shadowLarge;
 				_idleAnimation = spriteManager.unitSpider1.idle.ToArray();
 				_hitAnimation = spriteManager.unitSpider1.hit.ToArray();
 			break;
 
-			case BaseUnit.SpritePreset.spidersmall:
+			case SpritePreset.spidersmall:
 				_shadowSprite = spriteManager.shadowSmall;
 				_idleAnimation = spriteManager.unitSpiderSmall1.idle.ToArray();
 				_hitAnimation = spriteManager.unitSpiderSmall1.hit.ToArray();
 			break;
 
-			case BaseUnit.SpritePreset.widow:
+			case SpritePreset.warrior:
+				_shadowSprite = spriteManager.shadowMedium;
+				_idleAnimation = spriteManager.unitWarrior1.idle.ToArray();
+			break;
+
+			case SpritePreset.widow:
 				_shadowSprite = spriteManager.shadowLarge;
 				_idleAnimation = spriteManager.unitWidow1.idle.ToArray();
 				_hitAnimation = spriteManager.unitWidow1.hit.ToArray();
 			break;
 
-			case BaseUnit.SpritePreset.widowsmall:
+			case SpritePreset.widowsmall:
 				_shadowSprite = spriteManager.shadowSmall;
 				_idleAnimation = spriteManager.unitWidowSmall1.idle.ToArray();
 				_hitAnimation = spriteManager.unitWidowSmall1.hit.ToArray();
 			break;
 
-			case BaseUnit.SpritePreset.wizard:
+			case SpritePreset.wizard:
 				_shadowSprite = spriteManager.shadowMedium;
 				_idleAnimation = spriteManager.unitHumanWizard1.idle.ToArray();
 				_hitAnimation = spriteManager.unitHumanWizard1.hit.ToArray();
 			break;
 
-			case BaseUnit.SpritePreset.greenslime:
+			case SpritePreset.greenslime:
 			default:
 				_shadowSprite = spriteManager.shadowMedium;
 				_idleAnimation = spriteManager.unitGreenSlime1.idle.ToArray();
@@ -696,8 +846,12 @@ public class BaseUnit {
 		_hitFrame = -1;
 	}
 
-	public void IncrementAnimation() {
-		_animationFrame = _tile.animationController.animationFrame;
+	public void IncrementAnimation(int frame = -1) {
+		if(_tile != null) {
+			_animationFrame = _tile.animationController.animationFrame;
+		} else {
+			_animationFrame = frame;
+		}
 
 		if(_hitAnimation != null && _hitFrame > -1 && _hitFrame < _hitFrameSkip) {
 			_sprite = _hitAnimation[0];
@@ -706,13 +860,39 @@ public class BaseUnit {
 			_hitFrame = -1;
 
 			if(_animationFrame < 10) {
-				_sprite = _idleAnimation[0];
+				if(_useCustomSprites) {
+					_spriteSkin = _idleSkinAnimation[0];
+					_spriteArmor = _idleArmorAnimation[0];
+					_spriteSecondary = _idleSecondaryAnimation[0];
+					_spritePrimary = _idlePrimaryAnimation[0];
+				} else {
+					_sprite = _idleAnimation[0];
+				}
 			} else if(_animationFrame < 11) {
-				_sprite = _idleAnimation[1];
+				if(_useCustomSprites) {
+					_spriteSkin = _idleSkinAnimation[1];
+					_spriteArmor = _idleArmorAnimation[1];
+					_spriteSecondary = _idleSecondaryAnimation[1];
+					_spritePrimary = _idlePrimaryAnimation[1];
+				} else {
+					_sprite = _idleAnimation[1];
+				}
 			} else if(_animationFrame < 22) {
 				_sprite = _idleAnimation[2];
+				if(_useCustomSprites) {
+					_spriteSkin = _idleSkinAnimation[2];
+					_spriteArmor = _idleArmorAnimation[2];
+					_spriteSecondary = _idleSecondaryAnimation[2];
+					_spritePrimary = _idlePrimaryAnimation[2];
+				}
 			} else {
 				_sprite = _idleAnimation[3];
+				if(_useCustomSprites) {
+					_spriteSkin = _idleSkinAnimation[3];
+					_spriteArmor = _idleArmorAnimation[3];
+					_spriteSecondary = _idleSecondaryAnimation[3];
+					_spritePrimary = _idlePrimaryAnimation[3];
+				}
 			}
 		}
 	}
