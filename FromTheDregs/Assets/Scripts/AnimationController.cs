@@ -28,8 +28,10 @@ public class AnimationController : MonoBehaviour {
 	void LateUpdate() {
 		for(int y = 0; y < DungeonManager.dimension; y++) {
 			for(int x = 0; x < DungeonManager.dimension; x++) {
-				if(_dungeonManager.tiles[x, y] != null) {
-					_dungeonManager.tiles[x, y].AnimateUnit();
+				if(_dungeonManager.tiles != null) {
+					if(_dungeonManager.tiles[x, y] != null) {
+						_dungeonManager.tiles[x, y].AnimateUnit();
+					}
 				}
 
 				if(_previewUnit != null) {

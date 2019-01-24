@@ -87,10 +87,10 @@ public class DungeonManager : MonoBehaviour {
 	}
 
 	void Start () {
-		Load();
+		//Load();
 	}
 
-	void Load() {
+	public void Load() {
 		_loadState = LoadState.Loading;
 		InitializeGrid();
 		InitializeObjectPools();
@@ -239,7 +239,16 @@ public class DungeonManager : MonoBehaviour {
 							if(i == 0) {
 								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Entrance, spriteManager);
 								// Spawn player here
-								BaseUnit player = new BaseUnit(true, BaseUnit.StatPreset.Human, BaseUnit.SpritePreset.wizard, tile);
+								BaseUnit player = new BaseUnit(true, Attributes.Preset.Human, BaseUnit.SpritePreset.warrior, tile, true);
+
+								if(PlayerData.current.character != null) {
+									player.character = PlayerData.current.character;
+								}
+
+								if(PlayerData.current.attributes != null) {
+									player.attributes = PlayerData.current.attributes;
+								}
+								
 								player.tile = tile;
 								tile.SpawnUnit(player);
 								combatManager.BeginTurnLoop();

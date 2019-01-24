@@ -9,13 +9,19 @@ public static class SaveLoadData {
     public static List<PlayerData> savedPlayerData = new List<PlayerData>();
 
     public static void Save() {
-        if( PlayerData.current.slot < 0 ||
-            PlayerData.current.slot >= savedPlayerData.Count) {
-            savedPlayerData.Add(PlayerData.current);
-            Debug.Log("Saving as new slot");
-        } else {
-            savedPlayerData[PlayerData.current.slot] = PlayerData.current;
-            Debug.Log("Saving to slot " + PlayerData.current.slot);
+        if(PlayerData.current != null) {
+            if( PlayerData.current.slot < 0 ||
+                PlayerData.current.slot >= savedPlayerData.Count) {
+                savedPlayerData.Add(PlayerData.current);
+                Debug.Log("Saving as new slot");
+            } else {
+                savedPlayerData[PlayerData.current.slot] = PlayerData.current;
+                Debug.Log("Saving to slot " + PlayerData.current.slot);
+            }
+        }
+
+        for(int i = 0; i < savedPlayerData.Count; i++) {
+            savedPlayerData[i].slot = i;
         }
         
         BinaryFormatter bf = new BinaryFormatter();

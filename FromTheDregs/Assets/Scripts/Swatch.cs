@@ -138,7 +138,7 @@ public class Swatch {
 	public static string[] armorWarriorT1 = new string[] {
 		"#FFFFFFFF",
 		"#EBEBEBFF",
-		"#D8D8D7FF",
+		"#D8D8D8FF",
 		"#ADADADFF",
 		"#929292FF",
 		"#636363FF",
@@ -150,73 +150,66 @@ public class Swatch {
 		"#325ABBFF",
 		"#242A4EFF",
 	};
+
+	public static string[] armorWarriorT2 = new string[] {
+		"#FFFFFFFF",
+		"#EBEBEBFF",
+		"#D8D8D8FF",
+		"#ADADADFF",
+		"#929292FF",
+		"#636363FF",
+		"#A7721BFF",
+		"#815714FF",
+		"#58360BFF",
+		"#462B08FF",
+		"#6175BAFF",
+		"#325ABBFF",
+		"#331E08FF",
+	};
 	#endregion
 
 	public static string[] GetSkinSwatch(Character.SkinColor skinColor) {
 		switch(skinColor) {
-			case Character.SkinColor.Elf_Dark:
-				return skinElfDark;
-			
-			case Character.SkinColor.Human_Dark:
-				return skinHumanDark;
-			
-			case Character.SkinColor.Human_Light:
-				return skinHumanLight;
-			
-			case Character.SkinColor.Human_Medium:
-				return skinHumanMedium;
+			case Character.SkinColor.Elf_Dark:		return skinElfDark;
+			case Character.SkinColor.Human_Dark:	return skinHumanDark;
+			case Character.SkinColor.Human_Light:	return skinHumanLight;
+			case Character.SkinColor.Human_Medium:	return skinHumanMedium;
+			case Character.SkinColor.Orc_Medium:	return skinOrcMedium;
+			default:								return skinHumanLight;
+		}
+	}
 
-			case Character.SkinColor.Orc_Medium:
-				return skinOrcMedium;
-
-			default:
-				return skinHumanLight;
+	public static string[] GetHairSwatch(Character.HairColor hairColor) {
+		switch(hairColor) {
+			case Character.HairColor.Platinum:	return hairPlatinum;
+			case Character.HairColor.Blonde:	return hairBlonde;
+			case Character.HairColor.Amber:		return hairAmber;
+			case Character.HairColor.Chestnut:	return hairChestnut;
+			case Character.HairColor.Chocolate:	return hairChocolate;
+			case Character.HairColor.Auburn:	return hairAuburn;
+			case Character.HairColor.Red:		return hairRed;
+			case Character.HairColor.Gray:		return hairGray;
+			case Character.HairColor.White:		return hairWhite;
+			default:							return hairAmber;
 		}
 	}
 
 	public static Color SwapToColor(Color templateColor, Color[] swatch) {
 		switch(ColorUtility.ToHtmlStringRGB(templateColor)) {
-			case "FFFFFF":
-				return swatch[0];
-
-			case "E6E6E6":
-				return swatch[1];
-
-			case "CCCCCC":
-				return swatch[2];
-
-			case "B3B3B3":
-				return swatch[3];
-
-			case "999999":
-				return swatch[4];
-
-			case "808080":
-				return swatch[5];
-
-			case "666666":
-				return swatch[6];
-
-			case "4D4D4D":		
-				return swatch[7];
-
-			case "333333":
-				return swatch[8];
-
-			case "1A1A1A":
-				return swatch[9];
-			
-			case "000000":
-				return swatch[10];
-			
-			case "FF00FF":
-				return swatch[11];
-			
-			case "E600E6":
-				return swatch[12];
-
-			default:
-				return swatch[12];
+			case "FFFFFF":	return swatch[0];
+			case "E6E6E6":	return swatch[1];
+			case "CCCCCC":	return swatch[2];
+			case "B3B3B3":	return swatch[3];
+			case "999999":	return swatch[4];
+			case "808080":	return swatch[5];
+			case "666666":	return swatch[6];
+			case "4D4D4D":	return swatch[7];
+			case "333333":	return swatch[8];
+			case "1A1A1A":	return swatch[9];
+			case "000000":	return swatch[10];
+			case "FF00FF":	return swatch[11];
+			case "E600E6":	return swatch[12];
+			default:		return swatch[12];
 		}
 	}
 

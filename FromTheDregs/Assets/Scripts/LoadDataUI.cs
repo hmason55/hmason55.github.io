@@ -26,8 +26,11 @@ public class LoadDataUI : MonoBehaviour {
         scrollView.SetActive(true);
         dataSlotContainer.gameObject.SetActive(true);
         titleText.gameObject.SetActive(true);
-        closeButton.gameObject.SetActive(true);
+        closeButton.gameObject.SetActive(true); 
+        UpdateDataSlots();
+    }
 
+    public void UpdateDataSlots() {
         SaveLoadData.Load();
         for(int i = 0; i < SaveLoadData.saveLimit; i++) {
             

@@ -5,17 +5,6 @@ using UnityEngine;
 
 public class BaseUnit {
 
-	public enum StatPreset {
-		Human,
-		DireRat,
-		DireRatSmall,
-		Slime,
-		Spider,
-		SpiderSmall,
-		Widow,
-		WidowSmall
-	}
-
 	public enum SpritePreset {
 		none,
 		direrat,
@@ -44,25 +33,12 @@ public class BaseUnit {
 	}
 
 	#region Stats
-	int _baseStrength;
-	int _baseDexterity;
-	int _baseIntelligence;
-	int _baseConstitution;
-	int _baseWisdom;
-	int _baseCharisma;
+
 	int _baseSpeed;
 	
 	int _baseHitPoints;
-	int _hpScaling;
-	int _armorClass;
 	Size _size;
 
-	int _modStrength;
-	int _modDexterity;
-	int _modIntelligence;
-	int _modConstitution;
-	int _modWisdom;
-	int _modCharisma;
 	int _modSpeed;
 	#endregion
 	
@@ -78,7 +54,7 @@ public class BaseUnit {
 	Turn _myTurn;
 	bool _inCombat;
 	bool _isCasting;
-	int _combatAlliance;
+	Attributes _attributes;
 	Character _character;
 	bool _playerControlled = false;
 	Bag _bag;
@@ -87,7 +63,7 @@ public class BaseUnit {
 
 	SpritePreset _spritePreset = SpritePreset.knight;
 
-	StatPreset _statPreset = StatPreset.Human;
+	Attributes.Preset _statPreset = Attributes.Preset.Human;
 
 	string _deathParticlesPath;
 	bool _useCustomSprites;
@@ -113,10 +89,6 @@ public class BaseUnit {
 	Sprite _shadowSprite;
 
 	#region Accessors
-	public int combatAlliance {
-		set {_combatAlliance = value;}
-		get {return _combatAlliance;}
-	}
 
 	public bool inCombat {
 		set {_inCombat = value;}
@@ -173,9 +145,9 @@ public class BaseUnit {
 		get {return _shadowSprite;}
 	}
 
-	public StatPreset statPreset {
-		set {_statPreset = value;}
-		get {return _statPreset;}
+	public Attributes attributes {
+		set {_attributes = value;}
+		get {return _attributes;}
 	}
 
 	public SpritePreset spritePreset {
@@ -188,47 +160,8 @@ public class BaseUnit {
 		get {return _deathParticlesPath;}
 	}
 
-	public int baseEssence {
-		get {return _baseEssence;}
-	}
-	public int turnEssence {
-		get {return _turnEssence;}
-	}
-	public int currentEssence {
-		get {return _currentEssence;}
-		set {_currentEssence = value;}
-	}
-
-	public int armorClass {
-		get {return _armorClass;}
-	}
-
 	public Size size {
 		get {return _size;}
-	}
-
-	public int modStrength {
-		get {return _modStrength;}
-	}
-
-	public int modDexterity {
-		get {return _modDexterity;}
-	}
-
-	public int modIntelligence {
-		get {return _modIntelligence;}
-	}
-
-	public int modSpeed {
-		get {return _modSpeed;}
-	}
-
-	public int speed {
-		get {return _baseSpeed + _modSpeed;}
-	}
-
-	public int aggroRadius {
-		get {return _aggroRadius;}
 	}
 
 	public List<Spell.Preset> spells {
@@ -292,47 +225,48 @@ public class BaseUnit {
 
 	public BaseUnit(bool player, SpritePreset sprite, bool customSprite = false) {
 		_playerControlled = player;
+		_attributes = new Attributes();
 		_spritePreset = sprite;
 		_useCustomSprites = customSprite;
 
 		switch(sprite) {
 			case SpritePreset.direrat:
-				_statPreset = StatPreset.DireRat;
+				_statPreset = Attributes.Preset.DireRat;
 				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.direratsmall:
-				_statPreset = StatPreset.DireRatSmall;
+				_statPreset = Attributes.Preset.DireRatSmall;
 				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.greenslime:
-				_statPreset = StatPreset.Slime;
+				_statPreset = Attributes.Preset.Slime;
 				_deathParticlesPath = "Prefabs/Effects/Death Green Particles";
 			break;
 
 			case SpritePreset.spider:
-				_statPreset = StatPreset.Spider;
+				_statPreset = Attributes.Preset.Spider;
 				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.spidersmall:
-				_statPreset = StatPreset.SpiderSmall;
+				_statPreset = Attributes.Preset.SpiderSmall;
 				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.widow:
-				_statPreset = StatPreset.Widow;
+				_statPreset = Attributes.Preset.Widow;
 				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.widowsmall:
-				_statPreset = StatPreset.WidowSmall;
+				_statPreset = Attributes.Preset.WidowSmall;
 				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			default:
-				_statPreset = StatPreset.Human;
+				_statPreset = Attributes.Preset.Human;
 				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 		}
@@ -340,9 +274,9 @@ public class BaseUnit {
 		Init();
 	}
 
-	public BaseUnit(bool player, StatPreset stats, SpritePreset sprite, Tile tile, bool customSprite = false) {
+	public BaseUnit(bool player, Attributes.Preset attribs, SpritePreset sprite, Tile tile, bool customSprite = false) {
 		_playerControlled = player;
-		_statPreset = stats;
+		_attributes = new Attributes(attribs);
 		_spritePreset = sprite;
 		_tile = tile;
 		_useCustomSprites = customSprite;
@@ -350,25 +284,12 @@ public class BaseUnit {
 	}
 
 	void Init() {
-		EvaluateStatPreset();
-		UpdateModifiers();
-		UpdateArmorClass();
-
-		// Set starting health
-		_baseHitPoints = _hpScaling + _modConstitution;
-		UpdateHitPoints();
-		_currentHitPoints = _hitPoints;
-		_experience = 0;
-		
-		_aggroRadius = 4;
-		_currentEssence = _baseEssence;
-		_turnEssence = _baseEssence;
+		AssignSpells();
 		//_myTurn = new Turn(this, _modSpeed);
 
 		// Equip items
 		_bag = new Bag();
 		
-
 		if(_playerControlled) {
 			
 			_bag.Add(new BaseItem(BaseItem.Category.Head_Armor, BaseItem.ArmorWeight.Heavy, 2));
@@ -395,115 +316,16 @@ public class BaseUnit {
 			tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
 			SetAsCameraTarget();
 			SetAsInterfaceTarget();
-			_combatAlliance = 0;
+			_attributes.alliance = 0;
 		} else {
-			_combatAlliance = 1;
+			_attributes.alliance = 1;
 		}
 	}
 
-	void EvaluateStatPreset() {
+	void AssignSpells() {
 		_spells = new List<Spell.Preset>();
 		_spells.Add(Spell.Preset.Move);
 		_spells.Add(Spell.Preset.Fireball);
-
-		switch(_statPreset) {
-			case StatPreset.Human:
-				_baseStrength = 10;
-				_baseDexterity = 10;
-				_baseIntelligence = 10;
-				_baseConstitution = 10;
-				_baseWisdom = 10;
-				_baseCharisma = 10;
-				_baseSpeed = 2;
-				_baseEssence = 4;
-				_hpScaling = 50;	//8 default
-				_size = Size.Medium;
-			break;
-
-			case StatPreset.Slime:
-				_baseStrength = 10;
-				_baseDexterity = 15;
-				_baseIntelligence = 0;
-				_baseConstitution = 12;
-				_baseWisdom = 10;
-				_baseCharisma = 2;
-				_baseSpeed = 5;
-				_baseEssence = 2;
-				_hpScaling = 16;
-				_size = Size.Small;
-				_aggroRadius = 6;
-			break;
-
-			case StatPreset.Spider:
-				_baseStrength = 11;
-				_baseDexterity = 17;
-				_baseIntelligence = 0;
-				_baseConstitution = 12;
-				_baseWisdom = 10;
-				_baseCharisma = 2;
-				_baseSpeed = 5;
-				_baseEssence = 2;
-				_hpScaling = 16;
-				_size = Size.Medium;
-			break;
-
-			case StatPreset.SpiderSmall:
-				_baseStrength = 10;
-				_baseDexterity = 15;
-				_baseIntelligence = 0;
-				_baseConstitution = 12;
-				_baseWisdom = 10;
-				_baseCharisma = 2;
-				_baseSpeed = 5;
-				_baseEssence = 2;
-				_hpScaling = 11;
-				_size = Size.Small;
-			break;
-
-			case StatPreset.Widow:
-				_baseStrength = 11;
-				_baseDexterity = 17;
-				_baseIntelligence = 0;
-				_baseConstitution = 12;
-				_baseWisdom = 10;
-				_baseCharisma = 2;
-				_baseSpeed = 5;
-				_baseEssence = 2;
-				_hpScaling = 16;
-				_size = Size.Medium;
-			break;
-
-			case StatPreset.WidowSmall:
-				_baseStrength = 10;
-				_baseDexterity = 15;
-				_baseIntelligence = 0;
-				_baseConstitution = 12;
-				_baseWisdom = 10;
-				_baseCharisma = 2;
-				_baseSpeed = 5;
-				_baseEssence = 2;
-				_hpScaling = 11;
-				_size = Size.Small;
-			break;
-		}
-	}
-
-	void UpdateModifiers() {
-		_modStrength = (_baseStrength - 10) / 2;
-		_modDexterity = (_baseDexterity - 10) / 2;
-		_modIntelligence = (_baseIntelligence - 10) / 2;
-		_modConstitution = (_baseConstitution - 10) / 2;
-		_modWisdom = (_baseWisdom - 10) / 2;
-		_modCharisma = (_baseCharisma - 10) / 2;
-		_modSpeed = (_baseDexterity - 10) / 3;
-	}
-
-	void UpdateHitPoints() {
-		_hitPoints = _baseHitPoints;
-	}
-
-	void UpdateArmorClass() {
-		_armorClass = 10 + _modDexterity;
 	}
 
 	public void BeginTurn() {
@@ -535,12 +357,8 @@ public class BaseUnit {
 					
 					if(_tile.unit != null) {
 						_tile.unit.baseUnit = null;
-						_tile.unit.unitImage.enabled = false;
-						_tile.unit.unitImage.sprite = null;
-
-						_tile.unit.shadowImage.enabled = false;
-						_tile.unit.shadowImage.sprite = null;
-						_tile.unit.UpdateSprite();
+						_tile.unit.Unset();
+						//_tile.unit.UpdateSprite();
 					}
 
 					_tile = nextTile;
@@ -554,8 +372,9 @@ public class BaseUnit {
 
 					if(_tile.unit != null) {
 						_tile.unit.baseUnit = this;
-						_tile.unit.unitImage.enabled = true;
-						_tile.unit.shadowImage.enabled = true;
+						//_tile.unit.unitImage.enabled = true;
+						//_tile.unit.shadowImage.enabled = true;
+						_tile.unit.ShowUnit();
 						_tile.unit.UpdateSprite();
 						//_tile.unit.GetComponent<RectTransform>().localPosition = new Vector3(prevPosition.x, prevPosition.y, 0f) * DungeonManager.dimension;
 						_tile.unit.MoveFromTo(prevPosition, _tile.position, 0.5f);
@@ -650,7 +469,7 @@ public class BaseUnit {
 					// Add self to turn queue
 					if(!_inCombat) {
 						_inCombat = true;
-						cm.turnQueue.Add(new Turn(this, modSpeed));
+						cm.turnQueue.Add(new Turn(this, _attributes.speed));
 						cm.CheckCombatStatus(new List<BaseUnit> {this});
 						cm.CheckCombatStatus(cm.GetAllBaseUnits());
 					}
@@ -658,7 +477,7 @@ public class BaseUnit {
 					// Add dealer to to turn queue
 					if(!dealer.inCombat && !cm.turnQueue.UnitInQueue(dealer)) {
 						dealer.inCombat = true;
-						cm.turnQueue.Add(new Turn(dealer, dealer.modSpeed));
+						cm.turnQueue.Add(new Turn(dealer, dealer.attributes.speed));
 					}
 				}
 			}
@@ -702,33 +521,51 @@ public class BaseUnit {
 		_idleArmorAnimation = new Sprite[IdleAnimationLength];
 		_idleSecondaryAnimation = new Sprite[IdleAnimationLength];
 		_idlePrimaryAnimation = new Sprite[IdleAnimationLength];
-
 		switch(spritePreset) {
 			case SpritePreset.warrior:
 				_shadowSprite = spriteManager.shadowMedium;
+
+				// Parse Weapon tier here --
 				_idleSecondaryAnimation = spriteManager.unitWarrior1.secondaryT1.ToArray();
-				Debug.Log(_idleSecondaryAnimation[0]);
 				_idlePrimaryAnimation = spriteManager.unitWarrior1.primaryT1.ToArray();
-				Debug.Log(_idlePrimaryAnimation[0]);
 			break;
 		}
 		ApplySwatches(spriteManager);
 	}
 	
 	void ApplySwatches(SpriteManager spriteManager) {
-		Sprite[] skinTemplate = spriteManager.unitWarrior1.skin.ToArray();
-		Sprite[] armorTemplate = spriteManager.unitWarrior1.armorT1.ToArray();
+		Sprite[] skinTemplate = null;
+		Sprite[] armorTemplate = null;
+		Color[] skinPalette = null;
+		Color[] armorPalette = null;
+
+		switch(spritePreset) {
+			case SpritePreset.warrior:
+				skinTemplate = spriteManager.unitWarrior1.skin.ToArray();
+				skinPalette = ParseColor(Swatch.GetSkinSwatch(_character.skinColor));
+
+				// Parse armor tier here --
+				armorTemplate = spriteManager.unitWarrior1.armorT1.ToArray();
+				armorPalette = ParseColor(Swatch.armorWarriorT1);
+			break;
+		}
+
 		for(int i = 0; i < IdleAnimationLength; i++) {
 
 			// Skin
-			if(_character != null) {
-				_idleSkinAnimation[i] = ApplySwatch(skinTemplate[i], ParseColor(Swatch.GetSkinSwatch(_character.skinColor)));
+			if(_character != null && skinPalette != null) {
+				_idleSkinAnimation[i] = ApplySwatch(skinTemplate[i], skinPalette);
 			} else {
 				_idleSkinAnimation[i] = ApplySwatch(skinTemplate[i], ParseColor(Swatch.skinHumanLight));
 			}
 
 			// Armor
-			_idleArmorAnimation[i] = ApplySwatch(armorTemplate[i], ParseColor(Swatch.armorWarriorT1));
+			if(_character != null && armorPalette != null) {
+				_idleArmorAnimation[i] = ApplySwatch(armorTemplate[i], armorPalette);
+			} else {
+				_idleArmorAnimation[i] = ApplySwatch(armorTemplate[i], ParseColor(Swatch.armorWarriorT1));
+			}
+			
 		}
 		Debug.Log("Swatches applied.");
 	}
@@ -750,7 +587,6 @@ public class BaseUnit {
 
 		Sprite sprite = Sprite.Create(texture, new Rect(0, 0, 48, 48), new Vector2(0.5f, 0.5f), 48f);
 		sprite.texture.filterMode = FilterMode.Point;
-		Debug.Log(sprite);
 		return sprite;
 	}
 

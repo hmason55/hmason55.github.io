@@ -9,6 +9,7 @@ public class CharacterCreationUI : MonoBehaviour {
     [SerializeField] Text titleText;
     [SerializeField] MainMenuUI mainMenuUI;
     [SerializeField] Portrait portrait;
+    [SerializeField] UnitBehaviour unitPreview;
     [SerializeField] Button closeButton;
     [SerializeField] GameObject controls;
     [SerializeField] InputField nameField;
@@ -37,6 +38,12 @@ public class CharacterCreationUI : MonoBehaviour {
     public void OnStart() {
         HideUI();
         CreateDataSlot();
+        
+        DungeonManager dungeonManager = GameObject.FindObjectOfType<DungeonManager>();
+        if(dungeonManager != null) {
+            HideUI();
+            dungeonManager.Load();
+        }
     }
 
     void CreateDataSlot() {
@@ -66,6 +73,7 @@ public class CharacterCreationUI : MonoBehaviour {
         titleText.gameObject.SetActive(true);
         closeButton.gameObject.SetActive(true);
         portrait.gameObject.SetActive(true);
+        unitPreview.ShowUnit();
         controls.gameObject.SetActive(true);
         nameField.gameObject.SetActive(true);
         startButton.gameObject.SetActive(true);
@@ -76,6 +84,7 @@ public class CharacterCreationUI : MonoBehaviour {
         titleText.gameObject.SetActive(false);
         closeButton.gameObject.SetActive(false);
         portrait.gameObject.SetActive(false);
+        unitPreview.HideUnit();
         controls.gameObject.SetActive(false);
         nameField.gameObject.SetActive(false);
         startButton.gameObject.SetActive(false);

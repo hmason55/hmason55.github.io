@@ -9,6 +9,7 @@ public class PlayerData  {
 
     public PlayerData() {
         _character = new Character();
+        _attributes = new Attributes();
     }
 
     public Character character {
@@ -16,8 +17,14 @@ public class PlayerData  {
         set {_character = value;}
     }
 
+    public Attributes attributes {
+        get {return _attributes;}
+        set {_attributes = value;}
+    }
     // Character data
     Character _character;
+
+    Attributes _attributes;
 
     // Data tracking
 

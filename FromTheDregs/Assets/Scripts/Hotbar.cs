@@ -68,7 +68,7 @@ public class Hotbar : MonoBehaviour {
 					hotkey.preset = _baseUnit.spells[i];
 				}
 
-				if(hotkey.spell.essenceCost > _baseUnit.currentEssence) {
+				if(hotkey.spell.essenceCost > _baseUnit.attributes.esCurrent) {
 					hotkey.Disable();
 				} else {
 					hotkey.Enable();
@@ -105,7 +105,8 @@ public class Hotbar : MonoBehaviour {
 		if(combatStatus == true) {
 			_baseUnit.Cast(_activeSpell.essenceCost);
 		}
-		_essenceUI.SetFilledEssence(_baseUnit.currentEssence);
+
+		_essenceUI.SetFilledEssence(_baseUnit.attributes.esCurrent);
 		_activeSpell.ConfirmSpellCast();
 		
 		if(_baseUnit.isCasting) {
@@ -128,7 +129,7 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	public void Recast(Vector2Int position) {
-		if(_activeSpell.essenceCost <= _baseUnit.currentEssence) {
+		if(_activeSpell.essenceCost <= _baseUnit.attributes.esCurrent) {
 			Debug.Log("Recast");
 			_activeSpell.ResetTiles();
 			_castOptionsUI.ShowUI();
@@ -174,7 +175,7 @@ public class Hotbar : MonoBehaviour {
 	public void EnableHotkeys(bool forceEnable = false) {
 		foreach(Hotkey hotkey in _hotkeys) {
 			if(hotkey.spell != null) {
-				if(hotkey.spell.essenceCost <= _baseUnit.currentEssence || forceEnable) {
+				if(hotkey.spell.essenceCost <= _baseUnit.attributes.esCurrent || forceEnable) {
 					hotkey.Enable();
 				}
 			}

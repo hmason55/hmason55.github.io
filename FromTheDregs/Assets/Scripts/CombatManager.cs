@@ -40,7 +40,7 @@ public class CombatManager : MonoBehaviour {
 		Debug.Log("End Combat");
 		foreach(Turn turn in _turnQueue.queue) {
 			turn.baseUnit.inCombat = false;
-			turn.baseUnit.currentEssence = turn.baseUnit.baseEssence;
+			turn.baseUnit.attributes.esCurrent = turn.baseUnit.attributes.baseEssence;
 		}
 		_inCombat = false;
 	}
@@ -55,10 +55,10 @@ public class CombatManager : MonoBehaviour {
 					int alliance2 = -5;
 					foreach(Turn turn in _turnQueue.queue) {
 						if(alliance1 == -5) {
-							alliance1 = turn.baseUnit.combatAlliance;
+							alliance1 = turn.baseUnit.attributes.alliance;
 						} else if(	alliance2 == -5 && 
-									turn.baseUnit.combatAlliance != alliance1) {
-							alliance2 = turn.baseUnit.combatAlliance;
+									turn.baseUnit.attributes.alliance != alliance1) {
+							alliance2 = turn.baseUnit.attributes.alliance;
 						}
 					}
 
@@ -82,21 +82,21 @@ public class CombatManager : MonoBehaviour {
 						List<PathNode> path = baseUnit.FindPath(baseUnit.tile.position, target.tile.position, false, 1);
 
 						// Move / Attack
-						if(path.Count > 1 && baseUnit.currentEssence > 0) {
+						if(path.Count > 1 && baseUnit.attributes.esCurrent > 0) {
 							Debug.Log("Moving");
 							baseUnit.Move(path[path.Count-2].position.x - baseUnit.tile.position.x, path[path.Count-2].position.y - baseUnit.tile.position.y);
-							baseUnit.currentEssence -= 1;
-							Debug.Log("Current ES: " + baseUnit.currentEssence);
+							baseUnit.attributes.esCurrent -= 1;
+							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
 							//EndTurn(baseUnit);
-						} else if(path.Count == 1 && baseUnit.currentEssence > 0) {
+						} else if(path.Count == 1 && baseUnit.attributes.esCurrent > 0) {
 							Debug.Log("Attacking");
 							spell.ShowEffectRange(target.tile.position);
 							spell.ConfirmSpellCast();
-							baseUnit.currentEssence -= 1;
-							Debug.Log("Current ES: " + baseUnit.currentEssence);
+							baseUnit.attributes.esCurrent -= 1;
+							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
 							//EndTurn(baseUnit);
 						} else {
-							Debug.Log("Current ES: " + baseUnit.currentEssence);
+							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
 							EndTurn(baseUnit);
 						}
 					}
@@ -118,7 +118,7 @@ public class CombatManager : MonoBehaviour {
 		
 		turnQueue.EndTurn();
 		turnQueue.NextTurn();
-		turnQueue.Add(new Turn(b, b.modSpeed));
+		turnQueue.Add(new Turn(b, b.attributes.speed));
 
 		// if it's the player's turn
 		if(_turnQueue.queue.Count > 0) {
@@ -127,7 +127,7 @@ public class CombatManager : MonoBehaviour {
 				turn.baseUnit.SetAsCameraTarget();
 				turn.baseUnit.SetAsInterfaceTarget();
 				_shortcutUI.BeginTurn();
-				_hotbar.essenceUI.SetFilledEssence(turn.baseUnit.currentEssence);
+				_hotbar.essenceUI.SetFilledEssence(turn.baseUnit.attributes.esCurrent);
 			}
 		}
 	}
@@ -150,7 +150,7 @@ public class CombatManager : MonoBehaviour {
 		// Flag all units within range of another unit
 		foreach(BaseUnit baseUnit in baseUnits) {
 			bool[,] visitedTiles = new bool[DungeonManager.dimension, DungeonManager.dimension];
-			AggroNearbyUnits(baseUnit.tile.position.x, baseUnit.tile.position.y, visitedTiles, baseUnit.tile.position.x, baseUnit.tile.position.y, baseUnit.aggroRadius);
+			AggroNearbyUnits(baseUnit.tile.position.x, baseUnit.tile.position.y, visitedTiles, baseUnit.tile.position.x, baseUnit.tile.position.y, baseUnit.attributes.aggroRadius);
 		}
 
 		Debug.Log("Turn Queue (" + _turnQueue.Length + "):");
@@ -180,9 +180,9 @@ public class CombatManager : MonoBehaviour {
 		foreach(BaseUnit t in allUnits) {
 			if(t != b) {
 				if(targetSameAlliance) {
-					if(t.combatAlliance != b.combatAlliance) {continue;}
+					if(t.attributes.alliance != b.attributes.alliance) {continue;}
 				} else {
-					if(t.combatAlliance == b.combatAlliance) {continue;}
+					if(t.attributes.alliance == b.attributes.alliance) {continue;}
 				}
 
 				List<PathNode> path = b.FindPath(b.tile.position, t.tile.position, ignoreUnits, excludeNodesFromEnd);
@@ -249,15 +249,15 @@ public class CombatManager : MonoBehaviour {
 				BaseUnit b1 = dungeonManager.tiles[ox, oy].baseUnit;
 				BaseUnit b2 = tile.baseUnit;
 				
-				if(b1.combatAlliance != b2.combatAlliance) {
+				if(b1.attributes.alliance != b2.attributes.alliance) {
 					b1.inCombat = true;
 					if(!_turnQueue.UnitInQueue(b1)) {
-						_turnQueue.Add(new Turn(b1, b1.modSpeed));
+						_turnQueue.Add(new Turn(b1, b1.attributes.speed));
 					}
 
 					b2.inCombat = true;
 					if(!_turnQueue.UnitInQueue(b2)) {
-						_turnQueue.Add(new Turn(b2, b2.modSpeed));
+						_turnQueue.Add(new Turn(b2, b2.attributes.speed));
 					}
 
 					if(!_inCombat) {
@@ -269,12 +269,12 @@ public class CombatManager : MonoBehaviour {
 					if(b1.inCombat || b2.inCombat) {
 						b1.inCombat = true;
 						if(!_turnQueue.UnitInQueue(b1)) {
-							_turnQueue.Add(new Turn(b1, b1.modSpeed));
+							_turnQueue.Add(new Turn(b1, b1.attributes.speed));
 						}
 
 						b2.inCombat = true;
 							if(!_turnQueue.UnitInQueue(b2)) {
-							_turnQueue.Add(new Turn(b2, b2.modSpeed));
+							_turnQueue.Add(new Turn(b2, b2.attributes.speed));
 						}
 
 						if(!_inCombat) {

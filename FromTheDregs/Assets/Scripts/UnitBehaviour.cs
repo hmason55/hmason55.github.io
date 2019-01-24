@@ -30,6 +30,22 @@ public class UnitBehaviour : MonoBehaviour {
 		get {return _baseUnit;}
 	}
 
+	public Image unitPrimaryImage {
+		get {return _unitPrimaryImage;}
+	}
+
+	public Image unitSecondaryImage {
+		get {return _unitSecondaryImage;}
+	}
+
+	public Image unitArmorImage {
+		get {return _unitArmorImage;}
+	}
+
+	public Image unitSkinImage {
+		get {return _unitSkinImage;}
+	}
+
 	public Image unitImage {
 		get {return _unitImage;}
 	}
@@ -50,14 +66,17 @@ public class UnitBehaviour : MonoBehaviour {
 	void Awake() {
 		_rectTransform = GetComponent<RectTransform>();
 		if(_previewUnit) {
-			SpriteManager spriteManager = GameObject.FindObjectOfType<SpriteManager>();
 			_baseUnit = new BaseUnit(false, BaseUnit.SpritePreset.warrior, true);
 			_baseUnit.character = new Character();
-			_baseUnit.character.skinColor = Character.SkinColor.Orc_Medium;
-			_baseUnit.LoadSprites(spriteManager);
-			
+			_baseUnit.character.skinColor = Character.SkinColor.Human_Light;
+			LoadSprites();
 			UpdateSprite();
 		}
+	}
+
+	public void LoadSprites() {
+		SpriteManager spriteManager = GameObject.FindObjectOfType<SpriteManager>();
+		_baseUnit.LoadSprites(spriteManager);
 	}
 
 	public void UpdateSprite() {
@@ -69,9 +88,6 @@ public class UnitBehaviour : MonoBehaviour {
 				UseFallbackSprite();
 			}
 
-			_shadowImage.enabled = true;
-			_shadowImage.sprite = _baseUnit.shadowSprite;
-
 			if(_baseUnit.inCombat) {
 				_unitImage.color = Color.red;
 			} else {
@@ -81,49 +97,53 @@ public class UnitBehaviour : MonoBehaviour {
 	}
 
 	void UseCustomSprite() {
-		if(_unitSkinImage != null) {
-			//_unitSkinImage.enabled = true;
-			_unitSkinImage.sprite = _baseUnit.spriteSkin;
-		}
-
-		if(_unitArmorImage != null) {
-			//_unitArmorImage.enabled = true;
-			_unitArmorImage.sprite = _baseUnit.spriteArmor;
-		}
-
-		if(_unitSecondaryImage != null) {
-			//_unitSecondaryImage.enabled = true;
-			_unitSecondaryImage.sprite = _baseUnit.spriteSecondary;
-		}
-
-		if(_unitPrimaryImage != null) {
-			//_unitPrimaryImage.enabled = true;
-			_unitPrimaryImage.sprite = _baseUnit.spritePrimary;
-		}
-
-		_unitImage.enabled = false;
-		
+		if(_shadowImage != null) 		{_shadowImage.sprite = _baseUnit.shadowSprite;}
+		if(_unitSkinImage != null) 		{_unitSkinImage.sprite = _baseUnit.spriteSkin;}
+		if(_unitArmorImage != null) 	{_unitArmorImage.sprite = _baseUnit.spriteArmor;}
+		if(_unitSecondaryImage != null) {_unitSecondaryImage.sprite = _baseUnit.spriteSecondary;}
+		if(_unitPrimaryImage != null) 	{_unitPrimaryImage.sprite = _baseUnit.spritePrimary;}
 	}
 
 	void UseFallbackSprite() {
-		if(_unitSkinImage != null) {
-			_unitSkinImage.enabled = false;
-		}
+		if(_shadowImage != null) 		{_shadowImage.sprite = _baseUnit.shadowSprite;}
+		if(_unitImage != null) 			{_unitImage.sprite = _baseUnit.sprite;}	
+	}
 
-		if(_unitArmorImage != null) {
-			_unitArmorImage.enabled = false;
-		}
+	public void ShowUnit() {
+		if(_shadowImage != null) {_shadowImage.enabled = true;}
 
-		if(_unitSecondaryImage != null) {
-			_unitSecondaryImage.enabled = false;
+		if(_baseUnit.useCustomSprites) {
+			if(_unitSkinImage != null) 		{_unitSkinImage.enabled = true;}
+			if(_unitArmorImage != null) 	{_unitArmorImage.enabled = true;}
+			if(_unitSecondaryImage != null) {_unitSecondaryImage.enabled = true;}
+			if(_unitPrimaryImage != null) 	{_unitPrimaryImage.enabled = true;}
+			if(_unitImage != null) 			{_unitImage.enabled = false;}
+		} else {
+			if(_unitSkinImage != null) 		{_unitSkinImage.enabled = false;}
+			if(_unitArmorImage != null) 	{_unitArmorImage.enabled = false;}
+			if(_unitSecondaryImage != null) {_unitSecondaryImage.enabled = false;}
+			if(_unitPrimaryImage != null) 	{_unitPrimaryImage.enabled = false;}
+			if(_unitImage != null) 			{_unitImage.enabled = true;}
 		}
+	}
 
-		if(_unitPrimaryImage != null) {
-			_unitPrimaryImage.enabled = false;
-		}
+	public void HideUnit() {
+		if(_shadowImage != null) 		{_shadowImage.enabled = false;}
+		if(_unitSkinImage != null) 		{_unitSkinImage.enabled = false;}
+		if(_unitArmorImage != null) 	{_unitArmorImage.enabled = false;}
+		if(_unitSecondaryImage != null) {_unitSecondaryImage.enabled = false;}
+		if(_unitPrimaryImage != null) 	{_unitPrimaryImage.enabled = false;}
+		if(_unitImage != null) 			{_unitImage.enabled = false;}
+	}
 
-		_unitImage.enabled = true;
-		_unitImage.sprite = _baseUnit.sprite;
+	public void Unset() {
+		if(_shadowImage != null) 		{_shadowImage.sprite = null;}
+		if(_unitImage != null) 			{_unitImage.sprite = null;}	
+		if(_unitSkinImage != null) 		{_unitSkinImage.sprite = null;}
+		if(_unitArmorImage != null) 	{_unitArmorImage.sprite = null;}
+		if(_unitSecondaryImage != null) {_unitSecondaryImage.sprite = null;}
+		if(_unitPrimaryImage != null) 	{_unitPrimaryImage.sprite = null;}
+		HideUnit();
 	}
 
 	public void Transfer(Tile t, BaseUnit b) {
@@ -136,17 +156,25 @@ public class UnitBehaviour : MonoBehaviour {
 		_tile.unit = this;
 
 		p = _tile.position;
-	
 		if(b != null) {
+
 			_tile.baseUnit = b;
 			_baseUnit = b;
 			_baseUnit.tile = t;
 
-			_unitImage.enabled = true;
-			_unitImage.sprite = _baseUnit.sprite;
+			ShowUnit();
+			UpdateSprite();
+			//UpdateSprite();
+			//Debug.Log(b.useCustomSprites);
+			///_unitSkinImage.enabled = true;
+			//_unitArmorImage.enabled = true;
+			//_unitSkinImage.enabled = true;
 
-			_shadowImage.enabled = true;
-			_shadowImage.sprite = _baseUnit.shadowSprite;
+			//_unitImage.enabled = true;
+			//_unitImage.sprite = _baseUnit.sprite;
+
+			//_shadowImage.enabled = true;
+			//_shadowImage.sprite = _baseUnit.shadowSprite;
 		}
 	}
 

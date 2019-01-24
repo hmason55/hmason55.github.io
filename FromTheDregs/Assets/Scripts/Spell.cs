@@ -328,7 +328,7 @@ public class Spell {
 					_chargesMax = 0;
 				} else {
 					if(_caster != null) {
-						_chargesMax = _caster.speed - 1;
+						_chargesMax = _caster.attributes.speed - 1;
 					}
 				}
 				
@@ -495,7 +495,7 @@ public class Spell {
 							return;
 						
 						case TargetUnitType.Enemy:
-							if(_tile.baseUnit.combatAlliance != _caster.combatAlliance) {
+							if(_tile.baseUnit.attributes.alliance != _caster.attributes.alliance) {
 								flagTile = true;
 							} else {
 								flagTile = false;
@@ -909,15 +909,15 @@ public class Spell {
 		int totalDamage = 0;
 		switch(_scaling) {
 			case Scaling.Strength:
-				totalDamage = Dice.Roll(_damageDice, _damageSides) + Mathf.FloorToInt((_caster.modStrength + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
+				totalDamage = Dice.Roll(_damageDice, _damageSides) + Mathf.FloorToInt((_caster.attributes.strength + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
 			break;
 
 			case Scaling.Dexterity:
-				totalDamage = Dice.Roll(_damageDice, _damageSides) +  Mathf.FloorToInt((_caster.modDexterity + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
+				totalDamage = Dice.Roll(_damageDice, _damageSides) +  Mathf.FloorToInt((_caster.attributes.dexterity + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
 			break;
 
 			case Scaling.Intelligence:
-				totalDamage = Dice.Roll(_damageDice, _damageSides) +  Mathf.FloorToInt((_caster.modIntelligence + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
+				totalDamage = Dice.Roll(_damageDice, _damageSides) +  Mathf.FloorToInt((_caster.attributes.intelligence + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
 			break;
 		}
 

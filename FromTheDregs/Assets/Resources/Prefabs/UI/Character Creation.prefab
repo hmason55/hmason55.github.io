@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4247317f51d3c1f48b1f981265a3ea63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previewUnit: {fileID: 0}
   backgroundImage: {fileID: 5631199109735810234}
   faceImage: {fileID: 5631199110610602763}
   mouthImage: {fileID: 5631199109349484571}
@@ -1218,6 +1219,7 @@ MonoBehaviour:
   titleText: {fileID: 0}
   mainMenuUI: {fileID: 0}
   portrait: {fileID: 5631199108697410932}
+  unitPreview: {fileID: 0}
   closeButton: {fileID: 5758197390556320403}
   controls: {fileID: 5631199110621114751}
   nameField: {fileID: 5631199110443092259}

@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class Portrait : MonoBehaviour {
 	public static int size = 48;
-
-	List<Color[]> skinSwatches;
-	List<Color[]> hairSwatches;
+	[SerializeField] UnitBehaviour previewUnit;
 
 	[SerializeField] Image backgroundImage;
 	[SerializeField] Image faceImage;
@@ -73,29 +71,18 @@ public class Portrait : MonoBehaviour {
 	#endregion
 
 	void Awake() {
-		Init();
 		ApplySwatches();
+	}
+
+	void Start() {
+		//ApplySwatches();
 	}
 
 	void Update() {
 		if(Input.GetKeyDown(KeyCode.Space)) {
-			SaveCharacter();
+			//SaveCharacter();
 
 		}
-	}
-
-	public void Init() {
-		hairSwatches = new List<Color[]> {
-			ParseColor(Swatch.hairPlatinum),
-			ParseColor(Swatch.hairBlonde),
-			ParseColor(Swatch.hairAmber),
-			ParseColor(Swatch.hairChestnut),
-			ParseColor(Swatch.hairChocolate),
-			ParseColor(Swatch.hairAuburn),
-			ParseColor(Swatch.hairRed),
-			ParseColor(Swatch.hairGray),
-			ParseColor(Swatch.hairWhite)
-		};
 	}
 
 	void ApplySwatches() {
@@ -107,17 +94,17 @@ public class Portrait : MonoBehaviour {
 		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 
 		// Beard
-		ApplySwatch(beardImage, beardTemplates[(int)_beardType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(beardImage, beardTemplates[(int)_beardType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
 
 		// Nose
 		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 
 		// Eyebrows
-		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
 
 		// Hair
-		ApplySwatch(hairImage, hairTemplates[(int)_hairType], hairSwatches[(int)_hairColor]);
-		
+		ApplySwatch(hairImage, hairTemplates[(int)_hairType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	void ApplySwatch(Image img, Sprite template, Color[] swatch) {
@@ -155,7 +142,6 @@ public class Portrait : MonoBehaviour {
 	}
 
 	public void LoadCharacter(Character character) {
-		Init();
 		_faceType = character.faceType;
 		_mouthType = character.mouthType;
 		_beardType = character.beardType;
@@ -211,6 +197,24 @@ public class Portrait : MonoBehaviour {
 	}
 
 	#region Interface
+	void ApplyToPreviewCharacter() {
+		if(previewUnit == null) {return;}
+		if(previewUnit.baseUnit == null) {return;}
+
+		if(previewUnit.baseUnit.character == null) {
+			previewUnit.baseUnit.character = new Character();
+		}
+
+		previewUnit.baseUnit.character.faceType = faceType;
+		previewUnit.baseUnit.character.mouthType = mouthType;
+		previewUnit.baseUnit.character.beardType = beardType;
+		previewUnit.baseUnit.character.noseType = noseType;
+		previewUnit.baseUnit.character.hairType = hairType;
+		previewUnit.baseUnit.character.skinColor = skinColor;
+		previewUnit.baseUnit.character.hairColor = hairColor;
+		previewUnit.LoadSprites();
+	}
+
 	public void NextFace() {
 		_faceType++;
 		if((int)_faceType > Enum.GetValues(typeof(Character.FaceType)).Length-1) {
@@ -218,6 +222,7 @@ public class Portrait : MonoBehaviour {
 		}
 
 		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void PrevFace() {
@@ -227,6 +232,7 @@ public class Portrait : MonoBehaviour {
 		}
 
 		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void NextMouth() {
@@ -236,6 +242,7 @@ public class Portrait : MonoBehaviour {
 		}
 
 		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void PrevMouth() {
@@ -245,6 +252,7 @@ public class Portrait : MonoBehaviour {
 		}
 
 		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void NextBeard() {
@@ -253,7 +261,8 @@ public class Portrait : MonoBehaviour {
 			_beardType = 0;
 		}
 
-		ApplySwatch(beardImage, beardTemplates[(int)_beardType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(beardImage, beardTemplates[(int)_beardType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void PrevBeard() {
@@ -262,7 +271,8 @@ public class Portrait : MonoBehaviour {
 			_beardType = (Character.BeardType)Enum.GetValues(typeof(Character.BeardType)).Length-1;
 		}
 
-		ApplySwatch(beardImage, beardTemplates[(int)_beardType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(beardImage, beardTemplates[(int)_beardType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void NextNose() {
@@ -272,6 +282,7 @@ public class Portrait : MonoBehaviour {
 		}
 
 		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void PrevNose() {
@@ -281,6 +292,7 @@ public class Portrait : MonoBehaviour {
 		}
 
 		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void NextEyebrows() {
@@ -289,7 +301,8 @@ public class Portrait : MonoBehaviour {
 			_eyebrowType = 0;
 		}
 
-		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void PrevEyebrows() {
@@ -298,7 +311,8 @@ public class Portrait : MonoBehaviour {
 			_eyebrowType = (Character.EyebrowType)Enum.GetValues(typeof(Character.EyebrowType)).Length-1;
 		}
 
-		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void NextHair() {
@@ -307,7 +321,8 @@ public class Portrait : MonoBehaviour {
 			_hairType = 0;
 		}
 
-		ApplySwatch(hairImage, hairTemplates[(int)_hairType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(hairImage, hairTemplates[(int)_hairType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void PrevHair() {
@@ -316,7 +331,8 @@ public class Portrait : MonoBehaviour {
 			_hairType = (Character.HairType)Enum.GetValues(typeof(Character.HairType)).Length-1;
 		}
 
-		ApplySwatch(hairImage, hairTemplates[(int)_hairType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(hairImage, hairTemplates[(int)_hairType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void NextHairColor() {
@@ -325,9 +341,10 @@ public class Portrait : MonoBehaviour {
 			_hairColor = 0;
 		}
 
-		ApplySwatch(beardImage, beardTemplates[(int)_beardType], hairSwatches[(int)_hairColor]);
-		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], hairSwatches[(int)_hairColor]);
-		ApplySwatch(hairImage, hairTemplates[(int)_hairType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(beardImage, beardTemplates[(int)_beardType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplySwatch(hairImage, hairTemplates[(int)_hairType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void PrevHairColor() {
@@ -336,9 +353,10 @@ public class Portrait : MonoBehaviour {
 			_hairColor = (Character.HairColor)Enum.GetValues(typeof(Character.HairColor)).Length-1;
 		}
 
-		ApplySwatch(beardImage, beardTemplates[(int)_beardType], hairSwatches[(int)_hairColor]);
-		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType], hairSwatches[(int)_hairColor]);
-		ApplySwatch(hairImage, hairTemplates[(int)_hairType], hairSwatches[(int)_hairColor]);
+		ApplySwatch(beardImage, beardTemplates[(int)_beardType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplySwatch(eyebrowImage, eyebrowTemplates[(int)_eyebrowType],ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplySwatch(hairImage, hairTemplates[(int)_hairType], ParseColor(Swatch.GetHairSwatch(_hairColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void NextSkinColor() {
@@ -350,6 +368,7 @@ public class Portrait : MonoBehaviour {
 		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplyToPreviewCharacter();
 	}
 
 	public void PrevSkinColor() {
@@ -361,6 +380,7 @@ public class Portrait : MonoBehaviour {
 		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplyToPreviewCharacter();
 	}
 	#endregion
 	
