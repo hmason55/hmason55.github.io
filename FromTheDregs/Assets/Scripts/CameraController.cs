@@ -20,14 +20,13 @@ public class CameraController : MonoBehaviour {
 	[SerializeField] float _deadzone = 1.0f;
 
 	[SerializeField] float _panSpeed = 25f;
-
+	[SerializeField] float _zoom = 4f;
 	float _aspectRatio = 1.778f;
 	float _canvasWidth = 1080f;
 	float _canvasHeight = 1920f;
 
 	float _cachedWidth;
 	float _cachedHeight;
-	
 	
 	float _scale = 4f;
 	
@@ -62,15 +61,21 @@ public class CameraController : MonoBehaviour {
 
 	void Update() {
 		if(_cachedWidth != Screen.width || _cachedHeight != Screen.height) {
-			UpdateResolution();
 			SnapToTarget();
 		}
 	}
 
 	void LateUpdate() {
-		Vector2 distanceVector = new Vector2(trueTarget.x - _rectTransform.anchoredPosition.x, trueTarget.y - _rectTransform.anchoredPosition.y);
+		//MoveLayer(_rectTransform);
+		MoveLayer(_terrainLayer);
+		MoveLayer(_decorationLayer);
+		MoveLayer(_unitLayer);
+	}
+
+	void MoveLayer(RectTransform layer) {
+		Vector2 distanceVector = new Vector2(trueTarget.x - layer.anchoredPosition.x, trueTarget.y - layer.anchoredPosition.y);
 		if(distanceVector.magnitude > _deadzone) {
-			_rectTransform.anchoredPosition += distanceVector.normalized * (distanceVector.magnitude * _panSpeed) * Time.deltaTime;
+			layer.anchoredPosition += distanceVector.normalized * (distanceVector.magnitude * _panSpeed) * Time.deltaTime;
 		} else if(distanceVector.magnitude != 0f){
 			SnapToTarget();
 		}
@@ -89,7 +94,12 @@ public class CameraController : MonoBehaviour {
 		_aspectRatio = (float)Screen.width / (float)Screen.height;
 		_canvasWidth = _aspectRatio * referenceHeight;
 		_canvasHeight = referenceHeight;
-		_scale = _rectTransform.localScale.x;
+		_scale = _zoom;
+
+		_rectTransform.localScale = new Vector3(_scale, _scale, _scale);
+		_terrainLayer.localScale = new Vector3(_scale, _scale, _scale);
+		_decorationLayer.localScale = new Vector3(_scale, _scale, _scale);
+		_unitLayer.localScale = new Vector3(_scale, _scale, _scale);
 	}
 
 	public void MoveToTarget() {
@@ -102,6 +112,10 @@ public class CameraController : MonoBehaviour {
 
 	public void SnapToTarget() {
 		MoveToTarget();
+
 		_rectTransform.anchoredPosition = trueTarget;
+		_terrainLayer.anchoredPosition = trueTarget;
+		_decorationLayer.anchoredPosition = trueTarget;
+		_unitLayer.anchoredPosition = trueTarget;
 	}
 }

@@ -6,9 +6,12 @@ public class Spell {
 
 	public enum Preset {
 		Bite,
+		Slash,
 		BurningHands,
+		FeintSwipe,
 		Fireball,
-		Move
+		Move,
+		Block
 	}
 
 	public enum DamageType {
@@ -54,9 +57,10 @@ public class Spell {
 	Tile[,] _tiles;
 	Preset _preset;
 	string _spellName;
-	int _damageDice = 1;
-	int _damageSides = 4;
-	float _damageMultiplier = 1.0f;
+	//int _damageDice = 1;
+	//int _damageSides = 4;
+	//float _damageMultiplier = 1.0f;
+	Effect _damageEffect;
 	int _essenceCost = 1;
 	int _chargesRemaining = 0;
 	int _chargesMax;
@@ -69,6 +73,9 @@ public class Spell {
 	Scaling _scaling = Scaling.Strength;
 	int _modSizeDamage = 0;
 	string _damageSoundPath;
+	string _blockSoundPath = "Sounds/sfx/block_impact_0";
+	List<Effect> _spellCasterEffects;
+	List<Effect> _spellTargetEffects;
 
 
 	// Casting
@@ -177,6 +184,14 @@ public class Spell {
 		get {return _hitTiles;}
 		set {_hitTiles = value;}
 	}
+
+	public List<Effect> targetEffects {
+		get {return _spellTargetEffects;}
+	}
+
+	public List<Effect> casterEffects {
+		get {return _spellCasterEffects;}
+	}
 	#endregion
 
 	// Constructors
@@ -197,6 +212,11 @@ public class Spell {
 	public void CreateFromPreset(Preset spell, bool sync = false) {
 		_preset = spell;
 		_hitTiles = new List<Tile>();
+		_spellCasterEffects = new List<Effect>();
+		_spellTargetEffects = new List<Effect>();
+		Effect damage;
+		Effect stun;
+
 
 		switch(spell) {
 			
@@ -204,7 +224,7 @@ public class Spell {
 			case Preset.Bite:	
 				_spellName = "Bite";
 
-				_essenceCost = 2;
+				_essenceCost = 4;
 				_damageType = DamageType.Piercing;
 				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
@@ -213,8 +233,12 @@ public class Spell {
 				_createsProjectile = false;
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
-				_damageMultiplier = 1.25f;
 				_modSizeDamage = 0;
+
+				
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
+				_spellTargetEffects.Add(damage);
 				
 				_castParticlePath = "";
 				_castRadius = 1;
@@ -240,12 +264,152 @@ public class Spell {
 			break;
 			#endregion
 
+			#region Slash
+			case Preset.Slash:	
+				_spellName = "Slash";
+
+				_essenceCost = 2;
+				_damageType = DamageType.Piercing;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_modSizeDamage = 0;
+
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
+				_spellTargetEffects.Add(damage);
+				
+				_castParticlePath = "";
+				_castRadius = 1;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = true;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.All;
+
+				_effectParticlePath = "Prefabs/Effects/Slash Impact";
+				_effectSoundPath = "Sounds/sfx/slash_impact_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.80f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.Enemy;
+			break;
+			#endregion
+
+			#region Feint Swipe
+			case Preset.FeintSwipe:	
+				_spellName = "Feint Swipe";
+
+				_essenceCost = 1;
+				_damageType = DamageType.Piercing;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_modSizeDamage = 0;
+
+				Effect crit = new Effect(Effect.EffectType.Focus);
+				crit.deactivationConditions.Add(Effect.Conditions.DealDamage, 1);
+				_spellCasterEffects.Add(crit);
+
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Dexterity, 0.80f);
+				_spellTargetEffects.Add(damage);
+
+				
+				_castParticlePath = "";
+				_castRadius = 1;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = true;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.All;
+
+				_effectParticlePath = "Prefabs/Effects/Slash Impact";
+				_effectSoundPath = "Sounds/sfx/slash_impact_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.80f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.Enemy;
+			break;
+			#endregion
+
+			#region Block
+			case Preset.Block:	
+				_spellName = "Block";
+
+				_essenceCost = 2;
+				//_damageType = DamageType.Piercing;
+				//_damageSoundPath = "Sounds/sfx/impact_damage_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_modSizeDamage = 0;
+
+				Effect block = new Effect(Effect.EffectType.Block);
+				block.stackable = true;
+				block.SetPrimaryScaling(Effect.ScalingType.Strength, 0.25f);
+				block.SetSecondaryScaling(Effect.ScalingType.Dexterity, 0.10f);
+				block.deactivationConditions[Effect.Conditions.DurationExpire] = 1;
+				_spellCasterEffects.Add(block);
+
+				//damage = new Effect(Effect.EffectType.Block);
+				//damage.SetPrimaryScaling(Effect.ScalingType.Dexterity, 0.80f);
+				//_spellTargetEffects.Add(damage);
+
+				
+				_castParticlePath = "";
+				_castRadius = 0;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = true;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = true;
+				_castTargetUnitType = TargetUnitType.Self;
+
+				_effectParticlePath = "Prefabs/Effects/Block Apply";
+				_effectSoundPath = "Sounds/sfx/grant_block_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.80f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.Self;
+			break;
+			#endregion
+
 			#region Burning Hands
 			case Preset.BurningHands:	
 				_spellName = "Burning Hands";
 
-				_damageDice = 1;
-				_damageSides = 4;
 				_damageType = DamageType.Fire;
 				_essenceCost = 2;
 				_autoRecast = false;
@@ -254,8 +418,12 @@ public class Spell {
 				_createsProjectile = false;
 				_createsEffect = true;
 				_scaling = Scaling.Intelligence;
-				_damageMultiplier = 1.20f;
 				_modSizeDamage = 0;
+
+
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
+				_spellTargetEffects.Add(damage);
 				
 				_castParticlePath = "Prefabs/Effects/Fire Casting";
 				_castRadius = 1;
@@ -282,8 +450,6 @@ public class Spell {
 			case Preset.Fireball:	
 				_spellName = "Fireball";
 
-				_damageDice = 1;
-				_damageSides = 6;
 				_damageType = DamageType.Fire;
 				_essenceCost = 2;
 				_autoRecast = false;
@@ -292,8 +458,11 @@ public class Spell {
 				_createsProjectile = true;
 				_createsEffect = true;
 				_scaling = Scaling.Intelligence;
-				_damageMultiplier = 1.00f;
 				_modSizeDamage = 0;
+
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
+				_spellTargetEffects.Add(damage);
 				
 				_castParticlePath = "Prefabs/Effects/Fire Casting";
 				_castRadius = 5;
@@ -322,13 +491,13 @@ public class Spell {
 			#region Move
 			case Preset.Move:
 				_spellName = "Move";
-				
+				//_essenceCost = 1;
 				
 				if(!sync) {	// Base settings
-					_chargesMax = 0;
+					//_chargesMax = 0;
 				} else {
 					if(_caster != null) {
-						_chargesMax = _caster.attributes.speed - 1;
+						//_chargesMax = _caster.attributes.speed - 1;
 					}
 				}
 				
@@ -735,7 +904,7 @@ public class Spell {
 	#endregion
 
 
-	public void ConfirmSpellCast() {
+	public float ConfirmSpellCast() {
 		
 		float zrot = 0f;
 		if(_effectRotateToDirection) {
@@ -784,6 +953,8 @@ public class Spell {
 				}
 			}
 		}
+
+		return _projPreSpawnDelay + _effectPreSpawnDelay + _effectDamageDelay;
 	}
 	
 	#region Particles
@@ -865,13 +1036,90 @@ public class Spell {
 		audioManager.LoadSound(_damageSoundPath);
 		audioManager.PlaySound();
 	}
+
+	public void PlayBlockSound(Vector2Int position) {
+		if(_damageSoundPath == null) {return;}
+		AudioManager audioManager = GameObject.FindObjectOfType<AudioManager>();
+		audioManager.LoadSound(_blockSoundPath);
+		audioManager.PlaySound();
+	}
 	#endregion
 
-	public void DealDamage() {
+	public void DealDamage(Effect e, bool sound = false) {
+		float baseDamage = 1.0f;
+		float critMult = 0f;
+		float additionalDamage = 0f;
+
+		// Calculate damage
+		foreach(Effect casterEffect in _caster.effects) {
+			switch(casterEffect.effectType) {
+				case Effect.EffectType.Focus:
+					critMult = 0.5f;
+				break;
+
+
+			}
+		}
+
+		int damage = (int)(e.GetPotency(_caster.attributes) * (baseDamage + critMult + additionalDamage));
+
 		foreach(Tile tile in _hitTiles) {
 			if(tile.unit.baseUnit != null) {
-				PlayDamageSound(tile.position);
-				tile.unit.baseUnit.ReceiveDamage(_caster, CalcSpellDamage(), _damageType);
+				int totalDamage = damage;
+				int blockedAmount = 0;
+
+				foreach(Effect effect in tile.unit.baseUnit.effects) {
+					switch(effect.effectType) {
+						case Effect.EffectType.Block:
+							if(effect.deactivationConditions.ContainsKey(Effect.Conditions.BlockDamage)) {
+								blockedAmount = effect.deactivationConditions[Effect.Conditions.BlockDamage];
+							}
+
+							Debug.Log(blockedAmount + " block");
+
+							if(totalDamage <= blockedAmount) {
+								blockedAmount = totalDamage;
+								totalDamage = 0;
+							} else {
+								totalDamage -= blockedAmount;
+							}
+
+							
+						break;
+					}
+				}
+
+				tile.unit.baseUnit.TickStatus(Effect.Conditions.BlockDamage, blockedAmount);
+				//Debug.Log(effect.deactivationConditions[Effect.Conditions.BlockDamage] + " block remaining");
+					
+				if(sound) {
+					if(totalDamage > 0) {
+						PlayDamageSound(tile.position);
+					} else {
+						totalDamage = 0;
+						PlayBlockSound(tile.position);
+					}
+				}
+				
+				tile.unit.baseUnit.TickStatus(Effect.Conditions.ReceiveDamage, totalDamage);
+				tile.unit.baseUnit.ReceiveDamage(_caster, totalDamage, _damageType);
+				
+				// Deactivate effects that require "deal damage" for deactivation.
+				_caster.TickStatus(Effect.Conditions.DealDamage);
+			}
+		}
+	}
+
+	public void ApplyStatus(Effect e, bool sound = false) {
+		foreach(Tile tile in _hitTiles) {
+			if(tile.unit.baseUnit != null) {
+				if(sound) {
+					PlayDamageSound(tile.position);
+				}
+				
+				//int damage = (int)e.GetPotency(_caster.attributes);
+				tile.unit.baseUnit.ReceiveStatus(_caster, e);
+				//tile.unit.baseUnit.ReceiveDamage(_caster, damage, _damageType);
 			}
 		}
 	}
@@ -887,7 +1135,7 @@ public class Spell {
 
 			float dist = CheckTrueDistance(_caster.tile.position, _effectOrigin);
 			spellDuration += dist/_projSpeed;
-			Debug.Log(dist/_projSpeed);
+			//Debug.Log(dist/_projSpeed);
 		}
 
 		if(_createsEffect) {
@@ -902,26 +1150,6 @@ public class Spell {
 				Move();
 			break;
 		}
-	}
-
-	public int CalcSpellDamage() {
-		CalcModSizeDamage();
-		int totalDamage = 0;
-		switch(_scaling) {
-			case Scaling.Strength:
-				totalDamage = Dice.Roll(_damageDice, _damageSides) + Mathf.FloorToInt((_caster.attributes.strength + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
-			break;
-
-			case Scaling.Dexterity:
-				totalDamage = Dice.Roll(_damageDice, _damageSides) +  Mathf.FloorToInt((_caster.attributes.dexterity + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
-			break;
-
-			case Scaling.Intelligence:
-				totalDamage = Dice.Roll(_damageDice, _damageSides) +  Mathf.FloorToInt((_caster.attributes.intelligence + _caster.bag.equipmentAttack + _modSizeDamage) * _damageMultiplier);
-			break;
-		}
-
-		return totalDamage;
 	}
 
 	void CalcModSizeDamage() {
@@ -952,15 +1180,18 @@ public class Spell {
 		_caster.Move(_effectOrigin.x - _caster.tile.position.x, _effectOrigin.y - _caster.tile.position.y);
 
 		if(_caster.inCombat) {
+			_essenceCost = 1;
+			/* 
 			if(_chargesRemaining > 0) {
 				_chargesRemaining -= 1;
 				_essenceCost = 0;
 			} else {
 				_chargesRemaining = _chargesMax;
 				_essenceCost = 1;
-			}
+			}*/
+		} else {
+			_essenceCost = 0;
 		}
-
 	}
 
 

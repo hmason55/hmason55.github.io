@@ -86,7 +86,7 @@ public class Attributes {
         _hpTotal = _baseHitPoints + _modHitPoints + _hpScaling;
         _hpCurrent = _hpTotal;
 
-        _baseEssence = 4;
+        _baseEssence = 8;
         _esTotal = _baseEssence + _modEssence;
         _esCurrent = _esTotal;
         _esRecovery = 4;
@@ -116,8 +116,8 @@ public class Attributes {
 				_baseConstitution = 10;
 				_baseWisdom =       10;
 				_baseCharisma =     10;
-				_baseSpeed =        2;
-				_baseEssence =      4;
+				_baseSpeed =        10;
+				_baseEssence =      8;
 				_hpScaling =        10;	//8 default
 				_size = Size.Medium;
             break;
@@ -129,8 +129,9 @@ public class Attributes {
 				_baseConstitution = 10;
 				_baseWisdom =       10;
 				_baseCharisma =     10;
-				_baseSpeed =        2;
-				_baseEssence =      4;
+				_baseSpeed =        10;
+				_baseHitPoints = 	10;
+				_baseEssence =      8;
 				_hpScaling =        50;	//8 default
 				_size = Size.Medium;
 			break;

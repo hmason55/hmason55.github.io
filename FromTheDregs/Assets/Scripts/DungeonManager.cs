@@ -68,6 +68,11 @@ public class DungeonManager : MonoBehaviour {
 
 	List<Biome> biomes;
 
+	// UI
+	[SerializeField] GameObject _gameUI;
+	EssenceUI _essenceUI;
+	HitpointUI _hitpointUI;
+
 	bool _limitRendering = false;
 	public bool limitRendering {
 		get {return _limitRendering;}
@@ -83,7 +88,10 @@ public class DungeonManager : MonoBehaviour {
 	}
 
 	void Awake() {
+		_essenceUI = FindObjectOfType<EssenceUI>();
+		_hitpointUI = FindObjectOfType<HitpointUI>();
 		_loadState = LoadState.Unloaded;
+		_gameUI.SetActive(false);
 	}
 
 	void Start () {
@@ -92,11 +100,22 @@ public class DungeonManager : MonoBehaviour {
 
 	public void Load() {
 		_loadState = LoadState.Loading;
+		_gameUI.SetActive(true);
 		InitializeGrid();
 		InitializeObjectPools();
 		SpawnBiomes();
-		CreateMainPath();
+		BaseUnit player = CreateMainPath();
+		/* CameraController cameraController = GameObject.FindObjectOfType<CameraController>();
+		if(cameraController != null) {
+			if(cameraController.baseUnit != null) {
+
+			}
+		}*/
 		_limitRendering = true;
+		// Initialize the UI
+		
+		_essenceUI.UpdateUI();
+		_hitpointUI.UpdateHitpoints(player.attributes.hpCurrent, player.attributes.hpTotal);
 		_loadState = LoadState.Loaded;
 		Debug.Log(Time.realtimeSinceStartup);
 	}
@@ -191,8 +210,8 @@ public class DungeonManager : MonoBehaviour {
 	}
 	#endregion
 
-	void InitializeTiles(List<Vector2Int> nodes) {
-
+	BaseUnit InitializeTiles(List<Vector2Int> nodes) {
+		BaseUnit p = null;
 		int dimension = chunkDimension * dungeonDimension;
 		
 		for(int i = 0; i < nodes.Count; i++) {
@@ -248,9 +267,12 @@ public class DungeonManager : MonoBehaviour {
 								if(PlayerData.current.attributes != null) {
 									player.attributes = PlayerData.current.attributes;
 								}
+
+								Debug.Log(player.attributes.preset);
 								
 								player.tile = tile;
 								tile.SpawnUnit(player);
+								p = player;
 								combatManager.BeginTurnLoop();
 								_renderOrigin = tile.position;
 								entrancePosition = tile.position;
@@ -307,6 +329,7 @@ public class DungeonManager : MonoBehaviour {
 		}
 
 		UpdateObjectPool();
+		return p;
 	}
 
 	public void UpdateObjectPool() {
@@ -481,7 +504,7 @@ public class DungeonManager : MonoBehaviour {
 		_tiles[x, y].unit = unit;
 	}
 
-	void CreateMainPath() {
+	BaseUnit CreateMainPath() {
 
 		seed:
 		int startX = Random.Range(0, dungeonDimension-1);
@@ -587,7 +610,7 @@ public class DungeonManager : MonoBehaviour {
 			_chunks[node.x, node.y] = new Chunk(chunkPresetString);
 		}
 
-		InitializeTiles(nodes);
+		return InitializeTiles(nodes);
 	}
 
 	bool NodeExists(int x, int y, List<Vector2Int> nodes) {

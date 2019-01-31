@@ -58,6 +58,7 @@ public class BaseUnit {
 	Character _character;
 	bool _playerControlled = false;
 	Bag _bag;
+	List<Effect> _effects;
 
 	Tile _tile;
 
@@ -177,6 +178,10 @@ public class BaseUnit {
 		get {return _bag;}
 		set {_bag = value;}
 	}
+
+	public List<Effect> effects {
+		get {return _effects;}
+	}
 	public bool useCustomSprites {
 		get {return _useCustomSprites;}
 		set {_useCustomSprites = value;}
@@ -226,57 +231,64 @@ public class BaseUnit {
 	public BaseUnit(bool player, SpritePreset sprite, bool customSprite = false) {
 		_playerControlled = player;
 		_attributes = new Attributes();
+		_effects = new List<Effect>();
 		_spritePreset = sprite;
 		_useCustomSprites = customSprite;
+		
 
 		switch(sprite) {
 			case SpritePreset.direrat:
 				_statPreset = Attributes.Preset.DireRat;
-				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.direratsmall:
 				_statPreset = Attributes.Preset.DireRatSmall;
-				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.greenslime:
 				_statPreset = Attributes.Preset.Slime;
-				_deathParticlesPath = "Prefabs/Effects/Death Green Particles";
 			break;
 
 			case SpritePreset.spider:
 				_statPreset = Attributes.Preset.Spider;
-				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.spidersmall:
 				_statPreset = Attributes.Preset.SpiderSmall;
-				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.widow:
 				_statPreset = Attributes.Preset.Widow;
-				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			case SpritePreset.widowsmall:
 				_statPreset = Attributes.Preset.WidowSmall;
-				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 
 			default:
 				_statPreset = Attributes.Preset.Human;
-				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
 			break;
 		}
 
 		Init();
 	}
 
+	void SetDeathEffect() {
+		switch(_attributes.preset) {
+			case Attributes.Preset.Slime:
+				_deathParticlesPath = "Prefabs/Effects/Death Green Particles";
+			break;
+
+			default:
+				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
+			break;
+		}
+	}
+
 	public BaseUnit(bool player, Attributes.Preset attribs, SpritePreset sprite, Tile tile, bool customSprite = false) {
 		_playerControlled = player;
 		_attributes = new Attributes(attribs);
+		_effects = new List<Effect>();
 		_spritePreset = sprite;
 		_tile = tile;
 		_useCustomSprites = customSprite;
@@ -286,6 +298,8 @@ public class BaseUnit {
 	void Init() {
 		AssignSpells();
 		//_myTurn = new Turn(this, _modSpeed);
+
+		SetDeathEffect();
 
 		// Equip items
 		_bag = new Bag();
@@ -325,16 +339,26 @@ public class BaseUnit {
 	void AssignSpells() {
 		_spells = new List<Spell.Preset>();
 		_spells.Add(Spell.Preset.Move);
+		_spells.Add(Spell.Preset.Slash);
+		_spells.Add(Spell.Preset.Bite);
 		_spells.Add(Spell.Preset.Fireball);
+		_spells.Add(Spell.Preset.FeintSwipe);
+		_spells.Add(Spell.Preset.Block);
 	}
 
 	public void BeginTurn() {
-		_currentEssence = _turnEssence;
+		Debug.Log("Begin Turn");
+		TickStatus(Effect.Conditions.DurationExpire);
+
+		_attributes.esCurrent += _attributes.esRecovery;
+		if(_attributes.esCurrent > _attributes.esTotal) {
+			_attributes.esCurrent = _attributes.esTotal;
+		}
 	}
 
-	public void Move(int dx, int dy) {
-		if(tile.combatManager.turnQueue.Length == 0) {return;}
-		if(tile.combatManager.turnQueue.queue[0].baseUnit != this) {Debug.Log("Not Your Turn!"); return;}
+	public bool Move(int dx, int dy) {
+		if(tile.combatManager.turnQueue.Length == 0) {return false;}
+		if(tile.combatManager.turnQueue.queue[0].baseUnit != this) {Debug.Log("Not Your Turn!"); return false;}
 
 		int x = _tile.position.x + dx;
 		int y = _tile.position.y + dy;
@@ -343,7 +367,7 @@ public class BaseUnit {
 
 		if(x < 0 || x >= mapWidth || y < 0 || y >= mapHeight) {
 			Debug.Log("Out of bounds " + x + ", " + y);
-			return;
+			return false;
 		}
 
 		Tile nextTile = _tile.dungeonManager.tiles[x, y];
@@ -389,15 +413,17 @@ public class BaseUnit {
 					}
 					
 					Debug.Log("Moved " + dx + ", " + dy);
-					
+					return true;
 				}
 			}
 		}
+
+		return false;
 	}
 
 	public void Cast(int essenceCost) {
 		if(_inCombat) {
-			_currentEssence -= essenceCost;
+			_attributes.esCurrent -= essenceCost;
 		}
 	}
 
@@ -434,6 +460,7 @@ public class BaseUnit {
 		HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
 		if(hitpointUI != null) {
 			hitpointUI.baseUnit = this;
+			hitpointUI.UpdateHitpoints(_attributes.hpCurrent, _attributes.hpTotal);
 		}
 
 		EssenceUI essenceUI = GameObject.FindObjectOfType<EssenceUI>();
@@ -451,13 +478,14 @@ public class BaseUnit {
 		}
 
 		_tile.baseUnit.BeginHitAnimation();
+		Debug.Log(damage + " damage");
 		SpawnDamageText(damage.ToString(), color);
-		if(_currentHitPoints-damage > 0) {
-			_currentHitPoints -= damage;
+		if(_attributes.hpCurrent - damage > 0) {
+			_attributes.hpCurrent -= damage;
 			if(_playerControlled) {
 				HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
 				if(hitpointUI.baseUnit == this) {
-					hitpointUI.UpdateHitpoints(_currentHitPoints, _hitPoints);
+					hitpointUI.UpdateHitpoints(_attributes.hpCurrent, _attributes.hpTotal);
 				}
 			}
 
@@ -488,6 +516,61 @@ public class BaseUnit {
 			}
 			Kill();
 		}
+	}
+
+	public void ReceiveStatus(BaseUnit dealer, Effect e) {
+		
+
+		Color color = Color.white;
+		string text = "";
+		switch(e.effectType) {
+			case Effect.EffectType.Focus:
+				color = new Color(0f, 1f, 1f);
+				text = "+Focus";
+			break;
+
+			case Effect.EffectType.Block:
+				color = new Color(0f, 1f, 1f);
+				int blockValue = (int)e.GetPotency(dealer.attributes);
+
+				text = "+" + blockValue + " Block";
+			break;
+		}
+
+		if(!e.Apply(tile.unit.baseUnit)) {return;}
+
+		SpawnDamageText(text.ToString(), color);
+	}
+
+	public void TickStatus(Effect.Conditions c, int amount = 1) {
+		for(int i = _effects.Count-1; i >= 0; i--) {
+			if(_effects[i].deactivationConditions.ContainsKey(c)) {
+				Debug.Log(c + " " + _effects[i].deactivationConditions[c]);
+				_effects[i].deactivationConditions[c] -= amount;
+				if(_effects[i].deactivationConditions[c] <= 0) {
+					RemoveStatus(_effects[i]);
+					_effects.RemoveAt(i);
+				}
+			}
+		}
+	}
+
+	public void RemoveStatus(Effect e) {
+		Color color = Color.white;
+		string text = "";
+		switch(e.effectType) {
+			case Effect.EffectType.Block:
+				color = new Color(0f, 1f, 1f);
+				text = "-Block";
+			break;
+
+			case Effect.EffectType.Focus:
+				color = new Color(0f, 1f, 1f);
+				text = "-Focus";
+			break;
+		}
+
+		SpawnDamageText(text.ToString(), color);
 	}
 
 	public void Kill() {

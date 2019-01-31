@@ -53,6 +53,44 @@ public class Hotbar : MonoBehaviour {
 		}
 	}
 
+	void Update() {
+		if(Input.GetKeyDown(KeyCode.W)) {
+			QuickMove(0, 1);
+		} else if(Input.GetKeyDown(KeyCode.A)) {
+			QuickMove(-1, 0);
+		} else if(Input.GetKeyDown(KeyCode.S)) {
+			QuickMove(0, -1);
+		} else if(Input.GetKeyDown(KeyCode.D)) {
+			QuickMove(1, 0);
+		}
+	}
+
+	void QuickMove(int x, int y) {
+		if(Mathf.Abs(x) + Mathf.Abs(y) > 1) {return;}
+		if(_baseUnit == null) {return;}
+
+		if(_baseUnit.inCombat) {
+			if(_baseUnit.attributes.esCurrent > 0) {
+				if(_baseUnit.Move(x, y)) {
+					_baseUnit.Cast(1);
+					_essenceUI.SetFilledEssence(_baseUnit.attributes.esCurrent);
+				}
+
+				if(_activeSpell != null) {
+					_activeSpell.ResetTiles();
+				}
+			}
+		} else {
+			_baseUnit.Move(x, y);
+		}
+
+		if(_activeSpell != null) {
+			_activeSpell.ResetTiles();
+		}
+		
+		_castOptionsUI.HideUI();
+	}
+
 	public void SyncUnit(BaseUnit b) {
 		bool newUnit = false;
 		if(_baseUnit != b) {

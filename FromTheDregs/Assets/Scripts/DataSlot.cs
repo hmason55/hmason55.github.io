@@ -38,13 +38,20 @@ public class DataSlot : MonoBehaviour {
         locationText.text = playerData.character.location;
     }
 
+    public void UnsetPlayerData() {
+        nameText.text = "";
+        locationText.text = "";
+    }
+
     public void DeletePlayerData() {
+        
         int ndx = transform.GetSiblingIndex();
+
+        if(ndx > SaveLoadData.savedPlayerData.Count-1) {return;}
         SaveLoadData.savedPlayerData.RemoveAt(ndx);
         PlayerData.current = null;
         SaveLoadData.Save();
         Debug.Log("Deleted save slot " + ndx);
-        
         loadDataUI.UpdateDataSlots();
     }
 }

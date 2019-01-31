@@ -41,6 +41,7 @@ public class LoadDataUI : MonoBehaviour {
                 child.GetComponent<Button>().interactable = true;
             } else {
                 dataSlot.portrait.HideCharacter();
+                dataSlot.UnsetPlayerData();
                 child.GetComponent<Button>().interactable = false;
             }
         }

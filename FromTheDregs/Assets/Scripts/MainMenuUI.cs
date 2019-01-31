@@ -12,6 +12,9 @@ public class MainMenuUI : MonoBehaviour {
     [SerializeField] LoadDataUI loadDataUI;
     [SerializeField] CharacterCreationUI characterCreationUI;
 
+    [SerializeField] Text titleText;
+    [SerializeField] Text versionText;
+
     bool allowNewGame = true;
 
     void Awake() {
@@ -27,6 +30,8 @@ public class MainMenuUI : MonoBehaviour {
         newGameButton.interactable = allowNewGame;
         optionsButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
+        titleText.gameObject.SetActive(true);
+        versionText.gameObject.SetActive(true);
     }
 
     public void HideUI() {
@@ -34,6 +39,8 @@ public class MainMenuUI : MonoBehaviour {
         newGameButton.gameObject.SetActive(false);
         optionsButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
+        titleText.gameObject.SetActive(false);
+        versionText.gameObject.SetActive(false);
     }
 
     public void OnLoadButton() {

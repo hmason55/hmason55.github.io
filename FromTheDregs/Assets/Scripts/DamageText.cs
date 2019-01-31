@@ -9,7 +9,7 @@ public class DamageText : MonoBehaviour {
 	Vector2 _gravity;
 
 	float _lifetime = 1.25f;
-	float _spawnScaling = 2f;
+	float _spawnScaling = 1.5f;
 	
 	float _scalingDuration = 0.15f;
 

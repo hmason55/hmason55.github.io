@@ -30,6 +30,11 @@ public class EssenceUI : MonoBehaviour {
 		for(int i = 0; i < _images.Length; i++) {
 			_images[i] = transform.GetChild(i).GetComponent<Image>();
 		}
+		
+		if(_baseUnit != null) {
+			SetFilledEssence(_baseUnit.attributes.esCurrent);
+		}
+		
 	}
 
 	public void PreviewUsage(int filled, int usage) {

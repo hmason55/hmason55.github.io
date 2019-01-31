@@ -8,6 +8,8 @@ public class CombatManager : MonoBehaviour {
 	CastOptionsUI _castOptionsUI;
 	Hotbar _hotbar;
 	ShortcutUI _shortcutUI;
+	CameraController _cameraController;
+	EssenceUI _essenceUI;
 
 
 	// Use this for initialization
@@ -16,6 +18,8 @@ public class CombatManager : MonoBehaviour {
 		_castOptionsUI = FindObjectOfType<CastOptionsUI>();
 		_hotbar = FindObjectOfType<Hotbar>();
 		_shortcutUI = FindObjectOfType<ShortcutUI>();
+		_cameraController = FindObjectOfType<CameraController>();
+		_essenceUI = FindObjectOfType<EssenceUI>();
 	}
 
 	TurnQueue _turnQueue;
@@ -40,8 +44,11 @@ public class CombatManager : MonoBehaviour {
 		Debug.Log("End Combat");
 		foreach(Turn turn in _turnQueue.queue) {
 			turn.baseUnit.inCombat = false;
-			turn.baseUnit.attributes.esCurrent = turn.baseUnit.attributes.baseEssence;
+			turn.baseUnit.attributes.esCurrent = turn.baseUnit.attributes.esTotal;
 		}
+		
+		
+		_essenceUI.UpdateUI();
 		_inCombat = false;
 	}
 
@@ -88,12 +95,13 @@ public class CombatManager : MonoBehaviour {
 							baseUnit.attributes.esCurrent -= 1;
 							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
 							//EndTurn(baseUnit);
-						} else if(path.Count == 1 && baseUnit.attributes.esCurrent > 0) {
+						} else if(path.Count == 1 && baseUnit.attributes.esCurrent >= spell.essenceCost) {
 							Debug.Log("Attacking");
 							spell.ShowEffectRange(target.tile.position);
-							spell.ConfirmSpellCast();
-							baseUnit.attributes.esCurrent -= 1;
+							float castDelay = spell.ConfirmSpellCast();
+							baseUnit.attributes.esCurrent -= spell.essenceCost;
 							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
+							yield return new WaitForSeconds(castDelay);
 							//EndTurn(baseUnit);
 						} else {
 							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);

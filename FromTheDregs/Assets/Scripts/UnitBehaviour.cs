@@ -258,7 +258,6 @@ public class UnitBehaviour : MonoBehaviour {
 	IEnumerator ESetInputCooldown(BaseUnit bUnit, float delay = 0.5f, bool recast = false) {
 		bUnit.isCasting = true;
 		yield return new WaitForSeconds(delay);
-		Debug.Log(bUnit);
 		if(bUnit == null) {yield break;}
 		bUnit.isCasting = false;
 
@@ -289,7 +288,59 @@ public class UnitBehaviour : MonoBehaviour {
 		spell.SpawnEffectParticles(spell.effectOrigin, 0f);
 		spell.PlayEffectSound(spell.effectOrigin);
 		yield return new WaitForSeconds(spell.effectDamageDelay);
-		spell.DealDamage();
+
+		int count = 0;
+		bool playSound = false;
+
+		// Apply effects to targets
+		foreach(Effect effect in spell.targetEffects) {
+
+			if(count == 0) {
+				playSound = true;
+			} else {
+				playSound = false;
+			}
+
+			switch(effect.effectType) {
+				case Effect.EffectType.Damage:
+					spell.DealDamage(effect, playSound);
+				break;
+
+				case Effect.EffectType.Block:
+					spell.ApplyStatus(effect, false);
+				break;
+
+				case Effect.EffectType.Stun:
+					spell.ApplyStatus(effect, playSound);
+				break;
+			}
+
+			count++;
+			yield return new WaitForSeconds(spell.effectDamageDelay);
+		}
+
+		// Apply effects to caster
+		foreach(Effect effect in spell.casterEffects) {
+			switch(effect.effectType) {
+				case Effect.EffectType.Damage:
+					//spell.DealDamage(effect, );
+				break;
+
+				case Effect.EffectType.Block:
+					Debug.Log("Gained Block");
+					spell.caster.ReceiveStatus(spell.caster, effect);
+				break;
+
+				case Effect.EffectType.Focus:
+					spell.caster.ReceiveStatus(spell.caster, effect);
+				break;
+
+				case Effect.EffectType.Stun:
+					spell.caster.ReceiveStatus(spell.caster, effect);
+				break;
+			}
+		}
+		
 	}
 
 	public void SpawnDeathParticles() {
