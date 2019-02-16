@@ -211,6 +211,7 @@ public class DungeonManager : MonoBehaviour {
 	#endregion
 
 	BaseUnit InitializeTiles(List<Vector2Int> nodes) {
+		Debug.Log("Biomes: " + _biome.biomeType);
 		BaseUnit p = null;
 		int dimension = chunkDimension * dungeonDimension;
 		
@@ -273,6 +274,7 @@ public class DungeonManager : MonoBehaviour {
 								player.tile = tile;
 								tile.SpawnUnit(player);
 								p = player;
+								combatManager.turnQueue.Add(new Turn(p, p.attributes.speed));
 								combatManager.BeginTurnLoop();
 								_renderOrigin = tile.position;
 								entrancePosition = tile.position;
@@ -316,6 +318,8 @@ public class DungeonManager : MonoBehaviour {
 		}
 
 		ExportMap();
+		Debug.Log("Map Created");
+
 
 		// Load textures
 		for(int y = 0; y < dimension; y++) {
@@ -327,6 +331,8 @@ public class DungeonManager : MonoBehaviour {
 				}
 			}
 		}
+
+		Debug.Log("Loaded Textures");
 
 		UpdateObjectPool();
 		return p;

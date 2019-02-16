@@ -17,8 +17,11 @@ public class Biome {
 	List<BaseUnit.SpritePreset> rareEnemySpawnTable;
 
 	public enum BiomeType {
+		cavern,
+		crypt,
+		dungeon,
 		forsaken,
-		dungeon
+		ruins
 	}
 
 	public BiomeType biomeType {
@@ -51,10 +54,10 @@ public class Biome {
 		rareEnemySpawnTable = new List<BaseUnit.SpritePreset>();
 
 		switch(_biomeType) {
+			case BiomeType.cavern:
+			case BiomeType.crypt:
+			case BiomeType.ruins:
 			case BiomeType.dungeon:
-
-			break;
-
 			case BiomeType.forsaken:
 				commonEnemySpawnRate = 75f;
 				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.greenslime);

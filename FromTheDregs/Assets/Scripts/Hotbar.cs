@@ -11,6 +11,7 @@ public class Hotbar : MonoBehaviour {
 	[SerializeField] CastOptionsUI _castOptionsUI;
 	CombatManager _combatManager;
 	List<Hotkey> _hotkeys;
+	ShortcutUI _shortcutUI;
 	BaseUnit _baseUnit;
 	Spell _activeSpell;
 
@@ -40,6 +41,7 @@ public class Hotbar : MonoBehaviour {
 
 	void Awake() {
 		_combatManager = FindObjectOfType<CombatManager>();
+		_shortcutUI = FindObjectOfType<ShortcutUI>();
 		InitHotkeys();
 	}
 
@@ -68,6 +70,7 @@ public class Hotbar : MonoBehaviour {
 	void QuickMove(int x, int y) {
 		if(Mathf.Abs(x) + Mathf.Abs(y) > 1) {return;}
 		if(_baseUnit == null) {return;}
+		if(_baseUnit.isCasting) {return;}
 
 		if(_baseUnit.inCombat) {
 			if(_baseUnit.attributes.esCurrent > 0) {
@@ -148,6 +151,7 @@ public class Hotbar : MonoBehaviour {
 		_activeSpell.ConfirmSpellCast();
 		
 		if(_baseUnit.isCasting) {
+			_shortcutUI.Disable();
 			DisableHotkeys();
 		}
 

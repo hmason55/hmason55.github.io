@@ -51,6 +51,50 @@ public class BaseDecoration {
 	public void LoadTexture(SpriteManager spriteManager) {
 		List<Sprite> sprites = new List<Sprite>();
 		switch(_biome.biomeType) {
+			
+			// Cavern
+			case Biome.BiomeType.cavern:
+				switch(_decorationType) {
+					case DecorationType.Container:
+						sprites = spriteManager.biomeCavern.container;
+					break;
+
+					case DecorationType.Small:
+						sprites = spriteManager.biomeCavern.decorationSmall;
+					break;
+
+					case DecorationType.Entrance:
+						sprites = spriteManager.biomeCavern.entrance;
+					break;
+
+					case DecorationType.Exit:
+						sprites = spriteManager.biomeCavern.exit;
+					break;
+				}
+			break;
+
+			// Crypt
+			case Biome.BiomeType.crypt:
+				switch(_decorationType) {
+					case DecorationType.Container:
+						sprites = spriteManager.biomeCrypt.container;
+					break;
+
+					case DecorationType.Small:
+						sprites = spriteManager.biomeCrypt.decorationSmall;
+					break;
+
+					case DecorationType.Entrance:
+						sprites = spriteManager.biomeCrypt.entrance;
+					break;
+
+					case DecorationType.Exit:
+						sprites = spriteManager.biomeCrypt.exit;
+					break;
+				}
+			break;
+
+			// Dungeon
 			case Biome.BiomeType.dungeon:
 				switch(_decorationType) {
 					case DecorationType.Container:
@@ -71,6 +115,7 @@ public class BaseDecoration {
 				}
 			break;
 
+			// Forsaken
 			case Biome.BiomeType.forsaken:
 				switch(_decorationType) {
 					case DecorationType.Container:
@@ -87,6 +132,27 @@ public class BaseDecoration {
 
 					case DecorationType.Exit:
 						sprites = spriteManager.biomeForsaken.exit;
+					break;
+				}
+			break;
+
+			// Ruins
+			case Biome.BiomeType.ruins:
+				switch(_decorationType) {
+					case DecorationType.Container:
+						sprites = spriteManager.biomeRuins.container;
+					break;
+
+					case DecorationType.Small:
+						sprites = spriteManager.biomeRuins.decorationSmall;
+					break;
+
+					case DecorationType.Entrance:
+						sprites = spriteManager.biomeRuins.entrance;
+					break;
+
+					case DecorationType.Exit:
+						sprites = spriteManager.biomeRuins.exit;
 					break;
 				}
 			break;

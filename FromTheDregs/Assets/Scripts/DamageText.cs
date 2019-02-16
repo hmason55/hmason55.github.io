@@ -36,6 +36,9 @@ public class DamageText : MonoBehaviour {
 		Text t = GetComponent<Text>();
 		t.text = text;
 		t.color = color;
+
+		Outline o = GetComponent<Outline>();
+		o.effectColor = color * 0.5f;
 	}
 
 	void Update () {

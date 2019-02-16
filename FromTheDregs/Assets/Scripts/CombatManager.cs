@@ -5,21 +5,16 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour {
 
 	[SerializeField] DungeonManager dungeonManager;
-	CastOptionsUI _castOptionsUI;
-	Hotbar _hotbar;
-	ShortcutUI _shortcutUI;
-	CameraController _cameraController;
-	EssenceUI _essenceUI;
+	[SerializeField] CastOptionsUI _castOptionsUI;
+	[SerializeField] Hotbar _hotbar;
+	[SerializeField] ShortcutUI _shortcutUI;
+	[SerializeField] CameraController _cameraController;
+	[SerializeField] EssenceUI _essenceUI;
 
 
 	// Use this for initialization
 	void Awake () {
 		_turnQueue = new TurnQueue();
-		_castOptionsUI = FindObjectOfType<CastOptionsUI>();
-		_hotbar = FindObjectOfType<Hotbar>();
-		_shortcutUI = FindObjectOfType<ShortcutUI>();
-		_cameraController = FindObjectOfType<CameraController>();
-		_essenceUI = FindObjectOfType<EssenceUI>();
 	}
 
 	TurnQueue _turnQueue;
@@ -69,7 +64,7 @@ public class CombatManager : MonoBehaviour {
 						}
 					}
 
-					if(	alliance2 == -5) {
+					if(alliance2 == -5) {
 						EndCombat();
 					}
 				}
@@ -83,10 +78,10 @@ public class CombatManager : MonoBehaviour {
 					Spell spell = new Spell(baseUnit, Spell.Preset.Bite);
 
 					// Target nearest with melee
-					BaseUnit target = GetNearestUnit(baseUnit, false, 1, false);
+					BaseUnit target = GetNearestUnit(baseUnit, false, spell.castRadius, false);
 					
 					if(target != null) {
-						List<PathNode> path = baseUnit.FindPath(baseUnit.tile.position, target.tile.position, false, 1);
+						List<PathNode> path = baseUnit.FindPath(baseUnit.tile.position, target.tile.position, false, spell.castRadius);
 
 						// Move / Attack
 						if(path.Count > 1 && baseUnit.attributes.esCurrent > 0) {
@@ -121,7 +116,9 @@ public class CombatManager : MonoBehaviour {
 
 	public void EndTurn(BaseUnit b) {
 		if(b.playerControlled) {
-			_hotbar.ClearCharges();
+			if(_hotbar != null) {
+				_hotbar.ClearCharges();
+			}
 		}
 		
 		turnQueue.EndTurn();

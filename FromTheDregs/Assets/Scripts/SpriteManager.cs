@@ -7,6 +7,9 @@ public class SpriteManager : MonoBehaviour {
 	public ChunkSprites chunk;
 	public BiomeSprites biomeDungeon;
 	public BiomeSprites biomeForsaken;
+	public BiomeSprites biomeCavern;
+	public BiomeSprites biomeRuins;
+	public BiomeSprites biomeCrypt;
 
 	public Sprite shadowSmall;
 	public Sprite shadowMedium;

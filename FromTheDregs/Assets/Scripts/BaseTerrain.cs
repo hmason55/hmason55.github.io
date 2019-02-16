@@ -48,9 +48,13 @@ public class BaseTerrain {
 				_terrainType = TerrainType.wall_top;
 			break;
 			
+			case "FFFF00":	// Yellow
+				_walkable = false;
+				_terrainType = TerrainType.ground;
+			break;
+
 			case "FF0000":  // Red
 			case "0000FF":	// Blue
-			case "FFFF00":	// Yellow
 			case "FF00FF": 	// Magenta
 			case "00FF00":	// Green
 				_walkable = true;
@@ -79,7 +83,42 @@ public class BaseTerrain {
 		List<Sprite> sprites = new List<Sprite>();
 
 		switch(_biome.biomeType) {
-			case Biome.BiomeType.dungeon:
+			// Cavern
+			case Biome.BiomeType.cavern:
+				switch(_terrainType) {
+					case BaseTerrain.TerrainType.ground:
+						sprites = spriteManager.biomeCavern.ground;
+					break;
+
+					case BaseTerrain.TerrainType.wall_side:
+						sprites = spriteManager.biomeCavern.wallSide;
+					break;
+
+					case BaseTerrain.TerrainType.wall_top:
+						sprites = spriteManager.biomeCavern.wallTop;
+					break;
+				}
+			break;
+
+			// Crypt
+			case Biome.BiomeType.crypt:
+				switch(_terrainType) {
+					case BaseTerrain.TerrainType.ground:
+						sprites = spriteManager.biomeCrypt.ground;
+					break;
+
+					case BaseTerrain.TerrainType.wall_side:
+						sprites = spriteManager.biomeCrypt.wallSide;
+					break;
+
+					case BaseTerrain.TerrainType.wall_top:
+						sprites = spriteManager.biomeCrypt.wallTop;
+					break;
+				}
+			break;
+
+			// Dungeon
+			case Biome.BiomeType.dungeon:				
 				switch(_terrainType) {
 					case BaseTerrain.TerrainType.ground:
 						sprites = spriteManager.biomeDungeon.ground;
@@ -95,6 +134,7 @@ public class BaseTerrain {
 				}
 			break;
 
+			// Forsaken
 			case Biome.BiomeType.forsaken:
 				switch(_terrainType) {
 					case BaseTerrain.TerrainType.ground:
@@ -107,6 +147,24 @@ public class BaseTerrain {
 
 					case BaseTerrain.TerrainType.wall_top:
 						sprites = spriteManager.biomeForsaken.wallTop;
+					break;
+				}
+			break;
+
+			
+			// Ruins
+			case Biome.BiomeType.ruins:
+				switch(_terrainType) {
+					case BaseTerrain.TerrainType.ground:
+						sprites = spriteManager.biomeRuins.ground;
+					break;
+
+					case BaseTerrain.TerrainType.wall_side:
+						sprites = spriteManager.biomeRuins.wallSide;
+					break;
+
+					case BaseTerrain.TerrainType.wall_top:
+						sprites = spriteManager.biomeRuins.wallTop;
 					break;
 				}
 			break;

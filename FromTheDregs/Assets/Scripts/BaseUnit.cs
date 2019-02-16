@@ -586,7 +586,7 @@ public class BaseUnit {
 	public void SpawnDamageText(string text, Color color) {
 		GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Damage Text"));
 		DamageText damageText = go.GetComponent<DamageText>();
-		go.GetComponent<RectTransform>().localScale = new Vector3(0.25f, 0.25f, 0.25f);
+		go.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
 		damageText.Init(_tile.unit.GetComponent<RectTransform>().anchoredPosition, text, color);
 	}
 

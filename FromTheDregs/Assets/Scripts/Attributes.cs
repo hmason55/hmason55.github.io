@@ -144,7 +144,7 @@ public class Attributes {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 2;
+				_baseEssence = 6;
 				_hpScaling = 16;
 				_size = Size.Small;
 				_aggroRadius = 6;
@@ -158,7 +158,7 @@ public class Attributes {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 2;
+				_baseEssence = 6;
 				_hpScaling = 16;
 				_size = Size.Medium;
 			break;
@@ -171,7 +171,7 @@ public class Attributes {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 2;
+				_baseEssence = 6;
 				_hpScaling = 11;
 				_size = Size.Small;
 			break;
@@ -184,7 +184,7 @@ public class Attributes {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 2;
+				_baseEssence = 6;
 				_hpScaling = 16;
 				_size = Size.Medium;
 			break;
@@ -197,7 +197,7 @@ public class Attributes {
 				_baseWisdom = 10;
 				_baseCharisma = 2;
 				_baseSpeed = 5;
-				_baseEssence = 2;
+				_baseEssence = 6;
 				_hpScaling = 11;
 				_size = Size.Small;
 			break;

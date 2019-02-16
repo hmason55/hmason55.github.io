@@ -1,21 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1099490811101282}
-  m_IsPrefabAsset: 1
 --- !u!1 &1099490811101282
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4538295933546774}
@@ -29,9 +19,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4538295933546774
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099490811101282}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -42,12 +33,14 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114898416551054290
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099490811101282}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
   m_Script: {fileID: 11500000, guid: 3babffd09062c1246976946482e135ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -129,28 +122,29 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 1d872cf2820497a4e837c2253b649b6f, type: 3}
   biomeDungeon:
     container:
-    - {fileID: 21300000, guid: 22738c20c7a93c64394f5dffea701fe2, type: 3}
-    - {fileID: 21300000, guid: 46bdaff4177cf6c4889166a86096828c, type: 3}
-    - {fileID: 21300000, guid: eb081190c5cfabc4a8c099afe273f54a, type: 3}
+    - {fileID: 21300000, guid: 7901c6c19cb112a44a874db48da48f19, type: 3}
+    - {fileID: 21300000, guid: 1e2bcefd8139a044d95ce92e13ae0e4e, type: 3}
+    - {fileID: 21300000, guid: 180a680a0f652924abb29a27a5bec6b6, type: 3}
     decorationSmall:
-    - {fileID: 21300000, guid: 167b351b240d7e94f941084f43cf02ac, type: 3}
-    - {fileID: 21300000, guid: b35d2e29958f7af4c9d8ea31ca9aedf5, type: 3}
-    - {fileID: 21300000, guid: f2d4475f23337c84486eeb2ea64d6839, type: 3}
-    - {fileID: 21300000, guid: 8bf07b8e9c6f97747adfc89ef067b75d, type: 3}
+    - {fileID: 21300000, guid: 609e40271ef690e47830df78129deabf, type: 3}
+    - {fileID: 21300000, guid: 385ab421f293a14408ae1b27d656a8f2, type: 3}
+    - {fileID: 21300000, guid: 22713abc936a9ab4eab788c7fcc8fcde, type: 3}
+    - {fileID: 21300000, guid: ee5c19b3c87123d44b04057e5f359c9d, type: 3}
     entrance:
     - {fileID: 21300000, guid: e3137a4cae30ee4469bf98f41aca0029, type: 3}
     exit:
     - {fileID: 21300000, guid: d50b2abd42670e246b85c6c16b34263c, type: 3}
+    - {fileID: 21300000, guid: 2130a64b5618c7348bb43adcd33b16ae, type: 3}
+    - {fileID: 21300000, guid: 5b79da23704662047b6f75d89981072f, type: 3}
     ground:
     - {fileID: 21300000, guid: 2568088710fdba04e9e4e11950f13076, type: 3}
-    - {fileID: 21300000, guid: 801f0101fa72af44ea8bef09dbda99f4, type: 3}
-    - {fileID: 21300000, guid: 68469e701d917cc46900db4e1c5c857d, type: 3}
-    - {fileID: 21300000, guid: 8b3dd7c2ebf306043b9668cf00567c85, type: 3}
-    - {fileID: 21300000, guid: 6dd6a4bab88d4094cb19ccc214595551, type: 3}
     wallSide:
     - {fileID: 21300000, guid: 34007534c30f7f445a70e3db47545d8b, type: 3}
     - {fileID: 21300000, guid: a674c00425d399a498b4710e6b637eaa, type: 3}
     - {fileID: 21300000, guid: 32cf7a0d0baf2444184f597d513e2149, type: 3}
+    - {fileID: 21300000, guid: 3b80db58dae60254186fec53140fdf89, type: 3}
+    - {fileID: 21300000, guid: 662d166322ee87b45923108df28834f7, type: 3}
+    - {fileID: 21300000, guid: dfc0b0083dfaf7a479373339e26fd267, type: 3}
     wallTop:
     - {fileID: 21300000, guid: d91cbf9825103e24b94e12751b93c1a3, type: 3}
     - {fileID: 21300000, guid: 50bb331d75eb3784bba78e6ff1811987, type: 3}
@@ -160,14 +154,17 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 6230c9b7bdf4ea74bb5ecda63ef5aca4, type: 3}
   biomeForsaken:
     container:
-    - {fileID: 21300000, guid: 38372ad4eb4acec4f9eda694e01520d8, type: 3}
-    - {fileID: 21300000, guid: dabde189a32ffcd4d81a43d73fa29d81, type: 3}
-    - {fileID: 21300000, guid: 22fd1daa8115e2442b43e55714c44342, type: 3}
+    - {fileID: 21300000, guid: 7901c6c19cb112a44a874db48da48f19, type: 3}
+    - {fileID: 21300000, guid: 1e2bcefd8139a044d95ce92e13ae0e4e, type: 3}
+    - {fileID: 21300000, guid: 180a680a0f652924abb29a27a5bec6b6, type: 3}
     decorationSmall:
-    - {fileID: 21300000, guid: 7b0b640c41963984aae8d6cac3cec207, type: 3}
-    - {fileID: 21300000, guid: dfb9d648e78011b45bbac244e74674a6, type: 3}
-    - {fileID: 21300000, guid: c0e043e20fab7bb4888f5c9a7b4c0d8d, type: 3}
-    - {fileID: 21300000, guid: 5fdc1e4476f052b43b8aa09dfe4525f4, type: 3}
+    - {fileID: 21300000, guid: 609e40271ef690e47830df78129deabf, type: 3}
+    - {fileID: 21300000, guid: 385ab421f293a14408ae1b27d656a8f2, type: 3}
+    - {fileID: 21300000, guid: 22713abc936a9ab4eab788c7fcc8fcde, type: 3}
+    - {fileID: 21300000, guid: ee5c19b3c87123d44b04057e5f359c9d, type: 3}
+    - {fileID: 21300000, guid: f1ba7f3a01fd3e2498ef161d565d1b19, type: 3}
+    - {fileID: 21300000, guid: 5df5f1def33e47e4eb031bedfb928f53, type: 3}
+    - {fileID: 21300000, guid: a81ca80b26fef374ea2a775c76d1dea7, type: 3}
     entrance:
     - {fileID: 21300000, guid: 141c79e804e7fd244ae91271595ac434, type: 3}
     exit:
@@ -188,6 +185,129 @@ MonoBehaviour:
     - {fileID: 21300000, guid: ddb3610ee7fa4b74e9931cc50fcdd0ef, type: 3}
     - {fileID: 21300000, guid: 665226085b8ea084dbe3c0970eb988bb, type: 3}
     - {fileID: 21300000, guid: b9d60160795618b49829cd18733cd8b0, type: 3}
+  biomeCavern:
+    container:
+    - {fileID: 21300000, guid: 7901c6c19cb112a44a874db48da48f19, type: 3}
+    - {fileID: 21300000, guid: 4e5ff5599f6fd544b96ba8593a1c5e1a, type: 3}
+    - {fileID: 21300000, guid: 143aaf6aeed1b104890a202670ff2a35, type: 3}
+    - {fileID: 21300000, guid: a8e37d12d36f33742a4ef52114009288, type: 3}
+    - {fileID: 21300000, guid: 1e2bcefd8139a044d95ce92e13ae0e4e, type: 3}
+    - {fileID: 21300000, guid: 38640c9a9eaef3244bcad4ce30616001, type: 3}
+    - {fileID: 21300000, guid: 92b4ebb118ca44e4db215a2512405e34, type: 3}
+    decorationSmall:
+    - {fileID: 21300000, guid: f1ba7f3a01fd3e2498ef161d565d1b19, type: 3}
+    - {fileID: 21300000, guid: 5df5f1def33e47e4eb031bedfb928f53, type: 3}
+    - {fileID: 21300000, guid: a81ca80b26fef374ea2a775c76d1dea7, type: 3}
+    - {fileID: 21300000, guid: 3fe6d32c90127f34ba8423f968265122, type: 3}
+    - {fileID: 21300000, guid: c0d4fa81a8e6f9f49bb563c4352cb490, type: 3}
+    - {fileID: 21300000, guid: 65a85e9d477bfa64cb8be17082f6fdb6, type: 3}
+    entrance:
+    - {fileID: 21300000, guid: 40b509a5c87069747bfd4ba21b3b3589, type: 3}
+    exit:
+    - {fileID: 21300000, guid: ae8c7c82c601e1e46a51d322a018c9a8, type: 3}
+    - {fileID: 21300000, guid: 2dfffe4da4161a647a93f3b593a7d2f9, type: 3}
+    - {fileID: 21300000, guid: 227a9df5abee81d4e957f19aaa0d5798, type: 3}
+    ground:
+    - {fileID: 21300000, guid: 71e733ff156714448b760952a361059f, type: 3}
+    - {fileID: 21300000, guid: 71e733ff156714448b760952a361059f, type: 3}
+    - {fileID: 21300000, guid: 71e733ff156714448b760952a361059f, type: 3}
+    - {fileID: 21300000, guid: 71e733ff156714448b760952a361059f, type: 3}
+    - {fileID: 21300000, guid: 71e733ff156714448b760952a361059f, type: 3}
+    - {fileID: 21300000, guid: 3ebcef11f0f42c44cb4a23f3cdd50320, type: 3}
+    - {fileID: 21300000, guid: e7bcd8fc93b7834468f4f1a423261d6a, type: 3}
+    - {fileID: 21300000, guid: 4e1be53728a887e4599dd5070de7510c, type: 3}
+    wallSide:
+    - {fileID: 21300000, guid: b073e19bcd3e7cc4ea9a770f7b808998, type: 3}
+    - {fileID: 21300000, guid: 0e6cbe492ae6ef54bbbb1534f8234cb1, type: 3}
+    - {fileID: 21300000, guid: 0f5625a4295ac6645945920e9ff2d366, type: 3}
+    - {fileID: 21300000, guid: 411470553ef94b542a111f75e86afca0, type: 3}
+    - {fileID: 21300000, guid: fe90e181a6bce1340b6ed3d464b6b5b3, type: 3}
+    - {fileID: 21300000, guid: 9815e0c330c09bc4097df7c3a6beaddc, type: 3}
+    wallTop:
+    - {fileID: 21300000, guid: 1d525978be891ad4d9cedbededba74e6, type: 3}
+    - {fileID: 21300000, guid: a3e254ed3be20b24fb0832690faa7471, type: 3}
+    - {fileID: 21300000, guid: 39efc6eb55e6a744f87e9e74d19ed5f5, type: 3}
+    - {fileID: 21300000, guid: 4d2f7b621e6642c45b09f217f76f647d, type: 3}
+    - {fileID: 21300000, guid: 03fbab165bdbbe04dbe85e05e267f0cb, type: 3}
+    - {fileID: 21300000, guid: 33bdb98b59995a74b89a98bf15ead0c6, type: 3}
+  biomeRuins:
+    container:
+    - {fileID: 21300000, guid: 7901c6c19cb112a44a874db48da48f19, type: 3}
+    - {fileID: 21300000, guid: 4e5ff5599f6fd544b96ba8593a1c5e1a, type: 3}
+    - {fileID: 21300000, guid: 143aaf6aeed1b104890a202670ff2a35, type: 3}
+    - {fileID: 21300000, guid: a8e37d12d36f33742a4ef52114009288, type: 3}
+    - {fileID: 21300000, guid: 1e2bcefd8139a044d95ce92e13ae0e4e, type: 3}
+    - {fileID: 21300000, guid: 38640c9a9eaef3244bcad4ce30616001, type: 3}
+    - {fileID: 21300000, guid: 92b4ebb118ca44e4db215a2512405e34, type: 3}
+    decorationSmall:
+    - {fileID: 21300000, guid: 609e40271ef690e47830df78129deabf, type: 3}
+    - {fileID: 21300000, guid: 385ab421f293a14408ae1b27d656a8f2, type: 3}
+    - {fileID: 21300000, guid: 22713abc936a9ab4eab788c7fcc8fcde, type: 3}
+    - {fileID: 21300000, guid: ee5c19b3c87123d44b04057e5f359c9d, type: 3}
+    entrance:
+    - {fileID: 21300000, guid: c6bae5cfed6e88041802bd4cfdcbae2f, type: 3}
+    exit:
+    - {fileID: 21300000, guid: c46748999a1d83c40b8ae180ab858050, type: 3}
+    - {fileID: 21300000, guid: 13f58c216ec671c40a2da31cd059f2b4, type: 3}
+    - {fileID: 21300000, guid: 587445cd4a8485a4bbaa6d5266a7260e, type: 3}
+    ground:
+    - {fileID: 21300000, guid: 93c4f74d68f273b49933547eef3bf9d3, type: 3}
+    - {fileID: 21300000, guid: e488a0af571592e4aa5473e35e85e2ed, type: 3}
+    - {fileID: 21300000, guid: 14546fc2f561216448e80f367c3ffdb6, type: 3}
+    - {fileID: 21300000, guid: caacd15312a7d23488f3ccaca28f70b6, type: 3}
+    wallSide:
+    - {fileID: 21300000, guid: 4c88e89d621136c438eb7715382bf4a6, type: 3}
+    - {fileID: 21300000, guid: d72e2c6ec9b6025428a853c58e87dd6c, type: 3}
+    - {fileID: 21300000, guid: ca5e506355ab91a439ca30ea72c43ff9, type: 3}
+    - {fileID: 21300000, guid: 6cc65c6cee9a2fd4fbd8ee55718b3a67, type: 3}
+    - {fileID: 21300000, guid: 8646fbcd2d46f794c85906d9f65bc2ec, type: 3}
+    - {fileID: 21300000, guid: 38701f61d13a57644afc2b485a2da664, type: 3}
+    wallTop:
+    - {fileID: 21300000, guid: 508d9fc642040ce4fa35445c10b27be1, type: 3}
+    - {fileID: 21300000, guid: 0cb0ddf92ea3a024daef9d4a57fe628a, type: 3}
+    - {fileID: 21300000, guid: 49888a897347c7e4287fff496b064f1b, type: 3}
+    - {fileID: 21300000, guid: dd5f4c378091a204aa5d93eb903b37c3, type: 3}
+    - {fileID: 21300000, guid: 21246c4067f06a043987dd004787511a, type: 3}
+    - {fileID: 21300000, guid: 924ac1aa3ff4931418f6268682130974, type: 3}
+  biomeCrypt:
+    container:
+    - {fileID: 21300000, guid: 46c2d198cc677b240ac1ecef69f1e350, type: 3}
+    - {fileID: 21300000, guid: ce95a9bbd8e73d14f8952a19499c38aa, type: 3}
+    - {fileID: 21300000, guid: ea861b22eb8f0e0469c565db1052d18c, type: 3}
+    decorationSmall:
+    - {fileID: 21300000, guid: 609e40271ef690e47830df78129deabf, type: 3}
+    - {fileID: 21300000, guid: 385ab421f293a14408ae1b27d656a8f2, type: 3}
+    - {fileID: 21300000, guid: 22713abc936a9ab4eab788c7fcc8fcde, type: 3}
+    - {fileID: 21300000, guid: ee5c19b3c87123d44b04057e5f359c9d, type: 3}
+    entrance:
+    - {fileID: 21300000, guid: 83aa0910ad85e4648b388cda1d7dd949, type: 3}
+    exit:
+    - {fileID: 21300000, guid: d4fd3122bbcf816409eef13fb6f66c0b, type: 3}
+    - {fileID: 21300000, guid: 56c1a5b87e1b63a44a91ce085aeb7dec, type: 3}
+    - {fileID: 21300000, guid: d272cecbc64b6f7459952a51a0aab1f9, type: 3}
+    ground:
+    - {fileID: 21300000, guid: b424ff76e91deb74583160f55dc9885f, type: 3}
+    - {fileID: 21300000, guid: b424ff76e91deb74583160f55dc9885f, type: 3}
+    - {fileID: 21300000, guid: b424ff76e91deb74583160f55dc9885f, type: 3}
+    - {fileID: 21300000, guid: b424ff76e91deb74583160f55dc9885f, type: 3}
+    - {fileID: 21300000, guid: b424ff76e91deb74583160f55dc9885f, type: 3}
+    - {fileID: 21300000, guid: a644c43b016848b4f9e6db4c314326b6, type: 3}
+    - {fileID: 21300000, guid: c2ebc72e2d49666449e9b29f5effc11c, type: 3}
+    - {fileID: 21300000, guid: 2dde983dffc7d824a92f63d79940950f, type: 3}
+    wallSide:
+    - {fileID: 21300000, guid: c9e06715d1102a64494f06166d035e91, type: 3}
+    - {fileID: 21300000, guid: 1fb91a75f58914a46addba57eb81f312, type: 3}
+    - {fileID: 21300000, guid: d2573110101f3a641a023f2a4e548023, type: 3}
+    - {fileID: 21300000, guid: 13bd43766e25c9d4380d2721c47e2880, type: 3}
+    - {fileID: 21300000, guid: 2e4209cec58b5f848902104f9cfd87e1, type: 3}
+    - {fileID: 21300000, guid: 5be62a3057a5f534e9441b964c0d4b2d, type: 3}
+    wallTop:
+    - {fileID: 21300000, guid: ac66a3b3677ebe048ab2c5b9834f3d9c, type: 3}
+    - {fileID: 21300000, guid: 03373327912362e45b051593edaf44e0, type: 3}
+    - {fileID: 21300000, guid: a602663bbec109444a0d5b4aece8f45a, type: 3}
+    - {fileID: 21300000, guid: 6f392194297bcc742b6b21a4d4643b2f, type: 3}
+    - {fileID: 21300000, guid: bcf84e382767de442b8172838bd5a436, type: 3}
+    - {fileID: 21300000, guid: e6f1770b07524464a8864a86811317b8, type: 3}
   shadowSmall: {fileID: 21300000, guid: d6b08c9e363e38046a35f369a29f8767, type: 3}
   shadowMedium: {fileID: 21300000, guid: 8e68d94ab9c083e47b6ce842022ff859, type: 3}
   shadowLarge: {fileID: 21300000, guid: 637cb94e519bb3941b627cccaed08aa3, type: 3}
@@ -199,6 +319,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 444ed0fe38fe65741929cda1381edc92, type: 3}
     - {fileID: 21300000, guid: 93299e36aeb99c94ab9cdefe053a8c27, type: 3}
     - {fileID: 21300000, guid: 13ae42697663d304bb887da968f4f180, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   unitDireRatSmall1:
     hit:
     - {fileID: 21300000, guid: 5f812e1ef3881604680744c036e4345f, type: 3}
@@ -207,6 +334,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: d9ca59dc08ef411499f75b2fca49ebd6, type: 3}
     - {fileID: 21300000, guid: bc5d69f0f49847c46bf8f725e87c7529, type: 3}
     - {fileID: 21300000, guid: e7e8c285e8288ea4f8002ecb8db08322, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   unitHumanWizard1:
     hit:
     - {fileID: 21300000, guid: dc37d321eb58b524ea8adcc103e77799, type: 3}
@@ -215,6 +349,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 148ccf2a28008f144a2ec98937242973, type: 3}
     - {fileID: 21300000, guid: f3ab14eb1aa9d2e40a17c4b484445ea0, type: 3}
     - {fileID: 21300000, guid: a713022e6f915484689b3a115b380174, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   unitGreenSlime1:
     hit:
     - {fileID: 21300000, guid: 29fd909450c0aa340b2345dfd2185113, type: 3}
@@ -223,6 +364,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: ddf7ab84a5e05aa4b8a2ecec5dd38eb0, type: 3}
     - {fileID: 21300000, guid: 67ff381f70dbc3d45b02d280fe6c2115, type: 3}
     - {fileID: 21300000, guid: 9f9316243d6188e41b8859d78fa24227, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   unitSandBehemoth1:
     hit: []
     idle:
@@ -230,6 +378,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 00fb22d5cbaa2a14f82b2027bf3ef34b, type: 3}
     - {fileID: 21300000, guid: 8c06896dfc6d2b748ac70beaae3da6b2, type: 3}
     - {fileID: 21300000, guid: 356b003195feadb458bc5940d0b36ad7, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   unitSandworm1:
     hit: []
     idle:
@@ -237,6 +392,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 667a9b76e53c4c7408b90f1f063962e9, type: 3}
     - {fileID: 21300000, guid: a4d53de6bd0aa164eb4af2872067e26e, type: 3}
     - {fileID: 21300000, guid: 9d04d417e3a3c4045b2a90b97525df2b, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   unitSpider1:
     hit:
     - {fileID: 21300000, guid: 4fa64e307a2c39f4b8610483fbe83b8e, type: 3}
@@ -245,6 +407,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: a49b73d4ccb81154aa499bad360045e9, type: 3}
     - {fileID: 21300000, guid: 5c85216043f6dc44da52fd41b294f315, type: 3}
     - {fileID: 21300000, guid: d3ee22191af4ba84ba6acf85553ab32c, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   unitSpiderSmall1:
     hit:
     - {fileID: 21300000, guid: 590ab3aaf12054a4aaa1b59896ee214f, type: 3}
@@ -253,6 +422,23 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 2c12c7772ee81b04dab4cbe196a4850a, type: 3}
     - {fileID: 21300000, guid: 0caa180db257a47408464306b4fc1c61, type: 3}
     - {fileID: 21300000, guid: c22e18c35ab7ec34ba74b5db5f9e337c, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
+  unitWarrior1:
+    hit: []
+    idle: []
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   unitWidow1:
     hit:
     - {fileID: 21300000, guid: 9ca7b2d01b5a62849b83220b52fecce0, type: 3}
@@ -261,6 +447,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: dbbf77139bf678646a4659c3c59680c1, type: 3}
     - {fileID: 21300000, guid: 70683659966c44940935a6dc54260107, type: 3}
     - {fileID: 21300000, guid: 79cc2bce70b2abd459c5b74aff067724, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   unitWidowSmall1:
     hit:
     - {fileID: 21300000, guid: 3ab01601f1f3b54499d8731c77b56b0e, type: 3}
@@ -269,6 +462,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 3384cd35a5d1db149b7c9ad2b8d8949e, type: 3}
     - {fileID: 21300000, guid: 84d90d31658eae84cba3e58c050e3a67, type: 3}
     - {fileID: 21300000, guid: fe6d9aabf421abd43bf10be431c831eb, type: 3}
+    skin: []
+    armorT1: []
+    armorT2: []
+    secondaryT1: []
+    secondaryT2: []
+    primaryT1: []
+    primaryT2: []
   items:
     unknown: {fileID: 21300000, guid: c6b657970ed01be44a44a8dc9521953c, type: 3}
     unknownNeck: {fileID: 21300000, guid: 3c2362545bee25d489f6cffcecd01b0b, type: 3}

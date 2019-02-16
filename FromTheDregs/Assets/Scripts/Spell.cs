@@ -142,6 +142,11 @@ public class Spell {
 		set {_essenceCost = value;}
 	}
 
+	public int castRadius {
+		get {return _castRadius;}
+		set {_castRadius = value;}
+	}
+
 	public int chargesRemaining {
 		get {return _chargesRemaining;}
 		set {_chargesRemaining = value;}
@@ -224,7 +229,7 @@ public class Spell {
 			case Preset.Bite:	
 				_spellName = "Bite";
 
-				_essenceCost = 4;
+				_essenceCost = 3;
 				_damageType = DamageType.Piercing;
 				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
@@ -311,7 +316,7 @@ public class Spell {
 			case Preset.FeintSwipe:	
 				_spellName = "Feint Swipe";
 
-				_essenceCost = 1;
+				_essenceCost = 3;
 				_damageType = DamageType.Piercing;
 				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
@@ -411,7 +416,7 @@ public class Spell {
 				_spellName = "Burning Hands";
 
 				_damageType = DamageType.Fire;
-				_essenceCost = 2;
+				_essenceCost = 4;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
 				_createsCastParticle = true;
@@ -451,7 +456,7 @@ public class Spell {
 				_spellName = "Fireball";
 
 				_damageType = DamageType.Fire;
-				_essenceCost = 2;
+				_essenceCost = 4;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
 				_createsCastParticle = true;

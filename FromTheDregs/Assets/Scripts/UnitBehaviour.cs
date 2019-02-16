@@ -264,6 +264,12 @@ public class UnitBehaviour : MonoBehaviour {
 		// Re-enable hotbar after cooldown is done.
 		if(bUnit.playerControlled) {
 			if(bUnit == _tile.combatManager.turnQueue.queue[0].baseUnit) {
+				
+				ShortcutUI shortcutUI = GameObject.FindObjectOfType<ShortcutUI>();
+				if(shortcutUI != null) {
+					shortcutUI.Enable();
+				}
+				
 				Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
 				if(hotbar != null) {
 					hotbar.EnableHotkeys();

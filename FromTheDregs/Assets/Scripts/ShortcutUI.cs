@@ -16,10 +16,18 @@ public class ShortcutUI : MonoBehaviour {
 
 	CastOptionsUI _castOptionsUI;
 
+	bool _shortcutsEnabled = true;
+
 	void Awake() {
 		_combatManager = FindObjectOfType<CombatManager>();
 		_hotbar = FindObjectOfType<Hotbar>();
 		_castOptionsUI = FindObjectOfType<CastOptionsUI>();
+	}
+
+	void Update() {
+		if(Input.GetKeyDown(KeyCode.I)) {
+			OnBagShortcut();
+		}
 	}
 
 	public void OnMenuShortcut() {
@@ -31,7 +39,9 @@ public class ShortcutUI : MonoBehaviour {
 	}
 
 	public void OnBagShortcut() {
-		_bagBehaviour.ToggleUI();
+		if(_shortcutsEnabled) {
+			_bagBehaviour.ToggleUI();
+		}
 	}
 
 	public void OnEndTurnShortcut() {
@@ -63,9 +73,25 @@ public class ShortcutUI : MonoBehaviour {
 		cb.normalColor = new Color(200f / 255f, 200f / 255f, 200f / 255f);
 		_endTurnShortcut.colors = cb;
 
-		_endTurnShortcut.interactable = false;
+		Disable();
 		Text text = _endTurnShortcut.GetComponentInChildren<Text>();
 		text.color = Color.gray;
+	}
+
+	public void Enable() {
+		_shortcutsEnabled = true;
+		_menuShortcut.interactable = true;
+		_characterShortcut.interactable = true;
+		_bagShortcut.interactable = true;
+		_endTurnShortcut.interactable = true;
+	}
+
+	public void Disable() {
+		_shortcutsEnabled = false;
+		_menuShortcut.interactable = false;
+		_characterShortcut.interactable = false;
+		_bagShortcut.interactable = false;
+		_endTurnShortcut.interactable = false;
 	}
 
 
