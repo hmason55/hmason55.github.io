@@ -10,7 +10,7 @@ public class PlayerData  {
     public PlayerData() {
         _character = new Character();
         _attributes = new Attributes();
-        _bag = new Bag();
+        _bag = new Bag(Bag.BagType.Bag);
     }
 
     public Character character {

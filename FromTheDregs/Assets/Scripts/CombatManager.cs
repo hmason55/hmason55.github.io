@@ -241,9 +241,12 @@ public class CombatManager : MonoBehaviour {
 		// Don't aggro self
 		if(!(x == ox && y == oy)) {
 			// Require line of sight
-			if(tile.baseTerrain.walkable) {
-				aggroUnit = RayTrace(ox, oy, x, y);
+			if(tile.baseTerrain != null) {
+				if(tile.baseTerrain.walkable) {
+					aggroUnit = RayTrace(ox, oy, x, y);
+				}
 			}
+			
 		}
 
 		// Aggro unit

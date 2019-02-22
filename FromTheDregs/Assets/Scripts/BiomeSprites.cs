@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class BiomeSprites {
 	public List<Sprite> container;
+	public List<Sprite> containerHighlights;
 	public List<Sprite> decorationSmall;
 	public List<Sprite> entrance;
 	public List<Sprite> exit;

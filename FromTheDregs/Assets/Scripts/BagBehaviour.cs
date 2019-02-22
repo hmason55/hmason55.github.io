@@ -6,27 +6,22 @@ using UnityEngine;
 public class BagBehaviour : MonoBehaviour {
 
 	public enum Actions {
-		Equip,
-		Consume,
+		Destroy,
+		Give,
 		Sell,
-		Destroy
+		Use
 	}
 
 	SpriteManager _spriteManager;
 	BaseUnit _baseUnit;
 
+	[SerializeField] Actions _defaultAction = Actions.Use;
+
 	[SerializeField] GameObject _bagEquipmentPanel;
 	[SerializeField] GameObject _bagPanel;
-	[SerializeField] GameObject _bagItemPanel;
 	[SerializeField] GameObject _bagSlotGrid;
-
-
-	[SerializeField] Text _itemInfoTitle;
-	[SerializeField] Text _itemInfoCategory;
-	[SerializeField] Text _itemInfoAttributeCategories;
-	[SerializeField] Text _itemInfoAttributeValues;
-	[SerializeField] Text _equipmentAttributeCategories;
-	[SerializeField] Text _equipmentAttributeValues;
+	
+	[SerializeField] Text _titleText;
 
 	[SerializeField] BagItemBehaviour _equipmentNeck;
 	[SerializeField] BagItemBehaviour _equipmentHead;
@@ -61,6 +56,11 @@ public class BagBehaviour : MonoBehaviour {
 		set {_bag = value;}
 	}
 
+	public Actions defaultAction {
+		get {return _defaultAction;}
+		set {_defaultAction = value;}
+	}
+
 	void Awake() {
 		_spriteManager = GameObject.FindObjectOfType<SpriteManager>();
 
@@ -72,10 +72,10 @@ public class BagBehaviour : MonoBehaviour {
 		UpdateSlotImages();
 	}
 
-	void SyncUnit() {
+	public void SyncUnit() {
 		_bag = _baseUnit.bag;
 
-		for(int i = 0; i < Bag.NUM_SLOTS; i++) {
+		for(int i = 0; i < Bag.BAG_SLOTS; i++) {
 			_bagSlots[i].item = _bag.items[i];
 		}
 
@@ -95,6 +95,7 @@ public class BagBehaviour : MonoBehaviour {
 
 	void UpdateSlotImages() {
 		for(int i = 0; i < _bagSlots.Count; i++) {
+			Debug.Log(i + ": " + _bagSlots[i].equipped);
 			_bagSlots[i].UpdateImage();
 		}
 
@@ -120,13 +121,13 @@ public class BagBehaviour : MonoBehaviour {
 		foreach(BagItemBehaviour b in _bagSlots) {
 			if(b.item != null) {
 				if(b.item.category == bagItem.item.category) {
-					b.equipped = false;
+					b.equipped = -1;
 				}
 			}
 		}
 
-		equipmentItem.equipped = true;
-		bagItem.equipped = true;
+		equipmentItem.equipped = bagItem.transform.GetSiblingIndex();
+		bagItem.equipped = bagItem.transform.GetSiblingIndex();
 
 		SyncUnit();
 	}
@@ -142,18 +143,74 @@ public class BagBehaviour : MonoBehaviour {
 
 		BagItemBehaviour equipmentItem = GetEquipmentType(bagItem.item.category);
 
-		equipmentItem.equipped = false;
+		equipmentItem.equipped = -1;
 
 		if(equipmentItem == bagItem) {
 			int slot = _bag.FindItemSlot(equipmentItem.item);
 			if(slot > -1) {
-				_bagSlots[slot].equipped = false;
+				_bagSlots[slot].equipped = slot;
 			}
 		} else {
-			bagItem.equipped = false;
+			bagItem.equipped = -1;
 		}
 
 		SyncUnit();
+	}
+
+	public void ConsumeItem(BagItemBehaviour bagItem) {
+		if(bagItem == null) {return;}
+		if(bagItem.item == null) {return;}
+		
+	}
+
+	public bool GiveItem(BagItemBehaviour bagItem, ContainerBehaviour containerBehaviour) {
+		if(bagItem == null) {return false;}
+		if(bagItem.item == null) {return false;}
+		if(containerBehaviour == null) {return false;}
+		if(containerBehaviour.bag == null) {return false;}
+
+		if(containerBehaviour.bag.Add(bagItem.item)) {
+			int slot = _bag.Remove(bagItem.item);
+			bagItem.item = null;
+
+			for(int i = slot; i < _bagSlots.Count; i++) {
+				if(i < _bagSlots.Count-1) {
+					_bagSlots[i].equipped = _bagSlots[i+1].equipped-1;
+				} else {
+					_bagSlots[i].equipped = -1;
+				}
+
+				if(_bagSlots[i].equipped < -1) {
+					_bagSlots[i].equipped = -1;
+				}
+			}
+
+			SyncUnit();
+			containerBehaviour.SyncBag(containerBehaviour.bag);
+			Debug.Log("Item Given.");
+			return true;
+		}
+
+		return false;
+	}
+
+	public bool TakeItem(BagItemBehaviour bagItem, ContainerBehaviour containerBehaviour) {
+		if(bagItem == null) {return false;}
+		if(bagItem.item == null) {return false;}
+		if(containerBehaviour == null) {return false;}
+		if(containerBehaviour.bag == null) {return false;}
+
+		if(_bag.Add(bagItem.item)) {
+			SyncUnit();
+
+			containerBehaviour.bag.Remove(bagItem.item);
+			bagItem.item = null;
+			containerBehaviour.SyncBag(containerBehaviour.bag);
+			Debug.Log("Item Taken.");
+			return true;
+		}
+
+		return false;
 	}
 
 	BagItemBehaviour GetEquipmentType(BaseItem.Category category) {
@@ -219,18 +276,6 @@ public class BagBehaviour : MonoBehaviour {
 		values += "\n";
 		values += _bag.equipmentMovementSpeed + "\n";
 		
-		_equipmentAttributeCategories.text = categories;
-		_equipmentAttributeValues.text = values;
-	}
-
-	public void UpdateItemInfo(BaseItem item) {
-		if(item != null) {
-			_itemInfoTitle.text = item.NameToString();
-			_itemInfoCategory.text = item.CategoryToString();
-			_itemInfoAttributeCategories.text = item.AttributeCategoriesToString();
-			_itemInfoAttributeValues.text = item.AttributeValuesToString();
-		}
-		
 	}
 
 	public void ToggleUI() {
@@ -241,12 +286,15 @@ public class BagBehaviour : MonoBehaviour {
 		}
 	}
 
-	public void ShowUI() {
+	public void ShowUI(bool showContainer = false) {
 		if(_hidden) {
 			_bagPanel.SetActive(true);
 			_bagEquipmentPanel.SetActive(true);
-			_bagItemPanel.SetActive(true);
 			_hidden = false;
+		}
+
+		if(showContainer) {
+			GetComponent<ContainerBehaviour>().ShowUI();
 		}
 	}
 
@@ -254,8 +302,13 @@ public class BagBehaviour : MonoBehaviour {
 		if(!_hidden) {
 			_bagPanel.SetActive(false);
 			_bagEquipmentPanel.SetActive(false);
-			_bagItemPanel.SetActive(false);
+			GetComponent<ContainerBehaviour>().HideUI();
 			_hidden = true;
+			
+			ItemTooltip tooltip = GameObject.FindObjectOfType<ItemTooltip>();
+			if(tooltip != null) {
+				tooltip.Reset();
+			}
 		}
 	}
 }

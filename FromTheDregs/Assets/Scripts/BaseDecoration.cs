@@ -20,13 +20,20 @@ public class BaseDecoration {
 	}
 
 	Sprite _sprite;
+	Sprite _highlightSprite;
 	Biome _biome;
 	Usage _usage = Usage.None;
 	DecorationType _decorationType;
+	Bag _bag;
 
 	public Sprite sprite {
 		get {return _sprite;}
 	}
+
+	public Sprite highlightSprite {
+		get {return _highlightSprite;}
+	}
+
 	public Biome biome {
 		get {return _biome;}
 		set {_biome = value;}
@@ -42,14 +49,28 @@ public class BaseDecoration {
 		set {_decorationType = value;}
 	}
 
+	public Bag bag {
+		get {return _bag;}
+		set {_bag = value;}
+	}
+
 	public BaseDecoration(Biome b, DecorationType d, SpriteManager s) {
 		_biome = b;
 		_decorationType = d;
+		
+		if(_decorationType == DecorationType.Container) {
+			List<BaseItem> _items = new List<BaseItem>();
+
+			_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
+			_bag = new Bag(Bag.BagType.Container, _items);
+		}
+
 		LoadTexture(s);
 	}
 
 	public void LoadTexture(SpriteManager spriteManager) {
 		List<Sprite> sprites = new List<Sprite>();
+		List<Sprite> highlights = new List<Sprite>();
 		switch(_biome.biomeType) {
 			
 			// Cavern
@@ -57,6 +78,7 @@ public class BaseDecoration {
 				switch(_decorationType) {
 					case DecorationType.Container:
 						sprites = spriteManager.biomeCavern.container;
+						highlights = spriteManager.biomeCavern.containerHighlights;
 					break;
 
 					case DecorationType.Small:
@@ -78,6 +100,7 @@ public class BaseDecoration {
 				switch(_decorationType) {
 					case DecorationType.Container:
 						sprites = spriteManager.biomeCrypt.container;
+						highlights = spriteManager.biomeCrypt.containerHighlights;
 					break;
 
 					case DecorationType.Small:
@@ -99,6 +122,7 @@ public class BaseDecoration {
 				switch(_decorationType) {
 					case DecorationType.Container:
 						sprites = spriteManager.biomeDungeon.container;
+						highlights = spriteManager.biomeDungeon.containerHighlights;
 					break;
 
 					case DecorationType.Small:
@@ -120,6 +144,7 @@ public class BaseDecoration {
 				switch(_decorationType) {
 					case DecorationType.Container:
 						sprites = spriteManager.biomeForsaken.container;
+						highlights = spriteManager.biomeForsaken.containerHighlights;
 					break;
 
 					case DecorationType.Small:
@@ -141,6 +166,7 @@ public class BaseDecoration {
 				switch(_decorationType) {
 					case DecorationType.Container:
 						sprites = spriteManager.biomeRuins.container;
+						highlights = spriteManager.biomeRuins.containerHighlights;
 					break;
 
 					case DecorationType.Small:
@@ -159,6 +185,10 @@ public class BaseDecoration {
 		}
 		int variation = Random.Range(0, sprites.Count-1);
 		_sprite = sprites[variation];
+
+		if(_decorationType == DecorationType.Container) {
+			_highlightSprite = highlights[variation];
+		}
 	}
 
 }

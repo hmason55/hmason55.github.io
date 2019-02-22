@@ -5,6 +5,15 @@ using UnityEngine;
 
 [System.Serializable]
 public class BaseItem {
+
+	public enum ID {
+		Gold,
+		Cotton_Hood,
+		Cotton_Tunic,
+
+
+	}
+
 	public enum Category {
 		Unknown,
 		Primary_Weapon,
@@ -19,6 +28,9 @@ public class BaseItem {
 		Unknown_Consumable,
 		Healing_Consumable,
 		Poisonous_Consumable,
+		Trophy,
+		Currency,
+		Key
 	}
 
 	public enum ArmorWeight {
@@ -51,8 +63,11 @@ public class BaseItem {
 	}
 
 	Category _category;
-	int _id;
+	string _name;
+	ID _id;
 	int _tier;
+	int _quantity;
+	string _description;
 	int _value;
 
 	#region Attributes
@@ -79,8 +94,26 @@ public class BaseItem {
 	#endregion
 
 	#region Accessors
+
+	public ID id {
+		get {return _id;}
+	}
+
 	public int tier {
 		get {return _tier;}
+	}
+
+	public string name {
+		get {return _name;}
+	}
+
+	public int quantity {
+		get {return _quantity;}
+		set {_quantity = value;}
+	}
+
+	public string description {
+		get {return _description;}
 	}
 
 	public Category category {
@@ -118,12 +151,17 @@ public class BaseItem {
 	public int movementSpeed {
 		get {return _movementSpeed;}
 	}
+
+	public int value {
+		get {return _value;}
+	}
 	#endregion
 
 	// Any
 	public BaseItem(Category c, int t) {
 		_category = c;
 		_tier = t;
+		_value = 1;
 
 		switch(_category) {
 			case Category.Neck_Jewelry:
@@ -161,6 +199,7 @@ public class BaseItem {
 		_category = c;
 		_armorWeight = w;
 		_tier = t;
+		_value = 1;
 
 		Init();
 	}
@@ -199,98 +238,17 @@ public class BaseItem {
 	public void LoadSprite(SpriteManager spriteManager) {
 		if(spriteManager == null) {return;}
 
-		switch(_category) {
-
-			case Category.Neck_Jewelry:
-				_sprite = spriteManager.items.jewelryNeck[_tier-1];
-			break;
-			
-			case Category.Finger_Jewelry:
-				_sprite = spriteManager.items.jewelryFinger[_tier-1];
+		switch(_id) {
+			case ID.Gold:
+				_sprite = spriteManager.items.currency[0];
 			break;
 
-			case Category.Primary_Weapon:
-			case Category.Secondary_Weapon:
+			case ID.Cotton_Hood:
+				_sprite = spriteManager.items.lightArmorHead[0];
 			break;
 
-			case Category.Body_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						_sprite = spriteManager.items.lightArmorBody[_tier-1];
-					break;
-
-					case ArmorWeight.Medium:
-						_sprite = spriteManager.items.mediumArmorBody[_tier-1];
-					break;
-
-					case ArmorWeight.Heavy:
-						_sprite = spriteManager.items.heavyArmorBody[_tier-1];
-					break;
-				}
-			break;
-
-			case Category.Foot_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						_sprite = spriteManager.items.lightArmorFeet[_tier-1];
-					break;
-
-					case ArmorWeight.Medium:
-						_sprite = spriteManager.items.mediumArmorFeet[_tier-1];
-					break;
-
-					case ArmorWeight.Heavy:
-						_sprite = spriteManager.items.heavyArmorFeet[_tier-1];
-					break;
-				}
-			break;
-
-			case Category.Hand_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						_sprite = spriteManager.items.lightArmorHands[_tier-1];
-					break;
-
-					case ArmorWeight.Medium:
-						_sprite = spriteManager.items.mediumArmorHands[_tier-1];
-					break;
-
-					case ArmorWeight.Heavy:
-						_sprite = spriteManager.items.heavyArmorHands[_tier-1];
-					break;
-				}
-			break;
-
-			case Category.Head_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						_sprite = spriteManager.items.lightArmorHead[_tier-1];
-					break;
-
-					case ArmorWeight.Medium:
-						_sprite = spriteManager.items.mediumArmorHead[_tier-1];
-					break;
-
-					case ArmorWeight.Heavy:
-						_sprite = spriteManager.items.heavyArmorHead[_tier-1];
-					break;
-				}
-			break;
-
-			case Category.Leg_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						_sprite = spriteManager.items.lightArmorLegs[_tier-1];
-					break;
-
-					case ArmorWeight.Medium:
-						_sprite = spriteManager.items.mediumArmorLegs[_tier-1];
-					break;
-
-					case ArmorWeight.Heavy:
-						_sprite = spriteManager.items.heavyArmorLegs[_tier-1];
-					break;
-				}
+			case ID.Cotton_Tunic:
+				_sprite = spriteManager.items.lightArmorBody[0];
 			break;
 		}
 	}
@@ -447,7 +405,7 @@ public class BaseItem {
 	}
 
 	public string CategoryToString() {
-		return "Tier " + _tier.ToString() + " " + _category.ToString().Replace("_", " ");
+		return _category.ToString().Replace("_", " ");
 	}
 
 	public string AttributeCategoriesToString() {
@@ -511,5 +469,73 @@ public class BaseItem {
 		attributeString += _movementSpeed + "\n";
 
 		return attributeString;
+	}
+
+	public BaseItem(ID item, int q = 1) {
+		Debug.Log("Constructing item.");
+		_id = item;
+		_quantity = q;
+
+		switch(item) {
+			case ID.Gold:
+				_name = "Gold";
+				_category = Category.Currency;
+				_description = "Item description.";
+				_value = 1;
+			break;
+
+			case ID.Cotton_Hood:
+				_name = "Cotton Hood";
+				_category = Category.Head_Armor;
+				_description = "A hood made of cotton.";
+				_value = 20;
+			break;
+
+			case ID.Cotton_Tunic:
+				_name = "Cotton Tunic";
+				_category = Category.Body_Armor;
+				_description = "A tunic made of cotton.";
+				_value = 20;
+			break;
+		}
+
+		if(!IsStackable()) {
+			_quantity = 1;
+		}
+	}
+
+	public bool IsEquipment() {
+		switch(_category) {
+			case BaseItem.Category.Body_Armor:
+			case BaseItem.Category.Finger_Jewelry:
+			case BaseItem.Category.Foot_Armor:
+			case BaseItem.Category.Hand_Armor:
+			case BaseItem.Category.Head_Armor:
+			case BaseItem.Category.Leg_Armor:
+			case BaseItem.Category.Neck_Jewelry:
+			case BaseItem.Category.Primary_Weapon:
+			case BaseItem.Category.Secondary_Weapon:
+			return true;
+		}
+		return false;
+	}
+
+	public bool IsConsumable() {
+		switch(_category) {
+			case BaseItem.Category.Healing_Consumable:
+			case BaseItem.Category.Poisonous_Consumable:
+			case BaseItem.Category.Unknown_Consumable:
+			return true;
+		}
+		return false;
+	}
+
+	public bool IsStackable() {
+		switch(_category) {
+			case BaseItem.Category.Currency:
+			case BaseItem.Category.Trophy:
+			return true;
+		}
+		return false;
 	}
 }

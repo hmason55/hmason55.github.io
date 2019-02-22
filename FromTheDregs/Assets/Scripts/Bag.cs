@@ -5,7 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class Bag {
 
-	public static int NUM_SLOTS = 32;
+	public static int BAG_SLOTS = 32;
+	public static int CONTAINER_SLOTS = 16;
+
+	public enum BagType {
+		Bag,
+		Container,
+		Shop
+	}
+	
+	BagType _bagType = BagType.Bag;
 
 	BaseItem _neck;
 	BaseItem _head;
@@ -20,6 +29,11 @@ public class Bag {
 	List<BaseItem> _items;
 
 	#region Accessors
+	public BagType bagType {
+		get {return _bagType;}
+		set {_bagType = value;}
+	}
+
 	public List<BaseItem> items {
 		get {return _items;}
 	}
@@ -150,31 +164,67 @@ public class Bag {
 			if(_items[i] == null) {
 				_items[i] = item;
 				return true;
+			} else if(_items[i].id == item.id) {
+				if(_items[i].IsStackable()) {
+					_items[i].quantity += item.quantity;
+					return true;
+				}
 			}
 		}
 		return false;
 	}
 
-	public Bag(List<BaseItem> itm) {
+	public int Remove(BaseItem item) {
+		int slot = FindItemSlot(item);
+		if(slot > -1) {
+			_items.RemoveAt(slot);
+			_items.Add(null);
+		}
+		return slot;
+	}
+
+	public Bag(BagType b, List<BaseItem> itm) {
+		Debug.Log("Constructing Bag.");
 		_items = new List<BaseItem>();
-		for(int i = 0; i < NUM_SLOTS; i++) {
-			if(i < itm.Count) {
-				_items.Add(itm[i]);
-			} else {
+
+		_bagType = b;
+
+		if(_bagType == BagType.Bag) {
+			for(int i = 0; i < BAG_SLOTS; i++) {
+				if(i < itm.Count) {
+					_items.Add(itm[i]);
+				} else {
+					_items.Add(null);
+				}
+			}
+		} else {
+			for(int i = 0; i < CONTAINER_SLOTS; i++) {
+				if(i < itm.Count) {
+					_items.Add(itm[i]);
+				} else {
+					_items.Add(null);
+				}
+			}
+		}
+		Debug.Log("Bag Done.");
+	}
+
+	public Bag(BagType b) {
+		_items = new List<BaseItem>();
+
+		if(b == BagType.Bag) {
+			for(int i = 0; i < BAG_SLOTS; i++) {
+				_items.Add(null);
+			}
+		} else {
+			for(int i = 0; i < CONTAINER_SLOTS; i++) {
 				_items.Add(null);
 			}
 		}
 	}
 
-	public Bag() {
-		_items = new List<BaseItem>();
-		for(int i = 0; i < NUM_SLOTS; i++) {
-			_items.Add(null);
-		}
-	}
-
 	public bool Equip(int slot) {
-		if(slot < 0 || slot >= NUM_SLOTS) {return false;}
+		if(slot < 0 || slot >= BAG_SLOTS) {return false;}
 		if(_items[slot] == null) {return false;}
 
 		switch(_items[slot].category) {

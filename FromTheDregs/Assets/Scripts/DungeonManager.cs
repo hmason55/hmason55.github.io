@@ -99,6 +99,7 @@ public class DungeonManager : MonoBehaviour {
 	}
 
 	public void Load() {
+		float startTime = Time.realtimeSinceStartup;
 		_loadState = LoadState.Loading;
 		_gameUI.SetActive(true);
 		InitializeGrid();
@@ -117,7 +118,7 @@ public class DungeonManager : MonoBehaviour {
 		_essenceUI.UpdateUI();
 		_hitpointUI.UpdateHitpoints(player.attributes.hpCurrent, player.attributes.hpTotal);
 		_loadState = LoadState.Loaded;
-		Debug.Log(Time.realtimeSinceStartup);
+		Debug.Log(Time.realtimeSinceStartup - startTime);
 	}
 
 	void Unload() {

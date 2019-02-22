@@ -46,4 +46,8 @@ public class ItemSprites {
 
 	#region Consumables
 	#endregion
+
+	#region Currency
+	public List<Sprite> currency;
+	#endregion
 }

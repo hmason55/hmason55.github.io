@@ -302,10 +302,13 @@ public class BaseUnit {
 		SetDeathEffect();
 
 		// Equip items
-		_bag = new Bag();
+		_bag = new Bag(Bag.BagType.Bag);
 		
 		if(_playerControlled) {
-			
+			_bag.Add(new BaseItem(BaseItem.ID.Gold, 48));
+			_bag.Add(new BaseItem(BaseItem.ID.Cotton_Hood));
+			_bag.Add(new BaseItem(BaseItem.ID.Cotton_Tunic));
+			/*
 			_bag.Add(new BaseItem(BaseItem.Category.Head_Armor, BaseItem.ArmorWeight.Heavy, 2));
 			_bag.Add(new BaseItem(BaseItem.Category.Body_Armor, BaseItem.ArmorWeight.Heavy, 2));
 			_bag.Add(new BaseItem(BaseItem.Category.Hand_Armor, BaseItem.ArmorWeight.Heavy, 2));
@@ -325,7 +328,7 @@ public class BaseUnit {
 			_bag.Add(new BaseItem(BaseItem.Category.Finger_Jewelry, 1));
 			_bag.Add(new BaseItem(BaseItem.Category.Finger_Jewelry, 2));
 			_bag.Add(new BaseItem(BaseItem.Category.Finger_Jewelry, 3));
-
+			*/
 
 			tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
 			SetAsCameraTarget();
