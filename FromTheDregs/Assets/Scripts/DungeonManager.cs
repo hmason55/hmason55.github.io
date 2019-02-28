@@ -42,6 +42,8 @@ public class DungeonManager : MonoBehaviour {
 	[SerializeField] int minimumBiomes = 0;
 	[SerializeField] int maximumBiomes = 1;
 
+	[Range(0f, 100f)] public float enemyUnitDensity;
+
 	[Range(0f, 100f)] public float smallDecorationDensity;
 	
 	[Range(0f, 100f)] public float containerDecorationDensity;
@@ -214,6 +216,7 @@ public class DungeonManager : MonoBehaviour {
 	BaseUnit InitializeTiles(List<Vector2Int> nodes) {
 		Debug.Log("Biomes: " + _biome.biomeType);
 		BaseUnit p = null;
+		string exitCode = "XXXXXX";
 		int dimension = chunkDimension * dungeonDimension;
 		
 		for(int i = 0; i < nodes.Count; i++) {
@@ -223,6 +226,7 @@ public class DungeonManager : MonoBehaviour {
 			int offsetX = node.x * chunkDimension * TileWidth;
 			int offsetY = node.y * chunkDimension * TileHeight;
 
+			
 			for(int y = 0; y < chunkDimension; y++) {
 				for(int x = 0; x < chunkDimension; x++) {
 
@@ -244,9 +248,12 @@ public class DungeonManager : MonoBehaviour {
 
 					switch(hexColor) {
 						case "FF0000":	// Enemy (Red)
-							BaseUnit enemy = nearestBiome.GetEnemySpawn();
-							enemy.tile = tile;
-							tile.SpawnUnit(enemy);
+							float enemyUnitRoll = Random.Range(0f, 100f);
+							if(enemyUnitRoll <= enemyUnitDensity) {
+								BaseUnit enemy = nearestBiome.GetEnemySpawn();
+								enemy.tile = tile;
+								tile.SpawnUnit(enemy);
+							}
 						break;
 
 						case "FFFF00":	// Container (Yellow)
@@ -281,6 +288,7 @@ public class DungeonManager : MonoBehaviour {
 								entrancePosition = tile.position;
 							} else if(i == 1) {
 								tile.baseDecoration = new BaseDecoration(nearestBiome,  BaseDecoration.DecorationType.Exit, spriteManager);
+								exitCode = tile.baseDecoration.lockcode;
 								exitPosition = tile.position;
 							}
 						break;
@@ -317,6 +325,12 @@ public class DungeonManager : MonoBehaviour {
 				}
 			}
 		}
+
+
+		// Create key item
+		BaseItem exitKey = new BaseItem(BaseItem.ID.Small_Key);
+		exitKey.keycode = exitCode;
+		p.bag.Add(exitKey);
 
 		ExportMap();
 		Debug.Log("Map Created");

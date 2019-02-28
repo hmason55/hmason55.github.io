@@ -209,7 +209,7 @@ public class Swatch {
 			case "000000":	return swatch[10];
 			case "FF00FF":	return swatch[11];
 			case "E600E6":	return swatch[12];
-			default:		return swatch[12];
+			default:		return Color.white;
 		}
 	}
 

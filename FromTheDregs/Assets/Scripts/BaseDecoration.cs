@@ -21,10 +21,16 @@ public class BaseDecoration {
 
 	Sprite _sprite;
 	Sprite _highlightSprite;
+	Sprite _lockSprite;
+	Sprite _lockHighlightSprite;
 	Biome _biome;
 	Usage _usage = Usage.None;
 	DecorationType _decorationType;
 	Bag _bag;
+
+	bool _traversable = false;
+	bool _locked = false;
+	string _lockcode = "XXXXXX";
 
 	public Sprite sprite {
 		get {return _sprite;}
@@ -32,6 +38,14 @@ public class BaseDecoration {
 
 	public Sprite highlightSprite {
 		get {return _highlightSprite;}
+	}
+
+	public Sprite lockSprite {
+		get {return _lockSprite;}
+	}
+
+	public Sprite lockHighlightSprite {
+		get {return _lockHighlightSprite;}
 	}
 
 	public Biome biome {
@@ -54,6 +68,21 @@ public class BaseDecoration {
 		set {_bag = value;}
 	}
 
+	public bool traversable {
+		get {return _traversable;}
+		set {_traversable = value;}
+	}
+
+	public bool locked {
+		get {return _locked;}
+		set {_locked = value;}
+	}
+
+	public string lockcode {
+		get {return _lockcode;}
+		set {_lockcode = value;}
+	}
+
 	public BaseDecoration(Biome b, DecorationType d, SpriteManager s) {
 		_biome = b;
 		_decorationType = d;
@@ -62,7 +91,17 @@ public class BaseDecoration {
 			List<BaseItem> _items = new List<BaseItem>();
 
 			_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
+			_items.Add(new BaseItem(BaseItem.ID.Small_Key));
+			_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
+			
+
 			_bag = new Bag(Bag.BagType.Container, _items);
+		}
+
+		if(_decorationType == DecorationType.Exit) {
+			_traversable = false;
+			_locked = true;
+			_lockcode = BaseItem.GenerateKeycode();
 		}
 
 		LoadTexture(s);
@@ -91,6 +130,12 @@ public class BaseDecoration {
 
 					case DecorationType.Exit:
 						sprites = spriteManager.biomeCavern.exit;
+						highlights = spriteManager.biomeCavern.exitHighlights;
+
+						if(_lockcode != "XXXXXX") {
+							_lockSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeCavern.locks[0], spriteManager);
+							_lockHighlightSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeCavern.lockHighlights[0], spriteManager);
+						}
 					break;
 				}
 			break;
@@ -183,12 +228,41 @@ public class BaseDecoration {
 				}
 			break;
 		}
-		int variation = Random.Range(0, sprites.Count-1);
-		_sprite = sprites[variation];
 
-		if(_decorationType == DecorationType.Container) {
-			_highlightSprite = highlights[variation];
+		int variation = Random.Range(0, sprites.Count-1);
+
+		switch(_decorationType) {
+			case DecorationType.Container:
+				_sprite = sprites[variation];
+				_highlightSprite = highlights[variation];
+			break;
+
+			case DecorationType.Exit:
+				if(_traversable) {
+					_sprite = sprites[1];
+					_highlightSprite = highlights[1];
+				} else {
+					_sprite = sprites[0];
+					_highlightSprite = highlights[0];
+				}
+			break;
+
+			default:
+				_sprite = sprites[variation];
+			break;
 		}
+	}
+
+	public bool Unlock(Bag bag) {
+		int ndx = bag.FindKey(_lockcode);
+		if(ndx > -1) {
+			if(bag.RemoveAt(ndx)) {
+				_locked = false;
+				_lockcode = "XXXXXX";
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -7,10 +7,28 @@ using UnityEngine;
 public class BaseItem {
 
 	public enum ID {
-		Gold,
+		
+		Cotton_Breeches,
+		Cotton_Gloves,
 		Cotton_Hood,
+		Cotton_Shoes,
 		Cotton_Tunic,
 
+		Gold,
+
+		Iron_Chain_Coif,
+		Iron_Chain_Gloves,
+		Iron_Chain_Leggings,
+		Iron_Chain_Shoes,
+		Iron_Chain_Tunic,
+
+		Leather_Boots,
+		Leather_Bracers,
+		Leather_Breeches,
+		Leather_Jack,
+		Leather_Helm,
+
+		Small_Key,
 
 	}
 
@@ -69,6 +87,7 @@ public class BaseItem {
 	int _quantity;
 	string _description;
 	int _value;
+	string _keycode = "XXXXXX";
 
 	#region Attributes
 	// Equipment Attributes
@@ -97,6 +116,11 @@ public class BaseItem {
 
 	public ID id {
 		get {return _id;}
+	}
+
+	public string keycode {
+		get {return _keycode;}
+		set {_keycode = value;}
 	}
 
 	public int tier {
@@ -239,16 +263,77 @@ public class BaseItem {
 		if(spriteManager == null) {return;}
 
 		switch(_id) {
-			case ID.Gold:
-				_sprite = spriteManager.items.currency[0];
+
+			case ID.Cotton_Breeches:
+				_sprite = spriteManager.items.lightArmorLegs[0];
+			break;
+
+			case ID.Cotton_Gloves:
+				_sprite = spriteManager.items.lightArmorHands[0];
 			break;
 
 			case ID.Cotton_Hood:
 				_sprite = spriteManager.items.lightArmorHead[0];
 			break;
 
+			case ID.Cotton_Shoes:
+				_sprite = spriteManager.items.lightArmorFeet[0];
+			break;
+
 			case ID.Cotton_Tunic:
 				_sprite = spriteManager.items.lightArmorBody[0];
+			break;
+
+
+			case ID.Gold:
+				_sprite = spriteManager.items.currency[0];
+			break;
+
+
+			case ID.Iron_Chain_Coif:
+				_sprite = spriteManager.items.heavyArmorHead[0];
+			break;
+
+			case ID.Iron_Chain_Gloves:
+				_sprite = spriteManager.items.heavyArmorHands[0];
+			break;
+
+			case ID.Iron_Chain_Leggings:
+				_sprite = spriteManager.items.heavyArmorLegs[0];
+			break;
+
+			case ID.Iron_Chain_Shoes:
+				_sprite = spriteManager.items.heavyArmorFeet[0];
+			break;
+
+			case ID.Iron_Chain_Tunic:
+				_sprite = spriteManager.items.heavyArmorBody[0];
+			break;
+
+
+			case ID.Leather_Boots:
+				_sprite = spriteManager.items.mediumArmorFeet[0];
+			break;
+
+			case ID.Leather_Bracers:
+				_sprite = spriteManager.items.mediumArmorHands[0];
+			break;
+
+			case ID.Leather_Breeches:
+				_sprite = spriteManager.items.mediumArmorLegs[0];
+			break;
+
+			case ID.Leather_Helm:
+				_sprite = spriteManager.items.mediumArmorHead[0];
+			break;
+
+			case ID.Leather_Jack:
+				_sprite = spriteManager.items.mediumArmorBody[0];
+			break;
+
+
+			case ID.Small_Key:
+				_sprite = GenerateKeycodeSprite(_keycode, spriteManager.items.keys[0], spriteManager);
 			break;
 		}
 	}
@@ -471,39 +556,6 @@ public class BaseItem {
 		return attributeString;
 	}
 
-	public BaseItem(ID item, int q = 1) {
-		Debug.Log("Constructing item.");
-		_id = item;
-		_quantity = q;
-
-		switch(item) {
-			case ID.Gold:
-				_name = "Gold";
-				_category = Category.Currency;
-				_description = "Item description.";
-				_value = 1;
-			break;
-
-			case ID.Cotton_Hood:
-				_name = "Cotton Hood";
-				_category = Category.Head_Armor;
-				_description = "A hood made of cotton.";
-				_value = 20;
-			break;
-
-			case ID.Cotton_Tunic:
-				_name = "Cotton Tunic";
-				_category = Category.Body_Armor;
-				_description = "A tunic made of cotton.";
-				_value = 20;
-			break;
-		}
-
-		if(!IsStackable()) {
-			_quantity = 1;
-		}
-	}
-
 	public bool IsEquipment() {
 		switch(_category) {
 			case BaseItem.Category.Body_Armor:
@@ -538,4 +590,176 @@ public class BaseItem {
 		}
 		return false;
 	}
+
+	public BaseItem(ID item, int q = 1) {
+		_id = item;
+		_quantity = q;
+
+		switch(item) {
+
+			case ID.Cotton_Breeches:
+				_name = "Cotton Breeches";
+				_category = Category.Leg_Armor;
+				_description = "Breeches made of cotton.";
+				_value = 20;
+			break;
+
+			case ID.Cotton_Gloves:
+				_name = "Cotton Gloves";
+				_category = Category.Hand_Armor;
+				_description = "Gloves made of cotton.";
+				_value = 20;
+			break;
+
+			case ID.Cotton_Hood:
+				_name = "Cotton Hood";
+				_category = Category.Head_Armor;
+				_description = "A hood made of cotton.";
+				_value = 20;
+			break;
+
+			case ID.Cotton_Shoes:
+				_name = "Cotton Shoes";
+				_category = Category.Foot_Armor;
+				_description = "Shoes made of cotton.";
+				_value = 20;
+			break;
+
+			case ID.Cotton_Tunic:
+				_name = "Cotton Tunic";
+				_category = Category.Body_Armor;
+				_description = "A tunic made of cotton.";
+				_value = 20;
+			break;
+
+
+			case ID.Gold:
+				_name = "Gold";
+				_category = Category.Currency;
+				_description = "Item description.";
+				_value = 1;
+			break;
+
+
+			case ID.Iron_Chain_Coif:
+				_name = "Iron Chain Coif";
+				_category = Category.Head_Armor;
+				_description = "A foot soldier's coif.";
+				_value = 20;
+			break;
+
+			case ID.Iron_Chain_Gloves:
+				_name = "Iron Chain Gloves";
+				_category = Category.Hand_Armor;
+				_description = "Gloves made of iron chainmail.";
+				_value = 20;
+			break;
+
+			case ID.Iron_Chain_Leggings:
+				_name = "Iron Chain Leggings";
+				_category = Category.Leg_Armor;
+				_description = "Leggings made of chainmail.";
+				_value = 20;
+			break;
+
+			case ID.Iron_Chain_Shoes:
+				_name = "Iron Chain Shoes";
+				_category = Category.Foot_Armor;
+				_description = "Shoes made of chainmail.";
+				_value = 20;
+			break;
+
+			case ID.Iron_Chain_Tunic:
+				_name = "Iron Chain Tunic";
+				_category = Category.Body_Armor;
+				_description = "A tunic made of chainmail.";
+				_value = 20;
+			break;
+
+
+			case ID.Leather_Boots:
+				_name = "Leather Boots";
+				_category = Category.Foot_Armor;
+				_description = "Boots made of leather.";
+				_value = 20;
+			break;
+
+			case ID.Leather_Bracers:
+				_name = "Leather Boots";
+				_category = Category.Foot_Armor;
+				_description = "Boots made of leather.";
+				_value = 20;
+			break;
+
+			case ID.Leather_Breeches:
+				_name = "Leather Breeches";
+				_category = Category.Leg_Armor;
+				_description = "Breeches made of leather.";
+				_value = 20;
+			break;
+
+			case ID.Leather_Jack:
+				_name = "Leather Jack";
+				_category = Category.Body_Armor;
+				_description = "A jack made of leather.";
+				_value = 20;
+			break;
+
+			case ID.Leather_Helm:
+				_name = "Leather Helm";
+				_category = Category.Head_Armor;
+				_description = "A helm made of leather.";
+				_value = 20;
+			break;
+
+
+			case ID.Small_Key:
+				_name = "Small Key";
+				_category = Category.Key;
+				_keycode = GenerateKeycode();
+				_description = "A small key with a unique color and the engraving: \"" + _keycode + "\"";
+				_value = 0;
+			break;
+		}
+
+		if(!IsStackable()) {
+			_quantity = 1;
+		}
+	}
+
+	public static Sprite GenerateKeycodeSprite(string code, Sprite template, SpriteManager spriteManager) {
+		Color baseColor = Color.gray;
+		if(ColorUtility.TryParseHtmlString("#"+code, out baseColor)) {
+			float h, s, v = 1f;
+			Color.RGBToHSV(baseColor, out h, out s, out v);
+			Color[] swatch = {Color.HSVToRGB(h, s, v), Color.HSVToRGB(h, s-0.10f, v-0.25f), Color.HSVToRGB(h, s-0.20f, v-0.50f)};
+			
+			Texture2D texture = new Texture2D(48, 48);
+			Color[] colors = template.texture.GetPixels();
+
+			for(int i = 0; i < colors.Length; i++) {
+				if(colors[i].a > 0f) {
+					colors[i] = Swatch.SwapToColor(colors[i], swatch);
+				}	
+			}
+			
+			texture.SetPixels(colors);
+			texture.Apply();
+
+			Sprite sprite = Sprite.Create(texture, new Rect(0, 0, 48, 48), new Vector2(0.5f, 0.5f), 48f);
+			sprite.texture.filterMode = FilterMode.Point;
+			return sprite;
+		} else {
+			return template;
+		}
+	}
+
+	public static string GenerateKeycode() {
+		float h = UnityEngine.Random.Range(0f, 1f);
+		float s = UnityEngine.Random.Range(0.30f, 0.90f);
+		float v = UnityEngine.Random.Range(0.70f, 1f);
+		return ColorUtility.ToHtmlStringRGB(Color.HSVToRGB(h, s, v));
+	}
+
+
 }

@@ -50,4 +50,6 @@ public class ItemSprites {
 	#region Currency
 	public List<Sprite> currency;
 	#endregion
+
+	public List<Sprite> keys;
 }

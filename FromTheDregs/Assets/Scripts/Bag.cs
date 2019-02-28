@@ -183,8 +183,16 @@ public class Bag {
 		return slot;
 	}
 
+	public bool RemoveAt(int ndx) {
+		if(ndx > -1 && ndx < _items.Count) {
+			_items.RemoveAt(ndx);
+			_items.Add(null);
+			return true;
+		}
+		return false;
+	}
+
 	public Bag(BagType b, List<BaseItem> itm) {
-		Debug.Log("Constructing Bag.");
 		_items = new List<BaseItem>();
 
 		_bagType = b;
@@ -206,7 +214,6 @@ public class Bag {
 				}
 			}
 		}
-		Debug.Log("Bag Done.");
 	}
 
 	public Bag(BagType b) {
@@ -315,6 +322,19 @@ public class Bag {
 		for(int i = 0; i < _items.Count; i++) {
 			if(_items[i] == item) {
 				return i;
+			}
+		}
+		return ndx;
+	}
+
+	public int FindKey(string keycode) {
+		int ndx = -1;
+		if(keycode == "XXXXXX") {return ndx;}
+		for(int i = 0; i < _items.Count; i++) {
+			if(_items[i] != null) {
+				if(items[i].keycode == keycode) {
+					return i;
+				}
 			}
 		}
 		return ndx;

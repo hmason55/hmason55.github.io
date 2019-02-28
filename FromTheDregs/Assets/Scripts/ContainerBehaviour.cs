@@ -64,7 +64,6 @@ public class ContainerBehaviour : MonoBehaviour {
 	}
 
     public void SyncBag(Bag b) {
-		Debug.Log("Syncing " + b.bagType);
         _bag = b;
 
 		_titleText.text = _name;
@@ -78,8 +77,6 @@ public class ContainerBehaviour : MonoBehaviour {
 				_bagSlots[i].item = _bag.items[i];
 			}
 		}
-
-		Debug.Log( _bagSlots.Count + " slots ");
 
 		UpdateSlotImages();
     }

@@ -95,7 +95,6 @@ public class BagBehaviour : MonoBehaviour {
 
 	void UpdateSlotImages() {
 		for(int i = 0; i < _bagSlots.Count; i++) {
-			Debug.Log(i + ": " + _bagSlots[i].equipped);
 			_bagSlots[i].UpdateImage();
 		}
 

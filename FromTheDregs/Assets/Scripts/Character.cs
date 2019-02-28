@@ -15,6 +15,9 @@ public class Character {
 	SkinColor _skinColor;
 	HairColor _hairColor;
 
+	Attributes _attributes;
+	Bag _bag;
+
 	#region Accessors
 	public FaceType faceType {
 		get {return _faceType;}
