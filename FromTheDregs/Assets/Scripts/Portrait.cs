@@ -180,22 +180,6 @@ public class Portrait : MonoBehaviour {
 		hairImage.enabled = false;
 	}
 
-	void SaveCharacter() {
-		PlayerData.current = new PlayerData();
-		PlayerData.current.slot = 0;
-		PlayerData.current.character = new Character();
-		PlayerData.current.character.name = "Hunter";
-		PlayerData.current.character.location = "Menu";
-		PlayerData.current.character.faceType = Character.FaceType.Human_0;
-		PlayerData.current.character.mouthType = Character.MouthType.Human_0;
-		PlayerData.current.character.beardType = Character.BeardType.None;
-		PlayerData.current.character.noseType = Character.NoseType.Human_0;
-		PlayerData.current.character.hairType = Character.HairType.Long_1;
-		PlayerData.current.character.skinColor = Character.SkinColor.Human_Medium;
-		PlayerData.current.character.hairColor = Character.HairColor.Chestnut;
-		SaveLoadData.Save();
-	}
-
 	#region Interface
 	void ApplyToPreviewCharacter() {
 		if(previewUnit == null) {return;}

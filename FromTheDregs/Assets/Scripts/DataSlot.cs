@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -25,17 +26,18 @@ public class DataSlot : MonoBehaviour {
         //SaveLoadData.savedPlayerData[ndx].slot = ndx;
         PlayerData.current = SaveLoadData.savedPlayerData[ndx];
 
-        DungeonManager dungeonManager = GameObject.FindObjectOfType<DungeonManager>();
+        SceneManager.LoadScene("game", LoadSceneMode.Single);
+        /* DungeonManager dungeonManager = GameObject.FindObjectOfType<DungeonManager>();
         if(dungeonManager != null) {
             loadDataUI.HideUI();
             dungeonManager.Load();
-        }
+        }*/
     }
 
     public void AssignPlayerData(PlayerData playerData) {
         _portrait.LoadCharacter(playerData.character);
         nameText.text = playerData.character.name;
-        locationText.text = playerData.character.location;
+        locationText.text = playerData.character.currentZone.ToString();
     }
 
     public void UnsetPlayerData() {

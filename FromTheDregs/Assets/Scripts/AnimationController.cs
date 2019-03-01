@@ -26,6 +26,16 @@ public class AnimationController : MonoBehaviour {
 	}
 
 	void LateUpdate() {
+		if(_previewUnit != null) {
+			if(_previewUnit.baseUnit != null) {
+				_previewUnit.baseUnit.IncrementAnimation((int)_animationFrame);
+				_previewUnit.UpdateSprite();
+			}
+		}
+
+
+		if(_dungeonManager == null) {return;}
+		
 		for(int y = 0; y < DungeonManager.dimension; y++) {
 			for(int x = 0; x < DungeonManager.dimension; x++) {
 				if(_dungeonManager.tiles != null) {
@@ -33,14 +43,6 @@ public class AnimationController : MonoBehaviour {
 						_dungeonManager.tiles[x, y].AnimateUnit();
 					}
 				}
-
-				if(_previewUnit != null) {
-					if(_previewUnit.baseUnit != null) {
-						_previewUnit.baseUnit.IncrementAnimation((int)_animationFrame);
-						_previewUnit.UpdateSprite();
-					}
-				}
-				
 			}
 		}
 	}

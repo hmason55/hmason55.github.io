@@ -11,9 +11,10 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 
 	Tile _tile;
 
-	RectTransform _rectTransform;
-	Image _image;
-	Shadow _shadow;
+	[SerializeField] RectTransform _rectTransform;
+	[SerializeField] Image _image;
+	[SerializeField] Shadow _shadow;
+	[SerializeField] Image _shadedImage;
 	 
 	bool init = false;
 	bool _renderFlag = false;
@@ -40,10 +41,8 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 		get {return _image;}
 	}
 
-	void Awake() {
-		_rectTransform = GetComponent<RectTransform>();
-		_shadow = GetComponent<Shadow>();
-		_image = GetComponent<Image>();
+	public Image shadedImage {
+		get {return _shadedImage;}
 	}
 
 	public void OnPointerClick(PointerEventData eventData) {
@@ -60,9 +59,14 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 			if(baseTerrain.terrainType == BaseTerrain.TerrainType.wall_side) {
 				_shadow.enabled = true;
 			}
-			_image.enabled = true;
-			_image.sprite = _baseTerrain.sprite;
-			_image.color = Color.white;
+
+			if(_baseTerrain.render) {
+				_image.enabled = true;
+				_image.sprite = _baseTerrain.sprite;
+				_image.color = Color.white;
+			} else {
+				_image.enabled = false;
+			}
 		}
 	}
 
@@ -81,9 +85,20 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 			if(baseTerrain.terrainType == BaseTerrain.TerrainType.wall_side) {
 				_shadow.enabled = true;
 			}
-			_image.enabled = true;
-			_image.sprite = _baseTerrain.sprite;
-			_image.color = Color.white;
+
+			if(_baseTerrain.render) {
+				_image.enabled = true;
+				_image.sprite = _baseTerrain.sprite;
+				_image.color = Color.white;
+
+				if(_baseTerrain.shaded) {
+					_shadedImage.enabled = true;
+					_shadedImage.sprite = _baseTerrain.shadedSprite;
+				}
+			} else {
+				_image.enabled = false;
+				_shadedImage.enabled = false;
+			}
 		}
 		
 	}

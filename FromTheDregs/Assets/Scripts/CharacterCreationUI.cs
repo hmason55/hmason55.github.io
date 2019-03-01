@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -38,12 +39,8 @@ public class CharacterCreationUI : MonoBehaviour {
     public void OnStart() {
         HideUI();
         CreateDataSlot();
-        
-        DungeonManager dungeonManager = GameObject.FindObjectOfType<DungeonManager>();
-        if(dungeonManager != null) {
-            HideUI();
-            dungeonManager.Load();
-        }
+        SceneManager.LoadScene("game", LoadSceneMode.Single);
+
     }
 
     void CreateDataSlot() {
@@ -52,7 +49,7 @@ public class CharacterCreationUI : MonoBehaviour {
 
         Character character = new Character();
         character.name = nameField.text;
-        character.location = "The Beginning";
+        character.currentZone = DungeonManager.Zone.Debug;
         
         character.faceType = portrait.faceType;
         character.mouthType = portrait.mouthType;

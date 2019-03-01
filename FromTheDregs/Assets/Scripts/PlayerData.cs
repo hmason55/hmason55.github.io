@@ -27,6 +27,7 @@ public class PlayerData  {
         get {return _bag;}
         set {_bag = value;}
     }
+
     // Character data
     Character _character;
 

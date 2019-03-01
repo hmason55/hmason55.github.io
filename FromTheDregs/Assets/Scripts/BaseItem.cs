@@ -109,7 +109,7 @@ public class BaseItem {
 
 	// Consumable Attributes
 	int _cooldownDuration;
-	Sprite _sprite;
+	[System.NonSerialized] Sprite _sprite;
 	#endregion
 
 	#region Accessors

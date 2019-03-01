@@ -17,10 +17,6 @@ public class LoadDataUI : MonoBehaviour {
         HideUI();
     }
 
-    void Start() {
-        
-    }
-
     public void ShowUI() {
         background.enabled = true;
         scrollView.SetActive(true);

@@ -7,7 +7,10 @@ public class BaseTerrain {
 	public enum TerrainType {
 		wall_top,
 		wall_side,
-		ground
+		ground,
+		wall_hidden,
+		ground_hidden,
+
 	}
 
 	bool _walkable = false;
@@ -15,6 +18,11 @@ public class BaseTerrain {
 	Biome _biome;
 	TerrainType _terrainType = TerrainType.ground;
 	Sprite _sprite;
+	Sprite _shadedSprite;
+
+	bool _hidden = false;
+	bool _render = true;
+	bool _shaded = false;
 
 	public bool walkable {
 		get {return _walkable;}
@@ -33,6 +41,20 @@ public class BaseTerrain {
 
 	public Sprite sprite {
 		get {return _sprite;}
+	}
+
+	public bool render {
+		get {return _render;}
+		set {_render = value;}
+	}
+
+	public bool shaded {
+		get {return _shaded;}
+		set {_shaded = value;}
+	}
+
+	public Sprite shadedSprite {
+		get {return _shadedSprite;}
 	}
 
 	public BaseTerrain(Biome b, string c) {
@@ -73,7 +95,118 @@ public class BaseTerrain {
 				}
 			}
 		}
+
+		if(_terrainType == TerrainType.ground) {
+
+			if(y == DungeonManager.dimension-1) {
+				if(dungeonManager.tiles[x, y-1] != null) {
+					if(dungeonManager.tiles[x, y-1].baseTerrain.terrainType == TerrainType.ground) {
+						_terrainType = TerrainType.wall_side;
+					} else {
+						_terrainType = TerrainType.wall_top;
+					}
+				} else {
+					_terrainType = TerrainType.wall_top;
+				}
+			} else if(dungeonManager.tiles[x, y+1] == null) {
+				_terrainType = TerrainType.wall_top;
+			} else if(y == 0) {
+				_terrainType = TerrainType.wall_top;
+			} else if(dungeonManager.tiles[x, y-1] == null) {
+				_terrainType = TerrainType.wall_top;
+			} else if(x == 0) {
+				_terrainType = TerrainType.wall_top;
+			} else if(dungeonManager.tiles[x-1, y] == null) {
+				_terrainType = TerrainType.wall_top;
+			} else if(x == DungeonManager.dimension-1) {
+				_terrainType = TerrainType.wall_top;
+			} else if(dungeonManager.tiles[x+1, y] == null) {
+				_terrainType = TerrainType.wall_top;
+			}
+
+			if(_terrainType == TerrainType.wall_top || _terrainType == TerrainType.wall_side) {
+				_walkable = false;
+			}
+		}
+
 		LoadTexture(spriteManager);
+		if(dungeonManager.tiles[x, y].terrain != null) {
+			dungeonManager.tiles[x, y].terrain.UpdateSprite();
+		}
+	}
+
+	public void Optimize(SpriteManager spriteManager, DungeonManager dungeonManager, int x, int y) {
+
+		
+
+		if(_terrainType == TerrainType.wall_top) {
+			List<Tile> samples = new List<Tile>();
+			List<bool> adjacency = new List<bool>();
+
+			if(x == 0 && y == 0) {
+				samples.Add(dungeonManager.tiles[x  , y+1]);	// Top
+				samples.Add(dungeonManager.tiles[x+1, y+1]);	// Top Right
+				samples.Add(dungeonManager.tiles[x+1, y  ]);	// Right
+			} else if(x == 0 && y == DungeonManager.dimension-1) {
+				samples.Add(dungeonManager.tiles[x  , y-1]);	// Bottom
+				samples.Add(dungeonManager.tiles[x+1, y-1]);	// Bottom Right
+				samples.Add(dungeonManager.tiles[x+1, y  ]);	// Right
+			} else if(x == DungeonManager.dimension-1 && y == 0) {
+				samples.Add(dungeonManager.tiles[x  , y+1]);	// Top
+				samples.Add(dungeonManager.tiles[x-1, y+1]);	// Top Left
+				samples.Add(dungeonManager.tiles[x-1, y  ]);	// Left
+			} else if(x == DungeonManager.dimension-1 && y == DungeonManager.dimension-1) {
+				samples.Add(dungeonManager.tiles[x  , y-1]);	// Bottom
+				samples.Add(dungeonManager.tiles[x-1, y-1]);	// Bottom Left
+				samples.Add(dungeonManager.tiles[x-1, y  ]);	// Left
+			} else if(x == 0) {
+				samples.Add(dungeonManager.tiles[x+1, y+1]);	// Top Right
+				samples.Add(dungeonManager.tiles[x+1, y-1]);	// Bottom Right
+				samples.Add(dungeonManager.tiles[x+1, y  ]);	// Right
+			} else if(x == DungeonManager.dimension-1) {
+				samples.Add(dungeonManager.tiles[x-1, y+1]);	// Top Left
+				samples.Add(dungeonManager.tiles[x-1, y-1]);	// Bottom Left
+				samples.Add(dungeonManager.tiles[x-1, y  ]);	// Left
+			} else if(y == 0) {
+				samples.Add(dungeonManager.tiles[x  , y+1]);	// Top
+				samples.Add(dungeonManager.tiles[x-1, y+1]);	// Top Left
+				samples.Add(dungeonManager.tiles[x+1, y+1]);	// Top Right
+			} else if(y == DungeonManager.dimension-1) {
+				samples.Add(dungeonManager.tiles[x  , y-1]);	// Bottom
+				samples.Add(dungeonManager.tiles[x-1, y-1]);	// Bottom Left
+				samples.Add(dungeonManager.tiles[x+1, y-1]);	// Bottom Right
+			} else {
+				samples.Add(dungeonManager.tiles[x  , y+1]);	// Top
+				samples.Add(dungeonManager.tiles[x  , y-1]);	// Bottom
+				samples.Add(dungeonManager.tiles[x-1, y  ]);	// Left
+				samples.Add(dungeonManager.tiles[x+1, y  ]);	// Right
+				samples.Add(dungeonManager.tiles[x-1, y+1]);	// Top Left
+				samples.Add(dungeonManager.tiles[x+1, y+1]);	// Top Right
+				samples.Add(dungeonManager.tiles[x-1, y-1]);	// Bottom Left
+				samples.Add(dungeonManager.tiles[x+1, y-1]);	// Bottom Right
+			}
+
+
+			for(int i = 0; i < samples.Count; i++) {
+				adjacency.Add(true);
+			}
+
+			for(int i = 0; i < samples.Count; i++) {
+				if(samples[i].baseTerrain != null) {
+					if(samples[i].baseTerrain.terrainType == TerrainType.ground) {
+						adjacency[i] = false;
+					}
+				}
+			}
+			
+			_render = false;
+			for(int i = 0; i < samples.Count; i++) {
+				if(adjacency[i] == false) {
+					_render = true;
+				}
+			}
+		}
+		
 		if(dungeonManager.tiles[x, y].terrain != null) {
 			dungeonManager.tiles[x, y].terrain.UpdateSprite();
 		}
@@ -170,7 +303,7 @@ public class BaseTerrain {
 			break;
 		}
 
-		if(sprites != null) {
+		if(render && sprites != null) {
 			int variation = Random.Range(0, sprites.Count-1);
 			_sprite = sprites[variation];
 		}

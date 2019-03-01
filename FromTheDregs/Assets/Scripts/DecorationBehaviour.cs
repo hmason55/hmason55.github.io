@@ -73,7 +73,7 @@ public class DecorationBehaviour : MonoBehaviour, IPointerClickHandler, IPointer
 					_rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, 96f);
 				} else {
 					DungeonManager dungeonManager = GameObject.FindObjectOfType<DungeonManager>();
-					dungeonManager.Unload();
+					dungeonManager.Reload(dungeonManager.zone);
 				}
 			break;
 		}

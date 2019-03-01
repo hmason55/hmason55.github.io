@@ -17,13 +17,24 @@ public class DungeonManager : MonoBehaviour {
 		Loaded
 	}
 
-	LoadState _loadState = LoadState.Unloaded;
+	public enum Zone {
+		Hub,
+		A1,
+		A2,
+		A3,
+		A4,
+		Debug,
 
+	}
+
+	Zone _zone;
+
+	LoadState _loadState = LoadState.Unloaded;
+	[SerializeField] LoadingUI _loadingUI;
 	[SerializeField] AnimationController animationController;
 	[SerializeField] SpriteManager spriteManager;
 	[SerializeField] CombatManager combatManager;
 	
-	[SerializeField] GameObject _dungeonPrefab;
 	[SerializeField] GameObject _terrainPrefab;
 	[SerializeField] GameObject _decorationPrefab;
 	[SerializeField] GameObject _unitPrefab;
@@ -75,6 +86,8 @@ public class DungeonManager : MonoBehaviour {
 	EssenceUI _essenceUI;
 	HitpointUI _hitpointUI;
 
+	BaseUnit _player;
+
 	bool _limitRendering = false;
 	public bool limitRendering {
 		get {return _limitRendering;}
@@ -89,6 +102,27 @@ public class DungeonManager : MonoBehaviour {
 		get {return _tiles;}
 	}
 
+	public Zone zone {
+		get {return _zone;}
+		set {_zone = value;}
+	}
+
+	Coroutine _loadingCoroutine;
+
+	IEnumerator ELoadingCoroutine(float fadeDuration = 1f) {
+
+		_loadingUI.ShowUI();
+
+		while(_loadState != LoadState.Loaded) {
+			yield return new WaitForSeconds(0.1f);
+		}
+		
+		_loadingUI.FadeOut(fadeDuration);
+		yield return new WaitForSeconds(fadeDuration);
+		_loadingCoroutine = null;
+		yield break;
+	}
+
 	void Awake() {
 		_essenceUI = FindObjectOfType<EssenceUI>();
 		_hitpointUI = FindObjectOfType<HitpointUI>();
@@ -97,17 +131,38 @@ public class DungeonManager : MonoBehaviour {
 	}
 
 	void Start () {
-		//Load();
+		
+		if(PlayerData.current == null) {
+			Debug.LogWarning("Warning: No data loaded, using slot 0 as a fallback.");
+			SaveLoadData.Load();
+			PlayerData.current = SaveLoadData.savedPlayerData[0];
+		}
+
+		Debug.Log("Loading player from slot " + PlayerData.current.slot);
+		
+
+		// Loading screen coroutine goes here
+		if(_loadingCoroutine == null) {
+			StartCoroutine(ELoadingCoroutine(2f));
+		}
+
+		Load();
 	}
 
 	public void Load() {
 		float startTime = Time.realtimeSinceStartup;
 		_loadState = LoadState.Loading;
+
+		// Load zone preset from player data
+		InitZone(PlayerData.current.character.currentZone);
+
+
+		// Generate the zone
 		_gameUI.SetActive(true);
 		InitializeGrid();
 		InitializeObjectPools();
 		SpawnBiomes();
-		BaseUnit player = CreateMainPath();
+		_player = CreateMainPath();
 		/* CameraController cameraController = GameObject.FindObjectOfType<CameraController>();
 		if(cameraController != null) {
 			if(cameraController.baseUnit != null) {
@@ -118,20 +173,62 @@ public class DungeonManager : MonoBehaviour {
 		// Initialize the UI
 		
 		_essenceUI.UpdateUI();
-		_hitpointUI.UpdateHitpoints(player.attributes.hpCurrent, player.attributes.hpTotal);
+		_hitpointUI.UpdateHitpoints(_player.attributes.hpCurrent, _player.attributes.hpTotal);
+		GameObject.FindObjectOfType<CameraController>().SnapToTarget();
 		_loadState = LoadState.Loaded;
 		Debug.Log(Time.realtimeSinceStartup - startTime);
 	}
 
-	void Unload() {
-		_loadState = LoadState.Unloading;
+	public void Reload(Zone z) {
+		
+		// Save CURRENT ZONE to player data, then restart ------
+		PlayerData.current.bag = _player.bag;
+		PlayerData.current.attributes = _player.attributes;
+		SaveLoadData.Save();
+
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	public void Unload(Zone z) {
+		_loadState = LoadState.Unloading;
+
+		
+	}
+
+	public void InitZone(Zone z) {
+		// Zone parameters
+
+		switch(z) {
+			case Zone.Hub:
+			break;
+
+			case Zone.A1:
+			break;
+
+			case Zone.A2:
+			break;
+
+			case Zone.Debug:
+				enemyUnitDensity = 0f;
+				smallDecorationDensity = 6.5f;
+				containerDecorationDensity = 100f;
+				trapDecorationDensity = 0f;
+				minimumPathSize = 4;
+				biomeType = Biome.BiomeType.cavern;
+			break;
+		}
 	}
 
 	void Update() {
 		if(Input.GetKeyDown(KeyCode.Space)) {
 			if(_loadState == LoadState.Loaded) {
-				//Unload();
+				Debug.Log("Saving...");
+				PlayerData.current.bag = _player.bag;
+				PlayerData.current.attributes = _player.attributes;
+				Debug.Log(_player);
+				SaveLoadData.Save();
+
+				
 			}
 		}
 	}
@@ -269,14 +366,6 @@ public class DungeonManager : MonoBehaviour {
 								// Spawn player here
 								BaseUnit player = new BaseUnit(true, Attributes.Preset.Human, BaseUnit.SpritePreset.warrior, tile, true);
 
-								if(PlayerData.current.character != null) {
-									player.character = PlayerData.current.character;
-								}
-
-								if(PlayerData.current.attributes != null) {
-									player.attributes = PlayerData.current.attributes;
-								}
-
 								Debug.Log(player.attributes.preset);
 								
 								player.tile = tile;
@@ -342,6 +431,18 @@ public class DungeonManager : MonoBehaviour {
 				if(_tiles[x, y] != null) {
 					if(_tiles[x, y].baseTerrain != null) {
 						_tiles[x, y].baseTerrain.Initialize(spriteManager, this, x, y);
+					}
+				}
+			}
+		}
+
+
+		// Optimize
+		for(int y = 0; y < dimension; y++) {
+			for(int x = 0; x < dimension; x++) {
+				if(_tiles[x, y] != null) {
+					if(_tiles[x, y].baseTerrain != null) {
+						_tiles[x, y].baseTerrain.Optimize(spriteManager, this, x, y);
 					}
 				}
 			}

@@ -305,9 +305,21 @@ public class BaseUnit {
 		_bag = new Bag(Bag.BagType.Bag);
 		
 		if(_playerControlled) {
-			_bag.Add(new BaseItem(BaseItem.ID.Gold, 48));
-			_bag.Add(new BaseItem(BaseItem.ID.Cotton_Hood));
-			_bag.Add(new BaseItem(BaseItem.ID.Cotton_Tunic));
+			
+			if(PlayerData.current.character != null) {
+				_character = PlayerData.current.character;
+			}
+
+			if(PlayerData.current.attributes != null) {
+				_attributes = PlayerData.current.attributes;
+			}
+
+			if(PlayerData.current.bag != null) {
+				_bag = PlayerData.current.bag;
+			}
+			//_bag.Add(new BaseItem(BaseItem.ID.Gold, 48));
+			//_bag.Add(new BaseItem(BaseItem.ID.Cotton_Hood));
+			//_bag.Add(new BaseItem(BaseItem.ID.Cotton_Tunic));
 			/*
 			_bag.Add(new BaseItem(BaseItem.Category.Head_Armor, BaseItem.ArmorWeight.Heavy, 2));
 			_bag.Add(new BaseItem(BaseItem.Category.Body_Armor, BaseItem.ArmorWeight.Heavy, 2));
