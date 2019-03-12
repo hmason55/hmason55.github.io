@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MainCanvas
   - Bag Slot
+  - Effects Canvas
+  - Text Canvas
   layers:
   - Default
   - TransparentFX

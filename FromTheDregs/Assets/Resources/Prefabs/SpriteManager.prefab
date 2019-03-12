@@ -120,28 +120,53 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 2bba52fae1bc8ed4e9177cdd31696ab8, type: 3}
     - {fileID: 21300000, guid: fd366eb2ae2235a4abd0c9be5d1a2557, type: 3}
     - {fileID: 21300000, guid: 1d872cf2820497a4e837c2253b649b6f, type: 3}
+    cHub:
+    - {fileID: 21300000, guid: 61701dc07bb9ce14e892f4de776846b5, type: 3}
   biomeDungeon:
     container:
     - {fileID: 21300000, guid: 7901c6c19cb112a44a874db48da48f19, type: 3}
     - {fileID: 21300000, guid: 1e2bcefd8139a044d95ce92e13ae0e4e, type: 3}
     - {fileID: 21300000, guid: 180a680a0f652924abb29a27a5bec6b6, type: 3}
-    containerHighlights: []
+    containerHighlights:
+    - {fileID: 21300000, guid: 4a18709183afb864dbaa332a299cf99e, type: 3}
+    - {fileID: 21300000, guid: 7810b6cc871d8ae42a019a6ebc089352, type: 3}
+    - {fileID: 21300000, guid: 6ed047173b09c1e4fa02a7d6e3163e17, type: 3}
     decorationSmall:
     - {fileID: 21300000, guid: 609e40271ef690e47830df78129deabf, type: 3}
     - {fileID: 21300000, guid: 385ab421f293a14408ae1b27d656a8f2, type: 3}
     - {fileID: 21300000, guid: 22713abc936a9ab4eab788c7fcc8fcde, type: 3}
     - {fileID: 21300000, guid: ee5c19b3c87123d44b04057e5f359c9d, type: 3}
+    - {fileID: 21300000, guid: 5df5f1def33e47e4eb031bedfb928f53, type: 3}
+    - {fileID: 21300000, guid: a81ca80b26fef374ea2a775c76d1dea7, type: 3}
+    - {fileID: 21300000, guid: 1261844abacff744fbc17831d01fcf13, type: 3}
+    - {fileID: 21300000, guid: 1261844abacff744fbc17831d01fcf13, type: 3}
+    - {fileID: 21300000, guid: 1261844abacff744fbc17831d01fcf13, type: 3}
+    - {fileID: 21300000, guid: 1fa9630f957ac604d82b66ab67a0ec66, type: 3}
+    - {fileID: 21300000, guid: 1fa9630f957ac604d82b66ab67a0ec66, type: 3}
+    - {fileID: 21300000, guid: 1fa9630f957ac604d82b66ab67a0ec66, type: 3}
     entrance:
     - {fileID: 21300000, guid: e3137a4cae30ee4469bf98f41aca0029, type: 3}
     exit:
     - {fileID: 21300000, guid: d50b2abd42670e246b85c6c16b34263c, type: 3}
     - {fileID: 21300000, guid: 2130a64b5618c7348bb43adcd33b16ae, type: 3}
-    - {fileID: 21300000, guid: 5b79da23704662047b6f75d89981072f, type: 3}
-    exitHighlights: []
+    exitHighlights:
+    - {fileID: 21300000, guid: 293e8552d5020844c91366b30cd87de6, type: 3}
+    - {fileID: 21300000, guid: 8298a7027bc436c46b04bedfa15ca052, type: 3}
     ground:
     - {fileID: 21300000, guid: 2568088710fdba04e9e4e11950f13076, type: 3}
-    locks: []
-    lockHighlights: []
+    - {fileID: 21300000, guid: 2568088710fdba04e9e4e11950f13076, type: 3}
+    - {fileID: 21300000, guid: 2568088710fdba04e9e4e11950f13076, type: 3}
+    - {fileID: 21300000, guid: 0b96c5c4fbd2cba4caf3e7fc5d5f3feb, type: 3}
+    - {fileID: 21300000, guid: 0b96c5c4fbd2cba4caf3e7fc5d5f3feb, type: 3}
+    - {fileID: 21300000, guid: a751469ac43247640ba335a8371d96d4, type: 3}
+    - {fileID: 21300000, guid: a751469ac43247640ba335a8371d96d4, type: 3}
+    - {fileID: 21300000, guid: a751469ac43247640ba335a8371d96d4, type: 3}
+    - {fileID: 21300000, guid: 7c7998a57c989d4458bf4c93db5198c8, type: 3}
+    - {fileID: 21300000, guid: 7c7998a57c989d4458bf4c93db5198c8, type: 3}
+    locks:
+    - {fileID: 21300000, guid: d8057d0368a9ecc4ab47bd0292ac9481, type: 3}
+    lockHighlights:
+    - {fileID: 21300000, guid: c930988b2e2159741b6aaa199fa53625, type: 3}
     wallSide:
     - {fileID: 21300000, guid: 34007534c30f7f445a70e3db47545d8b, type: 3}
     - {fileID: 21300000, guid: a674c00425d399a498b4710e6b637eaa, type: 3}
@@ -341,6 +366,19 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 6f392194297bcc742b6b21a4d4643b2f, type: 3}
     - {fileID: 21300000, guid: bcf84e382767de442b8172838bd5a436, type: 3}
     - {fileID: 21300000, guid: e6f1770b07524464a8864a86811317b8, type: 3}
+  borderShaded:
+  - {fileID: 21300000, guid: ea3cbeb3bf315e6458c4990c20864bc0, type: 3}
+  - {fileID: 21300000, guid: 846b5b5f2314a8f4bbb39e70982f4cb1, type: 3}
+  - {fileID: 21300000, guid: 12e3eaffb2306984db27dfb5a88856af, type: 3}
+  - {fileID: 21300000, guid: 4252208d851253d44bfa1bce440d4672, type: 3}
+  - {fileID: 21300000, guid: 7ebe247fb8b26124eae38ae23db08937, type: 3}
+  - {fileID: 21300000, guid: 901d98e8ca1463e46ad3a483975f7e59, type: 3}
+  - {fileID: 21300000, guid: a94283fe4a5c9e04786b8c1d3070d7a8, type: 3}
+  - {fileID: 21300000, guid: 0dbf5db958a50084599b00e2dcf13e13, type: 3}
+  - {fileID: 21300000, guid: cb9ede5f01add6b40bcc219a73b22408, type: 3}
+  - {fileID: 21300000, guid: 691bdd434073e4749882779da224498e, type: 3}
+  - {fileID: 21300000, guid: 65c796722a455124a87ee30a41eac0b8, type: 3}
+  - {fileID: 21300000, guid: 13cb7674548b5194e813b380bca9cb6e, type: 3}
   shadowSmall: {fileID: 21300000, guid: d6b08c9e363e38046a35f369a29f8767, type: 3}
   shadowMedium: {fileID: 21300000, guid: 8e68d94ab9c083e47b6ce842022ff859, type: 3}
   shadowLarge: {fileID: 21300000, guid: 637cb94e519bb3941b627cccaed08aa3, type: 3}
@@ -502,6 +540,18 @@ MonoBehaviour:
     secondaryT2: []
     primaryT1: []
     primaryT2: []
+  cavernDoor:
+  - {fileID: 21300000, guid: d856484a239db0f46acf90bc50bdcdf0, type: 3}
+  - {fileID: 21300000, guid: 66e187a775efb1f4fa811b2be7e129fe, type: 3}
+  cryptDoor:
+  - {fileID: 21300000, guid: d856484a239db0f46acf90bc50bdcdf0, type: 3}
+  - {fileID: 21300000, guid: 66e187a775efb1f4fa811b2be7e129fe, type: 3}
+  hedgeDoor:
+  - {fileID: 21300000, guid: d856484a239db0f46acf90bc50bdcdf0, type: 3}
+  - {fileID: 21300000, guid: 66e187a775efb1f4fa811b2be7e129fe, type: 3}
+  dungeonDoor:
+  - {fileID: 21300000, guid: d856484a239db0f46acf90bc50bdcdf0, type: 3}
+  - {fileID: 21300000, guid: 66e187a775efb1f4fa811b2be7e129fe, type: 3}
   items:
     unknown: {fileID: 21300000, guid: c6b657970ed01be44a44a8dc9521953c, type: 3}
     unknownNeck: {fileID: 21300000, guid: 3c2362545bee25d489f6cffcecd01b0b, type: 3}

@@ -46,10 +46,10 @@ public class CharacterCreationUI : MonoBehaviour {
     void CreateDataSlot() {
         PlayerData playerData = new PlayerData();
         playerData.slot = -1;
+        playerData.currentZone = DungeonManager.Zone.Debug;
 
         Character character = new Character();
         character.name = nameField.text;
-        character.currentZone = DungeonManager.Zone.Debug;
         
         character.faceType = portrait.faceType;
         character.mouthType = portrait.mouthType;

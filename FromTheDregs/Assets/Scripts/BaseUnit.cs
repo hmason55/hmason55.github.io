@@ -495,14 +495,16 @@ public class BaseUnit {
 		_tile.baseUnit.BeginHitAnimation();
 		Debug.Log(damage + " damage");
 		SpawnDamageText(damage.ToString(), color);
-		if(_attributes.hpCurrent - damage > 0) {
-			_attributes.hpCurrent -= damage;
-			if(_playerControlled) {
-				HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
-				if(hitpointUI.baseUnit == this) {
-					hitpointUI.UpdateHitpoints(_attributes.hpCurrent, _attributes.hpTotal);
-				}
+
+		_attributes.hpCurrent -= damage;
+		if(_playerControlled) {
+			HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
+			if(hitpointUI.baseUnit == this) {
+				hitpointUI.UpdateHitpoints(_attributes.hpCurrent, _attributes.hpTotal);
 			}
+		}
+
+		if(_attributes.hpCurrent > 0) {
 
 			// Aggro this unit if it's not in combat
 			if(dealer != null) {
@@ -526,6 +528,7 @@ public class BaseUnit {
 			}
 
 		} else {
+			
 			if(dealer != null) {
 				dealer.GrantExperience(10);
 			}
@@ -589,8 +592,37 @@ public class BaseUnit {
 	}
 
 	public void Kill() {
+		// Save bag and death location here.
+		if(_playerControlled) {
+			_attributes.hpCurrent = _attributes.hpTotal;
+
+			PlayerData.current.retrievalZone = PlayerData.current.currentZone;
+			PlayerData.current.retrievalBag = new Bag(Bag.BagType.Container);
+
+			// Set target zone to hub.
+			PlayerData.current.currentZone = DungeonManager.Zone.Hub;
+			PlayerData.current.targetZone = DungeonManager.Zone.Hub;
+
+			// Move currency and trophies to retrieval bag.
+			for(int i = _bag.items.Count-1; i >= 0; i--) {
+				if(_bag.items[i] != null) {
+					if(	_bag.items[i].category == BaseItem.Category.Currency || 
+						_bag.items[i].category == BaseItem.Category.Trophy) {
+
+						BaseItem item = _bag.items[i];
+						PlayerData.current.retrievalBag.Add(item);
+						_bag.RemoveAt(i);
+					}
+				}
+			}
+
+			PlayerData.current.bag = _bag;
+			PlayerData.current.character = _character;
+			PlayerData.current.attributes = _attributes;
+			SaveLoadData.Save();
+		}
+		
 		_tile.combatManager.turnQueue.RemoveTurns(this);
-		_tile.baseUnit = null;
 		_tile.unit.Kill();
 	}
 
@@ -665,7 +697,6 @@ public class BaseUnit {
 			}
 			
 		}
-		Debug.Log("Swatches applied.");
 	}
 
 	Sprite ApplySwatch(Sprite template, Color[] swatch) {

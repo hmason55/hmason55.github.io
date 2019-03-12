@@ -16,7 +16,13 @@ public class BaseDecoration {
 		Exit,
 		Puddle,
 		Small,
-		Trap
+		Trap,
+		CavernDoor,
+		CryptDoor,
+		HedgeDoor,
+		DungeonDoor,
+		HubShop,
+		Shop,
 	}
 
 	Sprite _sprite;
@@ -88,14 +94,23 @@ public class BaseDecoration {
 		_decorationType = d;
 		
 		if(_decorationType == DecorationType.Container) {
-			List<BaseItem> _items = new List<BaseItem>();
-
-			_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
-			_items.Add(new BaseItem(BaseItem.ID.Small_Key));
-			_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
 			
 
-			_bag = new Bag(Bag.BagType.Container, _items);
+			//_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
+			//_items.Add(new BaseItem(BaseItem.ID.Small_Key));
+			//_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
+			
+			if(PlayerData.current.retrievalMode == true) {
+				PlayerData.current.retrievalMode = false;
+				_bag = new Bag(Bag.BagType.Container, PlayerData.current.retrievalBag.items);
+			} else {
+				List<BaseItem> _items = new List<BaseItem>();
+				_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
+				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
+				_bag = new Bag(Bag.BagType.Container, _items);
+				
+			}
+			
 		}
 
 		if(_decorationType == DecorationType.Exit) {
@@ -158,6 +173,12 @@ public class BaseDecoration {
 
 					case DecorationType.Exit:
 						sprites = spriteManager.biomeCrypt.exit;
+						highlights = spriteManager.biomeCrypt.exitHighlights;
+
+						if(_lockcode != "XXXXXX") {
+							_lockSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeCrypt.locks[0], spriteManager);
+							_lockHighlightSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeCrypt.lockHighlights[0], spriteManager);
+						}
 					break;
 				}
 			break;
@@ -180,6 +201,12 @@ public class BaseDecoration {
 
 					case DecorationType.Exit:
 						sprites = spriteManager.biomeDungeon.exit;
+						highlights = spriteManager.biomeDungeon.exitHighlights;
+
+						if(_lockcode != "XXXXXX") {
+							_lockSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeDungeon.locks[0], spriteManager);
+							_lockHighlightSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeDungeon.lockHighlights[0], spriteManager);
+						}
 					break;
 				}
 			break;
@@ -202,6 +229,12 @@ public class BaseDecoration {
 
 					case DecorationType.Exit:
 						sprites = spriteManager.biomeForsaken.exit;
+						highlights = spriteManager.biomeForsaken.exitHighlights;
+
+						if(_lockcode != "XXXXXX") {
+							_lockSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeForsaken.locks[0], spriteManager);
+							_lockHighlightSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeForsaken.lockHighlights[0], spriteManager);
+						}
 					break;
 				}
 			break;
@@ -224,6 +257,12 @@ public class BaseDecoration {
 
 					case DecorationType.Exit:
 						sprites = spriteManager.biomeRuins.exit;
+						highlights = spriteManager.biomeRuins.exitHighlights;
+
+						if(_lockcode != "XXXXXX") {
+							_lockSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeRuins.locks[0], spriteManager);
+							_lockHighlightSprite = BaseItem.GenerateKeycodeSprite(_lockcode, spriteManager.biomeRuins.lockHighlights[0], spriteManager);
+						}
 					break;
 				}
 			break;
@@ -245,6 +284,26 @@ public class BaseDecoration {
 					_sprite = sprites[0];
 					_highlightSprite = highlights[0];
 				}
+			break;
+
+			case DecorationType.CavernDoor:
+				_sprite = spriteManager.cavernDoor[0];
+				_highlightSprite = spriteManager.cavernDoor[1];
+			break;
+
+			case DecorationType.CryptDoor:
+				_sprite = spriteManager.cryptDoor[0];
+				_highlightSprite = spriteManager.cryptDoor[1];
+			break;
+
+			case DecorationType.HedgeDoor:
+				_sprite = spriteManager.hedgeDoor[0];
+				_highlightSprite = spriteManager.hedgeDoor[1];
+			break;
+
+			case DecorationType.DungeonDoor:
+				_sprite = spriteManager.dungeonDoor[0];
+				_highlightSprite = spriteManager.dungeonDoor[1];
 			break;
 
 			default:

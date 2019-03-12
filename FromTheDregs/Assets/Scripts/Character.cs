@@ -5,8 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Character {
     public string name = "Character Name";
-	DungeonManager.Zone _currentZone;
-    DungeonManager.Zone _targetZone;
+
 
     FaceType _faceType;
 	MouthType _mouthType;
@@ -58,23 +57,11 @@ public class Character {
 		set {_hairColor = value;}
 	}
 
-	public DungeonManager.Zone currentZone {
-        get {return _currentZone;}
-        set {_currentZone = value;}
-    }
-
-    public DungeonManager.Zone targetZone {
-        get {return _targetZone;}
-        set {_targetZone = value;}
-    }
 	#endregion
 
 	#region Constructors
     public Character() {
         this.name = "Character Name";
-
-		_currentZone = DungeonManager.Zone.Debug;
-        _targetZone = DungeonManager.Zone.Debug;
 
         // Default Character
         _faceType = FaceType.Human_0;

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -56,18 +57,19 @@ public class LoadingUI : MonoBehaviour {
 
     IEnumerator EFadeIn(float fadeTime) {
         _backgroundImage.enabled = true;
-        _loadingText.enabled = true;
-        _helpText.enabled = true;
-        RandomizeHelpText();
+        //_loadingText.enabled = true;
+        //_helpText.enabled = true;
+        //RandomizeHelpText();
 
         for(float i = 0.0f; i < 1.0f; i += Time.deltaTime/fadeTime) {
             _backgroundImage.color = new Color(0f, 0f, 0f, i);
-            _loadingText.color = new Color(0.5f, 0.5f, 0.5f, i);
-            _helpText.color = new Color(0.8f, 0.8f, 0.8f, i);
+            //_loadingText.color = new Color(0.5f, 0.5f, 0.5f, i);
+            //_helpText.color = new Color(0.8f, 0.8f, 0.8f, i);
             yield return new WaitForSeconds(Time.deltaTime/fadeTime);
         }
 
         fadeInCoroutine = null;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         yield break;
     }
 

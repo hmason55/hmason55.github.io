@@ -37,7 +37,7 @@ public class DataSlot : MonoBehaviour {
     public void AssignPlayerData(PlayerData playerData) {
         _portrait.LoadCharacter(playerData.character);
         nameText.text = playerData.character.name;
-        locationText.text = playerData.character.currentZone.ToString();
+        locationText.text = playerData.currentZone.ToString();
     }
 
     public void UnsetPlayerData() {

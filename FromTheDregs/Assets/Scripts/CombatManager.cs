@@ -107,6 +107,8 @@ public class CombatManager : MonoBehaviour {
 				} else {
 					yield return new WaitForSeconds(0.1f);
 				}
+			} else {
+				yield break;
 			}
 			//yield return new WaitForSeconds(1f);
 		}

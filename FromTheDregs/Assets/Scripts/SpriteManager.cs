@@ -10,6 +10,7 @@ public class SpriteManager : MonoBehaviour {
 	public BiomeSprites biomeCavern;
 	public BiomeSprites biomeRuins;
 	public BiomeSprites biomeCrypt;
+	public List<Sprite> borderShaded;
 
 	public Sprite shadowSmall;
 	public Sprite shadowMedium;
@@ -25,6 +26,11 @@ public class SpriteManager : MonoBehaviour {
 	public UnitSprites unitWarrior1;
 	public UnitSprites unitWidow1;
 	public UnitSprites unitWidowSmall1;
+
+	public List<Sprite> cavernDoor;
+	public List<Sprite> cryptDoor;
+	public List<Sprite> hedgeDoor;
+	public List<Sprite> dungeonDoor;
 
 	public ItemSprites items;
 }

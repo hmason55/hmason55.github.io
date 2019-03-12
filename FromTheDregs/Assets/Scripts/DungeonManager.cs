@@ -138,7 +138,7 @@ public class DungeonManager : MonoBehaviour {
 			PlayerData.current = SaveLoadData.savedPlayerData[0];
 		}
 
-		Debug.Log("Loading player from slot " + PlayerData.current.slot);
+		Debug.Log("Loading player data from slot " + PlayerData.current.slot);
 		
 
 		// Loading screen coroutine goes here
@@ -154,7 +154,7 @@ public class DungeonManager : MonoBehaviour {
 		_loadState = LoadState.Loading;
 
 		// Load zone preset from player data
-		InitZone(PlayerData.current.character.currentZone);
+		InitZone(PlayerData.current.targetZone);
 
 
 		// Generate the zone
@@ -176,7 +176,7 @@ public class DungeonManager : MonoBehaviour {
 		_hitpointUI.UpdateHitpoints(_player.attributes.hpCurrent, _player.attributes.hpTotal);
 		GameObject.FindObjectOfType<CameraController>().SnapToTarget();
 		_loadState = LoadState.Loaded;
-		Debug.Log(Time.realtimeSinceStartup - startTime);
+		Debug.Log("Instance took " + (Time.realtimeSinceStartup - startTime) + " seconds to load.");
 	}
 
 	public void Reload(Zone z) {
@@ -197,12 +197,25 @@ public class DungeonManager : MonoBehaviour {
 
 	public void InitZone(Zone z) {
 		// Zone parameters
-
+		
+		_zone = z;
 		switch(z) {
 			case Zone.Hub:
+				enemyUnitDensity = 0f;
+				smallDecorationDensity = 0f;
+				containerDecorationDensity = 100f;
+				trapDecorationDensity = 0f;
+				minimumPathSize = 1;
+				biomeType = Biome.BiomeType.dungeon;
 			break;
 
 			case Zone.A1:
+				enemyUnitDensity = 0f;
+				smallDecorationDensity = 0f;
+				containerDecorationDensity = 20f;
+				trapDecorationDensity = 0f;
+				minimumPathSize = 4;
+				biomeType = Biome.BiomeType.cavern;
 			break;
 
 			case Zone.A2:
@@ -217,6 +230,8 @@ public class DungeonManager : MonoBehaviour {
 				biomeType = Biome.BiomeType.cavern;
 			break;
 		}
+
+		Debug.Log("Initializing zone " + z.ToString() + "...");
 	}
 
 	void Update() {
@@ -311,7 +326,6 @@ public class DungeonManager : MonoBehaviour {
 	#endregion
 
 	BaseUnit InitializeTiles(List<Vector2Int> nodes) {
-		Debug.Log("Biomes: " + _biome.biomeType);
 		BaseUnit p = null;
 		string exitCode = "XXXXXX";
 		int dimension = chunkDimension * dungeonDimension;
@@ -356,8 +370,34 @@ public class DungeonManager : MonoBehaviour {
 						case "FFFF00":	// Container (Yellow)
 							float containerDecorationRoll = Random.Range(0f, 100f);
 							if(containerDecorationRoll <= containerDecorationDensity) {
+								tile.baseTerrain.walkable = false;
 								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Container, spriteManager);
 							}
+						break;
+
+						case "FF8000":	// Fixed NPC shop
+							tile.baseTerrain.walkable = false;
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.HubShop, spriteManager);
+						break;
+
+						case "C8C8C8":	// Cavern Door
+							tile.baseTerrain.walkable = false;
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.CavernDoor, spriteManager);
+						break;
+
+						case "B4B4B4":	// Crypt Door
+							tile.baseTerrain.walkable = false;
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.CryptDoor, spriteManager);
+						break;
+
+						case "A0A0A0":	// Hedge Door
+							tile.baseTerrain.walkable = false;
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.HedgeDoor, spriteManager);
+						break;
+
+						case "8C8C8C":	// Dungeon Door
+							tile.baseTerrain.walkable = false;
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.DungeonDoor, spriteManager);
 						break;
 
 						case "0000FF":	// Entrance / Exit (Blue)
@@ -365,8 +405,6 @@ public class DungeonManager : MonoBehaviour {
 								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Entrance, spriteManager);
 								// Spawn player here
 								BaseUnit player = new BaseUnit(true, Attributes.Preset.Human, BaseUnit.SpritePreset.warrior, tile, true);
-
-								Debug.Log(player.attributes.preset);
 								
 								player.tile = tile;
 								tile.SpawnUnit(player);
@@ -419,7 +457,7 @@ public class DungeonManager : MonoBehaviour {
 		// Create key item
 		BaseItem exitKey = new BaseItem(BaseItem.ID.Small_Key);
 		exitKey.keycode = exitCode;
-		p.bag.Add(exitKey);
+		//p.bag.Add(exitKey);
 
 		ExportMap();
 		Debug.Log("Map Created");
@@ -448,7 +486,24 @@ public class DungeonManager : MonoBehaviour {
 			}
 		}
 
-		Debug.Log("Loaded Textures");
+		// Optimize
+		for(int y = 0; y < dimension; y++) {
+			for(int x = 0; x < dimension; x++) {
+				if(_tiles[x, y] != null) {
+					if(_tiles[x, y].baseTerrain != null) {
+						_tiles[x, y].baseTerrain.Shade(spriteManager, this, x, y);
+					}
+				}
+			}
+		}
+
+		for(int y = 0; y < dimension; y++) {
+			for(int x = 0; x < dimension; x++) {
+				if(_tiles[x, y].terrain != null) {
+					_tiles[x, y].terrain.UpdateSprite();
+				}
+			}
+		}
 
 		UpdateObjectPool();
 		return p;
@@ -634,16 +689,20 @@ public class DungeonManager : MonoBehaviour {
 		int endX = Random.Range(0, dungeonDimension-1);
 		int endY = Random.Range(0, dungeonDimension-1);
 
-	 	while(endX == startX && endY == startY) {
-			endX = Random.Range(0, dungeonDimension-1);
-			endY = Random.Range(0, dungeonDimension-1);
-		}
-
 		List<Vector2Int> nodes = new List<Vector2Int>();
 
-		Debug.Log("Start (" + startX + ", " + startY + ")");
+		if(_zone == Zone.Hub) {
+			nodes.Add(new Vector2Int(startX, startY));
+			_chunks[startX, startY] = new Chunk("Hub");
+			return InitializeTiles(nodes);
+		} else {
+			while(endX == startX && endY == startY) {
+				endX = Random.Range(0, dungeonDimension-1);
+				endY = Random.Range(0, dungeonDimension-1);
+			}
+		}
+
 		nodes.Add(new Vector2Int(startX, startY));
-		Debug.Log("End (" + endX + ", " + endY + ")");
 		nodes.Add(new Vector2Int(endX, endY));
 
 		int cursorX = startX;
@@ -680,7 +739,6 @@ public class DungeonManager : MonoBehaviour {
 			if(!NodeExists(cursorX + nextPosition.x, cursorY + nextPosition.y, nodes)) {
 				cursorX += nextPosition.x;
 				cursorY += nextPosition.y;
-				Debug.Log("Node (" + cursorX + ", " + cursorY + ")");
 				nodes.Add(new Vector2Int(cursorX, cursorY));
 			}
 
@@ -790,7 +848,7 @@ public class DungeonManager : MonoBehaviour {
 		// Global biome
 		_biome = new Biome(0, 0, 0);
 		_biome.biomeType = biomeType;
-
+		Debug.Log("Using " + biomeType.ToString() + " biome.");
 
 		// Smaller biomes
 		int numBiomes = Random.Range(minimumBiomes, maximumBiomes);

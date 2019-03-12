@@ -23,7 +23,7 @@ public class DamageText : MonoBehaviour {
 	}
 
 	void Awake() {
-		transform.SetParent(GameObject.FindObjectOfType<CameraController>().transform);
+		transform.SetParent(GameObject.FindGameObjectWithTag("Text Canvas").transform);
 		_rectTransform = GetComponent<RectTransform>();
 		_velocity = new Vector2(0f, 20f);
 		_spawntime = Time.realtimeSinceStartup;

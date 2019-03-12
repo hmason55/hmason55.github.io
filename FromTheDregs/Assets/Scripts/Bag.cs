@@ -317,6 +317,18 @@ public class Bag {
 		return false;
 	}
 
+	public void Format() {
+		for(int i = _items.Count-1; i >= 0; i--) {
+			if(_items[i] != null) {
+
+				// Remove Keys
+				if(items[i].category == BaseItem.Category.Key) {
+					RemoveAt(i);
+				}
+			}
+		}
+	}
+
 	public int FindItemSlot(BaseItem item) {
 		int ndx = -1;
 		for(int i = 0; i < _items.Count; i++) {

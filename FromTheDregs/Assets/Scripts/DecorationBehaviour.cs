@@ -38,6 +38,9 @@ public class DecorationBehaviour : MonoBehaviour, IPointerClickHandler, IPointer
 	public void OnPointerClick(PointerEventData eventData) {
 
 		BagBehaviour bagBehaviour = GameObject.FindObjectOfType<BagBehaviour>();
+		SpriteManager spriteManager = GameObject.FindObjectOfType<SpriteManager>();
+		DungeonManager dungeonManager = GameObject.FindObjectOfType<DungeonManager>();
+		LoadingUI loadingUI = GameObject.FindObjectOfType<LoadingUI>();
 
 		switch(_baseDecoration.decorationType) {
 			case BaseDecoration.DecorationType.Container:
@@ -65,17 +68,32 @@ public class DecorationBehaviour : MonoBehaviour, IPointerClickHandler, IPointer
 					}
 				} else if(!_baseDecoration.traversable){
 					_baseDecoration.traversable = true;
-					SpriteManager spriteManager = GameObject.FindObjectOfType<SpriteManager>();
 					if(spriteManager != null) {
 						_baseDecoration.LoadTexture(spriteManager);
 						_image.sprite = _baseDecoration.sprite;
 					}
 					_rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, 96f);
 				} else {
-					DungeonManager dungeonManager = GameObject.FindObjectOfType<DungeonManager>();
 					dungeonManager.Reload(dungeonManager.zone);
 				}
 			break;
+
+			case BaseDecoration.DecorationType.CavernDoor:
+				PlayerData.current.currentZone = DungeonManager.Zone.A1;
+				PlayerData.current.targetZone = DungeonManager.Zone.A1;
+				SaveLoadData.Save();
+				loadingUI.FadeIn(3f);
+			break;
+
+			case BaseDecoration.DecorationType.CryptDoor:
+			case BaseDecoration.DecorationType.HedgeDoor:
+
+			break;
+
+			case BaseDecoration.DecorationType.DungeonDoor:
+				Debug.Log("This lock needs a different key.");
+			break;
+
 		}
 
 	}
@@ -111,6 +129,10 @@ public class DecorationBehaviour : MonoBehaviour, IPointerClickHandler, IPointer
 			switch(_baseDecoration.decorationType) {
 				case BaseDecoration.DecorationType.Container:
 				case BaseDecoration.DecorationType.Exit:
+				case BaseDecoration.DecorationType.CavernDoor:
+				case BaseDecoration.DecorationType.CryptDoor:
+				case BaseDecoration.DecorationType.HedgeDoor:
+				case BaseDecoration.DecorationType.DungeonDoor:
 					_image.raycastTarget = true;
 				break;
 

@@ -79,6 +79,14 @@ public class UnitBehaviour : MonoBehaviour {
 		_baseUnit.LoadSprites(spriteManager);
 	}
 
+	void Update() {
+		if(Input.GetKeyDown(KeyCode.Z)) {
+			if(_baseUnit != null) {
+				_baseUnit.ReceiveDamage(_baseUnit, 999, Spell.DamageType.Fire);
+			}
+		}
+	}
+
 	public void UpdateSprite() {
 		if(_baseUnit != null) {
 
@@ -186,23 +194,21 @@ public class UnitBehaviour : MonoBehaviour {
 		_baseUnit = null;
 		_tile.unit = null;
 		_tile = null;
-		
-		_unitImage.sprite = null;
-		_unitImage.enabled = false;
-
-		_shadowImage.sprite = null;
-		_shadowImage.enabled = false;
+		Unset();
 	}
 
 	public void Kill() {
 		SpawnDeathParticles();
+		if(_tile.baseUnit != null) {
+			if(_tile.baseUnit.playerControlled) {
+				LoadingUI loadingUI = GameObject.FindObjectOfType<LoadingUI>();
+				loadingUI.FadeIn(3f);
+			}
+		}
+
 		_tile.baseUnit = null;
 		_baseUnit = null;
-		_unitImage.sprite = null;
-		_unitImage.enabled = false;
-
-		_shadowImage.sprite = null;
-		_shadowImage.enabled = false;
+		Unset();
 	}
 
 	public void MoveFromTo(Vector2Int from, Vector2Int to, float duration) {
@@ -351,8 +357,8 @@ public class UnitBehaviour : MonoBehaviour {
 
 	public void SpawnDeathParticles() {
 		GameObject deathParticlesGO = GameObject.Instantiate(Resources.Load<GameObject>(baseUnit.deathParticlesPath));
-		CameraController dungeon = GameObject.FindObjectOfType<CameraController>();
-		deathParticlesGO.transform.SetParent(dungeon.transform);
+		Transform canvas = GameObject.FindGameObjectWithTag("Effects Canvas").transform;
+		deathParticlesGO.transform.SetParent(canvas);
 		deathParticlesGO.transform.SetAsLastSibling();
 
 		RectTransform unitRT = _baseUnit.tile.dungeonManager.tiles[_baseUnit.tile.position.x, _baseUnit.tile.position.y].unit.GetComponent<RectTransform>();

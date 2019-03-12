@@ -19,4 +19,5 @@ public class ChunkSprites {
 	public List<Sprite> c1101;
 	public List<Sprite> c1110;
 	public List<Sprite> c1111;
+	public List<Sprite> cHub;
 }

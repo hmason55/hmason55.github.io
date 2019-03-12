@@ -15,6 +15,9 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 	[SerializeField] Image _image;
 	[SerializeField] Shadow _shadow;
 	[SerializeField] Image _shadedImage;
+
+	public bool render;
+	public bool shaded;
 	 
 	bool init = false;
 	bool _renderFlag = false;
@@ -56,17 +59,26 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 
 	public void UpdateSprite() {
 		if(_renderFlag && _baseTerrain != null) {
-			if(baseTerrain.terrainType == BaseTerrain.TerrainType.wall_side) {
+			if(_baseTerrain.terrainType == BaseTerrain.TerrainType.wall_side) {
 				_shadow.enabled = true;
 			}
+
+			_shadedImage.sprite = _baseTerrain.shadedSprite;
+			_shadedImage.enabled = _baseTerrain.shaded;
 
 			if(_baseTerrain.render) {
 				_image.enabled = true;
 				_image.sprite = _baseTerrain.sprite;
 				_image.color = Color.white;
+
+				
 			} else {
 				_image.enabled = false;
+				_shadedImage.enabled = false;
 			}
+
+			render = _baseTerrain.render;
+			shaded = _baseTerrain.shaded;
 		}
 	}
 
@@ -82,23 +94,28 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 
 		if(b != null) {
 			_baseTerrain = b;
-			if(baseTerrain.terrainType == BaseTerrain.TerrainType.wall_side) {
+			if(_baseTerrain.terrainType == BaseTerrain.TerrainType.wall_side) {
 				_shadow.enabled = true;
 			}
+
+			_shadedImage.sprite = _baseTerrain.shadedSprite;
+			_shadedImage.enabled = _baseTerrain.shaded;
 
 			if(_baseTerrain.render) {
 				_image.enabled = true;
 				_image.sprite = _baseTerrain.sprite;
 				_image.color = Color.white;
 
-				if(_baseTerrain.shaded) {
-					_shadedImage.enabled = true;
-					_shadedImage.sprite = _baseTerrain.shadedSprite;
-				}
+				//_shadedImage.sprite = _baseTerrain.shadedSprite;
+				//_shadedImage.enabled = _baseTerrain.shaded;
+				//shaded = _baseTerrain.shaded;
 			} else {
 				_image.enabled = false;
 				_shadedImage.enabled = false;
 			}
+
+			render = _baseTerrain.render;
+			shaded = _baseTerrain.shaded;
 		}
 		
 	}
@@ -115,5 +132,7 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 		_shadow.enabled = false;
 		_image.sprite = null;
 		_image.enabled = false;
+		_shadedImage.sprite = null;
+		_shadedImage.enabled = false;
 	}
 }

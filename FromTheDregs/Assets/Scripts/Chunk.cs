@@ -27,6 +27,7 @@ public class Chunk {
 		c1101,
 		c1110,
 		c1111,
+		cHub,
 	}
 
 	public Chunk(string preset) {
@@ -93,13 +94,21 @@ public class Chunk {
 			break;
 
 			case ChunkType.c1111:
+				sprites = spriteManager.chunk.c1111;
+			break;
+
+			case ChunkType.cHub:
+				sprites = spriteManager.chunk.cHub;
+				_template = sprites[0];
+			return;
+
 			default:
 				sprites = spriteManager.chunk.c1111;
 			break;
 		}
 
-		//int variation = Random.Range(1, sprites.Count-1);
-		int variation = 1;
+		int variation = Random.Range(1, sprites.Count-1);
+		//int variation = 1;
 		_template = sprites[variation];
 		//_template = Resources.Load<Sprite>("Chunks/" + preset + "/" + preset + "_" + variation);
 	}

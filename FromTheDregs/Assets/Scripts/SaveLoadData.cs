@@ -10,6 +10,11 @@ public static class SaveLoadData {
 
     public static void Save() {
         if(PlayerData.current != null) {
+
+            if(PlayerData.current.bag != null) {
+                PlayerData.current.bag.Format();
+            }
+
             if( PlayerData.current.slot < 0 ||
                 PlayerData.current.slot >= savedPlayerData.Count) {
                 savedPlayerData.Add(PlayerData.current);
