@@ -68,8 +68,36 @@ public class BagBehaviour : MonoBehaviour {
 		for(int i = 0; i < _bagSlotGrid.transform.childCount; i++) {
 			_bagSlots.Add(_bagSlotGrid.transform.GetChild(i).GetComponent<BagItemBehaviour>());
 		}
-
+		
 		UpdateSlotImages();
+	}
+
+	public void SyncEquipment() {
+
+		BagItemBehaviour[] equippedItems = {
+			_equipmentNeck,
+			_equipmentHead,
+			_equipmentFinger,
+			_equipmentPrimary,
+			_equipmentSecondary,
+			_equipmentHands,
+			_equipmentLegs,
+			_equipmentFeet
+		};
+
+		for(int i = Bag.BAG_SLOTS-1; i >= 0; i--) {
+			if(_bagSlots[i].item != null) {
+
+				for(int j = 0; j < equippedItems.Length; j++) {
+					if(equippedItems[j].item != null) {
+						if(_bagSlots[i].item.id == equippedItems[j].item.id) {
+							EquipItem(_bagSlots[i]);
+						}
+					}
+				}
+
+			}
+		}
 	}
 
 	public void SyncUnit() {
@@ -212,6 +240,122 @@ public class BagBehaviour : MonoBehaviour {
 		return false;
 	}
 
+	public bool SellItem(BagItemBehaviour bagItem, ContainerBehaviour containerBehaviour) {
+		if(bagItem == null) {return false;}
+		if(bagItem.item == null) {return false;}
+		if(bagItem.item.category == BaseItem.Category.Currency) {return false;}
+		if(containerBehaviour == null) {return false;}
+		if(containerBehaviour.bag == null) {return false;}
+
+		
+		int slot = _bag.Remove(bagItem.item);
+		if(slot > -1) {
+			int itemValue = bagItem.item.value;
+			bagItem.item = null;
+
+			for(int i = slot; i < _bagSlots.Count; i++) {
+				if(i < _bagSlots.Count-1) {
+					_bagSlots[i].equipped = _bagSlots[i+1].equipped-1;
+				} else {
+					_bagSlots[i].equipped = -1;
+				}
+
+				if(_bagSlots[i].equipped < -1) {
+					_bagSlots[i].equipped = -1;
+				}
+			}
+
+			if(itemValue > 0) {
+				BaseItem gold = new BaseItem(BaseItem.ID.Gold);
+				gold.quantity = itemValue;
+				_bag.Add(gold);
+			}
+		
+			SyncUnit();
+			Debug.Log("Item Sold.");
+			return true;
+		}
+
+		return false;
+	}
+
+	public bool BuyItem(BagItemBehaviour bagItem, ContainerBehaviour containerBehaviour) {
+		if(bagItem == null) {return false;}
+		if(bagItem.item == null) {return false;}
+		if(containerBehaviour == null) {return false;}
+		if(containerBehaviour.bag == null) {return false;}
+		
+		if(_bag.Add(bagItem.item)) {
+			int itemNdx = _bag.FindItemWithID(BaseItem.ID.Gold);
+			Debug.Log("Gold at item slot " + itemNdx);
+			if(itemNdx > -1) {
+				int value = bagItem.item.value;
+				if(bagItem.item.category != BaseItem.Category.Runestone) {
+					value *= 2;
+				}
+
+				if(_bag.items[itemNdx].quantity > value) {
+					_bag.items[itemNdx].quantity -= value;
+				} else if(_bag.items[itemNdx].quantity == value) {
+					_bag.RemoveAt(itemNdx);
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+
+			SpendAttributes(bagItem.item.id);
+
+
+			SyncUnit();
+
+			//containerBehaviour.bag.Remove(bagItem.item);
+			//bagItem.item = null;
+			containerBehaviour.SyncBag(containerBehaviour.bag);
+			Debug.Log("Item purchased.");
+			return true;
+		}
+
+		return false;
+	}
+
+	void SpendAttributes(BaseItem.ID id) {
+		switch(id) {
+			case BaseItem.ID.Rune_of_Constitution:
+				_bag.RemoveAt(_bag.FindItemWithID(BaseItem.ID.Rune_of_Constitution));
+				_baseUnit.attributes.baseConstitution++;
+				Debug.Log("Constitution increased!");
+				SaveLoadData.Save();
+				_baseUnit.SetAsInterfaceTarget();
+			break;
+
+			case BaseItem.ID.Rune_of_Dexterity:
+				_bag.RemoveAt(_bag.FindItemWithID(BaseItem.ID.Rune_of_Dexterity));
+				_baseUnit.attributes.baseDexterity++;
+				Debug.Log("Dexterity increased!");
+				SaveLoadData.Save();
+				_baseUnit.SetAsInterfaceTarget();
+			break;
+
+			case BaseItem.ID.Rune_of_Intelligence:
+				_bag.RemoveAt(_bag.FindItemWithID(BaseItem.ID.Rune_of_Intelligence));
+				_baseUnit.attributes.baseIntelligence++;
+				Debug.Log("Intelligence increased!");
+				SaveLoadData.Save();
+				_baseUnit.SetAsInterfaceTarget();
+			break;
+
+			case BaseItem.ID.Rune_of_Strength:
+				_bag.RemoveAt(_bag.FindItemWithID(BaseItem.ID.Rune_of_Strength));
+				_baseUnit.attributes.baseStrength++;
+				Debug.Log("Strength increased!");
+				SaveLoadData.Save();
+				_baseUnit.SetAsInterfaceTarget();
+			break;
+		}
+	}
+
 	BagItemBehaviour GetEquipmentType(BaseItem.Category category) {
 		
 		switch(category) {
@@ -291,6 +435,8 @@ public class BagBehaviour : MonoBehaviour {
 			_bagEquipmentPanel.SetActive(true);
 			_hidden = false;
 		}
+
+		SyncEquipment();
 
 		if(showContainer) {
 			GetComponent<ContainerBehaviour>().ShowUI();

@@ -329,6 +329,7 @@ public class DungeonManager : MonoBehaviour {
 		BaseUnit p = null;
 		string exitCode = "XXXXXX";
 		int dimension = chunkDimension * dungeonDimension;
+		bool spawnedRetrieval = false;
 		
 		for(int i = 0; i < nodes.Count; i++) {
 			Vector2Int node = nodes[i];
@@ -369,9 +370,19 @@ public class DungeonManager : MonoBehaviour {
 
 						case "FFFF00":	// Container (Yellow)
 							float containerDecorationRoll = Random.Range(0f, 100f);
+							if(spawnedRetrieval == false) {
+								containerDecorationRoll = 100f;
+								spawnedRetrieval = true;
+							}
+
+							bool retrieval = false;
+							if(_zone == PlayerData.current.retrievalZone) {
+								retrieval = true;
+							}
+							
 							if(containerDecorationRoll <= containerDecorationDensity) {
 								tile.baseTerrain.walkable = false;
-								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Container, spriteManager);
+								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Container, spriteManager, retrieval);
 							}
 						break;
 
@@ -404,7 +415,7 @@ public class DungeonManager : MonoBehaviour {
 							if(i == 0) {
 								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Entrance, spriteManager);
 								// Spawn player here
-								BaseUnit player = new BaseUnit(true, Attributes.Preset.Human, BaseUnit.SpritePreset.warrior, tile, true);
+								BaseUnit player = new BaseUnit(true, Attributes.Preset.Warrior, BaseUnit.SpritePreset.warrior, tile, true);
 								
 								player.tile = tile;
 								tile.SpawnUnit(player);

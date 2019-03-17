@@ -89,34 +89,41 @@ public class BaseDecoration {
 		set {_lockcode = value;}
 	}
 
-	public BaseDecoration(Biome b, DecorationType d, SpriteManager s) {
+	public BaseDecoration(Biome b, DecorationType d, SpriteManager s, bool retrieval = false) {
 		_biome = b;
 		_decorationType = d;
-		
-		if(_decorationType == DecorationType.Container) {
-			
+		List<BaseItem> _items = new List<BaseItem>();
 
-			//_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
-			//_items.Add(new BaseItem(BaseItem.ID.Small_Key));
-			//_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
-			
-			if(PlayerData.current.retrievalMode == true) {
-				PlayerData.current.retrievalMode = false;
-				_bag = new Bag(Bag.BagType.Container, PlayerData.current.retrievalBag.items);
-			} else {
-				List<BaseItem> _items = new List<BaseItem>();
-				_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
+		switch(_decorationType) {
+			case DecorationType.Container:
+				if(PlayerData.current.retrievalMode == true && retrieval) {
+					_bag = new Bag(Bag.BagType.Container, PlayerData.current.retrievalBag.items);
+					PlayerData.current.retrievalMode = false;
+					SaveLoadData.Save();
+					Debug.Log("Something here feels familiar...");
+				} else {
+					_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
+					_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
+					_bag = new Bag(Bag.BagType.Container, _items);
+				}
+			break;
+
+			case DecorationType.HubShop:
+				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Strength));
+				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Dexterity));
+				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Intelligence));
+				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Constitution));
 				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
-				_bag = new Bag(Bag.BagType.Container, _items);
-				
-			}
-			
-		}
+				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
+				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
+				_bag = new Bag(Bag.BagType.Shop, _items);
+			break;
 
-		if(_decorationType == DecorationType.Exit) {
-			_traversable = false;
-			_locked = true;
-			_lockcode = BaseItem.GenerateKeycode();
+			case DecorationType.Exit:
+				_traversable = false;
+				_locked = true;
+				_lockcode = BaseItem.GenerateKeycode();
+			break;
 		}
 
 		LoadTexture(s);
@@ -187,6 +194,7 @@ public class BaseDecoration {
 			case Biome.BiomeType.dungeon:
 				switch(_decorationType) {
 					case DecorationType.Container:
+					case DecorationType.HubShop:
 						sprites = spriteManager.biomeDungeon.container;
 						highlights = spriteManager.biomeDungeon.containerHighlights;
 					break;
@@ -272,6 +280,7 @@ public class BaseDecoration {
 
 		switch(_decorationType) {
 			case DecorationType.Container:
+			case DecorationType.HubShop:
 				_sprite = sprites[variation];
 				_highlightSprite = highlights[variation];
 			break;

@@ -52,4 +52,5 @@ public class ItemSprites {
 	#endregion
 
 	public List<Sprite> keys;
+	public List<Sprite> runestones;
 }

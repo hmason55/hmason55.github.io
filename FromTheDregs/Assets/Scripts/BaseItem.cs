@@ -28,6 +28,11 @@ public class BaseItem {
 		Leather_Jack,
 		Leather_Helm,
 
+		Rune_of_Constitution,
+		Rune_of_Dexterity,
+		Rune_of_Intelligence,
+		Rune_of_Strength,
+
 		Small_Key,
 
 	}
@@ -48,7 +53,8 @@ public class BaseItem {
 		Poisonous_Consumable,
 		Trophy,
 		Currency,
-		Key
+		Key,
+		Runestone,
 	}
 
 	public enum ArmorWeight {
@@ -177,7 +183,13 @@ public class BaseItem {
 	}
 
 	public int value {
-		get {return _value;}
+		get {
+			if(_category == Category.Runestone) {
+				_value = PlayerData.current.attributes.ToNextLevel();
+			}
+			return _value;
+		}
+		set {_value = value;}
 	}
 	#endregion
 
@@ -207,47 +219,6 @@ public class BaseItem {
 			case Category.Leg_Armor:
 				RollArmorWeight();
 
-				_attack = (2 - ((int)_armorWeight)) * (_tier);
-				//_physicalAttack = (3 - ((int)_armorWeight)) * (_tier);
-				//_magicalAttack =  (3 - ((int)_armorWeight)) * (_tier);
-
-				_defense = ((int)_armorWeight) * (_tier);
-				//_physicalDefense = ((int)_armorWeight + 1) * (_tier);
-				//_magicalDefense =  ((int)_armorWeight + 1) * (_tier);
-			break;
-		}
-	}
-
-	// Armor
-	public BaseItem(Category c, ArmorWeight w, int t) {
-		_category = c;
-		_armorWeight = w;
-		_tier = t;
-		_value = 1;
-
-		Init();
-	}
-
-	void Init() {
-		switch(_category) {
-			case Category.Neck_Jewelry:
-				_attack = 1 * _tier;
-				//_physicalAttack = 2 * _tier;
-				//_magicalAttack =  2 * _tier;
-			break;
-
-			case Category.Finger_Jewelry:
-				_attack = 1 * _tier;
-				//_physicalAttack = 1 * _tier;
-				//_magicalAttack =  1 * _tier;
-			break;
-
-			case Category.Body_Armor:
-			case Category.Foot_Armor:
-			case Category.Hand_Armor:
-			case Category.Head_Armor:
-			case Category.Leg_Armor:
-				
 				_attack = (2 - ((int)_armorWeight)) * (_tier);
 				//_physicalAttack = (3 - ((int)_armorWeight)) * (_tier);
 				//_magicalAttack =  (3 - ((int)_armorWeight)) * (_tier);
@@ -332,9 +303,28 @@ public class BaseItem {
 			break;
 
 
+			case ID.Rune_of_Constitution:
+				_sprite = spriteManager.items.runestones[3];
+			break;
+
+			case ID.Rune_of_Dexterity:
+				_sprite = spriteManager.items.runestones[1];
+			break;
+
+			case ID.Rune_of_Intelligence:
+				_sprite = spriteManager.items.runestones[2];
+			break;
+
+			case ID.Rune_of_Strength:
+				_sprite = spriteManager.items.runestones[0];
+			break;
+
+
 			case ID.Small_Key:
 				_sprite = GenerateKeycodeSprite(_keycode, spriteManager.items.keys[0], spriteManager);
 			break;
+
+			
 		}
 	}
 
@@ -601,35 +591,35 @@ public class BaseItem {
 				_name = "Cotton Breeches";
 				_category = Category.Leg_Armor;
 				_description = "Breeches made of cotton.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Cotton_Gloves:
 				_name = "Cotton Gloves";
 				_category = Category.Hand_Armor;
 				_description = "Gloves made of cotton.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Cotton_Hood:
 				_name = "Cotton Hood";
 				_category = Category.Head_Armor;
 				_description = "A hood made of cotton.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Cotton_Shoes:
 				_name = "Cotton Shoes";
 				_category = Category.Foot_Armor;
 				_description = "Shoes made of cotton.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Cotton_Tunic:
 				_name = "Cotton Tunic";
 				_category = Category.Body_Armor;
 				_description = "A tunic made of cotton.";
-				_value = 20;
+				_value = 1;
 			break;
 
 
@@ -645,35 +635,35 @@ public class BaseItem {
 				_name = "Iron Chain Coif";
 				_category = Category.Head_Armor;
 				_description = "A foot soldier's coif.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Iron_Chain_Gloves:
 				_name = "Iron Chain Gloves";
 				_category = Category.Hand_Armor;
 				_description = "Gloves made of iron chainmail.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Iron_Chain_Leggings:
 				_name = "Iron Chain Leggings";
 				_category = Category.Leg_Armor;
 				_description = "Leggings made of chainmail.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Iron_Chain_Shoes:
 				_name = "Iron Chain Shoes";
 				_category = Category.Foot_Armor;
 				_description = "Shoes made of chainmail.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Iron_Chain_Tunic:
 				_name = "Iron Chain Tunic";
 				_category = Category.Body_Armor;
 				_description = "A tunic made of chainmail.";
-				_value = 20;
+				_value = 1;
 			break;
 
 
@@ -681,35 +671,64 @@ public class BaseItem {
 				_name = "Leather Boots";
 				_category = Category.Foot_Armor;
 				_description = "Boots made of leather.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Leather_Bracers:
 				_name = "Leather Boots";
 				_category = Category.Foot_Armor;
 				_description = "Boots made of leather.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Leather_Breeches:
 				_name = "Leather Breeches";
 				_category = Category.Leg_Armor;
 				_description = "Breeches made of leather.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Leather_Jack:
 				_name = "Leather Jack";
 				_category = Category.Body_Armor;
 				_description = "A jack made of leather.";
-				_value = 20;
+				_value = 1;
 			break;
 
 			case ID.Leather_Helm:
 				_name = "Leather Helm";
 				_category = Category.Head_Armor;
 				_description = "A helm made of leather.";
-				_value = 20;
+				_value = 1;
+			break;
+
+			
+			case ID.Rune_of_Constitution:
+				_name = "Rune of Constitution";
+				_category = Category.Runestone;
+				_description = "Increases constitution.";
+				_value = 0;
+			break;
+
+			case ID.Rune_of_Dexterity:
+				_name = "Rune of Dexterity";
+				_category = Category.Runestone;
+				_description = "Increases dexterity.";
+				_value = 0;
+			break;
+
+			case ID.Rune_of_Intelligence:
+				_name = "Rune of Intelligence";
+				_category = Category.Runestone;
+				_description = "Increases intelligence.";
+				_value = 0;
+			break;
+
+			case ID.Rune_of_Strength:
+				_name = "Rune of Strength";
+				_category = Category.Runestone;
+				_description = "Increases strength.";
+				_value = 0;
 			break;
 
 
@@ -760,6 +779,4 @@ public class BaseItem {
 		float v = UnityEngine.Random.Range(0.70f, 1f);
 		return ColorUtility.ToHtmlStringRGB(Color.HSVToRGB(h, s, v));
 	}
-
-
 }

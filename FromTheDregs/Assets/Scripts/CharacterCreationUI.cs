@@ -59,7 +59,10 @@ public class CharacterCreationUI : MonoBehaviour {
         character.skinColor = portrait.skinColor;
         character.hairColor = portrait.hairColor;
 
+        Attributes attributes = new Attributes(Attributes.Preset.Warrior);
+
         playerData.character = character;
+        playerData.attributes = attributes;
         PlayerData.current = playerData;
 
         SaveLoadData.Save();

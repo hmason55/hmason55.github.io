@@ -265,6 +265,10 @@ public class BaseUnit {
 				_statPreset = Attributes.Preset.WidowSmall;
 			break;
 
+			case SpritePreset.warrior:
+				_statPreset = Attributes.Preset.Warrior;
+			break;
+
 			default:
 				_statPreset = Attributes.Preset.Human;
 			break;
@@ -467,6 +471,11 @@ public class BaseUnit {
 			bagBehaviour.baseUnit = this;
 		}
 
+		AttributesUI attributesUI = GameObject.FindObjectOfType<AttributesUI>();
+		if(attributesUI != null) {
+			attributesUI.baseUnit = this;
+		}
+
 		TapController tapController = GameObject.FindObjectOfType<TapController>();
 		if(tapController != null) {
 			tapController.baseUnit = this;
@@ -619,6 +628,7 @@ public class BaseUnit {
 			PlayerData.current.bag = _bag;
 			PlayerData.current.character = _character;
 			PlayerData.current.attributes = _attributes;
+			PlayerData.current.retrievalMode = true;
 			SaveLoadData.Save();
 		}
 		

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ContainerBehaviour : MonoBehaviour {
 
-
 	public enum Actions {
 		Buy,
 		Take
@@ -65,7 +64,7 @@ public class ContainerBehaviour : MonoBehaviour {
 
     public void SyncBag(Bag b) {
         _bag = b;
-
+		
 		_titleText.text = _name;
 		if(_bag.bagType == Bag.BagType.Bag) {
 			for(int i = 0; i < Bag.BAG_SLOTS; i++) {
@@ -86,7 +85,6 @@ public class ContainerBehaviour : MonoBehaviour {
 			_bagSlots[i].UpdateImage();
 		}
     }
-
     
 	public void ToggleUI() {
 		if(hidden) {

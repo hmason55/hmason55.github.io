@@ -41,16 +41,29 @@ public class DecorationBehaviour : MonoBehaviour, IPointerClickHandler, IPointer
 		SpriteManager spriteManager = GameObject.FindObjectOfType<SpriteManager>();
 		DungeonManager dungeonManager = GameObject.FindObjectOfType<DungeonManager>();
 		LoadingUI loadingUI = GameObject.FindObjectOfType<LoadingUI>();
+		ContainerBehaviour containerBehaviour = GameObject.FindObjectOfType<ContainerBehaviour>();
 
 		switch(_baseDecoration.decorationType) {
 			case BaseDecoration.DecorationType.Container:
-				ContainerBehaviour containerBehaviour = GameObject.FindObjectOfType<ContainerBehaviour>();
+				
 				if(bagBehaviour != null && containerBehaviour != null) {
 					bagBehaviour.defaultAction = BagBehaviour.Actions.Give;
 					bagBehaviour.ShowUI(true);
 
+					containerBehaviour.name = "Container";
 					containerBehaviour.SyncBag(_baseDecoration.bag);
 					containerBehaviour.defaultAction = ContainerBehaviour.Actions.Take;
+				}
+			break;
+
+			case BaseDecoration.DecorationType.HubShop:
+				if(bagBehaviour != null && containerBehaviour != null) {
+					bagBehaviour.defaultAction = BagBehaviour.Actions.Sell;
+					bagBehaviour.ShowUI(true);
+
+					containerBehaviour.name = "Shop";
+					containerBehaviour.SyncBag(_baseDecoration.bag);
+					containerBehaviour.defaultAction = ContainerBehaviour.Actions.Buy;
 				}
 			break;
 
@@ -82,7 +95,7 @@ public class DecorationBehaviour : MonoBehaviour, IPointerClickHandler, IPointer
 				PlayerData.current.currentZone = DungeonManager.Zone.A1;
 				PlayerData.current.targetZone = DungeonManager.Zone.A1;
 				SaveLoadData.Save();
-				loadingUI.FadeIn(3f);
+				loadingUI.FadeIn(1f);
 			break;
 
 			case BaseDecoration.DecorationType.CryptDoor:
@@ -128,6 +141,7 @@ public class DecorationBehaviour : MonoBehaviour, IPointerClickHandler, IPointer
 
 			switch(_baseDecoration.decorationType) {
 				case BaseDecoration.DecorationType.Container:
+				case BaseDecoration.DecorationType.HubShop:
 				case BaseDecoration.DecorationType.Exit:
 				case BaseDecoration.DecorationType.CavernDoor:
 				case BaseDecoration.DecorationType.CryptDoor:

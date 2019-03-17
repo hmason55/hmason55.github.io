@@ -100,7 +100,7 @@ public class Chunk {
 			case ChunkType.cHub:
 				sprites = spriteManager.chunk.cHub;
 				_template = sprites[0];
-			return;
+				return;
 
 			default:
 				sprites = spriteManager.chunk.c1111;

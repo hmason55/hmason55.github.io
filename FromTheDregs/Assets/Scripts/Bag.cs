@@ -339,6 +339,18 @@ public class Bag {
 		return ndx;
 	}
 
+	public int FindItemWithID(BaseItem.ID id) {
+		int ndx = -1;
+		for(int i = 0; i < _items.Count; i++) {
+			if(_items[i] != null) {
+				if(_items[i].id == id) {
+					return i;
+				}
+			}
+		}
+		return ndx;
+	}
+
 	public int FindKey(string keycode) {
 		int ndx = -1;
 		if(keycode == "XXXXXX") {return ndx;}

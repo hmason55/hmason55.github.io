@@ -9,6 +9,7 @@ public class ShortcutUI : MonoBehaviour {
 	[SerializeField] Button _characterShortcut;
 	[SerializeField] Button _bagShortcut;
 	[SerializeField] Button _endTurnShortcut;
+	[SerializeField] AttributesUI _attributesUI;
 	[SerializeField] BagBehaviour _bagBehaviour;
 
 	CombatManager _combatManager;
@@ -35,7 +36,9 @@ public class ShortcutUI : MonoBehaviour {
 	}
 
 	public void OnCharacterShortcut() {
-
+		if(_shortcutsEnabled) {
+			_attributesUI.ToggleUI();
+		}
 	}
 
 	public void OnBagShortcut() {

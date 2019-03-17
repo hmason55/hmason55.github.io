@@ -62,12 +62,34 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 		if(_isContainer) {
 			switch(_containerBehaviour.defaultAction) {
 				case ContainerBehaviour.Actions.Buy:
+					int itemNdx = _bagBehaviour.bag.FindItemWithID(BaseItem.ID.Gold);
+					int currency = 0;
+					int price = _item.value;
+
+					if(itemNdx > -1) {
+						currency = _bagBehaviour.bag.items[itemNdx].quantity;
+					}
+
+					if(_item.category != BaseItem.Category.Runestone) {
+						price *= 2;
+					}
+
+					if(currency >= price) {
+						if(_bagBehaviour.BuyItem(this, _containerBehaviour)) {
+							OnPointerExit(eventData);
+							OnPointerEnter(eventData);
+						} else {
+							Debug.Log("Not enough inventory space.");
+						}
+					} else {
+						Debug.Log("Not enough gold.");
+					}
 				break;
 
 				case ContainerBehaviour.Actions.Take:
 					if(_bagBehaviour.TakeItem(this, _containerBehaviour)) {
 						OnPointerExit(eventData);
-						OnPointerEnter (eventData);
+						OnPointerEnter(eventData);
 					}
 				break;
 			}
@@ -82,7 +104,7 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 					if(_bagBehaviour.GiveItem(this, _containerBehaviour)) {
 						UpdateImage();
 						OnPointerExit(eventData);
-						OnPointerEnter (eventData);
+						OnPointerEnter(eventData);
 					}
 				break;
 
@@ -91,6 +113,10 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 						_bagBehaviour.UnequipItem(this);
 					}
 
+					if(_bagBehaviour.SellItem(this, _containerBehaviour)) {
+						OnPointerExit(eventData);
+						OnPointerEnter(eventData);
+					}
 				break;
 
 				case BagBehaviour.Actions.Use:
@@ -114,14 +140,25 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 		if(_item == null) {return;}
 
 		ItemTooltip itemTooltip = GameObject.FindObjectOfType<ItemTooltip>();
+		BaseItem shopItem = new BaseItem(_item.id);
+		shopItem.LoadSprite(_spriteManager);
+
+		if(_containerBehaviour.bag != null) {
+			if(_containerBehaviour.bag.bagType == Bag.BagType.Shop) {
+				if(shopItem.category != BaseItem.Category.Runestone) {
+					shopItem.value *= 2;
+				}
+			}
+		}
+		
 		if(itemTooltip != null) {
 			if(_isContainer) {
 				itemTooltip.Snap(transform.position.x, transform.position.y);
+				itemTooltip.UpdateTooltip(shopItem);
 			} else {
 				itemTooltip.Snap(transform.position.x-440f, transform.position.y);
+				itemTooltip.UpdateTooltip(_item);
 			}
-			
-			itemTooltip.UpdateTooltip(_item);
 		}
 
 		if(_isContainer) {
@@ -136,7 +173,8 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 
 			switch(_containerBehaviour.defaultAction) {
 				case ContainerBehaviour.Actions.Buy:
-					_containerBehaviour.transferUI.Preview(ContainerBehaviour.Actions.Buy, _item);
+					if(_item.category == BaseItem.Category.Currency) {return;}
+					_containerBehaviour.transferUI.Preview(ContainerBehaviour.Actions.Buy, shopItem);
 				break;
 
 				case ContainerBehaviour.Actions.Take:
@@ -166,12 +204,12 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 				break;
 
 				case BagBehaviour.Actions.Sell:
+					if(_item.category == BaseItem.Category.Currency) {return;}
 					_containerBehaviour.transferUI.Preview(BagBehaviour.Actions.Sell, _item);
 				break;
 			}
 		}
 	}
-
 
 	public void OnPointerExit(PointerEventData eventData) {
 		ItemTooltip itemTooltip = GameObject.FindObjectOfType<ItemTooltip>();
@@ -181,7 +219,6 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 
 		_containerBehaviour.transferUI.HideUI();
 	}
-
 
 	public void UpdateImage() {
 		if(_spriteManager == null) {

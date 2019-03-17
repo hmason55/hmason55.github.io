@@ -4,16 +4,22 @@ using UnityEngine;
 
 [System.Serializable]
 public class Attributes {
+
+
     public enum Preset {
         None,
 		Human,
 		DireRat,
 		DireRatSmall,
+		Mage,
+		Rogue,
 		Slime,
 		Spider,
 		SpiderSmall,
+		Warrior,
 		Widow,
 		WidowSmall
+		
     }
 
     public enum Size {
@@ -27,13 +33,13 @@ public class Attributes {
     }
     
     /*Private-------------------Accessors---------------------------Get-------------------------------------Set------------------------------*/
-    int _baseHitPoints;         public int baseHitPoints            {get {return _baseHitPoints;}           set {_baseHitPoints = value;}}
-    int _baseEssence;           public int baseEssence              {get {return _baseEssence;}             set {_baseEssence = value;}}
+    int _baseHitPoints;         public int baseHitPoints            {get {return CalcBaseHP();}}      		//set {_baseHitPoints = value;}}
+    int _baseEssence;           public int baseEssence              {get {return CalcBaseES();}}           	//set {_baseEssence = value;}}
     /*Private-------------------Accessors---------------------------Get-------------------------------------Set------------------------------*/
     int _baseStrength;          public int baseStrength             {get {return _baseStrength;}            set {_baseStrength = value;}}
 	int _baseDexterity;         public int baseDexterity            {get {return _baseDexterity;}           set {_baseDexterity = value;}}
 	int _baseIntelligence;      public int baseIntelligence         {get {return _baseIntelligence;}        set {_baseIntelligence = value;}}
-	int _baseConstitution;      public int baseConstitution         {get {return _baseConstitution;}        set {_baseConstitution = value;}}
+	int _baseConstitution;      public int baseConstitution         {get {return _baseConstitution;}        set {_baseConstitution = value;  CalcBaseHP();}}
 	int _baseWisdom;            public int baseWisdom               {get {return _baseWisdom;}              set {_baseWisdom = value;}}
 	int _baseCharisma;          public int baseCharisma             {get {return _baseCharisma;}            set {_baseCharisma = value;}}
 	int _baseSpeed;             public int baseSpeed                {get {return _baseSpeed;}               set {_baseSpeed = value;}}
@@ -52,16 +58,18 @@ public class Attributes {
     int _strength;              public int strength                 {get {return _baseStrength + _modStrength;}}
     int _dexterity;             public int dexterity                {get {return _baseDexterity + _modDexterity;}}
     int _intelligence;          public int intelligence             {get {return _baseIntelligence + _modIntelligence;}}
+	int _constitution;			public int constitution				{get {return _baseConstitution + _modConstitution;}}
     int _wisdom;                public int wisdom                   {get {return _baseWisdom + _modWisdom;}}
     int _charisma;              public int charisma                 {get {return _baseCharisma + _modCharisma;}}
     int _speed;                 public int speed                    {get {return _baseSpeed + _modSpeed;}}
+	int _level;					public int level					{get {return Level();}}
     /*Private-------------------Accessors---------------------------Get-------------------------------------Set------------------------------*/
     int _hpCurrent;             public int hpCurrent                {get {return _hpCurrent;}               set {_hpCurrent = value;}}
-    int _hpTotal;               public int hpTotal                  {get {return _hpTotal;}                 set {_hpTotal = value;}}
+    int _hpTotal;               public int hpTotal                  {get {return CalcBaseHP();}}            //set {_hpTotal = value;}}
     int _hpScaling;             public int hpScaling                {get {return _hpScaling;}               set {_hpScaling = value;}}
     /*Private-------------------Accessors---------------------------Get-------------------------------------Set------------------------------*/
     int _esCurrent;             public int esCurrent                {get {return _esCurrent;}               set {_esCurrent = value;}}
-    int _esTotal;               public int esTotal                  {get {return _esTotal;}               set {_esTotal = value;}}
+    int _esTotal;               public int esTotal                  {get {return _esTotal;}               	set {_esTotal = value;}}
     int _esRecovery;            public int esRecovery               {get {return _esRecovery;}              set {_esRecovery = value;}}
     /*Private-------------------Accessors---------------------------Get-------------------------------------Set------------------------------*/
     int _experience;            public int experience               {get {return _experience;}              set {_experience = value;}}
@@ -82,8 +90,8 @@ public class Attributes {
     }
 
     void Init() {
-        _baseHitPoints = _baseConstitution;
-        _hpTotal = _baseHitPoints + _modHitPoints + _hpScaling;
+        CalcBaseHP();
+        _hpTotal = _baseHitPoints + _modHitPoints;
         _hpCurrent = _hpTotal;
 
         _baseEssence = 8;
@@ -98,29 +106,129 @@ public class Attributes {
     }
 
     public void UpdateModifiers() {
-        _modStrength =      (_baseStrength - 10)        / 2;
-		_modDexterity =     (_baseDexterity - 10)       / 2;
-		_modIntelligence =  (_baseIntelligence - 10)    / 2;
-		_modConstitution =  (_baseConstitution - 10)    / 2;
-		_modWisdom =        (_baseWisdom - 10)          / 2;
-		_modCharisma =      (_baseCharisma - 10)        / 2;
-		_modSpeed =         (_baseDexterity - 10)       / 3;
+        ///_modStrength =      (_baseStrength - 10)        / 2;
+		//_modDexterity =     (_baseDexterity - 10)       / 2;
+		//_modIntelligence =  (_baseIntelligence - 10)    / 2;
+		//_modConstitution =  (_baseConstitution - 10)    / 2;
+		//_modWisdom =        (_baseWisdom - 10)          / 2;
+		//_modCharisma =      (_baseCharisma - 10)        / 2;
+		//_modSpeed =         (_baseDexterity - 10)       / 3;
     }
+
+	int Level() {
+
+		int l = _baseStrength + 
+				_baseDexterity + 
+				_baseIntelligence + 
+				_baseConstitution + 
+				_baseWisdom +
+				_baseCharisma
+				-7;
+
+		if(l < 1) {return 1;}
+		return l;
+	}
+
+	int CalcBaseHP() {
+		float a = 30f;
+		float b = 0.5f;
+		float threshold = 15f;
+
+		int total = Mathf.RoundToInt(a);
+		for(int i = 1; i < _baseConstitution; i++) {
+			float delta = a - Mathf.Pow(constitution, b);
+
+			if(delta <= threshold) {
+				delta = threshold;
+			}
+
+			total += Mathf.RoundToInt(delta);
+		}
+
+		_baseHitPoints = total;
+		return _baseHitPoints;
+	}
+
+	int CalcBaseES() {
+		float a = 0.25f;
+		float b = 0.005f;
+		float threshold = 0.1f;
+
+		int total = 4+Mathf.RoundToInt(a);
+		for(int i = 1; i < level; i++) {
+			float delta = a - wisdom*b;
+
+			if(delta <= threshold) {
+				delta = threshold;
+			}
+
+			total += Mathf.RoundToInt(delta);
+		}
+
+		_baseEssence = total;
+		return _baseEssence;
+	}
+
+	public int ToNextLevel() {
+		float a = 25f;
+		float b = 2.05f;
+		return Mathf.RoundToInt(a + Mathf.Pow(level+1, b));
+	}
 
     void AssignPreset() {
         switch(_preset) {
             case Preset.None:
-                _baseStrength =     10;
-				_baseDexterity =    10;
-				_baseIntelligence = 10;
-				_baseConstitution = 10;
-				_baseWisdom =       10;
-				_baseCharisma =     10;
-				_baseSpeed =        10;
-				_baseEssence =      8;
+                _baseStrength =     1;
+				_baseDexterity =    1;
+				_baseIntelligence = 1;
+				_baseConstitution = 1;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_baseSpeed =        1;
+				_baseEssence =      3;
 				_hpScaling =        10;	//8 default
 				_size = Size.Medium;
             break;
+
+			case Preset.Mage:
+				_baseStrength =     1;
+				_baseDexterity =    1;
+				_baseIntelligence = 2;
+				_baseConstitution = 1;
+				_baseWisdom =       2;
+				_baseCharisma =     1;
+
+				_baseSpeed =        1;
+				_baseEssence =      3;
+				_size = Size.Medium;
+			break;
+
+			case Preset.Rogue:
+				_baseStrength =     1;
+				_baseDexterity =    2;
+				_baseIntelligence = 1;
+				_baseConstitution = 1;
+				_baseWisdom =       1;
+				_baseCharisma =     2;
+
+				_baseSpeed =        1;
+				_baseEssence =      3;
+				_size = Size.Medium;
+			break;
+
+			case Preset.Warrior:
+				_baseStrength =     2;
+				_baseDexterity =    1;
+				_baseIntelligence = 1;
+				_baseConstitution = 2;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_baseSpeed =        1;
+				_baseEssence =      3;
+				_size = Size.Medium;
+			break;
 
 			case Attributes.Preset.Human:
 				_baseStrength =     10;
