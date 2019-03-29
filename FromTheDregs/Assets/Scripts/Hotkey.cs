@@ -100,7 +100,6 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 
 	public void ClearCharges() {
 		if(_spell != null) {
-			_spell.essenceCost = 1;
 			_spell.chargesRemaining = 0;
 		}
 	}

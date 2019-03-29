@@ -113,6 +113,9 @@ public class BaseDecoration {
 				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Dexterity));
 				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Intelligence));
 				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Constitution));
+				_items.Add(new BaseItem(BaseItem.ID.Gladius));
+				_items.Add(new BaseItem(BaseItem.ID.Wooden_Parma));
+				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Return));
 				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
 				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
 				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));

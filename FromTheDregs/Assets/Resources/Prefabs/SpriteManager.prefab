@@ -631,6 +631,12 @@ MonoBehaviour:
     - {fileID: 21300000, guid: daf95fa93ee39ec4f9ac4889fd1c58a9, type: 3}
     - {fileID: 21300000, guid: 585147f583639df4c9d93971c78a19e6, type: 3}
     - {fileID: 21300000, guid: 335814f33ca42e94aa8ee327ad91be7f, type: 3}
+    swords:
+    - {fileID: 21300000, guid: 38c345761af65b246aead80ff749a52a, type: 3}
+    shields:
+    - {fileID: 21300000, guid: 2c6bbed2defd5354b9f60af179099711, type: 3}
+    potions:
+    - {fileID: 21300000, guid: 63fb61d50e64bf3409ff1429583c2313, type: 3}
     currency:
     - {fileID: 21300000, guid: cb419cfd406925449b589789b9d37d64, type: 3}
     keys:
@@ -641,3 +647,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 002dac2055dc90546a9a5c057c97fee3, type: 3}
     - {fileID: 21300000, guid: d6b3cda68e2f1c846ad8b81a314dc314, type: 3}
     - {fileID: 21300000, guid: 905bef2bd296f0b4eb932a988fc0fe4e, type: 3}
+  intents:
+  - {fileID: 21300000, guid: bd7c1e5678c04e246bb95b018e171831, type: 3}
+  - {fileID: 21300000, guid: 1234ada893c21b84c9e6a9a112d44d73, type: 3}

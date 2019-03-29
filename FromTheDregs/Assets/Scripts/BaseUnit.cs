@@ -50,10 +50,13 @@ public class BaseUnit {
 	int _currentHitPoints;
 	int _hitPoints;
 	List<Spell.Preset> _spells;
+	
+	List<Spell.Preset> _innateSpells;
 	//List<Spell.Preset> _equippedSpells;
 	Turn _myTurn;
 	bool _inCombat;
 	bool _isCasting;
+	
 	Attributes _attributes;
 	Character _character;
 	bool _playerControlled = false;
@@ -89,6 +92,10 @@ public class BaseUnit {
 	
 	Sprite _shadowSprite;
 
+	Spell _intentSpell;
+
+	int _spellCharges = 1;
+
 	#region Accessors
 
 	public bool inCombat {
@@ -104,6 +111,11 @@ public class BaseUnit {
 	public bool playerControlled {
 		set {_playerControlled = value;}
 		get {return _playerControlled;}
+	}
+
+	public Spell intentSpell {
+		get {return _intentSpell;}
+		set {_intentSpell = value;}
 	}
 
 	public Character character {
@@ -226,12 +238,19 @@ public class BaseUnit {
 		get {return _hitFrame;}
 		set {_hitFrame = value;}
 	}
+
+	public int spellCharges {
+		get {return _spellCharges;}
+		set {_spellCharges = value;}
+	}
+
 	#endregion
 
 	public BaseUnit(bool player, SpritePreset sprite, bool customSprite = false) {
 		_playerControlled = player;
 		_attributes = new Attributes();
 		_effects = new List<Effect>();
+		_innateSpells = new List<Spell.Preset>();
 		_spritePreset = sprite;
 		_useCustomSprites = customSprite;
 		
@@ -247,22 +266,27 @@ public class BaseUnit {
 
 			case SpritePreset.greenslime:
 				_statPreset = Attributes.Preset.Slime;
+				_innateSpells.Add(Spell.Preset.Bite);
 			break;
 
 			case SpritePreset.spider:
 				_statPreset = Attributes.Preset.Spider;
+				_innateSpells.Add(Spell.Preset.Bite);
 			break;
 
 			case SpritePreset.spidersmall:
 				_statPreset = Attributes.Preset.SpiderSmall;
+				_innateSpells.Add(Spell.Preset.Bite);
 			break;
 
 			case SpritePreset.widow:
 				_statPreset = Attributes.Preset.Widow;
+				_innateSpells.Add(Spell.Preset.Bite);
 			break;
 
 			case SpritePreset.widowsmall:
 				_statPreset = Attributes.Preset.WidowSmall;
+				_innateSpells.Add(Spell.Preset.Bite);
 			break;
 
 			case SpritePreset.warrior:
@@ -293,6 +317,7 @@ public class BaseUnit {
 		_playerControlled = player;
 		_attributes = new Attributes(attribs);
 		_effects = new List<Effect>();
+		_innateSpells = new List<Spell.Preset>();
 		_spritePreset = sprite;
 		_tile = tile;
 		_useCustomSprites = customSprite;
@@ -300,8 +325,6 @@ public class BaseUnit {
 	}
 
 	void Init() {
-		AssignSpells();
-		//_myTurn = new Turn(this, _modSpeed);
 
 		SetDeathEffect();
 
@@ -347,22 +370,47 @@ public class BaseUnit {
 			*/
 
 			tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
+			UpdateSpells();
 			SetAsCameraTarget();
 			SetAsInterfaceTarget();
 			_attributes.alliance = 0;
 		} else {
+			UpdateSpells();
 			_attributes.alliance = 1;
+		}
+
+		
+	}
+
+	public void UpdateSpells() {
+		_spells = new List<Spell.Preset>();
+
+		// Add innate spells.
+		foreach(Spell.Preset spell in _innateSpells) {
+			_spells.Add(spell);
+		}
+
+		// Add spells from equipment.
+		if(_bag != null) {
+			if(_bag.primary != null) {
+				foreach(Spell.Preset spell in _bag.primary.spells) {
+					_spells.Add(spell);
+				}
+			}
+
+			if(_bag.secondary != null) {
+				foreach(Spell.Preset spell in _bag.secondary.spells) {
+					_spells.Add(spell);
+				}
+			}
 		}
 	}
 
-	void AssignSpells() {
-		_spells = new List<Spell.Preset>();
-		_spells.Add(Spell.Preset.Move);
-		_spells.Add(Spell.Preset.Slash);
-		_spells.Add(Spell.Preset.Bite);
-		_spells.Add(Spell.Preset.Fireball);
-		_spells.Add(Spell.Preset.FeintSwipe);
-		_spells.Add(Spell.Preset.Block);
+	public Spell SelectAISpell() {
+		UpdateSpells();
+		Spell s = new Spell(this, spells[Random.Range(0, spells.Count-1)]);
+		_spellCharges = 1;
+		return s;
 	}
 
 	public void BeginTurn() {
@@ -460,11 +508,7 @@ public class BaseUnit {
 	}
 
 	public void SetAsInterfaceTarget() {
-		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
-		if(hotbar != null) {
-			hotbar.SyncUnit(this);
-			hotbar.UpdateHotkeys();
-		}
+		SyncHotbar();
 
 		BagBehaviour bagBehaviour = GameObject.FindObjectOfType<BagBehaviour>();
 		if(bagBehaviour != null) {
@@ -490,6 +534,14 @@ public class BaseUnit {
 		EssenceUI essenceUI = GameObject.FindObjectOfType<EssenceUI>();
 		if(essenceUI != null) {
 			essenceUI.baseUnit = this;
+		}
+	}
+
+	public void SyncHotbar() {
+		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
+		if(hotbar != null) {
+			hotbar.SyncUnit(this);
+			hotbar.UpdateHotkeys();
 		}
 	}
 
@@ -572,7 +624,6 @@ public class BaseUnit {
 	public void TickStatus(Effect.Conditions c, int amount = 1) {
 		for(int i = _effects.Count-1; i >= 0; i--) {
 			if(_effects[i].deactivationConditions.ContainsKey(c)) {
-				Debug.Log(c + " " + _effects[i].deactivationConditions[c]);
 				_effects[i].deactivationConditions[c] -= amount;
 				if(_effects[i].deactivationConditions[c] <= 0) {
 					RemoveStatus(_effects[i]);
@@ -634,6 +685,20 @@ public class BaseUnit {
 		
 		_tile.combatManager.turnQueue.RemoveTurns(this);
 		_tile.unit.Kill();
+	}
+
+	public void Return() {
+		// Set target zone to hub.
+		PlayerData.current.currentZone = DungeonManager.Zone.Hub;
+		PlayerData.current.targetZone = DungeonManager.Zone.Hub;
+
+		// Save data
+		PlayerData.current.bag = _bag;
+		PlayerData.current.character = _character;
+		PlayerData.current.attributes = _attributes;
+		SaveLoadData.Save();
+
+		_tile.unit.Return();
 	}
 
 	public void GrantExperience(int exp) {
@@ -967,9 +1032,9 @@ public class BaseUnit {
 			currentNode = currentNode.parentNode;
 		}
 
-		Debug.Log("Path");
+		//Debug.Log("Path");
 		for(int i = 0; i < path.Count; i++) {
-			Debug.Log(path[i].position);
+			//Debug.Log(path[i].position);
 		}
 
 		if(excludeNodesFromEnd > 0) {

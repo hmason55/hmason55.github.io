@@ -80,7 +80,6 @@ public class LoadingUI : MonoBehaviour {
 
         float alpha = 1.0f;
         for(float i = 0.0f; i < 1.0f; i += Time.deltaTime/fadeTime) {
-            //Debug.Log(alpha-i);
             _backgroundImage.color = new Color(0f, 0f, 0f, alpha-i);
             _loadingText.color = new Color(0.5f, 0.5f, 0.5f, alpha-i);
             _helpText.color = new Color(0.8f, 0.8f, 0.8f, alpha-i);

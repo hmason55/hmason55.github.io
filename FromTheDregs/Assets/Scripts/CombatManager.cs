@@ -31,12 +31,12 @@ public class CombatManager : MonoBehaviour {
 	}
 
 	public void BeginCombat() {
-		Debug.Log("Begin Combat");
+		AnnouncementManager.Display("You have entered combat.", Color.yellow);
 		_inCombat = true;
 	}
 
 	public void EndCombat() {
-		Debug.Log("End Combat");
+		AnnouncementManager.Display("Combat has ended.", Color.yellow);
 		foreach(Turn turn in _turnQueue.queue) {
 			turn.baseUnit.inCombat = false;
 			turn.baseUnit.attributes.esCurrent = turn.baseUnit.attributes.esTotal;
@@ -75,8 +75,9 @@ public class CombatManager : MonoBehaviour {
 					// Do AI stuff
 
 					// Choose spell (melee for this case)
-					Spell spell = new Spell(baseUnit, Spell.Preset.Bite);
-
+					Spell spell = baseUnit.intentSpell;
+					//baseUnit.intentSpell = spell;
+					//Debug.Log(baseUnit.intentSpell);
 					// Target nearest with melee
 					BaseUnit target = GetNearestUnit(baseUnit, false, spell.castRadius, false);
 					
@@ -90,11 +91,12 @@ public class CombatManager : MonoBehaviour {
 							baseUnit.attributes.esCurrent -= 1;
 							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
 							//EndTurn(baseUnit);
-						} else if(path.Count == 1 && baseUnit.attributes.esCurrent >= spell.essenceCost) {
+						} else if(path.Count <= (spell.castRadius + spell.effectRadius) && baseUnit.spellCharges > 0/*&& baseUnit.attributes.esCurrent >= spell.essenceCost*/) {
 							Debug.Log("Attacking");
 							spell.ShowEffectRange(target.tile.position);
 							float castDelay = spell.ConfirmSpellCast();
-							baseUnit.attributes.esCurrent -= spell.essenceCost;
+							baseUnit.spellCharges -= 1;
+							//baseUnit.attributes.esCurrent -= spell.essenceCost;
 							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
 							yield return new WaitForSeconds(castDelay);
 							//EndTurn(baseUnit);
@@ -121,6 +123,10 @@ public class CombatManager : MonoBehaviour {
 			if(_hotbar != null) {
 				_hotbar.ClearCharges();
 			}
+		} else {
+			// Set next turn intent
+			b.tile.unit.UpdateIntent();
+			//b.attributes.esCurrent = b.attributes.esTotal;
 		}
 		
 		turnQueue.EndTurn();

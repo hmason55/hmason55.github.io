@@ -42,9 +42,12 @@ public class ItemSprites {
 	#endregion
 
 	#region Weapons
+	public List<Sprite> swords;
+	public List<Sprite> shields;
 	#endregion
 
 	#region Consumables
+	public List<Sprite> potions;
 	#endregion
 
 	#region Currency

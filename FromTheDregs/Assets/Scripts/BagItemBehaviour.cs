@@ -79,10 +79,10 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 							OnPointerExit(eventData);
 							OnPointerEnter(eventData);
 						} else {
-							Debug.Log("Not enough inventory space.");
+							AnnouncementManager.Display("Not enough inventory space.", Color.red);
 						}
 					} else {
-						Debug.Log("Not enough gold.");
+						AnnouncementManager.Display("Not enough gold.", Color.red);
 					}
 				break;
 

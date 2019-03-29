@@ -13,6 +13,8 @@ public class UnitBehaviour : MonoBehaviour {
 	[SerializeField] Image _unitSkinImage;
 	[SerializeField] Image _unitImage;
 	[SerializeField] Image _shadowImage;
+	[SerializeField] Image _intentImage;
+	[SerializeField] Text _intentText;
 	[SerializeField] bool _previewUnit = false;
 
 	RectTransform _rectTransform;
@@ -63,8 +65,12 @@ public class UnitBehaviour : MonoBehaviour {
 
 	Coroutine _inputCooldownCoroutine;
 
+	SpriteManager _spriteManager;
+
 	void Awake() {
 		_rectTransform = GetComponent<RectTransform>();
+		_spriteManager = GameObject.FindObjectOfType<SpriteManager>();
+
 		if(_previewUnit) {
 			_baseUnit = new BaseUnit(false, BaseUnit.SpritePreset.warrior, true);
 			_baseUnit.character = new Character();
@@ -98,8 +104,13 @@ public class UnitBehaviour : MonoBehaviour {
 
 			if(_baseUnit.inCombat) {
 				_unitImage.color = Color.red;
+				ShowIntent();
+				if(!_baseUnit.playerControlled) {
+					UpdateIntent();
+				}
 			} else {
 				_unitImage.color = Color.white;
+				HideIntent();
 			}
 		}
 	}
@@ -133,6 +144,7 @@ public class UnitBehaviour : MonoBehaviour {
 			if(_unitPrimaryImage != null) 	{_unitPrimaryImage.enabled = false;}
 			if(_unitImage != null) 			{_unitImage.enabled = true;}
 		}
+		ShowIntent();
 	}
 
 	public void HideUnit() {
@@ -142,6 +154,7 @@ public class UnitBehaviour : MonoBehaviour {
 		if(_unitSecondaryImage != null) {_unitSecondaryImage.enabled = false;}
 		if(_unitPrimaryImage != null) 	{_unitPrimaryImage.enabled = false;}
 		if(_unitImage != null) 			{_unitImage.enabled = false;}
+		HideIntent();
 	}
 
 	public void Unset() {
@@ -152,6 +165,34 @@ public class UnitBehaviour : MonoBehaviour {
 		if(_unitSecondaryImage != null) {_unitSecondaryImage.sprite = null;}
 		if(_unitPrimaryImage != null) 	{_unitPrimaryImage.sprite = null;}
 		HideUnit();
+	}
+
+	public void ShowIntent() {
+		if(_intentImage != null) 		{_intentImage.enabled = true;}
+		if(_intentText != null) 		{_intentText.enabled = true;}
+	}
+
+	public void HideIntent() {
+		if(_intentImage != null) 		{_intentImage.enabled = false;}
+		if(_intentText != null) 		{_intentText.enabled = false;}
+	}
+
+	public void UpdateIntent() {
+		if(_baseUnit != null) {
+			if(_baseUnit.spellCharges > 0 && _baseUnit.intentSpell != null) {
+				if(_intentImage != null) {
+					_intentImage.sprite = _spriteManager.intents[0];
+				}
+
+				if(_intentText != null) {
+					if(_baseUnit.intentSpell != null) {
+						_intentText.text = _baseUnit.intentSpell.intentValue;
+					}
+				}
+			} else {
+				HideIntent();
+			}
+		}
 	}
 
 	public void Transfer(Tile t, BaseUnit b) {
@@ -199,16 +240,20 @@ public class UnitBehaviour : MonoBehaviour {
 
 	public void Kill() {
 		SpawnDeathParticles();
+		Return();
+
+		_tile.baseUnit = null;
+		_baseUnit = null;
+		Unset();
+	}
+
+	public void Return() {
 		if(_tile.baseUnit != null) {
 			if(_tile.baseUnit.playerControlled) {
 				LoadingUI loadingUI = GameObject.FindObjectOfType<LoadingUI>();
 				loadingUI.FadeIn(3f);
 			}
 		}
-
-		_tile.baseUnit = null;
-		_baseUnit = null;
-		Unset();
 	}
 
 	public void MoveFromTo(Vector2Int from, Vector2Int to, float duration) {

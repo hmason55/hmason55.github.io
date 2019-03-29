@@ -78,12 +78,6 @@ public class Portrait : MonoBehaviour {
 		//ApplySwatches();
 	}
 
-	void Update() {
-		if(Input.GetKeyDown(KeyCode.Space)) {
-			//SaveCharacter();
-
-		}
-	}
 
 	void ApplySwatches() {
 

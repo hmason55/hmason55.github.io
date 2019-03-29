@@ -6,8 +6,8 @@ TagManager:
   tags:
   - MainCanvas
   - Bag Slot
-  - Effects Canvas
   - Text Canvas
+  - Effects Layer
   layers:
   - Default
   - TransparentFX
@@ -44,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Particles
+    uniqueID: 1052886017
     locked: 0

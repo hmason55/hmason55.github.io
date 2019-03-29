@@ -9,6 +9,7 @@ public class ItemTooltip : MonoBehaviour {
     [SerializeField] Text categoryText;
     [SerializeField] Image itemImage;
     [SerializeField] Text attributesText;
+    [SerializeField] Text spellsText;
     [SerializeField] Text descriptionText;
     [SerializeField] Text valueText;
 
@@ -40,6 +41,8 @@ public class ItemTooltip : MonoBehaviour {
 
         titleText.text = item.name;
         categoryText.text = item.CategoryToString();
+        attributesText.text = item.AttributesToString();
+        spellsText.text = item.SpellsToString();
         itemImage.sprite = item.sprite;
         descriptionText.text = item.description;
         valueText.text = (item.value * item.quantity).ToString();

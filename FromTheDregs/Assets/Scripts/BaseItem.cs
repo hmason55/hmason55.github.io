@@ -14,6 +14,8 @@ public class BaseItem {
 		Cotton_Shoes,
 		Cotton_Tunic,
 
+		Gladius,
+
 		Gold,
 
 		Iron_Chain_Coif,
@@ -28,13 +30,15 @@ public class BaseItem {
 		Leather_Jack,
 		Leather_Helm,
 
+		Potion_of_Return,
+
 		Rune_of_Constitution,
 		Rune_of_Dexterity,
 		Rune_of_Intelligence,
 		Rune_of_Strength,
 
 		Small_Key,
-
+		Wooden_Parma,
 	}
 
 	public enum Category {
@@ -48,6 +52,7 @@ public class BaseItem {
 		Leg_Armor,
 		Neck_Jewelry,
 		Finger_Jewelry,
+		Consumable,
 		Unknown_Consumable,
 		Healing_Consumable,
 		Poisonous_Consumable,
@@ -112,6 +117,7 @@ public class BaseItem {
 	//int _physicalDefense;
 	//int _magicalDefense;
 	ArmorWeight _armorWeight;
+	List<Spell.Preset> _spells;
 
 	// Consumable Attributes
 	int _cooldownDuration;
@@ -180,6 +186,10 @@ public class BaseItem {
 
 	public int movementSpeed {
 		get {return _movementSpeed;}
+	}
+
+	public List<Spell.Preset> spells {
+		get {return _spells;}
 	}
 
 	public int value {
@@ -255,6 +265,9 @@ public class BaseItem {
 				_sprite = spriteManager.items.lightArmorBody[0];
 			break;
 
+			case ID.Gladius:
+				_sprite = spriteManager.items.swords[0];
+			break;
 
 			case ID.Gold:
 				_sprite = spriteManager.items.currency[0];
@@ -303,6 +316,10 @@ public class BaseItem {
 			break;
 
 
+			case ID.Potion_of_Return:
+				_sprite = spriteManager.items.potions[0];
+			break;
+
 			case ID.Rune_of_Constitution:
 				_sprite = spriteManager.items.runestones[3];
 			break;
@@ -324,7 +341,9 @@ public class BaseItem {
 				_sprite = GenerateKeycodeSprite(_keycode, spriteManager.items.keys[0], spriteManager);
 			break;
 
-			
+			case ID.Wooden_Parma:
+				_sprite = spriteManager.items.shields[0];
+			break;
 		}
 	}
 
@@ -546,6 +565,22 @@ public class BaseItem {
 		return attributeString;
 	}
 
+	public string AttributesToString() {
+		return "";
+	}
+
+	public string SpellsToString() {
+		string str = "";
+		if(_spells == null) {return str;}
+		if(_spells.Count == 0) {return str;}
+
+		foreach(Spell.Preset spell in _spells) {
+			str += spell.ToString() + "\n";
+		}
+		
+		return str;
+	}
+
 	public bool IsEquipment() {
 		switch(_category) {
 			case BaseItem.Category.Body_Armor:
@@ -564,6 +599,7 @@ public class BaseItem {
 
 	public bool IsConsumable() {
 		switch(_category) {
+			case BaseItem.Category.Consumable:
 			case BaseItem.Category.Healing_Consumable:
 			case BaseItem.Category.Poisonous_Consumable:
 			case BaseItem.Category.Unknown_Consumable:
@@ -584,7 +620,8 @@ public class BaseItem {
 	public BaseItem(ID item, int q = 1) {
 		_id = item;
 		_quantity = q;
-
+		_spells = new List<Spell.Preset>();
+	
 		switch(item) {
 
 			case ID.Cotton_Breeches:
@@ -622,6 +659,13 @@ public class BaseItem {
 				_value = 1;
 			break;
 
+			case ID.Gladius:
+				_name = "Gladius";
+				_category = Category.Primary_Weapon;
+				_description = "A short light-weight blade made of steel with a wooden hilt. Used by foot soldiers.";
+				_spells.Add(Spell.Preset.Slash);
+				_value = 10;
+			break;
 
 			case ID.Gold:
 				_name = "Gold";
@@ -675,9 +719,9 @@ public class BaseItem {
 			break;
 
 			case ID.Leather_Bracers:
-				_name = "Leather Boots";
-				_category = Category.Foot_Armor;
-				_description = "Boots made of leather.";
+				_name = "Leather Bracers";
+				_category = Category.Hand_Armor;
+				_description = "Bracers made of leather.";
 				_value = 1;
 			break;
 
@@ -700,6 +744,14 @@ public class BaseItem {
 				_category = Category.Head_Armor;
 				_description = "A helm made of leather.";
 				_value = 1;
+			break;
+
+
+			case ID.Potion_of_Return:
+				_name = "Potion of Return";
+				_category = Category.Consumable;
+				_description = "A dark cloudy potion. Can be used to return to a safe place.";
+				_value = 10;
 			break;
 
 			
@@ -738,6 +790,14 @@ public class BaseItem {
 				_keycode = GenerateKeycode();
 				_description = "A small key with a unique color and the engraving: \"" + _keycode + "\"";
 				_value = 0;
+			break;
+
+			case ID.Wooden_Parma:
+				_name = "Wooden Parma";
+				_category = Category.Secondary_Weapon;
+				_description = "A round wooden shield with an iron frame.";
+				_spells.Add(Spell.Preset.Block);
+				_value = 10;
 			break;
 		}
 

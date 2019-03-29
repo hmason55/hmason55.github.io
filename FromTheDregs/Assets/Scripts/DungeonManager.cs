@@ -210,8 +210,8 @@ public class DungeonManager : MonoBehaviour {
 			break;
 
 			case Zone.A1:
-				enemyUnitDensity = 0f;
-				smallDecorationDensity = 0f;
+				enemyUnitDensity = 100f;
+				smallDecorationDensity = 25f;
 				containerDecorationDensity = 20f;
 				trapDecorationDensity = 0f;
 				minimumPathSize = 4;
@@ -235,8 +235,8 @@ public class DungeonManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if(Input.GetKeyDown(KeyCode.Space)) {
-			if(_loadState == LoadState.Loaded) {
+
+			/* if(_loadState == LoadState.Loaded) {
 				Debug.Log("Saving...");
 				PlayerData.current.bag = _player.bag;
 				PlayerData.current.attributes = _player.attributes;
@@ -245,7 +245,8 @@ public class DungeonManager : MonoBehaviour {
 
 				
 			}
-		}
+			*/
+		
 	}
 
 	void InitializeGrid() {

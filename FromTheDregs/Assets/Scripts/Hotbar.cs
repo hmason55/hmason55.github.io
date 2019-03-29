@@ -56,6 +56,10 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	void Update() {
+		if(Input.GetKeyDown(KeyCode.Space)) {
+			SyncUnit(_baseUnit);
+		}
+
 		if(Input.GetKeyDown(KeyCode.W)) {
 			QuickMove(0, 1);
 		} else if(Input.GetKeyDown(KeyCode.A)) {

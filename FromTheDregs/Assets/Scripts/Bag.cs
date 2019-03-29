@@ -192,6 +192,20 @@ public class Bag {
 		return false;
 	}
 
+	public bool Consume(BaseItem.ID id) {
+		int slot = FindItemWithID(id);
+		if(slot > -1) {
+			if(_items[slot].quantity > 1) {
+				_items[slot].quantity -= 1;
+			} else {
+				_items.RemoveAt(slot);
+				_items.Add(null);
+			}
+			return true;
+		}
+		return false;
+	}
+
 	public Bag(BagType b, List<BaseItem> itm) {
 		_items = new List<BaseItem>();
 

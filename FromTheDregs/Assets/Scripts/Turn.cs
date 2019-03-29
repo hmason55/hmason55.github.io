@@ -17,6 +17,10 @@ public class Turn {
 	}
 
 	public Turn(BaseUnit b, int p) {
+		if(!b.playerControlled) {
+			b.intentSpell = b.SelectAISpell();
+		}
+		
 		_baseUnit = b;
 		_priority = p;
 	}

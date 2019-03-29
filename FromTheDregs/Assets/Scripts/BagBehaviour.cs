@@ -119,6 +119,7 @@ public class BagBehaviour : MonoBehaviour {
 
 		UpdateSlotImages();
 		UpdateEquipmentStats();
+		_baseUnit.SyncHotbar();
 	}
 
 	void UpdateSlotImages() {
@@ -155,7 +156,7 @@ public class BagBehaviour : MonoBehaviour {
 
 		equipmentItem.equipped = bagItem.transform.GetSiblingIndex();
 		bagItem.equipped = bagItem.transform.GetSiblingIndex();
-
+		_baseUnit.UpdateSpells();
 		SyncUnit();
 	}
 
@@ -175,12 +176,13 @@ public class BagBehaviour : MonoBehaviour {
 		if(equipmentItem == bagItem) {
 			int slot = _bag.FindItemSlot(equipmentItem.item);
 			if(slot > -1) {
-				_bagSlots[slot].equipped = slot;
+				_bagSlots[slot].equipped = -1;
 			}
 		} else {
 			bagItem.equipped = -1;
 		}
 
+		_baseUnit.UpdateSpells();
 		SyncUnit();
 	}
 
@@ -188,6 +190,21 @@ public class BagBehaviour : MonoBehaviour {
 		if(bagItem == null) {return;}
 		if(bagItem.item == null) {return;}
 		
+		bool consumed = false;
+		switch(bagItem.item.id) {
+			case BaseItem.ID.Potion_of_Return:
+				if(!_baseUnit.inCombat) {
+					consumed = _bag.Consume(bagItem.item.id);
+					if(consumed) {
+						SyncUnit();
+						_baseUnit.Return();
+						return;
+					}
+				} else {
+					AnnouncementManager.Display("This item cannot be used while in combat.", Color.red);
+				}
+			break;
+		}
 	}
 
 	public bool GiveItem(BagItemBehaviour bagItem, ContainerBehaviour containerBehaviour) {
@@ -214,7 +231,7 @@ public class BagBehaviour : MonoBehaviour {
 
 			SyncUnit();
 			containerBehaviour.SyncBag(containerBehaviour.bag);
-			Debug.Log("Item Given.");
+			AnnouncementManager.Display("Item Given.", Color.white, 5f);
 			return true;
 		}
 
@@ -287,7 +304,6 @@ public class BagBehaviour : MonoBehaviour {
 		
 		if(_bag.Add(bagItem.item)) {
 			int itemNdx = _bag.FindItemWithID(BaseItem.ID.Gold);
-			Debug.Log("Gold at item slot " + itemNdx);
 			if(itemNdx > -1) {
 				int value = bagItem.item.value;
 				if(bagItem.item.category != BaseItem.Category.Runestone) {
@@ -325,7 +341,7 @@ public class BagBehaviour : MonoBehaviour {
 			case BaseItem.ID.Rune_of_Constitution:
 				_bag.RemoveAt(_bag.FindItemWithID(BaseItem.ID.Rune_of_Constitution));
 				_baseUnit.attributes.baseConstitution++;
-				Debug.Log("Constitution increased!");
+				AnnouncementManager.Display("You feel healthier.", Color.green);
 				SaveLoadData.Save();
 				_baseUnit.SetAsInterfaceTarget();
 			break;
@@ -333,7 +349,7 @@ public class BagBehaviour : MonoBehaviour {
 			case BaseItem.ID.Rune_of_Dexterity:
 				_bag.RemoveAt(_bag.FindItemWithID(BaseItem.ID.Rune_of_Dexterity));
 				_baseUnit.attributes.baseDexterity++;
-				Debug.Log("Dexterity increased!");
+				AnnouncementManager.Display("You feel more agile.", Color.green);
 				SaveLoadData.Save();
 				_baseUnit.SetAsInterfaceTarget();
 			break;
@@ -341,7 +357,7 @@ public class BagBehaviour : MonoBehaviour {
 			case BaseItem.ID.Rune_of_Intelligence:
 				_bag.RemoveAt(_bag.FindItemWithID(BaseItem.ID.Rune_of_Intelligence));
 				_baseUnit.attributes.baseIntelligence++;
-				Debug.Log("Intelligence increased!");
+				AnnouncementManager.Display("You feel more perceptive.", Color.green);
 				SaveLoadData.Save();
 				_baseUnit.SetAsInterfaceTarget();
 			break;
@@ -349,7 +365,7 @@ public class BagBehaviour : MonoBehaviour {
 			case BaseItem.ID.Rune_of_Strength:
 				_bag.RemoveAt(_bag.FindItemWithID(BaseItem.ID.Rune_of_Strength));
 				_baseUnit.attributes.baseStrength++;
-				Debug.Log("Strength increased!");
+				AnnouncementManager.Display("You feel stronger.", Color.green);
 				SaveLoadData.Save();
 				_baseUnit.SetAsInterfaceTarget();
 			break;

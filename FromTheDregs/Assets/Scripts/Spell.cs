@@ -52,6 +52,15 @@ public class Spell {
 		All
 	}
 
+	public enum IntentType {
+		Movement,
+		Attack,
+		Block,
+		Buff,
+		Debuff,
+		Unknown
+	}
+
 	// Base
 	BaseUnit _caster;
 	Tile[,] _tiles;
@@ -76,6 +85,7 @@ public class Spell {
 	string _blockSoundPath = "Sounds/sfx/block_impact_0";
 	List<Effect> _spellCasterEffects;
 	List<Effect> _spellTargetEffects;
+	IntentType _intentType;
 
 
 	// Casting
@@ -156,6 +166,10 @@ public class Spell {
 		get {return _chargesMax;}
 	}
 
+	public int effectRadius {
+		get {return _effectRadius;}
+	}
+
 	public bool requireCastConfirmation {
 		get {return _requireCastConfirmation;}
 	}
@@ -197,6 +211,58 @@ public class Spell {
 	public List<Effect> casterEffects {
 		get {return _spellCasterEffects;}
 	}
+
+	public IntentType intentType {
+		get {return _intentType;}
+	}
+
+	public string intentValue {
+		get {
+
+			switch(_intentType) {
+				case IntentType.Attack:
+					int a = 0;
+
+					foreach(Effect e in _spellTargetEffects) {
+
+						switch(e.effectType) {
+							case Effect.EffectType.Damage:
+							case Effect.EffectType.CriticalDamage:
+							case Effect.EffectType.InescapableDamage:
+							case Effect.EffectType.UnblockableDamage:
+								a += EstimateDamage(e);
+
+							break;
+						}
+						
+					}
+					if(_caster.spellCharges == 1) {
+						return a.ToString();
+					} else if(_caster.spellCharges > 1) {
+						return a.ToString() + "x" + _caster.spellCharges;
+					}
+				break;
+				
+				case IntentType.Block:
+					int b = 0;
+					foreach(Effect e in _spellCasterEffects) {
+						switch(e.effectType) {
+							case Effect.EffectType.Block:
+								b += EstimateDamage(e);
+							break;
+						}
+						
+					}
+					if(_caster.spellCharges == 1) {
+						return b.ToString();
+					} else if(_caster.spellCharges > 1) {
+						return b.ToString() + "x" + _caster.spellCharges;
+					}
+				break;
+			}
+			return "";
+		}
+	}
 	#endregion
 
 	// Constructors
@@ -229,7 +295,7 @@ public class Spell {
 			case Preset.Bite:	
 				_spellName = "Bite";
 
-				_essenceCost = 3;
+				_essenceCost = 2;
 				_damageType = DamageType.Piercing;
 				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
@@ -239,10 +305,11 @@ public class Spell {
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
 				_modSizeDamage = 0;
+				_intentType = IntentType.Attack;
 
 				
 				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
+				damage.SetPrimaryScaling(Effect.ScalingType.Strength, 0.80f);
 				_spellTargetEffects.Add(damage);
 				
 				_castParticlePath = "";
@@ -283,6 +350,7 @@ public class Spell {
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
 				_modSizeDamage = 0;
+				_intentType = IntentType.Attack;
 
 				damage = new Effect(Effect.EffectType.Damage);
 				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
@@ -326,6 +394,7 @@ public class Spell {
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
 				_modSizeDamage = 0;
+				_intentType = IntentType.Attack;
 
 				Effect crit = new Effect(Effect.EffectType.Focus);
 				crit.deactivationConditions.Add(Effect.Conditions.DealDamage, 1);
@@ -374,6 +443,7 @@ public class Spell {
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
 				_modSizeDamage = 0;
+				_intentType = IntentType.Block;
 
 				Effect block = new Effect(Effect.EffectType.Block);
 				block.stackable = true;
@@ -424,6 +494,7 @@ public class Spell {
 				_createsEffect = true;
 				_scaling = Scaling.Intelligence;
 				_modSizeDamage = 0;
+				_intentType = IntentType.Attack;
 
 
 				damage = new Effect(Effect.EffectType.Damage);
@@ -464,6 +535,7 @@ public class Spell {
 				_createsEffect = true;
 				_scaling = Scaling.Intelligence;
 				_modSizeDamage = 0;
+				_intentType = IntentType.Attack;
 
 				damage = new Effect(Effect.EffectType.Damage);
 				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
@@ -1012,18 +1084,20 @@ public class Spell {
 	}
 
 	public void SpawnEffectParticles(Vector2Int position, float zrotation) {
+		GameObject effectsLayer = GameObject.FindGameObjectWithTag("Effects Layer");
+		if(effectsLayer == null) {return;}
+
 		GameObject effectParticleGO = GameObject.Instantiate(Resources.Load<GameObject>(_effectParticlePath));
-		CameraController dungeon = GameObject.FindObjectOfType<CameraController>();
-		effectParticleGO.transform.SetParent(dungeon.transform);
+		effectParticleGO.transform.SetParent(effectsLayer.transform);
 		effectParticleGO.transform.SetAsLastSibling();
 
 		RectTransform unitRT = _tiles[position.x, position.y].unit.GetComponent<RectTransform>();
 
 		RectTransform effectRT = effectParticleGO.GetComponent<RectTransform>();
 
-		effectRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileHeight/2);
+		effectRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileWidth/2);
 		effectRT.localEulerAngles = new Vector3(0f, 0f, zrotation);
-		effectRT.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+		effectRT.localScale = new Vector3(1f, 1f, 1f);
 	}
 	#endregion
 
@@ -1049,6 +1123,25 @@ public class Spell {
 		audioManager.PlaySound();
 	}
 	#endregion
+
+	public int EstimateDamage(Effect e) {
+		float baseDamage = 1.0f;
+		float critMult = 0f;
+		float additionalDamage = 0f;
+
+		// Calculate damage
+		foreach(Effect casterEffect in _caster.effects) {
+			switch(casterEffect.effectType) {
+				case Effect.EffectType.Focus:
+					critMult = 0.5f;
+				break;
+
+
+			}
+		}
+		int damage = (int)(e.GetPotency(_caster.attributes) * (baseDamage + critMult + additionalDamage));
+		return damage;
+	}
 
 	public void DealDamage(Effect e, bool sound = false) {
 		float baseDamage = 1.0f;
