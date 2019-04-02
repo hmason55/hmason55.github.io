@@ -1,0 +1,10 @@
+<map id="ItemTooltip.Reset" name="ItemTooltip.Reset">
+<area shape="rect" id="node1" title=" " alt="" coords="724,64,847,91"/>
+<area shape="rect" id="node2" href="$class_bag_behaviour.html#a731b060bd01b971246839664dfd86530" title=" " alt="" coords="499,9,642,36"/>
+<area shape="rect" id="node5" href="$class_bag_item_behaviour.html#a94a401c7a518b7ed17e5648153d6f1b6" title=" " alt="" coords="465,64,676,91"/>
+<area shape="rect" id="node7" href="$class_container_behaviour.html#a0641e9fa2407bee1d83f4998b78f1fa3" title=" " alt="" coords="483,119,658,145"/>
+<area shape="rect" id="node3" href="$class_bag_behaviour.html#a830725c05ecdc1a1a637d26cf5cff0dc" title=" " alt="" coords="246,5,401,32"/>
+<area shape="rect" id="node4" href="$class_shortcut_u_i.html#a2434bf0b041a115161fda12022d69f0b" title=" " alt="" coords="5,5,181,32"/>
+<area shape="rect" id="node6" href="$class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="229,57,417,98"/>
+<area shape="rect" id="node8" href="$class_container_behaviour.html#a12b621fb47599b10bec679acb4cbe24e" title=" " alt="" coords="230,123,417,149"/>
+</map>

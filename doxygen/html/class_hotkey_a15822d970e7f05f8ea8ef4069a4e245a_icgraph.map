@@ -1,0 +1,12 @@
+<map id="Hotkey.UpdateCost" name="Hotkey.UpdateCost">
+<area shape="rect" id="node1" title=" " alt="" coords="1369,31,1504,57"/>
+<area shape="rect" id="node2" href="$class_hotbar.html#a2f8af9863292223ae00d361121164160" title=" " alt="" coords="1183,31,1321,57"/>
+<area shape="rect" id="node3" href="$class_cast_options_u_i.html#a37c4fa85c666ede5418cd5d7e524ce35" title=" " alt="" coords="980,31,1135,57"/>
+<area shape="rect" id="node4" href="$class_hotbar.html#acda305961d329d3b329dbe4247539ef5" title=" " alt="" coords="810,5,915,32"/>
+<area shape="rect" id="node5" href="$class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="793,56,932,83"/>
+<area shape="rect" id="node6" href="$class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="591,31,745,57"/>
+<area shape="rect" id="node7" href="$class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="591,81,745,108"/>
+<area shape="rect" id="node8" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,81,543,108"/>
+<area shape="rect" id="node9" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,56,360,83"/>
+<area shape="rect" id="node10" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,74,184,115"/>
+</map>

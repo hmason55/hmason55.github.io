@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['facetype',['FaceType',['../class_character.html#aae9a74ea017a528536789f545094d628',1,'Character.FaceType()'],['../class_character.html#ab7552f9cfc719cb2b86820ac9381764b',1,'Character.faceType()'],['../class_portrait.html#adee621ae3df1fbf3ed96e9262d9e3699',1,'Portrait.faceType()']]],
+  ['fadein',['FadeIn',['../class_loading_u_i.html#ada368f60f70e94bc04f0cbf47455306a',1,'LoadingUI']]],
+  ['fadeout',['FadeOut',['../class_loading_u_i.html#adaafb58a5d49b940e039bd307a67b2c9',1,'LoadingUI']]],
+  ['feet',['feet',['../class_bag.html#a45172ef71e457ce9c818866fc0ffd5c2',1,'Bag']]],
+  ['feintswipe',['FeintSwipe',['../class_spell.html#a5520e850e7000a6156b3456672b72ed1a2ba21df265456583717bc5b35077e97a',1,'Spell']]],
+  ['finditemslot',['FindItemSlot',['../class_bag.html#a0f77c6c4e4e4782d81256fa81e7d18f4',1,'Bag']]],
+  ['finditemwithid',['FindItemWithID',['../class_bag.html#a089ef28af0c9fe39cc430b1826a313a7',1,'Bag']]],
+  ['findkey',['FindKey',['../class_bag.html#ab913ca67bac7d4a740a470dbb1632311',1,'Bag']]],
+  ['findpath',['FindPath',['../class_base_unit.html#a7adf93eb6a52235a25e1344e401d05d2',1,'BaseUnit']]],
+  ['finger',['finger',['../class_bag.html#a0517877fdabd6917389995deecabe057',1,'Bag']]],
+  ['finger_5fjewelry',['Finger_Jewelry',['../class_base_item.html#a882a2962396f880c2e23755437245d37af6651a3c628a675a97c42da371a1e6a4',1,'BaseItem']]],
+  ['fire',['Fire',['../class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aabd2b7e5f85a6ea65065c4ebc6d7c95bb',1,'Spell']]],
+  ['fireball',['Fireball',['../class_spell.html#a5520e850e7000a6156b3456672b72ed1aa8155b0ea02bae01cd41369018837d6b',1,'Spell']]],
+  ['focus',['Focus',['../class_effect.html#a28d85888db94ec53ee9cb75e9706f6e4ae24ee2487879116dcab772c0ac4fe341',1,'Effect']]],
+  ['foot_5farmor',['Foot_Armor',['../class_base_item.html#a882a2962396f880c2e23755437245d37ac319d71f7397840904d20b8c9e09ed45',1,'BaseItem']]],
+  ['format',['Format',['../class_bag.html#a3ee41396e25179a9c975c6f90d601bdd',1,'Bag']]],
+  ['forsaken',['forsaken',['../class_biome.html#a7ddcfcc6d4e88c5eb73df6827df862daa035c88a67814485689ec861c3685c316',1,'Biome']]],
+  ['freeobjects',['FreeObjects',['../class_dungeon_manager.html#ab7edf3b19e13892178a34ece10f4c5d5',1,'DungeonManager']]]
+];

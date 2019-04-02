@@ -1,0 +1,15 @@
+<map id="BagBehaviour.GiveItem" name="BagBehaviour.GiveItem">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,160,133"/>
+<area shape="rect" id="node2" href="$class_bag.html#a4efd17483fce361ea8a01dcda349b3b4" title=" " alt="" coords="275,5,347,32"/>
+<area shape="rect" id="node3" href="$class_bag.html#a42a4319aa14d0b6bda7f91070ba57a47" title=" " alt="" coords="264,56,359,83"/>
+<area shape="rect" id="node5" href="$class_bag_behaviour.html#a1ab1c5f24022bf503ad3d3a18387515f" title=" " alt="" coords="232,107,391,133"/>
+<area shape="rect" id="node12" href="$class_container_behaviour.html#aea3c37f67bc244516f307f2c59a27b8f" title=" " alt="" coords="216,157,407,184"/>
+<area shape="rect" id="node13" href="$class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="208,208,415,235"/>
+<area shape="rect" id="node4" href="$class_bag.html#a0f77c6c4e4e4782d81256fa81e7d18f4" title="Finds an item within the bag." alt="" coords="505,48,628,75"/>
+<area shape="rect" id="node6" href="$class_bag_behaviour.html#ad2e50a51bbb8f9c90a3241dbce0f87c0" title=" " alt="" coords="463,99,671,141"/>
+<area shape="rect" id="node7" href="$class_base_unit.html#a15ea3ea70ab13cf8aa582b848cd0531b" title=" " alt="" coords="493,165,640,192"/>
+<area shape="rect" id="node8" href="$class_hotbar.html#a1e796a0a133ee0743aa8585c05980f9b" title=" " alt="" coords="737,140,854,167"/>
+<area shape="rect" id="node11" href="$class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856" title=" " alt="" coords="719,191,872,217"/>
+<area shape="rect" id="node9" href="$class_hotkey.html#a0b90f1841f8cbe70bf62447affd70bd1" title=" " alt="" coords="920,115,1031,141"/>
+<area shape="rect" id="node10" href="$class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="922,165,1029,192"/>
+</map>

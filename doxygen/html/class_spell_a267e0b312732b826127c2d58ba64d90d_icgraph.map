@@ -1,0 +1,12 @@
+<map id="Spell.ResetTiles" name="Spell.ResetTiles">
+<area shape="rect" id="node1" title=" " alt="" coords="865,107,981,133"/>
+<area shape="rect" id="node2" href="$class_hotbar.html#a0c213365074f45fd1b1010eabe3f3d4d" title=" " alt="" coords="666,5,814,32"/>
+<area shape="rect" id="node6" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="258,56,386,83"/>
+<area shape="rect" id="node8" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="459,107,593,133"/>
+<area shape="rect" id="node9" href="$class_hotbar.html#acda305961d329d3b329dbe4247539ef5" title=" " alt="" coords="687,157,793,184"/>
+<area shape="rect" id="node10" href="$class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="663,208,817,235"/>
+<area shape="rect" id="node3" href="$class_cast_options_u_i.html#a78fb30f53f8da2443cb801bd878dc149" title=" " alt="" coords="437,5,615,32"/>
+<area shape="rect" id="node4" href="$class_shortcut_u_i.html#ab2181e3a43736c065ce2ff0d8066903e" title=" " alt="" coords="255,5,389,32"/>
+<area shape="rect" id="node5" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,5,207,32"/>
+<area shape="rect" id="node7" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="17,78,195,119"/>
+</map>

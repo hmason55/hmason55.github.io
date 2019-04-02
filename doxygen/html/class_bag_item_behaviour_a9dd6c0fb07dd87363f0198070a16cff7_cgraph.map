@@ -1,0 +1,12 @@
+<map id="BagItemBehaviour.OnPointerEnter" name="BagItemBehaviour.OnPointerEnter">
+<area shape="rect" id="node1" title=" " alt="" coords="5,125,193,166"/>
+<area shape="rect" id="node2" href="$class_item_tooltip.html#ae6eb8ab5acd326e431e46a3df5b76fa4" title=" " alt="" coords="266,31,385,57"/>
+<area shape="rect" id="node3" href="$class_item_tooltip.html#a51e15cd0c208c14105cc8bedf452385b" title=" " alt="" coords="241,81,409,108"/>
+<area shape="rect" id="node7" href="$class_transfer_u_i.html#a9d2e7c3708193e3d51fe8539f9c41a75" title=" " alt="" coords="261,132,389,159"/>
+<area shape="rect" id="node9" href="$class_base_item.html#a251c4cb0509ed9191a07057f8ea388c6" title=" " alt="" coords="249,183,402,209"/>
+<area shape="rect" id="node10" href="$class_base_item.html#a3888fc05b9a0589c098ed9a8c2f978f2" title=" " alt="" coords="244,233,407,260"/>
+<area shape="rect" id="node4" href="$class_base_item.html#ad820521a001d82fc3f52b2483226efde" title=" " alt="" coords="459,5,641,32"/>
+<area shape="rect" id="node5" href="$class_base_item.html#afd59d6b5168af724211f54ad3692ea73" title=" " alt="" coords="457,56,643,83"/>
+<area shape="rect" id="node6" href="$class_base_item.html#a7b49af5c45c493b9ea7319de44c6c138" title=" " alt="" coords="467,107,633,133"/>
+<area shape="rect" id="node8" href="$class_transfer_u_i.html#acb1dacb30d206743a569f8dc6bf9e5e4" title=" " alt="" coords="486,157,614,184"/>
+</map>

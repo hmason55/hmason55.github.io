@@ -1,0 +1,7 @@
+<map id="CombatManager.EndCombat" name="CombatManager.EndCombat">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,195,57"/>
+<area shape="rect" id="node2" href="$class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="243,5,449,32"/>
+<area shape="rect" id="node3" href="$class_essence_u_i.html#a26023c3d4977188014384a1a40eb3ad9" title=" " alt="" coords="275,56,417,83"/>
+<area shape="rect" id="node4" href="$class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="497,56,688,83"/>
+<area shape="rect" id="node5" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="736,56,875,83"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="DungeonManager.Load" name="DungeonManager.Load">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,160,83"/>
+<area shape="rect" id="node2" href="$class_dungeon_manager.html#afc7ff9dc122b876f72a4f238496f3a26" title=" " alt="" coords="209,5,381,32"/>
+<area shape="rect" id="node3" href="$class_essence_u_i.html#a26023c3d4977188014384a1a40eb3ad9" title=" " alt="" coords="224,56,367,83"/>
+<area shape="rect" id="node6" href="$class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="208,107,383,133"/>
+<area shape="rect" id="node4" href="$class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="431,56,621,83"/>
+<area shape="rect" id="node5" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="669,56,808,83"/>
+</map>
