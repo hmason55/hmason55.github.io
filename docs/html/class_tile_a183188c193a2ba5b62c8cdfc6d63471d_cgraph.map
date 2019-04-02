@@ -1,0 +1,4 @@
+<map id="Tile.SpawnUnit" name="Tile.SpawnUnit">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,113,32"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#ab93bf1d3c3ca2899d591a936760d46cf" title=" " alt="" coords="161,5,309,32"/>
+</map>

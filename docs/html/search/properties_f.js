@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['secondary',['secondary',['../class_bag.html#ad5d314d6b9a11127a8bdebc98f2a9cc0',1,'Bag']]],
+  ['secondaryscalingtype',['secondaryScalingType',['../class_effect.html#a790aa2e053b911e609f7655f4d39707c',1,'Effect']]],
+  ['secondaryscalingvalue',['secondaryScalingValue',['../class_effect.html#ae89279b1f9cc23e174f15756093c898a',1,'Effect']]],
+  ['shaded',['shaded',['../class_base_terrain.html#a5c1d125049a42d2b25ef2e09166bbd91',1,'BaseTerrain']]],
+  ['shadedimage',['shadedImage',['../class_terrain_behaviour.html#a91996bf69ee24b36099fa7a6b54aeaa5',1,'TerrainBehaviour']]],
+  ['shadedsprite',['shadedSprite',['../class_base_terrain.html#a6e60ba346bed94af204ded4f7fcf16ab',1,'BaseTerrain']]],
+  ['shadowimage',['shadowImage',['../class_unit_behaviour.html#a71c6dafe4e7e8c204bfa2a0c131a8f43',1,'UnitBehaviour']]],
+  ['shadowsprite',['shadowSprite',['../class_base_unit.html#a1358f64f26574f3c4e0b3bee74da3a1c',1,'BaseUnit']]],
+  ['showcastrange',['showCastRange',['../class_hotkey.html#a960d18fbb18716a6cb3db53b46981cd1',1,'Hotkey']]],
+  ['size',['size',['../class_base_unit.html#abbd0722704197f42acd5ea6b3ce0360b',1,'BaseUnit']]],
+  ['skincolor',['skinColor',['../class_character.html#af3528fb3651c738431375d8c39b4651c',1,'Character.skinColor()'],['../class_portrait.html#ac3ed63c9b306564506b4b96867990f84',1,'Portrait.skinColor()']]],
+  ['speed',['speed',['../class_attributes.html#aa67231ed5d1163506d8d2d559a98e125',1,'Attributes']]],
+  ['spell',['spell',['../class_hotkey.html#acdccc2b352e81fbc8075f5ddb77cd6df',1,'Hotkey.spell()'],['../class_projectile.html#adf481201408f58e0fe934bfe0e47229f',1,'Projectile.spell()']]],
+  ['spellcharges',['spellCharges',['../class_base_unit.html#a5efaee783f7a5504f36b62949634660a',1,'BaseUnit']]],
+  ['spellname',['spellName',['../class_spell.html#a57762a8a1ff7a3b2c901fedc517035e9',1,'Spell']]],
+  ['spells',['spells',['../class_base_item.html#a00c4f617eb916f07056fe641f67e27ee',1,'BaseItem.spells()'],['../class_base_unit.html#a97c7ef05e0978898a08cde269786c05c',1,'BaseUnit.spells()']]],
+  ['sprite',['sprite',['../class_base_decoration.html#a784d075121ac6fb2360c45ae7f7ec6ad',1,'BaseDecoration.sprite()'],['../class_base_item.html#a094da300c07c477d11e4e21d7d482d71',1,'BaseItem.sprite()'],['../class_base_terrain.html#a0af7f55356e035cde6cedadae6fbb34d',1,'BaseTerrain.sprite()'],['../class_base_unit.html#aa23a25b8e47771e1237a00c602707090',1,'BaseUnit.sprite()']]],
+  ['spritearmor',['spriteArmor',['../class_base_unit.html#a565598994319c552e26a01a9ef0bd0f0',1,'BaseUnit']]],
+  ['spritemanager',['spriteManager',['../class_tile.html#a4a7a173c171f17656e7aa129ed46c17c',1,'Tile']]],
+  ['spritepreset',['spritePreset',['../class_base_unit.html#ad2e3074297492cd54d7c08fa10d529d1',1,'BaseUnit']]],
+  ['spriteprimary',['spritePrimary',['../class_base_unit.html#afd07b93b34faf4f08c6195c96619cfe8',1,'BaseUnit']]],
+  ['spritesecondary',['spriteSecondary',['../class_base_unit.html#a813d9604cb00579ee1f774383fab35c9',1,'BaseUnit']]],
+  ['spriteskin',['spriteSkin',['../class_base_unit.html#a09675ae67d9c7f5de53c5ed8033a1d62',1,'BaseUnit']]],
+  ['stackable',['stackable',['../class_effect.html#a38b8b477fdedcf31c0aea3ecdc64c0c9',1,'Effect']]],
+  ['strength',['strength',['../class_attributes.html#a80e15a2316352cfba56fc1d4077dd432',1,'Attributes']]]
+];

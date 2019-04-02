@@ -1,0 +1,10 @@
+<map id="HitpointUI.UpdateHitpoints" name="HitpointUI.UpdateHitpoints">
+<area shape="rect" id="node1" title=" " alt="" coords="720,107,895,133"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#abae0a52156648495ea6e8487782f8636" title=" " alt="" coords="472,56,672,83"/>
+<area shape="rect" id="node6" href="$class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="486,107,658,133"/>
+<area shape="rect" id="node8" href="$class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="495,157,649,184"/>
+<area shape="rect" id="node3" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="285,5,394,32"/>
+<area shape="rect" id="node4" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,56,424,83"/>
+<area shape="rect" id="node5" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
+<area shape="rect" id="node7" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="275,107,404,133"/>
+</map>

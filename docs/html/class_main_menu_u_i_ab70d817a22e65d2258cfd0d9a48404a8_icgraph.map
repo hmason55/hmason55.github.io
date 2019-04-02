@@ -1,0 +1,5 @@
+<map id="MainMenuUI.ShowUI" name="MainMenuUI.ShowUI">
+<area shape="rect" id="node1" title=" " alt="" coords="245,31,388,57"/>
+<area shape="rect" id="node2" href="$class_character_creation_u_i.html#a3a3792f0c251839acb08848c3bf0e6e0" title=" " alt="" coords="5,5,197,32"/>
+<area shape="rect" id="node3" href="$class_load_data_u_i.html#a5d74ebc8dc0756974c13087df72872f0" title=" " alt="" coords="30,56,173,83"/>
+</map>

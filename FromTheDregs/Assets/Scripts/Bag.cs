@@ -289,6 +289,10 @@ public class Bag {
 		return false;
 	}
 
+	/// <summary>
+	/// Unequips an item from the bag and all items of the same category.
+	/// </summary>
+	/// <returns>True if the item was unequipped, otherwise returns False.</returns>
 	public bool Unequip(BaseItem.Category category) {
 		switch(category) {
 			case BaseItem.Category.Neck_Jewelry:
@@ -331,6 +335,9 @@ public class Bag {
 		return false;
 	}
 
+	/// <summary>
+	/// Removes key items from the bag and prepares it for saving.
+	/// </summary>
 	public void Format() {
 		for(int i = _items.Count-1; i >= 0; i--) {
 			if(_items[i] != null) {
@@ -343,6 +350,10 @@ public class Bag {
 		}
 	}
 
+	/// <summary>
+	/// Finds an item within the bag.
+	/// </summary>
+	/// <returns>The slot number of the item when found, otherwise returns -1.</returns>
 	public int FindItemSlot(BaseItem item) {
 		int ndx = -1;
 		for(int i = 0; i < _items.Count; i++) {
@@ -353,6 +364,10 @@ public class Bag {
 		return ndx;
 	}
 
+	/// <summary>
+	/// Finds an item within the bag by its ID.
+	/// </summary>
+	/// <returns>The slot number of the item when found, otherwise returns -1.</returns>
 	public int FindItemWithID(BaseItem.ID id) {
 		int ndx = -1;
 		for(int i = 0; i < _items.Count; i++) {
@@ -365,6 +380,10 @@ public class Bag {
 		return ndx;
 	}
 
+	/// <summary>
+	/// Finds an key item that has the given keycode.
+	/// </summary>
+	/// <returns>The slot number of the key when found, otherwise returns -1.</returns>
 	public int FindKey(string keycode) {
 		int ndx = -1;
 		if(keycode == "XXXXXX") {return ndx;}
@@ -378,6 +397,7 @@ public class Bag {
 		return ndx;
 	}
 
+	/// <returns>An array of the currently equipped items in the bag.</returns>
 	BaseItem[] EquipmentList() {
 		BaseItem[] equipment = {
 			_neck,

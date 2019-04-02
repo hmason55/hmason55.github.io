@@ -1,0 +1,7 @@
+<map id="BaseUnit.ReceiveStatus" name="BaseUnit.ReceiveStatus">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,168,57"/>
+<area shape="rect" id="node2" href="$class_effect.html#a5af13ce8f65df2bfbba422a46e627fc0" title=" " alt="" coords="455,5,583,32"/>
+<area shape="rect" id="node3" href="$class_effect.html#a81689f18a4d3ae57ca39b71592be76ef" title=" " alt="" coords="265,31,357,57"/>
+<area shape="rect" id="node4" href="$class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="216,81,407,108"/>
+<area shape="rect" id="node5" href="$class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="461,81,577,108"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="BaseUnit.BeginTurn" name="BaseUnit.BeginTurn">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,143,32"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#af140c1094709a0a90f84d52a4ee80d90" title=" " alt="" coords="191,5,332,32"/>
+<area shape="rect" id="node3" href="$class_base_unit.html#a15cf13fa9b4b776f474ad03b42939139" title=" " alt="" coords="380,5,543,32"/>
+<area shape="rect" id="node4" href="$class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="591,5,781,32"/>
+<area shape="rect" id="node5" href="$class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="829,5,945,32"/>
+</map>

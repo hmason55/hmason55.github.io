@@ -1,0 +1,617 @@
+\hypertarget{class_character}{}\section{Character Class Reference}
+\label{class_character}\index{Character@{Character}}
+
+
+Collaboration diagram for Character\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_character__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628}{Face\+Type}} \{ \newline
+\mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628ae94f97fa35651694344bb6ba7f380572}{Face\+Type.\+Elf\+\_\+0}}, 
+\mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628ad97fc95d523bf6dfaa932dbe99597324}{Face\+Type.\+Elf\+\_\+1}}, 
+\mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628a693718e65755b68c6478ae703d16b1ae}{Face\+Type.\+Elf\+\_\+2}}, 
+\mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628aeca678a9905614fff5d0ba295239a0a6}{Face\+Type.\+Human\+\_\+0}}, 
+\newline
+\mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628a208cc51c094faa7aeda24d741ab48336}{Face\+Type.\+Human\+\_\+1}}, 
+\mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628a29ccde01b85148882e25d57d155e4c8b}{Face\+Type.\+Human\+\_\+2}}, 
+\mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628a1aa145c18e732e682374a3ba3076d5b3}{Face\+Type.\+Orc\+\_\+0}}, 
+\mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628ad14e10b7ed06f3157e1b496d7380fe3b}{Face\+Type.\+Orc\+\_\+1}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6c}{Mouth\+Type}} \{ \newline
+\mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6cae94f97fa35651694344bb6ba7f380572}{Mouth\+Type.\+Elf\+\_\+0}}, 
+\mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6cad97fc95d523bf6dfaa932dbe99597324}{Mouth\+Type.\+Elf\+\_\+1}}, 
+\mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6caeca678a9905614fff5d0ba295239a0a6}{Mouth\+Type.\+Human\+\_\+0}}, 
+\mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6ca208cc51c094faa7aeda24d741ab48336}{Mouth\+Type.\+Human\+\_\+1}}, 
+\newline
+\mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6ca29ccde01b85148882e25d57d155e4c8b}{Mouth\+Type.\+Human\+\_\+2}}, 
+\mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6ca9f1ffde7012e729f41429a0b711823ab}{Mouth\+Type.\+Human\+\_\+3}}, 
+\mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6ca1aa145c18e732e682374a3ba3076d5b3}{Mouth\+Type.\+Orc\+\_\+0}}, 
+\mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6cad14e10b7ed06f3157e1b496d7380fe3b}{Mouth\+Type.\+Orc\+\_\+1}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81}{Beard\+Type}} \{ \newline
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81a6adf97f83acf6453d4a6a4b1070f3754}{Beard\+Type.\+None}}, 
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81ab8cdcd9acdceac22252517aa9a816a01}{Beard\+Type.\+Beard\+\_\+0}}, 
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81a0851930551823ac3b21b499fd8763bd4}{Beard\+Type.\+Beard\+\_\+1}}, 
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81a838e63548f79761de7869ccf7439e701}{Beard\+Type.\+Beard\+\_\+2}}, 
+\newline
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81aa1f19a4b0cacd92395091d6658cb4036}{Beard\+Type.\+Beard\+\_\+3}}, 
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81ae6316a13bb05c3098700716688d36d94}{Beard\+Type.\+Beard\+\_\+4}}, 
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81a46ea58ac8e495ad07a75ddceccb458a8}{Beard\+Type.\+Beard\+\_\+5}}, 
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81aef2d4395372775f26d9d803311996884}{Beard\+Type.\+Beard\+\_\+6}}, 
+\newline
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81a116cf87a1571ff2f43bd5fdbecf60e11}{Beard\+Type.\+Beard\+\_\+7}}, 
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81a1cc77dfa5d8fca74576ba6e75445dd07}{Beard\+Type.\+Beard\+\_\+8}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036}{Nose\+Type}} \{ \newline
+\mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036ae94f97fa35651694344bb6ba7f380572}{Nose\+Type.\+Elf\+\_\+0}}, 
+\mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036ad97fc95d523bf6dfaa932dbe99597324}{Nose\+Type.\+Elf\+\_\+1}}, 
+\mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036aeca678a9905614fff5d0ba295239a0a6}{Nose\+Type.\+Human\+\_\+0}}, 
+\mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036a208cc51c094faa7aeda24d741ab48336}{Nose\+Type.\+Human\+\_\+1}}, 
+\newline
+\mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036a29ccde01b85148882e25d57d155e4c8b}{Nose\+Type.\+Human\+\_\+2}}, 
+\mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036a9f1ffde7012e729f41429a0b711823ab}{Nose\+Type.\+Human\+\_\+3}}, 
+\mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036a1aa145c18e732e682374a3ba3076d5b3}{Nose\+Type.\+Orc\+\_\+0}}, 
+\mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036ad14e10b7ed06f3157e1b496d7380fe3b}{Nose\+Type.\+Orc\+\_\+1}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_character_a7ba51a2ab6ee02a615df9275665c5e4c}{Eyebrow\+Type}} \{ \mbox{\hyperlink{class_character_a7ba51a2ab6ee02a615df9275665c5e4ca6adf97f83acf6453d4a6a4b1070f3754}{Eyebrow\+Type.\+None}}, 
+\mbox{\hyperlink{class_character_a7ba51a2ab6ee02a615df9275665c5e4cae370c2059dcc8f848bcbc9f6449ab718}{Eyebrow\+Type.\+Eyebrow\+\_\+0}}, 
+\mbox{\hyperlink{class_character_a7ba51a2ab6ee02a615df9275665c5e4ca44ba5502eddb30831b1c23836f93dca9}{Eyebrow\+Type.\+Eyebrow\+\_\+1}}, 
+\mbox{\hyperlink{class_character_a7ba51a2ab6ee02a615df9275665c5e4cabb5f8d5e7aa99f129a22eb9cfe502094}{Eyebrow\+Type.\+Eyebrow\+\_\+2}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733}{Hair\+Type}} \{ \newline
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a6adf97f83acf6453d4a6a4b1070f3754}{Hair\+Type.\+None}}, 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a2b280aa8bb62b09f18c1b91612e8cb37}{Hair\+Type.\+Long\+\_\+0}}, 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733ad2e09ac24d1895e1c24a26d641ddc21d}{Hair\+Type.\+Long\+\_\+1}}, 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a850a0beb0f7a1e72aa93306fe0676291}{Hair\+Type.\+Long\+\_\+2}}, 
+\newline
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733afca987f95144f23e45367faa3e76afb3}{Hair\+Type.\+Long\+\_\+3}}, 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a85298f5d724590d2823708c9b2044def}{Hair\+Type.\+Medium\+\_\+0}}, 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a8725fa5091779224e174522862ddb056}{Hair\+Type.\+Medium\+\_\+1}}, 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733af53c67f292f7fa2403f6eac23cc4ce18}{Hair\+Type.\+Medium\+\_\+2}}, 
+\newline
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733ab94b802016c75344228e200b3dd06007}{Hair\+Type.\+Medium\+\_\+3}}, 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a1c660d6b6abb181b42b3a8d1f60a0ab3}{Hair\+Type.\+Short\+\_\+0}}, 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a436ae8b8d8d26122074321e98e9f2208}{Hair\+Type.\+Short\+\_\+1}}, 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a5ba0fc1a8d7fde835c0cd42fb4d86cfe}{Hair\+Type.\+Short\+\_\+2}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_character_a726214a0fe480fffada7772697764824}{Skin\+Color}} \{ \newline
+\mbox{\hyperlink{class_character_a726214a0fe480fffada7772697764824a47543040fc89d7dac80d595f061145c1}{Skin\+Color.\+Elf\+\_\+\+Dark}}, 
+\mbox{\hyperlink{class_character_a726214a0fe480fffada7772697764824a3cedf322d3207950a243f8a1c11199a0}{Skin\+Color.\+Human\+\_\+\+Dark}}, 
+\mbox{\hyperlink{class_character_a726214a0fe480fffada7772697764824a05301bbb3c2c081102cfdfd77f7ad977}{Skin\+Color.\+Human\+\_\+\+Light}}, 
+\mbox{\hyperlink{class_character_a726214a0fe480fffada7772697764824ae28a084b2066d99928aded041ef09f56}{Skin\+Color.\+Human\+\_\+\+Medium}}, 
+\newline
+\mbox{\hyperlink{class_character_a726214a0fe480fffada7772697764824ac7756d61bbbcdbe68fd9b8ee7faaa8d3}{Skin\+Color.\+Orc\+\_\+\+Medium}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0}{Hair\+Color}} \{ \newline
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0abf381e2261c6d3b5b91866d8c966df3d}{Hair\+Color.\+Platinum}}, 
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a2a6ef591687a14d276872bedab511ead}{Hair\+Color.\+Blonde}}, 
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a88068e33c78eb72f1b371c7110846085}{Hair\+Color.\+Amber}}, 
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a98f2d2794c75ac86f8c89296dcbd5592}{Hair\+Color.\+Chestnut}}, 
+\newline
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a6ea408ea56e8b710aa240004af7580c1}{Hair\+Color.\+Chocolate}}, 
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a6877cb2dd003a6b27e352890bfc393e1}{Hair\+Color.\+Auburn}}, 
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0aee38e4d5dd68c4e440825018d549cb47}{Hair\+Color.\+Red}}, 
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a994ae1d9731cebe455aff211bcb25b93}{Hair\+Color.\+Gray}}, 
+\newline
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a25a81701fbfa4a1efdf660a950c1d006}{Hair\+Color.\+White}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_aeb15ed2a88e93ac33887094427a52476}{Character}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_character_adbfa3b858f99f337203a1bec67b2fe45}{name}} = \char`\"{}Character Name\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628}{Face\+Type}} \mbox{\hyperlink{class_character_ab7552f9cfc719cb2b86820ac9381764b}{face\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6c}{Mouth\+Type}} \mbox{\hyperlink{class_character_a4199c2476940533add49ababfc7cba52}{mouth\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81}{Beard\+Type}} \mbox{\hyperlink{class_character_a77735a4eeb0530c85de8e53145cb6044}{beard\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036}{Nose\+Type}} \mbox{\hyperlink{class_character_a451957556cb1b0aaa89b9dcf36b2b1dd}{nose\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_character_a7ba51a2ab6ee02a615df9275665c5e4c}{Eyebrow\+Type}} \mbox{\hyperlink{class_character_a470cb22e12212f2cb43f77b1c06445d3}{eyebrow\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733}{Hair\+Type}} \mbox{\hyperlink{class_character_add6905ded7f0e4c0573038bd488b3cea}{hair\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_character_a726214a0fe480fffada7772697764824}{Skin\+Color}} \mbox{\hyperlink{class_character_af3528fb3651c738431375d8c39b4651c}{skin\+Color}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0}{Hair\+Color}} \mbox{\hyperlink{class_character_a5814d461d5a35e4784864f4287d0d458}{hair\+Color}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 6 of file Character.\+cs.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81}\label{class_character_afc1fe7f790870a92fe62d3e57296de81}} 
+\index{Character@{Character}!BeardType@{BeardType}}
+\index{BeardType@{BeardType}!Character@{Character}}
+\subsubsection{\texorpdfstring{BeardType}{BeardType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81}{Character.\+Beard\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!Character@{Character}}\index{Character@{Character}!None@{None}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81a6adf97f83acf6453d4a6a4b1070f3754}\label{class_character_afc1fe7f790870a92fe62d3e57296de81a6adf97f83acf6453d4a6a4b1070f3754}} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Beard\_0@{Beard\_0}!Character@{Character}}\index{Character@{Character}!Beard\_0@{Beard\_0}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81ab8cdcd9acdceac22252517aa9a816a01}\label{class_character_afc1fe7f790870a92fe62d3e57296de81ab8cdcd9acdceac22252517aa9a816a01}} 
+Beard\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Beard\_1@{Beard\_1}!Character@{Character}}\index{Character@{Character}!Beard\_1@{Beard\_1}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81a0851930551823ac3b21b499fd8763bd4}\label{class_character_afc1fe7f790870a92fe62d3e57296de81a0851930551823ac3b21b499fd8763bd4}} 
+Beard\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Beard\_2@{Beard\_2}!Character@{Character}}\index{Character@{Character}!Beard\_2@{Beard\_2}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81a838e63548f79761de7869ccf7439e701}\label{class_character_afc1fe7f790870a92fe62d3e57296de81a838e63548f79761de7869ccf7439e701}} 
+Beard\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Beard\_3@{Beard\_3}!Character@{Character}}\index{Character@{Character}!Beard\_3@{Beard\_3}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81aa1f19a4b0cacd92395091d6658cb4036}\label{class_character_afc1fe7f790870a92fe62d3e57296de81aa1f19a4b0cacd92395091d6658cb4036}} 
+Beard\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Beard\_4@{Beard\_4}!Character@{Character}}\index{Character@{Character}!Beard\_4@{Beard\_4}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81ae6316a13bb05c3098700716688d36d94}\label{class_character_afc1fe7f790870a92fe62d3e57296de81ae6316a13bb05c3098700716688d36d94}} 
+Beard\+\_\+4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Beard\_5@{Beard\_5}!Character@{Character}}\index{Character@{Character}!Beard\_5@{Beard\_5}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81a46ea58ac8e495ad07a75ddceccb458a8}\label{class_character_afc1fe7f790870a92fe62d3e57296de81a46ea58ac8e495ad07a75ddceccb458a8}} 
+Beard\+\_\+5&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Beard\_6@{Beard\_6}!Character@{Character}}\index{Character@{Character}!Beard\_6@{Beard\_6}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81aef2d4395372775f26d9d803311996884}\label{class_character_afc1fe7f790870a92fe62d3e57296de81aef2d4395372775f26d9d803311996884}} 
+Beard\+\_\+6&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Beard\_7@{Beard\_7}!Character@{Character}}\index{Character@{Character}!Beard\_7@{Beard\_7}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81a116cf87a1571ff2f43bd5fdbecf60e11}\label{class_character_afc1fe7f790870a92fe62d3e57296de81a116cf87a1571ff2f43bd5fdbecf60e11}} 
+Beard\+\_\+7&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Beard\_8@{Beard\_8}!Character@{Character}}\index{Character@{Character}!Beard\_8@{Beard\_8}}}\mbox{\Hypertarget{class_character_afc1fe7f790870a92fe62d3e57296de81a1cc77dfa5d8fca74576ba6e75445dd07}\label{class_character_afc1fe7f790870a92fe62d3e57296de81a1cc77dfa5d8fca74576ba6e75445dd07}} 
+Beard\+\_\+8&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 100 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_a7ba51a2ab6ee02a615df9275665c5e4c}\label{class_character_a7ba51a2ab6ee02a615df9275665c5e4c}} 
+\index{Character@{Character}!EyebrowType@{EyebrowType}}
+\index{EyebrowType@{EyebrowType}!Character@{Character}}
+\subsubsection{\texorpdfstring{EyebrowType}{EyebrowType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_character_a7ba51a2ab6ee02a615df9275665c5e4c}{Character.\+Eyebrow\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!Character@{Character}}\index{Character@{Character}!None@{None}}}\mbox{\Hypertarget{class_character_a7ba51a2ab6ee02a615df9275665c5e4ca6adf97f83acf6453d4a6a4b1070f3754}\label{class_character_a7ba51a2ab6ee02a615df9275665c5e4ca6adf97f83acf6453d4a6a4b1070f3754}} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Eyebrow\_0@{Eyebrow\_0}!Character@{Character}}\index{Character@{Character}!Eyebrow\_0@{Eyebrow\_0}}}\mbox{\Hypertarget{class_character_a7ba51a2ab6ee02a615df9275665c5e4cae370c2059dcc8f848bcbc9f6449ab718}\label{class_character_a7ba51a2ab6ee02a615df9275665c5e4cae370c2059dcc8f848bcbc9f6449ab718}} 
+Eyebrow\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Eyebrow\_1@{Eyebrow\_1}!Character@{Character}}\index{Character@{Character}!Eyebrow\_1@{Eyebrow\_1}}}\mbox{\Hypertarget{class_character_a7ba51a2ab6ee02a615df9275665c5e4ca44ba5502eddb30831b1c23836f93dca9}\label{class_character_a7ba51a2ab6ee02a615df9275665c5e4ca44ba5502eddb30831b1c23836f93dca9}} 
+Eyebrow\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Eyebrow\_2@{Eyebrow\_2}!Character@{Character}}\index{Character@{Character}!Eyebrow\_2@{Eyebrow\_2}}}\mbox{\Hypertarget{class_character_a7ba51a2ab6ee02a615df9275665c5e4cabb5f8d5e7aa99f129a22eb9cfe502094}\label{class_character_a7ba51a2ab6ee02a615df9275665c5e4cabb5f8d5e7aa99f129a22eb9cfe502094}} 
+Eyebrow\+\_\+2&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 124 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_aae9a74ea017a528536789f545094d628}\label{class_character_aae9a74ea017a528536789f545094d628}} 
+\index{Character@{Character}!FaceType@{FaceType}}
+\index{FaceType@{FaceType}!Character@{Character}}
+\subsubsection{\texorpdfstring{FaceType}{FaceType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628}{Character.\+Face\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Elf\_0@{Elf\_0}!Character@{Character}}\index{Character@{Character}!Elf\_0@{Elf\_0}}}\mbox{\Hypertarget{class_character_aae9a74ea017a528536789f545094d628ae94f97fa35651694344bb6ba7f380572}\label{class_character_aae9a74ea017a528536789f545094d628ae94f97fa35651694344bb6ba7f380572}} 
+Elf\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Elf\_1@{Elf\_1}!Character@{Character}}\index{Character@{Character}!Elf\_1@{Elf\_1}}}\mbox{\Hypertarget{class_character_aae9a74ea017a528536789f545094d628ad97fc95d523bf6dfaa932dbe99597324}\label{class_character_aae9a74ea017a528536789f545094d628ad97fc95d523bf6dfaa932dbe99597324}} 
+Elf\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Elf\_2@{Elf\_2}!Character@{Character}}\index{Character@{Character}!Elf\_2@{Elf\_2}}}\mbox{\Hypertarget{class_character_aae9a74ea017a528536789f545094d628a693718e65755b68c6478ae703d16b1ae}\label{class_character_aae9a74ea017a528536789f545094d628a693718e65755b68c6478ae703d16b1ae}} 
+Elf\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_0@{Human\_0}!Character@{Character}}\index{Character@{Character}!Human\_0@{Human\_0}}}\mbox{\Hypertarget{class_character_aae9a74ea017a528536789f545094d628aeca678a9905614fff5d0ba295239a0a6}\label{class_character_aae9a74ea017a528536789f545094d628aeca678a9905614fff5d0ba295239a0a6}} 
+Human\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_1@{Human\_1}!Character@{Character}}\index{Character@{Character}!Human\_1@{Human\_1}}}\mbox{\Hypertarget{class_character_aae9a74ea017a528536789f545094d628a208cc51c094faa7aeda24d741ab48336}\label{class_character_aae9a74ea017a528536789f545094d628a208cc51c094faa7aeda24d741ab48336}} 
+Human\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_2@{Human\_2}!Character@{Character}}\index{Character@{Character}!Human\_2@{Human\_2}}}\mbox{\Hypertarget{class_character_aae9a74ea017a528536789f545094d628a29ccde01b85148882e25d57d155e4c8b}\label{class_character_aae9a74ea017a528536789f545094d628a29ccde01b85148882e25d57d155e4c8b}} 
+Human\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Orc\_0@{Orc\_0}!Character@{Character}}\index{Character@{Character}!Orc\_0@{Orc\_0}}}\mbox{\Hypertarget{class_character_aae9a74ea017a528536789f545094d628a1aa145c18e732e682374a3ba3076d5b3}\label{class_character_aae9a74ea017a528536789f545094d628a1aa145c18e732e682374a3ba3076d5b3}} 
+Orc\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Orc\_1@{Orc\_1}!Character@{Character}}\index{Character@{Character}!Orc\_1@{Orc\_1}}}\mbox{\Hypertarget{class_character_aae9a74ea017a528536789f545094d628ad14e10b7ed06f3157e1b496d7380fe3b}\label{class_character_aae9a74ea017a528536789f545094d628ad14e10b7ed06f3157e1b496d7380fe3b}} 
+Orc\+\_\+1&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 78 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0}} 
+\index{Character@{Character}!HairColor@{HairColor}}
+\index{HairColor@{HairColor}!Character@{Character}}
+\subsubsection{\texorpdfstring{HairColor}{HairColor}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0}{Character.\+Hair\+Color}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Platinum@{Platinum}!Character@{Character}}\index{Character@{Character}!Platinum@{Platinum}}}\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0abf381e2261c6d3b5b91866d8c966df3d}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0abf381e2261c6d3b5b91866d8c966df3d}} 
+Platinum&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Blonde@{Blonde}!Character@{Character}}\index{Character@{Character}!Blonde@{Blonde}}}\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a2a6ef591687a14d276872bedab511ead}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a2a6ef591687a14d276872bedab511ead}} 
+Blonde&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Amber@{Amber}!Character@{Character}}\index{Character@{Character}!Amber@{Amber}}}\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a88068e33c78eb72f1b371c7110846085}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a88068e33c78eb72f1b371c7110846085}} 
+Amber&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Chestnut@{Chestnut}!Character@{Character}}\index{Character@{Character}!Chestnut@{Chestnut}}}\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a98f2d2794c75ac86f8c89296dcbd5592}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a98f2d2794c75ac86f8c89296dcbd5592}} 
+Chestnut&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Chocolate@{Chocolate}!Character@{Character}}\index{Character@{Character}!Chocolate@{Chocolate}}}\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a6ea408ea56e8b710aa240004af7580c1}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a6ea408ea56e8b710aa240004af7580c1}} 
+Chocolate&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Auburn@{Auburn}!Character@{Character}}\index{Character@{Character}!Auburn@{Auburn}}}\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a6877cb2dd003a6b27e352890bfc393e1}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a6877cb2dd003a6b27e352890bfc393e1}} 
+Auburn&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Red@{Red}!Character@{Character}}\index{Character@{Character}!Red@{Red}}}\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0aee38e4d5dd68c4e440825018d549cb47}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0aee38e4d5dd68c4e440825018d549cb47}} 
+Red&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Gray@{Gray}!Character@{Character}}\index{Character@{Character}!Gray@{Gray}}}\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a994ae1d9731cebe455aff211bcb25b93}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a994ae1d9731cebe455aff211bcb25b93}} 
+Gray&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{White@{White}!Character@{Character}}\index{Character@{Character}!White@{White}}}\mbox{\Hypertarget{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a25a81701fbfa4a1efdf660a950c1d006}\label{class_character_a7940fffce9bfadb9e7abf15490cf8bb0a25a81701fbfa4a1efdf660a950c1d006}} 
+White&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 154 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733}} 
+\index{Character@{Character}!HairType@{HairType}}
+\index{HairType@{HairType}!Character@{Character}}
+\subsubsection{\texorpdfstring{HairType}{HairType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733}{Character.\+Hair\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!Character@{Character}}\index{Character@{Character}!None@{None}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a6adf97f83acf6453d4a6a4b1070f3754}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a6adf97f83acf6453d4a6a4b1070f3754}} 
+None&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Long\_0@{Long\_0}!Character@{Character}}\index{Character@{Character}!Long\_0@{Long\_0}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a2b280aa8bb62b09f18c1b91612e8cb37}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a2b280aa8bb62b09f18c1b91612e8cb37}} 
+Long\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Long\_1@{Long\_1}!Character@{Character}}\index{Character@{Character}!Long\_1@{Long\_1}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733ad2e09ac24d1895e1c24a26d641ddc21d}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733ad2e09ac24d1895e1c24a26d641ddc21d}} 
+Long\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Long\_2@{Long\_2}!Character@{Character}}\index{Character@{Character}!Long\_2@{Long\_2}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a850a0beb0f7a1e72aa93306fe0676291}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a850a0beb0f7a1e72aa93306fe0676291}} 
+Long\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Long\_3@{Long\_3}!Character@{Character}}\index{Character@{Character}!Long\_3@{Long\_3}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733afca987f95144f23e45367faa3e76afb3}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733afca987f95144f23e45367faa3e76afb3}} 
+Long\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Medium\_0@{Medium\_0}!Character@{Character}}\index{Character@{Character}!Medium\_0@{Medium\_0}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a85298f5d724590d2823708c9b2044def}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a85298f5d724590d2823708c9b2044def}} 
+Medium\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Medium\_1@{Medium\_1}!Character@{Character}}\index{Character@{Character}!Medium\_1@{Medium\_1}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a8725fa5091779224e174522862ddb056}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a8725fa5091779224e174522862ddb056}} 
+Medium\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Medium\_2@{Medium\_2}!Character@{Character}}\index{Character@{Character}!Medium\_2@{Medium\_2}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733af53c67f292f7fa2403f6eac23cc4ce18}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733af53c67f292f7fa2403f6eac23cc4ce18}} 
+Medium\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Medium\_3@{Medium\_3}!Character@{Character}}\index{Character@{Character}!Medium\_3@{Medium\_3}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733ab94b802016c75344228e200b3dd06007}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733ab94b802016c75344228e200b3dd06007}} 
+Medium\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Short\_0@{Short\_0}!Character@{Character}}\index{Character@{Character}!Short\_0@{Short\_0}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a1c660d6b6abb181b42b3a8d1f60a0ab3}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a1c660d6b6abb181b42b3a8d1f60a0ab3}} 
+Short\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Short\_1@{Short\_1}!Character@{Character}}\index{Character@{Character}!Short\_1@{Short\_1}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a436ae8b8d8d26122074321e98e9f2208}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a436ae8b8d8d26122074321e98e9f2208}} 
+Short\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Short\_2@{Short\_2}!Character@{Character}}\index{Character@{Character}!Short\_2@{Short\_2}}}\mbox{\Hypertarget{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a5ba0fc1a8d7fde835c0cd42fb4d86cfe}\label{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733a5ba0fc1a8d7fde835c0cd42fb4d86cfe}} 
+Short\+\_\+2&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 131 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_aaefb65409260b3ad1511951aab1ddd6c}\label{class_character_aaefb65409260b3ad1511951aab1ddd6c}} 
+\index{Character@{Character}!MouthType@{MouthType}}
+\index{MouthType@{MouthType}!Character@{Character}}
+\subsubsection{\texorpdfstring{MouthType}{MouthType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6c}{Character.\+Mouth\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Elf\_0@{Elf\_0}!Character@{Character}}\index{Character@{Character}!Elf\_0@{Elf\_0}}}\mbox{\Hypertarget{class_character_aaefb65409260b3ad1511951aab1ddd6cae94f97fa35651694344bb6ba7f380572}\label{class_character_aaefb65409260b3ad1511951aab1ddd6cae94f97fa35651694344bb6ba7f380572}} 
+Elf\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Elf\_1@{Elf\_1}!Character@{Character}}\index{Character@{Character}!Elf\_1@{Elf\_1}}}\mbox{\Hypertarget{class_character_aaefb65409260b3ad1511951aab1ddd6cad97fc95d523bf6dfaa932dbe99597324}\label{class_character_aaefb65409260b3ad1511951aab1ddd6cad97fc95d523bf6dfaa932dbe99597324}} 
+Elf\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_0@{Human\_0}!Character@{Character}}\index{Character@{Character}!Human\_0@{Human\_0}}}\mbox{\Hypertarget{class_character_aaefb65409260b3ad1511951aab1ddd6caeca678a9905614fff5d0ba295239a0a6}\label{class_character_aaefb65409260b3ad1511951aab1ddd6caeca678a9905614fff5d0ba295239a0a6}} 
+Human\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_1@{Human\_1}!Character@{Character}}\index{Character@{Character}!Human\_1@{Human\_1}}}\mbox{\Hypertarget{class_character_aaefb65409260b3ad1511951aab1ddd6ca208cc51c094faa7aeda24d741ab48336}\label{class_character_aaefb65409260b3ad1511951aab1ddd6ca208cc51c094faa7aeda24d741ab48336}} 
+Human\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_2@{Human\_2}!Character@{Character}}\index{Character@{Character}!Human\_2@{Human\_2}}}\mbox{\Hypertarget{class_character_aaefb65409260b3ad1511951aab1ddd6ca29ccde01b85148882e25d57d155e4c8b}\label{class_character_aaefb65409260b3ad1511951aab1ddd6ca29ccde01b85148882e25d57d155e4c8b}} 
+Human\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_3@{Human\_3}!Character@{Character}}\index{Character@{Character}!Human\_3@{Human\_3}}}\mbox{\Hypertarget{class_character_aaefb65409260b3ad1511951aab1ddd6ca9f1ffde7012e729f41429a0b711823ab}\label{class_character_aaefb65409260b3ad1511951aab1ddd6ca9f1ffde7012e729f41429a0b711823ab}} 
+Human\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Orc\_0@{Orc\_0}!Character@{Character}}\index{Character@{Character}!Orc\_0@{Orc\_0}}}\mbox{\Hypertarget{class_character_aaefb65409260b3ad1511951aab1ddd6ca1aa145c18e732e682374a3ba3076d5b3}\label{class_character_aaefb65409260b3ad1511951aab1ddd6ca1aa145c18e732e682374a3ba3076d5b3}} 
+Orc\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Orc\_1@{Orc\_1}!Character@{Character}}\index{Character@{Character}!Orc\_1@{Orc\_1}}}\mbox{\Hypertarget{class_character_aaefb65409260b3ad1511951aab1ddd6cad14e10b7ed06f3157e1b496d7380fe3b}\label{class_character_aaefb65409260b3ad1511951aab1ddd6cad14e10b7ed06f3157e1b496d7380fe3b}} 
+Orc\+\_\+1&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 89 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_a638a71f8525dc3a59596f7f4a7836036}\label{class_character_a638a71f8525dc3a59596f7f4a7836036}} 
+\index{Character@{Character}!NoseType@{NoseType}}
+\index{NoseType@{NoseType}!Character@{Character}}
+\subsubsection{\texorpdfstring{NoseType}{NoseType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036}{Character.\+Nose\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Elf\_0@{Elf\_0}!Character@{Character}}\index{Character@{Character}!Elf\_0@{Elf\_0}}}\mbox{\Hypertarget{class_character_a638a71f8525dc3a59596f7f4a7836036ae94f97fa35651694344bb6ba7f380572}\label{class_character_a638a71f8525dc3a59596f7f4a7836036ae94f97fa35651694344bb6ba7f380572}} 
+Elf\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Elf\_1@{Elf\_1}!Character@{Character}}\index{Character@{Character}!Elf\_1@{Elf\_1}}}\mbox{\Hypertarget{class_character_a638a71f8525dc3a59596f7f4a7836036ad97fc95d523bf6dfaa932dbe99597324}\label{class_character_a638a71f8525dc3a59596f7f4a7836036ad97fc95d523bf6dfaa932dbe99597324}} 
+Elf\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_0@{Human\_0}!Character@{Character}}\index{Character@{Character}!Human\_0@{Human\_0}}}\mbox{\Hypertarget{class_character_a638a71f8525dc3a59596f7f4a7836036aeca678a9905614fff5d0ba295239a0a6}\label{class_character_a638a71f8525dc3a59596f7f4a7836036aeca678a9905614fff5d0ba295239a0a6}} 
+Human\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_1@{Human\_1}!Character@{Character}}\index{Character@{Character}!Human\_1@{Human\_1}}}\mbox{\Hypertarget{class_character_a638a71f8525dc3a59596f7f4a7836036a208cc51c094faa7aeda24d741ab48336}\label{class_character_a638a71f8525dc3a59596f7f4a7836036a208cc51c094faa7aeda24d741ab48336}} 
+Human\+\_\+1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_2@{Human\_2}!Character@{Character}}\index{Character@{Character}!Human\_2@{Human\_2}}}\mbox{\Hypertarget{class_character_a638a71f8525dc3a59596f7f4a7836036a29ccde01b85148882e25d57d155e4c8b}\label{class_character_a638a71f8525dc3a59596f7f4a7836036a29ccde01b85148882e25d57d155e4c8b}} 
+Human\+\_\+2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_3@{Human\_3}!Character@{Character}}\index{Character@{Character}!Human\_3@{Human\_3}}}\mbox{\Hypertarget{class_character_a638a71f8525dc3a59596f7f4a7836036a9f1ffde7012e729f41429a0b711823ab}\label{class_character_a638a71f8525dc3a59596f7f4a7836036a9f1ffde7012e729f41429a0b711823ab}} 
+Human\+\_\+3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Orc\_0@{Orc\_0}!Character@{Character}}\index{Character@{Character}!Orc\_0@{Orc\_0}}}\mbox{\Hypertarget{class_character_a638a71f8525dc3a59596f7f4a7836036a1aa145c18e732e682374a3ba3076d5b3}\label{class_character_a638a71f8525dc3a59596f7f4a7836036a1aa145c18e732e682374a3ba3076d5b3}} 
+Orc\+\_\+0&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Orc\_1@{Orc\_1}!Character@{Character}}\index{Character@{Character}!Orc\_1@{Orc\_1}}}\mbox{\Hypertarget{class_character_a638a71f8525dc3a59596f7f4a7836036ad14e10b7ed06f3157e1b496d7380fe3b}\label{class_character_a638a71f8525dc3a59596f7f4a7836036ad14e10b7ed06f3157e1b496d7380fe3b}} 
+Orc\+\_\+1&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 113 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_a726214a0fe480fffada7772697764824}\label{class_character_a726214a0fe480fffada7772697764824}} 
+\index{Character@{Character}!SkinColor@{SkinColor}}
+\index{SkinColor@{SkinColor}!Character@{Character}}
+\subsubsection{\texorpdfstring{SkinColor}{SkinColor}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_character_a726214a0fe480fffada7772697764824}{Character.\+Skin\+Color}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Elf\_Dark@{Elf\_Dark}!Character@{Character}}\index{Character@{Character}!Elf\_Dark@{Elf\_Dark}}}\mbox{\Hypertarget{class_character_a726214a0fe480fffada7772697764824a47543040fc89d7dac80d595f061145c1}\label{class_character_a726214a0fe480fffada7772697764824a47543040fc89d7dac80d595f061145c1}} 
+Elf\+\_\+\+Dark&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_Dark@{Human\_Dark}!Character@{Character}}\index{Character@{Character}!Human\_Dark@{Human\_Dark}}}\mbox{\Hypertarget{class_character_a726214a0fe480fffada7772697764824a3cedf322d3207950a243f8a1c11199a0}\label{class_character_a726214a0fe480fffada7772697764824a3cedf322d3207950a243f8a1c11199a0}} 
+Human\+\_\+\+Dark&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_Light@{Human\_Light}!Character@{Character}}\index{Character@{Character}!Human\_Light@{Human\_Light}}}\mbox{\Hypertarget{class_character_a726214a0fe480fffada7772697764824a05301bbb3c2c081102cfdfd77f7ad977}\label{class_character_a726214a0fe480fffada7772697764824a05301bbb3c2c081102cfdfd77f7ad977}} 
+Human\+\_\+\+Light&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Human\_Medium@{Human\_Medium}!Character@{Character}}\index{Character@{Character}!Human\_Medium@{Human\_Medium}}}\mbox{\Hypertarget{class_character_a726214a0fe480fffada7772697764824ae28a084b2066d99928aded041ef09f56}\label{class_character_a726214a0fe480fffada7772697764824ae28a084b2066d99928aded041ef09f56}} 
+Human\+\_\+\+Medium&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Orc\_Medium@{Orc\_Medium}!Character@{Character}}\index{Character@{Character}!Orc\_Medium@{Orc\_Medium}}}\mbox{\Hypertarget{class_character_a726214a0fe480fffada7772697764824ac7756d61bbbcdbe68fd9b8ee7faaa8d3}\label{class_character_a726214a0fe480fffada7772697764824ac7756d61bbbcdbe68fd9b8ee7faaa8d3}} 
+Orc\+\_\+\+Medium&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 146 of file Character.\+cs.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_character_aeb15ed2a88e93ac33887094427a52476}\label{class_character_aeb15ed2a88e93ac33887094427a52476}} 
+\index{Character@{Character}!Character@{Character}}
+\index{Character@{Character}!Character@{Character}}
+\subsubsection{\texorpdfstring{Character()}{Character()}}
+{\footnotesize\ttfamily Character.\+Character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 63 of file Character.\+cs.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_character_adbfa3b858f99f337203a1bec67b2fe45}\label{class_character_adbfa3b858f99f337203a1bec67b2fe45}} 
+\index{Character@{Character}!name@{name}}
+\index{name@{name}!Character@{Character}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string Character.\+name = \char`\"{}Character Name\char`\"{}}
+
+
+
+Definition at line 7 of file Character.\+cs.
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_character_a77735a4eeb0530c85de8e53145cb6044}\label{class_character_a77735a4eeb0530c85de8e53145cb6044}} 
+\index{Character@{Character}!beardType@{beardType}}
+\index{beardType@{beardType}!Character@{Character}}
+\subsubsection{\texorpdfstring{beardType}{beardType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character_afc1fe7f790870a92fe62d3e57296de81}{Beard\+Type}} Character.\+beard\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 30 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_a470cb22e12212f2cb43f77b1c06445d3}\label{class_character_a470cb22e12212f2cb43f77b1c06445d3}} 
+\index{Character@{Character}!eyebrowType@{eyebrowType}}
+\index{eyebrowType@{eyebrowType}!Character@{Character}}
+\subsubsection{\texorpdfstring{eyebrowType}{eyebrowType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character_a7ba51a2ab6ee02a615df9275665c5e4c}{Eyebrow\+Type}} Character.\+eyebrow\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 40 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_ab7552f9cfc719cb2b86820ac9381764b}\label{class_character_ab7552f9cfc719cb2b86820ac9381764b}} 
+\index{Character@{Character}!faceType@{faceType}}
+\index{faceType@{faceType}!Character@{Character}}
+\subsubsection{\texorpdfstring{faceType}{faceType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character_aae9a74ea017a528536789f545094d628}{Face\+Type}} Character.\+face\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 20 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_a5814d461d5a35e4784864f4287d0d458}\label{class_character_a5814d461d5a35e4784864f4287d0d458}} 
+\index{Character@{Character}!hairColor@{hairColor}}
+\index{hairColor@{hairColor}!Character@{Character}}
+\subsubsection{\texorpdfstring{hairColor}{hairColor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character_a7940fffce9bfadb9e7abf15490cf8bb0}{Hair\+Color}} Character.\+hair\+Color\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 55 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_add6905ded7f0e4c0573038bd488b3cea}\label{class_character_add6905ded7f0e4c0573038bd488b3cea}} 
+\index{Character@{Character}!hairType@{hairType}}
+\index{hairType@{hairType}!Character@{Character}}
+\subsubsection{\texorpdfstring{hairType}{hairType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character_ada39ccb0e0be37a8f8f0e9a864eb5733}{Hair\+Type}} Character.\+hair\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 45 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_a4199c2476940533add49ababfc7cba52}\label{class_character_a4199c2476940533add49ababfc7cba52}} 
+\index{Character@{Character}!mouthType@{mouthType}}
+\index{mouthType@{mouthType}!Character@{Character}}
+\subsubsection{\texorpdfstring{mouthType}{mouthType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character_aaefb65409260b3ad1511951aab1ddd6c}{Mouth\+Type}} Character.\+mouth\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 25 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_a451957556cb1b0aaa89b9dcf36b2b1dd}\label{class_character_a451957556cb1b0aaa89b9dcf36b2b1dd}} 
+\index{Character@{Character}!noseType@{noseType}}
+\index{noseType@{noseType}!Character@{Character}}
+\subsubsection{\texorpdfstring{noseType}{noseType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character_a638a71f8525dc3a59596f7f4a7836036}{Nose\+Type}} Character.\+nose\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 35 of file Character.\+cs.
+
+\mbox{\Hypertarget{class_character_af3528fb3651c738431375d8c39b4651c}\label{class_character_af3528fb3651c738431375d8c39b4651c}} 
+\index{Character@{Character}!skinColor@{skinColor}}
+\index{skinColor@{skinColor}!Character@{Character}}
+\subsubsection{\texorpdfstring{skinColor}{skinColor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_character_a726214a0fe480fffada7772697764824}{Skin\+Color}} Character.\+skin\+Color\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 50 of file Character.\+cs.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Scripts/\mbox{\hyperlink{_character_8cs}{Character.\+cs}}\end{DoxyCompactItemize}
