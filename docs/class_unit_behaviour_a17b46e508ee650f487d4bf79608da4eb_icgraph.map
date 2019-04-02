@@ -1,7 +1,0 @@
-<map id="UnitBehaviour.SpawnDeathParticles" name="UnitBehaviour.SpawnDeathParticles">
-<area shape="rect" id="node1" title=" " alt="" coords="719,5,897,47"/>
-<area shape="rect" id="node2" href="$class_unit_behaviour.html#a9a32f3234ea6b89f686c6cd55d924348" title=" " alt="" coords="548,13,671,39"/>
-<area shape="rect" id="node3" href="$class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="403,13,500,39"/>
-<area shape="rect" id="node4" href="$class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="183,13,355,39"/>
-<area shape="rect" id="node5" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,13,135,39"/>
-</map>

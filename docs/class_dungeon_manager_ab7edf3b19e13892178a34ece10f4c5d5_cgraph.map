@@ -1,9 +1,0 @@
-<map id="DungeonManager.FreeObjects" name="DungeonManager.FreeObjects">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,204,83"/>
-<area shape="rect" id="node2" href="$class_terrain_behaviour.html#a23ffdd00ac2a41293dff38496a09663d" title=" " alt="" coords="264,5,415,32"/>
-<area shape="rect" id="node3" href="$class_decoration_behaviour.html#aab39ad5614d361801ffc9168a830c3d7" title=" " alt="" coords="252,56,427,83"/>
-<area shape="rect" id="node4" href="$class_unit_behaviour.html#a89fa86241b11f695b89b7143fa4f88ec" title=" " alt="" coords="272,107,407,133"/>
-<area shape="rect" id="node5" href="$class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="475,107,613,133"/>
-<area shape="rect" id="node6" href="$class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="661,107,816,133"/>
-<area shape="rect" id="node7" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="864,107,1027,133"/>
-</map>

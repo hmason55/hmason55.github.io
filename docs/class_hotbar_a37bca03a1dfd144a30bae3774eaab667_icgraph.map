@@ -1,6 +1,0 @@
-<map id="Hotbar.EnableHotkeys" name="Hotbar.EnableHotkeys">
-<area shape="rect" id="node1" title=" " alt="" coords="665,5,817,32"/>
-<area shape="rect" id="node2" href="$class_shortcut_u_i.html#af20cdb51997f4ae7219a36a7bca851a3" title=" " alt="" coords="472,5,617,32"/>
-<area shape="rect" id="node3" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,5,424,32"/>
-<area shape="rect" id="node4" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,5,207,32"/>
-</map>

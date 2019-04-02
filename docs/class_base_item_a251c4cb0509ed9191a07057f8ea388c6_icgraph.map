@@ -1,5 +1,0 @@
-<map id="BaseItem.IsEquipment" name="BaseItem.IsEquipment">
-<area shape="rect" id="node1" title=" " alt="" coords="477,13,631,39"/>
-<area shape="rect" id="node2" href="$class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="5,5,193,47"/>
-<area shape="rect" id="node3" href="$class_bag_item_behaviour.html#a9dd6c0fb07dd87363f0198070a16cff7" title=" " alt="" coords="241,35,429,76"/>
-</map>
