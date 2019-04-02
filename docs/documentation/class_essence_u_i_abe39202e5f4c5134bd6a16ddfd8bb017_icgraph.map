@@ -1,0 +1,9 @@
+<map id="EssenceUI.PreviewUsage" name="EssenceUI.PreviewUsage">
+<area shape="rect" id="node1" title=" " alt="" coords="980,31,1151,57"/>
+<area shape="rect" id="node2" href="$class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="793,31,932,57"/>
+<area shape="rect" id="node3" href="$class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="591,5,745,32"/>
+<area shape="rect" id="node4" href="$class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="591,56,745,83"/>
+<area shape="rect" id="node5" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,56,543,83"/>
+<area shape="rect" id="node6" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,31,360,57"/>
+<area shape="rect" id="node7" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,49,184,90"/>
+</map>

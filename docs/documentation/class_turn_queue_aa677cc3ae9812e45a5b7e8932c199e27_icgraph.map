@@ -1,0 +1,7 @@
+<map id="TurnQueue.Add" name="TurnQueue.Add">
+<area shape="rect" id="node1" title=" " alt="" coords="475,31,587,57"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="255,5,427,32"/>
+<area shape="rect" id="node4" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="256,56,425,83"/>
+<area shape="rect" id="node3" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="41,5,171,32"/>
+<area shape="rect" id="node5" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
+</map>

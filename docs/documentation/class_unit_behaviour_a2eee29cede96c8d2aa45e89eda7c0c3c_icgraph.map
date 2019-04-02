@@ -1,0 +1,7 @@
+<map id="UnitBehaviour.SpawnSpellProjectiles" name="UnitBehaviour.SpawnSpellProjectiles">
+<area shape="rect" id="node1" title=" " alt="" coords="793,23,967,65"/>
+<area shape="rect" id="node2" href="$class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="591,31,745,57"/>
+<area shape="rect" id="node3" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,31,543,57"/>
+<area shape="rect" id="node4" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,5,360,32"/>
+<area shape="rect" id="node5" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,23,184,65"/>
+</map>

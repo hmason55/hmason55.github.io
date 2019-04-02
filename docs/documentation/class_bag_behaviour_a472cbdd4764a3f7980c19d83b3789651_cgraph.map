@@ -1,0 +1,12 @@
+<map id="BagBehaviour.EquipItem" name="BagBehaviour.EquipItem">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,168,83"/>
+<area shape="rect" id="node2" href="$class_bag.html#a975e4ef7a5647327225e5b587b32c066" title=" " alt="" coords="254,5,337,32"/>
+<area shape="rect" id="node3" href="$class_base_unit.html#a8b9c4263f81ef40c1841d26ee0573bce" title=" " alt="" coords="217,56,373,83"/>
+<area shape="rect" id="node4" href="$class_bag_behaviour.html#a1ab1c5f24022bf503ad3d3a18387515f" title=" " alt="" coords="216,107,375,133"/>
+<area shape="rect" id="node5" href="$class_bag_behaviour.html#ad2e50a51bbb8f9c90a3241dbce0f87c0" title=" " alt="" coords="423,70,631,111"/>
+<area shape="rect" id="node6" href="$class_base_unit.html#a15ea3ea70ab13cf8aa582b848cd0531b" title=" " alt="" coords="453,136,600,163"/>
+<area shape="rect" id="node7" href="$class_hotbar.html#a1e796a0a133ee0743aa8585c05980f9b" title=" " alt="" coords="697,111,814,137"/>
+<area shape="rect" id="node10" href="$class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856" title=" " alt="" coords="679,161,832,188"/>
+<area shape="rect" id="node8" href="$class_hotkey.html#a0b90f1841f8cbe70bf62447affd70bd1" title=" " alt="" coords="880,85,991,112"/>
+<area shape="rect" id="node9" href="$class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="882,136,989,163"/>
+</map>

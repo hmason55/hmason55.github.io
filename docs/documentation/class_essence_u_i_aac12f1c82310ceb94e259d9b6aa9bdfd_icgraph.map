@@ -1,0 +1,13 @@
+<map id="EssenceUI.SetFilledEssence" name="EssenceUI.SetFilledEssence">
+<area shape="rect" id="node1" title=" " alt="" coords="699,132,889,159"/>
+<area shape="rect" id="node2" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="481,31,651,57"/>
+<area shape="rect" id="node4" href="$class_essence_u_i.html#a26023c3d4977188014384a1a40eb3ad9" title=" " alt="" coords="495,132,637,159"/>
+<area shape="rect" id="node9" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="499,259,633,285"/>
+<area shape="rect" id="node3" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="232,5,433,32"/>
+<area shape="rect" id="node5" href="$class_combat_manager.html#a8d14cf9a8265e20264151a615e309f12" title=" " alt="" coords="238,56,427,83"/>
+<area shape="rect" id="node6" href="$class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="255,107,410,133"/>
+<area shape="rect" id="node7" href="$class_essence_u_i.html#a1fd3a11e5b47cd87758d337fe1f61384" title=" " alt="" coords="251,157,414,184"/>
+<area shape="rect" id="node8" href="$class_essence_u_i.html#a39b3c1ec97a29130e2e8ab4050921ed6" title=" " alt="" coords="239,208,426,235"/>
+<area shape="rect" id="node10" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="269,259,397,285"/>
+<area shape="rect" id="node11" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,277,184,318"/>
+</map>

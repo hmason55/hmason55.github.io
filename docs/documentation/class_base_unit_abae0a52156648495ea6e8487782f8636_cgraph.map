@@ -1,0 +1,9 @@
+<map id="BaseUnit.SetAsInterfaceTarget" name="BaseUnit.SetAsInterfaceTarget">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,205,108"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a15ea3ea70ab13cf8aa582b848cd0531b" title=" " alt="" coords="267,56,414,83"/>
+<area shape="rect" id="node7" href="$class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="253,107,428,133"/>
+<area shape="rect" id="node3" href="$class_hotbar.html#a1e796a0a133ee0743aa8585c05980f9b" title=" " alt="" coords="494,31,611,57"/>
+<area shape="rect" id="node6" href="$class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856" title=" " alt="" coords="476,81,629,108"/>
+<area shape="rect" id="node4" href="$class_hotkey.html#a0b90f1841f8cbe70bf62447affd70bd1" title=" " alt="" coords="677,5,788,32"/>
+<area shape="rect" id="node5" href="$class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="679,56,786,83"/>
+</map>
