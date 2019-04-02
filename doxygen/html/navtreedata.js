@@ -48,10 +48,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_animation_controller_8cs.html",
-"class_bag_item_behaviour.html#a7772dc51a9cde63e29f6a683f8fbb451",
-"class_biome_sprites.html#af23ad2a951ba13ed24370a3fe003bfa0",
-"class_effect.html#ae5beb1965b997d1521bc8a268e963883",
-"class_spell.html#ae1316e04f731859b193c8b5c77ca3c70a5a455a612047a34ede7a6c564fa67c0a"
+"class_base_item.html#a7b49af5c45c493b9ea7319de44c6c138",
+"class_character.html#aaefb65409260b3ad1511951aab1ddd6ca9f1ffde7012e729f41429a0b711823ab",
+"class_item_sprites.html#a456306becfba506b7560b25be43d97cf",
+"class_tile.html#a1baa5fe3ab8f887e8985a85fba21210a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
