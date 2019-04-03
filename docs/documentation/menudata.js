@@ -141,6 +141,4 @@ var menudata={children:[
 {text:"w",url:"functions_prop_w.html#index_w"},
 {text:"x",url:"functions_prop_x.html#index_x"},
 {text:"y",url:"functions_prop_y.html#index_y"},
-{text:"z",url:"functions_prop_z.html#index_z"}]}]}]},
-{text:"Files",url:"files.html",children:[
-{text:"File List",url:"files.html"}]}]}
+{text:"z",url:"functions_prop_z.html#index_z"}]}]}]}]}
