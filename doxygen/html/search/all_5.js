@@ -1,7 +1,6 @@
 var searchData=
 [
   ['effect',['Effect',['../class_effect.html',1,'Effect'],['../class_effect.html#a426033488b51897723a6aa15d1e66415',1,'Effect.Effect()'],['../class_effect.html#af2775716fce582c0a621f6c68ddb8574',1,'Effect.Effect(EffectType e, int d=0)'],['../class_effect.html#afc3ee0f70107f501148217c076092f40',1,'Effect.Effect(Preset p)']]],
-  ['effect_2ecs',['Effect.cs',['../_effect_8cs.html',1,'']]],
   ['effectdamagedelay',['effectDamageDelay',['../class_spell.html#a7f6820ee9c92e780cc1938addd9e6793',1,'Spell']]],
   ['effectdirection',['EffectDirection',['../class_spell.html#a3ad4cda146fea019297b35523ccb52d5',1,'Spell']]],
   ['effectorigin',['effectOrigin',['../class_spell.html#a05deca8c2c600bb4d7c06df0b0d4df41',1,'Spell']]],
@@ -41,7 +40,6 @@ var searchData=
   ['essencerecovery',['essenceRecovery',['../class_base_item.html#a47d64c0e1e672c7e26191d82ecb1c639',1,'BaseItem']]],
   ['essencetotal',['essenceTotal',['../class_base_item.html#a6f4e6b8312eda49aac9073e42ee19032',1,'BaseItem']]],
   ['essenceui',['EssenceUI',['../class_essence_u_i.html',1,'EssenceUI'],['../class_hotbar.html#a02baa28776d8464929571a32904d78a5',1,'Hotbar.essenceUI()']]],
-  ['essenceui_2ecs',['EssenceUI.cs',['../_essence_u_i_8cs.html',1,'']]],
   ['estimatedamage',['EstimateDamage',['../class_spell.html#aa5a9b6a6b13fcd1cfed9eb43e123ca23',1,'Spell']]],
   ['estotal',['esTotal',['../class_attributes.html#ac498aafac370d3b483ea00bbfde9802a',1,'Attributes']]],
   ['evade',['Evade',['../class_effect.html#a28d85888db94ec53ee9cb75e9706f6e4afcebb8bec493a6678a2758580bee43f9',1,'Effect']]],

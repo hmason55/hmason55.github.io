@@ -13,6 +13,5 @@ var searchData=
   ['wisdom',['wisdom',['../class_attributes.html#a48ec0beacd46bb9b9e206becde146d69',1,'Attributes']]],
   ['wizard',['wizard',['../class_base_unit.html#a086712791ce1a3cb5dc6448d8bbc1f62ad8d3a01ba7e5d44394b6f0a8533f4647',1,'BaseUnit']]],
   ['wooden_5fparma',['Wooden_Parma',['../class_base_item.html#add9920d2f5a4fa91752714a8f3ab424bae0e8b3d5572e4b8a0c69e297f44766f9',1,'BaseItem']]],
-  ['worlditembehaviour',['WorldItemBehaviour',['../class_world_item_behaviour.html',1,'']]],
-  ['worlditembehaviour_2ecs',['WorldItemBehaviour.cs',['../_world_item_behaviour_8cs.html',1,'']]]
+  ['worlditembehaviour',['WorldItemBehaviour',['../class_world_item_behaviour.html',1,'']]]
 ];

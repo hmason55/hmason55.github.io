@@ -1,0 +1,187 @@
+\hypertarget{class_base_terrain}{}\section{Base\+Terrain Class Reference}
+\label{class_base_terrain}\index{BaseTerrain@{BaseTerrain}}
+
+
+Collaboration diagram for Base\+Terrain\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_base_terrain__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9a}{Terrain\+Type}} \{ \newline
+\mbox{\hyperlink{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aaffe15f42468128e48325cf9206ab42e8}{Terrain\+Type.\+wall\+\_\+top}}, 
+\mbox{\hyperlink{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aa3efe6e3a4e45b10c24fca4149a87a786}{Terrain\+Type.\+wall\+\_\+side}}, 
+\mbox{\hyperlink{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aa578552719239a72a2d45ad422f67d24d}{Terrain\+Type.\+ground}}, 
+\mbox{\hyperlink{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aafc32e3a8457bbaec473b09d4462c1ecd}{Terrain\+Type.\+wall\+\_\+hidden}}, 
+\newline
+\mbox{\hyperlink{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aa8630ecda1c772caaa8625ab886c66db8}{Terrain\+Type.\+ground\+\_\+hidden}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_terrain_a148b6e7aa268ebec1ab02c5e9f01f92d}{Base\+Terrain}} (\mbox{\hyperlink{class_biome}{Biome}} b, string c)
+\item 
+void \mbox{\hyperlink{class_base_terrain_aff9e343986e2b76d0fc22be3a5e246dc}{Initialize}} (\mbox{\hyperlink{class_sprite_manager}{Sprite\+Manager}} sprite\+Manager, \mbox{\hyperlink{class_dungeon_manager}{Dungeon\+Manager}} dungeon\+Manager, int x, int y)
+\item 
+void \mbox{\hyperlink{class_base_terrain_abda1c3ac02dc72095eb8c50ef68f8a2e}{Optimize}} (\mbox{\hyperlink{class_sprite_manager}{Sprite\+Manager}} sprite\+Manager, \mbox{\hyperlink{class_dungeon_manager}{Dungeon\+Manager}} dungeon\+Manager, int x, int y)
+\item 
+void \mbox{\hyperlink{class_base_terrain_ac52fb05dde7ffc3a3d88af0122516052}{Shade}} (\mbox{\hyperlink{class_sprite_manager}{Sprite\+Manager}} sprite\+Manager, \mbox{\hyperlink{class_dungeon_manager}{Dungeon\+Manager}} dungeon\+Manager, int x, int y)
+\item 
+void \mbox{\hyperlink{class_base_terrain_ada3cddbd511be2890cbb9635d997441b}{Load\+Texture}} (\mbox{\hyperlink{class_sprite_manager}{Sprite\+Manager}} sprite\+Manager)
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_base_terrain_a403d7a199581bc910ecbf15009b532a6}{walkable}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_biome}{Biome}} \mbox{\hyperlink{class_base_terrain_a89f7a3d77182f51a257cf1f503bb6fe9}{biome}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9a}{Terrain\+Type}} \mbox{\hyperlink{class_base_terrain_a381e5f59e57a301a70f79c32cf3ea300}{terrain\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Sprite \mbox{\hyperlink{class_base_terrain_a0af7f55356e035cde6cedadae6fbb34d}{sprite}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_base_terrain_a845e9830b7282650856b64db83d7633b}{render}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_base_terrain_a5c1d125049a42d2b25ef2e09166bbd91}{shaded}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Sprite \mbox{\hyperlink{class_base_terrain_a6e60ba346bed94af204ded4f7fcf16ab}{shaded\+Sprite}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9a}\label{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9a}} 
+\index{BaseTerrain@{BaseTerrain}!TerrainType@{TerrainType}}
+\index{TerrainType@{TerrainType}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{TerrainType}{TerrainType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9a}{Base\+Terrain.\+Terrain\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wall\_top@{wall\_top}!BaseTerrain@{BaseTerrain}}\index{BaseTerrain@{BaseTerrain}!wall\_top@{wall\_top}}}\mbox{\Hypertarget{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aaffe15f42468128e48325cf9206ab42e8}\label{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aaffe15f42468128e48325cf9206ab42e8}} 
+wall\+\_\+top&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wall\_side@{wall\_side}!BaseTerrain@{BaseTerrain}}\index{BaseTerrain@{BaseTerrain}!wall\_side@{wall\_side}}}\mbox{\Hypertarget{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aa3efe6e3a4e45b10c24fca4149a87a786}\label{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aa3efe6e3a4e45b10c24fca4149a87a786}} 
+wall\+\_\+side&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ground@{ground}!BaseTerrain@{BaseTerrain}}\index{BaseTerrain@{BaseTerrain}!ground@{ground}}}\mbox{\Hypertarget{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aa578552719239a72a2d45ad422f67d24d}\label{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aa578552719239a72a2d45ad422f67d24d}} 
+ground&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wall\_hidden@{wall\_hidden}!BaseTerrain@{BaseTerrain}}\index{BaseTerrain@{BaseTerrain}!wall\_hidden@{wall\_hidden}}}\mbox{\Hypertarget{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aafc32e3a8457bbaec473b09d4462c1ecd}\label{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aafc32e3a8457bbaec473b09d4462c1ecd}} 
+wall\+\_\+hidden&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ground\_hidden@{ground\_hidden}!BaseTerrain@{BaseTerrain}}\index{BaseTerrain@{BaseTerrain}!ground\_hidden@{ground\_hidden}}}\mbox{\Hypertarget{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aa8630ecda1c772caaa8625ab886c66db8}\label{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9aa8630ecda1c772caaa8625ab886c66db8}} 
+ground\+\_\+hidden&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_base_terrain_a148b6e7aa268ebec1ab02c5e9f01f92d}\label{class_base_terrain_a148b6e7aa268ebec1ab02c5e9f01f92d}} 
+\index{BaseTerrain@{BaseTerrain}!BaseTerrain@{BaseTerrain}}
+\index{BaseTerrain@{BaseTerrain}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{BaseTerrain()}{BaseTerrain()}}
+{\footnotesize\ttfamily Base\+Terrain.\+Base\+Terrain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_biome}{Biome}}}]{b,  }\item[{string}]{c }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_base_terrain_aff9e343986e2b76d0fc22be3a5e246dc}\label{class_base_terrain_aff9e343986e2b76d0fc22be3a5e246dc}} 
+\index{BaseTerrain@{BaseTerrain}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Base\+Terrain.\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite_manager}{Sprite\+Manager}}}]{sprite\+Manager,  }\item[{\mbox{\hyperlink{class_dungeon_manager}{Dungeon\+Manager}}}]{dungeon\+Manager,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_base_terrain_aff9e343986e2b76d0fc22be3a5e246dc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_base_terrain_ada3cddbd511be2890cbb9635d997441b}\label{class_base_terrain_ada3cddbd511be2890cbb9635d997441b}} 
+\index{BaseTerrain@{BaseTerrain}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{LoadTexture()}{LoadTexture()}}
+{\footnotesize\ttfamily void Base\+Terrain.\+Load\+Texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite_manager}{Sprite\+Manager}}}]{sprite\+Manager }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_base_terrain_ada3cddbd511be2890cbb9635d997441b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_base_terrain_abda1c3ac02dc72095eb8c50ef68f8a2e}\label{class_base_terrain_abda1c3ac02dc72095eb8c50ef68f8a2e}} 
+\index{BaseTerrain@{BaseTerrain}!Optimize@{Optimize}}
+\index{Optimize@{Optimize}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{Optimize()}{Optimize()}}
+{\footnotesize\ttfamily void Base\+Terrain.\+Optimize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite_manager}{Sprite\+Manager}}}]{sprite\+Manager,  }\item[{\mbox{\hyperlink{class_dungeon_manager}{Dungeon\+Manager}}}]{dungeon\+Manager,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_base_terrain_ac52fb05dde7ffc3a3d88af0122516052}\label{class_base_terrain_ac52fb05dde7ffc3a3d88af0122516052}} 
+\index{BaseTerrain@{BaseTerrain}!Shade@{Shade}}
+\index{Shade@{Shade}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{Shade()}{Shade()}}
+{\footnotesize\ttfamily void Base\+Terrain.\+Shade (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sprite_manager}{Sprite\+Manager}}}]{sprite\+Manager,  }\item[{\mbox{\hyperlink{class_dungeon_manager}{Dungeon\+Manager}}}]{dungeon\+Manager,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_base_terrain_a89f7a3d77182f51a257cf1f503bb6fe9}\label{class_base_terrain_a89f7a3d77182f51a257cf1f503bb6fe9}} 
+\index{BaseTerrain@{BaseTerrain}!biome@{biome}}
+\index{biome@{biome}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{biome}{biome}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_biome}{Biome}} Base\+Terrain.\+biome\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_base_terrain_a845e9830b7282650856b64db83d7633b}\label{class_base_terrain_a845e9830b7282650856b64db83d7633b}} 
+\index{BaseTerrain@{BaseTerrain}!render@{render}}
+\index{render@{render}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{render}{render}}
+{\footnotesize\ttfamily bool Base\+Terrain.\+render\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_base_terrain_a5c1d125049a42d2b25ef2e09166bbd91}\label{class_base_terrain_a5c1d125049a42d2b25ef2e09166bbd91}} 
+\index{BaseTerrain@{BaseTerrain}!shaded@{shaded}}
+\index{shaded@{shaded}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{shaded}{shaded}}
+{\footnotesize\ttfamily bool Base\+Terrain.\+shaded\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_base_terrain_a6e60ba346bed94af204ded4f7fcf16ab}\label{class_base_terrain_a6e60ba346bed94af204ded4f7fcf16ab}} 
+\index{BaseTerrain@{BaseTerrain}!shadedSprite@{shadedSprite}}
+\index{shadedSprite@{shadedSprite}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{shadedSprite}{shadedSprite}}
+{\footnotesize\ttfamily Sprite Base\+Terrain.\+shaded\+Sprite\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_base_terrain_a0af7f55356e035cde6cedadae6fbb34d}\label{class_base_terrain_a0af7f55356e035cde6cedadae6fbb34d}} 
+\index{BaseTerrain@{BaseTerrain}!sprite@{sprite}}
+\index{sprite@{sprite}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily Sprite Base\+Terrain.\+sprite\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_base_terrain_a381e5f59e57a301a70f79c32cf3ea300}\label{class_base_terrain_a381e5f59e57a301a70f79c32cf3ea300}} 
+\index{BaseTerrain@{BaseTerrain}!terrainType@{terrainType}}
+\index{terrainType@{terrainType}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{terrainType}{terrainType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_base_terrain_a5b782f4de5e1a2ca1343b4aa89a7dc9a}{Terrain\+Type}} Base\+Terrain.\+terrain\+Type\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_base_terrain_a403d7a199581bc910ecbf15009b532a6}\label{class_base_terrain_a403d7a199581bc910ecbf15009b532a6}} 
+\index{BaseTerrain@{BaseTerrain}!walkable@{walkable}}
+\index{walkable@{walkable}!BaseTerrain@{BaseTerrain}}
+\subsubsection{\texorpdfstring{walkable}{walkable}}
+{\footnotesize\ttfamily bool Base\+Terrain.\+walkable\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Hunter/\+Documents/\+Git\+Hub/\+F\+T\+D/\+From\+The\+Dregs/\+Assets/\+Scripts/Base\+Terrain.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,414 @@
+\hypertarget{class_dungeon_manager}{}\section{Dungeon\+Manager Class Reference}
+\label{class_dungeon_manager}\index{DungeonManager@{DungeonManager}}
+
+
+Inheritance diagram for Dungeon\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{class_dungeon_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Dungeon\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{class_dungeon_manager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35}{Load\+State}} \{ \mbox{\hyperlink{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35aa5ae20aa7fda5bd38bf0dce98e65bd2d}{Load\+State.\+Unloaded}}, 
+\mbox{\hyperlink{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35a62168dff2fc801c4ff6ee24619bc314c}{Load\+State.\+Unloading}}, 
+\mbox{\hyperlink{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35a16bfbf9c462762cf1cba4134ec53c504}{Load\+State.\+Loading}}, 
+\mbox{\hyperlink{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35a7381d487d18845b379422325c0a768d6}{Load\+State.\+Loaded}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Zone}} \{ \newline
+\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a2e4b7e66cd3715235c82aa017ee1192e}{Zone.\+Hub}}, 
+\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a27f237e6b7f96587b6202ff3607ad88a}{Zone.\+A1}}, 
+\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431ac6bdf6f65f3845da9085e9ae5790b494}{Zone.\+A2}}, 
+\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a6593d7b12fd418cdb35bbf438de72f66}{Zone.\+A3}}, 
+\newline
+\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a0c2f3adf2a48bab3adb470f4da57f3d0}{Zone.\+A4}}, 
+\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431aa603905470e2a5b8c13e96b579ef0dba}{Zone.\+Debug}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_ac2c0ce668813e7b0a34b935364a5650f}{Load}} ()
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_af5da9360e25192d468c5e8461ff19f20}{Reload}} (\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Zone}} z)
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_a010c39db85d745cd24e4e960d248ab4a}{Unload}} (\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Zone}} z)
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_afc7ff9dc122b876f72a4f238496f3a26}{Init\+Zone}} (\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Zone}} z)
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_a5a401d26555b3eff094668620d4857ca}{Build\+Object\+Pools}} ()
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_a693d00ae1ca65d58dab634deaa9cfec9}{Clear\+Object\+Pools}} ()
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_a980762c66ae4ae92ce3d8caa42f7fe61}{Update\+Object\+Pool}} ()
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_ab7edf3b19e13892178a34ece10f4c5d5}{Free\+Objects}} ()
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_a196f2f6754dae0d38307197bbbf033c4}{Allocate\+Objects}} ()
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_a384a7907b2dba3017c3b4870c089e3ff}{Allocate\+Unit}} (Vector2\+Int position)
+\item 
+void \mbox{\hyperlink{class_dungeon_manager_a89bde2dbae3ffb1dd89635df4a8df153}{Render\+Tiles}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vector2\+Int \mbox{\hyperlink{class_dungeon_manager_aadb66fc96231fe5b03f36fe52d602d23}{exit\+Position}} = new Vector2\+Int(-\/1, -\/1)
+\item 
+float \mbox{\hyperlink{class_dungeon_manager_a5c9f7b979abf6f84f53207534b4411fd}{enemy\+Unit\+Density}}
+\item 
+float \mbox{\hyperlink{class_dungeon_manager_ae78f0aa119dcc211708cf8f3424534a6}{small\+Decoration\+Density}}
+\item 
+float \mbox{\hyperlink{class_dungeon_manager_ac8121ec063d2906a27e427909dda7b98}{container\+Decoration\+Density}}
+\item 
+float \mbox{\hyperlink{class_dungeon_manager_afe07ede1aa21fca0021660f0c0b1a536}{trap\+Decoration\+Density}}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_dungeon_manager_a4090d1011387dda52819df07e9e76d6a}{Tile\+Width}} = 48
+\item 
+static int \mbox{\hyperlink{class_dungeon_manager_aa96f4d9660ed44bb2c21b8b11ec2dbc3}{Tile\+Height}} = 48
+\item 
+static int \mbox{\hyperlink{class_dungeon_manager_ac2d375dcf35a5a62c98fce7bc6dd44e0}{dungeon\+Dimension}} = 3
+\item 
+static int \mbox{\hyperlink{class_dungeon_manager_a36a67a913c6a4b58b2f32094c23df9e2}{chunk\+Dimension}} = 16
+\item 
+static int \mbox{\hyperlink{class_dungeon_manager_ae88e176f6ea28c2dfb59af8db9967e88}{dimension}} = \mbox{\hyperlink{class_dungeon_manager_ac2d375dcf35a5a62c98fce7bc6dd44e0}{dungeon\+Dimension}} $\ast$ \mbox{\hyperlink{class_dungeon_manager_a36a67a913c6a4b58b2f32094c23df9e2}{chunk\+Dimension}}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_dungeon_manager_a6f04a65ae61dd9b11d58489272b5fa70}{limit\+Rendering}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+Vector2\+Int \mbox{\hyperlink{class_dungeon_manager_af1c37437d9ec1f72c4dc6a0300d226df}{render\+Origin}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_tile}{Tile}} \mbox{[},\mbox{]} \mbox{\hyperlink{class_dungeon_manager_a35b1117b28fd54ff805320dc50fd206d}{tiles}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Zone}} \mbox{\hyperlink{class_dungeon_manager_a4a1b9933b14faea37aeb07bd6f290774}{zone}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35}\label{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35}} 
+\index{DungeonManager@{DungeonManager}!LoadState@{LoadState}}
+\index{LoadState@{LoadState}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{LoadState}{LoadState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35}{Dungeon\+Manager.\+Load\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unloaded@{Unloaded}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!Unloaded@{Unloaded}}}\mbox{\Hypertarget{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35aa5ae20aa7fda5bd38bf0dce98e65bd2d}\label{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35aa5ae20aa7fda5bd38bf0dce98e65bd2d}} 
+Unloaded&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unloading@{Unloading}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!Unloading@{Unloading}}}\mbox{\Hypertarget{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35a62168dff2fc801c4ff6ee24619bc314c}\label{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35a62168dff2fc801c4ff6ee24619bc314c}} 
+Unloading&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Loading@{Loading}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!Loading@{Loading}}}\mbox{\Hypertarget{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35a16bfbf9c462762cf1cba4134ec53c504}\label{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35a16bfbf9c462762cf1cba4134ec53c504}} 
+Loading&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Loaded@{Loaded}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!Loaded@{Loaded}}}\mbox{\Hypertarget{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35a7381d487d18845b379422325c0a768d6}\label{class_dungeon_manager_ab6a6a345cf2a16a039df2f5ca0039a35a7381d487d18845b379422325c0a768d6}} 
+Loaded&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}\label{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}} 
+\index{DungeonManager@{DungeonManager}!Zone@{Zone}}
+\index{Zone@{Zone}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{Zone}{Zone}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Dungeon\+Manager.\+Zone}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Hub@{Hub}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!Hub@{Hub}}}\mbox{\Hypertarget{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a2e4b7e66cd3715235c82aa017ee1192e}\label{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a2e4b7e66cd3715235c82aa017ee1192e}} 
+Hub&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{A1@{A1}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!A1@{A1}}}\mbox{\Hypertarget{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a27f237e6b7f96587b6202ff3607ad88a}\label{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a27f237e6b7f96587b6202ff3607ad88a}} 
+A1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{A2@{A2}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!A2@{A2}}}\mbox{\Hypertarget{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431ac6bdf6f65f3845da9085e9ae5790b494}\label{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431ac6bdf6f65f3845da9085e9ae5790b494}} 
+A2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{A3@{A3}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!A3@{A3}}}\mbox{\Hypertarget{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a6593d7b12fd418cdb35bbf438de72f66}\label{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a6593d7b12fd418cdb35bbf438de72f66}} 
+A3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{A4@{A4}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!A4@{A4}}}\mbox{\Hypertarget{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a0c2f3adf2a48bab3adb470f4da57f3d0}\label{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431a0c2f3adf2a48bab3adb470f4da57f3d0}} 
+A4&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Debug@{Debug}!DungeonManager@{DungeonManager}}\index{DungeonManager@{DungeonManager}!Debug@{Debug}}}\mbox{\Hypertarget{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431aa603905470e2a5b8c13e96b579ef0dba}\label{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431aa603905470e2a5b8c13e96b579ef0dba}} 
+Debug&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_dungeon_manager_a196f2f6754dae0d38307197bbbf033c4}\label{class_dungeon_manager_a196f2f6754dae0d38307197bbbf033c4}} 
+\index{DungeonManager@{DungeonManager}!AllocateObjects@{AllocateObjects}}
+\index{AllocateObjects@{AllocateObjects}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{AllocateObjects()}{AllocateObjects()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Allocate\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_a196f2f6754dae0d38307197bbbf033c4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_a196f2f6754dae0d38307197bbbf033c4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_dungeon_manager_a384a7907b2dba3017c3b4870c089e3ff}\label{class_dungeon_manager_a384a7907b2dba3017c3b4870c089e3ff}} 
+\index{DungeonManager@{DungeonManager}!AllocateUnit@{AllocateUnit}}
+\index{AllocateUnit@{AllocateUnit}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{AllocateUnit()}{AllocateUnit()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Allocate\+Unit (\begin{DoxyParamCaption}\item[{Vector2\+Int}]{position }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_dungeon_manager_a5a401d26555b3eff094668620d4857ca}\label{class_dungeon_manager_a5a401d26555b3eff094668620d4857ca}} 
+\index{DungeonManager@{DungeonManager}!BuildObjectPools@{BuildObjectPools}}
+\index{BuildObjectPools@{BuildObjectPools}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{BuildObjectPools()}{BuildObjectPools()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Build\+Object\+Pools (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_a5a401d26555b3eff094668620d4857ca_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_dungeon_manager_a693d00ae1ca65d58dab634deaa9cfec9}\label{class_dungeon_manager_a693d00ae1ca65d58dab634deaa9cfec9}} 
+\index{DungeonManager@{DungeonManager}!ClearObjectPools@{ClearObjectPools}}
+\index{ClearObjectPools@{ClearObjectPools}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{ClearObjectPools()}{ClearObjectPools()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Clear\+Object\+Pools (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_a693d00ae1ca65d58dab634deaa9cfec9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_dungeon_manager_ab7edf3b19e13892178a34ece10f4c5d5}\label{class_dungeon_manager_ab7edf3b19e13892178a34ece10f4c5d5}} 
+\index{DungeonManager@{DungeonManager}!FreeObjects@{FreeObjects}}
+\index{FreeObjects@{FreeObjects}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{FreeObjects()}{FreeObjects()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Free\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_ab7edf3b19e13892178a34ece10f4c5d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_ab7edf3b19e13892178a34ece10f4c5d5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_dungeon_manager_afc7ff9dc122b876f72a4f238496f3a26}\label{class_dungeon_manager_afc7ff9dc122b876f72a4f238496f3a26}} 
+\index{DungeonManager@{DungeonManager}!InitZone@{InitZone}}
+\index{InitZone@{InitZone}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{InitZone()}{InitZone()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Init\+Zone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Zone}}}]{z }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_afc7ff9dc122b876f72a4f238496f3a26_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_dungeon_manager_ac2c0ce668813e7b0a34b935364a5650f}\label{class_dungeon_manager_ac2c0ce668813e7b0a34b935364a5650f}} 
+\index{DungeonManager@{DungeonManager}!Load@{Load}}
+\index{Load@{Load}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Load (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_ac2c0ce668813e7b0a34b935364a5650f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_dungeon_manager_af5da9360e25192d468c5e8461ff19f20}\label{class_dungeon_manager_af5da9360e25192d468c5e8461ff19f20}} 
+\index{DungeonManager@{DungeonManager}!Reload@{Reload}}
+\index{Reload@{Reload}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{Reload()}{Reload()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Reload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Zone}}}]{z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_dungeon_manager_a89bde2dbae3ffb1dd89635df4a8df153}\label{class_dungeon_manager_a89bde2dbae3ffb1dd89635df4a8df153}} 
+\index{DungeonManager@{DungeonManager}!RenderTiles@{RenderTiles}}
+\index{RenderTiles@{RenderTiles}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{RenderTiles()}{RenderTiles()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Render\+Tiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_a89bde2dbae3ffb1dd89635df4a8df153_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_dungeon_manager_a010c39db85d745cd24e4e960d248ab4a}\label{class_dungeon_manager_a010c39db85d745cd24e4e960d248ab4a}} 
+\index{DungeonManager@{DungeonManager}!Unload@{Unload}}
+\index{Unload@{Unload}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{Unload()}{Unload()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Unload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Zone}}}]{z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_dungeon_manager_a980762c66ae4ae92ce3d8caa42f7fe61}\label{class_dungeon_manager_a980762c66ae4ae92ce3d8caa42f7fe61}} 
+\index{DungeonManager@{DungeonManager}!UpdateObjectPool@{UpdateObjectPool}}
+\index{UpdateObjectPool@{UpdateObjectPool}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{UpdateObjectPool()}{UpdateObjectPool()}}
+{\footnotesize\ttfamily void Dungeon\+Manager.\+Update\+Object\+Pool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_a980762c66ae4ae92ce3d8caa42f7fe61_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_dungeon_manager_a980762c66ae4ae92ce3d8caa42f7fe61_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_dungeon_manager_a36a67a913c6a4b58b2f32094c23df9e2}\label{class_dungeon_manager_a36a67a913c6a4b58b2f32094c23df9e2}} 
+\index{DungeonManager@{DungeonManager}!chunkDimension@{chunkDimension}}
+\index{chunkDimension@{chunkDimension}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{chunkDimension}{chunkDimension}}
+{\footnotesize\ttfamily int Dungeon\+Manager.\+chunk\+Dimension = 16\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_dungeon_manager_ac8121ec063d2906a27e427909dda7b98}\label{class_dungeon_manager_ac8121ec063d2906a27e427909dda7b98}} 
+\index{DungeonManager@{DungeonManager}!containerDecorationDensity@{containerDecorationDensity}}
+\index{containerDecorationDensity@{containerDecorationDensity}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{containerDecorationDensity}{containerDecorationDensity}}
+{\footnotesize\ttfamily float Dungeon\+Manager.\+container\+Decoration\+Density}
+
+\mbox{\Hypertarget{class_dungeon_manager_ae88e176f6ea28c2dfb59af8db9967e88}\label{class_dungeon_manager_ae88e176f6ea28c2dfb59af8db9967e88}} 
+\index{DungeonManager@{DungeonManager}!dimension@{dimension}}
+\index{dimension@{dimension}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{dimension}{dimension}}
+{\footnotesize\ttfamily int Dungeon\+Manager.\+dimension = \mbox{\hyperlink{class_dungeon_manager_ac2d375dcf35a5a62c98fce7bc6dd44e0}{dungeon\+Dimension}} $\ast$ \mbox{\hyperlink{class_dungeon_manager_a36a67a913c6a4b58b2f32094c23df9e2}{chunk\+Dimension}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_dungeon_manager_ac2d375dcf35a5a62c98fce7bc6dd44e0}\label{class_dungeon_manager_ac2d375dcf35a5a62c98fce7bc6dd44e0}} 
+\index{DungeonManager@{DungeonManager}!dungeonDimension@{dungeonDimension}}
+\index{dungeonDimension@{dungeonDimension}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{dungeonDimension}{dungeonDimension}}
+{\footnotesize\ttfamily int Dungeon\+Manager.\+dungeon\+Dimension = 3\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_dungeon_manager_a5c9f7b979abf6f84f53207534b4411fd}\label{class_dungeon_manager_a5c9f7b979abf6f84f53207534b4411fd}} 
+\index{DungeonManager@{DungeonManager}!enemyUnitDensity@{enemyUnitDensity}}
+\index{enemyUnitDensity@{enemyUnitDensity}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{enemyUnitDensity}{enemyUnitDensity}}
+{\footnotesize\ttfamily float Dungeon\+Manager.\+enemy\+Unit\+Density}
+
+\mbox{\Hypertarget{class_dungeon_manager_aadb66fc96231fe5b03f36fe52d602d23}\label{class_dungeon_manager_aadb66fc96231fe5b03f36fe52d602d23}} 
+\index{DungeonManager@{DungeonManager}!exitPosition@{exitPosition}}
+\index{exitPosition@{exitPosition}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{exitPosition}{exitPosition}}
+{\footnotesize\ttfamily Vector2\+Int Dungeon\+Manager.\+exit\+Position = new Vector2\+Int(-\/1, -\/1)}
+
+\mbox{\Hypertarget{class_dungeon_manager_ae78f0aa119dcc211708cf8f3424534a6}\label{class_dungeon_manager_ae78f0aa119dcc211708cf8f3424534a6}} 
+\index{DungeonManager@{DungeonManager}!smallDecorationDensity@{smallDecorationDensity}}
+\index{smallDecorationDensity@{smallDecorationDensity}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{smallDecorationDensity}{smallDecorationDensity}}
+{\footnotesize\ttfamily float Dungeon\+Manager.\+small\+Decoration\+Density}
+
+\mbox{\Hypertarget{class_dungeon_manager_aa96f4d9660ed44bb2c21b8b11ec2dbc3}\label{class_dungeon_manager_aa96f4d9660ed44bb2c21b8b11ec2dbc3}} 
+\index{DungeonManager@{DungeonManager}!TileHeight@{TileHeight}}
+\index{TileHeight@{TileHeight}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{TileHeight}{TileHeight}}
+{\footnotesize\ttfamily int Dungeon\+Manager.\+Tile\+Height = 48\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_dungeon_manager_a4090d1011387dda52819df07e9e76d6a}\label{class_dungeon_manager_a4090d1011387dda52819df07e9e76d6a}} 
+\index{DungeonManager@{DungeonManager}!TileWidth@{TileWidth}}
+\index{TileWidth@{TileWidth}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{TileWidth}{TileWidth}}
+{\footnotesize\ttfamily int Dungeon\+Manager.\+Tile\+Width = 48\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_dungeon_manager_afe07ede1aa21fca0021660f0c0b1a536}\label{class_dungeon_manager_afe07ede1aa21fca0021660f0c0b1a536}} 
+\index{DungeonManager@{DungeonManager}!trapDecorationDensity@{trapDecorationDensity}}
+\index{trapDecorationDensity@{trapDecorationDensity}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{trapDecorationDensity}{trapDecorationDensity}}
+{\footnotesize\ttfamily float Dungeon\+Manager.\+trap\+Decoration\+Density}
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_dungeon_manager_a6f04a65ae61dd9b11d58489272b5fa70}\label{class_dungeon_manager_a6f04a65ae61dd9b11d58489272b5fa70}} 
+\index{DungeonManager@{DungeonManager}!limitRendering@{limitRendering}}
+\index{limitRendering@{limitRendering}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{limitRendering}{limitRendering}}
+{\footnotesize\ttfamily bool Dungeon\+Manager.\+limit\+Rendering\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_dungeon_manager_af1c37437d9ec1f72c4dc6a0300d226df}\label{class_dungeon_manager_af1c37437d9ec1f72c4dc6a0300d226df}} 
+\index{DungeonManager@{DungeonManager}!renderOrigin@{renderOrigin}}
+\index{renderOrigin@{renderOrigin}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{renderOrigin}{renderOrigin}}
+{\footnotesize\ttfamily Vector2\+Int Dungeon\+Manager.\+render\+Origin\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_dungeon_manager_a35b1117b28fd54ff805320dc50fd206d}\label{class_dungeon_manager_a35b1117b28fd54ff805320dc50fd206d}} 
+\index{DungeonManager@{DungeonManager}!tiles@{tiles}}
+\index{tiles@{tiles}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{tiles}{tiles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_tile}{Tile}} \mbox{[},\mbox{]} Dungeon\+Manager.\+tiles\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_dungeon_manager_a4a1b9933b14faea37aeb07bd6f290774}\label{class_dungeon_manager_a4a1b9933b14faea37aeb07bd6f290774}} 
+\index{DungeonManager@{DungeonManager}!zone@{zone}}
+\index{zone@{zone}!DungeonManager@{DungeonManager}}
+\subsubsection{\texorpdfstring{zone}{zone}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_dungeon_manager_a6558d4a01889674bf25c798f1b90a431}{Zone}} Dungeon\+Manager.\+zone\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Hunter/\+Documents/\+Git\+Hub/\+F\+T\+D/\+From\+The\+Dregs/\+Assets/\+Scripts/Dungeon\+Manager.\+cs\end{DoxyCompactItemize}

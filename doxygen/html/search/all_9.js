@@ -36,7 +36,5 @@ var searchData=
   ['item',['item',['../class_bag_item_behaviour.html#aae12bd30d28c11b793bd8db232e9c2a2',1,'BagItemBehaviour']]],
   ['items',['items',['../class_bag.html#a06d313b5ecfa35740d11e1613d1a7695',1,'Bag.items()'],['../class_sprite_manager.html#a9ff4e140b84b106de6f88d7b97d61483',1,'SpriteManager.items()']]],
   ['itemsprites',['ItemSprites',['../class_item_sprites.html',1,'']]],
-  ['itemsprites_2ecs',['ItemSprites.cs',['../_item_sprites_8cs.html',1,'']]],
-  ['itemtooltip',['ItemTooltip',['../class_item_tooltip.html',1,'']]],
-  ['itemtooltip_2ecs',['ItemTooltip.cs',['../_item_tooltip_8cs.html',1,'']]]
+  ['itemtooltip',['ItemTooltip',['../class_item_tooltip.html',1,'']]]
 ];

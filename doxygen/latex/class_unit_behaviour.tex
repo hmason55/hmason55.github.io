@@ -1,0 +1,485 @@
+\hypertarget{class_unit_behaviour}{}\section{Unit\+Behaviour Class Reference}
+\label{class_unit_behaviour}\index{UnitBehaviour@{UnitBehaviour}}
+
+
+Inheritance diagram for Unit\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{class_unit_behaviour__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Unit\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{class_unit_behaviour__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a544570d55168594c1e4502dbe5c9d6a8}{Load\+Sprites}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a559fdec9ef2c1c1a6c1a863cb868bce5}{Update\+Sprite}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a41b8d7f5a98e21449eafe21a31707b1d}{Show\+Unit}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_aaf48af005978a326a61c98905630e469}{Hide\+Unit}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_adf2d07785a2cc3076363ad5dd0962b9c}{Unset}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a0cf70610b8aef46ef592819496ac7950}{Show\+Intent}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a9ba9de594c111333c048b477dd295025}{Hide\+Intent}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a38efbe995d8d2f3c522cb2fa076e79cc}{Update\+Intent}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a7e978454f207985987f6088c037b9c5f}{Transfer}} (\mbox{\hyperlink{class_tile}{Tile}} t, \mbox{\hyperlink{class_base_unit}{Base\+Unit}} b)
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a89fa86241b11f695b89b7143fa4f88ec}{Clear}} (bool preserve\+Render\+State=false)
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a9a32f3234ea6b89f686c6cd55d924348}{Kill}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a4b2664ef7a33e795220d587cb789d169}{Return}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a46ff5685dd97f930e6e2a835e01efb4d}{Move\+From\+To}} (Vector2\+Int from, Vector2\+Int to, float duration)
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_aa4e86ce34131fe81ecef7a56855f8d94}{Set\+Input\+Cooldown}} (\mbox{\hyperlink{class_base_unit}{Base\+Unit}} b\+Unit, float delay=0.\+5f, bool recast=false)
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a2eee29cede96c8d2aa45e89eda7c0c3c}{Spawn\+Spell\+Projectiles}} (\mbox{\hyperlink{class_spell}{Spell}} spell)
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a558929aaa9173e1a3b9dfecd8674660f}{Spawn\+Spell\+Effect}} (\mbox{\hyperlink{class_spell}{Spell}} spell)
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a19e4ade6b8de90c269e3ed840d0c9f84}{Reset\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_unit_behaviour_a17b46e508ee650f487d4bf79608da4eb}{Spawn\+Death\+Particles}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Vector2\+Int \mbox{\hyperlink{class_unit_behaviour_ae1d622ff10d142433b35f6c2352b97e4}{p}}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tile}{Tile}} \mbox{\hyperlink{class_unit_behaviour_a88e52afa84a4a9615e6cba0d610af427}{tile}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_base_unit}{Base\+Unit}} \mbox{\hyperlink{class_unit_behaviour_a05cd74b1093c4a86d9a3556af9b3dad3}{base\+Unit}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Image \mbox{\hyperlink{class_unit_behaviour_a0afb662d96ad5a159fefbac272992f33}{unit\+Primary\+Image}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+Image \mbox{\hyperlink{class_unit_behaviour_a5525b89693e66bdf365c80da19b7be5b}{unit\+Secondary\+Image}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+Image \mbox{\hyperlink{class_unit_behaviour_aee71a6c63565092ebb1b0db713966d5e}{unit\+Armor\+Image}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+Image \mbox{\hyperlink{class_unit_behaviour_a8e85eeaf7ce34b0b04a96258aacf02d7}{unit\+Skin\+Image}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+Image \mbox{\hyperlink{class_unit_behaviour_a6b47dd14b934843a2a09bc912abac2f3}{unit\+Image}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+Image \mbox{\hyperlink{class_unit_behaviour_a71c6dafe4e7e8c204bfa2a0c131a8f43}{shadow\+Image}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_unit_behaviour_a967462055b4f06234aa94f867b162658}{render\+Flag}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_unit_behaviour_a89fa86241b11f695b89b7143fa4f88ec}\label{class_unit_behaviour_a89fa86241b11f695b89b7143fa4f88ec}} 
+\index{UnitBehaviour@{UnitBehaviour}!Clear@{Clear}}
+\index{Clear@{Clear}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Clear (\begin{DoxyParamCaption}\item[{bool}]{preserve\+Render\+State = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a89fa86241b11f695b89b7143fa4f88ec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a89fa86241b11f695b89b7143fa4f88ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a9ba9de594c111333c048b477dd295025}\label{class_unit_behaviour_a9ba9de594c111333c048b477dd295025}} 
+\index{UnitBehaviour@{UnitBehaviour}!HideIntent@{HideIntent}}
+\index{HideIntent@{HideIntent}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{HideIntent()}{HideIntent()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Hide\+Intent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a9ba9de594c111333c048b477dd295025_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_aaf48af005978a326a61c98905630e469}\label{class_unit_behaviour_aaf48af005978a326a61c98905630e469}} 
+\index{UnitBehaviour@{UnitBehaviour}!HideUnit@{HideUnit}}
+\index{HideUnit@{HideUnit}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{HideUnit()}{HideUnit()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Hide\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_aaf48af005978a326a61c98905630e469_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_aaf48af005978a326a61c98905630e469_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a9a32f3234ea6b89f686c6cd55d924348}\label{class_unit_behaviour_a9a32f3234ea6b89f686c6cd55d924348}} 
+\index{UnitBehaviour@{UnitBehaviour}!Kill@{Kill}}
+\index{Kill@{Kill}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{Kill()}{Kill()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Kill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a9a32f3234ea6b89f686c6cd55d924348_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a9a32f3234ea6b89f686c6cd55d924348_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a544570d55168594c1e4502dbe5c9d6a8}\label{class_unit_behaviour_a544570d55168594c1e4502dbe5c9d6a8}} 
+\index{UnitBehaviour@{UnitBehaviour}!LoadSprites@{LoadSprites}}
+\index{LoadSprites@{LoadSprites}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{LoadSprites()}{LoadSprites()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Load\+Sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a544570d55168594c1e4502dbe5c9d6a8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a46ff5685dd97f930e6e2a835e01efb4d}\label{class_unit_behaviour_a46ff5685dd97f930e6e2a835e01efb4d}} 
+\index{UnitBehaviour@{UnitBehaviour}!MoveFromTo@{MoveFromTo}}
+\index{MoveFromTo@{MoveFromTo}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{MoveFromTo()}{MoveFromTo()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Move\+From\+To (\begin{DoxyParamCaption}\item[{Vector2\+Int}]{from,  }\item[{Vector2\+Int}]{to,  }\item[{float}]{duration }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a46ff5685dd97f930e6e2a835e01efb4d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{class_unit_behaviour_a46ff5685dd97f930e6e2a835e01efb4d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a19e4ade6b8de90c269e3ed840d0c9f84}\label{class_unit_behaviour_a19e4ade6b8de90c269e3ed840d0c9f84}} 
+\index{UnitBehaviour@{UnitBehaviour}!ResetPosition@{ResetPosition}}
+\index{ResetPosition@{ResetPosition}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{ResetPosition()}{ResetPosition()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Reset\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a19e4ade6b8de90c269e3ed840d0c9f84_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a4b2664ef7a33e795220d587cb789d169}\label{class_unit_behaviour_a4b2664ef7a33e795220d587cb789d169}} 
+\index{UnitBehaviour@{UnitBehaviour}!Return@{Return}}
+\index{Return@{Return}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{Return()}{Return()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Return (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{class_unit_behaviour_a4b2664ef7a33e795220d587cb789d169_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a4b2664ef7a33e795220d587cb789d169_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_aa4e86ce34131fe81ecef7a56855f8d94}\label{class_unit_behaviour_aa4e86ce34131fe81ecef7a56855f8d94}} 
+\index{UnitBehaviour@{UnitBehaviour}!SetInputCooldown@{SetInputCooldown}}
+\index{SetInputCooldown@{SetInputCooldown}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{SetInputCooldown()}{SetInputCooldown()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Set\+Input\+Cooldown (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_unit}{Base\+Unit}}}]{b\+Unit,  }\item[{float}]{delay = {\ttfamily 0.5f},  }\item[{bool}]{recast = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_unit_behaviour_a0cf70610b8aef46ef592819496ac7950}\label{class_unit_behaviour_a0cf70610b8aef46ef592819496ac7950}} 
+\index{UnitBehaviour@{UnitBehaviour}!ShowIntent@{ShowIntent}}
+\index{ShowIntent@{ShowIntent}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{ShowIntent()}{ShowIntent()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Show\+Intent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a0cf70610b8aef46ef592819496ac7950_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a41b8d7f5a98e21449eafe21a31707b1d}\label{class_unit_behaviour_a41b8d7f5a98e21449eafe21a31707b1d}} 
+\index{UnitBehaviour@{UnitBehaviour}!ShowUnit@{ShowUnit}}
+\index{ShowUnit@{ShowUnit}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{ShowUnit()}{ShowUnit()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Show\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a41b8d7f5a98e21449eafe21a31707b1d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a41b8d7f5a98e21449eafe21a31707b1d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a17b46e508ee650f487d4bf79608da4eb}\label{class_unit_behaviour_a17b46e508ee650f487d4bf79608da4eb}} 
+\index{UnitBehaviour@{UnitBehaviour}!SpawnDeathParticles@{SpawnDeathParticles}}
+\index{SpawnDeathParticles@{SpawnDeathParticles}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{SpawnDeathParticles()}{SpawnDeathParticles()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Spawn\+Death\+Particles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a17b46e508ee650f487d4bf79608da4eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a558929aaa9173e1a3b9dfecd8674660f}\label{class_unit_behaviour_a558929aaa9173e1a3b9dfecd8674660f}} 
+\index{UnitBehaviour@{UnitBehaviour}!SpawnSpellEffect@{SpawnSpellEffect}}
+\index{SpawnSpellEffect@{SpawnSpellEffect}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{SpawnSpellEffect()}{SpawnSpellEffect()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Spawn\+Spell\+Effect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_spell}{Spell}}}]{spell }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a558929aaa9173e1a3b9dfecd8674660f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a2eee29cede96c8d2aa45e89eda7c0c3c}\label{class_unit_behaviour_a2eee29cede96c8d2aa45e89eda7c0c3c}} 
+\index{UnitBehaviour@{UnitBehaviour}!SpawnSpellProjectiles@{SpawnSpellProjectiles}}
+\index{SpawnSpellProjectiles@{SpawnSpellProjectiles}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{SpawnSpellProjectiles()}{SpawnSpellProjectiles()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Spawn\+Spell\+Projectiles (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_spell}{Spell}}}]{spell }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a2eee29cede96c8d2aa45e89eda7c0c3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a7e978454f207985987f6088c037b9c5f}\label{class_unit_behaviour_a7e978454f207985987f6088c037b9c5f}} 
+\index{UnitBehaviour@{UnitBehaviour}!Transfer@{Transfer}}
+\index{Transfer@{Transfer}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{Transfer()}{Transfer()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Transfer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tile}{Tile}}}]{t,  }\item[{\mbox{\hyperlink{class_base_unit}{Base\+Unit}}}]{b }\end{DoxyParamCaption})}
+
+\+\_\+unit\+Skin\+Image.\+enabled = true; Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a7e978454f207985987f6088c037b9c5f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a7e978454f207985987f6088c037b9c5f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_adf2d07785a2cc3076363ad5dd0962b9c}\label{class_unit_behaviour_adf2d07785a2cc3076363ad5dd0962b9c}} 
+\index{UnitBehaviour@{UnitBehaviour}!Unset@{Unset}}
+\index{Unset@{Unset}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{Unset()}{Unset()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Unset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_adf2d07785a2cc3076363ad5dd0962b9c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_adf2d07785a2cc3076363ad5dd0962b9c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a38efbe995d8d2f3c522cb2fa076e79cc}\label{class_unit_behaviour_a38efbe995d8d2f3c522cb2fa076e79cc}} 
+\index{UnitBehaviour@{UnitBehaviour}!UpdateIntent@{UpdateIntent}}
+\index{UpdateIntent@{UpdateIntent}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{UpdateIntent()}{UpdateIntent()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Update\+Intent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a38efbe995d8d2f3c522cb2fa076e79cc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a38efbe995d8d2f3c522cb2fa076e79cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_unit_behaviour_a559fdec9ef2c1c1a6c1a863cb868bce5}\label{class_unit_behaviour_a559fdec9ef2c1c1a6c1a863cb868bce5}} 
+\index{UnitBehaviour@{UnitBehaviour}!UpdateSprite@{UpdateSprite}}
+\index{UpdateSprite@{UpdateSprite}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{UpdateSprite()}{UpdateSprite()}}
+{\footnotesize\ttfamily void Unit\+Behaviour.\+Update\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a559fdec9ef2c1c1a6c1a863cb868bce5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_unit_behaviour_a559fdec9ef2c1c1a6c1a863cb868bce5_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_unit_behaviour_ae1d622ff10d142433b35f6c2352b97e4}\label{class_unit_behaviour_ae1d622ff10d142433b35f6c2352b97e4}} 
+\index{UnitBehaviour@{UnitBehaviour}!p@{p}}
+\index{p@{p}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{p}{p}}
+{\footnotesize\ttfamily Vector2\+Int Unit\+Behaviour.\+p}
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_unit_behaviour_a05cd74b1093c4a86d9a3556af9b3dad3}\label{class_unit_behaviour_a05cd74b1093c4a86d9a3556af9b3dad3}} 
+\index{UnitBehaviour@{UnitBehaviour}!baseUnit@{baseUnit}}
+\index{baseUnit@{baseUnit}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{baseUnit}{baseUnit}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_base_unit}{Base\+Unit}} Unit\+Behaviour.\+base\+Unit\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_unit_behaviour_a967462055b4f06234aa94f867b162658}\label{class_unit_behaviour_a967462055b4f06234aa94f867b162658}} 
+\index{UnitBehaviour@{UnitBehaviour}!renderFlag@{renderFlag}}
+\index{renderFlag@{renderFlag}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{renderFlag}{renderFlag}}
+{\footnotesize\ttfamily bool Unit\+Behaviour.\+render\+Flag\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_unit_behaviour_a71c6dafe4e7e8c204bfa2a0c131a8f43}\label{class_unit_behaviour_a71c6dafe4e7e8c204bfa2a0c131a8f43}} 
+\index{UnitBehaviour@{UnitBehaviour}!shadowImage@{shadowImage}}
+\index{shadowImage@{shadowImage}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{shadowImage}{shadowImage}}
+{\footnotesize\ttfamily Image Unit\+Behaviour.\+shadow\+Image\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_unit_behaviour_a88e52afa84a4a9615e6cba0d610af427}\label{class_unit_behaviour_a88e52afa84a4a9615e6cba0d610af427}} 
+\index{UnitBehaviour@{UnitBehaviour}!tile@{tile}}
+\index{tile@{tile}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{tile}{tile}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_tile}{Tile}} Unit\+Behaviour.\+tile\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_unit_behaviour_aee71a6c63565092ebb1b0db713966d5e}\label{class_unit_behaviour_aee71a6c63565092ebb1b0db713966d5e}} 
+\index{UnitBehaviour@{UnitBehaviour}!unitArmorImage@{unitArmorImage}}
+\index{unitArmorImage@{unitArmorImage}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{unitArmorImage}{unitArmorImage}}
+{\footnotesize\ttfamily Image Unit\+Behaviour.\+unit\+Armor\+Image\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_unit_behaviour_a6b47dd14b934843a2a09bc912abac2f3}\label{class_unit_behaviour_a6b47dd14b934843a2a09bc912abac2f3}} 
+\index{UnitBehaviour@{UnitBehaviour}!unitImage@{unitImage}}
+\index{unitImage@{unitImage}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{unitImage}{unitImage}}
+{\footnotesize\ttfamily Image Unit\+Behaviour.\+unit\+Image\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_unit_behaviour_a0afb662d96ad5a159fefbac272992f33}\label{class_unit_behaviour_a0afb662d96ad5a159fefbac272992f33}} 
+\index{UnitBehaviour@{UnitBehaviour}!unitPrimaryImage@{unitPrimaryImage}}
+\index{unitPrimaryImage@{unitPrimaryImage}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{unitPrimaryImage}{unitPrimaryImage}}
+{\footnotesize\ttfamily Image Unit\+Behaviour.\+unit\+Primary\+Image\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_unit_behaviour_a5525b89693e66bdf365c80da19b7be5b}\label{class_unit_behaviour_a5525b89693e66bdf365c80da19b7be5b}} 
+\index{UnitBehaviour@{UnitBehaviour}!unitSecondaryImage@{unitSecondaryImage}}
+\index{unitSecondaryImage@{unitSecondaryImage}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{unitSecondaryImage}{unitSecondaryImage}}
+{\footnotesize\ttfamily Image Unit\+Behaviour.\+unit\+Secondary\+Image\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_unit_behaviour_a8e85eeaf7ce34b0b04a96258aacf02d7}\label{class_unit_behaviour_a8e85eeaf7ce34b0b04a96258aacf02d7}} 
+\index{UnitBehaviour@{UnitBehaviour}!unitSkinImage@{unitSkinImage}}
+\index{unitSkinImage@{unitSkinImage}!UnitBehaviour@{UnitBehaviour}}
+\subsubsection{\texorpdfstring{unitSkinImage}{unitSkinImage}}
+{\footnotesize\ttfamily Image Unit\+Behaviour.\+unit\+Skin\+Image\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Hunter/\+Documents/\+Git\+Hub/\+F\+T\+D/\+From\+The\+Dregs/\+Assets/\+Scripts/Unit\+Behaviour.\+cs\end{DoxyCompactItemize}

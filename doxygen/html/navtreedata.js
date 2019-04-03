@@ -38,20 +38,17 @@ var NAVTREE =
         [ "Enumerations", "functions_enum.html", null ],
         [ "Properties", "functions_prop.html", "functions_prop" ]
       ] ]
-    ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"_animation_controller_8cs.html",
-"class_base_item.html#a7b49af5c45c493b9ea7319de44c6c138",
-"class_character.html#aaefb65409260b3ad1511951aab1ddd6ca9f1ffde7012e729f41429a0b711823ab",
-"class_item_sprites.html#a456306becfba506b7560b25be43d97cf",
-"class_tile.html#a1baa5fe3ab8f887e8985a85fba21210a"
+"annotated.html",
+"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424bab3cc502008ff9a523bfd09648d93210f",
+"class_chunk_sprites.html#a2e41de104497bc5e9a531b1c281e88b5",
+"class_player_data.html#a7ce87c3307030f2a67f5628ca1c69c82",
+"class_unit_behaviour.html#a5525b89693e66bdf365c80da19b7be5b"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
