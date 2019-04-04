@@ -2,6 +2,11 @@
 \label{class_attributes}\index{Attributes@{Attributes}}
 
 
+A unit\textquotesingle{}s attributes determine its combat effectiveness.  
+
+
+
+
 Collaboration diagram for Attributes\+:
 \nopagebreak
 \begin{figure}[H]
@@ -74,21 +79,21 @@ int \mbox{\hyperlink{class_attributes_ae3bba2cd8bcb85cf2d5034cdb44c2503}{base\+C
 int \mbox{\hyperlink{class_attributes_a93c4832deecfb970990f4763ba1d1d13}{base\+Speed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
 int \mbox{\hyperlink{class_attributes_a80e15a2316352cfba56fc1d4077dd432}{strength}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unit\textquotesingle{}s total strength. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_attributes_ab0d80932c197709933e76e1a9faefcca}{dexterity}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unit\textquotesingle{}s total dexterity. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_attributes_a39014acfca0b4d854c675663a05b067e}{intelligence}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unit\textquotesingle{}s total intelligence. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_attributes_a5788ff85cda31bb47f02aa274d330523}{constitution}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unit\textquotesingle{}s total constitution. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_attributes_a48ec0beacd46bb9b9e206becde146d69}{wisdom}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unit\textquotesingle{}s total wisdom. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_attributes_ae5bf0d1820af23239997da36705a7295}{charisma}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unit\textquotesingle{}s total charisma. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_attributes_aa67231ed5d1163506d8d2d559a98e125}{speed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unit\textquotesingle{}s total speed. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_attributes_a1ff4257de32284cf7489849787cb82fb}{level}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A unit\textquotesingle{}s combat level is determined by the sum of all other combat attributes. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_attributes_afad13915acdb266becba4aa8da86c8d1}{hp\+Current}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
 int \mbox{\hyperlink{class_attributes_a61de3d3141922807c7c77fc86819b934}{hp\+Total}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
@@ -109,6 +114,11 @@ int \mbox{\hyperlink{class_attributes_a8b2810971ac5f6ab1ec3c0b00498ee5b}{allianc
 \item 
 int \mbox{\hyperlink{class_attributes_aeb2c4d8fb766486fb2302a8e196594a3}{aggro\+Radius}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A unit\textquotesingle{}s attributes determine its combat effectiveness. 
+
 
 
 \subsection{Member Enumeration Documentation}
@@ -309,19 +319,33 @@ Colossal&\\
 \subsubsection{\texorpdfstring{charisma}{charisma}}
 {\footnotesize\ttfamily int Attributes.\+charisma\hspace{0.3cm}{\ttfamily [get]}}
 
-\mbox{\Hypertarget{class_attributes_a5788ff85cda31bb47f02aa274d330523}\label{class_attributes_a5788ff85cda31bb47f02aa274d330523}} 
+
+
+A unit\textquotesingle{}s total charisma. 
+
+base\+Charisma + charisma\+Modifiers\mbox{\Hypertarget{class_attributes_a5788ff85cda31bb47f02aa274d330523}\label{class_attributes_a5788ff85cda31bb47f02aa274d330523}} 
 \index{Attributes@{Attributes}!constitution@{constitution}}
 \index{constitution@{constitution}!Attributes@{Attributes}}
 \subsubsection{\texorpdfstring{constitution}{constitution}}
 {\footnotesize\ttfamily int Attributes.\+constitution\hspace{0.3cm}{\ttfamily [get]}}
 
-\mbox{\Hypertarget{class_attributes_ab0d80932c197709933e76e1a9faefcca}\label{class_attributes_ab0d80932c197709933e76e1a9faefcca}} 
+
+
+A unit\textquotesingle{}s total constitution. 
+
+base\+Constitution + constitution\+Modifiers\mbox{\Hypertarget{class_attributes_ab0d80932c197709933e76e1a9faefcca}\label{class_attributes_ab0d80932c197709933e76e1a9faefcca}} 
 \index{Attributes@{Attributes}!dexterity@{dexterity}}
 \index{dexterity@{dexterity}!Attributes@{Attributes}}
 \subsubsection{\texorpdfstring{dexterity}{dexterity}}
 {\footnotesize\ttfamily int Attributes.\+dexterity\hspace{0.3cm}{\ttfamily [get]}}
 
-\mbox{\Hypertarget{class_attributes_a3375ff1328de584253cee341d9bec06d}\label{class_attributes_a3375ff1328de584253cee341d9bec06d}} 
+
+
+A unit\textquotesingle{}s total dexterity. 
+
+/// 
+
+base\+Dexterity + dexterity\+Modifiers\mbox{\Hypertarget{class_attributes_a3375ff1328de584253cee341d9bec06d}\label{class_attributes_a3375ff1328de584253cee341d9bec06d}} 
 \index{Attributes@{Attributes}!esCurrent@{esCurrent}}
 \index{esCurrent@{esCurrent}!Attributes@{Attributes}}
 \subsubsection{\texorpdfstring{esCurrent}{esCurrent}}
@@ -369,11 +393,19 @@ Colossal&\\
 \subsubsection{\texorpdfstring{intelligence}{intelligence}}
 {\footnotesize\ttfamily int Attributes.\+intelligence\hspace{0.3cm}{\ttfamily [get]}}
 
-\mbox{\Hypertarget{class_attributes_a1ff4257de32284cf7489849787cb82fb}\label{class_attributes_a1ff4257de32284cf7489849787cb82fb}} 
+
+
+A unit\textquotesingle{}s total intelligence. 
+
+base\+Intelligence + intelligence\+Modifiers\mbox{\Hypertarget{class_attributes_a1ff4257de32284cf7489849787cb82fb}\label{class_attributes_a1ff4257de32284cf7489849787cb82fb}} 
 \index{Attributes@{Attributes}!level@{level}}
 \index{level@{level}!Attributes@{Attributes}}
 \subsubsection{\texorpdfstring{level}{level}}
 {\footnotesize\ttfamily int Attributes.\+level\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A unit\textquotesingle{}s combat level is determined by the sum of all other combat attributes. 
 
 \mbox{\Hypertarget{class_attributes_ad6b0d037f9b58413a7cb7be3065cf743}\label{class_attributes_ad6b0d037f9b58413a7cb7be3065cf743}} 
 \index{Attributes@{Attributes}!preset@{preset}}
@@ -387,13 +419,23 @@ Colossal&\\
 \subsubsection{\texorpdfstring{speed}{speed}}
 {\footnotesize\ttfamily int Attributes.\+speed\hspace{0.3cm}{\ttfamily [get]}}
 
-\mbox{\Hypertarget{class_attributes_a80e15a2316352cfba56fc1d4077dd432}\label{class_attributes_a80e15a2316352cfba56fc1d4077dd432}} 
+
+
+A unit\textquotesingle{}s total speed. 
+
+base\+Speed + speed\+Modifiers\mbox{\Hypertarget{class_attributes_a80e15a2316352cfba56fc1d4077dd432}\label{class_attributes_a80e15a2316352cfba56fc1d4077dd432}} 
 \index{Attributes@{Attributes}!strength@{strength}}
 \index{strength@{strength}!Attributes@{Attributes}}
 \subsubsection{\texorpdfstring{strength}{strength}}
 {\footnotesize\ttfamily int Attributes.\+strength\hspace{0.3cm}{\ttfamily [get]}}
 
-\mbox{\Hypertarget{class_attributes_a48ec0beacd46bb9b9e206becde146d69}\label{class_attributes_a48ec0beacd46bb9b9e206becde146d69}} 
+
+
+A unit\textquotesingle{}s total strength. 
+
+/// 
+
+base\+Strength + strength\+Modifiers\mbox{\Hypertarget{class_attributes_a48ec0beacd46bb9b9e206becde146d69}\label{class_attributes_a48ec0beacd46bb9b9e206becde146d69}} 
 \index{Attributes@{Attributes}!wisdom@{wisdom}}
 \index{wisdom@{wisdom}!Attributes@{Attributes}}
 \subsubsection{\texorpdfstring{wisdom}{wisdom}}
@@ -401,6 +443,6 @@ Colossal&\\
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
-\item 
-C\+:/\+Users/\+Hunter/\+Documents/\+Git\+Hub/\+F\+T\+D/\+From\+The\+Dregs/\+Assets/\+Scripts/Attributes.\+cs\end{DoxyCompactItemize}
+A unit\textquotesingle{}s total wisdom. 
+
+base\+Wisdom + wisdom\+Modifiers

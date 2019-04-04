@@ -25,7 +25,7 @@ var searchData=
   ['castoptionsui',['CastOptionsUI',['../class_cast_options_u_i.html',1,'CastOptionsUI'],['../class_hotbar.html#a5712a8564c6cdbae01f3900648ce9fae',1,'Hotbar.castOptionsUI()']]],
   ['castradius',['castRadius',['../class_spell.html#aa868e1b844177f20440e0b15f7d42692',1,'Spell']]],
   ['castspell',['CastSpell',['../class_effect.html#ab13a718053e330a11f9f66a9b16f4686aa7f1c7cd4a0b61ef668abcee69d3f2eb',1,'Effect']]],
-  ['category',['category',['../class_base_item.html#a219878018445243d4fc30538548b7425',1,'BaseItem.category()'],['../class_base_item.html#a882a2962396f880c2e23755437245d37',1,'BaseItem.Category()']]],
+  ['category',['Category',['../class_base_item.html#a882a2962396f880c2e23755437245d37',1,'BaseItem.Category()'],['../class_base_item.html#a219878018445243d4fc30538548b7425',1,'BaseItem.category()']]],
   ['categorytostring',['CategoryToString',['../class_base_item.html#ad820521a001d82fc3f52b2483226efde',1,'BaseItem']]],
   ['cavern',['cavern',['../class_biome.html#a7ddcfcc6d4e88c5eb73df6827df862daa420041ed55a01779d7c409d007070961',1,'Biome']]],
   ['caverndoor',['CavernDoor',['../class_base_decoration.html#a8adb8095439bd24fd3c2058b2ecbbf11abe08eade48ab882fbc7b057f1d9f9d2c',1,'BaseDecoration.CavernDoor()'],['../class_sprite_manager.html#a0efbce48d098c815aa4706800aab65cc',1,'SpriteManager.cavernDoor()']]],
@@ -75,7 +75,7 @@ var searchData=
   ['criticaldamage',['CriticalDamage',['../class_effect.html#a28d85888db94ec53ee9cb75e9706f6e4a8840670f16ffad8542f45ad80dbe5ca3',1,'Effect']]],
   ['crushing',['Crushing',['../class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aad312850039f757c26cb4f03c4aa0edef',1,'Spell']]],
   ['crypt',['crypt',['../class_biome.html#a7ddcfcc6d4e88c5eb73df6827df862daaf7bd616b6c841d2538735f76d1e02b57',1,'Biome']]],
-  ['cryptdoor',['CryptDoor',['../class_base_decoration.html#a8adb8095439bd24fd3c2058b2ecbbf11ab646e5191f5595b4ff9cbdf48e972562',1,'BaseDecoration.CryptDoor()'],['../class_sprite_manager.html#a534759a1cd37b734b35d39009c05433a',1,'SpriteManager.cryptDoor()']]],
+  ['cryptdoor',['cryptDoor',['../class_sprite_manager.html#a534759a1cd37b734b35d39009c05433a',1,'SpriteManager.cryptDoor()'],['../class_base_decoration.html#a8adb8095439bd24fd3c2058b2ecbbf11ab646e5191f5595b4ff9cbdf48e972562',1,'BaseDecoration.CryptDoor()']]],
   ['currency',['currency',['../class_item_sprites.html#aab1c64fdbd622d824d45fafcfd214ff6',1,'ItemSprites.currency()'],['../class_base_item.html#a882a2962396f880c2e23755437245d37a386c339d37e737a436499d423a77df0c',1,'BaseItem.Currency()']]],
   ['current',['current',['../class_player_data.html#a56e50eb15fe325645f0a7206a53f3956',1,'PlayerData']]],
   ['currentzone',['currentZone',['../class_player_data.html#a8e1bd4482b28bb85156d2aef7be04809',1,'PlayerData']]]

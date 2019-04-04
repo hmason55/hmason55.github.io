@@ -14,7 +14,7 @@ var searchData=
   ['mediumarmorlegs',['mediumArmorLegs',['../class_item_sprites.html#abe3254dfd4ed04f011fc2a9a396d0940',1,'ItemSprites']]],
   ['mediumarmortier',['MediumArmorTier',['../class_base_item.html#a920c9e47e5258c5bac64842ce8997cb0',1,'BaseItem']]],
   ['messagecapacity',['messageCapacity',['../class_announcement_manager.html#aa23d155cc088be3437ef92cc337c0492',1,'AnnouncementManager']]],
-  ['mouthtype',['MouthType',['../class_character.html#aaefb65409260b3ad1511951aab1ddd6c',1,'Character.MouthType()'],['../class_character.html#a4199c2476940533add49ababfc7cba52',1,'Character.mouthType()'],['../class_portrait.html#a9ce977a3c3a8b9790abfaeb57dd16d78',1,'Portrait.mouthType()']]],
+  ['mouthtype',['mouthType',['../class_character.html#a4199c2476940533add49ababfc7cba52',1,'Character.mouthType()'],['../class_portrait.html#a9ce977a3c3a8b9790abfaeb57dd16d78',1,'Portrait.mouthType()'],['../class_character.html#aaefb65409260b3ad1511951aab1ddd6c',1,'Character.MouthType()']]],
   ['move',['Move',['../class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b',1,'BaseUnit.Move()'],['../class_spell.html#a5520e850e7000a6156b3456672b72ed1a6bc362dbf494c61ea117fe3c71ca48a5',1,'Spell.Move()']]],
   ['movefromto',['MoveFromTo',['../class_unit_behaviour.html#a46ff5685dd97f930e6e2a835e01efb4d',1,'UnitBehaviour']]],
   ['movement',['Movement',['../class_spell.html#a602b82de554076b542544262e7a95f19a4642e767f9251fa40afadbc963f80b7a',1,'Spell']]],

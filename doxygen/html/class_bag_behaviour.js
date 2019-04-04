@@ -19,7 +19,6 @@ var class_bag_behaviour =
     [ "TakeItem", "class_bag_behaviour.html#a0cde4989737c537ca94730cc690d6780", null ],
     [ "ToggleUI", "class_bag_behaviour.html#a830725c05ecdc1a1a637d26cf5cff0dc", null ],
     [ "UnequipItem", "class_bag_behaviour.html#a61062b91187139c43e2681c220111433", null ],
-    [ "UpdateEquipmentStats", "class_bag_behaviour.html#ad2e50a51bbb8f9c90a3241dbce0f87c0", null ],
     [ "bag", "class_bag_behaviour.html#a2ce7c6b9e26738b42f953a3351b8b1b4", null ],
     [ "baseUnit", "class_bag_behaviour.html#a902e05fcee6312ba24825f3d9f785b8b", null ],
     [ "defaultAction", "class_bag_behaviour.html#aee692afcced72398af07f9df77990b09", null ],

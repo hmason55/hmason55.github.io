@@ -1,13 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424bab3cc502008ff9a523bfd09648d93210f":[1,0,10,3,3],
-"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424bac1d082f5f0de88cfc2996a1c1fa5d534":[1,0,10,3,8],
-"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424bae0e8b3d5572e4b8a0c69e297f44766f9":[1,0,10,3,23],
-"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424bae45c2a62eaafb183531663b663051d5e":[1,0,10,3,19],
-"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424baec8640d0e520324633843ed38762ed79":[1,0,10,3,13],
-"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424baf05fe2745cc99f09399a1935bac45aaa":[1,0,10,3,0],
-"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424bafbbd58845d24a6356dfc39b18c6f4071":[1,0,10,3,9],
-"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424bafbec255747b847b3d992c567fb38ac01":[1,0,10,3,12],
 "class_base_item.html#afd59d6b5168af724211f54ad3692ea73":[1,0,10,10],
 "class_base_terrain.html":[1,0,11],
 "class_base_terrain.html#a0af7f55356e035cde6cedadae6fbb34d":[1,0,11,10],
@@ -249,5 +241,13 @@ var NAVTREEINDEX1 =
 "class_chunk.html#ab2e9c44541a726c19e8f0afbcf82894cacccf67fad08c06983ddbcb801095433b":[1,0,19,0,5],
 "class_chunk.html#ab2e9c44541a726c19e8f0afbcf82894cad16366b61839056eb843729661d7c4bf":[1,0,19,0,0],
 "class_chunk.html#ab2e9c44541a726c19e8f0afbcf82894cad979a31b0bf551d41387db9e936ea987":[1,0,19,0,3],
-"class_chunk_sprites.html":[1,0,20]
+"class_chunk_sprites.html":[1,0,20],
+"class_chunk_sprites.html#a2e41de104497bc5e9a531b1c281e88b5":[1,0,20,13],
+"class_chunk_sprites.html#a36cf2ce2f744ce381fb5c76df8c4fc50":[1,0,20,0],
+"class_chunk_sprites.html#a3da5f025b8e42646ca3fd78339c70cf5":[1,0,20,8],
+"class_chunk_sprites.html#a42214aec09db89ee79e62dc41f81e6b3":[1,0,20,3],
+"class_chunk_sprites.html#a4b155b738bb5ebc714e8eafa07e29a56":[1,0,20,5],
+"class_chunk_sprites.html#a6e669d816ca0b936f893b5456958b2e1":[1,0,20,14],
+"class_chunk_sprites.html#a81c9de1dbe228e43506ff51f841c2166":[1,0,20,4],
+"class_chunk_sprites.html#a88c4a9896daa6fb90574de5fa700112c":[1,0,20,10]
 };

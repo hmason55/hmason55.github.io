@@ -1,5 +1,5 @@
 <map id="Bag.Add" name="Bag.Add">
-<area shape="rect" id="node1" title=" " alt="" coords="625,107,697,133"/>
+<area shape="rect" id="node1" title="Adds an item to the bag." alt="" coords="625,107,697,133"/>
 <area shape="rect" id="node2" href="$class_bag_behaviour.html#ac72b22f2f0340663e461c4a10f33281d" title=" " alt="" coords="421,5,575,32"/>
 <area shape="rect" id="node4" href="$class_bag_behaviour.html#a0cde4989737c537ca94730cc690d6780" title=" " alt="" coords="419,56,577,83"/>
 <area shape="rect" id="node5" href="$class_bag_behaviour.html#aa0aed3d648b13c1add4c2e2ce2ac9c38" title=" " alt="" coords="422,107,574,133"/>

@@ -10,7 +10,7 @@ var searchData=
   ['template',['template',['../class_chunk.html#a90851ff2883364a1e00753d1fd35461b',1,'Chunk.template()'],['../class_swatch.html#a3008c0c1ec9d9854a19db69ab50fa3f7',1,'Swatch.template()']]],
   ['terrain',['terrain',['../class_tile.html#af45cdc1d322c30f61893f1e7de16e668',1,'Tile']]],
   ['terrainbehaviour',['TerrainBehaviour',['../class_terrain_behaviour.html',1,'']]],
-  ['terraintype',['TerrainType',['../class_base_terrain.html#a5b782f4de5e1a2ca1343b4aa89a7dc9a',1,'BaseTerrain.TerrainType()'],['../class_base_terrain.html#a381e5f59e57a301a70f79c32cf3ea300',1,'BaseTerrain.terrainType()']]],
+  ['terraintype',['terrainType',['../class_base_terrain.html#a381e5f59e57a301a70f79c32cf3ea300',1,'BaseTerrain.terrainType()'],['../class_base_terrain.html#a5b782f4de5e1a2ca1343b4aa89a7dc9a',1,'BaseTerrain.TerrainType()']]],
   ['tertiaryscalingtype',['tertiaryScalingType',['../class_effect.html#af01f4eaea6040a558e1f3369e28f6bb2',1,'Effect']]],
   ['tertiaryscalingvalue',['tertiaryScalingValue',['../class_effect.html#a92631b7dfe2c5d0bfba281cc8f113159',1,'Effect']]],
   ['tickstatus',['TickStatus',['../class_base_unit.html#af140c1094709a0a90f84d52a4ee80d90',1,'BaseUnit']]],
@@ -34,5 +34,5 @@ var searchData=
   ['trophy',['Trophy',['../class_base_item.html#a882a2962396f880c2e23755437245d37a2d351990d450cc028c016c2943b07013',1,'BaseItem']]],
   ['truedistancefromend',['trueDistanceFromEnd',['../class_path_node.html#a94623e99b6e76db825843d7fbfd57ef9',1,'PathNode']]],
   ['turn',['Turn',['../class_turn.html',1,'Turn'],['../class_turn.html#a6446f2b617305c390dce97e1c7242066',1,'Turn.Turn()']]],
-  ['turnqueue',['TurnQueue',['../class_turn_queue.html',1,'TurnQueue'],['../class_turn_queue.html#a15bbf8315c0dc5ad3d211872f3de296b',1,'TurnQueue.TurnQueue()'],['../class_combat_manager.html#a6316ac49fbaf2e16426313d12749761d',1,'CombatManager.turnQueue()']]]
+  ['turnqueue',['TurnQueue',['../class_turn_queue.html',1,'TurnQueue'],['../class_combat_manager.html#a6316ac49fbaf2e16426313d12749761d',1,'CombatManager.turnQueue()'],['../class_turn_queue.html#a15bbf8315c0dc5ad3d211872f3de296b',1,'TurnQueue.TurnQueue()']]]
 ];

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// A unit's attributes determine its combat effectiveness.
+/// </summary>
 [System.Serializable]
 public class Attributes {
 
@@ -33,7 +35,11 @@ public class Attributes {
     }
     
     /*Private-------------------Accessors---------------------------Get-------------------------------------Set------------------------------*/
-    int _baseHitPoints;         public int baseHitPoints            {get {return CalcBaseHP();}}      		//set {_baseHitPoints = value;}}
+    int _baseHitPoints;         
+	public int baseHitPoints {
+		get {return CalcBaseHP();}
+	}
+	
     int _baseEssence;           public int baseEssence              {get {return CalcBaseES();}}           	//set {_baseEssence = value;}}
     /*Private-------------------Accessors---------------------------Get-------------------------------------Set------------------------------*/
     int _baseStrength;          public int baseStrength             {get {return _baseStrength;}            set {_baseStrength = value;}}
@@ -55,14 +61,79 @@ public class Attributes {
 	int _modCharisma;
 	int _modSpeed;
     /*Private-------------------Accessors---------------------------Get-------------------------------------Set------------------------------*/
-    int _strength;              public int strength                 {get {return _baseStrength + _modStrength;}}
-    int _dexterity;             public int dexterity                {get {return _baseDexterity + _modDexterity;}}
-    int _intelligence;          public int intelligence             {get {return _baseIntelligence + _modIntelligence;}}
-	int _constitution;			public int constitution				{get {return _baseConstitution + _modConstitution;}}
-    int _wisdom;                public int wisdom                   {get {return _baseWisdom + _modWisdom;}}
-    int _charisma;              public int charisma                 {get {return _baseCharisma + _modCharisma;}}
-    int _speed;                 public int speed                    {get {return _baseSpeed + _modSpeed;}}
-	int _level;					public int level					{get {return Level();}}
+    
+	int _strength;
+	/// <summary>
+	/// A unit's total strength.
+	/// </summary>
+	/// /// <value>baseStrength + strengthModifiers</value>
+	public int strength {
+		get {return _baseStrength + _modStrength;}
+	}
+
+    int _dexterity;
+	/// <summary>
+	/// A unit's total dexterity.
+	/// </summary>
+	/// /// <value>baseDexterity + dexterityModifiers</value>
+	public int dexterity {
+		get {return _baseDexterity + _modDexterity;}
+	}
+    int _intelligence;
+
+	/// <summary>
+	/// A unit's total intelligence.
+	/// </summary>
+	/// <value>baseIntelligence + intelligenceModifiers</value>
+	public int intelligence {
+		get {return _baseIntelligence + _modIntelligence;}
+	}
+
+	int _constitution;
+	/// <summary>
+	/// A unit's total constitution.
+	/// </summary>
+	/// <value>baseConstitution + constitutionModifiers</value>
+	public int constitution	{
+		get {return _baseConstitution + _modConstitution;}
+	}
+
+    int _wisdom;
+	/// <summary>
+	/// A unit's total wisdom.
+	/// </summary>
+	/// <value>baseWisdom + wisdomModifiers</value>
+	public int wisdom {
+		get {return _baseWisdom + _modWisdom;}
+	}
+
+    int _charisma;
+	/// <summary>
+	/// A unit's total charisma.
+	/// </summary>
+	/// <value>baseCharisma + charismaModifiers</value>
+	public int charisma {
+		get {return _baseCharisma + _modCharisma;}
+	}
+
+    int _speed;
+	/// <summary>
+	/// A unit's total speed.
+	/// </summary>
+	/// <value>baseSpeed + speedModifiers</value>
+	public int speed {
+		get {return _baseSpeed + _modSpeed;}
+	}
+
+	int _level;
+	/// <summary>
+	/// A unit's combat level is determined by the sum of all other combat attributes.
+	/// </summary>
+	/// <value></value>
+	public int level {
+		get {return Level();}
+	}
+
     /*Private-------------------Accessors---------------------------Get-------------------------------------Set------------------------------*/
     int _hpCurrent;             public int hpCurrent                {get {return _hpCurrent;}               set {_hpCurrent = value;}}
     int _hpTotal;               public int hpTotal                  {get {return CalcBaseHP();}}            //set {_hpTotal = value;}}

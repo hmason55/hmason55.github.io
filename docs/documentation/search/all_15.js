@@ -44,7 +44,6 @@ var searchData=
   ['up',['Up',['../class_spell.html#a3ad4cda146fea019297b35523ccb52d5a258f49887ef8d14ac268c92b02503aaa',1,'Spell']]],
   ['updatecost',['UpdateCost',['../class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a',1,'Hotkey']]],
   ['updatedataslots',['UpdateDataSlots',['../class_load_data_u_i.html#a2a36a17c6455a8ca8ee3b92dbbce0503',1,'LoadDataUI']]],
-  ['updateequipmentstats',['UpdateEquipmentStats',['../class_bag_behaviour.html#ad2e50a51bbb8f9c90a3241dbce0f87c0',1,'BagBehaviour']]],
   ['updatehitpoints',['UpdateHitpoints',['../class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af',1,'HitpointUI']]],
   ['updatehotkeys',['UpdateHotkeys',['../class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856',1,'Hotbar']]],
   ['updateimage',['UpdateImage',['../class_bag_item_behaviour.html#aaedcc49f5d2def63dcde17d72fdb3b9d',1,'BagItemBehaviour']]],
@@ -57,7 +56,7 @@ var searchData=
   ['updatesprite',['UpdateSprite',['../class_terrain_behaviour.html#a1f1234296c90b45abf0ad3ee6f9e78ac',1,'TerrainBehaviour.UpdateSprite()'],['../class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5',1,'UnitBehaviour.UpdateSprite()']]],
   ['updatetooltip',['UpdateTooltip',['../class_item_tooltip.html#a51e15cd0c208c14105cc8bedf452385b',1,'ItemTooltip']]],
   ['updateui',['UpdateUI',['../class_essence_u_i.html#a26023c3d4977188014384a1a40eb3ad9',1,'EssenceUI']]],
-  ['usage',['Usage',['../class_base_decoration.html#ad8b9ff9e5d7dc488ca94fed2efa45a6e',1,'BaseDecoration.Usage()'],['../class_base_decoration.html#a502a5352e9f53da746d96a75ff31c3f0',1,'BaseDecoration.usage()']]],
+  ['usage',['usage',['../class_base_decoration.html#a502a5352e9f53da746d96a75ff31c3f0',1,'BaseDecoration.usage()'],['../class_base_decoration.html#ad8b9ff9e5d7dc488ca94fed2efa45a6e',1,'BaseDecoration.Usage()']]],
   ['use',['Use',['../class_bag_behaviour.html#aeafbbbda3c9a34d1a73647a8b274788caad8783089f828b927473fb61d51940ec',1,'BagBehaviour']]],
   ['usecustomsprites',['useCustomSprites',['../class_base_unit.html#a6c81f225b4030b9f4d21f410f9667047',1,'BaseUnit']]]
 ];

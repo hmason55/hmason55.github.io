@@ -1,6 +1,6 @@
 <map id="Bag.FindItemSlot" name="Bag.FindItemSlot">
 <area shape="rect" id="node1" title="Finds an item within the bag." alt="" coords="673,101,796,128"/>
-<area shape="rect" id="node2" href="$class_bag.html#a42a4319aa14d0b6bda7f91070ba57a47" title=" " alt="" coords="489,69,584,96"/>
+<area shape="rect" id="node2" href="$class_bag.html#a42a4319aa14d0b6bda7f91070ba57a47" title="Removes an item from the bag." alt="" coords="489,69,584,96"/>
 <area shape="rect" id="node7" href="$class_bag_behaviour.html#a61062b91187139c43e2681c220111433" title=" " alt="" coords="448,132,625,159"/>
 <area shape="rect" id="node3" href="$class_bag_behaviour.html#ac72b22f2f0340663e461c4a10f33281d" title=" " alt="" coords="243,5,398,32"/>
 <area shape="rect" id="node5" href="$class_bag_behaviour.html#a0cde4989737c537ca94730cc690d6780" title=" " alt="" coords="241,56,400,83"/>

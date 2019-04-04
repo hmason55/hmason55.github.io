@@ -15,7 +15,6 @@ public class Bag {
 	}
 	
 	BagType _bagType = BagType.Bag;
-
 	BaseItem _neck;
 	BaseItem _head;
 	BaseItem _finger;
@@ -25,7 +24,6 @@ public class Bag {
 	BaseItem _hands;
 	BaseItem _legs;
 	BaseItem _feet;
-
 	List<BaseItem> _items;
 
 	#region Accessors
@@ -34,131 +32,92 @@ public class Bag {
 		set {_bagType = value;}
 	}
 
+	/// <summary>
+	/// A list of items in the bag.
+	/// </summary>
+	/// <value></value>
 	public List<BaseItem> items {
 		get {return _items;}
 	}
 
+	/// <summary>
+	/// A reference to the item in the bag currently equipped to the neck.
+	/// </summary>
+	/// <value></value>
 	public BaseItem neck {
 		get {return _neck;}
 	}
 
+	/// <summary>
+	/// A reference to the item in the bag currently equipped to the head.
+	/// </summary>
+	/// <value></value>
 	public BaseItem head {
 		get {return _head;}
 	}
 
+	/// <summary>
+	/// A reference to the item in the bag currently equipped to the finger.
+	/// </summary>
+	/// <value></value>
 	public BaseItem finger {
 		get {return _finger;}
 	}
 
+	/// <summary>
+	/// A reference to the item in the bag currently equipped to the right hand.
+	/// </summary>
+	/// <value></value>
 	public BaseItem primary {
 		get {return _primary;}
 	}
 
+	/// <summary>
+	/// A reference to the item in the bag currently equipped to the body.
+	/// </summary>
+	/// <value></value>
 	public BaseItem body {
 		get {return _body;}
 	}
 
+	/// <summary>
+	/// A reference to the item in the bag currently equipped to the left hand.
+	/// </summary>
+	/// <value></value>
 	public BaseItem secondary {
 		get {return _secondary;}
 	}
 
+	/// <summary>
+	/// A reference to the item in the bag currently equipped to the hands.
+	/// </summary>
+	/// <value></value>
 	public BaseItem hands {
 		get {return _hands;}
 	}
 
+	/// <summary>
+	/// A reference to the item in the bag currently equipped to the legs.
+	/// </summary>
+	/// <value></value>
 	public BaseItem legs {
 		get {return _legs;}
 	}
 
+	/// <summary>
+	/// A reference to the item in the bag currently equipped to the feet.
+	/// </summary>
+	/// <value></value>
 	public BaseItem feet {
 		get {return _feet;}
 	}
-
-	public int equipmentAttack {
-		get {
-			int sum = 0;
-			foreach(BaseItem item in EquipmentList()) {
-				if(item != null) {
-					sum += item.attack;
-				}
-			}
-			return sum;
-		}
-	}
-
-	public int equipmentDefense {
-		get {
-			int sum = 0;
-			foreach(BaseItem item in EquipmentList()) {
-				if(item != null) {
-					sum += item.defense;
-				}
-			}
-			return sum;
-		}
-	}
-
-	public int equipmentHealthTotal {
-		get {
-			int sum = 0;
-			foreach(BaseItem item in EquipmentList()) {
-				if(item != null) {
-					sum += item.healthTotal;
-				}
-			}
-			return sum;
-		}
-	}
-
-	public int equipmentHealthRecovery {
-		get {
-			int sum = 0;
-			foreach(BaseItem item in EquipmentList()) {
-				if(item != null) {
-					sum += item.healthRecovery;
-				}
-			}
-			return sum;
-		}
-	}
-
-	public int equipmentEssenceTotal {
-		get {
-			int sum = 0;
-			foreach(BaseItem item in EquipmentList()) {
-				if(item != null) {
-					sum += item.essenceTotal;
-				}
-			}
-			return sum;
-		}
-	}
-
-	public int equipmentEssenceRecovery {
-		get {
-			int sum = 0;
-			foreach(BaseItem item in EquipmentList()) {
-				if(item != null) {
-					sum += item.essenceRecovery;
-				}
-			}
-			return sum;
-		}
-	}
-
-	public int equipmentMovementSpeed{
-		get {
-			int sum = 0;
-			foreach(BaseItem item in EquipmentList()) {
-				if(item != null) {
-					sum += item.movementSpeed;
-				}
-			}
-			return sum;
-		}
-	}
 	#endregion
 
+	/// <summary>
+	/// Adds an item to the bag.
+	/// </summary>
+	/// <param name="item">The item to add to the bag.</param>
+	/// <returns>True if the item was added to the bag, otherwise returns False.</returns>
 	public bool Add(BaseItem item) {
 		for(int i = 0; i < _items.Count; i++) {
 			if(_items[i] == null) {
@@ -174,6 +133,11 @@ public class Bag {
 		return false;
 	}
 
+	/// <summary>
+	/// Removes an item from the bag.
+	/// </summary>
+	/// <param name="item">The item to remove from the bag.</param>
+	/// <returns>The slot number of which the item was removed, otherwise returns -1.</returns>
 	public int Remove(BaseItem item) {
 		int slot = FindItemSlot(item);
 		if(slot > -1) {
@@ -183,6 +147,11 @@ public class Bag {
 		return slot;
 	}
 
+	/// <summary>
+	/// Removes an item at a specific slot in the bag.
+	/// </summary>
+	/// <param name="ndx">The slot index to remove an item at.</param>
+	/// <returns>True if the item was found and removed from the bag, otherwise returns -1.</returns>
 	public bool RemoveAt(int ndx) {
 		if(ndx > -1 && ndx < _items.Count) {
 			_items.RemoveAt(ndx);
@@ -192,6 +161,11 @@ public class Bag {
 		return false;
 	}
 
+	/// <summary>
+	/// Uses a consumable item from the bag.
+	/// </summary>
+	/// <param name="id">The ID of the item to use.</param>
+	/// <returns>True if the item was used, otherwise returns False.</returns>
 	public bool Consume(BaseItem.ID id) {
 		int slot = FindItemWithID(id);
 		if(slot > -1) {
@@ -206,6 +180,11 @@ public class Bag {
 		return false;
 	}
 
+	/// <summary>
+	/// Creates a bag object.
+	/// </summary>
+	/// <param name="b">The type of bag.</param>
+	/// <param name="itm">A list of items to add to the bag.</param>
 	public Bag(BagType b, List<BaseItem> itm) {
 		_items = new List<BaseItem>();
 
@@ -230,6 +209,10 @@ public class Bag {
 		}
 	}
 
+	/// <summary>
+	/// Creates a bag object.
+	/// </summary>
+	/// <param name="b">The type of bag.</param>
 	public Bag(BagType b) {
 		_items = new List<BaseItem>();
 
@@ -244,6 +227,11 @@ public class Bag {
 		}
 	}
 
+	/// <summary>
+	/// Equips an item from the bag.
+	/// </summary>
+	/// <param name="slot">The slot of the item to equip.</param>
+	/// <returns>True if the item was equipped, otherwise returns False.</returns>
 	public bool Equip(int slot) {
 		if(slot < 0 || slot >= BAG_SLOTS) {return false;}
 		if(_items[slot] == null) {return false;}

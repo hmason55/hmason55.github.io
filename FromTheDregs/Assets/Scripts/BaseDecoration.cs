@@ -100,7 +100,7 @@ public class BaseDecoration {
 					_bag = new Bag(Bag.BagType.Container, PlayerData.current.retrievalBag.items);
 					PlayerData.current.retrievalMode = false;
 					SaveLoadData.Save();
-					Debug.Log("Something here feels familiar...");
+					AnnouncementManager.Display("Something here feels familiar...", Color.white);
 				} else {
 					_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
 					_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));

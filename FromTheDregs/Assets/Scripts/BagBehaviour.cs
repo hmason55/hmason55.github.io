@@ -118,7 +118,6 @@ public class BagBehaviour : MonoBehaviour {
 		_equipmentFeet.item = _bag.feet;
 
 		UpdateSlotImages();
-		UpdateEquipmentStats();
 		_baseUnit.SyncHotbar();
 	}
 
@@ -404,37 +403,6 @@ public class BagBehaviour : MonoBehaviour {
 		}
 
 		return null;
-	}
-
-	public void UpdateEquipmentStats() {
-		if(_bag == null) {return;}
-
-		string categories = "";
-
-		categories += "Attack\n";
-		categories += "Defense\n";
-		categories += "\n";
-		categories += "Health Total\n";
-		categories += "Health Recovery\n";
-		categories += "\n";
-		categories += "Essence Total\n";
-		categories += "Essence Recovery\n";
-		categories += "\n";
-		categories += "Movement Speed\n";
-
-		string values = "";
-
-		values += _bag.equipmentAttack + "\n";
-		values += _bag.equipmentDefense + "\n";
-		values += "\n";
-		values += _bag.equipmentHealthTotal + "\n";
-		values += _bag.equipmentHealthRecovery + "\n";
-		values += "\n";
-		values += _bag.equipmentEssenceTotal + "\n";
-		values += _bag.equipmentEssenceRecovery + "\n";
-		values += "\n";
-		values += _bag.equipmentMovementSpeed + "\n";
-		
 	}
 
 	public void ToggleUI() {

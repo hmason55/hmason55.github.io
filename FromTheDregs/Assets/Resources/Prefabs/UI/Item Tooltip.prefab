@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 6667486798008551018}
   - component: {fileID: 3486561705933186075}
   - component: {fileID: 4618867198297441793}
-  - component: {fileID: 6851676436228265106}
+  - component: {fileID: 8162121632484723257}
   m_Layer: 5
   m_Name: Category
   m_TagString: Untagged
@@ -270,7 +270,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Item Category
---- !u!114 &6851676436228265106
+--- !u!114 &8162121632484723257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,11 +280,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &5347802962844241027
 GameObject:
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 8908949618801339762}
   - component: {fileID: 8500112506060129696}
   - component: {fileID: 453961593658268908}
-  - component: {fileID: 4341880511961158946}
+  - component: {fileID: 6478077760486009093}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -354,8 +354,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b6b80f87183dbcd48ba798dbcef06d21, type: 2}
-    m_FontSize: 54
+    m_Font: {fileID: 12800000, guid: 1847a0d4bb47cf54da68aaa1346c1043, type: 3}
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
   m_Text: Cotton Tunic of Casting
---- !u!114 &4341880511961158946
+--- !u!114 &6478077760486009093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -377,11 +377,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.49803922}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!1 &5485586094600260801
 GameObject:
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 4778038409322111614}
   - component: {fileID: 8575946083415389475}
   - component: {fileID: 3463794854803589567}
-  - component: {fileID: 2077296325134654457}
+  - component: {fileID: 1947134922032947495}
   m_Layer: 5
   m_Name: Value
   m_TagString: Untagged
@@ -464,7 +464,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
   m_Text: 150
---- !u!114 &2077296325134654457
+--- !u!114 &1947134922032947495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -474,11 +474,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &5630988562739475623
 GameObject:
@@ -595,7 +595,7 @@ GameObject:
   - component: {fileID: 2194293597301496052}
   - component: {fileID: 8646607759096146739}
   - component: {fileID: 8857620553995134759}
-  - component: {fileID: 5434455594270766378}
+  - component: {fileID: 8070178801405596849}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -665,7 +665,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Item description. This is an example of a fairly extensive item description.
---- !u!114 &5434455594270766378
+--- !u!114 &8070178801405596849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -675,11 +675,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.49803922}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!1 &6451968017927812964
 GameObject:

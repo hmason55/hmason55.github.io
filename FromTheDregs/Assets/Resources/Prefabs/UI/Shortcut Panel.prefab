@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 224660174716487640}
   - component: {fileID: 222249804352496452}
   - component: {fileID: 114483775115708722}
-  - component: {fileID: 878925230841961756}
+  - component: {fileID: 6622939799781977726}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -68,8 +68,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b6b80f87183dbcd48ba798dbcef06d21, type: 2}
-    m_FontSize: 54
+    m_Font: {fileID: 12800000, guid: 1847a0d4bb47cf54da68aaa1346c1043, type: 3}
+    m_FontSize: 52
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: End Turn
---- !u!114 &878925230841961756
+--- !u!114 &6622939799781977726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,11 +91,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!1 &1084936755320882
 GameObject:
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 224600402429948092}
   - component: {fileID: 222659662509120600}
   - component: {fileID: 114306754836207306}
-  - component: {fileID: 7144815762478615141}
+  - component: {fileID: 4498885331330164809}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -165,8 +165,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b6b80f87183dbcd48ba798dbcef06d21, type: 2}
-    m_FontSize: 54
+    m_Font: {fileID: 12800000, guid: 1847a0d4bb47cf54da68aaa1346c1043, type: 3}
+    m_FontSize: 52
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Bag
---- !u!114 &7144815762478615141
+--- !u!114 &4498885331330164809
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,11 +188,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!1 &1167682631997034
 GameObject:
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 224593209120307428}
   - component: {fileID: 222442625082737394}
   - component: {fileID: 114157621146380728}
-  - component: {fileID: 7090169026191162672}
+  - component: {fileID: 5957218283625004271}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -262,8 +262,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b6b80f87183dbcd48ba798dbcef06d21, type: 2}
-    m_FontSize: 54
+    m_Font: {fileID: 12800000, guid: 1847a0d4bb47cf54da68aaa1346c1043, type: 3}
+    m_FontSize: 52
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Attributes
---- !u!114 &7090169026191162672
+--- !u!114 &5957218283625004271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,11 +285,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!1 &1174211052181110
 GameObject:
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 224779869340766860}
   - component: {fileID: 222153260381397940}
   - component: {fileID: 114215282929774790}
-  - component: {fileID: 1594767878765335689}
+  - component: {fileID: 5766398323850441704}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -761,8 +761,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b6b80f87183dbcd48ba798dbcef06d21, type: 2}
-    m_FontSize: 54
+    m_Font: {fileID: 12800000, guid: 1847a0d4bb47cf54da68aaa1346c1043, type: 3}
+    m_FontSize: 52
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -774,7 +774,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Menu
---- !u!114 &1594767878765335689
+--- !u!114 &5766398323850441704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -784,11 +784,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!1 &1818473588219616
 GameObject:
@@ -858,6 +858,7 @@ MonoBehaviour:
   _characterShortcut: {fileID: 114451270219460096}
   _bagShortcut: {fileID: 114722821648163174}
   _endTurnShortcut: {fileID: 114940013188371012}
+  _attributesUI: {fileID: 0}
   _bagBehaviour: {fileID: 0}
 --- !u!114 &114437303080494864
 MonoBehaviour:

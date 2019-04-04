@@ -29,7 +29,7 @@ var searchData=
   ['beard_5f6',['Beard_6',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81aef2d4395372775f26d9d803311996884',1,'Character']]],
   ['beard_5f7',['Beard_7',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81a116cf87a1571ff2f43bd5fdbecf60e11',1,'Character']]],
   ['beard_5f8',['Beard_8',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81a1cc77dfa5d8fca74576ba6e75445dd07',1,'Character']]],
-  ['beardtype',['beardType',['../class_character.html#a77735a4eeb0530c85de8e53145cb6044',1,'Character.beardType()'],['../class_portrait.html#acc7fbe447bbd427f26e0490b868febd3',1,'Portrait.beardType()'],['../class_character.html#afc1fe7f790870a92fe62d3e57296de81',1,'Character.BeardType()']]],
+  ['beardtype',['BeardType',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81',1,'Character.BeardType()'],['../class_character.html#a77735a4eeb0530c85de8e53145cb6044',1,'Character.beardType()'],['../class_portrait.html#acc7fbe447bbd427f26e0490b868febd3',1,'Portrait.beardType()']]],
   ['begincombat',['BeginCombat',['../class_combat_manager.html#ab5d0c356fd55e86d62b03c015754abee',1,'CombatManager.BeginCombat()'],['../class_turn_queue.html#a7de50ac6b689f76c71d808962b6d1b86',1,'TurnQueue.BeginCombat()']]],
   ['beginhitanimation',['BeginHitAnimation',['../class_base_unit.html#a01c63c5cd0d41b5ca787470fd0c19472',1,'BaseUnit']]],
   ['beginturn',['BeginTurn',['../class_base_unit.html#a0f8955c72dfa02027c1b247d74233f0d',1,'BaseUnit.BeginTurn()'],['../class_shortcut_u_i.html#af20cdb51997f4ae7219a36a7bca851a3',1,'ShortcutUI.BeginTurn()']]],

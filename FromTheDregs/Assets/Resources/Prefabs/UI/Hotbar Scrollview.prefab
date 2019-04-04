@@ -249,7 +249,6 @@ GameObject:
   - component: {fileID: 224263007027238018}
   - component: {fileID: 222214053813691538}
   - component: {fileID: 114204797843274246}
-  - component: {fileID: 4231598356565732885}
   - component: {fileID: 5545930771583659505}
   m_Layer: 5
   m_Name: Text
@@ -320,22 +319,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 2
---- !u!114 &4231598356565732885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270567279667744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!114 &5545930771583659505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,7 +1114,7 @@ GameObject:
   - component: {fileID: 224072299665851652}
   - component: {fileID: 222795579757092038}
   - component: {fileID: 114159310700791148}
-  - component: {fileID: 382927921476268856}
+  - component: {fileID: 2527726758619699591}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1188,7 +1171,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b6b80f87183dbcd48ba798dbcef06d21, type: 2}
+    m_Font: {fileID: 12800000, guid: 1847a0d4bb47cf54da68aaa1346c1043, type: 3}
     m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
@@ -1201,7 +1184,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
   m_Text: Feint Swipe
---- !u!114 &382927921476268856
+--- !u!114 &2527726758619699591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1211,9 +1194,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1

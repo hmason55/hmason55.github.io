@@ -9,7 +9,6 @@ var searchData=
   ['unsetplayerdata',['UnsetPlayerData',['../class_data_slot.html#a2d8c55c9436701f7d2a12ab7388dcdec',1,'DataSlot']]],
   ['updatecost',['UpdateCost',['../class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a',1,'Hotkey']]],
   ['updatedataslots',['UpdateDataSlots',['../class_load_data_u_i.html#a2a36a17c6455a8ca8ee3b92dbbce0503',1,'LoadDataUI']]],
-  ['updateequipmentstats',['UpdateEquipmentStats',['../class_bag_behaviour.html#ad2e50a51bbb8f9c90a3241dbce0f87c0',1,'BagBehaviour']]],
   ['updatehitpoints',['UpdateHitpoints',['../class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af',1,'HitpointUI']]],
   ['updatehotkeys',['UpdateHotkeys',['../class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856',1,'Hotbar']]],
   ['updateimage',['UpdateImage',['../class_bag_item_behaviour.html#aaedcc49f5d2def63dcde17d72fdb3b9d',1,'BagItemBehaviour']]],

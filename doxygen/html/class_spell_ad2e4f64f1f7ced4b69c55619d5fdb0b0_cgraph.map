@@ -18,8 +18,8 @@
 <area shape="rect" id="node18" href="$class_base_unit.html#a38fdc01e0ff77bcc22f10d4ce06d0e25" title=" " alt="" coords="416,275,592,301"/>
 <area shape="rect" id="node19" href="$class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="455,392,553,419"/>
 <area shape="rect" id="node16" href="$class_turn_queue.html#ae1c735b715ec963c76f0291cb9629338" title=" " alt="" coords="675,291,823,317"/>
-<area shape="rect" id="node20" href="$class_bag.html#a4efd17483fce361ea8a01dcda349b3b4" title=" " alt="" coords="713,493,785,520"/>
-<area shape="rect" id="node21" href="$class_bag.html#a2f11a414bf3edfd7f380f30b71f34104" title=" " alt="" coords="695,341,803,368"/>
+<area shape="rect" id="node20" href="$class_bag.html#a4efd17483fce361ea8a01dcda349b3b4" title="Adds an item to the bag." alt="" coords="713,493,785,520"/>
+<area shape="rect" id="node21" href="$class_bag.html#a2f11a414bf3edfd7f380f30b71f34104" title="Removes an item at a specific slot in the bag." alt="" coords="695,341,803,368"/>
 <area shape="rect" id="node22" href="$class_turn_queue.html#af6ee9af337f42a417812f4bc96f8d600" title=" " alt="" coords="665,392,832,419"/>
 <area shape="rect" id="node23" href="$class_unit_behaviour.html#a9a32f3234ea6b89f686c6cd55d924348" title=" " alt="" coords="687,443,810,469"/>
 <area shape="rect" id="node24" href="$class_unit_behaviour.html#a17b46e508ee650f487d4bf79608da4eb" title=" " alt="" coords="892,494,1071,535"/>

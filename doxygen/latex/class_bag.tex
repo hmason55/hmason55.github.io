@@ -22,19 +22,19 @@ enum \mbox{\hyperlink{class_bag_a5a827c44705d57202edc93b9a39316c7}{Bag\+Type}} \
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{class_bag_a4efd17483fce361ea8a01dcda349b3b4}{Add}} (\mbox{\hyperlink{class_base_item}{Base\+Item}} item)
-\item 
+\begin{DoxyCompactList}\small\item\em Adds an item to the bag. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_bag_a42a4319aa14d0b6bda7f91070ba57a47}{Remove}} (\mbox{\hyperlink{class_base_item}{Base\+Item}} item)
-\item 
+\begin{DoxyCompactList}\small\item\em Removes an item from the bag. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_bag_a2f11a414bf3edfd7f380f30b71f34104}{Remove\+At}} (int ndx)
-\item 
+\begin{DoxyCompactList}\small\item\em Removes an item at a specific slot in the bag. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_bag_a85aa679243be4a24a6278d5f68c2ed5e}{Consume}} (\mbox{\hyperlink{class_base_item_add9920d2f5a4fa91752714a8f3ab424b}{Base\+Item.\+ID}} id)
-\item 
+\begin{DoxyCompactList}\small\item\em Uses a consumable item from the bag. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_bag_a3df4934de8cf1a5e5952a77160ee4ca8}{Bag}} (\mbox{\hyperlink{class_bag_a5a827c44705d57202edc93b9a39316c7}{Bag\+Type}} b, List$<$ \mbox{\hyperlink{class_base_item}{Base\+Item}} $>$ itm)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a bag object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_bag_a8d6e5dcefb12fc099b2b02347e5dacae}{Bag}} (\mbox{\hyperlink{class_bag_a5a827c44705d57202edc93b9a39316c7}{Bag\+Type}} b)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a bag object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_bag_a975e4ef7a5647327225e5b587b32c066}{Equip}} (int slot)
-\item 
+\begin{DoxyCompactList}\small\item\em Equips an item from the bag. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_bag_aacb4579a06f66e1578327635e2120b3e}{Unequip}} (\mbox{\hyperlink{class_base_item_a882a2962396f880c2e23755437245d37}{Base\+Item.\+Category}} category)
 \begin{DoxyCompactList}\small\item\em Unequips an item from the bag and all items of the same category. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_bag_a3ee41396e25179a9c975c6f90d601bdd}{Format}} ()
@@ -58,39 +58,25 @@ static int \mbox{\hyperlink{class_bag_ac513120e71acce6fffca5d0e78733182}{C\+O\+N
 \mbox{\hyperlink{class_bag_a5a827c44705d57202edc93b9a39316c7}{Bag\+Type}} \mbox{\hyperlink{class_bag_a84ac63a7f36a20bc22ab8c2de86babcc}{bag\+Type}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
 \item 
 List$<$ \mbox{\hyperlink{class_base_item}{Base\+Item}} $>$ \mbox{\hyperlink{class_bag_a06d313b5ecfa35740d11e1613d1a7695}{items}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A list of items in the bag. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_base_item}{Base\+Item}} \mbox{\hyperlink{class_bag_a6796ecd4f3c30c4514d45cce11b1907c}{neck}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the item in the bag currently equipped to the neck. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_base_item}{Base\+Item}} \mbox{\hyperlink{class_bag_aad83c56a14d611f6e1d2fac81903d66c}{head}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the item in the bag currently equipped to the head. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_base_item}{Base\+Item}} \mbox{\hyperlink{class_bag_a0517877fdabd6917389995deecabe057}{finger}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the item in the bag currently equipped to the finger. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_base_item}{Base\+Item}} \mbox{\hyperlink{class_bag_af0d1113dd35f217846e53dd477071db1}{primary}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the item in the bag currently equipped to the right hand. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_base_item}{Base\+Item}} \mbox{\hyperlink{class_bag_a1c9c49018ee2e88c1fd09df3bd6d9d9f}{body}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the item in the bag currently equipped to the body. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_base_item}{Base\+Item}} \mbox{\hyperlink{class_bag_ad5d314d6b9a11127a8bdebc98f2a9cc0}{secondary}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the item in the bag currently equipped to the left hand. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_base_item}{Base\+Item}} \mbox{\hyperlink{class_bag_a19700ba62882ea2e03f954a6b4f267fa}{hands}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the item in the bag currently equipped to the hands. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_base_item}{Base\+Item}} \mbox{\hyperlink{class_bag_a06fc81d3974eb764db9be3fda8e63284}{legs}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
+\begin{DoxyCompactList}\small\item\em A reference to the item in the bag currently equipped to the legs. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_base_item}{Base\+Item}} \mbox{\hyperlink{class_bag_a45172ef71e457ce9c818866fc0ffd5c2}{feet}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
-int \mbox{\hyperlink{class_bag_a009c51f2adf7e0dbddd0bcc97fee8708}{equipment\+Attack}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
-int \mbox{\hyperlink{class_bag_ade9d98eb07c941f15f1bf40eaa67523f}{equipment\+Defense}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
-int \mbox{\hyperlink{class_bag_a27e5f9ef8f024e1d1cf5d321cb28836c}{equipment\+Health\+Total}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
-int \mbox{\hyperlink{class_bag_a38d2f92304d56781de31a7098695ac72}{equipment\+Health\+Recovery}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
-int \mbox{\hyperlink{class_bag_a623cd2a1f6198424405ad8066ca6025e}{equipment\+Essence\+Total}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
-int \mbox{\hyperlink{class_bag_a79e24ed265181b438682a9fbc6cc37a6}{equipment\+Essence\+Recovery}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
-int \mbox{\hyperlink{class_bag_ad551aa1b82517235b92383220f44ed4c}{equipment\+Movement\+Speed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A reference to the item in the bag currently equipped to the feet. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Member Enumeration Documentation}
@@ -123,12 +109,32 @@ Shop&\\
 \subsubsection{\texorpdfstring{Bag()}{Bag()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily Bag.\+Bag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_a5a827c44705d57202edc93b9a39316c7}{Bag\+Type}}}]{b,  }\item[{List$<$ \mbox{\hyperlink{class_base_item}{Base\+Item}} $>$}]{itm }\end{DoxyParamCaption})}
 
+
+
+Creates a bag object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & The type of bag.\\
+\hline
+{\em itm} & A list of items to add to the bag.\\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_bag_a8d6e5dcefb12fc099b2b02347e5dacae}\label{class_bag_a8d6e5dcefb12fc099b2b02347e5dacae}} 
 \index{Bag@{Bag}!Bag@{Bag}}
 \index{Bag@{Bag}!Bag@{Bag}}
 \subsubsection{\texorpdfstring{Bag()}{Bag()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Bag.\+Bag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_a5a827c44705d57202edc93b9a39316c7}{Bag\+Type}}}]{b }\end{DoxyParamCaption})}
 
+
+
+Creates a bag object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & The type of bag.\\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -138,6 +144,18 @@ Shop&\\
 \subsubsection{\texorpdfstring{Add()}{Add()}}
 {\footnotesize\ttfamily bool Bag.\+Add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item}{Base\+Item}}}]{item }\end{DoxyParamCaption})}
 
+
+
+Adds an item to the bag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & The item to add to the bag.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the item was added to the bag, otherwise returns False.
+\end{DoxyReturn}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -152,6 +170,18 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{Consume()}{Consume()}}
 {\footnotesize\ttfamily bool Bag.\+Consume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_add9920d2f5a4fa91752714a8f3ab424b}{Base\+Item.\+ID}}}]{id }\end{DoxyParamCaption})}
 
+
+
+Uses a consumable item from the bag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the item to use.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the item was used, otherwise returns False.
+\end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -174,6 +204,18 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{Equip()}{Equip()}}
 {\footnotesize\ttfamily bool Bag.\+Equip (\begin{DoxyParamCaption}\item[{int}]{slot }\end{DoxyParamCaption})}
 
+
+
+Equips an item from the bag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em slot} & The slot of the item to equip.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the item was equipped, otherwise returns False.
+\end{DoxyReturn}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -237,8 +279,7 @@ Finds an key item that has the given keycode.
 \begin{DoxyReturn}{Returns}
 The slot number of the key when found, otherwise returns -\/1.
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -269,6 +310,18 @@ Here is the call graph for this function\+:
 \subsubsection{\texorpdfstring{Remove()}{Remove()}}
 {\footnotesize\ttfamily int Bag.\+Remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item}{Base\+Item}}}]{item }\end{DoxyParamCaption})}
 
+
+
+Removes an item from the bag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & The item to remove from the bag.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The slot number of which the item was removed, otherwise returns -\/1.
+\end{DoxyReturn}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -291,6 +344,18 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{RemoveAt()}{RemoveAt()}}
 {\footnotesize\ttfamily bool Bag.\+Remove\+At (\begin{DoxyParamCaption}\item[{int}]{ndx }\end{DoxyParamCaption})}
 
+
+
+Removes an item at a specific slot in the bag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ndx} & The slot index to remove an item at.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the item was found and removed from the bag, otherwise returns -\/1.
+\end{DoxyReturn}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -312,8 +377,7 @@ Unequips an item from the bag and all items of the same category.
 \begin{DoxyReturn}{Returns}
 True if the item was unequipped, otherwise returns False.
 \end{DoxyReturn}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -350,47 +414,9 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{body}{body}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_base_item}{Base\+Item}} Bag.\+body\hspace{0.3cm}{\ttfamily [get]}}
 
-\mbox{\Hypertarget{class_bag_a009c51f2adf7e0dbddd0bcc97fee8708}\label{class_bag_a009c51f2adf7e0dbddd0bcc97fee8708}} 
-\index{Bag@{Bag}!equipmentAttack@{equipmentAttack}}
-\index{equipmentAttack@{equipmentAttack}!Bag@{Bag}}
-\subsubsection{\texorpdfstring{equipmentAttack}{equipmentAttack}}
-{\footnotesize\ttfamily int Bag.\+equipment\+Attack\hspace{0.3cm}{\ttfamily [get]}}
 
-\mbox{\Hypertarget{class_bag_ade9d98eb07c941f15f1bf40eaa67523f}\label{class_bag_ade9d98eb07c941f15f1bf40eaa67523f}} 
-\index{Bag@{Bag}!equipmentDefense@{equipmentDefense}}
-\index{equipmentDefense@{equipmentDefense}!Bag@{Bag}}
-\subsubsection{\texorpdfstring{equipmentDefense}{equipmentDefense}}
-{\footnotesize\ttfamily int Bag.\+equipment\+Defense\hspace{0.3cm}{\ttfamily [get]}}
 
-\mbox{\Hypertarget{class_bag_a79e24ed265181b438682a9fbc6cc37a6}\label{class_bag_a79e24ed265181b438682a9fbc6cc37a6}} 
-\index{Bag@{Bag}!equipmentEssenceRecovery@{equipmentEssenceRecovery}}
-\index{equipmentEssenceRecovery@{equipmentEssenceRecovery}!Bag@{Bag}}
-\subsubsection{\texorpdfstring{equipmentEssenceRecovery}{equipmentEssenceRecovery}}
-{\footnotesize\ttfamily int Bag.\+equipment\+Essence\+Recovery\hspace{0.3cm}{\ttfamily [get]}}
-
-\mbox{\Hypertarget{class_bag_a623cd2a1f6198424405ad8066ca6025e}\label{class_bag_a623cd2a1f6198424405ad8066ca6025e}} 
-\index{Bag@{Bag}!equipmentEssenceTotal@{equipmentEssenceTotal}}
-\index{equipmentEssenceTotal@{equipmentEssenceTotal}!Bag@{Bag}}
-\subsubsection{\texorpdfstring{equipmentEssenceTotal}{equipmentEssenceTotal}}
-{\footnotesize\ttfamily int Bag.\+equipment\+Essence\+Total\hspace{0.3cm}{\ttfamily [get]}}
-
-\mbox{\Hypertarget{class_bag_a38d2f92304d56781de31a7098695ac72}\label{class_bag_a38d2f92304d56781de31a7098695ac72}} 
-\index{Bag@{Bag}!equipmentHealthRecovery@{equipmentHealthRecovery}}
-\index{equipmentHealthRecovery@{equipmentHealthRecovery}!Bag@{Bag}}
-\subsubsection{\texorpdfstring{equipmentHealthRecovery}{equipmentHealthRecovery}}
-{\footnotesize\ttfamily int Bag.\+equipment\+Health\+Recovery\hspace{0.3cm}{\ttfamily [get]}}
-
-\mbox{\Hypertarget{class_bag_a27e5f9ef8f024e1d1cf5d321cb28836c}\label{class_bag_a27e5f9ef8f024e1d1cf5d321cb28836c}} 
-\index{Bag@{Bag}!equipmentHealthTotal@{equipmentHealthTotal}}
-\index{equipmentHealthTotal@{equipmentHealthTotal}!Bag@{Bag}}
-\subsubsection{\texorpdfstring{equipmentHealthTotal}{equipmentHealthTotal}}
-{\footnotesize\ttfamily int Bag.\+equipment\+Health\+Total\hspace{0.3cm}{\ttfamily [get]}}
-
-\mbox{\Hypertarget{class_bag_ad551aa1b82517235b92383220f44ed4c}\label{class_bag_ad551aa1b82517235b92383220f44ed4c}} 
-\index{Bag@{Bag}!equipmentMovementSpeed@{equipmentMovementSpeed}}
-\index{equipmentMovementSpeed@{equipmentMovementSpeed}!Bag@{Bag}}
-\subsubsection{\texorpdfstring{equipmentMovementSpeed}{equipmentMovementSpeed}}
-{\footnotesize\ttfamily int Bag.\+equipment\+Movement\+Speed\hspace{0.3cm}{\ttfamily [get]}}
+A reference to the item in the bag currently equipped to the body. 
 
 \mbox{\Hypertarget{class_bag_a45172ef71e457ce9c818866fc0ffd5c2}\label{class_bag_a45172ef71e457ce9c818866fc0ffd5c2}} 
 \index{Bag@{Bag}!feet@{feet}}
@@ -398,11 +424,19 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{feet}{feet}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_base_item}{Base\+Item}} Bag.\+feet\hspace{0.3cm}{\ttfamily [get]}}
 
+
+
+A reference to the item in the bag currently equipped to the feet. 
+
 \mbox{\Hypertarget{class_bag_a0517877fdabd6917389995deecabe057}\label{class_bag_a0517877fdabd6917389995deecabe057}} 
 \index{Bag@{Bag}!finger@{finger}}
 \index{finger@{finger}!Bag@{Bag}}
 \subsubsection{\texorpdfstring{finger}{finger}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_base_item}{Base\+Item}} Bag.\+finger\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A reference to the item in the bag currently equipped to the finger. 
 
 \mbox{\Hypertarget{class_bag_a19700ba62882ea2e03f954a6b4f267fa}\label{class_bag_a19700ba62882ea2e03f954a6b4f267fa}} 
 \index{Bag@{Bag}!hands@{hands}}
@@ -410,11 +444,19 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{hands}{hands}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_base_item}{Base\+Item}} Bag.\+hands\hspace{0.3cm}{\ttfamily [get]}}
 
+
+
+A reference to the item in the bag currently equipped to the hands. 
+
 \mbox{\Hypertarget{class_bag_aad83c56a14d611f6e1d2fac81903d66c}\label{class_bag_aad83c56a14d611f6e1d2fac81903d66c}} 
 \index{Bag@{Bag}!head@{head}}
 \index{head@{head}!Bag@{Bag}}
 \subsubsection{\texorpdfstring{head}{head}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_base_item}{Base\+Item}} Bag.\+head\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A reference to the item in the bag currently equipped to the head. 
 
 \mbox{\Hypertarget{class_bag_a06d313b5ecfa35740d11e1613d1a7695}\label{class_bag_a06d313b5ecfa35740d11e1613d1a7695}} 
 \index{Bag@{Bag}!items@{items}}
@@ -422,11 +464,19 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{items}{items}}
 {\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_base_item}{Base\+Item}}$>$ Bag.\+items\hspace{0.3cm}{\ttfamily [get]}}
 
+
+
+A list of items in the bag. 
+
 \mbox{\Hypertarget{class_bag_a06fc81d3974eb764db9be3fda8e63284}\label{class_bag_a06fc81d3974eb764db9be3fda8e63284}} 
 \index{Bag@{Bag}!legs@{legs}}
 \index{legs@{legs}!Bag@{Bag}}
 \subsubsection{\texorpdfstring{legs}{legs}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_base_item}{Base\+Item}} Bag.\+legs\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A reference to the item in the bag currently equipped to the legs. 
 
 \mbox{\Hypertarget{class_bag_a6796ecd4f3c30c4514d45cce11b1907c}\label{class_bag_a6796ecd4f3c30c4514d45cce11b1907c}} 
 \index{Bag@{Bag}!neck@{neck}}
@@ -434,11 +484,19 @@ Here is the caller graph for this function\+:
 \subsubsection{\texorpdfstring{neck}{neck}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_base_item}{Base\+Item}} Bag.\+neck\hspace{0.3cm}{\ttfamily [get]}}
 
+
+
+A reference to the item in the bag currently equipped to the neck. 
+
 \mbox{\Hypertarget{class_bag_af0d1113dd35f217846e53dd477071db1}\label{class_bag_af0d1113dd35f217846e53dd477071db1}} 
 \index{Bag@{Bag}!primary@{primary}}
 \index{primary@{primary}!Bag@{Bag}}
 \subsubsection{\texorpdfstring{primary}{primary}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_base_item}{Base\+Item}} Bag.\+primary\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+A reference to the item in the bag currently equipped to the right hand. 
 
 \mbox{\Hypertarget{class_bag_ad5d314d6b9a11127a8bdebc98f2a9cc0}\label{class_bag_ad5d314d6b9a11127a8bdebc98f2a9cc0}} 
 \index{Bag@{Bag}!secondary@{secondary}}
@@ -448,6 +506,5 @@ Here is the caller graph for this function\+:
 
 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
-\item 
-C\+:/\+Users/\+Hunter/\+Documents/\+Git\+Hub/\+F\+T\+D/\+From\+The\+Dregs/\+Assets/\+Scripts/Bag.\+cs\end{DoxyCompactItemize}
+A reference to the item in the bag currently equipped to the left hand. 
+

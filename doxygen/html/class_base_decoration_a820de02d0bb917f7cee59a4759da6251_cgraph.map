@@ -1,5 +1,5 @@
 <map id="BaseDecoration.Unlock" name="BaseDecoration.Unlock">
 <area shape="rect" id="node1" title=" " alt="" coords="5,31,164,57"/>
 <area shape="rect" id="node2" href="$class_bag.html#ab913ca67bac7d4a740a470dbb1632311" title="Finds an key item that has the given keycode." alt="" coords="217,5,315,32"/>
-<area shape="rect" id="node3" href="$class_bag.html#a2f11a414bf3edfd7f380f30b71f34104" title=" " alt="" coords="212,56,320,83"/>
+<area shape="rect" id="node3" href="$class_bag.html#a2f11a414bf3edfd7f380f30b71f34104" title="Removes an item at a specific slot in the bag." alt="" coords="212,56,320,83"/>
 </map>
