@@ -648,5 +648,15 @@ MonoBehaviour:
     - {fileID: 21300000, guid: d6b3cda68e2f1c846ad8b81a314dc314, type: 3}
     - {fileID: 21300000, guid: 905bef2bd296f0b4eb932a988fc0fe4e, type: 3}
   intents:
-  - {fileID: 21300000, guid: bd7c1e5678c04e246bb95b018e171831, type: 3}
-  - {fileID: 21300000, guid: 1234ada893c21b84c9e6a9a112d44d73, type: 3}
+    attack: {fileID: 21300000, guid: bd7c1e5678c04e246bb95b018e171831, type: 3}
+    defend: {fileID: 21300000, guid: 1234ada893c21b84c9e6a9a112d44d73, type: 3}
+    debuff: {fileID: 0}
+    buff: {fileID: 0}
+    unknown: {fileID: 0}
+  statuses:
+    strength: {fileID: 21300000, guid: 974061458105e7d4d988916005323a6d, type: 3}
+    dexterity: {fileID: 21300000, guid: e036b2f5b57f5e14b82257cd406abd90, type: 3}
+    intelligence: {fileID: 21300000, guid: 2a1f7cc0b8dfb6d42821cc020b57e2f3, type: 3}
+    block: {fileID: 21300000, guid: 5702fce0b3645f04e90338a83bcd7578, type: 3}
+    bleed: {fileID: 21300000, guid: bf4a14f1b115ea847a1617776f77b447, type: 3}
+    poison: {fileID: 21300000, guid: d0ace21ee4346014291725cdae4aec26, type: 3}

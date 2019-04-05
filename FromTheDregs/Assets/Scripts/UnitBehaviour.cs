@@ -16,6 +16,7 @@ public class UnitBehaviour : MonoBehaviour {
 	[SerializeField] Image _intentImage;
 	[SerializeField] Text _intentText;
 	[SerializeField] bool _previewUnit = false;
+	[SerializeField] List<EffectBehaviour> _effectBehaviours;
 
 	RectTransform _rectTransform;
 	
@@ -104,14 +105,16 @@ public class UnitBehaviour : MonoBehaviour {
 
 			if(_baseUnit.inCombat) {
 				_unitImage.color = Color.red;
-				ShowIntent();
 				if(!_baseUnit.playerControlled) {
+					ShowIntent();
 					UpdateIntent();
 				}
 			} else {
 				_unitImage.color = Color.white;
 				HideIntent();
 			}
+
+			UpdateEffects();
 		}
 	}
 
@@ -144,7 +147,12 @@ public class UnitBehaviour : MonoBehaviour {
 			if(_unitPrimaryImage != null) 	{_unitPrimaryImage.enabled = false;}
 			if(_unitImage != null) 			{_unitImage.enabled = true;}
 		}
-		ShowIntent();
+
+		if(!_baseUnit.playerControlled) {
+			ShowIntent();
+		}
+
+		ShowEffects();
 	}
 
 	public void HideUnit() {
@@ -155,6 +163,7 @@ public class UnitBehaviour : MonoBehaviour {
 		if(_unitPrimaryImage != null) 	{_unitPrimaryImage.enabled = false;}
 		if(_unitImage != null) 			{_unitImage.enabled = false;}
 		HideIntent();
+		HideEffects();
 	}
 
 	public void Unset() {
@@ -166,6 +175,7 @@ public class UnitBehaviour : MonoBehaviour {
 		if(_unitPrimaryImage != null) 	{_unitPrimaryImage.sprite = null;}
 		HideUnit();
 	}
+
 
 	public void ShowIntent() {
 		if(_intentImage != null) 		{_intentImage.enabled = true;}
@@ -181,7 +191,16 @@ public class UnitBehaviour : MonoBehaviour {
 		if(_baseUnit != null) {
 			if(_baseUnit.spellCharges > 0 && _baseUnit.intentSpell != null) {
 				if(_intentImage != null) {
-					_intentImage.sprite = _spriteManager.intents[0];
+					switch(_baseUnit.intentSpell.intentType) {
+						case Spell.IntentType.Attack:
+							_intentImage.sprite = _spriteManager.intents.attack;
+						break;
+
+						case Spell.IntentType.Block:
+							_intentImage.sprite = _spriteManager.intents.defend;
+						break;
+					}
+					
 				}
 
 				if(_intentText != null) {
@@ -191,6 +210,39 @@ public class UnitBehaviour : MonoBehaviour {
 				}
 			} else {
 				HideIntent();
+			}
+		} else {
+			HideIntent();
+		}
+	}
+
+	public void ShowEffects() {
+		if(_baseUnit != null) {
+			for(int i = 0; i < _effectBehaviours.Count; i++) {
+				if(i < _baseUnit.effects.Count) {
+					_effectBehaviours[i].ShowEffect();
+				} else {
+					_effectBehaviours[i].HideEffect();
+				}
+			}
+		}
+	}
+
+	public void HideEffects() {
+		for(int i = 0; i < _effectBehaviours.Count; i++) {
+			_effectBehaviours[i].HideEffect();
+		}
+	}
+
+	public void UpdateEffects() {
+		if(_baseUnit != null) {
+			for(int i = 0; i < _effectBehaviours.Count; i++) {
+				if(i < _baseUnit.effects.Count) {
+					_effectBehaviours[i].ShowEffect();
+					_effectBehaviours[i].UpdateEffect(_baseUnit, _baseUnit.effects[i], _spriteManager);
+				} else {
+					_effectBehaviours[i].HideEffect();
+				}
 			}
 		}
 	}
@@ -279,9 +331,9 @@ public class UnitBehaviour : MonoBehaviour {
 	}
 
 	IEnumerator EMoveFromTo(Vector2Int from, Vector2Int to, float duration) {
-		float deadzone = 0f;
-		float _panSpeed = 16f;
-		float delay = 0.01f;
+		float deadzone = 0.048f;
+		float _panSpeed = 3f;
+		float delay = 0f;
 		_rectTransform.anchoredPosition = from * DungeonManager.dimension;
 		to *= DungeonManager.dimension;
 
@@ -291,12 +343,13 @@ public class UnitBehaviour : MonoBehaviour {
 		while(!done) {
 			Vector2 distanceVector = new Vector2(to.x - _rectTransform.anchoredPosition.x, to.y - _rectTransform.anchoredPosition.y);
 			if(distanceVector.magnitude > deadzone) {
-				_rectTransform.anchoredPosition += distanceVector.normalized * (distanceVector.magnitude * _panSpeed) * Time.deltaTime;
+				//_rectTransform.anchoredPosition += distanceVector.normalized * (distanceVector.magnitude * _panSpeed) * Time.deltaTime;
+				_rectTransform.anchoredPosition = Vector2.LerpUnclamped(_rectTransform.anchoredPosition, to, _panSpeed * Time.deltaTime/duration);
 			} else if(distanceVector.magnitude != 0f) {
 				done = true;
 			}
 
-			if(Time.timeSinceLevelLoad - startTime > duration) {
+			if(Time.timeSinceLevelLoad - startTime > duration*1.25f) {
 				done = true;
 			}
 			yield return new WaitForSeconds(delay);

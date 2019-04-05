@@ -91,7 +91,7 @@ public class CombatManager : MonoBehaviour {
 							baseUnit.attributes.esCurrent -= 1;
 							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
 							//EndTurn(baseUnit);
-						} else if(path.Count <= (spell.castRadius + spell.effectRadius) && baseUnit.spellCharges > 0/*&& baseUnit.attributes.esCurrent >= spell.essenceCost*/) {
+						} else if(path.Count <= (spell.castRadius + spell.effectRadius) && baseUnit.spellCharges > 0) {
 							Debug.Log("Attacking");
 							spell.ShowEffectRange(target.tile.position);
 							float castDelay = spell.ConfirmSpellCast();
@@ -129,9 +129,13 @@ public class CombatManager : MonoBehaviour {
 			//b.attributes.esCurrent = b.attributes.esTotal;
 		}
 		
-		turnQueue.EndTurn();
-		turnQueue.NextTurn();
-		turnQueue.Add(new Turn(b, b.attributes.speed));
+		_turnQueue.EndTurn();
+		_turnQueue.NextTurn();
+
+		
+		_turnQueue.Add(new Turn(b, b.attributes.speed));
+		
+		
 
 		// if it's the player's turn
 		if(_turnQueue.queue.Count > 0) {

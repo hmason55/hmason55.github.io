@@ -33,5 +33,6 @@ public class SpriteManager : MonoBehaviour {
 	public List<Sprite> dungeonDoor;
 
 	public ItemSprites items;
-	public List<Sprite> intents;
+	public IntentSprites intents;
+	public StatusSprites statuses;
 }

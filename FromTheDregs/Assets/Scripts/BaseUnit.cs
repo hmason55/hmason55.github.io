@@ -369,7 +369,7 @@ public class BaseUnit {
 			_bag.Add(new BaseItem(BaseItem.Category.Finger_Jewelry, 3));
 			*/
 
-			tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
+			//tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
 			UpdateSpells();
 			SetAsCameraTarget();
 			SetAsInterfaceTarget();
@@ -631,6 +631,7 @@ public class BaseUnit {
 				}
 			}
 		}
+
 	}
 
 	public void RemoveStatus(Effect e) {
