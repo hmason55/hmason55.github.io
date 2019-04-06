@@ -84,6 +84,8 @@ public class BaseUnit {
 	int _hitFrame = -1;
 	int _hitFrameSkip = 8;
 
+	Moveset _moveset;
+
 	Sprite _sprite;
 	Sprite _spriteSkin;
 	Sprite _spriteArmor;
@@ -267,26 +269,36 @@ public class BaseUnit {
 			case SpritePreset.greenslime:
 				_statPreset = Attributes.Preset.Slime;
 				_innateSpells.Add(Spell.Preset.Bite);
+				_innateSpells.Add(Spell.Preset.Block);
+				_moveset = new Moveset();
 			break;
 
 			case SpritePreset.spider:
 				_statPreset = Attributes.Preset.Spider;
 				_innateSpells.Add(Spell.Preset.Bite);
+				_innateSpells.Add(Spell.Preset.Block);
+				_moveset = new Moveset();
 			break;
 
 			case SpritePreset.spidersmall:
 				_statPreset = Attributes.Preset.SpiderSmall;
 				_innateSpells.Add(Spell.Preset.Bite);
+				_innateSpells.Add(Spell.Preset.Block);
+				_moveset = new Moveset();
 			break;
 
 			case SpritePreset.widow:
 				_statPreset = Attributes.Preset.Widow;
 				_innateSpells.Add(Spell.Preset.Bite);
+				_innateSpells.Add(Spell.Preset.Block);
+				_moveset = new Moveset();
 			break;
 
 			case SpritePreset.widowsmall:
 				_statPreset = Attributes.Preset.WidowSmall;
 				_innateSpells.Add(Spell.Preset.Bite);
+				_innateSpells.Add(Spell.Preset.Block);
+				_moveset = new Moveset();
 			break;
 
 			case SpritePreset.warrior:
@@ -408,8 +420,16 @@ public class BaseUnit {
 
 	public Spell SelectAISpell() {
 		UpdateSpells();
-		Spell s = new Spell(this, spells[Random.Range(0, spells.Count-1)]);
+
+		int spellIndex = _moveset.pattern[_moveset.index];
+		if(spellIndex == -1 || spellIndex > spells.Count) {
+			spellIndex = Random.Range(0, spells.Count);
+		}
+
+		Spell s = new Spell(this, spells[spellIndex]);
 		_spellCharges = 1;
+
+		_moveset.Next();
 		return s;
 	}
 
@@ -639,8 +659,8 @@ public class BaseUnit {
 		string text = "";
 		switch(e.effectType) {
 			case Effect.EffectType.Block:
-				color = new Color(0f, 1f, 1f);
-				text = "-Block";
+				//color = new Color(0f, 1f, 1f);
+				//text = "-Block";
 			break;
 
 			case Effect.EffectType.Focus:

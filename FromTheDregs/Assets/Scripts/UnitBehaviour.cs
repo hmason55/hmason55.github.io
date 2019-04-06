@@ -86,14 +86,6 @@ public class UnitBehaviour : MonoBehaviour {
 		_baseUnit.LoadSprites(spriteManager);
 	}
 
-	void Update() {
-		if(Input.GetKeyDown(KeyCode.Z)) {
-			if(_baseUnit != null) {
-				_baseUnit.ReceiveDamage(_baseUnit, 999, Spell.DamageType.Fire);
-			}
-		}
-	}
-
 	public void UpdateSprite() {
 		if(_baseUnit != null) {
 
@@ -113,7 +105,7 @@ public class UnitBehaviour : MonoBehaviour {
 				_unitImage.color = Color.white;
 				HideIntent();
 			}
-
+			
 			UpdateEffects();
 		}
 	}
@@ -331,9 +323,9 @@ public class UnitBehaviour : MonoBehaviour {
 	}
 
 	IEnumerator EMoveFromTo(Vector2Int from, Vector2Int to, float duration) {
-		float deadzone = 0.048f;
+		float deadzone = 0.24f;
 		float _panSpeed = 3f;
-		float delay = 0f;
+		float delay = 0.001f;
 		_rectTransform.anchoredPosition = from * DungeonManager.dimension;
 		to *= DungeonManager.dimension;
 
@@ -344,12 +336,12 @@ public class UnitBehaviour : MonoBehaviour {
 			Vector2 distanceVector = new Vector2(to.x - _rectTransform.anchoredPosition.x, to.y - _rectTransform.anchoredPosition.y);
 			if(distanceVector.magnitude > deadzone) {
 				//_rectTransform.anchoredPosition += distanceVector.normalized * (distanceVector.magnitude * _panSpeed) * Time.deltaTime;
-				_rectTransform.anchoredPosition = Vector2.LerpUnclamped(_rectTransform.anchoredPosition, to, _panSpeed * Time.deltaTime/duration);
+				_rectTransform.anchoredPosition = Vector2.Lerp(_rectTransform.anchoredPosition, to, _panSpeed * Time.deltaTime/duration);
 			} else if(distanceVector.magnitude != 0f) {
 				done = true;
 			}
 
-			if(Time.timeSinceLevelLoad - startTime > duration*1.25f) {
+			if(Time.timeSinceLevelLoad - startTime > duration) {
 				done = true;
 			}
 			yield return new WaitForSeconds(delay);

@@ -72,36 +72,41 @@ public class CombatManager : MonoBehaviour {
 				// Turn select
 				BaseUnit baseUnit = _turnQueue.queue[0].baseUnit;
 				if(!baseUnit.playerControlled) {
-					// Do AI stuff
 
-					// Choose spell (melee for this case)
 					Spell spell = baseUnit.intentSpell;
-					//baseUnit.intentSpell = spell;
-					//Debug.Log(baseUnit.intentSpell);
-					// Target nearest with melee
-					BaseUnit target = GetNearestUnit(baseUnit, false, spell.castRadius, false);
-					
-					if(target != null) {
-						List<PathNode> path = baseUnit.FindPath(baseUnit.tile.position, target.tile.position, false, spell.castRadius);
 
-						// Move / Attack
+					BaseUnit target = baseUnit;
+					List<PathNode> path = new List<PathNode>();
+
+
+					// Movement
+					switch(spell.castTargetUnitType) {
+						case Spell.TargetUnitType.Self:
+							Tile targetTile = GetRandomNearbyTile(baseUnit, false, baseUnit.attributes.esCurrent/4);
+							path = baseUnit.FindPath(baseUnit.tile.position, targetTile.position, false, 0);
+						break;
+
+						case Spell.TargetUnitType.Enemy:
+							target = GetNearestUnit(baseUnit, false, spell.castRadius, false);
+							path = baseUnit.FindPath(baseUnit.tile.position, target.tile.position, false, spell.castRadius);
+						break;
+					}
+					
+					// Spell Cast
+					if(target != null) {
 						if(path.Count > 1 && baseUnit.attributes.esCurrent > 0) {
-							Debug.Log("Moving");
+							// Out of range, attempt to move closer.
 							baseUnit.Move(path[path.Count-2].position.x - baseUnit.tile.position.x, path[path.Count-2].position.y - baseUnit.tile.position.y);
 							baseUnit.attributes.esCurrent -= 1;
-							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
-							//EndTurn(baseUnit);
-						} else if(path.Count <= (spell.castRadius + spell.effectRadius) && baseUnit.spellCharges > 0) {
-							Debug.Log("Attacking");
+						} else if((path.Count <= (spell.castRadius + spell.effectRadius) || spell.castTargetUnitType == Spell.TargetUnitType.Self) && baseUnit.spellCharges > 0) {
+							// Close enough to use spell
 							spell.ShowEffectRange(target.tile.position);
 							float castDelay = spell.ConfirmSpellCast();
+
 							baseUnit.spellCharges -= 1;
-							//baseUnit.attributes.esCurrent -= spell.essenceCost;
-							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
 							yield return new WaitForSeconds(castDelay);
-							//EndTurn(baseUnit);
 						} else {
-							Debug.Log("Current ES: " + baseUnit.attributes.esCurrent);
+							// Turn is over
 							EndTurn(baseUnit);
 						}
 					}
@@ -210,6 +215,58 @@ public class CombatManager : MonoBehaviour {
 			}
 		}
 		return nearestUnit;
+	}
+
+	List<Tile> GetNearbyTiles(BaseUnit b, int distance) {
+		List<Tile> nearbyTiles = new List<Tile>();
+		Tile[,] tiles = b.tile.dungeonManager.tiles;
+		
+		int startX = b.tile.position.x-distance;
+		if(startX < 0) {
+			startX = 0;
+		}
+
+		int startY = b.tile.position.y-distance;
+		if(startY < 0) {
+			startY = 0;
+		}
+
+		int endX = b.tile.position.x+distance;
+		if(endX > DungeonManager.dimension) {
+			endX = DungeonManager.dimension;
+		}
+
+		int endY = b.tile.position.y+distance;
+		if(endY > DungeonManager.dimension) {
+			endY = DungeonManager.dimension;
+		}
+
+		for(int y = startY; y < endY; y++) {
+			for(int x = startX; x < endX; x++) {
+				if(tiles[x, y] != null) {
+					if(tiles[x, y].baseTerrain.walkable && tiles[x, y].baseUnit == null) {
+						nearbyTiles.Add(tiles[x, y]);
+					}
+				}
+			}
+		}
+
+		return nearbyTiles;
+	}
+
+	Tile GetRandomNearbyTile(BaseUnit b, bool ignoreUnits, int distance = 3) {
+		List<Tile> nearbyTiles = GetNearbyTiles(b, distance);
+		List<Tile> validTiles = new List<Tile>();
+		validTiles.Add(b.tile);
+		Debug.Log(nearbyTiles.Count);
+		foreach(Tile t in nearbyTiles) {
+			List<PathNode> path = b.FindPath(b.tile.position, t.position, ignoreUnits);
+			if(path.Count > 0 && path.Count < distance*2) {
+				validTiles.Add(t);
+			}
+		}
+
+		return validTiles[Random.Range(0, validTiles.Count)];
 	}
 
 	void AggroNearbyUnits(int x, int y, bool[,] visited, int ox, int oy, int radius) {

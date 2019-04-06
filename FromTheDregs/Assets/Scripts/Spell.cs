@@ -174,6 +174,10 @@ public class Spell {
 		get {return _requireCastConfirmation;}
 	}
 
+	public TargetUnitType castTargetUnitType {
+		get {return _castTargetUnitType;}
+	}
+
 	public int projCount {
 		get {return _projCount;}
 	}
@@ -320,7 +324,7 @@ public class Spell {
 				_castRequiresTarget = true;
 				_castRequiresLineOfSight = true;
 				_castCanTargetSelf = false;
-				_castTargetUnitType = TargetUnitType.All;
+				_castTargetUnitType = TargetUnitType.Enemy;
 
 				_effectParticlePath = "Prefabs/Effects/Bite Impact";
 				_effectSoundPath = "Sounds/sfx/bite_impact_0";
@@ -1030,7 +1034,7 @@ public class Spell {
 				}
 			}
 		}
-
+		
 		return _projPreSpawnDelay + _effectPreSpawnDelay + _effectDamageDelay;
 	}
 	
@@ -1141,6 +1145,20 @@ public class Spell {
 		}
 		int damage = (int)(e.GetPotency(_caster.attributes) * (baseDamage + critMult + additionalDamage));
 		return damage;
+	}
+
+	public int EstimateBlock(Effect e) {
+
+		// Calculate block
+		int block = 0;
+		foreach(Effect casterEffect in _caster.effects) {
+			switch(casterEffect.effectType) {
+				case Effect.EffectType.Block:
+					block = e.deactivationConditions[Effect.Conditions.BlockDamage];
+				break;
+			}
+		}
+		return block;
 	}
 
 	public void DealDamage(Effect e, bool sound = false) {
