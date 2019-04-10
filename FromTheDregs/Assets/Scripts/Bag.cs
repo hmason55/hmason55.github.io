@@ -13,6 +13,12 @@ public class Bag {
 		Container,
 		Shop
 	}
+
+	public enum EquipmentBonus {
+		PhysicalDamage,
+		SpellDamage,
+		BlockModifier,
+	}
 	
 	BagType _bagType = BagType.Bag;
 	BaseItem _neck;
@@ -401,4 +407,28 @@ public class Bag {
 
 		return equipment;
 	}
+
+	public int GetEquipmentBonus(EquipmentBonus bonusType) {
+		int bonus = 0;
+		foreach(BaseItem item in EquipmentList()) {
+			if(item != null) {
+				switch(bonusType) {
+					case EquipmentBonus.PhysicalDamage:
+						bonus += item.physicalDamage;
+					break;
+
+					case EquipmentBonus.SpellDamage:
+						bonus += item.spellDamage;
+					break;
+
+					case EquipmentBonus.BlockModifier:
+						bonus += item.blockModifier;
+					break;
+				}
+			}
+			
+		}
+		return bonus;
+	}
+
 }

@@ -46,7 +46,7 @@ public class CharacterCreationUI : MonoBehaviour {
     void CreateDataSlot() {
         PlayerData playerData = new PlayerData();
         playerData.slot = -1;
-        playerData.currentZone = DungeonManager.Zone.Debug;
+        playerData.currentZone = DungeonManager.Zone.Hub;
 
         Character character = new Character();
         character.name = nameField.text;

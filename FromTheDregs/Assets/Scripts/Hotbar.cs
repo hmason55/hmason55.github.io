@@ -106,10 +106,15 @@ public class Hotbar : MonoBehaviour {
 				Hotkey hotkey = _hotkeys[i];
 				hotkey.gameObject.SetActive(true);
 
-				if(newUnit) {
+				//if(newUnit) {
 					hotkey.preset = _baseUnit.spells[i];
-				}
+				//}
 
+				Debug.Log(hotkey);
+				Debug.Log(hotkey.spell);
+
+				Debug.Log(_baseUnit);
+				Debug.Log(_baseUnit.attributes);
 				if(hotkey.spell.essenceCost > _baseUnit.attributes.esCurrent) {
 					hotkey.Disable();
 				} else {

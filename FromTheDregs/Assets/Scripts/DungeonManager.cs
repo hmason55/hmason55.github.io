@@ -163,13 +163,9 @@ public class DungeonManager : MonoBehaviour {
 		InitializeObjectPools();
 		SpawnBiomes();
 		_player = CreateMainPath();
-		/* CameraController cameraController = GameObject.FindObjectOfType<CameraController>();
-		if(cameraController != null) {
-			if(cameraController.baseUnit != null) {
-
-			}
-		}*/
+		_player.tile.unit.ShowUnit();
 		_limitRendering = true;
+		
 		// Initialize the UI
 		
 		_essenceUI.UpdateUI();
@@ -449,18 +445,6 @@ public class DungeonManager : MonoBehaviour {
 					}
 
 
-
-					// Initialize Unit
-
-
-
-					//BaseDecoration;;
-					
-					//
-					//
-					//_tiles[x, y] = _serializedTiles[y * dimension + x];
-					//
-					//_tiles[x, y] = new Tile();
 				}
 			}
 		}
@@ -498,7 +482,7 @@ public class DungeonManager : MonoBehaviour {
 			}
 		}
 
-		// Optimize
+		// Shading
 		for(int y = 0; y < dimension; y++) {
 			for(int x = 0; x < dimension; x++) {
 				if(_tiles[x, y] != null) {

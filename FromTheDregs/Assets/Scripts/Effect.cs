@@ -50,6 +50,24 @@ public class Effect {
 
     float _basePotency = 1.0f;                  public float basePotency                       {get{return _basePotency;}               set{_basePotency = value;}}
 
+    int _initialPhysicalDamage;
+    public int initialPhysicalDamage {
+        get {return _initialPhysicalDamage;}
+        set {_initialPhysicalDamage = value;}
+    }
+
+    int _initialSpellDamage;
+    public int initialSpellDamage {
+        get {return _initialSpellDamage;}
+        set {_initialSpellDamage = value;}
+    }
+
+    int _initialBlockModifier;
+    public int initialBlockModifier {
+        get {return _initialBlockModifier;}
+        set {_initialBlockModifier = value;}
+    }
+    
     ScalingType _primaryScalingType;            public ScalingType primaryScalingType          {get{return _primaryScalingType;}        set{_primaryScalingType = value;}}
     ScalingType _secondaryScalingType;          public ScalingType secondaryScalingType        {get{return _secondaryScalingType;}      set{_secondaryScalingType = value;}}
     ScalingType _tertiaryScalingType;           public ScalingType tertiaryScalingType         {get{return _tertiaryScalingType;}       set{_tertiaryScalingType = value;}}
@@ -153,7 +171,7 @@ public class Effect {
                 if(e.stackable && _stackable) {     // If stackable, stack
                     switch(e.effectType) {
                         case EffectType.Block:
-                            int blockValue = (int)e.GetPotency(target.attributes);
+                            int blockValue = _initialBlockModifier + (int)e.GetPotency(target.attributes);
                             if(e.deactivationConditions.ContainsKey(Conditions.BlockDamage)) {
                                 e.deactivationConditions[Conditions.BlockDamage] += blockValue;
                             } 
@@ -171,7 +189,7 @@ public class Effect {
         if(!applied) {
             switch(_effectType) {
                 case EffectType.Block:
-                    int blockValue = (int)GetPotency(target.attributes);
+                    int blockValue = _initialBlockModifier + (int)GetPotency(target.attributes);
                     _deactivationConditions[Conditions.BlockDamage] = blockValue;
                     applied = true;
                     Debug.Log(_deactivationConditions[Conditions.BlockDamage] + " block");

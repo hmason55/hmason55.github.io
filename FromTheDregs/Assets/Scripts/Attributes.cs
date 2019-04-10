@@ -162,18 +162,14 @@ public class Attributes {
 
     void Init() {
         CalcBaseHP();
-        _hpTotal = _baseHitPoints + _modHitPoints;
+		CalcBaseES();
+        _hpTotal = _baseHitPoints;
         _hpCurrent = _hpTotal;
 
-        _baseEssence = 8;
-        _esTotal = _baseEssence + _modEssence;
+        _esTotal = _baseEssence;
         _esCurrent = _esTotal;
-        _esRecovery = 4;
 
-        _experience = 0;
-        _aggroRadius = 4;
-        
-        //UpdateModifiers();
+        _esRecovery = 4;
     }
 
     public void UpdateModifiers() {
@@ -220,6 +216,11 @@ public class Attributes {
 		return _baseHitPoints;
 	}
 
+	int CalcModHP() {
+		
+		return 0;
+	}
+
 	int CalcBaseES() {
 		float a = 0.25f;
 		float b = 0.005f;
@@ -257,9 +258,8 @@ public class Attributes {
 				_baseCharisma =     1;
 
 				_baseSpeed =        1;
-				_baseEssence =      3;
-				_hpScaling =        10;	//8 default
-				_size = Size.Medium;
+				_baseEssence =      4;
+				_aggroRadius = 		4;
             break;
 
 			case Preset.Mage:
@@ -271,8 +271,8 @@ public class Attributes {
 				_baseCharisma =     1;
 
 				_baseSpeed =        1;
-				_baseEssence =      3;
-				_size = Size.Medium;
+				_baseEssence =      4;
+				_aggroRadius = 		4;
 			break;
 
 			case Preset.Rogue:
@@ -284,8 +284,8 @@ public class Attributes {
 				_baseCharisma =     2;
 
 				_baseSpeed =        1;
-				_baseEssence =      3;
-				_size = Size.Medium;
+				_baseEssence =      4;
+				_aggroRadius = 		4;
 			break;
 
 			case Preset.Warrior:
@@ -297,62 +297,60 @@ public class Attributes {
 				_baseCharisma =     1;
 
 				_baseSpeed =        1;
-				_baseEssence =      3;
-				_size = Size.Medium;
+				_baseEssence =      4;
+				_aggroRadius = 		4;
 			break;
 
 			case Attributes.Preset.Human:
-				_baseStrength =     10;
-				_baseDexterity =    10;
-				_baseIntelligence = 10;
-				_baseConstitution = 10;
-				_baseWisdom =       10;
-				_baseCharisma =     10;
-				_baseSpeed =        10;
-				_baseHitPoints = 	10;
-				_baseEssence =      8;
-				_hpScaling =        50;	//8 default
-				_size = Size.Medium;
+				_baseStrength =     1;
+				_baseDexterity =    1;
+				_baseIntelligence = 1;
+				_baseConstitution = 1;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_baseSpeed =        1;
+				_baseEssence =      4;
+				_aggroRadius = 		4;
 			break;
 
 			case Attributes.Preset.Slime:
-				_baseStrength = 10;
-				_baseDexterity = 15;
-				_baseIntelligence = 0;
-				_baseConstitution = 12;
-				_baseWisdom = 10;
-				_baseCharisma = 2;
-				_baseSpeed = 5;
-				_baseEssence = 6;
-				_hpScaling = 16;
-				_size = Size.Small;
-				_aggroRadius = 6;
+				_baseStrength =     2;
+				_baseDexterity =    1;
+				_baseIntelligence = 1;
+				_baseConstitution = 2;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_baseSpeed =        1;
+				_baseEssence =      2;
+				_aggroRadius = 		2;
 			break;
 
 			case Attributes.Preset.Spider:
-				_baseStrength = 11;
-				_baseDexterity = 17;
-				_baseIntelligence = 0;
-				_baseConstitution = 12;
-				_baseWisdom = 10;
-				_baseCharisma = 2;
-				_baseSpeed = 5;
-				_baseEssence = 6;
-				_hpScaling = 16;
-				_size = Size.Medium;
+				_baseStrength =     2;
+				_baseDexterity =    2;
+				_baseIntelligence = 1;
+				_baseConstitution = 2;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_baseSpeed =        2;
+				_baseEssence =      4;
+				_aggroRadius = 		4;
 			break;
 
 			case Attributes.Preset.SpiderSmall:
-				_baseStrength = 10;
-				_baseDexterity = 15;
-				_baseIntelligence = 0;
-				_baseConstitution = 12;
-				_baseWisdom = 10;
-				_baseCharisma = 2;
-				_baseSpeed = 5;
-				_baseEssence = 6;
-				_hpScaling = 11;
-				_size = Size.Small;
+				_baseStrength =     2;
+				_baseDexterity =    1;
+				_baseIntelligence = 1;
+				_baseConstitution = 1;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_baseSpeed =        1;
+				_baseEssence =      3;
+				_aggroRadius = 		4;
 			break;
 
 			case Attributes.Preset.Widow:
@@ -362,9 +360,9 @@ public class Attributes {
 				_baseConstitution = 12;
 				_baseWisdom = 10;
 				_baseCharisma = 2;
+
 				_baseSpeed = 5;
 				_baseEssence = 6;
-				_hpScaling = 16;
 				_size = Size.Medium;
 			break;
 
@@ -377,7 +375,6 @@ public class Attributes {
 				_baseCharisma = 2;
 				_baseSpeed = 5;
 				_baseEssence = 6;
-				_hpScaling = 11;
 				_size = Size.Small;
 			break;
 		}

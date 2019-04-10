@@ -12,9 +12,9 @@ public class PlayerData  {
         _attributes = new Attributes();
         _bag = new Bag(Bag.BagType.Bag);
 
-        _currentZone = DungeonManager.Zone.Debug;
-        _targetZone = DungeonManager.Zone.Debug;
-        _retrievalZone = DungeonManager.Zone.Debug;
+        _currentZone = DungeonManager.Zone.Hub;
+        _targetZone = DungeonManager.Zone.Hub;
+        _retrievalZone = DungeonManager.Zone.Hub;
         _retrievalMode = false;
         _retrievalBag = new Bag(Bag.BagType.Container);
     }

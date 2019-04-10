@@ -37,12 +37,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void LateUpdate() {
-		Vector2 distanceVector = new Vector2(_trueTarget.x - Screen.width/2, _trueTarget.y - Screen.height/2);
-		if(distanceVector.magnitude > _deadzone) {
-			transform.position = Vector3.LerpUnclamped(transform.position, new Vector3(_trueTarget.x, _trueTarget.y, -10f), _panSpeed * Time.deltaTime);
-		} else if(distanceVector.magnitude != 0f){
-			SnapToTarget();
-		}
+		transform.position = Vector3.Lerp(transform.position, new Vector3(_trueTarget.x, _trueTarget.y, -10f), _panSpeed * Time.deltaTime);
 	}
 
 	void MoveLayer(RectTransform layer) {

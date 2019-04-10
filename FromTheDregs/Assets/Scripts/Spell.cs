@@ -15,9 +15,8 @@ public class Spell {
 	}
 
 	public enum DamageType {
-		Slashing,
-		Piercing,
-		Crushing,
+		Physical,
+		Spell,
 		Fire,
 		Ice,
 		Lightning
@@ -252,7 +251,7 @@ public class Spell {
 					foreach(Effect e in _spellCasterEffects) {
 						switch(e.effectType) {
 							case Effect.EffectType.Block:
-								b += EstimateDamage(e);
+								b += EstimateBlock(e);
 							break;
 						}
 						
@@ -300,7 +299,7 @@ public class Spell {
 				_spellName = "Bite";
 
 				_essenceCost = 2;
-				_damageType = DamageType.Piercing;
+				_damageType = DamageType.Physical;
 				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
 				_requireCastConfirmation = true;
@@ -313,7 +312,7 @@ public class Spell {
 
 				
 				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Strength, 0.80f);
+				damage.SetPrimaryScaling(Effect.ScalingType.Strength, 1.00f);
 				_spellTargetEffects.Add(damage);
 				
 				_castParticlePath = "";
@@ -345,7 +344,7 @@ public class Spell {
 				_spellName = "Slash";
 
 				_essenceCost = 2;
-				_damageType = DamageType.Piercing;
+				_damageType = DamageType.Physical;
 				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
 				_requireCastConfirmation = true;
@@ -357,7 +356,7 @@ public class Spell {
 				_intentType = IntentType.Attack;
 
 				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
+				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 1.50f);
 				_spellTargetEffects.Add(damage);
 				
 				_castParticlePath = "";
@@ -389,7 +388,7 @@ public class Spell {
 				_spellName = "Feint Swipe";
 
 				_essenceCost = 3;
-				_damageType = DamageType.Piercing;
+				_damageType = DamageType.Physical;
 				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
 				_requireCastConfirmation = true;
@@ -405,7 +404,7 @@ public class Spell {
 				_spellCasterEffects.Add(crit);
 
 				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Dexterity, 0.80f);
+				damage.SetPrimaryScaling(Effect.ScalingType.Dexterity, 0.75f);
 				_spellTargetEffects.Add(damage);
 
 				
@@ -1143,7 +1142,23 @@ public class Spell {
 
 			}
 		}
-		int damage = (int)(e.GetPotency(_caster.attributes) * (baseDamage + critMult + additionalDamage));
+		
+		int damage = 0;
+		switch(_damageType) {
+			case DamageType.Physical:
+				if(_caster.bag != null) {
+					damage = _caster.bag.GetEquipmentBonus(Bag.EquipmentBonus.PhysicalDamage);
+				}
+			break;
+
+			case DamageType.Spell:
+				if(_caster.bag != null) {
+					damage = _caster.bag.GetEquipmentBonus(Bag.EquipmentBonus.SpellDamage);
+				}
+			break;
+		}
+
+		damage += (int)(e.GetPotency(_caster.attributes) * (baseDamage + critMult + additionalDamage));
 		return damage;
 	}
 
@@ -1151,13 +1166,14 @@ public class Spell {
 
 		// Calculate block
 		int block = 0;
-		foreach(Effect casterEffect in _caster.effects) {
-			switch(casterEffect.effectType) {
-				case Effect.EffectType.Block:
-					block = e.deactivationConditions[Effect.Conditions.BlockDamage];
-				break;
-			}
+
+		if(_caster.bag != null) {
+			block = _caster.bag.GetEquipmentBonus(Bag.EquipmentBonus.BlockModifier);
+			e.initialBlockModifier = block;
 		}
+
+		block += (int)(e.GetPotency(_caster.attributes));
+
 		return block;
 	}
 
@@ -1177,7 +1193,23 @@ public class Spell {
 			}
 		}
 
-		int damage = (int)(e.GetPotency(_caster.attributes) * (baseDamage + critMult + additionalDamage));
+		
+		int damage = 0;
+		switch(_damageType) {
+			case DamageType.Physical:
+				if(caster.bag != null) {
+					damage = caster.bag.GetEquipmentBonus(Bag.EquipmentBonus.PhysicalDamage);
+				}
+			break;
+
+			case DamageType.Spell:
+				if(caster.bag != null) {
+					damage = caster.bag.GetEquipmentBonus(Bag.EquipmentBonus.SpellDamage);
+				}
+			break;
+		}
+
+		damage += (int)(e.GetPotency(_caster.attributes) * (baseDamage + critMult + additionalDamage));
 
 		foreach(Tile tile in _hitTiles) {
 			if(tile.unit.baseUnit != null) {
@@ -1234,7 +1266,7 @@ public class Spell {
 				}
 				
 				//int damage = (int)e.GetPotency(_caster.attributes);
-				tile.unit.baseUnit.ReceiveStatus(_caster, e);
+				tile.unit.baseUnit.ReceiveStatus(this, e);
 				//tile.unit.baseUnit.ReceiveDamage(_caster, damage, _damageType);
 			}
 		}

@@ -499,7 +499,7 @@ public class BaseUnit {
 						//tile.combatManager.turnQueue.Add(new Turn(this, _modSpeed));
 					}
 					
-					Debug.Log("Moved " + dx + ", " + dy);
+					//Debug.Log("Moved " + dx + ", " + dy);
 					return true;
 				}
 			}
@@ -617,7 +617,7 @@ public class BaseUnit {
 		}
 	}
 
-	public void ReceiveStatus(BaseUnit dealer, Effect e) {
+	public void ReceiveStatus(Spell spell, Effect e) {
 		
 
 		Color color = Color.white;
@@ -630,8 +630,15 @@ public class BaseUnit {
 
 			case Effect.EffectType.Block:
 				color = new Color(0f, 1f, 1f);
-				int blockValue = (int)e.GetPotency(dealer.attributes);
 
+				int blockValue = 0;
+				if(spell.caster.bag != null) {
+					blockValue = spell.caster.bag.GetEquipmentBonus(Bag.EquipmentBonus.BlockModifier);
+					e.initialBlockModifier = blockValue;
+				}
+
+				blockValue += (int)e.GetPotency(spell.caster.attributes);
+			
 				text = "+" + blockValue + " Block";
 			break;
 		}

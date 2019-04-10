@@ -323,28 +323,15 @@ public class UnitBehaviour : MonoBehaviour {
 	}
 
 	IEnumerator EMoveFromTo(Vector2Int from, Vector2Int to, float duration) {
-		float deadzone = 0.24f;
-		float _panSpeed = 3f;
-		float delay = 0.001f;
 		_rectTransform.anchoredPosition = from * DungeonManager.dimension;
 		to *= DungeonManager.dimension;
-
-		float startTime = Time.timeSinceLevelLoad;
-		bool done = false;
 		
-		while(!done) {
-			Vector2 distanceVector = new Vector2(to.x - _rectTransform.anchoredPosition.x, to.y - _rectTransform.anchoredPosition.y);
-			if(distanceVector.magnitude > deadzone) {
-				//_rectTransform.anchoredPosition += distanceVector.normalized * (distanceVector.magnitude * _panSpeed) * Time.deltaTime;
-				_rectTransform.anchoredPosition = Vector2.Lerp(_rectTransform.anchoredPosition, to, _panSpeed * Time.deltaTime/duration);
-			} else if(distanceVector.magnitude != 0f) {
-				done = true;
-			}
-
-			if(Time.timeSinceLevelLoad - startTime > duration) {
-				done = true;
-			}
-			yield return new WaitForSeconds(delay);
+		float t = 0.0f;
+		float rate = 1.0f/duration;
+		while(t < 1.0f) {
+			t += Time.deltaTime * rate;
+			_rectTransform.anchoredPosition = Vector2.Lerp(_rectTransform.anchoredPosition, to, t);
+			yield return new WaitForSeconds(0f);
 		}
 
 		ResetPosition();
@@ -430,15 +417,15 @@ public class UnitBehaviour : MonoBehaviour {
 
 				case Effect.EffectType.Block:
 					Debug.Log("Gained Block");
-					spell.caster.ReceiveStatus(spell.caster, effect);
+					spell.caster.ReceiveStatus(spell, effect);
 				break;
 
 				case Effect.EffectType.Focus:
-					spell.caster.ReceiveStatus(spell.caster, effect);
+					spell.caster.ReceiveStatus(spell, effect);
 				break;
 
 				case Effect.EffectType.Stun:
-					spell.caster.ReceiveStatus(spell.caster, effect);
+					spell.caster.ReceiveStatus(spell, effect);
 				break;
 			}
 		}
@@ -447,7 +434,7 @@ public class UnitBehaviour : MonoBehaviour {
 
 	public void SpawnDeathParticles() {
 		GameObject deathParticlesGO = GameObject.Instantiate(Resources.Load<GameObject>(baseUnit.deathParticlesPath));
-		Transform canvas = GameObject.FindGameObjectWithTag("Effects Canvas").transform;
+		Transform canvas = GameObject.FindGameObjectWithTag("Effects Layer").transform;
 		deathParticlesGO.transform.SetParent(canvas);
 		deathParticlesGO.transform.SetAsLastSibling();
 

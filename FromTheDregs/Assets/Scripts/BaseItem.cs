@@ -102,7 +102,10 @@ public class BaseItem {
 
 	#region Attributes
 	// Equipment Attributes
-	int _attack;
+	int _physicalDamage;
+	int _spellDamage;
+
+	int _blockModifier;
 	int _defense;
 
 	int _healthTotal;
@@ -160,12 +163,20 @@ public class BaseItem {
 		get {return _sprite;}
 	}
 
-	public int attack {
-		get {return _attack;}
+	public int physicalDamage {
+		get {return _physicalDamage;}
+	}
+
+	public int spellDamage {
+		get {return _spellDamage;}
 	}
 
 	public int defense {
 		get {return _defense;}
+	}
+
+	public int blockModifier {
+		get {return _blockModifier;}
 	}
 
 	public int healthTotal {
@@ -202,43 +213,6 @@ public class BaseItem {
 		set {_value = value;}
 	}
 	#endregion
-
-	// Any
-	public BaseItem(Category c, int t) {
-		_category = c;
-		_tier = t;
-		_value = 1;
-
-		switch(_category) {
-			case Category.Neck_Jewelry:
-				_attack = 1 * _tier;
-				//_physicalAttack = 2 * _tier;
-				//_magicalAttack =  2 * _tier;
-			break;
-
-			case Category.Finger_Jewelry:
-				_attack = 1 * _tier;
-				//_physicalAttack = 1 * _tier;
-				//_magicalAttack =  1 * _tier;
-			break;
-
-			case Category.Body_Armor:
-			case Category.Foot_Armor:
-			case Category.Hand_Armor:
-			case Category.Head_Armor:
-			case Category.Leg_Armor:
-				RollArmorWeight();
-
-				_attack = (2 - ((int)_armorWeight)) * (_tier);
-				//_physicalAttack = (3 - ((int)_armorWeight)) * (_tier);
-				//_magicalAttack =  (3 - ((int)_armorWeight)) * (_tier);
-
-				_defense = ((int)_armorWeight) * (_tier);
-				//_physicalDefense = ((int)_armorWeight + 1) * (_tier);
-				//_magicalDefense =  ((int)_armorWeight + 1) * (_tier);
-			break;
-		}
-	}
 
 	public void LoadSprite(SpriteManager spriteManager) {
 		if(spriteManager == null) {return;}
@@ -357,147 +331,6 @@ public class BaseItem {
 		_category = (Category)ndx;
 	}
 
-	public string NameToString() {
-		string name = "";
-		string type = "";
-		string piece = "";
-		string suffix = "";
-		// Prefix
-
-		// Type
-		switch(_category) {
-			case Category.Body_Armor:
-			case Category.Foot_Armor:
-			case Category.Hand_Armor:
-			case Category.Head_Armor:
-			case Category.Leg_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						type = ((LightArmorTier)_tier - 1).ToString();
-					break;
-
-					case ArmorWeight.Medium:
-						type = ((MediumArmorTier)_tier - 1).ToString();
-					break;
-
-					case ArmorWeight.Heavy:
-						type = ((HeavyArmorTier)_tier - 1).ToString();
-					break;
-				}
-			break;
-
-			case Category.Finger_Jewelry:
-			case Category.Neck_Jewelry:
-				type = ((JewelryTier)_tier - 1).ToString();
-			break;
-		}
-
-		// Piece
-		switch(_category) {
-			case Category.Body_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						piece = "Tunic";
-					break;
-
-					case ArmorWeight.Medium:
-						piece = "Jack";
-					break;
-
-					case ArmorWeight.Heavy:
-						piece = "Cuirass";
-					break;
-				}
-			break;
-			
-			case Category.Foot_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						piece = "Shoes";
-					break;
-
-					case ArmorWeight.Medium:
-						piece = "Boots";
-					break;
-
-					case ArmorWeight.Heavy:
-						piece = "Greaves";
-					break;
-				}
-			break;
-
-			case Category.Hand_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						piece = "Gloves";
-					break;
-
-					case ArmorWeight.Medium:
-						piece = "Bracers";
-					break;
-
-					case ArmorWeight.Heavy:
-						piece = "Gauntlets";
-					break;
-				}
-			break;
-
-			case Category.Head_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						piece = "Hood";
-					break;
-
-					case ArmorWeight.Medium:
-						piece = "Helm";
-					break;
-
-					case ArmorWeight.Heavy:
-						piece = "Helm";
-					break;
-				}
-			break;
-
-			case Category.Leg_Armor:
-				switch(_armorWeight) {
-					case ArmorWeight.Light:
-						piece = "Breeches";
-					break;
-
-					case ArmorWeight.Medium:
-						piece = "Breeches";
-					break;
-
-					case ArmorWeight.Heavy:
-						piece = "Leggings";
-					break;
-				}
-			break;
-
-			case Category.Neck_Jewelry:
-				piece = "Necklace";
-			break;
-
-			case Category.Finger_Jewelry:
-				piece = "Ring";
-			break;
-		}
-
-		if(type != "") {
-			
-			name += type;
-
-			if(piece != "") {
-				name += " " + piece;
-			}
-		}
-
-		name = name.Replace("_", " ");
-
-		// Suffix
-		return name;
-	}
-
 	public string CategoryToString() {
 		return _category.ToString().Replace("_", " ");
 	}
@@ -505,30 +338,29 @@ public class BaseItem {
 	public string AttributeCategoriesToString() {
 		string attributeString = "";
 
-		if(_attack > 0) {
-			attributeString += "<b><color=cyan>Attack</color></b>\n";
-		} else if(_attack < 0) {
-			attributeString += "<b><color=red>Attack</color></b>\n";
-		} else {
-			attributeString += "Attack\n";
+		if(_physicalDamage > 0) {
+			attributeString += "<b><color=cyan>Physical Damage</color></b>\n";
+		} else if(_physicalDamage < 0) {
+			attributeString += "<b><color=red>Physical Damage</color></b>\n";
+		}
+
+		if(_spellDamage > 0) {
+			attributeString += "<b><color=cyan>Spell Damage</color></b>\n";
+		} else if(_spellDamage < 0) {
+			attributeString += "<b><color=red>Spell Damage</color></b>\n";
+		}
+
+		if(_blockModifier > 0) {
+			attributeString += "<b><color=cyan>Blocking</color></b>\n";
+		} else if(_blockModifier < 0) {
+			attributeString += "<b><color=red>Blocking</color></b>\n";
 		}
 
 		if(_defense > 0) {
 			attributeString += "<b><color=cyan>Defense</color></b>\n";
 		} else if(_defense < 0) {
 			attributeString += "<b><color=red>Defense</color></b>\n";
-		} else {
-			attributeString += "Defense\n";
 		}
-
-		attributeString += "\n";
-		attributeString += "Health Total\n";
-		attributeString += "Health Recovery\n";
-		attributeString += "\n";
-		attributeString += "Essence Total\n";
-		attributeString += "Essence Recovery\n";
-		attributeString += "\n";
-		attributeString += "Movement Speed\n";
 
 		return attributeString;
 	}
@@ -536,31 +368,31 @@ public class BaseItem {
 	public string AttributeValuesToString() {
 		string attributeString = "";
 
-		if(_attack > 0) {
-			attributeString += "<b><color=cyan>+ " + (_attack) + "</color></b>\n";
-		} else if(_attack < 0) {
-			attributeString += "<b><color=red>- " + Mathf.Abs(_attack) + "</color></b>\n";
+		if(_physicalDamage > 0) {
+			attributeString += "<b><color=cyan>+ " + (_physicalDamage) + "</color></b>\n";
+		} else if(_physicalDamage < 0) {
+			attributeString += "<b><color=red>- " + Mathf.Abs(_physicalDamage) + "</color></b>\n";
 		} else {
-			attributeString += _attack + "\n";
+			attributeString += _physicalDamage + "\n";
+		}
+
+		if(_spellDamage > 0) {
+			attributeString += "<b><color=cyan>+" + (_spellDamage) + "</color></b>\n";
+		} else if(_spellDamage < 0) {
+			attributeString += "<b><color=red>-" + Mathf.Abs(_spellDamage) + "</color></b>\n";
+		}
+
+		if(_blockModifier > 0) {
+			attributeString += "<b><color=cyan>+" + (_blockModifier) + "</color></b>\n";
+		} else if(_blockModifier < 0) {
+			attributeString += "<b><color=red>-" + Mathf.Abs(_blockModifier) + "</color></b>\n";
 		}
 
 		if(_defense > 0) {
 			attributeString += "<b><color=cyan>+ " + _defense + "</color></b>\n";
 		} else if(_defense < 0) {
 			attributeString += "<b><color=red>- " + Mathf.Abs(_defense) + "</color></b>\n";
-		} else {
-			attributeString += _defense + "\n";
 		}
-
-		attributeString += "\n";
-
-		attributeString += _healthTotal + "\n";
-		attributeString += _healthRecovery + "\n";
-		attributeString += "\n";
-		attributeString += _essenceTotal + "\n";
-		attributeString += _essenceRecovery + "\n";
-		attributeString += "\n";
-		attributeString += _movementSpeed + "\n";
 
 		return attributeString;
 	}
@@ -663,6 +495,7 @@ public class BaseItem {
 				_name = "Gladius";
 				_category = Category.Primary_Weapon;
 				_description = "A short light-weight blade made of steel with a wooden hilt. Used by foot soldiers.";
+				_physicalDamage = 10;
 				_spells.Add(Spell.Preset.Slash);
 				_value = 10;
 			break;
@@ -796,6 +629,7 @@ public class BaseItem {
 				_name = "Wooden Parma";
 				_category = Category.Secondary_Weapon;
 				_description = "A round wooden shield with an iron frame.";
+				_blockModifier = 1;
 				_spells.Add(Spell.Preset.Block);
 				_value = 10;
 			break;
