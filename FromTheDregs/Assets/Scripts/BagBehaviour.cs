@@ -12,7 +12,6 @@ public class BagBehaviour : MonoBehaviour {
 		Use
 	}
 
-	SpriteManager _spriteManager;
 	BaseUnit _baseUnit;
 
 	[SerializeField] Actions _defaultAction = Actions.Use;
@@ -62,7 +61,6 @@ public class BagBehaviour : MonoBehaviour {
 	}
 
 	void Awake() {
-		_spriteManager = GameObject.FindObjectOfType<SpriteManager>();
 
 		_bagSlots = new List<BagItemBehaviour>();
 		for(int i = 0; i < _bagSlotGrid.transform.childCount; i++) {
@@ -79,11 +77,14 @@ public class BagBehaviour : MonoBehaviour {
 			_equipmentHead,
 			_equipmentFinger,
 			_equipmentPrimary,
+			_equipmentBody,
 			_equipmentSecondary,
 			_equipmentHands,
 			_equipmentLegs,
 			_equipmentFeet
 		};
+
+		Debug.Log(_equipmentBody.item);
 
 		for(int i = Bag.BAG_SLOTS-1; i >= 0; i--) {
 			if(_bagSlots[i].item != null) {
@@ -141,7 +142,7 @@ public class BagBehaviour : MonoBehaviour {
 		if(bagItem == null) {return;}
 		if(bagItem.item == null) {return;}
 		if(!_bag.Equip(bagItem.transform.GetSiblingIndex())) {return;}
-
+		Debug.Log("Equipped " + bagItem.item.name);
 		BagItemBehaviour equipmentItem = GetEquipmentType(bagItem.item.category);
 
 		// Unequip items of this type from inventory
@@ -155,6 +156,22 @@ public class BagBehaviour : MonoBehaviour {
 
 		equipmentItem.equipped = bagItem.transform.GetSiblingIndex();
 		bagItem.equipped = bagItem.transform.GetSiblingIndex();
+
+		// Update the unit equipment sprites.
+		switch(bagItem.item.category) {
+			case BaseItem.Category.Body_Armor:
+				_baseUnit.LoadCustomArmor(bagItem.spriteManager);
+			break;
+
+			case BaseItem.Category.Primary_Weapon:
+				_baseUnit.LoadCustomPrimary(bagItem.spriteManager);
+			break;
+
+			case BaseItem.Category.Secondary_Weapon:
+				_baseUnit.LoadCustomSecondary(bagItem.spriteManager);
+			break;
+		}
+
 		_baseUnit.UpdateSpells();
 		SyncUnit();
 	}
@@ -181,6 +198,21 @@ public class BagBehaviour : MonoBehaviour {
 			bagItem.equipped = -1;
 		}
 
+		// Update the unit equipment sprites.
+		switch(bagItem.item.category) {
+			case BaseItem.Category.Body_Armor:
+				_baseUnit.LoadCustomArmor(bagItem.spriteManager);
+			break;
+
+			case BaseItem.Category.Primary_Weapon:
+				_baseUnit.LoadCustomPrimary(bagItem.spriteManager);
+			break;
+
+			case BaseItem.Category.Secondary_Weapon:
+				_baseUnit.LoadCustomSecondary(bagItem.spriteManager);
+			break;
+		}
+
 		_baseUnit.UpdateSpells();
 		SyncUnit();
 	}
@@ -191,6 +223,22 @@ public class BagBehaviour : MonoBehaviour {
 		
 		bool consumed = false;
 		switch(bagItem.item.id) {
+			case BaseItem.ID.Potion_of_Clotting:
+				consumed = _bag.Consume(bagItem.item.id);
+				if(consumed) {
+					SyncUnit();
+					_baseUnit.RemoveStatusByCondition(Effect.EffectType.Bleed, Effect.Conditions.DurationExpire, 5);
+				}
+			break;
+
+			case BaseItem.ID.Potion_of_Curing:
+				consumed = _bag.Consume(bagItem.item.id);
+				if(consumed) {
+					SyncUnit();
+					_baseUnit.RemoveStatusByCondition(Effect.EffectType.Poison, Effect.Conditions.DurationExpire, 5);
+				}
+			break;
+
 			case BaseItem.ID.Potion_of_Return:
 				if(!_baseUnit.inCombat) {
 					consumed = _bag.Consume(bagItem.item.id);
@@ -419,7 +467,7 @@ public class BagBehaviour : MonoBehaviour {
 			_bagEquipmentPanel.SetActive(true);
 			_hidden = false;
 		}
-
+		Debug.Log("Showing bag UI");
 		SyncEquipment();
 
 		if(showContainer) {

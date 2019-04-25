@@ -102,7 +102,7 @@ public class BaseDecoration {
 					SaveLoadData.Save();
 					AnnouncementManager.Display("Something here feels familiar...", Color.white);
 				} else {
-					_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 99)));
+					_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 3)));
 					_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
 					_bag = new Bag(Bag.BagType.Container, _items);
 				}
@@ -114,11 +114,14 @@ public class BaseDecoration {
 				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Intelligence));
 				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Constitution));
 				_items.Add(new BaseItem(BaseItem.ID.Gladius));
-				_items.Add(new BaseItem(BaseItem.ID.Wooden_Parma));
+				_items.Add(new BaseItem(BaseItem.ID.Parma));
+				_items.Add(new BaseItem(BaseItem.ID.Dagger));
 				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Return));
-				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
-				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
-				_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
+				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Clotting));
+				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Curing));
+				_items.Add(new BaseItem(BaseItem.ID.Cotton_Tunic));
+				_items.Add(new BaseItem(BaseItem.ID.Leather_Jack));
+				_items.Add(new BaseItem(BaseItem.ID.Chainmail_Tunic));
 				_bag = new Bag(Bag.BagType.Shop, _items);
 			break;
 

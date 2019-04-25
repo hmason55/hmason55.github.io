@@ -169,7 +169,7 @@ public class DungeonManager : MonoBehaviour {
 		// Initialize the UI
 		
 		_essenceUI.UpdateUI();
-		_hitpointUI.UpdateHitpoints(_player.attributes.hpCurrent, _player.attributes.hpTotal);
+		_hitpointUI.UpdateHitpoints(_player.attributes.currentHealth, _player.attributes.totalHealth);
 		GameObject.FindObjectOfType<CameraController>().SnapToTarget();
 		_loadState = LoadState.Loaded;
 		Debug.Log("Instance took " + (Time.realtimeSinceStartup - startTime) + " seconds to load.");
@@ -197,7 +197,7 @@ public class DungeonManager : MonoBehaviour {
 		_zone = z;
 		switch(z) {
 			case Zone.Hub:
-				enemyUnitDensity = 0f;
+				enemyUnitDensity = 100f;
 				smallDecorationDensity = 0f;
 				containerDecorationDensity = 100f;
 				trapDecorationDensity = 0f;
@@ -211,7 +211,7 @@ public class DungeonManager : MonoBehaviour {
 				containerDecorationDensity = 20f;
 				trapDecorationDensity = 0f;
 				minimumPathSize = 4;
-				biomeType = Biome.BiomeType.cavern;
+				biomeType = Biome.BiomeType.dungeon;
 			break;
 
 			case Zone.A2:

@@ -60,10 +60,11 @@ public class Biome {
 			case BiomeType.dungeon:
 			case BiomeType.forsaken:
 				commonEnemySpawnRate = 75f;
-				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.greenslime);
-				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.spidersmall);
-				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.spider);
-				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.widowsmall);
+				//commonEnemySpawnTable.Add(BaseUnit.SpritePreset.greenslime);
+				//commonEnemySpawnTable.Add(BaseUnit.SpritePreset.spidersmall);
+				//commonEnemySpawnTable.Add(BaseUnit.SpritePreset.spider);
+				//commonEnemySpawnTable.Add(BaseUnit.SpritePreset.widowsmall);
+				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.skeleton);
 				
 				rareEnemySpawnRate = 25f;
 				rareEnemySpawnTable.Add(BaseUnit.SpritePreset.widow);

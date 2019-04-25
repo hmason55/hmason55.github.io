@@ -15,9 +15,11 @@ public class Bag {
 	}
 
 	public enum EquipmentBonus {
-		PhysicalDamage,
-		SpellDamage,
+		BleedModifier,
 		BlockModifier,
+		PhysicalDamage,
+		PoisonModifier,
+		SpellDamage,
 	}
 	
 	BagType _bagType = BagType.Bag;

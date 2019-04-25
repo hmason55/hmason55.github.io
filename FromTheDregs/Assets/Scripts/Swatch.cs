@@ -134,8 +134,8 @@ public class Swatch {
 	};
 	#endregion
 
-	#region Warrior
-	public static string[] armorWarriorT1 = new string[] {
+	#region Armor
+	public static string[] chainmailArmor = new string[] {
 		"#FFFFFFFF",
 		"#EBEBEBFF",
 		"#D8D8D8FF",
@@ -146,12 +146,46 @@ public class Swatch {
 		"#815714FF",
 		"#58360BFF",
 		"#462B08FF",
-		"#6175BAFF",
-		"#325ABBFF",
-		"#242A4EFF",
+		"#C81A1AFF",
+		"#A31515FF",
+		"#5E100CFF",
 	};
 
-	public static string[] armorWarriorT2 = new string[] {
+	public static string[] cottonArmor = new string[] {
+		"#1E9849FF",
+		"#177136FF",
+		"#125429FF",
+		"#815714FF",
+		"#58360BFF",
+		"#CCCCCCFF",
+		"#B3B3B3FF",
+	};
+
+	public static string[] leatherArmor = new string[] {
+		"#A7721BFF",
+		"#815714FF",
+		"#58360BFF",
+		"#462B08FF",
+		"#F9F925FF",
+		"#929292FF",
+		"#636363FF",
+		"#2A7E61FF",
+		"#3B6B57FF",
+		"#305747FF",
+		"#043534FF",
+	};
+
+	public static string[] silkArmor = new string[] {
+		"#4379F8FF",
+		"#325ABBFF",
+		"#294491FF",
+		"#815714FF",
+		"#58360BFF",
+		"#F9F925FF",
+		"#CBCD14FF",
+	};
+
+	public static string[] vikingArmor = new string[] {
 		"#FFFFFFFF",
 		"#EBEBEBFF",
 		"#D8D8D8FF",

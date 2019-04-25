@@ -11,7 +11,7 @@ public class DamageText : MonoBehaviour {
 	float _lifetime = 1.25f;
 	float _spawnScaling = 1.5f;
 	
-	float _scalingDuration = 0.15f;
+	float _scalingDuration = 0.25f;
 
 	RectTransform _rectTransform;
 	Vector3 _originalScale;
@@ -38,7 +38,11 @@ public class DamageText : MonoBehaviour {
 		t.color = color;
 
 		Outline o = GetComponent<Outline>();
-		o.effectColor = color * 0.5f;
+		o.effectColor = new Color(color.r * 0.5f, color.g * 0.5f, color.b * 0.5f, 192f/255f);
+	}
+
+	public void ResetScale() {
+		_rectTransform.localScale = _originalScale;
 	}
 
 	void Update () {

@@ -37,6 +37,11 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 		set {_image = value;}
 	}
 
+	public SpriteManager spriteManager {
+		get {return _spriteManager;}
+		set {_spriteManager = value;}
+	}
+
 	public BagItemBehaviour bagItemReference {
 		get {return _bagItemReference;}
 		set {_bagItemReference = value;}

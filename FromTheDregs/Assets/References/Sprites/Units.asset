@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2a87f386d64d7964db68320cac0e0021, type: 3}
+  m_Name: Units
+  m_EditorClassIdentifier: 
+  skeleton: {fileID: 11400000, guid: 180790999afa3da48bf1cff01767ecc2, type: 2}
+  slime: {fileID: 11400000, guid: 8a14224e40790534187e4c15b2d8dd7d, type: 2}

@@ -12,8 +12,6 @@ public class CameraController : MonoBehaviour {
 
 	[SerializeField] float _panSpeed = 25f;
 	float _aspectRatio = 1.778f;
-	float _canvasWidth = 1080f;
-	float _canvasHeight = 1920f;
 
 	float _cachedWidth;
 	float _cachedHeight;
@@ -56,8 +54,8 @@ public class CameraController : MonoBehaviour {
 	public void UpdateResolution() {
 		_cachedWidth = Screen.width;
 		_cachedHeight = Screen.height;
-		float referenceWidth = 1080f;
-		float referenceHeight = 1920f;
+		//float referenceWidth = 1080f;
+		//float referenceHeight = 1920f;
 
 	}
 

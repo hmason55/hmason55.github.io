@@ -105,11 +105,12 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void PreviewCast() {
+		Debug.Log(_spell.essenceCost + "/" + _hotbar.baseUnit.attributes.currentEssence);
 		_spell.SyncWithCaster(_hotbar.baseUnit);
 		_hotbar.tapController.image.raycastTarget = false;
 		_hotbar.activeSpell = _spell;
 		if(_hotbar.baseUnit.inCombat) {
-			_hotbar.essenceUI.PreviewUsage(_hotbar.baseUnit.attributes.esCurrent, _spell.essenceCost);
+			_hotbar.essenceUI.PreviewUsage(_hotbar.baseUnit.attributes.currentEssence, _spell.essenceCost);
 		}
 		_hotbar.castOptionsUI.ShowUI();
 		_spell.ShowCastRange();

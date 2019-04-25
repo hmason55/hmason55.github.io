@@ -42,8 +42,10 @@ public class ItemSprites {
 	#endregion
 
 	#region Weapons
-	public List<Sprite> swords;
+	public List<Sprite> daggers;
 	public List<Sprite> shields;
+	public List<Sprite> staves;
+	public List<Sprite> swords;
 	#endregion
 
 	#region Consumables

@@ -36,8 +36,8 @@ public class AttributesUI : UIBehaviour {
         values += _baseUnit.attributes.wisdom + "\n";
         values += _baseUnit.attributes.charisma + "\n";
         values += "\n";
-        values += _baseUnit.attributes.hpCurrent + "/" + _baseUnit.attributes.hpTotal + "\n";
-        values += _baseUnit.attributes.esCurrent + "/" + _baseUnit.attributes.esTotal + "\n";
+        values += _baseUnit.attributes.currentHealth + "/" + _baseUnit.attributes.totalHealth + "\n";
+        values += _baseUnit.attributes.currentEssence + "/" + _baseUnit.attributes.totalEssence + "\n";
 
         _attributeValueText.text = values;
     }

@@ -20,7 +20,6 @@ public class BaseTerrain {
 	Sprite _sprite;
 	Sprite _shadedSprite;
 
-	bool _hidden = false;
 	bool _render = true;
 	bool _shaded = false;
 
@@ -83,7 +82,7 @@ public class BaseTerrain {
 	
 	public void Initialize(SpriteManager spriteManager, DungeonManager dungeonManager, int x, int y) {
 		if(_terrainType == TerrainType.wall_top && y > 0) {
-			Tile t1 = dungeonManager.tiles[x, y];
+			//Tile t1 = dungeonManager.tiles[x, y];
 			Tile t2 = dungeonManager.tiles[x, y-1];
 			if(t2.baseTerrain != null) {
 				if(t2.baseTerrain.terrainType == TerrainType.ground) {

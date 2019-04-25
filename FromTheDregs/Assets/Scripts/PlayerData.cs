@@ -9,7 +9,7 @@ public class PlayerData  {
 
     public PlayerData() {
         _character = new Character();
-        _attributes = new Attributes();
+        _attributes = new Attributes(Attributes.Preset.Human);
         _bag = new Bag(Bag.BagType.Bag);
 
         _currentZone = DungeonManager.Zone.Hub;

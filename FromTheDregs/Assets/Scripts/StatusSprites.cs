@@ -10,4 +10,5 @@ public class StatusSprites {
     public Sprite block;
     public Sprite bleed;
     public Sprite poison;
+    public Sprite health;
 }

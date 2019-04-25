@@ -39,7 +39,7 @@ public class CombatManager : MonoBehaviour {
 		AnnouncementManager.Display("Combat has ended.", Color.yellow);
 		foreach(Turn turn in _turnQueue.queue) {
 			turn.baseUnit.inCombat = false;
-			turn.baseUnit.attributes.esCurrent = turn.baseUnit.attributes.esTotal;
+			turn.baseUnit.attributes.currentEssence = turn.baseUnit.attributes.totalEssence;
 		}
 		
 		
@@ -71,8 +71,22 @@ public class CombatManager : MonoBehaviour {
 
 				// Turn select
 				BaseUnit baseUnit = _turnQueue.queue[0].baseUnit;
-				if(!baseUnit.playerControlled) {
 
+				if(!baseUnit.tickedStatuses) {
+					foreach(Effect effect in baseUnit.effects) {
+						switch(effect.effectType) {
+							case Effect.EffectType.Bleed:
+							case Effect.EffectType.Block:
+							case Effect.EffectType.Poison:
+								yield return new WaitForSeconds(1.5f);
+							break;
+						}
+					}
+					baseUnit.tickedStatuses = true;
+				}
+
+				if(!baseUnit.playerControlled) {
+					
 					Spell spell = baseUnit.intentSpell;
 
 					BaseUnit target = baseUnit;
@@ -82,23 +96,45 @@ public class CombatManager : MonoBehaviour {
 					// Movement
 					switch(spell.castTargetUnitType) {
 						case Spell.TargetUnitType.Self:
-							Tile targetTile = GetRandomNearbyTile(baseUnit, false, baseUnit.attributes.esCurrent/4);
+							Tile targetTile = GetRandomNearbyTile(baseUnit, false, baseUnit.attributes.currentEssence/4);
 							path = baseUnit.FindPath(baseUnit.tile.position, targetTile.position, false, 0);
 						break;
 
 						case Spell.TargetUnitType.Enemy:
 							target = GetNearestUnit(baseUnit, false, spell.castRadius, false);
-							path = baseUnit.FindPath(baseUnit.tile.position, target.tile.position, false, spell.castRadius);
+							if(target != null) {
+								path = baseUnit.FindPath(baseUnit.tile.position, target.tile.position, false, spell.castRadius);
+							}
 						break;
 					}
+
+					if(path == null) {
+						target = null;
+					}
+
+					Debug.Log("Path:" + path.Count);
 					
 					// Spell Cast
 					if(target != null) {
-						if(path.Count > 1 && baseUnit.attributes.esCurrent > 0) {
+						int trueDistance = CheckManhattanDistance(baseUnit.tile.position.x, baseUnit.tile.position.y, target.tile.position.x, target.tile.position.y);
+						bool canReachTarget = false;
+
+						switch(spell.castTargetUnitType) {
+							case Spell.TargetUnitType.Self:
+								canReachTarget = true;
+							break;
+
+							case Spell.TargetUnitType.Enemy:
+								canReachTarget = (path.Count <= (spell.castRadius + spell.effectRadius) && trueDistance <= path.Count);
+							break;
+						}
+
+
+						if(path.Count > 1 && baseUnit.attributes.currentEssence > 0) {
 							// Out of range, attempt to move closer.
+							baseUnit.attributes.currentEssence -= 1;
 							baseUnit.Move(path[path.Count-2].position.x - baseUnit.tile.position.x, path[path.Count-2].position.y - baseUnit.tile.position.y);
-							baseUnit.attributes.esCurrent -= 1;
-						} else if((path.Count <= (spell.castRadius + spell.effectRadius) || spell.castTargetUnitType == Spell.TargetUnitType.Self) && baseUnit.spellCharges > 0) {
+						} else if(canReachTarget && baseUnit.spellCharges > 0) {
 							// Close enough to use spell
 							spell.ShowEffectRange(target.tile.position);
 							float castDelay = spell.ConfirmSpellCast();
@@ -109,6 +145,8 @@ public class CombatManager : MonoBehaviour {
 							// Turn is over
 							EndTurn(baseUnit);
 						}
+					} else {
+						EndTurn(baseUnit);
 					}
 					yield return new WaitForSeconds(0.5f);
 				} else {
@@ -119,7 +157,7 @@ public class CombatManager : MonoBehaviour {
 			}
 			//yield return new WaitForSeconds(1f);
 		}
-		yield return new WaitForSeconds(0.5f);
+		//yield return new WaitForSeconds(0.5f);
 	}
 
 
@@ -130,7 +168,9 @@ public class CombatManager : MonoBehaviour {
 			}
 		} else {
 			// Set next turn intent
-			b.tile.unit.UpdateIntent();
+			if(b.tile.unit != null) {
+				b.tile.unit.UpdateIntent();
+			}
 			//b.attributes.esCurrent = b.attributes.esTotal;
 		}
 		
@@ -139,8 +179,6 @@ public class CombatManager : MonoBehaviour {
 
 		
 		_turnQueue.Add(new Turn(b, b.attributes.speed));
-		
-		
 
 		// if it's the player's turn
 		if(_turnQueue.queue.Count > 0) {
@@ -149,7 +187,7 @@ public class CombatManager : MonoBehaviour {
 				turn.baseUnit.SetAsCameraTarget();
 				turn.baseUnit.SetAsInterfaceTarget();
 				_shortcutUI.BeginTurn();
-				_hotbar.essenceUI.SetFilledEssence(turn.baseUnit.attributes.esCurrent);
+				_hotbar.essenceUI.SetFilledEssence(turn.baseUnit.attributes.currentEssence);
 			}
 		}
 	}

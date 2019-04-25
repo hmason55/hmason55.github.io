@@ -81,6 +81,17 @@ public class UnitBehaviour : MonoBehaviour {
 		}
 	}
 
+	void Update() {
+		if(_baseUnit != null) {
+			if(_baseUnit.playerControlled) {
+				if(Input.GetKeyDown(KeyCode.Z)) {
+					_baseUnit.ReceiveDamage(_baseUnit, 999, Spell.DamageType.Physical);
+				}
+			}
+		}
+		
+	}
+
 	public void LoadSprites() {
 		SpriteManager spriteManager = GameObject.FindObjectOfType<SpriteManager>();
 		_baseUnit.LoadSprites(spriteManager);
@@ -96,13 +107,13 @@ public class UnitBehaviour : MonoBehaviour {
 			}
 
 			if(_baseUnit.inCombat) {
-				_unitImage.color = Color.red;
+				//_unitImage.color = Color.red;
 				if(!_baseUnit.playerControlled) {
 					ShowIntent();
 					UpdateIntent();
 				}
 			} else {
-				_unitImage.color = Color.white;
+				//_unitImage.color = Color.white;
 				HideIntent();
 			}
 			
@@ -191,6 +202,10 @@ public class UnitBehaviour : MonoBehaviour {
 						case Spell.IntentType.Block:
 							_intentImage.sprite = _spriteManager.intents.defend;
 						break;
+
+						case Spell.IntentType.Debuff:
+							_intentImage.sprite = _spriteManager.intents.debuff;
+						break;
 					}
 					
 				}
@@ -231,7 +246,7 @@ public class UnitBehaviour : MonoBehaviour {
 			for(int i = 0; i < _effectBehaviours.Count; i++) {
 				if(i < _baseUnit.effects.Count) {
 					_effectBehaviours[i].ShowEffect();
-					_effectBehaviours[i].UpdateEffect(_baseUnit, _baseUnit.effects[i], _spriteManager);
+					_effectBehaviours[i].UpdateEffect(_baseUnit, _baseUnit.effects[i]);
 				} else {
 					_effectBehaviours[i].HideEffect();
 				}
@@ -307,7 +322,7 @@ public class UnitBehaviour : MonoBehaviour {
 
 	public void SetInputCooldown(BaseUnit bUnit, float delay = 0.5f, bool recast = false) {
 		if(_inputCooldownCoroutine != null || _baseUnit == null) {return;}
-		StartCoroutine(ESetInputCooldown(bUnit, delay, recast));
+		_inputCooldownCoroutine = StartCoroutine(ESetInputCooldown(bUnit, delay, recast));
 	}
 
 	public void SpawnSpellProjectiles(Spell spell) {
@@ -316,6 +331,10 @@ public class UnitBehaviour : MonoBehaviour {
 
 	public void SpawnSpellEffect(Spell spell) {
 		StartCoroutine(ESpawnSpellEffect(spell));
+	}
+
+	public void TickStatus(Effect.Conditions condition, int amount = 1) {
+		StartCoroutine(ETickStatus(condition, amount));
 	}
 
 	public void ResetPosition() {
@@ -362,6 +381,7 @@ public class UnitBehaviour : MonoBehaviour {
 				}
 			}
 		}
+		_inputCooldownCoroutine = null;
 	}
 
 	IEnumerator ESpawnSpellProjectiles(Spell spell) {
@@ -391,11 +411,19 @@ public class UnitBehaviour : MonoBehaviour {
 			}
 
 			switch(effect.effectType) {
+				case Effect.EffectType.Bleed:
+					spell.ApplyStatus(effect, false);
+				break;
+
+				case Effect.EffectType.Block:
+					spell.ApplyStatus(effect, false);
+				break;
+				
 				case Effect.EffectType.Damage:
 					spell.DealDamage(effect, playSound);
 				break;
 
-				case Effect.EffectType.Block:
+				case Effect.EffectType.Poison:
 					spell.ApplyStatus(effect, false);
 				break;
 
@@ -430,6 +458,14 @@ public class UnitBehaviour : MonoBehaviour {
 			}
 		}
 		
+	}
+
+	IEnumerator ETickStatus(Effect.Conditions condition, int amount = 1) {
+		
+		for(int i = _baseUnit.effects.Count-1; i >= 0; i--) {
+			if(_baseUnit == null) {yield break;}
+			yield return new WaitForSeconds(_baseUnit.TickStatusSingle(_baseUnit.effects[i], condition, amount));
+		}
 	}
 
 	public void SpawnDeathParticles() {

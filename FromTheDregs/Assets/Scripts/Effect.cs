@@ -30,6 +30,8 @@ public class Effect {
         Evade,
         Focus,
         Stun,
+        DisplayHealth,
+        Poison
     }
 
     public enum ScalingType {
@@ -50,6 +52,18 @@ public class Effect {
 
     float _basePotency = 1.0f;                  public float basePotency                       {get{return _basePotency;}               set{_basePotency = value;}}
 
+    int _currentHealth;
+    public int currentHealth {
+        get {return _currentHealth;}
+        set {_currentHealth = value;}
+    }
+
+    int _totalHealth;
+    public int totalHealth {
+        get {return _totalHealth;}
+        set {_totalHealth = value;}
+    }
+
     int _initialPhysicalDamage;
     public int initialPhysicalDamage {
         get {return _initialPhysicalDamage;}
@@ -66,6 +80,18 @@ public class Effect {
     public int initialBlockModifier {
         get {return _initialBlockModifier;}
         set {_initialBlockModifier = value;}
+    }
+
+    int _initialPoisonModifier;
+    public int initialPoisonModifier {
+        get {return _initialPoisonModifier;}
+        set {_initialPoisonModifier = value;}
+    }
+
+    int _initialBleedModifier;
+    public int initialBleedModifier {
+        get {return _initialBleedModifier;}
+        set {_initialBleedModifier = value;}
     }
     
     ScalingType _primaryScalingType;            public ScalingType primaryScalingType          {get{return _primaryScalingType;}        set{_primaryScalingType = value;}}
@@ -95,9 +121,7 @@ public class Effect {
     }
 
     void LoadPreset(Preset p) {
-        switch(p) {
 
-        }
     }
 
     public void SetPrimaryScaling(ScalingType type, float value) {
@@ -164,19 +188,39 @@ public class Effect {
     }
 
     public bool Apply(BaseUnit target) {
+        if(target == null) {return false;}
 
         bool applied = false;
-        foreach(Effect e in target.effects) {
-            if(e.effectType == _effectType) {
-                if(e.stackable && _stackable) {     // If stackable, stack
-                    switch(e.effectType) {
+        foreach(Effect effect in target.effects) {
+            if(effect.effectType == _effectType) {
+                if(effect.stackable && _stackable) {     // If stackable, stack
+                    switch(effect.effectType) {
+
+                        case EffectType.Bleed:
+                            int bleedValue = _initialBleedModifier + _deactivationConditions[Conditions.DurationExpire];
+                            if(effect.deactivationConditions.ContainsKey(Conditions.DurationExpire)) {
+                                effect.deactivationConditions[Conditions.DurationExpire] += bleedValue;
+                            }
+                            applied = true;
+                            Debug.Log(effect.deactivationConditions[Conditions.DurationExpire] + " bleed");
+                        break;
+
                         case EffectType.Block:
-                            int blockValue = _initialBlockModifier + (int)e.GetPotency(target.attributes);
-                            if(e.deactivationConditions.ContainsKey(Conditions.BlockDamage)) {
-                                e.deactivationConditions[Conditions.BlockDamage] += blockValue;
+                            int blockValue = _initialBlockModifier + (int)effect.GetPotency(target.attributes);
+                            if(effect.deactivationConditions.ContainsKey(Conditions.BlockDamage)) {
+                                effect.deactivationConditions[Conditions.BlockDamage] += blockValue;
                             } 
                             applied = true;
-                            Debug.Log(e.deactivationConditions[Conditions.BlockDamage] + " block");
+                            Debug.Log(effect.deactivationConditions[Conditions.BlockDamage] + " block");
+                        break;
+
+                        case EffectType.Poison:
+                            int poisonValue = _initialPoisonModifier + _deactivationConditions[Conditions.DurationExpire];
+                            if(effect.deactivationConditions.ContainsKey(Conditions.DurationExpire)) {
+                                effect.deactivationConditions[Conditions.DurationExpire] += poisonValue;
+                            }
+                            applied = true;
+                            Debug.Log(effect.deactivationConditions[Conditions.DurationExpire] + " poison");
                         break;
                     }
                     return applied;
@@ -188,12 +232,32 @@ public class Effect {
         
         if(!applied) {
             switch(_effectType) {
+                case EffectType.Bleed:
+                    int bleedValue = _initialBleedModifier + _deactivationConditions[Conditions.DurationExpire];
+                    _deactivationConditions[Conditions.DurationExpire] = bleedValue;
+                    applied = true;
+                    Debug.Log(_deactivationConditions[Conditions.DurationExpire] + " bleed");
+                break;
+
                 case EffectType.Block:
                     int blockValue = _initialBlockModifier + (int)GetPotency(target.attributes);
                     _deactivationConditions[Conditions.BlockDamage] = blockValue;
                     applied = true;
                     Debug.Log(_deactivationConditions[Conditions.BlockDamage] + " block");
                 break;
+
+                case EffectType.DisplayHealth:
+                    
+                    applied = true;
+                break;
+
+                case EffectType.Poison:
+                    int poisonValue = _initialPoisonModifier + _deactivationConditions[Conditions.DurationExpire];
+                    _deactivationConditions[Conditions.DurationExpire] = poisonValue;
+                    applied = true;
+                    Debug.Log(_deactivationConditions[Conditions.DurationExpire] + " poison");
+                break;
+                
             }
         }
 

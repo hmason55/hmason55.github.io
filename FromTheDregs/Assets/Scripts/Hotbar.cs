@@ -74,10 +74,9 @@ public class Hotbar : MonoBehaviour {
 		if(_baseUnit.isCasting) {return;}
 
 		if(_baseUnit.inCombat) {
-			if(_baseUnit.attributes.esCurrent > 0) {
+			if(_baseUnit.attributes.currentEssence > 0) {
 				if(_baseUnit.Move(x, y)) {
-					_baseUnit.Cast(1);
-					_essenceUI.SetFilledEssence(_baseUnit.attributes.esCurrent);
+					_essenceUI.SetFilledEssence(_baseUnit.attributes.currentEssence);
 				}
 
 				if(_activeSpell != null) {
@@ -96,11 +95,11 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	public void SyncUnit(BaseUnit b) {
-		bool newUnit = false;
+
 		if(_baseUnit != b) {
 			_baseUnit = b;
-			newUnit = true;
 		}
+		
 		for(int i = 0; i < _hotkeys.Count; i++) {
 			if(i < _baseUnit.spells.Count) {
 				Hotkey hotkey = _hotkeys[i];
@@ -109,13 +108,8 @@ public class Hotbar : MonoBehaviour {
 				//if(newUnit) {
 					hotkey.preset = _baseUnit.spells[i];
 				//}
-
-				Debug.Log(hotkey);
-				Debug.Log(hotkey.spell);
-
-				Debug.Log(_baseUnit);
-				Debug.Log(_baseUnit.attributes);
-				if(hotkey.spell.essenceCost > _baseUnit.attributes.esCurrent) {
+				Debug.Log(hotkey.spell.spellName + ": " + hotkey.spell.essenceCost + "/" + _baseUnit.attributes.currentEssence);
+				if(hotkey.spell.essenceCost > _baseUnit.attributes.currentEssence) {
 					hotkey.Disable();
 				} else {
 					hotkey.Enable();
@@ -153,7 +147,7 @@ public class Hotbar : MonoBehaviour {
 			_baseUnit.Cast(_activeSpell.essenceCost);
 		}
 
-		_essenceUI.SetFilledEssence(_baseUnit.attributes.esCurrent);
+		_essenceUI.SetFilledEssence(_baseUnit.attributes.currentEssence);
 		_activeSpell.ConfirmSpellCast();
 		
 		if(_baseUnit.isCasting) {
@@ -177,7 +171,7 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	public void Recast(Vector2Int position) {
-		if(_activeSpell.essenceCost <= _baseUnit.attributes.esCurrent) {
+		if(_activeSpell.essenceCost <= _baseUnit.attributes.currentEssence) {
 			Debug.Log("Recast");
 			_activeSpell.ResetTiles();
 			_castOptionsUI.ShowUI();
@@ -223,7 +217,7 @@ public class Hotbar : MonoBehaviour {
 	public void EnableHotkeys(bool forceEnable = false) {
 		foreach(Hotkey hotkey in _hotkeys) {
 			if(hotkey.spell != null) {
-				if(hotkey.spell.essenceCost <= _baseUnit.attributes.esCurrent || forceEnable) {
+				if(hotkey.spell.essenceCost <= _baseUnit.attributes.currentEssence || forceEnable) {
 					hotkey.Enable();
 				}
 			}

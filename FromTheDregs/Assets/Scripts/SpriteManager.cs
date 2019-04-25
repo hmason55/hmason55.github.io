@@ -21,6 +21,9 @@ public class SpriteManager : MonoBehaviour {
 	public UnitSprites unitGreenSlime1;
 	public UnitSprites unitSandBehemoth1;
 	public UnitSprites unitSandworm1;
+	public UnitSprites unitSkeleton;
+	public UnitSprites unitSkeletonSummoner;
+	public UnitSprites unitSkeletonWarrior;
 	public UnitSprites unitSpider1;
 	public UnitSprites unitSpiderSmall1;
 	public UnitSprites unitWarrior1;
@@ -35,4 +38,7 @@ public class SpriteManager : MonoBehaviour {
 	public ItemSprites items;
 	public IntentSprites intents;
 	public StatusSprites statuses;
+
+	public ArmorSprites unitArmor;
+	public WeaponSprites unitWeapons;
 }

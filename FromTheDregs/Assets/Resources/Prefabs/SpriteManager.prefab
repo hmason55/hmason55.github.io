@@ -391,12 +391,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 93299e36aeb99c94ab9cdefe053a8c27, type: 3}
     - {fileID: 21300000, guid: 13ae42697663d304bb887da968f4f180, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   unitDireRatSmall1:
     hit:
     - {fileID: 21300000, guid: 5f812e1ef3881604680744c036e4345f, type: 3}
@@ -406,12 +400,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: bc5d69f0f49847c46bf8f725e87c7529, type: 3}
     - {fileID: 21300000, guid: e7e8c285e8288ea4f8002ecb8db08322, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   unitHumanWizard1:
     hit:
     - {fileID: 21300000, guid: dc37d321eb58b524ea8adcc103e77799, type: 3}
@@ -421,12 +409,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: f3ab14eb1aa9d2e40a17c4b484445ea0, type: 3}
     - {fileID: 21300000, guid: a713022e6f915484689b3a115b380174, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   unitGreenSlime1:
     hit:
     - {fileID: 21300000, guid: 29fd909450c0aa340b2345dfd2185113, type: 3}
@@ -436,12 +418,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 67ff381f70dbc3d45b02d280fe6c2115, type: 3}
     - {fileID: 21300000, guid: 9f9316243d6188e41b8859d78fa24227, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   unitSandBehemoth1:
     hit: []
     idle:
@@ -450,12 +426,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 8c06896dfc6d2b748ac70beaae3da6b2, type: 3}
     - {fileID: 21300000, guid: 356b003195feadb458bc5940d0b36ad7, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   unitSandworm1:
     hit: []
     idle:
@@ -464,12 +434,23 @@ MonoBehaviour:
     - {fileID: 21300000, guid: a4d53de6bd0aa164eb4af2872067e26e, type: 3}
     - {fileID: 21300000, guid: 9d04d417e3a3c4045b2a90b97525df2b, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
+  unitSkeleton:
+    hit:
+    - {fileID: 21300000, guid: 5a2945521a3655a4f9be6d4e96edf128, type: 3}
+    idle:
+    - {fileID: 21300000, guid: 91552187fd4e69b44a3c34c0b6c38fd4, type: 3}
+    - {fileID: 21300000, guid: 064d302586b33b547b69eff7d8f7b077, type: 3}
+    - {fileID: 21300000, guid: 9054d4eca6c7e644aa7aa69caf212d80, type: 3}
+    - {fileID: 21300000, guid: bde1ffa5e50f5e041bc56f05f93c12a4, type: 3}
+    skin: []
+  unitSkeletonSummoner:
+    hit: []
+    idle: []
+    skin: []
+  unitSkeletonWarrior:
+    hit: []
+    idle: []
+    skin: []
   unitSpider1:
     hit:
     - {fileID: 21300000, guid: 4fa64e307a2c39f4b8610483fbe83b8e, type: 3}
@@ -479,12 +460,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5c85216043f6dc44da52fd41b294f315, type: 3}
     - {fileID: 21300000, guid: d3ee22191af4ba84ba6acf85553ab32c, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   unitSpiderSmall1:
     hit:
     - {fileID: 21300000, guid: 590ab3aaf12054a4aaa1b59896ee214f, type: 3}
@@ -494,22 +469,10 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 0caa180db257a47408464306b4fc1c61, type: 3}
     - {fileID: 21300000, guid: c22e18c35ab7ec34ba74b5db5f9e337c, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   unitWarrior1:
     hit: []
     idle: []
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   unitWidow1:
     hit:
     - {fileID: 21300000, guid: 9ca7b2d01b5a62849b83220b52fecce0, type: 3}
@@ -519,12 +482,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 70683659966c44940935a6dc54260107, type: 3}
     - {fileID: 21300000, guid: 79cc2bce70b2abd459c5b74aff067724, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   unitWidowSmall1:
     hit:
     - {fileID: 21300000, guid: 3ab01601f1f3b54499d8731c77b56b0e, type: 3}
@@ -534,12 +491,6 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 84d90d31658eae84cba3e58c050e3a67, type: 3}
     - {fileID: 21300000, guid: fe6d9aabf421abd43bf10be431c831eb, type: 3}
     skin: []
-    armorT1: []
-    armorT2: []
-    secondaryT1: []
-    secondaryT2: []
-    primaryT1: []
-    primaryT2: []
   cavernDoor:
   - {fileID: 21300000, guid: d856484a239db0f46acf90bc50bdcdf0, type: 3}
   - {fileID: 21300000, guid: 66e187a775efb1f4fa811b2be7e129fe, type: 3}
@@ -631,12 +582,17 @@ MonoBehaviour:
     - {fileID: 21300000, guid: daf95fa93ee39ec4f9ac4889fd1c58a9, type: 3}
     - {fileID: 21300000, guid: 585147f583639df4c9d93971c78a19e6, type: 3}
     - {fileID: 21300000, guid: 335814f33ca42e94aa8ee327ad91be7f, type: 3}
-    swords:
-    - {fileID: 21300000, guid: 38c345761af65b246aead80ff749a52a, type: 3}
+    daggers:
+    - {fileID: 21300000, guid: 3b8aee00940f93146b10981aed57482d, type: 3}
     shields:
     - {fileID: 21300000, guid: 2c6bbed2defd5354b9f60af179099711, type: 3}
+    staves: []
+    swords:
+    - {fileID: 21300000, guid: 38c345761af65b246aead80ff749a52a, type: 3}
     potions:
     - {fileID: 21300000, guid: 63fb61d50e64bf3409ff1429583c2313, type: 3}
+    - {fileID: 21300000, guid: 1a5b0cfda06a3464980533a65553cbf4, type: 3}
+    - {fileID: 21300000, guid: 3ede2cd8ea1c7b7469d11cea30d1ab82, type: 3}
     currency:
     - {fileID: 21300000, guid: cb419cfd406925449b589789b9d37d64, type: 3}
     keys:
@@ -650,7 +606,7 @@ MonoBehaviour:
   intents:
     attack: {fileID: 21300000, guid: bd7c1e5678c04e246bb95b018e171831, type: 3}
     defend: {fileID: 21300000, guid: 1234ada893c21b84c9e6a9a112d44d73, type: 3}
-    debuff: {fileID: 0}
+    debuff: {fileID: 21300000, guid: c5ba373822a46504fbdc3174191d5e2b, type: 3}
     buff: {fileID: 0}
     unknown: {fileID: 0}
   statuses:
@@ -660,3 +616,80 @@ MonoBehaviour:
     block: {fileID: 21300000, guid: 5702fce0b3645f04e90338a83bcd7578, type: 3}
     bleed: {fileID: 21300000, guid: bf4a14f1b115ea847a1617776f77b447, type: 3}
     poison: {fileID: 21300000, guid: d0ace21ee4346014291725cdae4aec26, type: 3}
+    health: {fileID: 21300000, guid: 80a93ea30d564984f823e00d9032af0b, type: 3}
+  unitArmor:
+    chainmail:
+    - {fileID: 21300000, guid: f9b788225bbc6fc468ef2b7e8db7e894, type: 3}
+    - {fileID: 21300000, guid: 06066e0bdc1535d4395bddde249aa6df, type: 3}
+    - {fileID: 21300000, guid: 3271d191ffc428f4eba9a0d4942ea60c, type: 3}
+    - {fileID: 21300000, guid: 06066e0bdc1535d4395bddde249aa6df, type: 3}
+    chainmailSkin:
+    - {fileID: 21300000, guid: b08342a8c28270f498d0243b4d02f3cf, type: 3}
+    - {fileID: 21300000, guid: 32535fc296754a447930d81cfe52e1c0, type: 3}
+    - {fileID: 21300000, guid: d85d752802a180441962e3e5cccfbe12, type: 3}
+    - {fileID: 21300000, guid: 32535fc296754a447930d81cfe52e1c0, type: 3}
+    cotton:
+    - {fileID: 21300000, guid: 4d083f210fba4ef4892926f2f1850945, type: 3}
+    - {fileID: 21300000, guid: 2e772b890df9eee44928365a8936c255, type: 3}
+    - {fileID: 21300000, guid: 2dc85951cd7dabc448d4f4dc738e7a16, type: 3}
+    - {fileID: 21300000, guid: 2e772b890df9eee44928365a8936c255, type: 3}
+    cottonSkin:
+    - {fileID: 21300000, guid: 671de070431ae9745972e8d55b823936, type: 3}
+    - {fileID: 21300000, guid: cc6409738f6d0e14bbccecc1f940576f, type: 3}
+    - {fileID: 21300000, guid: 1fd1e68d1df395c488021d7cb5ef750d, type: 3}
+    - {fileID: 21300000, guid: cc6409738f6d0e14bbccecc1f940576f, type: 3}
+    leather:
+    - {fileID: 21300000, guid: 394166a99af028a4da12b416d8f0d075, type: 3}
+    - {fileID: 21300000, guid: 3f792f37e3d3f194990bc1f7e03e73a6, type: 3}
+    - {fileID: 21300000, guid: 8064abeaff00e784d95afc8af2062158, type: 3}
+    - {fileID: 21300000, guid: 3f792f37e3d3f194990bc1f7e03e73a6, type: 3}
+    leatherSkin:
+    - {fileID: 21300000, guid: a953be11921787646aa8c3db5b6e6564, type: 3}
+    - {fileID: 21300000, guid: e5cdc1374fd8bf54f896b9385072cd3d, type: 3}
+    - {fileID: 21300000, guid: ac5f9b46bc1551149ba8192f8cd897fc, type: 3}
+    - {fileID: 21300000, guid: e5cdc1374fd8bf54f896b9385072cd3d, type: 3}
+    silk:
+    - {fileID: 21300000, guid: 7a3af2cc62042334a8b1e38570dda532, type: 3}
+    - {fileID: 21300000, guid: 85ee2cccb571b1a449be86d73e039dc6, type: 3}
+    - {fileID: 21300000, guid: 40067bccd9fbee743bccf0b243e8efbf, type: 3}
+    - {fileID: 21300000, guid: 85ee2cccb571b1a449be86d73e039dc6, type: 3}
+    silkSkin:
+    - {fileID: 21300000, guid: 6377a2dae709d704fb288194e04641bb, type: 3}
+    - {fileID: 21300000, guid: f3cfd9ffdbc546544ba72f2f7611b46e, type: 3}
+    - {fileID: 21300000, guid: 7ba134c35cf66924d8ae407da5f8f52a, type: 3}
+    - {fileID: 21300000, guid: f3cfd9ffdbc546544ba72f2f7611b46e, type: 3}
+    studded:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    studdedSkin:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    viking:
+    - {fileID: 21300000, guid: cc1643ff2d502f842923cea4a73afa7e, type: 3}
+    - {fileID: 21300000, guid: bb9370f0499e3a34e809fec576e5fcfb, type: 3}
+    - {fileID: 21300000, guid: 0e8bb0875841b384687c68740a3ed866, type: 3}
+    - {fileID: 21300000, guid: bb9370f0499e3a34e809fec576e5fcfb, type: 3}
+    vikingSkin:
+    - {fileID: 21300000, guid: 5141c1aac4dbb6d48a9c9c2aa311e9aa, type: 3}
+    - {fileID: 21300000, guid: c95d12d99daca574d8a3e473baa0394f, type: 3}
+    - {fileID: 21300000, guid: 1d9e40adcb9b47740b15301f07bf7ddc, type: 3}
+    - {fileID: 21300000, guid: c95d12d99daca574d8a3e473baa0394f, type: 3}
+  unitWeapons:
+    dagger:
+    - {fileID: 21300000, guid: dc7c843f4b305384bb19f1794ed02306, type: 3}
+    - {fileID: 21300000, guid: dfcf8b13194e4f241abeb21f91e4c047, type: 3}
+    - {fileID: 21300000, guid: a1d22675c87bc6549851b8947af117b5, type: 3}
+    - {fileID: 21300000, guid: dfcf8b13194e4f241abeb21f91e4c047, type: 3}
+    gladius:
+    - {fileID: 21300000, guid: c648e915c8996794b8f59c8da7b5fe7e, type: 3}
+    - {fileID: 21300000, guid: 0f96faa84df66344aad299fa987a4c86, type: 3}
+    - {fileID: 21300000, guid: c6bbfc7c37fd07c44be4ebdb2a49a57c, type: 3}
+    - {fileID: 21300000, guid: 0f96faa84df66344aad299fa987a4c86, type: 3}
+    parma:
+    - {fileID: 21300000, guid: c31e17ae73049044f9c2841adf0259c4, type: 3}
+    - {fileID: 21300000, guid: 367c1f60f35a9e943a48456787593210, type: 3}
+    - {fileID: 21300000, guid: 4b9ad706fa77ae54db8d092307377c20, type: 3}
+    - {fileID: 21300000, guid: 367c1f60f35a9e943a48456787593210, type: 3}
+    staff: []

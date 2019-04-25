@@ -13,6 +13,7 @@ public class BaseUnit {
 		knight,
 		sandbehemoth,
 		sandworm,
+		skeleton,
 		spider,
 		spidersmall,
 		warrior,
@@ -37,7 +38,6 @@ public class BaseUnit {
 	int _baseSpeed;
 	
 	int _baseHitPoints;
-	Size _size;
 
 	int _modSpeed;
 	#endregion
@@ -96,6 +96,8 @@ public class BaseUnit {
 
 	Spell _intentSpell;
 
+	bool _tickedStatuses;
+
 	int _spellCharges = 1;
 
 	#region Accessors
@@ -113,6 +115,11 @@ public class BaseUnit {
 	public bool playerControlled {
 		set {_playerControlled = value;}
 		get {return _playerControlled;}
+	}
+
+	public bool tickedStatuses {
+		get {return _tickedStatuses;}
+		set {_tickedStatuses = value;}
 	}
 
 	public Spell intentSpell {
@@ -173,10 +180,6 @@ public class BaseUnit {
 	public string deathParticlesPath {
 		set {_deathParticlesPath = value;}
 		get {return _deathParticlesPath;}
-	}
-
-	public Size size {
-		get {return _size;}
 	}
 
 	public List<Spell.Preset> spells {
@@ -250,13 +253,11 @@ public class BaseUnit {
 
 	public BaseUnit(bool player, SpritePreset sprite, bool customSprite = false) {
 		_playerControlled = player;
-		_attributes = new Attributes();
 		_effects = new List<Effect>();
 		_innateSpells = new List<Spell.Preset>();
 		_spritePreset = sprite;
 		_useCustomSprites = customSprite;
 		
-
 		switch(sprite) {
 			case SpritePreset.direrat:
 				_statPreset = Attributes.Preset.DireRat;
@@ -270,6 +271,13 @@ public class BaseUnit {
 				_statPreset = Attributes.Preset.Slime;
 				_innateSpells.Add(Spell.Preset.Bite);
 				_innateSpells.Add(Spell.Preset.Block);
+				_moveset = new Moveset();
+			break;
+
+			case SpritePreset.skeleton:
+				_statPreset = Attributes.Preset.Skeleton;
+				_innateSpells.Add(Spell.Preset.Skeletal_Claws);
+				_innateSpells.Add(Spell.Preset.PoisonFang);
 				_moveset = new Moveset();
 			break;
 
@@ -289,14 +297,14 @@ public class BaseUnit {
 
 			case SpritePreset.widow:
 				_statPreset = Attributes.Preset.Widow;
-				_innateSpells.Add(Spell.Preset.Bite);
+				_innateSpells.Add(Spell.Preset.PoisonFang);
 				_innateSpells.Add(Spell.Preset.Block);
 				_moveset = new Moveset();
 			break;
 
 			case SpritePreset.widowsmall:
 				_statPreset = Attributes.Preset.WidowSmall;
-				_innateSpells.Add(Spell.Preset.Bite);
+				_innateSpells.Add(Spell.Preset.PoisonFang);
 				_innateSpells.Add(Spell.Preset.Block);
 				_moveset = new Moveset();
 			break;
@@ -310,6 +318,7 @@ public class BaseUnit {
 			break;
 		}
 
+		_attributes = new Attributes(_statPreset);
 		Init();
 	}
 
@@ -391,7 +400,8 @@ public class BaseUnit {
 			_attributes.alliance = 1;
 		}
 
-		
+		_effects.Add(new Effect(Effect.EffectType.DisplayHealth, -1));
+		UpdateDisplayHealth();
 	}
 
 	public void UpdateSpells() {
@@ -435,11 +445,16 @@ public class BaseUnit {
 
 	public void BeginTurn() {
 		Debug.Log("Begin Turn");
-		TickStatus(Effect.Conditions.DurationExpire);
-
-		_attributes.esCurrent += _attributes.esRecovery;
-		if(_attributes.esCurrent > _attributes.esTotal) {
-			_attributes.esCurrent = _attributes.esTotal;
+		_tickedStatuses = false;
+		if(_tile.unit != null) {
+			_tile.unit.TickStatus(Effect.Conditions.DurationExpire);
+		} else {
+			TickStatusImmediate(Effect.Conditions.DurationExpire);
+		}
+		
+		_attributes.currentEssence += _attributes.recoveryEssence;
+		if(_attributes.currentEssence > _attributes.totalEssence) {
+			_attributes.currentEssence = _attributes.totalEssence;
 		}
 	}
 
@@ -461,6 +476,9 @@ public class BaseUnit {
 		if(nextTile != null) {
 			if(nextTile.baseTerrain != null) {
 				if(nextTile.baseTerrain.walkable && nextTile.baseUnit == null) {
+					if(_inCombat) {
+						Cast(1);
+					}
 					Vector2Int prevPosition = _tile.position;
 
 					nextTile.baseUnit = this;
@@ -510,7 +528,7 @@ public class BaseUnit {
 
 	public void Cast(int essenceCost) {
 		if(_inCombat) {
-			_attributes.esCurrent -= essenceCost;
+			_attributes.currentEssence -= essenceCost;
 		}
 	}
 
@@ -548,7 +566,7 @@ public class BaseUnit {
 		HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
 		if(hitpointUI != null) {
 			hitpointUI.baseUnit = this;
-			hitpointUI.UpdateHitpoints(_attributes.hpCurrent, _attributes.hpTotal);
+			hitpointUI.UpdateHitpoints(_attributes.currentHealth, _attributes.totalHealth);
 		}
 
 		EssenceUI essenceUI = GameObject.FindObjectOfType<EssenceUI>();
@@ -565,11 +583,19 @@ public class BaseUnit {
 		}
 	}
 
-	public void ReceiveDamage(BaseUnit dealer, int damage, Spell.DamageType type) {
+	public bool ReceiveDamage(BaseUnit dealer, int damage, Spell.DamageType type) {
 		Color color = Color.white;
 		switch(type) {
+			case Spell.DamageType.Bleed:
+				color = new Color(192f/255f, 32f/255f, 0f);
+			break;
+
 			case Spell.DamageType.Fire:
 				color = new Color(1f, 165f/255f, 0f);
+			break;
+
+			case Spell.DamageType.Poison:
+				color = new Color(64f/255f, 192f/255f, 0f);
 			break;
 		}
 
@@ -577,16 +603,18 @@ public class BaseUnit {
 		Debug.Log(damage + " damage");
 		SpawnDamageText(damage.ToString(), color);
 
-		_attributes.hpCurrent -= damage;
+		_attributes.currentHealth -= damage;
 		if(_playerControlled) {
 			HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
 			if(hitpointUI.baseUnit == this) {
-				hitpointUI.UpdateHitpoints(_attributes.hpCurrent, _attributes.hpTotal);
+				hitpointUI.UpdateHitpoints(_attributes.currentHealth, _attributes.totalHealth);
 			}
 		}
 
-		if(_attributes.hpCurrent > 0) {
+		UpdateDisplayHealth();
 
+		if(_attributes.currentHealth > 0) {
+			
 			// Aggro this unit if it's not in combat
 			if(dealer != null) {
 				CombatManager cm = _tile.combatManager;
@@ -615,56 +643,142 @@ public class BaseUnit {
 			}
 			Kill();
 		}
+
+		if(damage > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	public void ReceiveStatus(Spell spell, Effect e) {
+	public void ReceiveStatus(Spell spell, Effect effect) {
 		
-
 		Color color = Color.white;
 		string text = "";
-		switch(e.effectType) {
-			case Effect.EffectType.Focus:
-				color = new Color(0f, 1f, 1f);
-				text = "+Focus";
+
+		switch(effect.effectType) {
+			
+			case Effect.EffectType.Bleed:
+				color = new Color(192f/255f, 32f/255f, 0f);
+
+				
+				if(spell.caster.bag != null) {
+					effect.initialBleedModifier = spell.caster.bag.GetEquipmentBonus(Bag.EquipmentBonus.BleedModifier);
+				}
+
+				int bleedValue = effect.initialBleedModifier + effect.deactivationConditions[Effect.Conditions.DurationExpire];
+				// No scaling
+				//bleedValue += (int)e.GetPotency(spell.caster.attributes);
+			
+				text = "+" + bleedValue;
 			break;
 
 			case Effect.EffectType.Block:
-				color = new Color(0f, 1f, 1f);
+				color = new Color(0.25f, 0.25f, 1f);
 
 				int blockValue = 0;
 				if(spell.caster.bag != null) {
 					blockValue = spell.caster.bag.GetEquipmentBonus(Bag.EquipmentBonus.BlockModifier);
-					e.initialBlockModifier = blockValue;
+					effect.initialBlockModifier = blockValue;
 				}
 
-				blockValue += (int)e.GetPotency(spell.caster.attributes);
+				blockValue += (int)effect.GetPotency(spell.caster.attributes);
 			
-				text = "+" + blockValue + " Block";
+				text = "+" + blockValue;
+			break;
+
+			case Effect.EffectType.Poison:
+				color = new Color(64f/255f, 192f/255f, 0f);
+
+				
+				if(spell.caster.bag != null) {
+					effect.initialPoisonModifier = spell.caster.bag.GetEquipmentBonus(Bag.EquipmentBonus.PoisonModifier);
+				}
+
+				int poisonValue = effect.initialBleedModifier + effect.deactivationConditions[Effect.Conditions.DurationExpire];
+				// No scaling
+				//bleedValue += (int)e.GetPotency(spell.caster.attributes);
+			
+				text = "+" + poisonValue;
+			break;
+
+			case Effect.EffectType.Focus:
+				color = new Color(0f, 1f, 1f);
+				text = "+Focus";
 			break;
 		}
 
-		if(!e.Apply(tile.unit.baseUnit)) {return;}
+		if(!effect.Apply(tile.unit.baseUnit)) {return;}
 
 		SpawnDamageText(text.ToString(), color);
 	}
 
-	public void TickStatus(Effect.Conditions c, int amount = 1) {
+
+	public void TickStatusImmediate(Effect.Conditions condition, int amount = 1) {
 		for(int i = _effects.Count-1; i >= 0; i--) {
-			if(_effects[i].deactivationConditions.ContainsKey(c)) {
-				_effects[i].deactivationConditions[c] -= amount;
-				if(_effects[i].deactivationConditions[c] <= 0) {
+			TickStatusSingle(_effects[i], condition, amount);
+		}
+	}
+
+	public float TickStatusSingle(Effect effect, Effect.Conditions condition, int amount = 1) {
+		float duration = 0f;
+		if(effect.deactivationConditions.ContainsKey(condition)) {
+			switch(effect.effectType) {
+				case Effect.EffectType.Bleed:
+					if(ReceiveDamage(this, effect.deactivationConditions[Effect.Conditions.DurationExpire], Spell.DamageType.Bleed)) {
+						if(_tile.unit != null) {
+							Spell bleed = new Spell(this, Spell.Preset.Bleed);
+							bleed.effectOrigin = _tile.position;
+							_tile.unit.SpawnSpellEffect(bleed);
+							duration = 1.5f;
+						}
+					}
+				break;
+
+				case Effect.EffectType.Poison:
+					if(ReceiveDamage(this, effect.deactivationConditions[Effect.Conditions.DurationExpire], Spell.DamageType.Poison)) {
+						if(_tile.unit != null) {
+							Spell poison = new Spell(this, Spell.Preset.Poison);
+							poison.effectOrigin = _tile.position;
+							_tile.unit.SpawnSpellEffect(poison);
+							duration = 1.5f;
+						}
+					}
+				break;
+			}
+			
+			effect.deactivationConditions[condition] -= amount;
+			if(effect.deactivationConditions[condition] <= 0) {
+				RemoveStatus(effect);
+			}
+		}
+		return duration;
+	}
+
+	public void RemoveStatusByCondition(Effect.EffectType effectType, Effect.Conditions condition, int amount = 1) {
+		for(int i = _effects.Count-1; i >= 0; i--) {
+			if(_effects[i].effectType == effectType) {
+				if(_effects[i].deactivationConditions.ContainsKey(condition)) {
+					_effects[i].deactivationConditions[condition] -= amount;
+				}
+
+				if(_effects[i].deactivationConditions[condition] <= 0) {
 					RemoveStatus(_effects[i]);
-					_effects.RemoveAt(i);
 				}
 			}
 		}
-
 	}
 
-	public void RemoveStatus(Effect e) {
+	public void RemoveStatus(Effect effect) {
+		for(int i = _effects.Count-1; i >= 0; i--) {
+			if(effect.Equals(_effects[i])) {
+				_effects.RemoveAt(i);
+			}
+		}
+
 		Color color = Color.white;
 		string text = "";
-		switch(e.effectType) {
+		switch(effect.effectType) {
 			case Effect.EffectType.Block:
 				//color = new Color(0f, 1f, 1f);
 				//text = "-Block";
@@ -679,10 +793,19 @@ public class BaseUnit {
 		SpawnDamageText(text.ToString(), color);
 	}
 
+	void UpdateDisplayHealth() {
+		foreach(Effect e in _effects) {
+			if(e.effectType == Effect.EffectType.DisplayHealth) {
+				e.currentHealth = _attributes.currentHealth;
+				e.totalHealth = _attributes.totalHealth;
+			}
+		}
+	}
+
 	public void Kill() {
 		// Save bag and death location here.
 		if(_playerControlled) {
-			_attributes.hpCurrent = _attributes.hpTotal;
+			_attributes.currentHealth = _attributes.totalHealth;
 
 			PlayerData.current.retrievalZone = PlayerData.current.currentZone;
 			PlayerData.current.retrievalBag = new Bag(Bag.BagType.Container);
@@ -736,8 +859,11 @@ public class BaseUnit {
 	public void SpawnDamageText(string text, Color color) {
 		GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Damage Text"));
 		DamageText damageText = go.GetComponent<DamageText>();
-		go.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
-		damageText.Init(_tile.unit.GetComponent<RectTransform>().anchoredPosition, text, color);
+		//go.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+		if(_tile.unit != null) {
+			damageText.Init(_tile.unit.GetComponent<RectTransform>().anchoredPosition, text, color);
+			//damageText.ResetScale();
+		}
 	}
 
 	public void LoadSprites(SpriteManager spriteManager) {
@@ -750,55 +876,123 @@ public class BaseUnit {
 
 	void LoadCustomSprite(SpriteManager spriteManager) {
 		_idleAnimation = new Sprite[IdleAnimationLength];
-		_idleSkinAnimation = new Sprite[IdleAnimationLength];
-		_idleArmorAnimation = new Sprite[IdleAnimationLength];
-		_idleSecondaryAnimation = new Sprite[IdleAnimationLength];
-		_idlePrimaryAnimation = new Sprite[IdleAnimationLength];
+		
 		switch(spritePreset) {
-			case SpritePreset.warrior:
+			default:
 				_shadowSprite = spriteManager.shadowMedium;
-
-				// Parse Weapon tier here --
-				_idleSecondaryAnimation = spriteManager.unitWarrior1.secondaryT1.ToArray();
-				_idlePrimaryAnimation = spriteManager.unitWarrior1.primaryT1.ToArray();
 			break;
 		}
-		ApplySwatches(spriteManager);
+
+		LoadCustomPrimary(spriteManager);
+		LoadCustomSecondary(spriteManager);
+		LoadCustomArmor(spriteManager);
+	}
+
+	public void LoadCustomPrimary(SpriteManager spriteManager) {
+		_idlePrimaryAnimation = new Sprite[IdleAnimationLength];
+
+		if(_bag != null) {
+			// Primary Weapon
+			if(_bag.primary != null) {
+				switch(_bag.primary.id) {
+					case BaseItem.ID.Gladius:
+						_idlePrimaryAnimation = spriteManager.unitWeapons.gladius.ToArray();
+					break;
+
+					//case BaseItem.ID.Staff:
+					//	_idlePrimaryAnimation = spriteManager.unitWeapons.staff.ToArray();
+					//break;
+
+				}
+			}
+		}
+
+		// Fallback to empty sprite sheet.
+		if(_idlePrimaryAnimation[0] == null) {
+			for(int i = 0; i < IdleAnimationLength; i++) {
+				_idlePrimaryAnimation[i] = spriteManager.items.unknown;
+			}
+		}
+	}
+
+	public void LoadCustomSecondary(SpriteManager spriteManager) {
+		_idleSecondaryAnimation = new Sprite[IdleAnimationLength];
+		
+		if(_bag != null) {
+			// Secondary Weapon
+			if(_bag.secondary != null) {
+				switch(_bag.secondary.id) {
+					case BaseItem.ID.Dagger:
+						_idleSecondaryAnimation = spriteManager.unitWeapons.dagger.ToArray();
+					break;
+
+					case BaseItem.ID.Parma:
+						_idleSecondaryAnimation = spriteManager.unitWeapons.parma.ToArray();
+					break;
+				}
+			}
+		}
+
+		// Fallback to empty sprite sheet.
+		if(_idleSecondaryAnimation[0] == null) {
+			for(int i = 0; i < IdleAnimationLength; i++) {
+				_idleSecondaryAnimation[i] = spriteManager.items.unknown;
+			}
+		}
 	}
 	
-	void ApplySwatches(SpriteManager spriteManager) {
+	public void LoadCustomArmor(SpriteManager spriteManager) {
+		_idleSkinAnimation = new Sprite[IdleAnimationLength];
+		_idleArmorAnimation = new Sprite[IdleAnimationLength];
+
 		Sprite[] skinTemplate = null;
 		Sprite[] armorTemplate = null;
+
 		Color[] skinPalette = null;
 		Color[] armorPalette = null;
 
-		switch(spritePreset) {
-			case SpritePreset.warrior:
-				skinTemplate = spriteManager.unitWarrior1.skin.ToArray();
-				skinPalette = ParseColor(Swatch.GetSkinSwatch(_character.skinColor));
+		if(_bag != null) {
+			if(_bag.body != null) {
+				switch(_bag.body.id) {
+					case BaseItem.ID.Chainmail_Tunic:
+						skinTemplate = spriteManager.unitArmor.chainmailSkin.ToArray();
+						armorTemplate = spriteManager.unitArmor.chainmail.ToArray();
+						armorPalette = ParseColor(Swatch.chainmailArmor);
+					break;
 
-				// Parse armor tier here --
-				armorTemplate = spriteManager.unitWarrior1.armorT1.ToArray();
-				armorPalette = ParseColor(Swatch.armorWarriorT1);
-			break;
+					case BaseItem.ID.Cotton_Tunic:
+						skinTemplate = spriteManager.unitArmor.cottonSkin.ToArray();
+						armorTemplate = spriteManager.unitArmor.cotton.ToArray();
+						armorPalette = ParseColor(Swatch.cottonArmor);
+					break;
+
+					case BaseItem.ID.Leather_Jack:
+						skinTemplate = spriteManager.unitArmor.leatherSkin.ToArray();
+						armorTemplate = spriteManager.unitArmor.leather.ToArray();
+						armorPalette = ParseColor(Swatch.leatherArmor);
+					break;
+				}
+			}
 		}
 
+		// Fallback to a default skin template.
+		if(skinTemplate == null) {
+			skinTemplate = spriteManager.unitArmor.chainmailSkin.ToArray();
+		}
+		
+		// Fallback to a default armor template.
+		if(armorTemplate == null) {
+			armorTemplate = spriteManager.unitArmor.chainmail.ToArray();
+			armorPalette = ParseColor(Swatch.chainmailArmor);
+		}
+		
+		// Prepare palette for the unit's skin.
+		skinPalette = ParseColor(Swatch.GetSkinSwatch(_character.skinColor));
+		
+		// Apply swatches to the templates, then assign new sprites to the animation sheet.
 		for(int i = 0; i < IdleAnimationLength; i++) {
-
-			// Skin
-			if(_character != null && skinPalette != null) {
-				_idleSkinAnimation[i] = ApplySwatch(skinTemplate[i], skinPalette);
-			} else {
-				_idleSkinAnimation[i] = ApplySwatch(skinTemplate[i], ParseColor(Swatch.skinHumanLight));
-			}
-
-			// Armor
-			if(_character != null && armorPalette != null) {
-				_idleArmorAnimation[i] = ApplySwatch(armorTemplate[i], armorPalette);
-			} else {
-				_idleArmorAnimation[i] = ApplySwatch(armorTemplate[i], ParseColor(Swatch.armorWarriorT1));
-			}
-			
+			_idleSkinAnimation[i] = ApplySwatch(skinTemplate[i], skinPalette);
+			_idleArmorAnimation[i] = ApplySwatch(armorTemplate[i], armorPalette);
 		}
 	}
 
@@ -859,6 +1053,12 @@ public class BaseUnit {
 				_shadowSprite = spriteManager.shadowLarge;
 				_idleAnimation = spriteManager.unitSandBehemoth1.idle.ToArray();
 				_hitAnimation = spriteManager.unitSandBehemoth1.hit.ToArray();
+			break;
+
+			case SpritePreset.skeleton:
+				_shadowSprite = spriteManager.shadowMedium;
+				_idleAnimation = spriteManager.unitSkeleton.idle.ToArray();
+				_hitAnimation = spriteManager.unitSkeleton.hit.ToArray();
 			break;
 
 			case SpritePreset.spider:

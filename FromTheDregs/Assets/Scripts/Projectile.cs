@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(_velocity != null && _rectTransform != null) {
+		if(_rectTransform != null) {
 			_rectTransform.anchoredPosition += new Vector2(_velocity.x, _velocity.y) * Time.deltaTime;
 		}
 	}

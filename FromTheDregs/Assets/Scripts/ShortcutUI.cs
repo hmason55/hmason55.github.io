@@ -29,6 +29,10 @@ public class ShortcutUI : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.I)) {
 			OnBagShortcut();
 		}
+
+		if(Input.GetKeyDown(KeyCode.C)) {
+			OnCharacterShortcut();
+		}
 	}
 
 	public void OnMenuShortcut() {
@@ -38,11 +42,13 @@ public class ShortcutUI : MonoBehaviour {
 	public void OnCharacterShortcut() {
 		if(_shortcutsEnabled) {
 			_attributesUI.ToggleUI();
+			_bagBehaviour.HideUI();
 		}
 	}
 
 	public void OnBagShortcut() {
 		if(_shortcutsEnabled) {
+			_attributesUI.HideUI();
 			_bagBehaviour.ToggleUI();
 		}
 	}

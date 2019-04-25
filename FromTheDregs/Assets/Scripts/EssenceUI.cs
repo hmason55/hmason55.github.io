@@ -32,7 +32,7 @@ public class EssenceUI : MonoBehaviour {
 		}
 		
 		if(_baseUnit != null) {
-			SetFilledEssence(_baseUnit.attributes.esCurrent);
+			SetFilledEssence(_baseUnit.attributes.currentEssence);
 		}
 		
 	}

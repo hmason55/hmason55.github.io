@@ -7,22 +7,23 @@ using UnityEngine;
 public class BaseItem {
 
 	public enum ID {
-		
+		Chainmail_Coif,
+		Chainmail_Gloves,
+		Chainmail_Leggings,
+		Chainmail_Shoes,
+		Chainmail_Tunic,
+
 		Cotton_Breeches,
 		Cotton_Gloves,
 		Cotton_Hood,
 		Cotton_Shoes,
 		Cotton_Tunic,
 
+		Dagger,
+
 		Gladius,
 
 		Gold,
-
-		Iron_Chain_Coif,
-		Iron_Chain_Gloves,
-		Iron_Chain_Leggings,
-		Iron_Chain_Shoes,
-		Iron_Chain_Tunic,
 
 		Leather_Boots,
 		Leather_Bracers,
@@ -30,7 +31,12 @@ public class BaseItem {
 		Leather_Jack,
 		Leather_Helm,
 
+
+
+		Potion_of_Clotting,
+		Potion_of_Curing,
 		Potion_of_Return,
+		
 
 		Rune_of_Constitution,
 		Rune_of_Dexterity,
@@ -38,7 +44,7 @@ public class BaseItem {
 		Rune_of_Strength,
 
 		Small_Key,
-		Wooden_Parma,
+		Parma,
 	}
 
 	public enum Category {
@@ -94,7 +100,6 @@ public class BaseItem {
 	Category _category;
 	string _name;
 	ID _id;
-	int _tier;
 	int _quantity;
 	string _description;
 	int _value;
@@ -106,7 +111,8 @@ public class BaseItem {
 	int _spellDamage;
 
 	int _blockModifier;
-	int _defense;
+	int _physicalArmor;
+	int _spellArmor;
 
 	int _healthTotal;
 	int _healthRecovery;
@@ -114,11 +120,6 @@ public class BaseItem {
 	int _essenceTotal;
 	int _essenceRecovery;
 
-	int _movementSpeed;
-	//int _physicalAttack;
-	//int _magicalAttack;
-	//int _physicalDefense;
-	//int _magicalDefense;
 	ArmorWeight _armorWeight;
 	List<Spell.Preset> _spells;
 
@@ -136,10 +137,6 @@ public class BaseItem {
 	public string keycode {
 		get {return _keycode;}
 		set {_keycode = value;}
-	}
-
-	public int tier {
-		get {return _tier;}
 	}
 
 	public string name {
@@ -171,32 +168,8 @@ public class BaseItem {
 		get {return _spellDamage;}
 	}
 
-	public int defense {
-		get {return _defense;}
-	}
-
 	public int blockModifier {
 		get {return _blockModifier;}
-	}
-
-	public int healthTotal {
-		get {return _healthTotal;}
-	}
-
-	public int healthRecovery {
-		get {return _healthRecovery;}
-	}
-	
-	public int essenceTotal {
-		get {return _essenceTotal;}
-	}
-
-	public int essenceRecovery {
-		get {return _essenceRecovery;}
-	}
-
-	public int movementSpeed {
-		get {return _movementSpeed;}
 	}
 
 	public List<Spell.Preset> spells {
@@ -239,6 +212,10 @@ public class BaseItem {
 				_sprite = spriteManager.items.lightArmorBody[0];
 			break;
 
+			case ID.Dagger:
+				_sprite = spriteManager.items.daggers[0];
+			break;
+
 			case ID.Gladius:
 				_sprite = spriteManager.items.swords[0];
 			break;
@@ -248,23 +225,23 @@ public class BaseItem {
 			break;
 
 
-			case ID.Iron_Chain_Coif:
+			case ID.Chainmail_Coif:
 				_sprite = spriteManager.items.heavyArmorHead[0];
 			break;
 
-			case ID.Iron_Chain_Gloves:
+			case ID.Chainmail_Gloves:
 				_sprite = spriteManager.items.heavyArmorHands[0];
 			break;
 
-			case ID.Iron_Chain_Leggings:
+			case ID.Chainmail_Leggings:
 				_sprite = spriteManager.items.heavyArmorLegs[0];
 			break;
 
-			case ID.Iron_Chain_Shoes:
+			case ID.Chainmail_Shoes:
 				_sprite = spriteManager.items.heavyArmorFeet[0];
 			break;
 
-			case ID.Iron_Chain_Tunic:
+			case ID.Chainmail_Tunic:
 				_sprite = spriteManager.items.heavyArmorBody[0];
 			break;
 
@@ -289,9 +266,20 @@ public class BaseItem {
 				_sprite = spriteManager.items.mediumArmorBody[0];
 			break;
 
+			case ID.Parma:
+				_sprite = spriteManager.items.shields[0];
+			break;
 
 			case ID.Potion_of_Return:
 				_sprite = spriteManager.items.potions[0];
+			break;
+
+			case ID.Potion_of_Clotting:
+				_sprite = spriteManager.items.potions[2];
+			break;
+
+			case ID.Potion_of_Curing:
+				_sprite = spriteManager.items.potions[1];
 			break;
 
 			case ID.Rune_of_Constitution:
@@ -310,25 +298,11 @@ public class BaseItem {
 				_sprite = spriteManager.items.runestones[0];
 			break;
 
-
 			case ID.Small_Key:
 				_sprite = GenerateKeycodeSprite(_keycode, spriteManager.items.keys[0], spriteManager);
 			break;
-
-			case ID.Wooden_Parma:
-				_sprite = spriteManager.items.shields[0];
-			break;
+			
 		}
-	}
-
-	void RollArmorWeight() {
-		int ndx = UnityEngine.Random.Range(0, Enum.GetValues(typeof(ArmorWeight)).Length);
-		_armorWeight = (ArmorWeight)ndx;
-	}
-
-	void RollCategory() {
-		int ndx = UnityEngine.Random.Range(3, 8);
-		_category = (Category)ndx;
 	}
 
 	public string CategoryToString() {
@@ -356,10 +330,16 @@ public class BaseItem {
 			attributeString += "<b><color=red>Blocking</color></b>\n";
 		}
 
-		if(_defense > 0) {
-			attributeString += "<b><color=cyan>Defense</color></b>\n";
-		} else if(_defense < 0) {
-			attributeString += "<b><color=red>Defense</color></b>\n";
+		if(_physicalArmor > 0) {
+			attributeString += "<b><color=cyan>Physical Armor</color></b>\n";
+		} else if(_physicalArmor < 0) {
+			attributeString += "<b><color=red>Physical Armor</color></b>\n";
+		}
+
+		if(_spellArmor > 0) {
+			attributeString += "<b><color=cyan>Spell Armor</color></b>\n";
+		} else if(_spellArmor < 0) {
+			attributeString += "<b><color=red>Spell Armor</color></b>\n";
 		}
 
 		return attributeString;
@@ -388,10 +368,10 @@ public class BaseItem {
 			attributeString += "<b><color=red>-" + Mathf.Abs(_blockModifier) + "</color></b>\n";
 		}
 
-		if(_defense > 0) {
-			attributeString += "<b><color=cyan>+ " + _defense + "</color></b>\n";
-		} else if(_defense < 0) {
-			attributeString += "<b><color=red>- " + Mathf.Abs(_defense) + "</color></b>\n";
+		if(_physicalArmor > 0) {
+			attributeString += "<b><color=cyan>+ " + _physicalArmor + "</color></b>\n";
+		} else if(_physicalArmor < 0) {
+			attributeString += "<b><color=red>- " + Mathf.Abs(_physicalArmor) + "</color></b>\n";
 		}
 
 		return attributeString;
@@ -491,55 +471,66 @@ public class BaseItem {
 				_value = 1;
 			break;
 
-			case ID.Gladius:
-				_name = "Gladius";
-				_category = Category.Primary_Weapon;
-				_description = "A short light-weight blade made of steel with a wooden hilt. Used by foot soldiers.";
-				_physicalDamage = 10;
-				_spells.Add(Spell.Preset.Slash);
-				_value = 10;
-			break;
-
-			case ID.Gold:
-				_name = "Gold";
-				_category = Category.Currency;
-				_description = "Item description.";
-				_value = 1;
-			break;
-
-
-			case ID.Iron_Chain_Coif:
+			case ID.Chainmail_Coif:
 				_name = "Iron Chain Coif";
 				_category = Category.Head_Armor;
 				_description = "A foot soldier's coif.";
 				_value = 1;
 			break;
 
-			case ID.Iron_Chain_Gloves:
+			case ID.Chainmail_Gloves:
 				_name = "Iron Chain Gloves";
 				_category = Category.Hand_Armor;
 				_description = "Gloves made of iron chainmail.";
 				_value = 1;
 			break;
 
-			case ID.Iron_Chain_Leggings:
+			case ID.Chainmail_Leggings:
 				_name = "Iron Chain Leggings";
 				_category = Category.Leg_Armor;
 				_description = "Leggings made of chainmail.";
 				_value = 1;
 			break;
 
-			case ID.Iron_Chain_Shoes:
+			case ID.Chainmail_Shoes:
 				_name = "Iron Chain Shoes";
 				_category = Category.Foot_Armor;
 				_description = "Shoes made of chainmail.";
 				_value = 1;
 			break;
 
-			case ID.Iron_Chain_Tunic:
+			case ID.Chainmail_Tunic:
 				_name = "Iron Chain Tunic";
 				_category = Category.Body_Armor;
 				_description = "A tunic made of chainmail.";
+				_value = 1;
+			break;
+
+
+			case ID.Dagger:
+				_name = "Dagger";
+				_category = Category.Secondary_Weapon;
+				_description = "A short blade, often used as a side-arm.";
+				_physicalDamage = 5;
+				_spells.Add(Spell.Preset.SeveringStrike);
+				_spells.Add(Spell.Preset.PoisonFang);
+				_value = 10;
+			break;
+
+			case ID.Gladius:
+				_name = "Gladius";
+				_category = Category.Primary_Weapon;
+				_description = "A short light-weight blade made of steel with a wooden hilt. Used by foot soldiers.";
+				_physicalDamage = 10;
+				_spells.Add(Spell.Preset.Slash);
+				_spells.Add(Spell.Preset.Fireball);
+				_value = 5;
+			break;
+
+			case ID.Gold:
+				_name = "Gold";
+				_category = Category.Currency;
+				_description = "Item description.";
 				_value = 1;
 			break;
 
@@ -579,6 +570,22 @@ public class BaseItem {
 				_value = 1;
 			break;
 
+			
+			
+			
+			case ID.Potion_of_Clotting:
+				_name = "Potion of Clotting";
+				_category = Category.Consumable;
+				_description = "Reduces the effects of <b><color=#C00000>Bleed</color></b> by 5.";
+				_value = 1;
+			break;
+
+			case ID.Potion_of_Curing:
+				_name = "Potion of Curing";
+				_category = Category.Consumable;
+				_description = "Reduces the effects of <b><color=#40C000>Poison</color></b> by 5.";
+				_value = 1;
+			break;
 
 			case ID.Potion_of_Return:
 				_name = "Potion of Return";
@@ -625,8 +632,8 @@ public class BaseItem {
 				_value = 0;
 			break;
 
-			case ID.Wooden_Parma:
-				_name = "Wooden Parma";
+			case ID.Parma:
+				_name = "Parma";
 				_category = Category.Secondary_Weapon;
 				_description = "A round wooden shield with an iron frame.";
 				_blockModifier = 1;

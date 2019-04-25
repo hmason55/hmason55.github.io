@@ -14,13 +14,29 @@ public class EffectBehaviour : MonoBehaviour {
         get {return _effectValue;}
     }
 
-    public void UpdateEffect(BaseUnit baseUnit, Effect effect, SpriteManager spriteManager) {
+    public void UpdateEffect(BaseUnit baseUnit, Effect effect) {
         if(_effectImage == null || _effectValue == null) {return;}
 
         switch(effect.effectType) {
+        
+            case Effect.EffectType.Bleed:
+                _effectImage.sprite = AssetReference.sprites.statuses.bleed;
+                _effectValue.text = effect.deactivationConditions[Effect.Conditions.DurationExpire].ToString();
+            break;
+
             case Effect.EffectType.Block:
-                _effectImage.sprite = spriteManager.statuses.block;
+                _effectImage.sprite = AssetReference.sprites.statuses.block;
                 _effectValue.text = effect.deactivationConditions[Effect.Conditions.BlockDamage].ToString();
+            break;
+
+            case Effect.EffectType.DisplayHealth:
+                _effectImage.sprite = AssetReference.sprites.statuses.health;
+                _effectValue.text = effect.currentHealth.ToString();
+            break;
+
+            case Effect.EffectType.Poison:
+                _effectImage.sprite = AssetReference.sprites.statuses.poison;
+                _effectValue.text = effect.deactivationConditions[Effect.Conditions.DurationExpire].ToString();
             break;
         }
 

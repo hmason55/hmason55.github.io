@@ -6,20 +6,27 @@ public class Spell {
 
 	public enum Preset {
 		Bite,
-		Slash,
+		Bleed,
+		Block,
 		BurningHands,
 		FeintSwipe,
 		Fireball,
 		Move,
-		Block
+		Poison,
+		PoisonFang,
+		SeveringStrike,
+		Skeletal_Claws,
+		Slash,
 	}
 
 	public enum DamageType {
-		Physical,
-		Spell,
+		Bleed,
 		Fire,
 		Ice,
-		Lightning
+		Lightning,
+		Physical,
+		Poison,
+		Spell,
 	}
 
 	public enum Scaling {
@@ -79,7 +86,6 @@ public class Spell {
 	bool _createsEffect = true;
 	DamageType _damageType;
 	Scaling _scaling = Scaling.Strength;
-	int _modSizeDamage = 0;
 	string _damageSoundPath;
 	string _blockSoundPath = "Sounds/sfx/block_impact_0";
 	List<Effect> _spellCasterEffects;
@@ -224,6 +230,7 @@ public class Spell {
 
 			switch(_intentType) {
 				case IntentType.Attack:
+				case IntentType.Debuff:
 					int a = 0;
 
 					foreach(Effect e in _spellTargetEffects) {
@@ -289,8 +296,6 @@ public class Spell {
 		_spellCasterEffects = new List<Effect>();
 		_spellTargetEffects = new List<Effect>();
 		Effect damage;
-		Effect stun;
-
 
 		switch(spell) {
 			
@@ -307,7 +312,6 @@ public class Spell {
 				_createsProjectile = false;
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
-				_modSizeDamage = 0;
 				_intentType = IntentType.Attack;
 
 				
@@ -339,12 +343,12 @@ public class Spell {
 			break;
 			#endregion
 
-			#region Slash
-			case Preset.Slash:	
-				_spellName = "Slash";
+			#region Bleed
+			case Preset.Bleed:	
+				_spellName = "Bleed";
 
-				_essenceCost = 2;
-				_damageType = DamageType.Physical;
+				_essenceCost = 0;
+				_damageType = DamageType.Bleed;
 				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
 				_requireCastConfirmation = true;
@@ -352,12 +356,7 @@ public class Spell {
 				_createsProjectile = false;
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
-				_modSizeDamage = 0;
 				_intentType = IntentType.Attack;
-
-				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 1.50f);
-				_spellTargetEffects.Add(damage);
 				
 				_castParticlePath = "";
 				_castRadius = 1;
@@ -367,68 +366,19 @@ public class Spell {
 				_castRequiresTarget = true;
 				_castRequiresLineOfSight = true;
 				_castCanTargetSelf = false;
-				_castTargetUnitType = TargetUnitType.All;
+				_castTargetUnitType = TargetUnitType.Enemy;
 
-				_effectParticlePath = "Prefabs/Effects/Slash Impact";
-				_effectSoundPath = "Sounds/sfx/slash_impact_0";
+				_effectParticlePath = "Prefabs/Effects/Bleed Impact";
+				_effectSoundPath = "Sounds/sfx/impact_damage_0";
 				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.80f;
+				_effectDamageDelay = 0.25f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
 				_effectRequiresLineOfSight = true;
 				_effectShape = Spell.EffectShape.Circle;
 				_effectDirection = EffectDirection.Up;
-				_effectTargetUnitType = TargetUnitType.Enemy;
-			break;
-			#endregion
-
-			#region Feint Swipe
-			case Preset.FeintSwipe:	
-				_spellName = "Feint Swipe";
-
-				_essenceCost = 3;
-				_damageType = DamageType.Physical;
-				_damageSoundPath = "Sounds/sfx/impact_damage_0";
-				_autoRecast = false;
-				_requireCastConfirmation = true;
-				_createsCastParticle = false;
-				_createsProjectile = false;
-				_createsEffect = true;
-				_scaling = Scaling.Strength;
-				_modSizeDamage = 0;
-				_intentType = IntentType.Attack;
-
-				Effect crit = new Effect(Effect.EffectType.Focus);
-				crit.deactivationConditions.Add(Effect.Conditions.DealDamage, 1);
-				_spellCasterEffects.Add(crit);
-
-				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Dexterity, 0.75f);
-				_spellTargetEffects.Add(damage);
-
-				
-				_castParticlePath = "";
-				_castRadius = 1;
-				_castThroughWalls = false;
-				_castOnWalls = false;
-				_castOnUnits = true;
-				_castRequiresTarget = true;
-				_castRequiresLineOfSight = true;
-				_castCanTargetSelf = false;
-				_castTargetUnitType = TargetUnitType.All;
-
-				_effectParticlePath = "Prefabs/Effects/Slash Impact";
-				_effectSoundPath = "Sounds/sfx/slash_impact_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.80f;
-				_effectRadius = 0;
-				_effectRotateToDirection = false;
-				_effectIgnoresWalls = false;
-				_effectRequiresLineOfSight = true;
-				_effectShape = Spell.EffectShape.Circle;
-				_effectDirection = EffectDirection.Up;
-				_effectTargetUnitType = TargetUnitType.Enemy;
+				_effectTargetUnitType = TargetUnitType.All;
 			break;
 			#endregion
 
@@ -445,7 +395,6 @@ public class Spell {
 				_createsProjectile = false;
 				_createsEffect = true;
 				_scaling = Scaling.Strength;
-				_modSizeDamage = 0;
 				_intentType = IntentType.Block;
 
 				Effect block = new Effect(Effect.EffectType.Block);
@@ -484,42 +433,49 @@ public class Spell {
 			break;
 			#endregion
 
-			#region Burning Hands
-			case Preset.BurningHands:	
-				_spellName = "Burning Hands";
+			#region Feint Swipe
+			case Preset.FeintSwipe:	
+				_spellName = "Feint Swipe";
 
-				_damageType = DamageType.Fire;
-				_essenceCost = 4;
+				_essenceCost = 2;
+				_damageType = DamageType.Physical;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_autoRecast = false;
 				_requireCastConfirmation = true;
-				_createsCastParticle = true;
+				_createsCastParticle = false;
 				_createsProjectile = false;
 				_createsEffect = true;
-				_scaling = Scaling.Intelligence;
-				_modSizeDamage = 0;
+				_scaling = Scaling.Strength;
 				_intentType = IntentType.Attack;
 
+				Effect crit = new Effect(Effect.EffectType.Focus);
+				crit.deactivationConditions.Add(Effect.Conditions.DealDamage, 1);
+				_spellCasterEffects.Add(crit);
 
 				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
+				damage.SetPrimaryScaling(Effect.ScalingType.Dexterity, 0.75f);
 				_spellTargetEffects.Add(damage);
+
 				
-				_castParticlePath = "Prefabs/Effects/Fire Casting";
+				_castParticlePath = "";
 				_castRadius = 1;
 				_castThroughWalls = false;
 				_castOnWalls = false;
 				_castOnUnits = true;
-				_castRequiresTarget = false;
+				_castRequiresTarget = true;
 				_castRequiresLineOfSight = true;
 				_castCanTargetSelf = false;
 				_castTargetUnitType = TargetUnitType.All;
 
-				_effectParticlePath = "Prefabs/Effects/Burning Hands";
-				_effectDamageDelay = 1.25f;
-				_effectRadius = 1;
+				_effectParticlePath = "Prefabs/Effects/Slash Impact";
+				_effectSoundPath = "Sounds/sfx/slash_impact_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.80f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
 				_effectRequiresLineOfSight = true;
-				_effectShape = Spell.EffectShape.Cone45;
+				_effectShape = Spell.EffectShape.Circle;
 				_effectDirection = EffectDirection.Up;
 				_effectTargetUnitType = TargetUnitType.Enemy;
 			break;
@@ -537,7 +493,6 @@ public class Spell {
 				_createsProjectile = true;
 				_createsEffect = true;
 				_scaling = Scaling.Intelligence;
-				_modSizeDamage = 0;
 				_intentType = IntentType.Attack;
 
 				damage = new Effect(Effect.EffectType.Damage);
@@ -599,6 +554,232 @@ public class Spell {
 				_castRequiresLineOfSight = true;
 				_castCanTargetSelf = false;
 				_castTargetUnitType = TargetUnitType.None;
+			break;
+			#endregion
+
+			#region Poison
+			case Preset.Poison:	
+				_spellName = "Poison";
+
+				_essenceCost = 0;
+				_damageType = DamageType.Poison;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_intentType = IntentType.Attack;
+				
+				_castParticlePath = "";
+				_castRadius = 1;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = true;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.Enemy;
+
+				_effectParticlePath = "Prefabs/Effects/Poison Impact";
+				_effectSoundPath = "Sounds/sfx/impact_damage_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.25f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.All;
+			break;
+			#endregion
+
+			#region Poison Fang
+			case Preset.PoisonFang:	
+				_spellName = "Poison Fang";
+
+				_essenceCost = 2;
+				_damageType = DamageType.Physical;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_intentType = IntentType.Debuff;
+
+
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Dexterity, 0.75f);
+				_spellTargetEffects.Add(damage);
+
+				Effect poison = new Effect(Effect.EffectType.Poison);
+				poison.stackable = true;
+				poison.deactivationConditions.Add(Effect.Conditions.DurationExpire, 3);
+				_spellTargetEffects.Add(poison);
+
+				
+
+				_castParticlePath = "";
+				_castRadius = 1;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = true;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.Enemy;
+
+				_effectParticlePath = "Prefabs/Effects/Poison Fang Impact";
+				_effectSoundPath = "Sounds/sfx/slash_impact_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.75f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.Enemy;
+			break;
+			#endregion
+
+			#region Severing Strike
+			case Preset.SeveringStrike:	
+				_spellName = "Severing Strike";
+
+				_essenceCost = 2;
+				_damageType = DamageType.Physical;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_intentType = IntentType.Debuff;
+				
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Strength, 1.25f);
+				_spellTargetEffects.Add(damage);
+
+				Effect bleed = new Effect(Effect.EffectType.Bleed);
+				bleed.stackable = true;
+				bleed.deactivationConditions.Add(Effect.Conditions.DurationExpire, 3);
+				_spellTargetEffects.Add(bleed);
+
+				
+				_castParticlePath = "";
+				_castRadius = 1;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = true;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.Enemy;
+
+				_effectParticlePath = "Prefabs/Effects/Severing Strike Impact";
+				_effectSoundPath = "Sounds/sfx/slash_impact_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.80f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.Enemy;
+			break;
+			#endregion
+
+			#region Skeletal Claws
+			case Preset.Skeletal_Claws:	
+				_spellName = "Skeletal Claws";
+
+				_essenceCost = 2;
+				_damageType = DamageType.Physical;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_intentType = IntentType.Attack;
+
+				
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Dexterity, 1.00f);
+				_spellTargetEffects.Add(damage);
+				
+				_castParticlePath = "";
+				_castRadius = 1;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = true;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.Enemy;
+
+				_effectParticlePath = "Prefabs/Effects/Claws Impact";
+				_effectSoundPath = "Sounds/sfx/slash_impact_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.75f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.Enemy;
+			break;
+			#endregion
+
+			#region Slash
+			case Preset.Slash:	
+				_spellName = "Slash";
+
+				_essenceCost = 2;
+				_damageType = DamageType.Physical;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_intentType = IntentType.Attack;
+
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Strength, 1.50f);
+				_spellTargetEffects.Add(damage);
+				
+				_castParticlePath = "";
+				_castRadius = 1;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = true;
+				_castRequiresLineOfSight = true;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.Enemy;
+
+				_effectParticlePath = "Prefabs/Effects/Slash Impact";
+				_effectSoundPath = "Sounds/sfx/slash_impact_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.80f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.Enemy;
 			break;
 			#endregion
 		}
@@ -922,19 +1103,10 @@ public class Spell {
 			break;
 		}
 
-
-		//if(CheckManhattanDistance(ox, oy, x, y) > _effectRadius) {
-			//return;
-		//}
-
-		
-
 		// Check wall collision
 		if(!_effectIgnoresWalls && !_tile.baseTerrain.walkable) {
 			return;
 		}
-
-		
 
 		// Allow effects through walls
 		if(!_tile.baseTerrain.walkable) {
@@ -952,25 +1124,17 @@ public class Spell {
 			
 		}
 
-		// Allow self target
-		/* if(x == ox && y == oy) {
-			if(_effectTargetUnitType == TargetUnitType.Self) {
-				flagTile = true;
-			}
-		} else {
-
-				// Allow effects through walls
-		}*/
-
-		end:
 		// Change tile color
 		if(flagTile) {
 			if(_caster.playerControlled) {
 				_tile.terrain.image.color = new Color(1f, 0.85f, 0.85f);
 			}
-
-			_tile.terrain.readyCast = false;
-			_tile.terrain.confirmCast = true;
+			
+			if(_tile.terrain != null) {
+				_tile.terrain.readyCast = false;
+				_tile.terrain.confirmCast = true;
+			}
+			
 			_hitTiles.Add(_tile);
 		}
 		
@@ -1007,18 +1171,18 @@ public class Spell {
 			}
 		}
 
-		OnCast();
+		float castDelay = OnCast();
 
 		DestroyCastParticles();
 
-		if(_createsProjectile) {
-			_projectiles = new List<GameObject>();
-			_caster.tile.unit.SpawnSpellProjectiles(this);
-		} else if(_createsEffect) {
-			_caster.tile.unit.SpawnSpellEffect(this);
+		if(_caster.tile.unit != null) {
+			if(_createsProjectile) {
+				_projectiles = new List<GameObject>();
+				_caster.tile.unit.SpawnSpellProjectiles(this);
+			} else if(_createsEffect) {
+				_caster.tile.unit.SpawnSpellEffect(this);
+			}
 		}
-
-		
 
 		if(_caster.playerControlled) {
 			ResetTiles();
@@ -1034,7 +1198,7 @@ public class Spell {
 			}
 		}
 		
-		return _projPreSpawnDelay + _effectPreSpawnDelay + _effectDamageDelay;
+		return _projPreSpawnDelay + _effectPreSpawnDelay + _effectDamageDelay + castDelay;
 	}
 	
 	#region Particles
@@ -1066,8 +1230,8 @@ public class Spell {
 
 	public void SpawnProjectileParticles(Vector2Int start, Vector2Int end, float zrotation) {
 		GameObject projParticleGO = GameObject.Instantiate(Resources.Load<GameObject>(_projParticlePath));
-		CameraController dungeon = GameObject.FindObjectOfType<CameraController>();
-		projParticleGO.transform.SetParent(dungeon.transform);
+		GameObject effectsLayer = GameObject.FindGameObjectWithTag("Effects Layer");
+		projParticleGO.transform.SetParent(effectsLayer.transform);
 		projParticleGO.transform.SetAsLastSibling();
 
 		Projectile proj = projParticleGO.GetComponent<Projectile>();
@@ -1083,7 +1247,7 @@ public class Spell {
 		RectTransform projRT = projParticleGO.GetComponent<RectTransform>();
 		projRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileHeight/2);
 		projRT.localEulerAngles = new Vector3(0f, 0f, theta * Mathf.Rad2Deg - 90f);
-		projRT.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+		projRT.localScale = new Vector3(1f, 1f, 1f);
 	}
 
 	public void SpawnEffectParticles(Vector2Int position, float zrotation) {
@@ -1095,6 +1259,7 @@ public class Spell {
 		effectParticleGO.transform.SetAsLastSibling();
 
 		RectTransform unitRT = _tiles[position.x, position.y].unit.GetComponent<RectTransform>();
+		
 
 		RectTransform effectRT = effectParticleGO.GetComponent<RectTransform>();
 
@@ -1237,7 +1402,7 @@ public class Spell {
 					}
 				}
 
-				tile.unit.baseUnit.TickStatus(Effect.Conditions.BlockDamage, blockedAmount);
+				tile.unit.baseUnit.TickStatusImmediate(Effect.Conditions.BlockDamage, blockedAmount);
 				//Debug.Log(effect.deactivationConditions[Effect.Conditions.BlockDamage] + " block remaining");
 					
 				if(sound) {
@@ -1249,11 +1414,12 @@ public class Spell {
 					}
 				}
 				
-				tile.unit.baseUnit.TickStatus(Effect.Conditions.ReceiveDamage, totalDamage);
+				tile.unit.baseUnit.TickStatusImmediate(Effect.Conditions.ReceiveDamage, totalDamage);
 				tile.unit.baseUnit.ReceiveDamage(_caster, totalDamage, _damageType);
+
 				
 				// Deactivate effects that require "deal damage" for deactivation.
-				_caster.TickStatus(Effect.Conditions.DealDamage);
+				_caster.TickStatusImmediate(Effect.Conditions.DealDamage);
 			}
 		}
 	}
@@ -1272,7 +1438,7 @@ public class Spell {
 		}
 	}
 
-	void OnCast() {
+	float OnCast() {
 		float spellDuration = 0.25f;
 
 		if(_createsProjectile) {
@@ -1287,30 +1453,25 @@ public class Spell {
 		}
 
 		if(_createsEffect) {
+			spellDuration += 1f;
 			spellDuration += _effectPreSpawnDelay;
 			spellDuration += _effectDamageDelay;
 		}
 
-		_caster.tile.unit.SetInputCooldown(_caster, spellDuration, _autoRecast);
-
+		if(_caster.tile.unit != null) {
+			if(_caster.playerControlled) {
+				_caster.tile.unit.SetInputCooldown(_caster, spellDuration, _autoRecast);
+			}
+		}
+		
 		switch(_preset) {
 			case Preset.Move:
 				Move();
 			break;
 		}
-	}
 
-	void CalcModSizeDamage() {
-		switch(_preset) {
-			case Preset.Bite:
-				_modSizeDamage = Dice.Roll(1+((int)_caster.size)/2, 1+((int)_caster.size));
-			break;
-			default:
-				_modSizeDamage = 0;
-			break;
-		}
+		return spellDuration;
 	}
-
 
 	public void SyncWithCaster(BaseUnit caster) {
 		if(_caster != null) {
