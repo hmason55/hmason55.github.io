@@ -10,8 +10,8 @@ public class LoadingUI : MonoBehaviour {
     [SerializeField] Text _loadingText;
     [SerializeField] Text _helpText;
     string[] _tips = {
-        "This is a simple tip.",
-        "Please read me."
+        "",
+        ""
     };
 
     Coroutine fadeInCoroutine;

@@ -52,4 +52,8 @@ public class MainMenuUI : MonoBehaviour {
         HideUI();
         characterCreationUI.ShowUI();
     }
+
+    public void OnQuit() {
+        Application.Quit();
+    }
 }

@@ -15,7 +15,7 @@ public class AttributesUI : UIBehaviour {
         set {_baseUnit = value;}
     }
 
-    public void ToggleUI() {
+    public new void ToggleUI() {
         if(_hidden) {
             base.ShowUI();
             LoadAttributes();
