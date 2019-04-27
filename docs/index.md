@@ -1,6 +1,3 @@
-## Welcome adventurer!
-
-
 ## What is From the Dregs?
 From the Dregs is a single player, fantasy themed, tactical role-playing game that emphasizes player strategy, careful planning, and exploration. Players will be able to create a unique character and delve through various dungeons, caverns, and other hostile environments to gather loot, battle enemies, and enhance their character’s abilities to fit their own playstyle.
 
