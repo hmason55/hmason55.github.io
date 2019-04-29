@@ -11,6 +11,7 @@ public class Spell {
 		BurningHands,
 		FeintSwipe,
 		Fireball,
+		LightningStrike,
 		Move,
 		Poison,
 		PoisonFang,
@@ -520,6 +521,55 @@ public class Spell {
 				_effectShape = Spell.EffectShape.Circle;
 				_effectDirection = EffectDirection.Up;
 				_effectTargetUnitType = TargetUnitType.All;
+			break;
+			#endregion
+
+			#region Lightning Strike
+			case Preset.LightningStrike:	
+				_spellName = "Lightning Strike";
+
+				_essenceCost = 2;
+				_damageType = DamageType.Spell;
+				_damageSoundPath = "Sounds/sfx/lightning_impact_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Intelligence;
+				_intentType = IntentType.Debuff;
+				
+				damage = new Effect(Effect.EffectType.Damage);
+				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 1.25f);
+				_spellTargetEffects.Add(damage);
+
+
+				Effect stun = new Effect(Effect.EffectType.Stun);
+				stun.deactivationConditions.Add(Effect.Conditions.DurationExpire, 1);
+				_spellTargetEffects.Add(stun);
+
+				
+				_castParticlePath = "";
+				_castRadius = 4;
+				_castThroughWalls = true;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = false;
+				_castRequiresLineOfSight = false;
+				_castCanTargetSelf = false;
+				_castTargetUnitType = TargetUnitType.Enemy;
+
+				_effectParticlePath = "Prefabs/Effects/Lightning Strike";
+				_effectSoundPath = "Sounds/sfx/lightning_strike_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 1.25f;
+				_effectRadius = 0;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.Enemy;
 			break;
 			#endregion
 

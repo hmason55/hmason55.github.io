@@ -113,15 +113,16 @@ public class BaseDecoration {
 				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Dexterity));
 				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Intelligence));
 				_items.Add(new BaseItem(BaseItem.ID.Rune_of_Constitution));
-				_items.Add(new BaseItem(BaseItem.ID.Gladius));
-				_items.Add(new BaseItem(BaseItem.ID.Parma));
-				_items.Add(new BaseItem(BaseItem.ID.Dagger));
+				//_items.Add(new BaseItem(BaseItem.ID.Gladius));
+				//_items.Add(new BaseItem(BaseItem.ID.Parma));
+				//_items.Add(new BaseItem(BaseItem.ID.Dagger));
 				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Return));
 				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Clotting));
 				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Curing));
 				_items.Add(new BaseItem(BaseItem.ID.Cotton_Tunic));
 				_items.Add(new BaseItem(BaseItem.ID.Leather_Jack));
 				_items.Add(new BaseItem(BaseItem.ID.Chainmail_Tunic));
+				_items.Add(new BaseItem(BaseItem.ID.Novice_Tome));
 				_bag = new Bag(Bag.BagType.Shop, _items);
 			break;
 

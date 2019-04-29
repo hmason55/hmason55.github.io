@@ -589,6 +589,8 @@ MonoBehaviour:
     staves: []
     swords:
     - {fileID: 21300000, guid: 38c345761af65b246aead80ff749a52a, type: 3}
+    tomes:
+    - {fileID: 21300000, guid: e3247de310a879c4ebe44add3d73b033, type: 3}
     potions:
     - {fileID: 21300000, guid: 63fb61d50e64bf3409ff1429583c2313, type: 3}
     - {fileID: 21300000, guid: 1a5b0cfda06a3464980533a65553cbf4, type: 3}
@@ -693,3 +695,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 4b9ad706fa77ae54db8d092307377c20, type: 3}
     - {fileID: 21300000, guid: 367c1f60f35a9e943a48456787593210, type: 3}
     staff: []
+    tome:
+    - {fileID: 21300000, guid: 9431810ed14854c4f81b202676fae0aa, type: 3}
+    - {fileID: 21300000, guid: 8038388096e39b6488bced3683b14fcd, type: 3}
+    - {fileID: 21300000, guid: ef15bc7906c58c64194798020e9666da, type: 3}
+    - {fileID: 21300000, guid: 8038388096e39b6488bced3683b14fcd, type: 3}

@@ -8,4 +8,5 @@ public class WeaponSprites {
     public List<Sprite> gladius;
     public List<Sprite> parma;
     public List<Sprite> staff;
+    public List<Sprite> tome;
 }

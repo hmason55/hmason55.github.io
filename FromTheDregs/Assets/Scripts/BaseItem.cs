@@ -32,6 +32,7 @@ public class BaseItem {
 		Leather_Helm,
 
 
+		Novice_Tome,
 
 		Potion_of_Clotting,
 		Potion_of_Curing,
@@ -264,6 +265,10 @@ public class BaseItem {
 
 			case ID.Leather_Jack:
 				_sprite = spriteManager.items.mediumArmorBody[0];
+			break;
+
+			case ID.Novice_Tome:
+				_sprite = spriteManager.items.tomes[0];
 			break;
 
 			case ID.Parma:
@@ -570,8 +575,23 @@ public class BaseItem {
 				_value = 1;
 			break;
 
+
+			case ID.Novice_Tome:
+				_name = "Novice's Tome";
+				_category = Category.Secondary_Weapon;
+				_description = "A tome that contains spells fit for a novice.";
+				_spells.Add(Spell.Preset.LightningStrike);
+				_value = 1;
+			break;
 			
-			
+			case ID.Parma:
+				_name = "Parma";
+				_category = Category.Secondary_Weapon;
+				_description = "A round wooden shield with an iron frame.";
+				_blockModifier = 1;
+				_spells.Add(Spell.Preset.Block);
+				_value = 10;
+			break;
 			
 			case ID.Potion_of_Clotting:
 				_name = "Potion of Clotting";
@@ -632,14 +652,6 @@ public class BaseItem {
 				_value = 0;
 			break;
 
-			case ID.Parma:
-				_name = "Parma";
-				_category = Category.Secondary_Weapon;
-				_description = "A round wooden shield with an iron frame.";
-				_blockModifier = 1;
-				_spells.Add(Spell.Preset.Block);
-				_value = 10;
-			break;
 		}
 
 		if(!IsStackable()) {

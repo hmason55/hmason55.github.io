@@ -926,6 +926,10 @@ public class BaseUnit {
 						_idleSecondaryAnimation = spriteManager.unitWeapons.dagger.ToArray();
 					break;
 
+					case BaseItem.ID.Novice_Tome:
+						_idleSecondaryAnimation = spriteManager.unitWeapons.tome.ToArray();
+					break;
+
 					case BaseItem.ID.Parma:
 						_idleSecondaryAnimation = spriteManager.unitWeapons.parma.ToArray();
 					break;

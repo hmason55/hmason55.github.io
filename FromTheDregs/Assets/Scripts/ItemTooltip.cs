@@ -20,16 +20,26 @@ public class ItemTooltip : MonoBehaviour {
     }
 
     public void Snap(float x, float y) {
+        //Debug.Log(x);
 
-        if(x > Screen.width - 500f) {
-            x -= 640f;
+        if(x < Screen.width/2.5f) {
+            x += Screen.width/8.5f;
+        } else if(x < Screen.width/1.5f) {
+            x -= Screen.width/8.5f;
+        } else if(x < Screen.width/1.25f) {
+            x += Screen.width/8.5f;
+        } else {
+            x -= Screen.width/8.5f;
+        }
+        
+
+        if(y < Screen.height/4f) {
+            y += Screen.height/4f;
+        } else {
+            y += Screen.height/12f;
         }
 
-        if(y < 360f) {
-            y = 360f;
-        }
-
-        transform.position = new Vector3(x + 224f, y + 80f);
+        transform.position = new Vector3(x, y);
     }
 
     public void Reset() {

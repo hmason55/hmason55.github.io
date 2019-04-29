@@ -46,6 +46,7 @@ public class ItemSprites {
 	public List<Sprite> shields;
 	public List<Sprite> staves;
 	public List<Sprite> swords;
+	public List<Sprite> tomes;
 	#endregion
 
 	#region Consumables

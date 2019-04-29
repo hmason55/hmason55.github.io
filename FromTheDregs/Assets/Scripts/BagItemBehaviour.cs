@@ -161,7 +161,7 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 				itemTooltip.Snap(transform.position.x, transform.position.y);
 				itemTooltip.UpdateTooltip(shopItem);
 			} else {
-				itemTooltip.Snap(transform.position.x-440f, transform.position.y);
+				itemTooltip.Snap(transform.position.x, transform.position.y);
 				itemTooltip.UpdateTooltip(_item);
 			}
 		}
