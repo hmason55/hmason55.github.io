@@ -36,7 +36,7 @@ public class AnnouncementManager : MonoBehaviour {
     #region Internal Methods
     void IDisplay(string text, Color color, float duration = 3f) {
         Transform t = (GameObject.Instantiate(Resources.Load("Prefabs/UI/AnnouncementText")) as GameObject).transform;
-        t.localScale = new Vector3(1f, 1f, 1f);
+        t.localScale = new Vector3(0.25f, 0.25f, 0.25f);
 
         AnnouncementText announcementText = t.GetComponent<AnnouncementText>();
 

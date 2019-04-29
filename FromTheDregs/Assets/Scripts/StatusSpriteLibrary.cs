@@ -8,4 +8,5 @@ public class StatusSpriteLibrary : ScriptableObject {
     public Sprite block;
     public Sprite health;
     public Sprite poison;
+    public Sprite stun;
 }

@@ -545,7 +545,7 @@ public class Spell {
 
 
 				Effect stun = new Effect(Effect.EffectType.Stun);
-				stun.deactivationConditions.Add(Effect.Conditions.DurationExpire, 1);
+				stun.deactivationConditions.Add(Effect.Conditions.PostTurnExpiration, 1);
 				_spellTargetEffects.Add(stun);
 
 				

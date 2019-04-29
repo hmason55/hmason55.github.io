@@ -11,27 +11,28 @@ public class Effect {
         BlockDamage,
         CastSpell,
         Cleanse,
+        DealDamage,
         DurationExpire,
         EvadeSpell,
         KillSelf,
         KillTarget,
+        PostTurnExpiration,
         ReceiveDamage,
-        DealDamage,
     }
 
     public enum EffectType {
-        Damage,
         CriticalDamage,
+        Damage,
+        DisplayHealth,
         InescapableDamage,
-        UnblockableDamage,
         Bleed,
         Block,
         Burn,
         Evade,
         Focus,
+        Poison,
         Stun,
-        DisplayHealth,
-        Poison
+        UnblockableDamage,
     }
 
     public enum ScalingType {
@@ -257,7 +258,13 @@ public class Effect {
                     applied = true;
                     Debug.Log(_deactivationConditions[Conditions.DurationExpire] + " poison");
                 break;
-                
+
+                case EffectType.Stun:
+                    int stunValue = 1;
+                    _deactivationConditions[Conditions.PostTurnExpiration] = stunValue;
+                    applied = true;
+                    Debug.Log(_deactivationConditions[Conditions.PostTurnExpiration] + " stun");
+                break;
             }
         }
 

@@ -12,6 +12,7 @@ public class Hotbar : MonoBehaviour {
 	CombatManager _combatManager;
 	List<Hotkey> _hotkeys;
 	ShortcutUI _shortcutUI;
+	MenuUI _menuUI;
 	BaseUnit _baseUnit;
 	Spell _activeSpell;
 
@@ -42,6 +43,7 @@ public class Hotbar : MonoBehaviour {
 	void Awake() {
 		_combatManager = FindObjectOfType<CombatManager>();
 		_shortcutUI = FindObjectOfType<ShortcutUI>();
+		_menuUI = FindObjectOfType<MenuUI>();
 		InitHotkeys();
 	}
 
@@ -56,8 +58,13 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	void Update() {
-
-		if(Input.GetKeyDown(KeyCode.W)) {
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			if(!_castOptionsUI.hidden) {
+				CancelPreview();
+			} else {
+				_menuUI.ToggleUI();
+			}
+		} else if(Input.GetKeyDown(KeyCode.W)) {
 			QuickMove(0, 1);
 		} else if(Input.GetKeyDown(KeyCode.A)) {
 			QuickMove(-1, 0);
@@ -124,6 +131,10 @@ public class Hotbar : MonoBehaviour {
 	}
 
 	public void CancelPreview() {
+		if(!_castOptionsUI.hidden) {
+			_castOptionsUI.HideUI();
+		}
+
 		_tapController.image.raycastTarget = true;
 		_activeSpell.ResetTiles();
 		_activeSpell.DestroyCastParticles();

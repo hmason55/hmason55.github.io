@@ -858,6 +858,7 @@ MonoBehaviour:
   _characterShortcut: {fileID: 114451270219460096}
   _bagShortcut: {fileID: 114722821648163174}
   _endTurnShortcut: {fileID: 114940013188371012}
+  _menuUI: {fileID: 0}
   _attributesUI: {fileID: 0}
   _bagBehaviour: {fileID: 0}
 --- !u!114 &114437303080494864

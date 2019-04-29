@@ -49,6 +49,7 @@ public class CombatManager : MonoBehaviour {
 
 	IEnumerator ETurnLoop() {
 		while(true) {
+			top:
 			if(_turnQueue.Length > 0) {
 
 				// Check if there is combat
@@ -84,6 +85,13 @@ public class CombatManager : MonoBehaviour {
 					}
 					baseUnit.tickedStatuses = true;
 				}
+
+				//Debug.Log(baseUnit.HasStatusType(Effect.EffectType.Stun).ToString());
+				if(baseUnit.HasStatusType(Effect.EffectType.Stun)) {
+					EndTurn(baseUnit);
+					goto top;
+				}
+				//Debug.Log()
 
 				if(!baseUnit.playerControlled) {
 					
@@ -155,13 +163,15 @@ public class CombatManager : MonoBehaviour {
 			} else {
 				yield break;
 			}
-			//yield return new WaitForSeconds(1f);
 		}
-		//yield return new WaitForSeconds(0.5f);
 	}
 
 
 	public void EndTurn(BaseUnit b) {
+
+		// Post turn effects are removed.
+		b.RemoveStatusByCondition(Effect.EffectType.Stun, Effect.Conditions.PostTurnExpiration, 1);
+
 		if(b.playerControlled) {
 			if(_hotbar != null) {
 				_hotbar.ClearCharges();

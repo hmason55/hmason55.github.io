@@ -38,6 +38,11 @@ public class EffectBehaviour : MonoBehaviour {
                 _effectImage.sprite = AssetReference.sprites.statuses.poison;
                 _effectValue.text = effect.deactivationConditions[Effect.Conditions.DurationExpire].ToString();
             break;
+
+            case Effect.EffectType.Stun:
+                _effectImage.sprite = AssetReference.sprites.statuses.stun;
+                _effectValue.text = effect.deactivationConditions[Effect.Conditions.PostTurnExpiration].ToString();
+            break;
         }
 
         

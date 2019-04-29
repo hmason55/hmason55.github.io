@@ -651,6 +651,15 @@ public class BaseUnit {
 		}
 	}
 
+	public bool HasStatusType(Effect.EffectType effectType) {
+		foreach(Effect effect in _effects) {
+			if(effect.effectType == effectType) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public void ReceiveStatus(Spell spell, Effect effect) {
 		
 		Color color = Color.white;
@@ -687,6 +696,11 @@ public class BaseUnit {
 				text = "+" + blockValue;
 			break;
 
+			case Effect.EffectType.Focus:
+				color = new Color(0f, 1f, 1f);
+				text = "+Focus";
+			break;
+
 			case Effect.EffectType.Poison:
 				color = new Color(64f/255f, 192f/255f, 0f);
 
@@ -702,9 +716,9 @@ public class BaseUnit {
 				text = "+" + poisonValue;
 			break;
 
-			case Effect.EffectType.Focus:
-				color = new Color(0f, 1f, 1f);
-				text = "+Focus";
+			case Effect.EffectType.Stun:
+				color = new Color(1f, 1f, 0f);
+				text = "Stunned";
 			break;
 		}
 
