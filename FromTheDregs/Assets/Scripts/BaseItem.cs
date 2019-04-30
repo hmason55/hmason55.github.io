@@ -580,7 +580,9 @@ public class BaseItem {
 				_name = "Novice's Tome";
 				_category = Category.Secondary_Weapon;
 				_description = "A tome that contains spells fit for a novice.";
+				_spellDamage = 25;
 				_spells.Add(Spell.Preset.LightningStrike);
+				_spells.Add(Spell.Preset.SummonMinorUndead);
 				_value = 1;
 			break;
 			

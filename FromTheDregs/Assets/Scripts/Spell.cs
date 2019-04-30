@@ -18,6 +18,7 @@ public class Spell {
 		SeveringStrike,
 		Skeletal_Claws,
 		Slash,
+		SummonMinorUndead,
 	}
 
 	public enum DamageType {
@@ -832,6 +833,46 @@ public class Spell {
 				_effectTargetUnitType = TargetUnitType.Enemy;
 			break;
 			#endregion
+
+			#region Summon Minor Undead
+			case Preset.SummonMinorUndead:	
+				_spellName = "Summon Minor Undead";
+
+				_essenceCost = 1;
+				_damageType = DamageType.Spell;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
+				_autoRecast = false;
+				_requireCastConfirmation = true;
+				_createsCastParticle = false;
+				_createsProjectile = false;
+				_createsEffect = true;
+				_scaling = Scaling.Strength;
+				_intentType = IntentType.Unknown;
+
+				
+				_castParticlePath = "";
+				_castRadius = 3;
+				_castThroughWalls = false;
+				_castOnWalls = false;
+				_castOnUnits = true;
+				_castRequiresTarget = false;
+				_castRequiresLineOfSight = false;
+				_castCanTargetSelf = true;
+				_castTargetUnitType = TargetUnitType.Enemy;
+
+				_effectParticlePath = "Prefabs/Effects/Lightning Strike";
+				_effectSoundPath = "Sounds/sfx/lightning_strike_0";
+				_effectSoundDelay = 0.15f;
+				_effectDamageDelay = 0.80f;
+				_effectRadius = 3;
+				_effectRotateToDirection = false;
+				_effectIgnoresWalls = false;
+				_effectRequiresLineOfSight = true;
+				_effectShape = Spell.EffectShape.Circle;
+				_effectDirection = EffectDirection.Up;
+				_effectTargetUnitType = TargetUnitType.None;
+			break;
+			#endregion
 		}
 	}
 	#endregion
@@ -1517,6 +1558,50 @@ public class Spell {
 		switch(_preset) {
 			case Preset.Move:
 				Move();
+			break;
+
+			case Preset.SummonMinorUndead:
+				int summonCount = 4;
+				int limit = 150;
+				int count = 0;
+				List<int> summonIndices = new List<int>();
+				while(summonIndices.Count < summonCount && count < limit) {
+					int index = Random.Range(0, _hitTiles.Count);
+					if(!summonIndices.Contains(index)) {
+						if(_hitTiles[index].baseUnit != null) {
+							_hitTiles.RemoveAt(index);
+						} else {
+							summonIndices.Add(index);
+						}
+					}
+					limit++;
+				}
+				
+				List<BaseUnit> summonedUnits = new List<BaseUnit>();
+				foreach(int index in summonIndices) {
+					if(_hitTiles[index] != null) {
+						if(_hitTiles[index].baseTerrain != null) {
+							if(_hitTiles[index].baseTerrain.walkable && _hitTiles[index].baseUnit == null) {
+								
+								//Spawn enemy on the hit tile here using instantiate
+								BaseUnit unit = new BaseUnit(false, BaseUnit.SpritePreset.skeleton);
+								unit.attributes.alliance = _caster.attributes.alliance;
+								unit.tile = _hitTiles[index];
+
+								_hitTiles[index].SpawnUnit(unit);
+
+								if(_hitTiles[index].unit != null) {
+									_hitTiles[index].unit.ShowUnit();
+								}
+							
+								summonedUnits.Add(unit);
+							}
+						}
+					}
+				}
+
+				CombatManager combatManager = GameObject.FindObjectOfType<CombatManager>();
+				combatManager.CheckCombatStatus(summonedUnits);
 			break;
 		}
 
