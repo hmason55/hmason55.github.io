@@ -146,6 +146,7 @@ public class BagItemBehaviour : MonoBehaviour, IPointerClickHandler, IPointerEnt
 
 		ItemTooltip itemTooltip = GameObject.FindObjectOfType<ItemTooltip>();
 		BaseItem shopItem = new BaseItem(_item.id);
+		shopItem.keycode = _item.keycode;
 		shopItem.LoadSprite(_spriteManager);
 
 		if(_containerBehaviour.bag != null) {

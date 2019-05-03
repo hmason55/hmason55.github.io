@@ -64,7 +64,6 @@ public class ContainerBehaviour : MonoBehaviour {
 
     public void SyncBag(Bag b) {
         _bag = b;
-		
 		_titleText.text = _name;
 		if(_bag.bagType == Bag.BagType.Bag) {
 			for(int i = 0; i < Bag.BAG_SLOTS; i++) {

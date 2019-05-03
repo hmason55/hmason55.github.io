@@ -9,12 +9,12 @@ public class Biome {
 	int _y;
 	int _radius;
 
-	float commonEnemySpawnRate = 100f;
-	float rareEnemySpawnRate = 0f;
+	float _commonEnemySpawnRate = 100f;
+	float _rareEnemySpawnRate = 0f;
 
 
-	List<BaseUnit.SpritePreset> commonEnemySpawnTable;
-	List<BaseUnit.SpritePreset> rareEnemySpawnTable;
+	List<BaseUnit.Preset> _commonEnemySpawnTable;
+	List<BaseUnit.Preset> _rareEnemySpawnTable;
 
 	public enum BiomeType {
 		cavern,
@@ -44,30 +44,42 @@ public class Biome {
 		set {_radius = value;}
 	}
 
-	public Biome(int x, int y, int radius) {
+	public Biome(int x, int y, int radius, DungeonManager.Zone zone) {
 		_x = x;
 		_y = y;
 		_radius = radius;
 		_biomeType = BiomeType.forsaken;
 
-		commonEnemySpawnTable = new List<BaseUnit.SpritePreset>();
-		rareEnemySpawnTable = new List<BaseUnit.SpritePreset>();
+		_commonEnemySpawnTable = new List<BaseUnit.Preset>();
+		_rareEnemySpawnTable = new List<BaseUnit.Preset>();
 
-		switch(_biomeType) {
-			case BiomeType.cavern:
-			case BiomeType.crypt:
-			case BiomeType.ruins:
-			case BiomeType.dungeon:
-			case BiomeType.forsaken:
-				commonEnemySpawnRate = 75f;
-				//commonEnemySpawnTable.Add(BaseUnit.SpritePreset.greenslime);
-				//commonEnemySpawnTable.Add(BaseUnit.SpritePreset.spidersmall);
-				//commonEnemySpawnTable.Add(BaseUnit.SpritePreset.spider);
-				//commonEnemySpawnTable.Add(BaseUnit.SpritePreset.widowsmall);
-				commonEnemySpawnTable.Add(BaseUnit.SpritePreset.skeleton);
+		switch(zone) {
+			case DungeonManager.Zone.A1:
+				_commonEnemySpawnRate = 85f;
+				_commonEnemySpawnTable.Add(BaseUnit.Preset.Spiderling);
+				_commonEnemySpawnTable.Add(BaseUnit.Preset.Skeleton);
+
+				_rareEnemySpawnRate = 15f;
+				_rareEnemySpawnTable.Add(BaseUnit.Preset.Widowling);
 				
-				rareEnemySpawnRate = 25f;
-				rareEnemySpawnTable.Add(BaseUnit.SpritePreset.widow);
+			break;
+
+			case DungeonManager.Zone.A2:
+				_commonEnemySpawnRate = 70f;
+				_commonEnemySpawnTable.Add(BaseUnit.Preset.Widowling);
+				_commonEnemySpawnTable.Add(BaseUnit.Preset.Skeleton);
+
+				_rareEnemySpawnRate = 30f;
+				_rareEnemySpawnTable.Add(BaseUnit.Preset.Giant_Spider);
+			break;
+
+			case DungeonManager.Zone.A3:
+				_commonEnemySpawnRate = 60f;
+				_commonEnemySpawnTable.Add(BaseUnit.Preset.Giant_Spider);
+				_commonEnemySpawnTable.Add(BaseUnit.Preset.Widowling);
+
+				_rareEnemySpawnRate = 40f;
+				_rareEnemySpawnTable.Add(BaseUnit.Preset.Giant_Widow);
 			break;
 		}
 	}
@@ -76,16 +88,16 @@ public class Biome {
 		float rollSpawnRate = Random.Range(0f, 100f);
 		int rollEnemyType = 0;
 
-		BaseUnit.SpritePreset spritePreset = BaseUnit.SpritePreset.direrat;
-		if(rollSpawnRate <= commonEnemySpawnRate) {
-			rollEnemyType = Random.Range(0, commonEnemySpawnTable.Count);
-			spritePreset = commonEnemySpawnTable[rollEnemyType];
-		} else if(rollSpawnRate <= commonEnemySpawnRate + rareEnemySpawnRate) {
-			rollEnemyType = Random.Range(0, rareEnemySpawnTable.Count);
-			spritePreset = rareEnemySpawnTable[rollEnemyType];
+		BaseUnit.Preset preset = BaseUnit.Preset.Skeleton;
+		if(rollSpawnRate <= _commonEnemySpawnRate) {
+			rollEnemyType = Random.Range(0, _commonEnemySpawnTable.Count);
+			preset = _commonEnemySpawnTable[rollEnemyType];
+		} else if(rollSpawnRate <= _commonEnemySpawnRate + _rareEnemySpawnRate) {
+			rollEnemyType = Random.Range(0, _rareEnemySpawnTable.Count);
+			preset = _rareEnemySpawnTable[rollEnemyType];
 		}
 
-		BaseUnit baseUnit = new BaseUnit(false, spritePreset);
+		BaseUnit baseUnit = new BaseUnit(false, preset);
 		return baseUnit;
 	}
 }

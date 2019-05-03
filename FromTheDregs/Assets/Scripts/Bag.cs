@@ -223,7 +223,8 @@ public class Bag {
 	/// <param name="b">The type of bag.</param>
 	public Bag(BagType b) {
 		_items = new List<BaseItem>();
-
+		_bagType = b;
+		
 		if(b == BagType.Bag) {
 			for(int i = 0; i < BAG_SLOTS; i++) {
 				_items.Add(null);

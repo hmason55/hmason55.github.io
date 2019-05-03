@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class UIBehaviour : MonoBehaviour {
 
-    [SerializeField] Text _titleText;
-    [SerializeField] Button _closeButton;
-    [SerializeField] GameObject _panel;
+    [SerializeField] protected Text _titleText;
+    [SerializeField] protected Button _closeButton;
+    [SerializeField] protected GameObject _panel;
 
     protected bool _hidden = true;
 

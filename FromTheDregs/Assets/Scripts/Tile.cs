@@ -88,6 +88,19 @@ public class Tile {
 		}
 	}
 
+	public void AnimateDecoration() {
+		if(_baseDecoration != null) {
+			if(_baseDecoration.animated) {
+				_baseDecoration.IncrementAnimation();
+			}
+			
+			if(_decoration != null) {
+				_decoration.UpdateSprite();
+			}
+			
+		}
+	}
+
 	public void SpawnUnit(BaseUnit baseUnit) {
 		if(_baseUnit == null) {
 			_baseUnit = baseUnit;

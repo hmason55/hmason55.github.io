@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c69137f74dc0e498f8c9cb0eef0edc, type: 3}
   m_Name: Sprites
   m_EditorClassIdentifier: 
+  decorations: {fileID: 11400000, guid: b347882b0698fb6459736c5a178f3c66, type: 2}
   statuses: {fileID: 11400000, guid: 7f5dd0bc02ac22749be3bb3500da0a5f, type: 2}
   units: {fileID: 11400000, guid: 10e349dee10fbdc448a03ebc1aa0d7f1, type: 2}

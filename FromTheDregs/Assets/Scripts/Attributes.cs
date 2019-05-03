@@ -10,18 +10,18 @@ public class Attributes {
     public enum Preset {
         None,
 		Human,
-		DireRat,
-		DireRatSmall,
+		Giant_Spider,
+		Giant_Widow,
+		Green_Slime,
 		Mage,
 		Rogue,
 		Skeleton,
-		Slime,
-		Spider,
-		SpiderSmall,
+		Skeleton_Summoner,
+		Skeleton_Thrall,
+		Skeleton_Warrior,
+		Spiderling,
 		Warrior,
-		Widow,
-		WidowSmall
-		
+		Widowling,
     }
 
     int _baseHealth;         
@@ -320,6 +320,39 @@ public class Attributes {
 				_aggroRadius = 		4;
             break;
 
+			case Attributes.Preset.Giant_Spider:
+				_baseStrength =     10;
+				_baseDexterity =    12;
+				_baseIntelligence = 1;
+				_baseConstitution = 8;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_overrideHealthScaling = true;
+				_baseHealth = 240;
+
+				_baseSpeed =        3;
+				_baseEssence =      3;
+				_aggroRadius = 		4;
+			break;
+
+			case Attributes.Preset.Giant_Widow:
+				_baseStrength =     12;
+				_baseDexterity =    15;
+				_baseIntelligence = 1;
+				_baseConstitution = 10;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_overrideHealthScaling = true;
+				_baseHealth = 300;
+
+				_baseSpeed =        3;
+				_baseEssence =      3;
+				_aggroRadius = 		4;
+			break;
+
+
 			case Preset.Mage:
 				_baseStrength =     1;
 				_baseDexterity =    1;
@@ -373,7 +406,39 @@ public class Attributes {
 			break;
 
 			case Attributes.Preset.Skeleton:
-				_baseStrength =     2;
+				_baseStrength =     3;
+				_baseDexterity =    8;
+				_baseIntelligence = 1;
+				_baseConstitution = 1;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_overrideHealthScaling = true;
+				_baseHealth = 52;
+
+				_baseSpeed =        3;
+				_baseEssence =      2;
+				_aggroRadius = 		3;
+			break;
+
+			case Attributes.Preset.Skeleton_Summoner:
+				_baseStrength =     1;
+				_baseDexterity =    2;
+				_baseIntelligence = 10;
+				_baseConstitution = 4;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_overrideHealthScaling = true;
+				_baseHealth = 90;
+
+				_baseSpeed =        2;
+				_baseEssence =      2;
+				_aggroRadius = 		3;
+			break;
+
+			case Attributes.Preset.Skeleton_Thrall:
+				_baseStrength =     3;
 				_baseDexterity =    5;
 				_baseIntelligence = 1;
 				_baseConstitution = 1;
@@ -388,7 +453,23 @@ public class Attributes {
 				_aggroRadius = 		3;
 			break;
 
-			case Attributes.Preset.Slime:
+			case Attributes.Preset.Skeleton_Warrior:
+				_baseStrength =     6;
+				_baseDexterity =    5;
+				_baseIntelligence = 1;
+				_baseConstitution = 4;
+				_baseWisdom =       1;
+				_baseCharisma =     1;
+
+				_overrideHealthScaling = true;
+				_baseHealth = 120;
+
+				_baseSpeed =        2;
+				_baseEssence =      2;
+				_aggroRadius = 		3;
+			break;
+
+			case Attributes.Preset.Green_Slime:
 				_baseStrength =     2;
 				_baseDexterity =    1;
 				_baseIntelligence = 1;
@@ -397,67 +478,42 @@ public class Attributes {
 				_baseCharisma =     1;
 
 				_overrideHealthScaling = true;
-				_baseHealth = 40;
+				_baseHealth = 120;
 
 				_baseSpeed =        1;
 				_baseEssence =      2;
 				_aggroRadius = 		2;
 			break;
 
-			case Attributes.Preset.Spider:
-				_baseStrength =     2;
-				_baseDexterity =    2;
+			case Attributes.Preset.Spiderling:
+				_baseStrength =     3;
+				_baseDexterity =    4;
 				_baseIntelligence = 1;
-				_baseConstitution = 2;
-				_baseWisdom =       1;
-				_baseCharisma =     1;
-
-				_baseSpeed =        2;
-				_baseEssence =      3;
-				_aggroRadius = 		4;
-			break;
-
-			case Attributes.Preset.SpiderSmall:
-				_baseStrength =     2;
-				_baseDexterity =    1;
-				_baseIntelligence = 1;
-				_baseConstitution = 1;
+				_baseConstitution = 3;
 				_baseWisdom =       1;
 				_baseCharisma =     1;
 
 				_overrideHealthScaling = true;
-				_baseHealth = 12;
+				_baseHealth = 65;
 
-				_baseSpeed =        1;
+				_baseSpeed =        3;
 				_baseEssence =      3;
 				_aggroRadius = 		4;
 			break;
 
-			case Attributes.Preset.Widow:
-				_baseStrength =     2;
-				_baseDexterity =    2;
-				_baseIntelligence = 1;
-				_baseConstitution = 2;
-				_baseWisdom =       1;
-				_baseCharisma =     1;
 
-				_baseSpeed =        2;
-				_baseEssence =      3;
-				_aggroRadius = 		4;
-			break;
-
-			case Attributes.Preset.WidowSmall:
-				_baseStrength =     2;
-				_baseDexterity =    1;
+			case Attributes.Preset.Widowling:
+				_baseStrength =     4;
+				_baseDexterity =    5;
 				_baseIntelligence = 1;
-				_baseConstitution = 1;
+				_baseConstitution = 3;
 				_baseWisdom =       1;
 				_baseCharisma =     1;
 
 				_overrideHealthScaling = true;
-				_baseHealth = 15;
+				_baseHealth = 80;
 
-				_baseSpeed =        1;
+				_baseSpeed =        3;
 				_baseEssence =      3;
 				_aggroRadius = 		4;
 			break;

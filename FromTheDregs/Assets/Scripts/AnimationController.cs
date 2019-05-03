@@ -41,6 +41,7 @@ public class AnimationController : MonoBehaviour {
 				if(_dungeonManager.tiles != null) {
 					if(_dungeonManager.tiles[x, y] != null) {
 						_dungeonManager.tiles[x, y].AnimateUnit();
+						_dungeonManager.tiles[x, y].AnimateDecoration();
 					}
 				}
 			}

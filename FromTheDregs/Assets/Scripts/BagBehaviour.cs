@@ -84,8 +84,6 @@ public class BagBehaviour : MonoBehaviour {
 			_equipmentFeet
 		};
 
-		Debug.Log(_equipmentBody.item);
-
 		for(int i = Bag.BAG_SLOTS-1; i >= 0; i--) {
 			if(_bagSlots[i].item != null) {
 
@@ -243,6 +241,7 @@ public class BagBehaviour : MonoBehaviour {
 				if(!_baseUnit.inCombat) {
 					consumed = _bag.Consume(bagItem.item.id);
 					if(consumed) {
+						_baseUnit.attributes.currentHealth = _baseUnit.attributes.totalHealth;
 						SyncUnit();
 						_baseUnit.Return();
 						return;
@@ -467,7 +466,7 @@ public class BagBehaviour : MonoBehaviour {
 			_bagEquipmentPanel.SetActive(true);
 			_hidden = false;
 		}
-		Debug.Log("Showing bag UI");
+
 		SyncEquipment();
 
 		if(showContainer) {

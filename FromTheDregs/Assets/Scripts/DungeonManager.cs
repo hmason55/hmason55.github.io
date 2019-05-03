@@ -46,6 +46,8 @@ public class DungeonManager : MonoBehaviour {
 	public static int chunkDimension = 16;
 	public static int dimension = dungeonDimension * chunkDimension;
 
+	public static Biome biome;
+
 	Vector2Int entrancePosition = new Vector2Int(-1, -1);
 	public Vector2Int exitPosition = new Vector2Int(-1, -1);
 	[SerializeField] int minimumPathSize = 4;
@@ -172,6 +174,7 @@ public class DungeonManager : MonoBehaviour {
 		_hitpointUI.UpdateHitpoints(_player.attributes.currentHealth, _player.attributes.totalHealth);
 		GameObject.FindObjectOfType<CameraController>().SnapToTarget();
 		_loadState = LoadState.Loaded;
+		Debug.Log(PlayerData.current.currentZone);
 		Debug.Log("Instance took " + (Time.realtimeSinceStartup - startTime) + " seconds to load.");
 	}
 
@@ -197,24 +200,39 @@ public class DungeonManager : MonoBehaviour {
 		_zone = z;
 		switch(z) {
 			case Zone.Hub:
-				enemyUnitDensity = 100f;
+				enemyUnitDensity = 0f;
 				smallDecorationDensity = 0f;
-				containerDecorationDensity = 100f;
+				containerDecorationDensity = 0f;
 				trapDecorationDensity = 0f;
 				minimumPathSize = 1;
 				biomeType = Biome.BiomeType.dungeon;
 			break;
 
 			case Zone.A1:
-				enemyUnitDensity = 100f;
+				enemyUnitDensity = 40f;
 				smallDecorationDensity = 25f;
 				containerDecorationDensity = 20f;
 				trapDecorationDensity = 0f;
-				minimumPathSize = 4;
+				minimumPathSize = 5;
 				biomeType = Biome.BiomeType.dungeon;
 			break;
 
 			case Zone.A2:
+				enemyUnitDensity = 60f;
+				smallDecorationDensity = 30f;
+				containerDecorationDensity = 30f;
+				trapDecorationDensity = 0f;
+				minimumPathSize = 6;
+				biomeType = Biome.BiomeType.dungeon;
+			break;
+
+			case Zone.A3:
+				enemyUnitDensity = 90f;
+				smallDecorationDensity = 40f;
+				containerDecorationDensity = 40f;
+				trapDecorationDensity = 0f;
+				minimumPathSize = 7;
+				biomeType = Biome.BiomeType.dungeon;
 			break;
 
 			case Zone.Debug:
@@ -327,6 +345,7 @@ public class DungeonManager : MonoBehaviour {
 		string exitCode = "XXXXXX";
 		int dimension = chunkDimension * dungeonDimension;
 		bool spawnedRetrieval = false;
+		List<BaseDecoration> containers = new List<BaseDecoration>();
 		
 		for(int i = 0; i < nodes.Count; i++) {
 			Vector2Int node = nodes[i];
@@ -376,41 +395,43 @@ public class DungeonManager : MonoBehaviour {
 							if(_zone == PlayerData.current.retrievalZone) {
 								retrieval = true;
 							}
-							
-							if(containerDecorationRoll <= containerDecorationDensity) {
+
+ 							if(containers.Count == 0 || containerDecorationRoll <= containerDecorationDensity) {
 								tile.baseTerrain.walkable = false;
-								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Container, spriteManager, retrieval);
+								BaseDecoration container = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Container, tile, spriteManager, false, retrieval);
+								tile.baseDecoration = container;
+								containers.Add(container);
 							}
 						break;
 
 						case "FF8000":	// Fixed NPC shop
 							tile.baseTerrain.walkable = false;
-							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.HubShop, spriteManager);
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.HubShop, tile, spriteManager, true);
 						break;
 
 						case "C8C8C8":	// Cavern Door
 							tile.baseTerrain.walkable = false;
-							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.CavernDoor, spriteManager);
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.CavernDoor, tile, spriteManager);
 						break;
 
 						case "B4B4B4":	// Crypt Door
 							tile.baseTerrain.walkable = false;
-							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.CryptDoor, spriteManager);
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.CryptDoor, tile, spriteManager);
 						break;
 
 						case "A0A0A0":	// Hedge Door
 							tile.baseTerrain.walkable = false;
-							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.HedgeDoor, spriteManager);
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.HedgeDoor, tile, spriteManager);
 						break;
 
 						case "8C8C8C":	// Dungeon Door
 							tile.baseTerrain.walkable = false;
-							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.DungeonDoor, spriteManager);
+							tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.DungeonDoor, tile, spriteManager);
 						break;
 
 						case "0000FF":	// Entrance / Exit (Blue)
 							if(i == 0) {
-								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Entrance, spriteManager);
+								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Entrance, tile, spriteManager);
 								// Spawn player here
 								BaseUnit player = new BaseUnit(true, Attributes.Preset.Warrior, BaseUnit.SpritePreset.warrior, tile, true);
 								
@@ -422,7 +443,7 @@ public class DungeonManager : MonoBehaviour {
 								_renderOrigin = tile.position;
 								entrancePosition = tile.position;
 							} else if(i == 1) {
-								tile.baseDecoration = new BaseDecoration(nearestBiome,  BaseDecoration.DecorationType.Exit, spriteManager);
+								tile.baseDecoration = new BaseDecoration(nearestBiome,  BaseDecoration.DecorationType.Exit, tile, spriteManager);
 								exitCode = tile.baseDecoration.lockcode;
 								exitPosition = tile.position;
 							}
@@ -431,14 +452,14 @@ public class DungeonManager : MonoBehaviour {
 						case "FF00FF":	// Traps (Magenta)
 							float trapDecorationRoll = Random.Range(0f, 100f);
 							if(trapDecorationRoll <= trapDecorationDensity) {
-								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Trap, spriteManager);
+								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Trap, tile, spriteManager);
 							}
 						break;
 
 						case "00FF00":	// Decorations (Green)
 							float smallDecorationRoll = Random.Range(0f, 100f);
 							if(smallDecorationRoll <= smallDecorationDensity) {
-								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Small, spriteManager);
+								tile.baseDecoration = new BaseDecoration(nearestBiome, BaseDecoration.DecorationType.Small, tile, spriteManager);
 								//tile.decoration.Init(tile.terrain.walkable);
 							}
 						break;
@@ -453,6 +474,14 @@ public class DungeonManager : MonoBehaviour {
 		// Create key item
 		BaseItem exitKey = new BaseItem(BaseItem.ID.Small_Key);
 		exitKey.keycode = exitCode;
+		if(_zone != Zone.Hub) {
+			if(containers.Count > 0) {
+				containers[Random.Range(0, containers.Count)].bag.Add(exitKey);
+			}
+		}
+		
+		
+
 		//p.bag.Add(exitKey);
 
 		ExportMap();
@@ -842,19 +871,19 @@ public class DungeonManager : MonoBehaviour {
 		biomes = new List<Biome>();
 
 		// Global biome
-		_biome = new Biome(0, 0, 0);
+		_biome = new Biome(0, 0, 0, _zone);
 		_biome.biomeType = biomeType;
 		Debug.Log("Using " + biomeType.ToString() + " biome.");
 
 		// Smaller biomes
-		int numBiomes = Random.Range(minimumBiomes, maximumBiomes);
-		for(int i = 0; i < numBiomes; i++) {
-			Debug.Log("Spawned biome");
-			int x = Random.Range(0, dungeonDimension * chunkDimension * TileWidth);
-			int y = Random.Range(0, dungeonDimension * chunkDimension * TileHeight);
-			int radius = Random.Range(0, dungeonDimension * chunkDimension * TileWidth / 2);
-			biomes.Add(new Biome(x, y, radius));
-		}
+		//int numBiomes = Random.Range(minimumBiomes, maximumBiomes);
+		//for(int i = 0; i < numBiomes; i++) {
+		//	Debug.Log("Spawned biome");
+		//	int x = Random.Range(0, dungeonDimension * chunkDimension * TileWidth);
+		//	int y = Random.Range(0, dungeonDimension * chunkDimension * TileHeight);
+		//	int radius = Random.Range(0, dungeonDimension * chunkDimension * TileWidth / 2);
+		//	biomes.Add(new Biome(x, y, radius));
+		//}
 	}
 
 	int CheckDistance(int x1, int y1, int x2, int y2) {

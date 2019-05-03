@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class AttributesUI : UIBehaviour {
 
+    [SerializeField] Text _subtitleText;
     [SerializeField] Text _attributeNameText;
     [SerializeField] Text _attributeValueText;
+    [SerializeField] Portrait _portrait;
     BaseUnit _baseUnit;
 
 
@@ -27,6 +29,9 @@ public class AttributesUI : UIBehaviour {
     void LoadAttributes() {
         if(_baseUnit == null) {return;}
         if(_baseUnit.attributes == null) {return;}
+        
+        _titleText.text = _baseUnit.character.name;
+        _subtitleText.text = "Level " + _baseUnit.attributes.level.ToString();
 
         string values = "";
         values += _baseUnit.attributes.strength + "\n";
@@ -40,5 +45,7 @@ public class AttributesUI : UIBehaviour {
         values += _baseUnit.attributes.currentEssence + "/" + _baseUnit.attributes.totalEssence + "\n";
 
         _attributeValueText.text = values;
+
+        _portrait.LoadCharacter(_baseUnit.character);
     }
 }

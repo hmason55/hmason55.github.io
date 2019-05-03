@@ -73,9 +73,10 @@ public class UnitBehaviour : MonoBehaviour {
 		_spriteManager = GameObject.FindObjectOfType<SpriteManager>();
 
 		if(_previewUnit) {
-			_baseUnit = new BaseUnit(false, BaseUnit.SpritePreset.warrior, true);
+			_baseUnit = new BaseUnit(false, BaseUnit.Preset.Warrior);
 			_baseUnit.character = new Character();
 			_baseUnit.character.skinColor = Character.SkinColor.Human_Light;
+			_baseUnit.useCustomSprites = true;
 			LoadSprites();
 			UpdateSprite();
 		}
@@ -84,7 +85,7 @@ public class UnitBehaviour : MonoBehaviour {
 	void Update() {
 		if(_baseUnit != null) {
 			if(_baseUnit.playerControlled) {
-				if(Input.GetKeyDown(KeyCode.Z)) {
+				if(Input.GetKeyDown(KeyCode.Minus)) {
 					_baseUnit.ReceiveDamage(_baseUnit, 999, Spell.DamageType.Physical);
 				}
 			}
@@ -95,6 +96,7 @@ public class UnitBehaviour : MonoBehaviour {
 	public void LoadSprites() {
 		SpriteManager spriteManager = GameObject.FindObjectOfType<SpriteManager>();
 		_baseUnit.LoadSprites(spriteManager);
+		//_baseUnit.LoadSprites
 	}
 
 	public void UpdateSprite() {
@@ -299,6 +301,10 @@ public class UnitBehaviour : MonoBehaviour {
 
 	public void Kill() {
 		SpawnDeathParticles();
+		if(_tile.baseUnit.lootTable != null) {
+			_tile.baseUnit.lootTable.SpawnLoot(_tile);
+		}
+		
 		Return();
 
 		_tile.baseUnit = null;
@@ -388,6 +394,7 @@ public class UnitBehaviour : MonoBehaviour {
 		for(int i = 0; i < spell.projCount; i++) {
 			yield return new WaitForSeconds(spell.projPreSpawnDelay);
 			spell.SpawnProjectileParticles(spell.caster.tile.position, spell.effectOrigin, 0f);
+			spell.PlayProjectileSound(spell.effectOrigin);
 			yield return new WaitForSeconds(spell.projPostSpawnDelay);
 		}
 	}

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 9e873109c68b71b489f53039228dc5eb, type: 3}
+  m_Name: Decorations
+  m_EditorClassIdentifier: 
+  loot: {fileID: 11400000, guid: a9f0c70f33c26dd4d8c199dd9b8a8133, type: 2}
+  merchant: {fileID: 11400000, guid: 9f4e45420b8e6f0409cd0a4d3c6fb651, type: 2}

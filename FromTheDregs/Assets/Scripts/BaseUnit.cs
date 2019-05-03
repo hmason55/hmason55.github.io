@@ -5,6 +5,20 @@ using UnityEngine;
 
 public class BaseUnit {
 
+	public enum Preset {
+		Giant_Spider,
+		Giant_Widow,
+		Green_Slime,
+		Skeleton,
+		Skeleton_Summoner,
+		Skeleton_Thrall,
+		Skeleton_Warrior,
+		Spiderling,
+		Warrior,
+		Widowling,
+
+	}
+
 	public enum SpritePreset {
 		none,
 		direrat,
@@ -21,16 +35,6 @@ public class BaseUnit {
 		widowsmall,
 		wizard,
 		
-	}
-
-	public enum Size {
-		Tiny,
-		Small,
-		Medium,
-		Large,
-		Huge,
-		Gargantuan,
-		Colossal
 	}
 
 	#region Stats
@@ -59,11 +63,13 @@ public class BaseUnit {
 	
 	Attributes _attributes;
 	Character _character;
+	LootTable _lootTable;
 	bool _playerControlled = false;
 	Bag _bag;
 	List<Effect> _effects;
 
 	Tile _tile;
+	Preset _preset;
 
 	SpritePreset _spritePreset = SpritePreset.knight;
 
@@ -172,6 +178,10 @@ public class BaseUnit {
 		get {return _attributes;}
 	}
 
+	public Preset preset {
+		get {return _preset;}
+	}
+
 	public SpritePreset spritePreset {
 		set {_spritePreset = value;}
 		get {return _spritePreset;}
@@ -249,91 +259,86 @@ public class BaseUnit {
 		set {_spellCharges = value;}
 	}
 
+	public LootTable lootTable {
+		get {return _lootTable;}
+	}
+
 	#endregion
 
-	public BaseUnit(bool player, SpritePreset sprite, bool customSprite = false) {
+	// Used for preset units.
+	public BaseUnit(bool player, Preset preset) {
 		_playerControlled = player;
+		_preset = preset;
 		_effects = new List<Effect>();
 		_innateSpells = new List<Spell.Preset>();
-		_spritePreset = sprite;
-		_useCustomSprites = customSprite;
-		
-		switch(sprite) {
-			case SpritePreset.direrat:
-				_statPreset = Attributes.Preset.DireRat;
-			break;
 
-			case SpritePreset.direratsmall:
-				_statPreset = Attributes.Preset.DireRatSmall;
-			break;
-
-			case SpritePreset.greenslime:
-				_statPreset = Attributes.Preset.Slime;
+		switch(_preset) {
+			
+			case Preset.Giant_Spider:
+				_statPreset = Attributes.Preset.Giant_Spider;
+				//_spritePreset = 
 				_innateSpells.Add(Spell.Preset.Bite);
 				_innateSpells.Add(Spell.Preset.Block);
 				_moveset = new Moveset();
 			break;
 
-			case SpritePreset.skeleton:
+			case Preset.Giant_Widow:
+				_statPreset = Attributes.Preset.Giant_Widow;
+				_innateSpells.Add(Spell.Preset.Bite);
+				_innateSpells.Add(Spell.Preset.Poison_Fang);
+				_innateSpells.Add(Spell.Preset.Block);
+				_moveset = new Moveset();
+			break;
+
+			case Preset.Green_Slime:
+			break;
+
+			case Preset.Skeleton:
 				_statPreset = Attributes.Preset.Skeleton;
 				_innateSpells.Add(Spell.Preset.Skeletal_Claws);
-				_innateSpells.Add(Spell.Preset.PoisonFang);
+				_innateSpells.Add(Spell.Preset.Block);
 				_moveset = new Moveset();
 			break;
 
-			case SpritePreset.spider:
-				_statPreset = Attributes.Preset.Spider;
+			case Preset.Skeleton_Summoner:
+			break;
+
+			case Preset.Skeleton_Thrall:
+				_statPreset = Attributes.Preset.Skeleton_Thrall;
+				_innateSpells.Add(Spell.Preset.Skeletal_Claws);
+				_moveset = new Moveset();
+			break;
+
+			case Preset.Skeleton_Warrior:
+				_statPreset = Attributes.Preset.Skeleton_Warrior;
+				_innateSpells.Add(Spell.Preset.Slash);
+				_innateSpells.Add(Spell.Preset.Severing_Strike);
+				_innateSpells.Add(Spell.Preset.Block);
+				_moveset = new Moveset();
+			break;
+
+			case Preset.Spiderling:
+				_statPreset = Attributes.Preset.Spiderling;
 				_innateSpells.Add(Spell.Preset.Bite);
 				_innateSpells.Add(Spell.Preset.Block);
 				_moveset = new Moveset();
 			break;
 
-			case SpritePreset.spidersmall:
-				_statPreset = Attributes.Preset.SpiderSmall;
+			case Preset.Widowling:
+				_statPreset = Attributes.Preset.Widowling;
 				_innateSpells.Add(Spell.Preset.Bite);
-				_innateSpells.Add(Spell.Preset.Block);
+				_innateSpells.Add(Spell.Preset.Poison_Fang);
 				_moveset = new Moveset();
-			break;
-
-			case SpritePreset.widow:
-				_statPreset = Attributes.Preset.Widow;
-				_innateSpells.Add(Spell.Preset.PoisonFang);
-				_innateSpells.Add(Spell.Preset.Block);
-				_moveset = new Moveset();
-			break;
-
-			case SpritePreset.widowsmall:
-				_statPreset = Attributes.Preset.WidowSmall;
-				_innateSpells.Add(Spell.Preset.PoisonFang);
-				_innateSpells.Add(Spell.Preset.Block);
-				_moveset = new Moveset();
-			break;
-
-			case SpritePreset.warrior:
-				_statPreset = Attributes.Preset.Warrior;
-			break;
-
-			default:
-				_statPreset = Attributes.Preset.Human;
 			break;
 		}
 
+		_lootTable = new LootTable(_preset);
 		_attributes = new Attributes(_statPreset);
 		Init();
+		LoadFallbackSprite();
 	}
 
-	void SetDeathEffect() {
-		switch(_attributes.preset) {
-			case Attributes.Preset.Slime:
-				_deathParticlesPath = "Prefabs/Effects/Death Green Particles";
-			break;
-
-			default:
-				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
-			break;
-		}
-	}
-
+	// Used for custom units.
 	public BaseUnit(bool player, Attributes.Preset attribs, SpritePreset sprite, Tile tile, bool customSprite = false) {
 		_playerControlled = player;
 		_attributes = new Attributes(attribs);
@@ -402,6 +407,27 @@ public class BaseUnit {
 
 		_effects.Add(new Effect(Effect.EffectType.DisplayHealth, -1));
 		UpdateDisplayHealth();
+	}
+
+	void SetDeathEffect() {
+		switch(_attributes.preset) {
+			case Attributes.Preset.Green_Slime:
+				_deathParticlesPath = "Prefabs/Effects/Death Green Particles";
+			break;
+
+			default:
+				_deathParticlesPath = "Prefabs/Effects/Death Blood Particles";
+			break;
+		}
+
+		switch(_preset) {
+			case Preset.Skeleton:
+			case Preset.Skeleton_Summoner:
+			case Preset.Skeleton_Thrall:
+			case Preset.Skeleton_Warrior:
+				_deathParticlesPath = "Prefabs/Effects/Bone Death Particles";
+			break;
+		}
 	}
 
 	public void UpdateSpells() {
@@ -884,7 +910,7 @@ public class BaseUnit {
 		if(_useCustomSprites) {
 			LoadCustomSprite(spriteManager);
 		} else {
-			LoadFallbackSprite(spriteManager);
+			LoadFallbackSprite();
 		}
 	}
 
@@ -913,9 +939,9 @@ public class BaseUnit {
 						_idlePrimaryAnimation = spriteManager.unitWeapons.gladius.ToArray();
 					break;
 
-					//case BaseItem.ID.Staff:
-					//	_idlePrimaryAnimation = spriteManager.unitWeapons.staff.ToArray();
-					//break;
+					case BaseItem.ID.Staff_of_Flame:
+						_idlePrimaryAnimation = spriteManager.unitWeapons.staff.ToArray();
+					break;
 
 				}
 			}
@@ -1048,77 +1074,52 @@ public class BaseUnit {
 		return palette;
 	}
 
-	void LoadFallbackSprite(SpriteManager spriteManager) {
+	void LoadFallbackSprite() {
 		_idleAnimation = new Sprite[IdleAnimationLength];
-		switch(spritePreset) {
-			case SpritePreset.knight:
-				//_idleAnimation = _tile.spriteManager.unit.idle.ToArray();
+
+		switch(_preset) {
+			case Preset.Skeleton:
+			case Preset.Skeleton_Thrall:
+				_shadowSprite = AssetReference.sprites.units.shadows.medium;
+				_idleAnimation = AssetReference.sprites.units.skeleton.idle.ToArray();
+				_hitAnimation = AssetReference.sprites.units.skeleton.hit.ToArray();
 			break;
 
-			case SpritePreset.direrat:
-				_shadowSprite = spriteManager.shadowLarge;
-				_idleAnimation = spriteManager.unitDireRat1.idle.ToArray();
-				_hitAnimation = spriteManager.unitDireRat1.hit.ToArray();
+			case Preset.Giant_Spider:
+				_shadowSprite = AssetReference.sprites.units.shadows.large;
+				_idleAnimation = AssetReference.sprites.units.giantSpider.idle.ToArray();
+				_hitAnimation = AssetReference.sprites.units.giantSpider.hit.ToArray();
 			break;
 
-			case SpritePreset.direratsmall:
-				_shadowSprite = spriteManager.shadowSmall;
-				_idleAnimation = spriteManager.unitDireRatSmall1.idle.ToArray();
-				_hitAnimation = spriteManager.unitDireRatSmall1.hit.ToArray();
+			case Preset.Spiderling:
+				_shadowSprite = AssetReference.sprites.units.shadows.small;
+				_idleAnimation = AssetReference.sprites.units.spiderling.idle.ToArray();
+				_hitAnimation = AssetReference.sprites.units.spiderling.hit.ToArray();
 			break;
 
-			case SpritePreset.sandbehemoth:
-				_shadowSprite = spriteManager.shadowLarge;
-				_idleAnimation = spriteManager.unitSandBehemoth1.idle.ToArray();
-				_hitAnimation = spriteManager.unitSandBehemoth1.hit.ToArray();
+			case Preset.Giant_Widow:
+				_shadowSprite = AssetReference.sprites.units.shadows.large;
+				_idleAnimation = AssetReference.sprites.units.giantWidow.idle.ToArray();
+				_hitAnimation = AssetReference.sprites.units.giantWidow.hit.ToArray();
 			break;
 
-			case SpritePreset.skeleton:
-				_shadowSprite = spriteManager.shadowMedium;
-				_idleAnimation = spriteManager.unitSkeleton.idle.ToArray();
-				_hitAnimation = spriteManager.unitSkeleton.hit.ToArray();
+			case Preset.Widowling:
+				_shadowSprite = AssetReference.sprites.units.shadows.small;
+				_idleAnimation = AssetReference.sprites.units.widowling.idle.ToArray();
+				_hitAnimation = AssetReference.sprites.units.widowling.hit.ToArray();
 			break;
 
-			case SpritePreset.spider:
-				_shadowSprite = spriteManager.shadowLarge;
-				_idleAnimation = spriteManager.unitSpider1.idle.ToArray();
-				_hitAnimation = spriteManager.unitSpider1.hit.ToArray();
+			case Preset.Warrior:
+				_shadowSprite = AssetReference.sprites.units.shadows.medium;
+				_idleAnimation = AssetReference.sprites.units.warrior.idle.ToArray();
+				_hitAnimation = AssetReference.sprites.units.warrior.hit.ToArray();
 			break;
 
-			case SpritePreset.spidersmall:
-				_shadowSprite = spriteManager.shadowSmall;
-				_idleAnimation = spriteManager.unitSpiderSmall1.idle.ToArray();
-				_hitAnimation = spriteManager.unitSpiderSmall1.hit.ToArray();
-			break;
-
-			case SpritePreset.warrior:
-				_shadowSprite = spriteManager.shadowMedium;
-				_idleAnimation = spriteManager.unitWarrior1.idle.ToArray();
-			break;
-
-			case SpritePreset.widow:
-				_shadowSprite = spriteManager.shadowLarge;
-				_idleAnimation = spriteManager.unitWidow1.idle.ToArray();
-				_hitAnimation = spriteManager.unitWidow1.hit.ToArray();
-			break;
-
-			case SpritePreset.widowsmall:
-				_shadowSprite = spriteManager.shadowSmall;
-				_idleAnimation = spriteManager.unitWidowSmall1.idle.ToArray();
-				_hitAnimation = spriteManager.unitWidowSmall1.hit.ToArray();
-			break;
-
-			case SpritePreset.wizard:
-				_shadowSprite = spriteManager.shadowMedium;
-				_idleAnimation = spriteManager.unitHumanWizard1.idle.ToArray();
-				_hitAnimation = spriteManager.unitHumanWizard1.hit.ToArray();
-			break;
-
-			case SpritePreset.greenslime:
+			case Preset.Green_Slime:
 			default:
-				_shadowSprite = spriteManager.shadowMedium;
-				_idleAnimation = spriteManager.unitGreenSlime1.idle.ToArray();
-				_hitAnimation = spriteManager.unitGreenSlime1.hit.ToArray();
+				_shadowSprite = AssetReference.sprites.units.shadows.medium;
+				_idleAnimation = AssetReference.sprites.units.greenSlime.idle.ToArray();
+				_hitAnimation = AssetReference.sprites.units.greenSlime.hit.ToArray();
 			break;
 		}
 	}

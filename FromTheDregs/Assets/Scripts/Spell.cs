@@ -8,17 +8,17 @@ public class Spell {
 		Bite,
 		Bleed,
 		Block,
-		BurningHands,
-		FeintSwipe,
+		Burning_Hands,
+		Feint_Swipe,
 		Fireball,
-		LightningStrike,
+		Lightning_Strike,
 		Move,
 		Poison,
-		PoisonFang,
-		SeveringStrike,
+		Poison_Fang,
+		Severing_Strike,
 		Skeletal_Claws,
 		Slash,
-		SummonMinorUndead,
+		Summon_Minor_Undead,
 	}
 
 	public enum DamageType {
@@ -436,7 +436,7 @@ public class Spell {
 			#endregion
 
 			#region Feint Swipe
-			case Preset.FeintSwipe:	
+			case Preset.Feint_Swipe:	
 				_spellName = "Feint Swipe";
 
 				_essenceCost = 2;
@@ -487,7 +487,8 @@ public class Spell {
 			case Preset.Fireball:	
 				_spellName = "Fireball";
 
-				_damageType = DamageType.Fire;
+				_damageType = DamageType.Spell;
+				_damageSoundPath = "Sounds/sfx/impact_damage_0";
 				_essenceCost = 4;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
@@ -498,7 +499,7 @@ public class Spell {
 				_intentType = IntentType.Attack;
 
 				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.80f);
+				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 3.00f);
 				_spellTargetEffects.Add(damage);
 				
 				_castParticlePath = "Prefabs/Effects/Fire Casting";
@@ -514,8 +515,11 @@ public class Spell {
 				_projCount = 1;
 				_projParticlePath = "Prefabs/Effects/Fireball";
 				_projSpeed = 192f;
+				_projSoundPath = "Sounds/sfx/fireball_projectile_0";
 
 				_effectParticlePath = "Prefabs/Effects/Fireball Impact";
+				_effectSoundPath = "Sounds/sfx/fireball_impact_0";
+				_effectDamageDelay = 0.80f;
 				_effectRadius = 1;
 				_effectIgnoresWalls = false;
 				_effectRequiresLineOfSight = true;
@@ -526,7 +530,7 @@ public class Spell {
 			#endregion
 
 			#region Lightning Strike
-			case Preset.LightningStrike:	
+			case Preset.Lightning_Strike:	
 				_spellName = "Lightning Strike";
 
 				_essenceCost = 2;
@@ -541,7 +545,7 @@ public class Spell {
 				_intentType = IntentType.Debuff;
 				
 				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 1.25f);
+				damage.SetPrimaryScaling(Effect.ScalingType.Intelligence, 0.75f);
 				_spellTargetEffects.Add(damage);
 
 
@@ -648,7 +652,7 @@ public class Spell {
 			#endregion
 
 			#region Poison Fang
-			case Preset.PoisonFang:	
+			case Preset.Poison_Fang:	
 				_spellName = "Poison Fang";
 
 				_essenceCost = 2;
@@ -699,7 +703,7 @@ public class Spell {
 			#endregion
 
 			#region Severing Strike
-			case Preset.SeveringStrike:	
+			case Preset.Severing_Strike:	
 				_spellName = "Severing Strike";
 
 				_essenceCost = 2;
@@ -835,7 +839,7 @@ public class Spell {
 			#endregion
 
 			#region Summon Minor Undead
-			case Preset.SummonMinorUndead:	
+			case Preset.Summon_Minor_Undead:	
 				_spellName = "Summon Minor Undead";
 
 				_essenceCost = 1;
@@ -1361,6 +1365,13 @@ public class Spell {
 	#endregion
 
 	#region Sounds
+
+	public void PlayProjectileSound(Vector2Int position) {
+		if(_projSoundPath == null) {return;}
+		AudioManager audioManager = GameObject.FindObjectOfType<AudioManager>();
+		audioManager.LoadSound(_projSoundPath);
+		audioManager.PlaySound(0.5f, 0f);
+	}
 	public void PlayEffectSound(Vector2Int position) {
 		if(_effectSoundPath == null) {return;}
 		AudioManager audioManager = GameObject.FindObjectOfType<AudioManager>();
@@ -1560,7 +1571,7 @@ public class Spell {
 				Move();
 			break;
 
-			case Preset.SummonMinorUndead:
+			case Preset.Summon_Minor_Undead:
 				int summonCount = 4;
 				int limit = 150;
 				int count = 0;
@@ -1584,7 +1595,7 @@ public class Spell {
 							if(_hitTiles[index].baseTerrain.walkable && _hitTiles[index].baseUnit == null) {
 								
 								//Spawn enemy on the hit tile here using instantiate
-								BaseUnit unit = new BaseUnit(false, BaseUnit.SpritePreset.skeleton);
+								BaseUnit unit = new BaseUnit(false, BaseUnit.Preset.Skeleton_Thrall);
 								unit.attributes.alliance = _caster.attributes.alliance;
 								unit.tile = _hitTiles[index];
 

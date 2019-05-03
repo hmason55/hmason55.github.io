@@ -33,7 +33,7 @@ public class BaseItem {
 
 
 		Novice_Tome,
-
+		Parma,
 		Potion_of_Clotting,
 		Potion_of_Curing,
 		Potion_of_Return,
@@ -45,7 +45,9 @@ public class BaseItem {
 		Rune_of_Strength,
 
 		Small_Key,
-		Parma,
+
+		Staff_of_Flame,
+		Throwing_Knives,
 	}
 
 	public enum Category {
@@ -306,6 +308,10 @@ public class BaseItem {
 			case ID.Small_Key:
 				_sprite = GenerateKeycodeSprite(_keycode, spriteManager.items.keys[0], spriteManager);
 			break;
+
+			case ID.Staff_of_Flame:
+				_sprite = spriteManager.items.staves[0];
+			break;
 			
 		}
 	}
@@ -383,7 +389,31 @@ public class BaseItem {
 	}
 
 	public string AttributesToString() {
-		return "";
+		string attributeString = "";
+		if(_physicalDamage > 0) {
+			attributeString += "+" + _physicalDamage + " Phys ATK\n";
+		} else if(_physicalDamage < 0) {
+			attributeString += _physicalDamage + " Phys ATK\n";
+		}
+
+		if(_spellDamage > 0) {
+			attributeString += "+" + _spellDamage + " Spell ATK\n";
+		} else if(_spellDamage < 0) {
+			attributeString += _spellDamage + " Spell ATK\n";
+		}
+
+		if(_blockModifier > 0) {
+			attributeString += "+" + _blockModifier + " Block\n";
+		} else if(_blockModifier < 0) {
+			attributeString += _blockModifier + " Block\n";
+		}
+
+		if(_physicalArmor > 0) {
+			attributeString += "+" + _physicalArmor + " Phys DEF\n";
+		} else if(_physicalArmor < 0) {
+			attributeString += _physicalArmor + " Phys DEF\n";
+		}
+		return attributeString;
 	}
 
 	public string SpellsToString() {
@@ -392,7 +422,7 @@ public class BaseItem {
 		if(_spells.Count == 0) {return str;}
 
 		foreach(Spell.Preset spell in _spells) {
-			str += spell.ToString() + "\n";
+			str += spell.ToString().Replace("_", " ") + "\n";
 		}
 		
 		return str;
@@ -517,8 +547,8 @@ public class BaseItem {
 				_category = Category.Secondary_Weapon;
 				_description = "A short blade, often used as a side-arm.";
 				_physicalDamage = 5;
-				_spells.Add(Spell.Preset.SeveringStrike);
-				_spells.Add(Spell.Preset.PoisonFang);
+				_spells.Add(Spell.Preset.Severing_Strike);
+				_spells.Add(Spell.Preset.Poison_Fang);
 				_value = 10;
 			break;
 
@@ -528,8 +558,8 @@ public class BaseItem {
 				_description = "A short light-weight blade made of steel with a wooden hilt. Used by foot soldiers.";
 				_physicalDamage = 10;
 				_spells.Add(Spell.Preset.Slash);
-				_spells.Add(Spell.Preset.Fireball);
-				_value = 5;
+				_spells.Add(Spell.Preset.Severing_Strike);
+				_value = 10;
 			break;
 
 			case ID.Gold:
@@ -580,17 +610,17 @@ public class BaseItem {
 				_name = "Novice's Tome";
 				_category = Category.Secondary_Weapon;
 				_description = "A tome that contains spells fit for a novice.";
-				_spellDamage = 25;
-				_spells.Add(Spell.Preset.LightningStrike);
-				_spells.Add(Spell.Preset.SummonMinorUndead);
-				_value = 1;
+				_spellDamage = 5;
+				_spells.Add(Spell.Preset.Lightning_Strike);
+				//_spells.Add(Spell.Preset.SummonMinorUndead);
+				_value = 10;
 			break;
 			
 			case ID.Parma:
 				_name = "Parma";
 				_category = Category.Secondary_Weapon;
 				_description = "A round wooden shield with an iron frame.";
-				_blockModifier = 1;
+				_blockModifier = 3;
 				_spells.Add(Spell.Preset.Block);
 				_value = 10;
 			break;
@@ -613,7 +643,7 @@ public class BaseItem {
 				_name = "Potion of Return";
 				_category = Category.Consumable;
 				_description = "A dark cloudy potion. Can be used to return to a safe place.";
-				_value = 10;
+				_value = 5;
 			break;
 
 			
@@ -650,8 +680,17 @@ public class BaseItem {
 				_name = "Small Key";
 				_category = Category.Key;
 				_keycode = GenerateKeycode();
-				_description = "A small key with a unique color and the engraving: \"" + _keycode + "\"";
+				_description = "A small key with a unique color.";
 				_value = 0;
+			break;
+
+			case ID.Staff_of_Flame:
+				_name = "Staff of Flame";
+				_category = Category.Primary_Weapon;
+				_description = "A worn staff, used for casting basic fire spells.";
+				_spellDamage = 10;
+				_spells.Add(Spell.Preset.Fireball);
+				_value = 10;
 			break;
 
 		}

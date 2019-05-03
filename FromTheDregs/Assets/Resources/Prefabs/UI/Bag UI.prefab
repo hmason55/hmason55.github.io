@@ -1241,7 +1241,7 @@ MonoBehaviour:
   _transferUI: {fileID: 8855068799888728424}
   _bagPanel: {fileID: 5853528346197566078}
   _bagSlotGrid: {fileID: 293796733173114611}
-  _titleText: {fileID: 4129701326789238949}
+  _titleText: {fileID: 1114187948263982099}
 --- !u!1 &1295352107348002
 GameObject:
   m_ObjectHideFlags: 0

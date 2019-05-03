@@ -23,8 +23,10 @@ public class BaseDecoration {
 		DungeonDoor,
 		HubShop,
 		Shop,
+		Loot,
 	}
 
+	Tile _tile;
 	Sprite _sprite;
 	Sprite _highlightSprite;
 	Sprite _lockSprite;
@@ -34,10 +36,19 @@ public class BaseDecoration {
 	DecorationType _decorationType;
 	Bag _bag;
 
+	int _animationFrame;
+	Sprite[] _animation;
+	Sprite[] _highlightAnimation;
+	bool _animated = false;
+
+
 	bool _traversable = false;
 	bool _locked = false;
 	string _lockcode = "XXXXXX";
 
+	public Tile tile {
+		get {return _tile;}
+	}
 	public Sprite sprite {
 		get {return _sprite;}
 	}
@@ -89,12 +100,33 @@ public class BaseDecoration {
 		set {_lockcode = value;}
 	}
 
-	public BaseDecoration(Biome b, DecorationType d, SpriteManager s, bool retrieval = false) {
+	public bool animated {
+		get {return _animated;}
+	}
+
+	public BaseDecoration(DecorationType d, Tile t, bool a = false) {
+		_decorationType = d;
+		_tile = t;
+		_animated = a;
+
+		switch(_decorationType) {
+			case DecorationType.Loot:
+				_bag = new Bag(Bag.BagType.Container);
+			break;
+		}
+
+		LoadTexture();
+	}
+
+	public BaseDecoration(Biome b, DecorationType d, Tile t, SpriteManager s, bool a = false, bool retrieval = false) {
 		_biome = b;
 		_decorationType = d;
+		_tile = t;
+		_animated = a;
 		List<BaseItem> _items = new List<BaseItem>();
 
 		switch(_decorationType) {
+			
 			case DecorationType.Container:
 				if(PlayerData.current.retrievalMode == true && retrieval) {
 					_bag = new Bag(Bag.BagType.Container, PlayerData.current.retrievalBag.items);
@@ -102,10 +134,16 @@ public class BaseDecoration {
 					SaveLoadData.Save();
 					AnnouncementManager.Display("Something here feels familiar...", Color.white);
 				} else {
-					_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 3)));
-					_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
+					_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 10)));
+					//_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
 					_bag = new Bag(Bag.BagType.Container, _items);
 				}
+			break;
+
+			case DecorationType.Exit:
+				_traversable = false;
+				_locked = true;
+				_lockcode = BaseItem.GenerateKeycode();
 			break;
 
 			case DecorationType.HubShop:
@@ -122,23 +160,52 @@ public class BaseDecoration {
 				_items.Add(new BaseItem(BaseItem.ID.Cotton_Tunic));
 				_items.Add(new BaseItem(BaseItem.ID.Leather_Jack));
 				_items.Add(new BaseItem(BaseItem.ID.Chainmail_Tunic));
+				_items.Add(new BaseItem(BaseItem.ID.Gladius));
+				_items.Add(new BaseItem(BaseItem.ID.Staff_of_Flame));
+				_items.Add(new BaseItem(BaseItem.ID.Parma));
 				_items.Add(new BaseItem(BaseItem.ID.Novice_Tome));
 				_bag = new Bag(Bag.BagType.Shop, _items);
 			break;
 
-			case DecorationType.Exit:
-				_traversable = false;
-				_locked = true;
-				_lockcode = BaseItem.GenerateKeycode();
-			break;
+		
+			
 		}
 
 		LoadTexture(s);
 	}
 
+	public void LoadTexture() {
+		if(_animated) {
+			_animation = AssetReference.sprites.decorations.merchant.animation.ToArray();
+			_highlightAnimation = AssetReference.sprites.decorations.merchant.highlightAnimation.ToArray();
+			//for(int i = 0; i < _)
+			return;
+		}
+
+		switch(_decorationType) {
+			case DecorationType.Loot:
+				_animation = AssetReference.sprites.decorations.loot.animation.ToArray();
+				_highlightAnimation = AssetReference.sprites.decorations.loot.highlightAnimation.ToArray();
+			break;
+		}
+
+		_sprite = _animation[0];
+		_highlightSprite = _highlightAnimation[0];
+	}
+
 	public void LoadTexture(SpriteManager spriteManager) {
 		List<Sprite> sprites = new List<Sprite>();
 		List<Sprite> highlights = new List<Sprite>();
+		if(_animated) {
+			_animation = AssetReference.sprites.decorations.merchant.animation.ToArray();
+			_highlightAnimation = AssetReference.sprites.decorations.merchant.highlightAnimation.ToArray();
+			//for(int i = 0; i < _)
+			return;
+		} else {
+			_animation = new Sprite[1];
+			_highlightAnimation = new Sprite[1];
+		}
+
 		switch(_biome.biomeType) {
 			
 			// Cavern
@@ -201,7 +268,6 @@ public class BaseDecoration {
 			case Biome.BiomeType.dungeon:
 				switch(_decorationType) {
 					case DecorationType.Container:
-					case DecorationType.HubShop:
 						sprites = spriteManager.biomeDungeon.container;
 						highlights = spriteManager.biomeDungeon.containerHighlights;
 					break;
@@ -287,9 +353,10 @@ public class BaseDecoration {
 
 		switch(_decorationType) {
 			case DecorationType.Container:
-			case DecorationType.HubShop:
-				_sprite = sprites[variation];
-				_highlightSprite = highlights[variation];
+				_animation[0] = sprites[variation];
+				_sprite = _animation[0];
+				_highlightAnimation[0] = highlights[variation];
+				_highlightSprite = _highlightAnimation[0];
 			break;
 
 			case DecorationType.Exit:
@@ -338,6 +405,30 @@ public class BaseDecoration {
 			}
 		}
 		return false;
+	}
+
+	public void IncrementAnimation(int frame = -1) {
+		if(_tile != null) {
+			_animationFrame = _tile.animationController.animationFrame;
+		} else {
+			_animationFrame = frame;
+		}
+
+		if(_animation != null) {
+			if(_animationFrame < 10) {
+				_sprite = _animation[0];
+				if(_highlightAnimation.Length > 0) {_highlightSprite = _highlightAnimation[0];}
+			} else if(_animationFrame < 11) {
+				if(_animation.Length > 1) {_sprite = _animation[1];}
+				if(_highlightAnimation.Length > 1) {_highlightSprite = _highlightAnimation[1];}
+			} else if(_animationFrame < 22) {
+				if(_animation.Length > 2) {_sprite = _animation[2];}
+				if(_highlightAnimation.Length > 2) {_highlightSprite = _highlightAnimation[2];}
+			} else {
+				if(_animation.Length > 3) {_sprite = _animation[3];}
+				if(_highlightAnimation.Length > 3) {_highlightSprite = _highlightAnimation[3];}
+			}
+		}
 	}
 
 }
