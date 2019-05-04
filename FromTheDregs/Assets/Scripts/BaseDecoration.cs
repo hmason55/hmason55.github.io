@@ -134,7 +134,11 @@ public class BaseDecoration {
 					SaveLoadData.Save();
 					AnnouncementManager.Display("Something here feels familiar...", Color.white);
 				} else {
-					_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(1, 10)));
+					int numItems = Random.Range(0, 5);
+					for(int i = 0; i < numItems; i++) {
+						_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(2, 8)));
+					}
+
 					//_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
 					_bag = new Bag(Bag.BagType.Container, _items);
 				}
