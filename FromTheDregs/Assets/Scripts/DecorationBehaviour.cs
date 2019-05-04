@@ -76,9 +76,9 @@ public class DecorationBehaviour : MonoBehaviour, IPointerClickHandler, IPointer
 						_lockImage.raycastTarget = false;
 						_lockImage.enabled = false;
 						
-						Debug.Log("The exit is unlocked!");
+						AnnouncementManager.Display("The hatch was unlocked.", Color.white);
 					} else {
-						Debug.Log("This lock needs a different key.");
+						AnnouncementManager.Display("It's locked.", Color.white);
 					}
 				} else if(!_baseDecoration.traversable){
 					_baseDecoration.traversable = true;

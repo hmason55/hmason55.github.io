@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Moveset {
-    int[] _pattern;
-    int _index;
 
-    public int[] pattern {
+    // [Spell Index, Spell Charges]
+    int[,] _pattern;
+    int _index;
+    
+    public int[,] pattern {
         get {return _pattern;}
     }
 
@@ -20,10 +22,12 @@ public class Moveset {
 
     public Moveset(int startIndex = 0) {
         _index = startIndex;
-        _pattern = new int[] {-1};
+        _pattern = new int[,] {
+            {-1, 1}
+        };
     }
 
-    public Moveset(int[] pattern, int startIndex = 0) {
+    public Moveset(int[,] pattern, int startIndex = 0) {
         _index = startIndex;
         _pattern = pattern;
     }
@@ -34,7 +38,7 @@ public class Moveset {
     }
 
     void LimitIndex() {
-        if(_index > _pattern.Length-1 || _index < 0) {
+        if(_index > _pattern.GetLength(0)-1 || _index < 0) {
             _index = 0;
         }
     }

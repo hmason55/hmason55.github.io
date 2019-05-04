@@ -447,11 +447,9 @@ public class UnitBehaviour : MonoBehaviour {
 		foreach(Effect effect in spell.casterEffects) {
 			switch(effect.effectType) {
 				case Effect.EffectType.Damage:
-					//spell.DealDamage(effect, );
 				break;
 
 				case Effect.EffectType.Block:
-					Debug.Log("Gained Block");
 					spell.caster.ReceiveStatus(spell, effect);
 				break;
 

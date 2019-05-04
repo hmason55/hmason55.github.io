@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class ShortcutUI : MonoBehaviour {
+public class ShortcutUI : UIBehaviour {
 
 	[SerializeField] Button _menuShortcut;
 	[SerializeField] Button _characterShortcut;
@@ -22,7 +22,8 @@ public class ShortcutUI : MonoBehaviour {
 
 	bool _shortcutsEnabled = true;
 
-	void Awake() {
+	new void Awake() {
+		base.Awake();
 		_combatManager = FindObjectOfType<CombatManager>();
 		_hotbar = FindObjectOfType<Hotbar>();
 		_castOptionsUI = FindObjectOfType<CastOptionsUI>();

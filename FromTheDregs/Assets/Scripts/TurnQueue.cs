@@ -106,9 +106,9 @@ public class TurnQueue {
 	}
 
     public void PrintTurns() {
-        foreach(Turn turn in _queue) {
-            Debug.Log(turn.baseUnit.spritePreset.ToString() + ", " + turn.priority);
-        }
+        //foreach(Turn turn in _queue) {
+        //    Debug.Log(turn.baseUnit.spritePreset.ToString() + ", " + turn.priority);
+        //}
     }
 
 

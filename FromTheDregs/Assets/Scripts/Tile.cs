@@ -111,7 +111,7 @@ public class Tile {
 			}
 			_baseUnit.LoadSprites(_spriteManager);
 		} else {
-			Debug.Log("A unit already exists at " + _position);
+			Debug.LogWarning("A unit already exists at " + _position);
 		}
 	}
 

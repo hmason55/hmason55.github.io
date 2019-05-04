@@ -276,10 +276,16 @@ public class BaseUnit {
 			
 			case Preset.Giant_Spider:
 				_statPreset = Attributes.Preset.Giant_Spider;
-				//_spritePreset = 
 				_innateSpells.Add(Spell.Preset.Bite);
 				_innateSpells.Add(Spell.Preset.Block);
-				_moveset = new Moveset();
+				_moveset = new Moveset(new int[,] {
+				// Index, Charges
+					{0, 1},
+					{0, 2},
+					{1, 2},
+					{0, 3},
+					{1, 1},
+				}, Random.Range(0, 1));
 			break;
 
 			case Preset.Giant_Widow:
@@ -287,7 +293,14 @@ public class BaseUnit {
 				_innateSpells.Add(Spell.Preset.Bite);
 				_innateSpells.Add(Spell.Preset.Poison_Fang);
 				_innateSpells.Add(Spell.Preset.Block);
-				_moveset = new Moveset();
+				_moveset = new Moveset(new int[,] {
+				// Index, Charges
+					{0, 3},
+					{1, 3},
+					{0, 2},
+					{2, 2},
+					{1, 3},
+				}, Random.Range(0, 1));
 			break;
 
 			case Preset.Green_Slime:
@@ -297,7 +310,14 @@ public class BaseUnit {
 				_statPreset = Attributes.Preset.Skeleton;
 				_innateSpells.Add(Spell.Preset.Skeletal_Claws);
 				_innateSpells.Add(Spell.Preset.Block);
-				_moveset = new Moveset();
+				_moveset = new Moveset(new int[,] {
+				// Index, Charges
+					{0, 1},
+					{1, 2},
+					{0, 2},
+					{1, 2},
+					{0, 3},
+				}, Random.Range(0, 1));
 			break;
 
 			case Preset.Skeleton_Summoner:
@@ -312,6 +332,7 @@ public class BaseUnit {
 			case Preset.Skeleton_Warrior:
 				_statPreset = Attributes.Preset.Skeleton_Warrior;
 				_innateSpells.Add(Spell.Preset.Slash);
+				_innateSpells.Add(Spell.Preset.Slash);
 				_innateSpells.Add(Spell.Preset.Severing_Strike);
 				_innateSpells.Add(Spell.Preset.Block);
 				_moveset = new Moveset();
@@ -321,14 +342,28 @@ public class BaseUnit {
 				_statPreset = Attributes.Preset.Spiderling;
 				_innateSpells.Add(Spell.Preset.Bite);
 				_innateSpells.Add(Spell.Preset.Block);
-				_moveset = new Moveset();
+				_moveset = new Moveset(new int[,] {
+				// Index, Charges
+					{0, 2},
+					{1, 1},
+					{0, 1},
+					{1, 1},
+					{0, 3},
+				}, Random.Range(0, 1));
 			break;
 
 			case Preset.Widowling:
 				_statPreset = Attributes.Preset.Widowling;
 				_innateSpells.Add(Spell.Preset.Bite);
 				_innateSpells.Add(Spell.Preset.Poison_Fang);
-				_moveset = new Moveset();
+				_moveset = new Moveset(new int[,] {
+				// Index, Charges
+					{0, 1},
+					{1, 1},
+					{0, 2},
+					{1, 2},
+					{1, 3},
+				}, Random.Range(0, 2));
 			break;
 		}
 
@@ -457,20 +492,19 @@ public class BaseUnit {
 	public Spell SelectAISpell() {
 		UpdateSpells();
 
-		int spellIndex = _moveset.pattern[_moveset.index];
+		int spellIndex = _moveset.pattern[_moveset.index, 0];
 		if(spellIndex == -1 || spellIndex > spells.Count) {
-			spellIndex = Random.Range(0, spells.Count);
+			spellIndex = Random.Range(0, spells.Count-1);
 		}
 
 		Spell s = new Spell(this, spells[spellIndex]);
-		_spellCharges = 1;
+		_spellCharges = _moveset.pattern[_moveset.index, 1];
 
 		_moveset.Next();
 		return s;
 	}
 
 	public void BeginTurn() {
-		Debug.Log("Begin Turn");
 		_tickedStatuses = false;
 		if(_tile.unit != null) {
 			_tile.unit.TickStatus(Effect.Conditions.DurationExpire);
@@ -494,7 +528,7 @@ public class BaseUnit {
 		int mapHeight = DungeonManager.dimension;
 
 		if(x < 0 || x >= mapWidth || y < 0 || y >= mapHeight) {
-			Debug.Log("Out of bounds " + x + ", " + y);
+			Debug.LogWarning("Out of bounds " + x + ", " + y);
 			return false;
 		}
 
@@ -626,7 +660,6 @@ public class BaseUnit {
 		}
 
 		_tile.baseUnit.BeginHitAnimation();
-		Debug.Log(damage + " damage");
 		SpawnDamageText(damage.ToString(), color);
 
 		_attributes.currentHealth -= damage;
@@ -1277,11 +1310,6 @@ public class BaseUnit {
 		while(currentNode != null) {
 			path.Add(currentNode);
 			currentNode = currentNode.parentNode;
-		}
-
-		//Debug.Log("Path");
-		for(int i = 0; i < path.Count; i++) {
-			//Debug.Log(path[i].position);
 		}
 
 		if(excludeNodesFromEnd > 0) {

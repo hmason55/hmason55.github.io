@@ -86,15 +86,12 @@ public class CombatManager : MonoBehaviour {
 					baseUnit.tickedStatuses = true;
 				}
 
-				//Debug.Log(baseUnit.HasStatusType(Effect.EffectType.Stun).ToString());
 				if(baseUnit.HasStatusType(Effect.EffectType.Stun)) {
 					EndTurn(baseUnit);
 					goto top;
 				}
-				//Debug.Log()
 
 				if(!baseUnit.playerControlled) {
-					
 					Spell spell = baseUnit.intentSpell;
 
 					BaseUnit target = baseUnit;
@@ -119,8 +116,6 @@ public class CombatManager : MonoBehaviour {
 					if(path == null) {
 						target = null;
 					}
-
-					Debug.Log("Path:" + path.Count);
 					
 					// Spell Cast
 					if(target != null) {
@@ -143,6 +138,7 @@ public class CombatManager : MonoBehaviour {
 							baseUnit.attributes.currentEssence -= 1;
 							baseUnit.Move(path[path.Count-2].position.x - baseUnit.tile.position.x, path[path.Count-2].position.y - baseUnit.tile.position.y);
 						} else if(canReachTarget && baseUnit.spellCharges > 0) {
+							Debug.Log(baseUnit.spellCharges);
 							// Close enough to use spell
 							spell.ShowEffectRange(target.tile.position);
 							float castDelay = spell.ConfirmSpellCast();
@@ -223,7 +219,6 @@ public class CombatManager : MonoBehaviour {
 			AggroNearbyUnits(baseUnit.tile.position.x, baseUnit.tile.position.y, visitedTiles, baseUnit.tile.position.x, baseUnit.tile.position.y, baseUnit.attributes.aggroRadius);
 		}
 
-		Debug.Log("Turn Queue (" + _turnQueue.Length + "):");
 		_turnQueue.PrintTurns();
 	}
 
@@ -306,7 +301,6 @@ public class CombatManager : MonoBehaviour {
 		List<Tile> nearbyTiles = GetNearbyTiles(b, distance);
 		List<Tile> validTiles = new List<Tile>();
 		validTiles.Add(b.tile);
-		Debug.Log(nearbyTiles.Count);
 		foreach(Tile t in nearbyTiles) {
 			List<PathNode> path = b.FindPath(b.tile.position, t.position, ignoreUnits);
 			if(path.Count > 0 && path.Count < distance*2) {

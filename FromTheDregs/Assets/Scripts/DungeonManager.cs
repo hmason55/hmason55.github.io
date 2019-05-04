@@ -174,7 +174,7 @@ public class DungeonManager : MonoBehaviour {
 		_hitpointUI.UpdateHitpoints(_player.attributes.currentHealth, _player.attributes.totalHealth);
 		GameObject.FindObjectOfType<CameraController>().SnapToTarget();
 		_loadState = LoadState.Loaded;
-		Debug.Log(PlayerData.current.currentZone);
+		Debug.Log("Loading zone " + PlayerData.current.currentZone);
 		Debug.Log("Instance took " + (Time.realtimeSinceStartup - startTime) + " seconds to load.");
 	}
 
@@ -246,21 +246,6 @@ public class DungeonManager : MonoBehaviour {
 		}
 
 		Debug.Log("Initializing zone " + z.ToString() + "...");
-	}
-
-	void Update() {
-
-			/* if(_loadState == LoadState.Loaded) {
-				Debug.Log("Saving...");
-				PlayerData.current.bag = _player.bag;
-				PlayerData.current.attributes = _player.attributes;
-				Debug.Log(_player);
-				SaveLoadData.Save();
-
-				
-			}
-			*/
-		
 	}
 
 	void InitializeGrid() {
@@ -873,17 +858,7 @@ public class DungeonManager : MonoBehaviour {
 		// Global biome
 		_biome = new Biome(0, 0, 0, _zone);
 		_biome.biomeType = biomeType;
-		Debug.Log("Using " + biomeType.ToString() + " biome.");
 
-		// Smaller biomes
-		//int numBiomes = Random.Range(minimumBiomes, maximumBiomes);
-		//for(int i = 0; i < numBiomes; i++) {
-		//	Debug.Log("Spawned biome");
-		//	int x = Random.Range(0, dungeonDimension * chunkDimension * TileWidth);
-		//	int y = Random.Range(0, dungeonDimension * chunkDimension * TileHeight);
-		//	int radius = Random.Range(0, dungeonDimension * chunkDimension * TileWidth / 2);
-		//	biomes.Add(new Biome(x, y, radius));
-		//}
 	}
 
 	int CheckDistance(int x1, int y1, int x2, int y2) {

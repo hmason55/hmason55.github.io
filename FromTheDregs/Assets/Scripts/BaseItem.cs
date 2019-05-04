@@ -475,70 +475,70 @@ public class BaseItem {
 				_name = "Cotton Breeches";
 				_category = Category.Leg_Armor;
 				_description = "Breeches made of cotton.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Cotton_Gloves:
 				_name = "Cotton Gloves";
 				_category = Category.Hand_Armor;
 				_description = "Gloves made of cotton.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Cotton_Hood:
 				_name = "Cotton Hood";
 				_category = Category.Head_Armor;
 				_description = "A hood made of cotton.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Cotton_Shoes:
 				_name = "Cotton Shoes";
 				_category = Category.Foot_Armor;
 				_description = "Shoes made of cotton.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Cotton_Tunic:
 				_name = "Cotton Tunic";
 				_category = Category.Body_Armor;
 				_description = "A tunic made of cotton.";
-				_value = 1;
+				_value = 25;
 			break;
 
 			case ID.Chainmail_Coif:
 				_name = "Iron Chain Coif";
 				_category = Category.Head_Armor;
 				_description = "A foot soldier's coif.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Chainmail_Gloves:
 				_name = "Iron Chain Gloves";
 				_category = Category.Hand_Armor;
-				_description = "Gloves made of iron chainmail.";
-				_value = 1;
+				_description = "Gloves made of chainmail.";
+				_value = 10;
 			break;
 
 			case ID.Chainmail_Leggings:
 				_name = "Iron Chain Leggings";
 				_category = Category.Leg_Armor;
 				_description = "Leggings made of chainmail.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Chainmail_Shoes:
 				_name = "Iron Chain Shoes";
 				_category = Category.Foot_Armor;
 				_description = "Shoes made of chainmail.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Chainmail_Tunic:
 				_name = "Iron Chain Tunic";
 				_category = Category.Body_Armor;
 				_description = "A tunic made of chainmail.";
-				_value = 1;
+				_value = 25;
 			break;
 
 
@@ -549,7 +549,7 @@ public class BaseItem {
 				_physicalDamage = 5;
 				_spells.Add(Spell.Preset.Severing_Strike);
 				_spells.Add(Spell.Preset.Poison_Fang);
-				_value = 10;
+				_value = 20;
 			break;
 
 			case ID.Gladius:
@@ -559,13 +559,13 @@ public class BaseItem {
 				_physicalDamage = 10;
 				_spells.Add(Spell.Preset.Slash);
 				_spells.Add(Spell.Preset.Severing_Strike);
-				_value = 10;
+				_value = 30;
 			break;
 
 			case ID.Gold:
 				_name = "Gold";
 				_category = Category.Currency;
-				_description = "Item description.";
+				_description = "A shiny gold piece with an emblem stamped on one side. Used as a standard for trading.";
 				_value = 1;
 			break;
 
@@ -574,35 +574,35 @@ public class BaseItem {
 				_name = "Leather Boots";
 				_category = Category.Foot_Armor;
 				_description = "Boots made of leather.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Leather_Bracers:
 				_name = "Leather Bracers";
 				_category = Category.Hand_Armor;
 				_description = "Bracers made of leather.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Leather_Breeches:
 				_name = "Leather Breeches";
 				_category = Category.Leg_Armor;
 				_description = "Breeches made of leather.";
-				_value = 1;
+				_value = 10;
 			break;
 
 			case ID.Leather_Jack:
 				_name = "Leather Jack";
 				_category = Category.Body_Armor;
 				_description = "A jack made of leather.";
-				_value = 1;
+				_value = 25;
 			break;
 
 			case ID.Leather_Helm:
 				_name = "Leather Helm";
 				_category = Category.Head_Armor;
 				_description = "A helm made of leather.";
-				_value = 1;
+				_value = 10;
 			break;
 
 
@@ -613,7 +613,7 @@ public class BaseItem {
 				_spellDamage = 5;
 				_spells.Add(Spell.Preset.Lightning_Strike);
 				//_spells.Add(Spell.Preset.SummonMinorUndead);
-				_value = 10;
+				_value = 20;
 			break;
 			
 			case ID.Parma:
@@ -622,56 +622,56 @@ public class BaseItem {
 				_description = "A round wooden shield with an iron frame.";
 				_blockModifier = 3;
 				_spells.Add(Spell.Preset.Block);
-				_value = 10;
+				_value = 20;
 			break;
 			
 			case ID.Potion_of_Clotting:
 				_name = "Potion of Clotting";
 				_category = Category.Consumable;
-				_description = "Reduces the effects of <b><color=#C00000>Bleed</color></b> by 5.";
-				_value = 1;
+				_description = "A potion with a thick consistency. Reduces the effects of <b><color=#C00000>Bleed</color></b> by 5.";
+				_value = 8;
 			break;
 
 			case ID.Potion_of_Curing:
 				_name = "Potion of Curing";
 				_category = Category.Consumable;
-				_description = "Reduces the effects of <b><color=#40C000>Poison</color></b> by 5.";
-				_value = 1;
+				_description = "A potion with a foul odor. Reduces the effects of <b><color=#40C000>Poison</color></b> by 5.";
+				_value = 8;
 			break;
 
 			case ID.Potion_of_Return:
 				_name = "Potion of Return";
 				_category = Category.Consumable;
 				_description = "A dark cloudy potion. Can be used to return to a safe place.";
-				_value = 5;
+				_value = 15;
 			break;
 
 			
 			case ID.Rune_of_Constitution:
 				_name = "Rune of Constitution";
 				_category = Category.Runestone;
-				_description = "Increases constitution.";
+				_description = "A stone with mysterious engravings. Increases the owner's Constitution.";
 				_value = 0;
 			break;
 
 			case ID.Rune_of_Dexterity:
 				_name = "Rune of Dexterity";
 				_category = Category.Runestone;
-				_description = "Increases dexterity.";
+				_description = "A stone with mysterious engravings. Increases the owner's Dexterity.";
 				_value = 0;
 			break;
 
 			case ID.Rune_of_Intelligence:
 				_name = "Rune of Intelligence";
 				_category = Category.Runestone;
-				_description = "Increases intelligence.";
+				_description = "A stone with mysterious engravings. Increases the owner's Intelligence.";
 				_value = 0;
 			break;
 
 			case ID.Rune_of_Strength:
 				_name = "Rune of Strength";
 				_category = Category.Runestone;
-				_description = "Increases strength.";
+				_description = "A stone with mysterious engravings. Increases the owner's Strength.";
 				_value = 0;
 			break;
 
@@ -690,7 +690,7 @@ public class BaseItem {
 				_description = "A worn staff, used for casting basic fire spells.";
 				_spellDamage = 10;
 				_spells.Add(Spell.Preset.Fireball);
-				_value = 10;
+				_value = 30;
 			break;
 
 		}

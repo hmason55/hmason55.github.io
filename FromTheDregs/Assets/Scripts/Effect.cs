@@ -203,7 +203,7 @@ public class Effect {
                                 effect.deactivationConditions[Conditions.DurationExpire] += bleedValue;
                             }
                             applied = true;
-                            Debug.Log(effect.deactivationConditions[Conditions.DurationExpire] + " bleed");
+                            //Debug.Log(effect.deactivationConditions[Conditions.DurationExpire] + " bleed");
                         break;
 
                         case EffectType.Block:
@@ -212,7 +212,7 @@ public class Effect {
                                 effect.deactivationConditions[Conditions.BlockDamage] += blockValue;
                             } 
                             applied = true;
-                            Debug.Log(effect.deactivationConditions[Conditions.BlockDamage] + " block");
+                            //Debug.Log(effect.deactivationConditions[Conditions.BlockDamage] + " block");
                         break;
 
                         case EffectType.Poison:
@@ -221,7 +221,7 @@ public class Effect {
                                 effect.deactivationConditions[Conditions.DurationExpire] += poisonValue;
                             }
                             applied = true;
-                            Debug.Log(effect.deactivationConditions[Conditions.DurationExpire] + " poison");
+                            //Debug.Log(effect.deactivationConditions[Conditions.DurationExpire] + " poison");
                         break;
                     }
                     return applied;
@@ -237,14 +237,14 @@ public class Effect {
                     int bleedValue = _initialBleedModifier + _deactivationConditions[Conditions.DurationExpire];
                     _deactivationConditions[Conditions.DurationExpire] = bleedValue;
                     applied = true;
-                    Debug.Log(_deactivationConditions[Conditions.DurationExpire] + " bleed");
+                    //Debug.Log(_deactivationConditions[Conditions.DurationExpire] + " bleed");
                 break;
 
                 case EffectType.Block:
                     int blockValue = _initialBlockModifier + (int)GetPotency(target.attributes);
                     _deactivationConditions[Conditions.BlockDamage] = blockValue;
                     applied = true;
-                    Debug.Log(_deactivationConditions[Conditions.BlockDamage] + " block");
+                    //Debug.Log(_deactivationConditions[Conditions.BlockDamage] + " block");
                 break;
 
                 case EffectType.DisplayHealth:
@@ -256,14 +256,14 @@ public class Effect {
                     int poisonValue = _initialPoisonModifier + _deactivationConditions[Conditions.DurationExpire];
                     _deactivationConditions[Conditions.DurationExpire] = poisonValue;
                     applied = true;
-                    Debug.Log(_deactivationConditions[Conditions.DurationExpire] + " poison");
+                    //Debug.Log(_deactivationConditions[Conditions.DurationExpire] + " poison");
                 break;
 
                 case EffectType.Stun:
                     int stunValue = 1;
                     _deactivationConditions[Conditions.PostTurnExpiration] = stunValue;
                     applied = true;
-                    Debug.Log(_deactivationConditions[Conditions.PostTurnExpiration] + " stun");
+                    //Debug.Log(_deactivationConditions[Conditions.PostTurnExpiration] + " stun");
                 break;
             }
         }

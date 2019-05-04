@@ -34,7 +34,7 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 	public Spell.Preset preset {
 		get {return _preset;}
 		set {
-			Debug.Log("NEW SPELL");
+			//Debug.Log("NEW SPELL");
 			_preset = value;
 			_spell = new Spell(_preset);
 			_text.text = _spell.spellName;
@@ -105,7 +105,7 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void PreviewCast() {
-		Debug.Log(_spell.essenceCost + "/" + _hotbar.baseUnit.attributes.currentEssence);
+		//Debug.Log(_spell.essenceCost + "/" + _hotbar.baseUnit.attributes.currentEssence);
 		_spell.SyncWithCaster(_hotbar.baseUnit);
 		_hotbar.tapController.image.raycastTarget = false;
 		_hotbar.activeSpell = _spell;

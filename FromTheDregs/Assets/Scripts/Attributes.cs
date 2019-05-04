@@ -226,8 +226,6 @@ public class Attributes {
     }
 
     void Init() {
-		Debug.Log("Init " + _preset);
-		Debug.Log(_baseHealth + " baseHealth");
 		CalcBaseHealth();
 		CalcBaseEssence();
 		
@@ -238,7 +236,6 @@ public class Attributes {
         _currentEssence = _totalEssence;
 
         _recoveryEssence = _totalEssence;
-		Debug.Log(_baseHealth + " baseHealth");
     }
 
 	int Level() {

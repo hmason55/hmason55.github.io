@@ -140,7 +140,7 @@ public class BagBehaviour : MonoBehaviour {
 		if(bagItem == null) {return;}
 		if(bagItem.item == null) {return;}
 		if(!_bag.Equip(bagItem.transform.GetSiblingIndex())) {return;}
-		Debug.Log("Equipped " + bagItem.item.name);
+		//AnnouncementManager.Display("Equipped " + bagItem.item.name, Color.white);
 		BagItemBehaviour equipmentItem = GetEquipmentType(bagItem.item.category);
 
 		// Unequip items of this type from inventory
@@ -226,6 +226,7 @@ public class BagBehaviour : MonoBehaviour {
 				if(consumed) {
 					SyncUnit();
 					_baseUnit.RemoveStatusByCondition(Effect.EffectType.Bleed, Effect.Conditions.DurationExpire, 5);
+					AnnouncementManager.Display("Your blood begins to clot.", Color.white);
 				}
 			break;
 
@@ -234,6 +235,7 @@ public class BagBehaviour : MonoBehaviour {
 				if(consumed) {
 					SyncUnit();
 					_baseUnit.RemoveStatusByCondition(Effect.EffectType.Poison, Effect.Conditions.DurationExpire, 5);
+					AnnouncementManager.Display("The poison subsides.", Color.white);
 				}
 			break;
 
@@ -296,7 +298,6 @@ public class BagBehaviour : MonoBehaviour {
 			containerBehaviour.bag.Remove(bagItem.item);
 			bagItem.item = null;
 			containerBehaviour.SyncBag(containerBehaviour.bag);
-			Debug.Log("Item Taken.");
 			return true;
 		}
 
@@ -375,7 +376,6 @@ public class BagBehaviour : MonoBehaviour {
 			//containerBehaviour.bag.Remove(bagItem.item);
 			//bagItem.item = null;
 			containerBehaviour.SyncBag(containerBehaviour.bag);
-			Debug.Log("Item purchased.");
 			return true;
 		}
 

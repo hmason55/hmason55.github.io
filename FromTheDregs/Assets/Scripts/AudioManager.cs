@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour {
 	public void LoadSound(string soundPath) {
 		_audioClip = Resources.Load<AudioClip>(soundPath);
 		if(_audioClip == null) {
-			Debug.Log("Could not find audio clip at " + soundPath);
+			Debug.LogWarning("Could not find audio clip at " + soundPath);
 		}
 	}
 

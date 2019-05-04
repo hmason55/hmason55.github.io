@@ -20,7 +20,6 @@ public class ItemTooltip : MonoBehaviour {
     }
 
     public void Snap(float x, float y) {
-        //Debug.Log(x);
 
         if(x < Screen.width/2.5f) {
             x += Screen.width/8.5f;

@@ -108,8 +108,6 @@ public class LootTable {
     public void SpawnLoot(Tile tile) {
         if(tile == null) {return;}
 
-        Debug.Log("Spawning Loot");
-
         float roll = Random.Range(0f, 100f);
         BaseItem item;
 
@@ -123,8 +121,6 @@ public class LootTable {
 
         if(item == null) {return;}
         if(item.quantity < 1) {return;}
-
-        Debug.Log(item.id);
 
         bool lootExists = false;
         if(tile.baseDecoration != null) {

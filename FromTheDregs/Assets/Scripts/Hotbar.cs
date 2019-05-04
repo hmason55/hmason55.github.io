@@ -115,7 +115,7 @@ public class Hotbar : MonoBehaviour {
 				//if(newUnit) {
 					hotkey.preset = _baseUnit.spells[i];
 				//}
-				Debug.Log(hotkey.spell.spellName + ": " + hotkey.spell.essenceCost + "/" + _baseUnit.attributes.currentEssence);
+				//Debug.Log(hotkey.spell.spellName + ": " + hotkey.spell.essenceCost + "/" + _baseUnit.attributes.currentEssence);
 				if(hotkey.spell.essenceCost > _baseUnit.attributes.currentEssence) {
 					hotkey.Disable();
 				} else {
@@ -183,7 +183,7 @@ public class Hotbar : MonoBehaviour {
 
 	public void Recast(Vector2Int position) {
 		if(_activeSpell.essenceCost <= _baseUnit.attributes.currentEssence) {
-			Debug.Log("Recast");
+			//Debug.Log("Recast");
 			_activeSpell.ResetTiles();
 			_castOptionsUI.ShowUI();
 			_activeSpell.ShowCastRange();

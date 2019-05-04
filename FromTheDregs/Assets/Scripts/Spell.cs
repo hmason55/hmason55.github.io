@@ -401,8 +401,8 @@ public class Spell {
 
 				Effect block = new Effect(Effect.EffectType.Block);
 				block.stackable = true;
-				block.SetPrimaryScaling(Effect.ScalingType.Strength, 0.25f);
-				block.SetSecondaryScaling(Effect.ScalingType.Dexterity, 0.10f);
+				block.SetPrimaryScaling(Effect.ScalingType.Strength, 3.00f);
+				block.SetSecondaryScaling(Effect.ScalingType.Dexterity, 1.50f);
 				block.deactivationConditions[Effect.Conditions.DurationExpire] = 1;
 				_spellCasterEffects.Add(block);
 
@@ -489,7 +489,7 @@ public class Spell {
 
 				_damageType = DamageType.Spell;
 				_damageSoundPath = "Sounds/sfx/impact_damage_0";
-				_essenceCost = 4;
+				_essenceCost = 2;
 				_autoRecast = false;
 				_requireCastConfirmation = true;
 				_createsCastParticle = true;
@@ -1490,7 +1490,7 @@ public class Spell {
 								blockedAmount = effect.deactivationConditions[Effect.Conditions.BlockDamage];
 							}
 
-							Debug.Log(blockedAmount + " block");
+							//Debug.Log(blockedAmount + " block");
 
 							if(totalDamage <= blockedAmount) {
 								blockedAmount = totalDamage;
