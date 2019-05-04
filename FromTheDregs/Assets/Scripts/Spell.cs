@@ -1305,6 +1305,7 @@ public class Spell {
 
 		_castParticle = castParticleGO;
 
+		if(_tiles[position.x, position.y].unit == null) {return;}
 		RectTransform unitRT = _tiles[position.x, position.y].unit.GetComponent<RectTransform>();
 
 		RectTransform castRT = castParticleGO.GetComponent<RectTransform>();
@@ -1337,7 +1338,8 @@ public class Spell {
 		proj.end = end;
 		_projectiles.Add(projParticleGO);
 		GameObject.Destroy(projParticleGO, distance/_projSpeed);
-
+		
+		if(_tiles[start.x, start.y].unit == null) {return;}
 		RectTransform unitRT = _tiles[start.x, start.y].unit.GetComponent<RectTransform>();
 		RectTransform projRT = projParticleGO.GetComponent<RectTransform>();
 		projRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileHeight/2);
@@ -1353,8 +1355,8 @@ public class Spell {
 		effectParticleGO.transform.SetParent(effectsLayer.transform);
 		effectParticleGO.transform.SetAsLastSibling();
 
+		if(_tiles[position.x, position.y].unit == null) {return;}
 		RectTransform unitRT = _tiles[position.x, position.y].unit.GetComponent<RectTransform>();
-		
 
 		RectTransform effectRT = effectParticleGO.GetComponent<RectTransform>();
 

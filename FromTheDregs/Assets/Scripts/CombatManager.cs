@@ -74,7 +74,7 @@ public class CombatManager : MonoBehaviour {
 				BaseUnit baseUnit = _turnQueue.queue[0].baseUnit;
 
 				if(!baseUnit.tickedStatuses) {
-					foreach(Effect effect in baseUnit.effects) {
+					foreach(Effect effect in baseUnit.effects.ToArray()) {
 						switch(effect.effectType) {
 							case Effect.EffectType.Bleed:
 							case Effect.EffectType.Block:
@@ -138,7 +138,7 @@ public class CombatManager : MonoBehaviour {
 							baseUnit.attributes.currentEssence -= 1;
 							baseUnit.Move(path[path.Count-2].position.x - baseUnit.tile.position.x, path[path.Count-2].position.y - baseUnit.tile.position.y);
 						} else if(canReachTarget && baseUnit.spellCharges > 0) {
-							Debug.Log(baseUnit.spellCharges);
+							//Debug.Log(baseUnit.spellCharges);
 							// Close enough to use spell
 							spell.ShowEffectRange(target.tile.position);
 							float castDelay = spell.ConfirmSpellCast();
@@ -154,6 +154,7 @@ public class CombatManager : MonoBehaviour {
 					}
 					yield return new WaitForSeconds(0.5f);
 				} else {
+
 					yield return new WaitForSeconds(0.1f);
 				}
 			} else {
@@ -194,8 +195,14 @@ public class CombatManager : MonoBehaviour {
 				turn.baseUnit.SetAsInterfaceTarget();
 				_shortcutUI.BeginTurn();
 				_hotbar.essenceUI.SetFilledEssence(turn.baseUnit.attributes.currentEssence);
+				//Debug.Log(turn.baseUnit.preset);
 			}
+
+		} else {
+			Debug.LogWarning("Turn queue is empty.");	
 		}
+
+		
 	}
 
 	public bool ValidateMoveTile(Tile tile) {

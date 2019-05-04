@@ -60,8 +60,11 @@ public class ShortcutUI : UIBehaviour {
 	}
 
 	public void OnEndTurnShortcut() {
-		EndTurn();
-		_hotbar.DisableHotkeys();
+		
+		if(_hotbar.baseUnit.playerControlled) {
+			EndTurn();
+			_hotbar.DisableHotkeys();
+		}
 		_combatManager.EndTurn(_hotbar.baseUnit);
 	}
 

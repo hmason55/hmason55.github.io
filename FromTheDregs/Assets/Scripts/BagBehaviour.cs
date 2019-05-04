@@ -244,6 +244,7 @@ public class BagBehaviour : MonoBehaviour {
 					consumed = _bag.Consume(bagItem.item.id);
 					if(consumed) {
 						_baseUnit.attributes.currentHealth = _baseUnit.attributes.totalHealth;
+						_baseUnit.attributes.currentEssence = _baseUnit.attributes.totalEssence;
 						SyncUnit();
 						_baseUnit.Return();
 						return;

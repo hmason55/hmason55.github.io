@@ -28,7 +28,7 @@ public class MainMenuUI : MonoBehaviour {
         loadGameButton.gameObject.SetActive(true);
         newGameButton.gameObject.SetActive(true);
         newGameButton.interactable = allowNewGame;
-        optionsButton.gameObject.SetActive(true);
+        //optionsButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
         titleText.gameObject.SetActive(true);
         versionText.gameObject.SetActive(true);
@@ -37,7 +37,7 @@ public class MainMenuUI : MonoBehaviour {
     public void HideUI() {
         loadGameButton.gameObject.SetActive(false);
         newGameButton.gameObject.SetActive(false);
-        optionsButton.gameObject.SetActive(false);
+        //optionsButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
         titleText.gameObject.SetActive(false);
         versionText.gameObject.SetActive(false);
