@@ -1,5 +1,7 @@
+[Download Launcher](https://hmason55.github.io/FTD/get-started/launcher.zip)
+
 ## Download the Launcher
-If you have signed up for the alpha test, you should have received an email with a `.zip` file attached which contains the launcher. Download the launcher, then navigate to the directory where it can be found.
+Download the above `.zip` file, which contains the game launcher, then navigate to the directory where it can be found.
 
 ![Zipped Launcher](https://hmason55.github.io/FTD/get-started/images/zip.png)
 
