@@ -1,9 +1,9 @@
 Here you can view a history of the changes to the game client.
 
-<details><summary>### Version 0.1c</summary>
+### Version 0.1c
+<details><summary>Details</summary>
 May 3, 2019
-<pre><code>
-Enemies
+<pre><code>Enemies
 - New moveset patterns.
 - Increased health values.
 - Increased ability damage.
