@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7926234974929448436}
   - component: {fileID: 3493608293061053160}
   - component: {fileID: 2020310570354460282}
-  - component: {fileID: 8507513053507027497}
+  - component: {fileID: 8411612634357269123}
   m_Layer: 5
   m_Name: Attributes
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &8507513053507027497
+--- !u!114 &8411612634357269123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,11 +91,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!1 &3881542470498259963
 GameObject:
@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 2683200788313338621}
   - component: {fileID: 1052913669365848647}
   - component: {fileID: 1868956475756455641}
-  - component: {fileID: 6759248767482901357}
+  - component: {fileID: 866862272738138056}
   m_Layer: 5
   m_Name: Spells
   m_TagString: Untagged
@@ -762,7 +762,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &6759248767482901357
+--- !u!114 &866862272738138056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -772,11 +772,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: -5, y: -5}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!1 &9102370183560229727
 GameObject:

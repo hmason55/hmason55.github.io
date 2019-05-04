@@ -1633,5 +1633,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2625577414733451099, guid: c2c8b04ef48001f47b0bc4cf84d9982d,
+        type: 3}
+      propertyPath: m_Text
+      value: v0.1c
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c8b04ef48001f47b0bc4cf84d9982d, type: 3}

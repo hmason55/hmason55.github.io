@@ -422,7 +422,7 @@ public class BaseItem {
 		if(_spells.Count == 0) {return str;}
 
 		foreach(Spell.Preset spell in _spells) {
-			str += spell.ToString().Replace("_", " ") + "\n";
+			str += spell.ToString().Replace("_", " ") + "\n\n";
 		}
 		
 		return str;
