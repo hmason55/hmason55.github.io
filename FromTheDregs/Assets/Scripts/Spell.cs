@@ -333,8 +333,8 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Bite Impact";
 				_effectSoundPath = "Sounds/sfx/bite_impact_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.75f;
+				_effectSoundDelay = 0.10f;
+				_effectDamageDelay = 0.50f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
@@ -372,7 +372,7 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Bleed Impact";
 				_effectSoundPath = "Sounds/sfx/impact_damage_0";
-				_effectSoundDelay = 0.15f;
+				_effectSoundDelay = 0.10f;
 				_effectDamageDelay = 0.25f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
@@ -401,8 +401,8 @@ public class Spell {
 
 				Effect block = new Effect(Effect.EffectType.Block);
 				block.stackable = true;
-				block.SetPrimaryScaling(Effect.ScalingType.Strength, 3.00f);
-				block.SetSecondaryScaling(Effect.ScalingType.Dexterity, 1.50f);
+				block.SetPrimaryScaling(Effect.ScalingType.Strength, 2.50f);
+				block.SetSecondaryScaling(Effect.ScalingType.Dexterity, 1.0f);
 				block.deactivationConditions[Effect.Conditions.DurationExpire] = 1;
 				_spellCasterEffects.Add(block);
 
@@ -423,8 +423,8 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Block Apply";
 				_effectSoundPath = "Sounds/sfx/grant_block_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.80f;
+				_effectSoundDelay = 0.10f;
+				_effectDamageDelay = 0.35f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
@@ -471,8 +471,8 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Slash Impact";
 				_effectSoundPath = "Sounds/sfx/slash_impact_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.80f;
+				_effectSoundDelay = 0.10f;
+				_effectDamageDelay = 0.50f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
@@ -514,12 +514,12 @@ public class Spell {
 
 				_projCount = 1;
 				_projParticlePath = "Prefabs/Effects/Fireball";
-				_projSpeed = 192f;
+				_projSpeed = 256f;
 				_projSoundPath = "Sounds/sfx/fireball_projectile_0";
 
 				_effectParticlePath = "Prefabs/Effects/Fireball Impact";
 				_effectSoundPath = "Sounds/sfx/fireball_impact_0";
-				_effectDamageDelay = 0.80f;
+				_effectDamageDelay = 0.50f;
 				_effectRadius = 1;
 				_effectIgnoresWalls = false;
 				_effectRequiresLineOfSight = true;
@@ -566,8 +566,8 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Lightning Strike";
 				_effectSoundPath = "Sounds/sfx/lightning_strike_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 1.25f;
+				_effectSoundDelay = 0.10f;
+				_effectDamageDelay = 1.0f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
@@ -639,7 +639,7 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Poison Impact";
 				_effectSoundPath = "Sounds/sfx/impact_damage_0";
-				_effectSoundDelay = 0.15f;
+				_effectSoundDelay = 0.10f;
 				_effectDamageDelay = 0.25f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
@@ -690,8 +690,8 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Poison Fang Impact";
 				_effectSoundPath = "Sounds/sfx/slash_impact_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.75f;
+				_effectSoundDelay = 0.10f;
+				_effectDamageDelay = 0.50f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
@@ -739,8 +739,8 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Severing Strike Impact";
 				_effectSoundPath = "Sounds/sfx/slash_impact_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.80f;
+				_effectSoundDelay = 0.10f;
+				_effectDamageDelay = 0.50f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
@@ -783,8 +783,8 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Claws Impact";
 				_effectSoundPath = "Sounds/sfx/slash_impact_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.75f;
+				_effectSoundDelay = 0.10f;
+				_effectDamageDelay = 0.50f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
@@ -826,8 +826,8 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Slash Impact";
 				_effectSoundPath = "Sounds/sfx/slash_impact_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.80f;
+				_effectSoundDelay = 0.10f;
+				_effectDamageDelay = 0.50f;
 				_effectRadius = 0;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;
@@ -866,8 +866,8 @@ public class Spell {
 
 				_effectParticlePath = "Prefabs/Effects/Lightning Strike";
 				_effectSoundPath = "Sounds/sfx/lightning_strike_0";
-				_effectSoundDelay = 0.15f;
-				_effectDamageDelay = 0.80f;
+				_effectSoundDelay = 0.10f;
+				_effectDamageDelay = 0.50f;
 				_effectRadius = 3;
 				_effectRotateToDirection = false;
 				_effectIgnoresWalls = false;

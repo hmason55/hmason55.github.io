@@ -364,7 +364,9 @@ public class UnitBehaviour : MonoBehaviour {
 	}
 
 	IEnumerator ESetInputCooldown(BaseUnit bUnit, float delay = 0.5f, bool recast = false) {
+		if(bUnit == null) {yield break;}
 		bUnit.isCasting = true;
+
 		yield return new WaitForSeconds(delay);
 		if(bUnit == null) {yield break;}
 		bUnit.isCasting = false;
@@ -479,6 +481,7 @@ public class UnitBehaviour : MonoBehaviour {
 		deathParticlesGO.transform.SetParent(canvas);
 		deathParticlesGO.transform.SetAsLastSibling();
 
+		if(_baseUnit == null) {return;}
 		RectTransform unitRT = _baseUnit.tile.dungeonManager.tiles[_baseUnit.tile.position.x, _baseUnit.tile.position.y].unit.GetComponent<RectTransform>();
 		RectTransform particleRT = deathParticlesGO.GetComponent<RectTransform>();
 		particleRT.anchoredPosition = new Vector2(unitRT.anchoredPosition.x + DungeonManager.TileWidth/2, unitRT.anchoredPosition.y + DungeonManager.TileHeight/2);

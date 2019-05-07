@@ -21,6 +21,15 @@ public class ShortcutUI : UIBehaviour {
 	CastOptionsUI _castOptionsUI;
 
 	bool _shortcutsEnabled = true;
+	bool _suggestEndTurn = false;
+
+	public BagBehaviour bagBehaviour {
+		get {return _bagBehaviour;}
+	}
+
+	public AttributesUI attributesUI {
+		get {return _attributesUI;}
+	}
 
 	new void Awake() {
 		base.Awake();
@@ -30,13 +39,36 @@ public class ShortcutUI : UIBehaviour {
 	}
 
 	void Update() {
-		if(Input.GetKeyDown(KeyCode.I)) {
+		if(Input.GetKeyDown(KeyCode.T)) {
+			if(IsPlayerTurn()) {
+				OnEndTurnShortcut();
+			}
+		} else if(Input.GetKeyDown(KeyCode.B)) {
 			OnBagShortcut();
-		}
-
-		if(Input.GetKeyDown(KeyCode.C)) {
+		} else if(Input.GetKeyDown(KeyCode.C)) {
 			OnCharacterShortcut();
 		}
+		
+		if(!_suggestEndTurn) {
+			if(IsPlayerTurn()) {
+				if(_hotbar.baseUnit.attributes.currentEssence <= 0) {
+					EndTurnButtonSuggest();
+				}
+			}
+		}
+	}
+
+	public bool IsPlayerTurn() {
+		if(_combatManager == null) {return false;}
+		if(_hotbar == null) {return false;}
+		if(_combatManager.turnQueue.Length <= 0) {return false;}
+
+		BaseUnit cmUnit = _combatManager.turnQueue.queue[0].baseUnit;
+		if(cmUnit.Equals(_hotbar.baseUnit) && _hotbar.baseUnit.playerControlled) {
+			return true;
+		}
+
+		return false;
 	}
 
 	public void OnMenuShortcut() {
@@ -61,25 +93,53 @@ public class ShortcutUI : UIBehaviour {
 
 	public void OnEndTurnShortcut() {
 		
-		if(_hotbar.baseUnit.playerControlled) {
-			EndTurn();
-			_hotbar.DisableHotkeys();
+		if(IsPlayerTurn()) {
+			if(_combatManager.turnQueue.Length > 1) {
+				EndTurn();
+				_hotbar.DisableHotkeys();
+			}
 		}
 		_combatManager.EndTurn(_hotbar.baseUnit);
 	}
 
 	public void BeginTurn() {
-		_endTurnShortcut.interactable = true;
-		Text text = _endTurnShortcut.GetComponentInChildren<Text>();
-		text.color = Color.white;
+		
+		EndTurnButtonReset();
 
 		_hotbar.EnableHotkeys();
 	}
 
-	public void SuggestEndTurn() {
+	public void EndTurnButtonSuggest() {
 		ColorBlock cb = _endTurnShortcut.colors;
-		cb.normalColor = new Color(0.5f, 1f, 0.5f);
+		cb.normalColor = new Color(0.65f, 1f, 0.65f, 1f);
+		cb.highlightedColor = new Color(0.85f, 1f, 0.85f, 1f);
 		_endTurnShortcut.colors = cb;
+		_suggestEndTurn = true;
+
+		Text text = _endTurnShortcut.GetComponentInChildren<Text>();
+		text.color = new Color(0.75f, 1f, 0.75f, 1f);
+	}
+
+	void EndTurnButtonReset() {
+		_endTurnShortcut.interactable = true;
+		ColorBlock cb = _endTurnShortcut.colors;
+		cb.normalColor = new Color(200f / 255f, 200f / 255f, 200f / 255f);
+		cb.highlightedColor = new Color(1f, 1f, 1f, 1f);
+		_endTurnShortcut.colors = cb;
+
+		Text text = _endTurnShortcut.GetComponentInChildren<Text>();
+		text.color = Color.white;
+	}
+
+	void EndTurnButtonDisable() {
+		ColorBlock cb = _endTurnShortcut.colors;
+		cb.normalColor = new Color(200f / 255f, 200f / 255f, 200f / 255f);
+		//cb.highlightedColor = new Color(1f, 1f, 1f, 1f);
+		_endTurnShortcut.colors = cb;
+
+		Text text = _endTurnShortcut.GetComponentInChildren<Text>();
+		text.color = Color.gray;
+		Disable();
 	}
 
 	public void EndTurn() {
@@ -87,13 +147,9 @@ public class ShortcutUI : UIBehaviour {
 			_castOptionsUI.CancelCast();
 		}
 
-		ColorBlock cb = _endTurnShortcut.colors;
-		cb.normalColor = new Color(200f / 255f, 200f / 255f, 200f / 255f);
-		_endTurnShortcut.colors = cb;
+		EndTurnButtonDisable();
 
-		Disable();
-		Text text = _endTurnShortcut.GetComponentInChildren<Text>();
-		text.color = Color.gray;
+		_suggestEndTurn = false;
 	}
 
 	public void Enable() {
@@ -106,10 +162,15 @@ public class ShortcutUI : UIBehaviour {
 
 	public void Disable() {
 		_shortcutsEnabled = false;
-		_menuShortcut.interactable = false;
+		//_menuShortcut.interactable = false;
 		_characterShortcut.interactable = false;
 		_bagShortcut.interactable = false;
 		_endTurnShortcut.interactable = false;
+	}
+
+	public void HideAll() {
+		_bagBehaviour.HideUI();
+		_attributesUI.HideUI();
 	}
 
 

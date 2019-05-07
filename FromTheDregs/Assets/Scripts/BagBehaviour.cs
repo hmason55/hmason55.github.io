@@ -225,7 +225,7 @@ public class BagBehaviour : MonoBehaviour {
 				consumed = _bag.Consume(bagItem.item.id);
 				if(consumed) {
 					SyncUnit();
-					_baseUnit.RemoveStatusByCondition(Effect.EffectType.Bleed, Effect.Conditions.DurationExpire, 5);
+					_baseUnit.RemoveStatusByCondition(Effect.EffectType.Bleed, Effect.Conditions.DurationExpire, 9999);
 					AnnouncementManager.Display("Your blood begins to clot.", Color.white);
 				}
 			break;
@@ -234,23 +234,19 @@ public class BagBehaviour : MonoBehaviour {
 				consumed = _bag.Consume(bagItem.item.id);
 				if(consumed) {
 					SyncUnit();
-					_baseUnit.RemoveStatusByCondition(Effect.EffectType.Poison, Effect.Conditions.DurationExpire, 5);
+					_baseUnit.RemoveStatusByCondition(Effect.EffectType.Poison, Effect.Conditions.DurationExpire, 9999);
 					AnnouncementManager.Display("The poison subsides.", Color.white);
 				}
 			break;
 
 			case BaseItem.ID.Potion_of_Return:
-				if(!_baseUnit.inCombat) {
-					consumed = _bag.Consume(bagItem.item.id);
-					if(consumed) {
-						_baseUnit.attributes.currentHealth = _baseUnit.attributes.totalHealth;
-						_baseUnit.attributes.currentEssence = _baseUnit.attributes.totalEssence;
-						SyncUnit();
-						_baseUnit.Return();
-						return;
-					}
-				} else {
-					AnnouncementManager.Display("This item cannot be used while in combat.", Color.red);
+				consumed = _bag.Consume(bagItem.item.id);
+				if(consumed) {
+					_baseUnit.attributes.currentHealth = _baseUnit.attributes.totalHealth;
+					_baseUnit.attributes.currentEssence = _baseUnit.attributes.totalEssence;
+					SyncUnit();
+					_baseUnit.Return();
+					return;
 				}
 			break;
 		}

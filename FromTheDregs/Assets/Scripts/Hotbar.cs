@@ -62,7 +62,16 @@ public class Hotbar : MonoBehaviour {
 			if(!_castOptionsUI.hidden) {
 				CancelPreview();
 			} else {
-				_menuUI.ToggleUI();
+				if(_shortcutUI.IsPlayerTurn()) {
+					if(!_shortcutUI.bagBehaviour.hidden || !_shortcutUI.attributesUI.hidden) {
+						_shortcutUI.HideAll();
+					} else {
+						_menuUI.ToggleUI();
+					}
+				} else {
+					_menuUI.ToggleUI();
+				}
+				
 			}
 		} else if(Input.GetKeyDown(KeyCode.W)) {
 			QuickMove(0, 1);

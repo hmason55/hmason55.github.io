@@ -14,6 +14,10 @@ public class UIBehaviour : MonoBehaviour {
 
     protected bool _hidden = true;
 
+    public bool hidden {
+        get {return _hidden;}
+    }
+
     protected void Awake() {
         _audioManager = GameObject.FindObjectOfType<AudioManager>();
     }

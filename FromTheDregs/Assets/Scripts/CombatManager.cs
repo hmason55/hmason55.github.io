@@ -38,10 +38,11 @@ public class CombatManager : MonoBehaviour {
 	public void EndCombat() {
 		AnnouncementManager.Display("Combat has ended.", Color.yellow);
 		foreach(Turn turn in _turnQueue.queue) {
-			turn.baseUnit.inCombat = false;
-			turn.baseUnit.attributes.currentEssence = turn.baseUnit.attributes.totalEssence;
+			if(turn.baseUnit != null) {
+				turn.baseUnit.inCombat = false;
+				turn.baseUnit.attributes.currentEssence = turn.baseUnit.attributes.totalEssence;
+			}
 		}
-		
 		
 		_essenceUI.UpdateUI();
 		_inCombat = false;
@@ -70,6 +71,7 @@ public class CombatManager : MonoBehaviour {
 					}
 				}
 
+				
 				// Turn select
 				BaseUnit baseUnit = _turnQueue.queue[0].baseUnit;
 
@@ -79,7 +81,7 @@ public class CombatManager : MonoBehaviour {
 							case Effect.EffectType.Bleed:
 							case Effect.EffectType.Block:
 							case Effect.EffectType.Poison:
-								yield return new WaitForSeconds(1.5f);
+								yield return new WaitForSeconds(0.5f);
 							break;
 						}
 					}
@@ -152,7 +154,7 @@ public class CombatManager : MonoBehaviour {
 					} else {
 						EndTurn(baseUnit);
 					}
-					yield return new WaitForSeconds(0.5f);
+					yield return new WaitForSeconds(0.25f);
 				} else {
 
 					yield return new WaitForSeconds(0.1f);
@@ -165,6 +167,7 @@ public class CombatManager : MonoBehaviour {
 
 
 	public void EndTurn(BaseUnit b) {
+		if(b == null) {return;}
 
 		// Post turn effects are removed.
 		b.RemoveStatusByCondition(Effect.EffectType.Stun, Effect.Conditions.PostTurnExpiration, 1);
@@ -190,14 +193,16 @@ public class CombatManager : MonoBehaviour {
 		// if it's the player's turn
 		if(_turnQueue.queue.Count > 0) {
 			Turn turn = _turnQueue.queue[0];
-			if(turn.baseUnit.playerControlled) {
-				turn.baseUnit.SetAsCameraTarget();
-				turn.baseUnit.SetAsInterfaceTarget();
-				_shortcutUI.BeginTurn();
-				_hotbar.essenceUI.SetFilledEssence(turn.baseUnit.attributes.currentEssence);
-				//Debug.Log(turn.baseUnit.preset);
+			Debug.Log(turn);
+			if(turn.baseUnit != null) {
+				if(turn.baseUnit.playerControlled) {
+					turn.baseUnit.SetAsCameraTarget();
+					turn.baseUnit.SetAsInterfaceTarget();
+					_shortcutUI.BeginTurn();
+					_hotbar.essenceUI.SetFilledEssence(turn.baseUnit.attributes.currentEssence);
+					//Debug.Log(turn.baseUnit.preset);
+				}
 			}
-
 		} else {
 			Debug.LogWarning("Turn queue is empty.");	
 		}

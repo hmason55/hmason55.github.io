@@ -12,6 +12,7 @@ public class AttributesUI : UIBehaviour {
     BaseUnit _baseUnit;
 
 
+
     public BaseUnit baseUnit {
         get {return _baseUnit;}
         set {_baseUnit = value;}

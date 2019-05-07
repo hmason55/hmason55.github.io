@@ -145,7 +145,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 1fa9630f957ac604d82b66ab67a0ec66, type: 3}
     - {fileID: 21300000, guid: 1fa9630f957ac604d82b66ab67a0ec66, type: 3}
     entrance:
-    - {fileID: 21300000, guid: e3137a4cae30ee4469bf98f41aca0029, type: 3}
+    - {fileID: 21300000, guid: 5b05733ba1f80a64c9753bba7572ddf9, type: 3}
     exit:
     - {fileID: 21300000, guid: d50b2abd42670e246b85c6c16b34263c, type: 3}
     - {fileID: 21300000, guid: 2130a64b5618c7348bb43adcd33b16ae, type: 3}

@@ -742,7 +742,7 @@ public class BaseUnit {
 			break;
 
 			case Effect.EffectType.Block:
-				color = new Color(0.25f, 0.25f, 1f);
+				color = new Color(0f, 0.5f, 1f);
 
 				int blockValue = 0;
 				if(spell.caster.bag != null) {
@@ -902,6 +902,11 @@ public class BaseUnit {
 
 			PlayerData.current.bag = _bag;
 			PlayerData.current.character = _character;
+
+			// Restore health and essence.
+			_attributes.currentHealth = _attributes.totalHealth;
+			_attributes.currentEssence = _attributes.totalEssence;
+
 			PlayerData.current.attributes = _attributes;
 			PlayerData.current.retrievalMode = true;
 			SaveLoadData.Save();
@@ -912,6 +917,10 @@ public class BaseUnit {
 	}
 
 	public void Return() {
+		// Restore health and essence.
+		_attributes.currentHealth = _attributes.totalHealth;
+		_attributes.currentEssence = _attributes.totalEssence;
+
 		// Set target zone to hub.
 		PlayerData.current.currentZone = DungeonManager.Zone.Hub;
 		PlayerData.current.targetZone = DungeonManager.Zone.Hub;

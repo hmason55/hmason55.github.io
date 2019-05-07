@@ -628,14 +628,14 @@ public class BaseItem {
 			case ID.Potion_of_Clotting:
 				_name = "Potion of Clotting";
 				_category = Category.Consumable;
-				_description = "A potion with a thick consistency. Reduces the effects of <b><color=#C00000>Bleed</color></b> by 5.";
+				_description = "A potion with a thick consistency. Cures the effects of <b><color=#C00000>Bleed</color></b>.";
 				_value = 8;
 			break;
 
 			case ID.Potion_of_Curing:
 				_name = "Potion of Curing";
 				_category = Category.Consumable;
-				_description = "A potion with a foul odor. Reduces the effects of <b><color=#40C000>Poison</color></b> by 5.";
+				_description = "A potion with a foul odor. Cures the effects of <b><color=#40C000>Poison</color></b>.";
 				_value = 8;
 			break;
 
@@ -650,28 +650,28 @@ public class BaseItem {
 			case ID.Rune_of_Constitution:
 				_name = "Rune of Constitution";
 				_category = Category.Runestone;
-				_description = "A stone with mysterious engravings. Increases the owner's Constitution.";
+				_description = "A stone with mysterious engravings. When acquired, this item <b>PERMANENTLY</b> increases the owner's <b>Constitution</b>.";
 				_value = 0;
 			break;
 
 			case ID.Rune_of_Dexterity:
 				_name = "Rune of Dexterity";
 				_category = Category.Runestone;
-				_description = "A stone with mysterious engravings. Increases the owner's Dexterity.";
+				_description = "A stone with mysterious engravings. When acquired, this item <b>PERMANENTLY</b> increases the owner's <b>Dexterity</b>.";
 				_value = 0;
 			break;
 
 			case ID.Rune_of_Intelligence:
 				_name = "Rune of Intelligence";
 				_category = Category.Runestone;
-				_description = "A stone with mysterious engravings. Increases the owner's Intelligence.";
+				_description = "A stone with mysterious engravings. When acquired, this item <b>PERMANENTLY</b> increases the owner's <b>Intelligence</b>.";
 				_value = 0;
 			break;
 
 			case ID.Rune_of_Strength:
 				_name = "Rune of Strength";
 				_category = Category.Runestone;
-				_description = "A stone with mysterious engravings. Increases the owner's Strength.";
+				_description = "A stone with mysterious engravings. When acquired, this item <b>PERMANENTLY</b> increases the owner's <b>Strength</b>.";
 				_value = 0;
 			break;
 
