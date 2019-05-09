@@ -1,0 +1,13 @@
+---
+layout: post
+title: Version 0.1d
+description: >
+  A page showing how regular markdown content is styled in Hydejack.
+image: /assets/img/blog/example-content-ii.jpg
+noindex: true
+---
+
+This patch fixed a game-breaking bug.
+
+### Gameplay
+- Fixed a bug that would prevent players from ending their turn.
