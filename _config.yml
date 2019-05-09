@@ -51,11 +51,11 @@ author:
 # Add links to the sidebar.
 menu:
   - title:             Example
-    url:               /example
+    url:               /example/
   - title:             Patch Notes
-    url:               /patch-notes
+    url:               /patch-notes/
   - title:             Documentation
-    url:               /docs
+    url:               /docs/
 
 
 # Add links to the footer.
