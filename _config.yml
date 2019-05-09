@@ -52,10 +52,10 @@ author:
 menu:
   - title:             Example
     url:               /example/
-  - title:             Patch Notes
-    url:               /patch-notes/
-  - title:             Documentation
-    url:               /docs/
+  #- title:             Patch Notes
+  #  url:               /patch-notes/
+  #- title:             Documentation
+  #  url:               /docs/
 
 
 # Add links to the footer.
