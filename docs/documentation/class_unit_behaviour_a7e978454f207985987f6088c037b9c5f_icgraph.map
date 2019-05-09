@@ -1,9 +1,0 @@
-<map id="UnitBehaviour.Transfer" name="UnitBehaviour.Transfer">
-<area shape="rect" id="node1" title=" " alt="" coords="1263,31,1413,57"/>
-<area shape="rect" id="node2" href="$class_dungeon_manager.html#a196f2f6754dae0d38307197bbbf033c4" title=" " alt="" coords="996,31,1215,57"/>
-<area shape="rect" id="node3" href="$class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61" title=" " alt="" coords="716,31,948,57"/>
-<area shape="rect" id="node4" href="$class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="472,31,668,57"/>
-<area shape="rect" id="node5" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="285,5,394,32"/>
-<area shape="rect" id="node6" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,56,424,83"/>
-<area shape="rect" id="node7" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
-</map>

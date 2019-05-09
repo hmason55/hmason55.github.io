@@ -1,5 +1,0 @@
-<map id="CharacterCreationUI.ShowUI" name="CharacterCreationUI.ShowUI">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,192,32"/>
-<area shape="rect" id="node2" href="$class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="240,5,400,32"/>
-<area shape="rect" id="node3" href="$class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="448,5,617,32"/>
-</map>

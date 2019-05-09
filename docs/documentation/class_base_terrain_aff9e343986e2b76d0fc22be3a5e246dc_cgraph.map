@@ -1,5 +1,0 @@
-<map id="BaseTerrain.Initialize" name="BaseTerrain.Initialize">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,148,57"/>
-<area shape="rect" id="node2" href="$class_base_terrain.html#ada3cddbd511be2890cbb9635d997441b" title=" " alt="" coords="211,5,377,32"/>
-<area shape="rect" id="node3" href="$class_terrain_behaviour.html#a1f1234296c90b45abf0ad3ee6f9e78ac" title=" " alt="" coords="196,56,392,83"/>
-</map>

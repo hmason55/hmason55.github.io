@@ -1,5 +1,0 @@
-<map id="DungeonManager.RenderTiles" name="DungeonManager.RenderTiles">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,200,57"/>
-<area shape="rect" id="node2" href="$class_tile.html#abf58797ff0c2df3eddfc9854c3f61dd2" title=" " alt="" coords="248,5,395,32"/>
-<area shape="rect" id="node3" href="$class_tile.html#a1baa5fe3ab8f887e8985a85fba21210a" title=" " alt="" coords="249,56,393,83"/>
-</map>
