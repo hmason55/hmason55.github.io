@@ -49,6 +49,8 @@ public class TerrainBehaviour : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void OnPointerClick(PointerEventData eventData) {
+		if(eventData.button == PointerEventData.InputButton.Right) {return;}
+		
 		Hotbar hotbar = GameObject.FindObjectOfType<Hotbar>();
 		if(readyCast) {
 			hotbar.ReadyCast(_tile.position);

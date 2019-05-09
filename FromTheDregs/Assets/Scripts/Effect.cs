@@ -51,7 +51,7 @@ public class Effect {
     int _duration = 0;
     bool _stackable = false;                    public bool stackable                          {get{return _stackable;}                 set{_stackable = value;}}
 
-    float _basePotency = 1.0f;                  public float basePotency                       {get{return _basePotency;}               set{_basePotency = value;}}
+    float _basePotency = 0f;                  public float basePotency                       {get{return _basePotency;}               set{_basePotency = value;}}
 
     int _currentHealth;
     public int currentHealth {

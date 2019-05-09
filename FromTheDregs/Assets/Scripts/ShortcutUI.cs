@@ -105,7 +105,7 @@ public class ShortcutUI : UIBehaviour {
 	public void BeginTurn() {
 		
 		EndTurnButtonReset();
-
+		Enable();
 		_hotbar.EnableHotkeys();
 	}
 

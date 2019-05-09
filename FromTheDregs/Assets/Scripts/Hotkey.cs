@@ -16,12 +16,13 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 
 	[SerializeField] Button _moreInfo;
 
-	[SerializeField] Text _costText;
+	[SerializeField] GameObject _cost;
+	[SerializeField] Text _keybindText;
 
 	Spell _spell;
 
 	bool _hidden = false;
-	bool _enabled = true;
+	bool _active = true;
 
 	bool _showCastRange = false;
 	bool _showEffectRange = false;
@@ -39,6 +40,7 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 			_spell = new Spell(_preset);
 			_text.text = _spell.spellName;
 			gameObject.name = _spell.spellName;
+			UpdateKeybind();
 			UpdateCost();
 		}
 	}
@@ -53,9 +55,9 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 		set {_hidden = value;}
 	}
 
-	public bool enabled {
-		get {return _enabled;}
-		set {_enabled = value;}
+	public bool active {
+		get {return _active;}
+		set {_active = value;}
 	}
 
 	// Use this for initialization
@@ -66,21 +68,29 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 		
 		UpdateName();
 		UpdateCost();
+		UpdateKeybind();
 	}
 
 	public void OnPointerClick(PointerEventData eventData) {
-		if(_enabled) {
+		if(_active) {
 			EventSystem.current.SetSelectedGameObject(null);
 			PreviewCast();
 		}
 	}
 
 	public void ShowMoreInfo() {
-		Debug.Log("Show info");
+		SpellTooltip tooltip = GameObject.FindObjectOfType<SpellTooltip>();
+		if(tooltip != null && _spell != null) {
+			tooltip.UpdateTooltip(_spell, _hotbar.baseUnit);
+			tooltip.Snap(transform.position.x, transform.position.y);
+		}
 	}
 
 	public void HideMoreInfo() {
-		Debug.Log("Hide info");
+		SpellTooltip tooltip = GameObject.FindObjectOfType<SpellTooltip>();
+		if(tooltip != null) {
+			tooltip.Reset();
+		}
 	}
 	public void UpdateName() {
 		if(_spell != null) {
@@ -92,9 +102,21 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 		}
 	}
 
+	public void UpdateKeybind() {
+		if(_spell != null) {
+			_keybindText.text = "[ " + (transform.GetSiblingIndex()+1) + " ]";
+		}
+	}
+
 	public void UpdateCost() {
 		if(_spell != null) {
-			_costText.text = _spell.essenceCost.ToString();
+			for(int i = _cost.transform.childCount-1; i > 0; i--) {
+				if(i < _spell.essenceCost) {
+					_cost.transform.GetChild(i).gameObject.SetActive(true);
+				} else {
+					_cost.transform.GetChild(i).gameObject.SetActive(false);
+				}
+			}
 		}
 	}
 
@@ -107,7 +129,7 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 	public void PreviewCast() {
 		//Debug.Log(_spell.essenceCost + "/" + _hotbar.baseUnit.attributes.currentEssence);
 		_spell.SyncWithCaster(_hotbar.baseUnit);
-		_hotbar.tapController.image.raycastTarget = false;
+		//_hotbar.tapController.image.raycastTarget = false;
 		_hotbar.activeSpell = _spell;
 		if(_hotbar.baseUnit.inCombat) {
 			_hotbar.essenceUI.PreviewUsage(_hotbar.baseUnit.attributes.currentEssence, _spell.essenceCost);
@@ -117,14 +139,14 @@ public class Hotkey : MonoBehaviour, IPointerClickHandler {
 	}
 	
 	public void Enable() {
-		_enabled = true;
+		_active = true;
 		Button button = GetComponent<Button>();
 		button.interactable = true;
 		_text.color = Color.white;
 	}
 
 	public void Disable() {
-		_enabled = false;
+		_active = false;
 		Button button = GetComponent<Button>();
 		button.interactable = false;
 		_text.color = Color.gray;

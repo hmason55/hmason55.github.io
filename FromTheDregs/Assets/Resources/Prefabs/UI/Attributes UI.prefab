@@ -700,7 +700,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: '1
@@ -1708,7 +1708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4247317f51d3c1f48b1f981265a3ea63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewUnit: {fileID: 0}
+  _previewUnit: {fileID: 0}
   backgroundImage: {fileID: 6610644103551608441}
   faceImage: {fileID: 8877344844525227138}
   mouthImage: {fileID: 4777334928019864006}
@@ -1781,6 +1781,7 @@ MonoBehaviour:
   _hairType: 3
   _skinColor: 2
   _hairColor: 3
+  _startingClass: 10
 --- !u!1 &6660962183287466757
 GameObject:
   m_ObjectHideFlags: 0

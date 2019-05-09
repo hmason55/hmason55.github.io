@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Hotbar : MonoBehaviour {
 
-	[SerializeField] TapController _tapController;
 	[SerializeField] EssenceUI _essenceUI;
 	[SerializeField] CastOptionsUI _castOptionsUI;
 	CombatManager _combatManager;
@@ -15,11 +14,6 @@ public class Hotbar : MonoBehaviour {
 	MenuUI _menuUI;
 	BaseUnit _baseUnit;
 	Spell _activeSpell;
-
-	public TapController tapController {
-		get {return _tapController;}
-		set {_tapController = value;}
-	}
 
 	public EssenceUI essenceUI {
 		get {return _essenceUI;}
@@ -73,6 +67,28 @@ public class Hotbar : MonoBehaviour {
 				}
 				
 			}
+		} else if(Input.GetKeyDown(KeyCode.Alpha1) && _hotkeys.Count >= 1) {
+			if(_hotkeys[0].active && !_baseUnit.isCasting) {
+				_hotkeys[0].PreviewCast();
+			}
+		} else if(Input.GetKeyDown(KeyCode.Alpha2) && _hotkeys.Count >= 2) {
+			if(_hotkeys[1].active && !_baseUnit.isCasting) {
+				_hotkeys[1].PreviewCast();
+			}
+		} else if(Input.GetKeyDown(KeyCode.Alpha3) && _hotkeys.Count >= 3) {
+			if(_hotkeys[2].gameObject.activeSelf) {
+				_hotkeys[2].PreviewCast();
+			}
+		} else if(Input.GetKeyDown(KeyCode.Alpha4) && _hotkeys.Count >= 4) {
+
+		} else if(Input.GetKeyDown(KeyCode.Alpha5) && _hotkeys.Count >= 5) {
+
+		} else if(Input.GetKeyDown(KeyCode.Alpha6) && _hotkeys.Count >= 6) {
+
+		} else if(Input.GetMouseButtonDown(1)) {
+			if(_activeSpell != null) {
+				CancelPreview();
+			}
 		} else if(Input.GetKeyDown(KeyCode.W)) {
 			QuickMove(0, 1);
 		} else if(Input.GetKeyDown(KeyCode.A)) {
@@ -88,6 +104,7 @@ public class Hotbar : MonoBehaviour {
 		if(Mathf.Abs(x) + Mathf.Abs(y) > 1) {return;}
 		if(_baseUnit == null) {return;}
 		if(_baseUnit.isCasting) {return;}
+		if(_combatManager.turnCount < 0) {return;}
 
 		if(_baseUnit.inCombat) {
 			if(_baseUnit.attributes.currentEssence > 0) {
@@ -144,7 +161,6 @@ public class Hotbar : MonoBehaviour {
 			_castOptionsUI.HideUI();
 		}
 
-		_tapController.image.raycastTarget = true;
 		_activeSpell.ResetTiles();
 		_activeSpell.DestroyCastParticles();
 		_essenceUI.ResetAll();
@@ -163,7 +179,7 @@ public class Hotbar : MonoBehaviour {
 	public void ConfirmCast() {
 		bool combatStatus = _baseUnit.inCombat;
 
-		if(combatStatus == true) {
+		if(combatStatus == true && _activeSpell != null) {
 			_baseUnit.Cast(_activeSpell.essenceCost);
 		}
 
@@ -206,6 +222,7 @@ public class Hotbar : MonoBehaviour {
 				_hotkeys[i].ClearCharges();
 				_hotkeys[i].UpdateName();
 				_hotkeys[i].UpdateCost();
+				_hotkeys[i].UpdateKeybind();
 			}
 		}
 	}
@@ -215,6 +232,7 @@ public class Hotbar : MonoBehaviour {
 			if(_hotkeys[i].spell != null) {
 				_hotkeys[i].UpdateName();
 				_hotkeys[i].UpdateCost();
+				_hotkeys[i].UpdateKeybind();
 			}
 		}
 		EventSystem.current.SetSelectedGameObject(null);
@@ -230,6 +248,7 @@ public class Hotbar : MonoBehaviour {
 	public void HideHotkeys() {
 		foreach(Hotkey hotkey in _hotkeys) {
 			hotkey.UpdateCost();
+			hotkey.UpdateKeybind();
 			hotkey.gameObject.SetActive(false);
 		}
 	}

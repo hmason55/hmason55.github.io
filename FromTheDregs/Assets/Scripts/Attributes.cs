@@ -168,7 +168,12 @@ public class Attributes {
     int _currentHealth;
 	public int currentHealth {
 		get {return _currentHealth;}
-		set {_currentHealth = value;}
+		set {
+				_currentHealth = value;
+				if(_currentHealth > _totalHealth) {
+					_currentHealth = _totalHealth;
+				}
+			}
 	}
 
     int _totalHealth;
@@ -318,15 +323,15 @@ public class Attributes {
             break;
 
 			case Attributes.Preset.Giant_Spider:
-				_baseStrength =     10;
-				_baseDexterity =    12;
+				_baseStrength =     8;
+				_baseDexterity =    9;
 				_baseIntelligence = 1;
 				_baseConstitution = 8;
 				_baseWisdom =       1;
 				_baseCharisma =     1;
 
 				_overrideHealthScaling = true;
-				_baseHealth = 240;
+				_baseHealth = 120;
 
 				_baseSpeed =        3;
 				_baseEssence =      3;
@@ -334,15 +339,15 @@ public class Attributes {
 			break;
 
 			case Attributes.Preset.Giant_Widow:
-				_baseStrength =     12;
-				_baseDexterity =    15;
+				_baseStrength =     8;
+				_baseDexterity =    10;
 				_baseIntelligence = 1;
 				_baseConstitution = 10;
 				_baseWisdom =       1;
 				_baseCharisma =     1;
 
 				_overrideHealthScaling = true;
-				_baseHealth = 300;
+				_baseHealth = 180;
 
 				_baseSpeed =        3;
 				_baseEssence =      3;
@@ -403,15 +408,15 @@ public class Attributes {
 			break;
 
 			case Attributes.Preset.Skeleton:
-				_baseStrength =     3;
-				_baseDexterity =    8;
+				_baseStrength =     2;
+				_baseDexterity =    4;
 				_baseIntelligence = 1;
 				_baseConstitution = 1;
 				_baseWisdom =       1;
 				_baseCharisma =     1;
 
 				_overrideHealthScaling = true;
-				_baseHealth = 52;
+				_baseHealth = 40;
 
 				_baseSpeed =        3;
 				_baseEssence =      2;
@@ -435,8 +440,8 @@ public class Attributes {
 			break;
 
 			case Attributes.Preset.Skeleton_Thrall:
-				_baseStrength =     3;
-				_baseDexterity =    5;
+				_baseStrength =     2;
+				_baseDexterity =    4;
 				_baseIntelligence = 1;
 				_baseConstitution = 1;
 				_baseWisdom =       1;
@@ -483,7 +488,7 @@ public class Attributes {
 			break;
 
 			case Attributes.Preset.Spiderling:
-				_baseStrength =     3;
+				_baseStrength =     2;
 				_baseDexterity =    4;
 				_baseIntelligence = 1;
 				_baseConstitution = 3;
@@ -491,7 +496,7 @@ public class Attributes {
 				_baseCharisma =     1;
 
 				_overrideHealthScaling = true;
-				_baseHealth = 65;
+				_baseHealth = 40;
 
 				_baseSpeed =        3;
 				_baseEssence =      3;
@@ -500,15 +505,15 @@ public class Attributes {
 
 
 			case Attributes.Preset.Widowling:
-				_baseStrength =     4;
-				_baseDexterity =    5;
+				_baseStrength =     2;
+				_baseDexterity =    4;
 				_baseIntelligence = 1;
 				_baseConstitution = 3;
 				_baseWisdom =       1;
 				_baseCharisma =     1;
 
 				_overrideHealthScaling = true;
-				_baseHealth = 80;
+				_baseHealth = 50;
 
 				_baseSpeed =        3;
 				_baseEssence =      3;

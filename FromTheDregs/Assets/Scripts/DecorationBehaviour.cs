@@ -54,6 +54,7 @@ public class DecorationBehaviour : MonoBehaviour, IPointerClickHandler, IPointer
 					containerBehaviour.name = _baseDecoration.decorationType.ToString();
 					containerBehaviour.SyncBag(_baseDecoration.bag);
 					containerBehaviour.defaultAction = ContainerBehaviour.Actions.Take;
+					containerBehaviour.tile = _tile;
 				}
 			break;
 

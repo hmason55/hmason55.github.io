@@ -36,6 +36,7 @@ public class BaseItem {
 		Parma,
 		Potion_of_Clotting,
 		Potion_of_Curing,
+		Potion_of_Healing,
 		Potion_of_Return,
 		
 
@@ -277,10 +278,6 @@ public class BaseItem {
 				_sprite = spriteManager.items.shields[0];
 			break;
 
-			case ID.Potion_of_Return:
-				_sprite = spriteManager.items.potions[0];
-			break;
-
 			case ID.Potion_of_Clotting:
 				_sprite = spriteManager.items.potions[2];
 			break;
@@ -289,6 +286,14 @@ public class BaseItem {
 				_sprite = spriteManager.items.potions[1];
 			break;
 
+			case ID.Potion_of_Return:
+				_sprite = spriteManager.items.potions[0];
+			break;
+
+			case ID.Potion_of_Healing:
+				_sprite = spriteManager.items.potions[3];
+			break;
+			
 			case ID.Rune_of_Constitution:
 				_sprite = spriteManager.items.runestones[3];
 			break;
@@ -639,11 +644,18 @@ public class BaseItem {
 				_value = 8;
 			break;
 
+			case ID.Potion_of_Healing:
+				_name = "Potion of Healing";
+				_category = Category.Consumable;
+				_description = "A potion with a sweet odor. Restores 35% of your total <b><color=#DD1717>Health</color></b>.";
+				_value = 8;
+			break;
+
 			case ID.Potion_of_Return:
 				_name = "Potion of Return";
 				_category = Category.Consumable;
 				_description = "A dark cloudy potion. Can be used to return to a safe place.";
-				_value = 15;
+				_value = 8;
 			break;
 
 			

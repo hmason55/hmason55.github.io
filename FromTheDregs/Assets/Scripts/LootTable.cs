@@ -25,6 +25,7 @@ public class LootTable {
                 _commonDropRate = 25f;
                 _commonItems.Add(BaseItem.ID.Potion_of_Curing);
                 _commonItems.Add(BaseItem.ID.Potion_of_Return);
+                _commonItems.Add(BaseItem.ID.Potion_of_Healing);
 
                 _rareDropRate = 0f;
 
@@ -35,6 +36,7 @@ public class LootTable {
                 _commonDropRate = 25f;
                 _commonItems.Add(BaseItem.ID.Potion_of_Curing);
                 _commonItems.Add(BaseItem.ID.Potion_of_Return);
+                _commonItems.Add(BaseItem.ID.Potion_of_Healing);
 
                 _rareDropRate = 0f;
 
@@ -45,6 +47,7 @@ public class LootTable {
                 _commonDropRate = 25f;
                 _commonItems.Add(BaseItem.ID.Potion_of_Clotting);
                 _commonItems.Add(BaseItem.ID.Potion_of_Return);
+                _commonItems.Add(BaseItem.ID.Potion_of_Healing);
 
                 _rareDropRate = 0f;
 
@@ -55,6 +58,7 @@ public class LootTable {
                 _commonDropRate = 25f;
                 _commonItems.Add(BaseItem.ID.Potion_of_Clotting);
                 _commonItems.Add(BaseItem.ID.Potion_of_Return);
+                _commonItems.Add(BaseItem.ID.Potion_of_Healing);
 
                 _rareDropRate = 10f;
                 _rareItems.Add(BaseItem.ID.Staff_of_Flame);
@@ -67,6 +71,7 @@ public class LootTable {
                 _commonDropRate = 10f;
                 _commonItems.Add(BaseItem.ID.Potion_of_Clotting);
                 _commonItems.Add(BaseItem.ID.Potion_of_Return);
+                _commonItems.Add(BaseItem.ID.Potion_of_Healing);
 
                 _rareDropRate = 0f;
 
@@ -77,6 +82,7 @@ public class LootTable {
                 _commonDropRate = 25f;
                 _commonItems.Add(BaseItem.ID.Potion_of_Clotting);
                 _commonItems.Add(BaseItem.ID.Potion_of_Return);
+                _commonItems.Add(BaseItem.ID.Potion_of_Healing);
 
                 _rareDropRate = 10f;
                 _rareItems.Add(BaseItem.ID.Gladius);
@@ -88,6 +94,8 @@ public class LootTable {
             case BaseUnit.Preset.Spiderling:
                 _commonDropRate = 25f;
                 _commonItems.Add(BaseItem.ID.Potion_of_Curing);
+                _commonItems.Add(BaseItem.ID.Potion_of_Return);
+                _commonItems.Add(BaseItem.ID.Potion_of_Healing);
 
                 _rareDropRate = 0f;
 
@@ -97,6 +105,8 @@ public class LootTable {
             case BaseUnit.Preset.Widowling:
                 _commonDropRate = 25f;
                 _commonItems.Add(BaseItem.ID.Potion_of_Curing);
+                _commonItems.Add(BaseItem.ID.Potion_of_Return);
+                _commonItems.Add(BaseItem.ID.Potion_of_Healing);
 
                 _rareDropRate = 0f;
 
@@ -107,6 +117,10 @@ public class LootTable {
 
     public void SpawnLoot(Tile tile) {
         if(tile == null) {return;}
+        if(tile.decoration != null) {
+            if(tile.decoration.baseDecoration == null) {return;}
+            if(tile.decoration.baseDecoration.decorationType == BaseDecoration.DecorationType.Exit) {return;}
+        }
 
         float roll = Random.Range(0f, 100f);
         BaseItem item;

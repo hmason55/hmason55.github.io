@@ -239,6 +239,15 @@ public class BagBehaviour : MonoBehaviour {
 				}
 			break;
 
+			case BaseItem.ID.Potion_of_Healing:
+				consumed = _bag.Consume(bagItem.item.id);
+				if(consumed) {
+					SyncUnit();
+					_baseUnit.attributes.currentHealth += (int)(_baseUnit.attributes.totalHealth * 0.35f);
+					AnnouncementManager.Display("Your health was restored.", Color.white);
+				}
+			break;
+
 			case BaseItem.ID.Potion_of_Return:
 				consumed = _bag.Consume(bagItem.item.id);
 				if(consumed) {

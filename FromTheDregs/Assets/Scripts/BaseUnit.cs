@@ -9,6 +9,8 @@ public class BaseUnit {
 		Giant_Spider,
 		Giant_Widow,
 		Green_Slime,
+		Mage,
+		Rogue,
 		Skeleton,
 		Skeleton_Summoner,
 		Skeleton_Thrall,
@@ -17,24 +19,6 @@ public class BaseUnit {
 		Warrior,
 		Widowling,
 
-	}
-
-	public enum SpritePreset {
-		none,
-		direrat,
-		direratsmall,
-		greenslime,
-		knight,
-		sandbehemoth,
-		sandworm,
-		skeleton,
-		spider,
-		spidersmall,
-		warrior,
-		widow,
-		widowsmall,
-		wizard,
-		
 	}
 
 	#region Stats
@@ -70,8 +54,6 @@ public class BaseUnit {
 
 	Tile _tile;
 	Preset _preset;
-
-	SpritePreset _spritePreset = SpritePreset.knight;
 
 	Attributes.Preset _statPreset = Attributes.Preset.Human;
 
@@ -180,11 +162,6 @@ public class BaseUnit {
 
 	public Preset preset {
 		get {return _preset;}
-	}
-
-	public SpritePreset spritePreset {
-		set {_spritePreset = value;}
-		get {return _spritePreset;}
 	}
 
 	public string deathParticlesPath {
@@ -296,10 +273,10 @@ public class BaseUnit {
 				_moveset = new Moveset(new int[,] {
 				// Index, Charges
 					{0, 3},
-					{1, 3},
+					{1, 1},
 					{0, 2},
 					{2, 2},
-					{1, 3},
+					{1, 2},
 				}, Random.Range(0, 1));
 			break;
 
@@ -356,13 +333,14 @@ public class BaseUnit {
 				_statPreset = Attributes.Preset.Widowling;
 				_innateSpells.Add(Spell.Preset.Bite);
 				_innateSpells.Add(Spell.Preset.Poison_Fang);
+				_innateSpells.Add(Spell.Preset.Block);
 				_moveset = new Moveset(new int[,] {
 				// Index, Charges
 					{0, 1},
 					{1, 1},
 					{0, 2},
-					{1, 2},
-					{1, 3},
+					{1, 1},
+					{2, 1},
 				}, Random.Range(0, 2));
 			break;
 		}
@@ -374,14 +352,16 @@ public class BaseUnit {
 	}
 
 	// Used for custom units.
-	public BaseUnit(bool player, Attributes.Preset attribs, SpritePreset sprite, Tile tile, bool customSprite = false) {
+	public BaseUnit(bool player, Attributes.Preset attribs, Preset preset, Tile tile, bool customSprite = false, bool preview = false) {
 		_playerControlled = player;
 		_attributes = new Attributes(attribs);
+		_preset = preset;
 		_effects = new List<Effect>();
 		_innateSpells = new List<Spell.Preset>();
-		_spritePreset = sprite;
 		_tile = tile;
 		_useCustomSprites = customSprite;
+
+		if(preview) {return;}
 		Init();
 	}
 
@@ -394,6 +374,7 @@ public class BaseUnit {
 		
 		if(_playerControlled) {
 			
+			_preset = PlayerData.current.unitPreset;
 			if(PlayerData.current.character != null) {
 				_character = PlayerData.current.character;
 			}
@@ -505,6 +486,7 @@ public class BaseUnit {
 	}
 
 	public void BeginTurn() {
+		
 		_tickedStatuses = false;
 		if(_tile.unit != null) {
 			_tile.unit.TickStatus(Effect.Conditions.DurationExpire);
@@ -618,11 +600,6 @@ public class BaseUnit {
 			attributesUI.baseUnit = this;
 		}
 
-		TapController tapController = GameObject.FindObjectOfType<TapController>();
-		if(tapController != null) {
-			tapController.baseUnit = this;
-		}
-
 		HitpointUI hitpointUI = GameObject.FindObjectOfType<HitpointUI>();
 		if(hitpointUI != null) {
 			hitpointUI.baseUnit = this;
@@ -677,20 +654,21 @@ public class BaseUnit {
 			// Aggro this unit if it's not in combat
 			if(dealer != null) {
 				CombatManager cm = _tile.combatManager;
-				if(dealer != this && !cm.turnQueue.UnitInQueue(this)) {
-					
-					// Add self to turn queue
-					if(!_inCombat) {
-						_inCombat = true;
+
+				if(_attributes.alliance != dealer.attributes.alliance) {
+					_inCombat = true;
+					if(!cm.turnQueue.UnitInQueue(this)) {
 						cm.turnQueue.Add(new Turn(this, _attributes.speed));
-						cm.CheckCombatStatus(new List<BaseUnit> {this});
-						cm.CheckCombatStatus(cm.GetAllBaseUnits());
 					}
 
-					// Add dealer to to turn queue
-					if(!dealer.inCombat && !cm.turnQueue.UnitInQueue(dealer)) {
-						dealer.inCombat = true;
+					dealer.inCombat = true;
+					if(!cm.turnQueue.UnitInQueue(dealer)) {
 						cm.turnQueue.Add(new Turn(dealer, dealer.attributes.speed));
+					}
+
+					if(!cm.inCombat) {
+						cm.BeginCombat();
+						cm.CheckCombatStatus(new List<BaseUnit> {this, dealer});
 					}
 				}
 			}
@@ -959,7 +937,7 @@ public class BaseUnit {
 	void LoadCustomSprite(SpriteManager spriteManager) {
 		_idleAnimation = new Sprite[IdleAnimationLength];
 		
-		switch(spritePreset) {
+		switch(_preset) {
 			default:
 				_shadowSprite = spriteManager.shadowMedium;
 			break;
@@ -1063,13 +1041,41 @@ public class BaseUnit {
 
 		// Fallback to a default skin template.
 		if(skinTemplate == null) {
-			skinTemplate = spriteManager.unitArmor.chainmailSkin.ToArray();
+			switch(_preset) {
+				case Preset.Mage:
+					skinTemplate = spriteManager.unitArmor.cottonSkin.ToArray();
+				break;
+
+				case Preset.Rogue:
+					skinTemplate = spriteManager.unitArmor.leatherSkin.ToArray();
+				break;
+
+				default:
+					skinTemplate = spriteManager.unitArmor.chainmailSkin.ToArray();
+				break;
+			}
+			
 		}
 		
 		// Fallback to a default armor template.
 		if(armorTemplate == null) {
-			armorTemplate = spriteManager.unitArmor.chainmail.ToArray();
-			armorPalette = ParseColor(Swatch.chainmailArmor);
+			
+			switch(_preset) {
+				case Preset.Mage:
+					armorTemplate = spriteManager.unitArmor.cotton.ToArray();
+					armorPalette = ParseColor(Swatch.cottonArmor);
+				break;
+
+				case Preset.Rogue:
+					armorTemplate = spriteManager.unitArmor.leather.ToArray();
+					armorPalette = ParseColor(Swatch.leatherArmor);
+				break;
+
+				default:
+					armorTemplate = spriteManager.unitArmor.chainmail.ToArray();
+					armorPalette = ParseColor(Swatch.chainmailArmor);
+				break;
+			}
 		}
 		
 		// Prepare palette for the unit's skin.

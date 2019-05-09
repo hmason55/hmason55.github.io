@@ -595,6 +595,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 63fb61d50e64bf3409ff1429583c2313, type: 3}
     - {fileID: 21300000, guid: 1a5b0cfda06a3464980533a65553cbf4, type: 3}
     - {fileID: 21300000, guid: 3ede2cd8ea1c7b7469d11cea30d1ab82, type: 3}
+    - {fileID: 21300000, guid: 66772d021c40d6447a218c69324cab74, type: 3}
     currency:
     - {fileID: 21300000, guid: cb419cfd406925449b589789b9d37d64, type: 3}
     keys:
@@ -694,7 +695,11 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 367c1f60f35a9e943a48456787593210, type: 3}
     - {fileID: 21300000, guid: 4b9ad706fa77ae54db8d092307377c20, type: 3}
     - {fileID: 21300000, guid: 367c1f60f35a9e943a48456787593210, type: 3}
-    staff: []
+    staff:
+    - {fileID: 21300000, guid: 4aaa2e610e2998942a8ea7227b716d2a, type: 3}
+    - {fileID: 21300000, guid: ad529db2a9132a5468a38ca316702528, type: 3}
+    - {fileID: 21300000, guid: 95efd60e9ed43424d8d807ffc5d46295, type: 3}
+    - {fileID: 21300000, guid: 4aaa2e610e2998942a8ea7227b716d2a, type: 3}
     tome:
     - {fileID: 21300000, guid: 9431810ed14854c4f81b202676fae0aa, type: 3}
     - {fileID: 21300000, guid: 8038388096e39b6488bced3683b14fcd, type: 3}

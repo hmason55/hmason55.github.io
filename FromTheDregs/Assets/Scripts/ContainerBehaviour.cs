@@ -21,8 +21,11 @@ public class ContainerBehaviour : MonoBehaviour {
 
     List<BagItemBehaviour> _bagSlots;
 	Bag _bag;
+	Tile _tile;
     bool _hidden = true;
 	string _name = "Container Name";
+
+	
 
 	public bool hidden {
 		get {return _hidden;}
@@ -31,6 +34,11 @@ public class ContainerBehaviour : MonoBehaviour {
 	public string name {
 		get {return _name;}
 		set {_name = value;}
+	}
+
+	public Tile tile {
+		get {return _tile;}
+		set {_tile = value;}
 	}
 	
     public Bag bag {
@@ -75,7 +83,6 @@ public class ContainerBehaviour : MonoBehaviour {
 				_bagSlots[i].item = _bag.items[i];
 			}
 		}
-
 		UpdateSlotImages();
     }
 
@@ -84,6 +91,20 @@ public class ContainerBehaviour : MonoBehaviour {
 			_bagSlots[i].UpdateImage();
 		}
     }
+
+	void RemoveLootContainer() {
+		Debug.Log("Removing Container");
+		if(_bag.items[0] == null) {
+			if(_tile != null) {
+				if(_tile.baseDecoration.decorationType == BaseDecoration.DecorationType.Loot) {
+					_tile.baseDecoration = null;
+					if(_tile.decoration != null) {
+						_tile.decoration.Clear();
+					}
+				}
+			}
+		}
+	}
     
 	public void ToggleUI() {
 		if(hidden) {
@@ -109,6 +130,10 @@ public class ContainerBehaviour : MonoBehaviour {
 			ItemTooltip tooltip = GameObject.FindObjectOfType<ItemTooltip>();
 			if(tooltip != null) {
 				tooltip.Reset();
+			}
+
+			if(_tile != null) {
+				RemoveLootContainer();
 			}
 		}
 	}

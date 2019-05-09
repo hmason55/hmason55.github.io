@@ -135,6 +135,7 @@ public class Spell {
 	string _effectParticlePath;
 	string _effectSoundPath;
 	float _effectSoundDelay;
+	string _description = "";
 
 	#region Accessors
 
@@ -274,6 +275,11 @@ public class Spell {
 			}
 			return "";
 		}
+	}
+
+	public string description {
+		get {return _description;}
+		set {_description = value;}
 	}
 	#endregion
 
@@ -811,7 +817,7 @@ public class Spell {
 				_intentType = IntentType.Attack;
 
 				damage = new Effect(Effect.EffectType.Damage);
-				damage.SetPrimaryScaling(Effect.ScalingType.Strength, 1.50f);
+				damage.SetPrimaryScaling(Effect.ScalingType.Strength, 2.0f);
 				_spellTargetEffects.Add(damage);
 				
 				_castParticlePath = "";
@@ -994,6 +1000,9 @@ public class Spell {
 		}
 
 		Tile _tile = _caster.tile.dungeonManager.tiles[x, y];
+		if(_tile == null) {
+			return;
+		}
 
 		// Check wall collision
 		if(_tile.baseTerrain != null) {
@@ -1557,7 +1566,6 @@ public class Spell {
 		}
 
 		if(_createsEffect) {
-			spellDuration += 1f;
 			spellDuration += _effectPreSpawnDelay;
 			spellDuration += _effectDamageDelay;
 		}
@@ -1650,6 +1658,301 @@ public class Spell {
 			_essenceCost = 0;
 		}
 	}
+	
+	public string TargetingAttributesToString() {
+		string str = "<b>Targets</b>\n\n";
 
+		str += "Cast Radius\n";
 
+		if(_effectRadius > 0) {
+			str += "Effect Radius\n";
+		} else {
+			str += "Single Target\n";
+		}
+		
+		str += "\n";
+
+		if(_projCount > 0) {
+			str += "Projectiles\n";
+		}
+
+		if(_effectRadius > 0) {
+			str += _effectShape.ToString()+"\n";
+		}
+
+		if(_castThroughWalls) {
+			str += "Ignores Walls\n";
+		}
+
+		if(_castTargetUnitType != TargetUnitType.None) {
+			str += "Effects " + _castTargetUnitType.ToString()+"\n";
+		}
+
+		return str;
+	}
+
+	public string TargetingValuesToString() {
+		string str = "\n\n";
+
+		str += _castRadius+"\n";
+		if(_effectRadius > 0) {
+			str += _effectRadius+"\n";
+		} else {
+			str += "\n";
+		}
+		str += "\n";
+
+		if(_projCount > 0) {
+			str += _projCount+"\n";
+		}
+
+		if(_effectRadius > 0) {
+			str += "\n";
+		}
+
+		if(_castThroughWalls) {
+			str += "\n";
+		}
+
+		if(_castTargetUnitType != TargetUnitType.None) {
+			str += "\n";
+		}
+
+		return str;
+	}
+
+	public string PotencyAttributesToString(Bag bag, Attributes attributes) {
+		string str = "<b>Potency</b>\n\n";
+
+		foreach(Effect effect in _spellCasterEffects) {
+			str += EffectAttributesToString(effect, bag, attributes, true);
+		}
+
+		foreach(Effect effect in _spellTargetEffects) {
+			str += EffectAttributesToString(effect, bag, attributes);
+		}
+		
+		return str;
+	}
+
+	public string PotencyValuesToString(Bag bag, Attributes attributes) {
+		string str = "\n\n";
+
+		foreach(Effect effect in _spellCasterEffects) {
+			str += EffectValuesToString(effect, bag, attributes, true);
+		}
+
+		foreach(Effect effect in _spellTargetEffects) {
+			str += EffectValuesToString(effect, bag, attributes);
+		}
+
+		return str;
+	}
+
+	string EffectAttributesToString(Effect effect, Bag bag, Attributes attributes, bool self = false) {
+		string str = "";
+		string prefix = "Self";
+
+		if(!self) {
+			prefix = "Target";
+		}
+
+		int baseValue = 0;
+		int equipmentBonus = 0;
+		int attributeBonus = 0;
+
+		switch(effect.effectType) {
+
+			case Effect.EffectType.Bleed:
+				str += "<b>"+prefix+" Bleed</b>\n";
+				baseValue = effect.deactivationConditions[Effect.Conditions.DurationExpire];
+				equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.BleedModifier);
+			break;
+
+			case Effect.EffectType.Block:
+				str += "<b>"+prefix+" Block</b>\n";
+				equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.BlockModifier);
+			break;
+
+			case Effect.EffectType.Damage:
+				str += "<b>"+prefix+" Damage</b>\n";
+				switch(_damageType) {
+					case DamageType.Spell:
+						equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.SpellDamage);
+					break;
+
+					default:
+						equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.PhysicalDamage);
+					break;
+				}
+			break;
+
+			case Effect.EffectType.Poison:
+				str += "<b>"+prefix+" Poison</b>\n";
+				baseValue = effect.deactivationConditions[Effect.Conditions.DurationExpire];
+				equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.PoisonModifier);
+			break;
+
+			case Effect.EffectType.Stun:
+				str += "<b>"+prefix+" Stun</b>\n";
+				//equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.);
+			break;
+		}
+
+		if(baseValue != 0) {
+			str += "Base\n";
+		}
+
+		if(equipmentBonus != 0) {
+			str += "Equipment\n";
+		}
+
+		if(effect.primaryScalingValue > 0) {
+			str += effect.primaryScalingType.ToString()+"\n";
+		}
+
+		if(effect.secondaryScalingValue > 0) {
+			str += effect.secondaryScalingType.ToString()+"\n";
+		}
+		
+		if(effect.tertiaryScalingValue > 0) {
+			str += effect.tertiaryScalingType.ToString()+"\n";
+		}
+
+		if(baseValue != 0 || equipmentBonus != 0 || attributeBonus != 0) {
+			str += "<b>Total</b>\n\n";
+		}
+
+		return str;
+	}	
+
+	string EffectValuesToString(Effect effect, Bag bag, Attributes attributes, bool self = false) {
+		string str = "";
+		string prefix = "Self";
+
+		if(!self) {
+			prefix = "Target";
+		}
+
+		int equipmentBonus = 0;
+		int attributeBonus = 0;
+		int baseValue = 0;
+
+		switch(effect.effectType) {
+			case Effect.EffectType.Bleed:
+				str += "\n";
+				baseValue = effect.deactivationConditions[Effect.Conditions.DurationExpire];
+				equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.BleedModifier);
+			break;
+
+			case Effect.EffectType.Block:
+				str += "\n";
+				equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.BlockModifier);
+			break;
+
+			case Effect.EffectType.Damage:
+				str += "\n";
+				switch(_damageType) {
+					case DamageType.Spell:
+						equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.SpellDamage);
+					break;
+
+					default:
+						equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.PhysicalDamage);
+					break;
+				}
+			break;
+
+			case Effect.EffectType.Poison:
+				str += "\n";
+				baseValue = effect.deactivationConditions[Effect.Conditions.DurationExpire];
+				equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.PoisonModifier);
+			break;
+
+			case Effect.EffectType.Stun:
+				str += "\n";
+				//equipmentBonus = bag.GetEquipmentBonus(Bag.EquipmentBonus.);
+			break;
+		}
+
+		if(baseValue != 0) {
+			str += baseValue+"\n";
+		}
+
+		if(equipmentBonus != 0) {
+			str += equipmentBonus+"\n";
+		}
+
+		if(effect.primaryScalingValue > 0) {
+			int potency = 0;
+			
+			switch(effect.primaryScalingType) {
+				case Effect.ScalingType.Dexterity:
+					potency = (int)(effect.primaryScalingValue*attributes.dexterity);
+				break;
+				case Effect.ScalingType.Intelligence:
+					potency = (int)(effect.primaryScalingValue*attributes.intelligence);
+				break;
+				case Effect.ScalingType.Strength:
+					potency = (int)(effect.primaryScalingValue*attributes.strength);
+				break;
+			}
+
+			attributeBonus += potency;
+
+			if(potency != 0) {
+				str += potency+"\n";
+			}
+		}
+
+		if(effect.secondaryScalingValue > 0) {
+			int potency = 0;
+			
+			switch(effect.secondaryScalingType) {
+				case Effect.ScalingType.Dexterity:
+					potency = (int)(effect.secondaryScalingValue*attributes.dexterity);
+				break;
+				case Effect.ScalingType.Intelligence:
+					potency = (int)(effect.secondaryScalingValue*attributes.intelligence);
+				break;
+				case Effect.ScalingType.Strength:
+					potency = (int)(effect.secondaryScalingValue*attributes.strength);
+				break;
+			}
+
+			attributeBonus += potency;
+
+			if(potency != 0) {
+				str += potency+"\n";
+			}
+		}
+		
+		if(effect.tertiaryScalingValue > 0) {
+			int potency = 0;
+			
+			switch(effect.tertiaryScalingType) {
+				case Effect.ScalingType.Dexterity:
+					potency = (int)(effect.tertiaryScalingValue*attributes.dexterity);
+				break;
+				case Effect.ScalingType.Intelligence:
+					potency = (int)(effect.tertiaryScalingValue*attributes.intelligence);
+				break;
+				case Effect.ScalingType.Strength:
+					potency = (int)(effect.tertiaryScalingValue*attributes.strength);
+				break;
+			}
+
+			attributeBonus += potency;
+
+			if(potency != 0) {
+				str += potency+"\n";
+			}
+		}
+
+		if(baseValue != 0 || equipmentBonus != 0 || attributeBonus != 0) {
+			str += "<b>"+(baseValue + attributeBonus + equipmentBonus)+"</b>\n\n";
+		}
+		
+		return str;
+	}	
 }

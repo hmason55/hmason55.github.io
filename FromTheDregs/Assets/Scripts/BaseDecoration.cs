@@ -139,6 +139,15 @@ public class BaseDecoration {
 						_items.Add(new BaseItem(BaseItem.ID.Gold, Random.Range(2, 8)));
 					}
 
+					int rollItem = Random.Range(0, 100);
+					int commonItemRate = 25;
+					int rareItemRate = 15;
+					if(rollItem < rareItemRate) {
+						_items.Add(new BaseItem(BaseItem.ID.Potion_of_Healing));
+					} else if(rollItem < commonItemRate) {
+						_items.Add(new BaseItem(BaseItem.ID.Potion_of_Return));
+					}
+
 					//_items.Add(new BaseItem((BaseItem.ID)Random.Range(0, 16)));
 					_bag = new Bag(Bag.BagType.Container, _items);
 				}
@@ -161,6 +170,7 @@ public class BaseDecoration {
 				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Return));
 				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Clotting));
 				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Curing));
+				_items.Add(new BaseItem(BaseItem.ID.Potion_of_Healing));
 				_items.Add(new BaseItem(BaseItem.ID.Cotton_Tunic));
 				_items.Add(new BaseItem(BaseItem.ID.Leather_Jack));
 				_items.Add(new BaseItem(BaseItem.ID.Chainmail_Tunic));

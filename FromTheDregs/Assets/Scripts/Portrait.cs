@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class Portrait : MonoBehaviour {
 	public static int size = 48;
-	[SerializeField] UnitBehaviour previewUnit;
+	List<BaseUnit.Preset> _startingClasses;
+	int _startingClassIndex = 0;
+	[SerializeField] UnitBehaviour _previewUnit;
 
 	[SerializeField] Image backgroundImage;
 	[SerializeField] Image faceImage;
@@ -35,6 +37,8 @@ public class Portrait : MonoBehaviour {
 
 	[SerializeField] Character.SkinColor _skinColor = Character.SkinColor.Human_Light;
 	[SerializeField] Character.HairColor _hairColor = Character.HairColor.Chestnut;
+
+	[SerializeField] BaseUnit.Preset _startingClass = BaseUnit.Preset.Warrior;
 
 	#region Accessors
 	public Character.FaceType faceType {
@@ -68,14 +72,26 @@ public class Portrait : MonoBehaviour {
 	public Character.HairColor hairColor {
 		get {return _hairColor;}
 	}
+
+	public BaseUnit.Preset startingClass {
+		get {return _startingClass;}
+	}
+
+	public UnitBehaviour previewUnit {
+		get {return _previewUnit;}
+	}
 	#endregion
 
 	void Awake() {
+		InitStartingClasses();
 		ApplySwatches();
 	}
 
-	void Start() {
-		//ApplySwatches();
+	void InitStartingClasses() {
+		_startingClasses = new List<BaseUnit.Preset>();
+		_startingClasses.Add(BaseUnit.Preset.Warrior);
+		_startingClasses.Add(BaseUnit.Preset.Rogue);
+		_startingClasses.Add(BaseUnit.Preset.Mage);
 	}
 
 
@@ -176,21 +192,70 @@ public class Portrait : MonoBehaviour {
 
 	#region Interface
 	void ApplyToPreviewCharacter() {
-		if(previewUnit == null) {return;}
-		if(previewUnit.baseUnit == null) {return;}
+		if(_previewUnit == null) {return;}
 
-		if(previewUnit.baseUnit.character == null) {
-			previewUnit.baseUnit.character = new Character();
+		Attributes attributes = new Attributes(Attributes.Preset.Warrior);
+		BaseUnit.Preset preset = BaseUnit.Preset.Warrior;
+		switch(_startingClass) {
+		
+			case BaseUnit.Preset.Mage:
+				attributes = new Attributes(Attributes.Preset.Mage);
+				preset = BaseUnit.Preset.Mage;
+			break;
+
+			case BaseUnit.Preset.Rogue:
+				attributes = new Attributes(Attributes.Preset.Rogue);
+				preset = BaseUnit.Preset.Rogue;
+			break;
+
+			case BaseUnit.Preset.Warrior:
+			break;
 		}
 
-		previewUnit.baseUnit.character.faceType = faceType;
-		previewUnit.baseUnit.character.mouthType = mouthType;
-		previewUnit.baseUnit.character.beardType = beardType;
-		previewUnit.baseUnit.character.noseType = noseType;
-		previewUnit.baseUnit.character.hairType = hairType;
-		previewUnit.baseUnit.character.skinColor = skinColor;
-		previewUnit.baseUnit.character.hairColor = hairColor;
-		previewUnit.LoadSprites();
+		_previewUnit.baseUnit = new BaseUnit(true, attributes.preset, preset, null, true, true);
+		
+
+		// Unit equipment
+		_previewUnit.baseUnit.bag = new Bag(Bag.BagType.Bag);
+		_previewUnit.baseUnit.bag.Add(new BaseItem(BaseItem.ID.Gold, 120));
+		_previewUnit.baseUnit.bag.Add(new BaseItem(BaseItem.ID.Potion_of_Return));
+
+		switch(_startingClass) {
+			case BaseUnit.Preset.Mage:
+				_previewUnit.baseUnit.bag.Add(new BaseItem(BaseItem.ID.Staff_of_Flame));
+				_previewUnit.baseUnit.bag.Add(new BaseItem(BaseItem.ID.Novice_Tome));
+
+				_previewUnit.baseUnit.bag.Equip(_previewUnit.baseUnit.bag.FindItemWithID(BaseItem.ID.Staff_of_Flame));
+				_previewUnit.baseUnit.bag.Equip(_previewUnit.baseUnit.bag.FindItemWithID(BaseItem.ID.Novice_Tome));
+			break;
+
+			case BaseUnit.Preset.Rogue:
+				_previewUnit.baseUnit.bag.Add(new BaseItem(BaseItem.ID.Dagger));
+
+				_previewUnit.baseUnit.bag.Equip(_previewUnit.baseUnit.bag.FindItemWithID(BaseItem.ID.Dagger));
+			break;
+
+			case BaseUnit.Preset.Warrior:
+				_previewUnit.baseUnit.bag.Add(new BaseItem(BaseItem.ID.Gladius));
+				_previewUnit.baseUnit.bag.Add(new BaseItem(BaseItem.ID.Parma));
+
+				_previewUnit.baseUnit.bag.Equip(_previewUnit.baseUnit.bag.FindItemWithID(BaseItem.ID.Gladius));
+				_previewUnit.baseUnit.bag.Equip(_previewUnit.baseUnit.bag.FindItemWithID(BaseItem.ID.Parma));
+			break;
+		}
+
+		// Customization
+		_previewUnit.baseUnit.character = new Character();
+		_previewUnit.baseUnit.character.faceType = faceType;
+		_previewUnit.baseUnit.character.mouthType = mouthType;
+		_previewUnit.baseUnit.character.beardType = beardType;
+		_previewUnit.baseUnit.character.noseType = noseType;
+		_previewUnit.baseUnit.character.hairType = hairType;
+		_previewUnit.baseUnit.character.skinColor = skinColor;
+		_previewUnit.baseUnit.character.hairColor = hairColor;
+
+		_previewUnit.LoadSprites();
+
 	}
 
 	public void NextFace() {
@@ -358,6 +423,27 @@ public class Portrait : MonoBehaviour {
 		ApplySwatch(faceImage, faceTemplates[(int)_faceType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 		ApplySwatch(mouthImage, mouthTemplates[(int)_mouthType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
 		ApplySwatch(noseImage, noseTemplates[(int)_noseType], ParseColor(Swatch.GetSkinSwatch(_skinColor)));
+		ApplyToPreviewCharacter();
+	}
+
+	public void PreviousStartingClass() {
+		_startingClassIndex--;
+		if(_startingClassIndex < 0) {
+			_startingClassIndex = _startingClasses.Count-1;
+		}
+
+		_startingClass = _startingClasses[_startingClassIndex];
+		Debug.Log(_startingClass);
+		ApplyToPreviewCharacter();
+	}
+
+	public void NextStartingClass() {
+		_startingClassIndex++;
+		if(_startingClassIndex > _startingClasses.Count-1) {
+			_startingClassIndex = 0;
+		}
+
+		_startingClass = _startingClasses[_startingClassIndex];
 		ApplyToPreviewCharacter();
 	}
 	#endregion

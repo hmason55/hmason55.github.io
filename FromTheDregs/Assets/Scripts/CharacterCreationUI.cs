@@ -40,7 +40,6 @@ public class CharacterCreationUI : MonoBehaviour {
         HideUI();
         CreateDataSlot();
         SceneManager.LoadScene("game", LoadSceneMode.Single);
-
     }
 
     void CreateDataSlot() {
@@ -48,21 +47,13 @@ public class CharacterCreationUI : MonoBehaviour {
         playerData.slot = -1;
         playerData.currentZone = DungeonManager.Zone.Hub;
 
-        Character character = new Character();
+        Character character = portrait.previewUnit.baseUnit.character;
         character.name = nameField.text;
-        
-        character.faceType = portrait.faceType;
-        character.mouthType = portrait.mouthType;
-        character.beardType = portrait.beardType;
-        character.noseType = portrait.noseType;
-        character.hairType = portrait.hairType;
-        character.skinColor = portrait.skinColor;
-        character.hairColor = portrait.hairColor;
-
-        Attributes attributes = new Attributes(Attributes.Preset.Warrior);
 
         playerData.character = character;
-        playerData.attributes = attributes;
+        playerData.unitPreset = portrait.previewUnit.baseUnit.preset;
+        playerData.attributes = portrait.previewUnit.baseUnit.attributes;
+        playerData.bag = portrait.previewUnit.baseUnit.bag;
         PlayerData.current = playerData;
 
         SaveLoadData.Save();

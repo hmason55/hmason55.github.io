@@ -577,13 +577,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7a307a3e19edc46ade83f4d8b0b8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleText: {fileID: 453961593658268908}
-  categoryText: {fileID: 4618867198297441793}
-  itemImage: {fileID: 3191161811223390895}
-  attributesText: {fileID: 2020310570354460282}
-  spellsText: {fileID: 1868956475756455641}
-  descriptionText: {fileID: 8857620553995134759}
-  valueText: {fileID: 3463794854803589567}
+  _titleText: {fileID: 453961593658268908}
+  _categoryText: {fileID: 4618867198297441793}
+  _itemImage: {fileID: 3191161811223390895}
+  _attributesText: {fileID: 2020310570354460282}
+  _spellsText: {fileID: 1868956475756455641}
+  _descriptionText: {fileID: 8857620553995134759}
+  _valueText: {fileID: 3463794854803589567}
 --- !u!1 &5890953607426412876
 GameObject:
   m_ObjectHideFlags: 0

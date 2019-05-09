@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class ItemTooltip : MonoBehaviour {
     
-    [SerializeField] Text titleText;
-    [SerializeField] Text categoryText;
-    [SerializeField] Image itemImage;
-    [SerializeField] Text attributesText;
-    [SerializeField] Text spellsText;
-    [SerializeField] Text descriptionText;
-    [SerializeField] Text valueText;
+    [SerializeField] Text _titleText;
+    [SerializeField] Text _categoryText;
+    [SerializeField] Image _itemImage;
+    [SerializeField] Text _attributesText;
+    [SerializeField] Text _spellsText;
+    [SerializeField] Text _descriptionText;
+    [SerializeField] Text _valueText;
 
     RectTransform _rectTransform;
 
@@ -48,13 +48,13 @@ public class ItemTooltip : MonoBehaviour {
     public void UpdateTooltip(BaseItem item) {
         if(item == null) {return;}
 
-        titleText.text = item.name;
-        categoryText.text = item.CategoryToString();
-        attributesText.text = item.AttributesToString();
-        spellsText.text = item.SpellsToString();
-        itemImage.sprite = item.sprite;
-        descriptionText.text = item.description;
-        valueText.text = (item.value * item.quantity).ToString();
+        _titleText.text = item.name;
+        _categoryText.text = item.CategoryToString();
+        _attributesText.text = item.AttributesToString();
+        _spellsText.text = item.SpellsToString();
+        _itemImage.sprite = item.sprite;
+        _descriptionText.text = item.description;
+        _valueText.text = (item.value * item.quantity).ToString();
         
     }
 

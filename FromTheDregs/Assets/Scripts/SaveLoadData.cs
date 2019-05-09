@@ -37,7 +37,7 @@ public static class SaveLoadData {
 
     public static void Load() {
         if(!File.Exists(Application.persistentDataPath + "/saves.ftd")) {
-            File.Create(Application.persistentDataPath + "/saves.ftd");
+            File.Create(Application.persistentDataPath + "/saves.ftd").Dispose();
         }
 
         BinaryFormatter bf = new BinaryFormatter();

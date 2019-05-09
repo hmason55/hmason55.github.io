@@ -22,6 +22,20 @@ public class CombatManager : MonoBehaviour {
 	Coroutine _turnLoopCoroutine;
 	bool _inCombat = false;
 
+	int _turnCount = 0;
+	bool _preCombatDelay = false;
+	float _preCombatDelayDuration = 1.5f;
+	
+
+	public bool inCombat {
+		get {return _inCombat;}
+	}
+
+	public int turnCount {
+		get {return _turnCount;}
+
+	}
+
 	public TurnQueue turnQueue {
 		get {return _turnQueue;}
 	}
@@ -33,6 +47,7 @@ public class CombatManager : MonoBehaviour {
 	public void BeginCombat() {
 		AnnouncementManager.Display("You have entered combat.", Color.yellow);
 		_inCombat = true;
+		_turnCount = -1;
 	}
 
 	public void EndCombat() {
@@ -61,7 +76,7 @@ public class CombatManager : MonoBehaviour {
 						if(alliance1 == -5) {
 							alliance1 = turn.baseUnit.attributes.alliance;
 						} else if(	alliance2 == -5 && 
-									turn.baseUnit.attributes.alliance != alliance1) {
+							turn.baseUnit.attributes.alliance != alliance1) {
 							alliance2 = turn.baseUnit.attributes.alliance;
 						}
 					}
@@ -72,9 +87,15 @@ public class CombatManager : MonoBehaviour {
 				}
 
 				
+				
 				// Turn select
 				BaseUnit baseUnit = _turnQueue.queue[0].baseUnit;
-
+				
+				if(_turnCount == -1 && !_preCombatDelay) {
+					yield return new WaitForSeconds(_preCombatDelayDuration);
+					_preCombatDelay = true;
+				}
+				
 				if(!baseUnit.tickedStatuses) {
 					foreach(Effect effect in baseUnit.effects.ToArray()) {
 						switch(effect.effectType) {
@@ -193,7 +214,6 @@ public class CombatManager : MonoBehaviour {
 		// if it's the player's turn
 		if(_turnQueue.queue.Count > 0) {
 			Turn turn = _turnQueue.queue[0];
-			Debug.Log(turn);
 			if(turn.baseUnit != null) {
 				if(turn.baseUnit.playerControlled) {
 					turn.baseUnit.SetAsCameraTarget();
@@ -207,7 +227,7 @@ public class CombatManager : MonoBehaviour {
 			Debug.LogWarning("Turn queue is empty.");	
 		}
 
-		
+		_turnCount++;
 	}
 
 	public bool ValidateMoveTile(Tile tile) {

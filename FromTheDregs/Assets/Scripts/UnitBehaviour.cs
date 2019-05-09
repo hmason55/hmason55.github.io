@@ -326,7 +326,7 @@ public class UnitBehaviour : MonoBehaviour {
 		StartCoroutine(EMoveFromTo(from, to, duration));
 	}
 
-	public void SetInputCooldown(BaseUnit bUnit, float delay = 0.5f, bool recast = false) {
+	public void SetInputCooldown(BaseUnit bUnit, float delay = 0.2f, bool recast = false) {
 		if(_inputCooldownCoroutine != null || _baseUnit == null) {return;}
 		_inputCooldownCoroutine = StartCoroutine(ESetInputCooldown(bUnit, delay, recast));
 	}
@@ -363,7 +363,7 @@ public class UnitBehaviour : MonoBehaviour {
 		yield break;
 	}
 
-	IEnumerator ESetInputCooldown(BaseUnit bUnit, float delay = 0.5f, bool recast = false) {
+	IEnumerator ESetInputCooldown(BaseUnit bUnit, float delay = 0.2f, bool recast = false) {
 		if(bUnit == null) {yield break;}
 		bUnit.isCasting = true;
 
