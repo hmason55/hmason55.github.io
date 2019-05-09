@@ -30,8 +30,7 @@ description:           >
 
 # A shorter description for the sidebar.
 tagline:               >
-  "Best Jekyll Theme by a Mile".
-  Open `_config.yml` to edit this text.
+  A tactical role-playing game that emphasizes player strategy, careful planning, and exploration.
 
 # A list of keywords for your blog
 keywords:              []
@@ -70,7 +69,7 @@ menu:
 #     url:               /cookies-policy/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             © 2019. All rights reserved. Open `_config.yml` to edit this text.
+copyright:             © 2019 Hunter Mason. All rights reserved.
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/
