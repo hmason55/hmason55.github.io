@@ -53,7 +53,7 @@ menu:
   - title:             Example
     url:               /example/
   - title:             Documentation
-    url:               https://hmason55.github.io/FTD/docs
+    url:               https://hmason55.github.io/FTD/docs/
   - title:             About
     url:               /about/
 
