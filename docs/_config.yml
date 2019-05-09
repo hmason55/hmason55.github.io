@@ -52,10 +52,11 @@ author:
 menu:
   - title:             Example
     url:               https://hmason55.github.io/FTD/example
+  - title:             Patch Notes
+    url:               /patch-notes
   - title:             Documentation
     url:               https://hmason55.github.io/FTD/docs/
-  - title:             About
-    url:               https://hmason55.github.io/FTD/about
+
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
@@ -149,7 +150,7 @@ hydejack:
   no_google_fonts:     false
 
   # Set to `true` if you don't want to show an icon indicating external links
-  no_mark_external:    false
+  no_mark_external:    true
 
   # Set to `true` if third party plugins fail to work with dynamically loaded pages
   no_push_state:       false
