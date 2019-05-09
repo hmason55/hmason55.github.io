@@ -1,0 +1,9 @@
+<map id="CastOptionsUI.CancelCast" name="CastOptionsUI.CancelCast">
+<area shape="rect" id="node1" title=" " alt="" coords="5,101,183,128"/>
+<area shape="rect" id="node2" href="$class_hotbar.html#a0c213365074f45fd1b1010eabe3f3d4d" title=" " alt="" coords="231,69,379,96"/>
+<area shape="rect" id="node6" href="$class_cast_options_u_i.html#affc98e48b03c51f4dddda5cb96920697" title=" " alt="" coords="231,132,379,159"/>
+<area shape="rect" id="node3" href="$class_spell.html#a267e0b312732b826127c2d58ba64d90d" title=" " alt="" coords="458,5,574,32"/>
+<area shape="rect" id="node4" href="$class_spell.html#a46dfa81169863ddb791b3c7d5121fcb8" title=" " alt="" coords="427,56,605,83"/>
+<area shape="rect" id="node5" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="447,107,585,133"/>
+<area shape="rect" id="node7" href="$class_hotbar.html#a989b6728a8d86d60a851f68954edab90" title=" " alt="" coords="444,157,588,184"/>
+</map>

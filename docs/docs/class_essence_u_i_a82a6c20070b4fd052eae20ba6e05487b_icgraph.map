@@ -1,0 +1,17 @@
+<map id="EssenceUI.ResetAll" name="EssenceUI.ResetAll">
+<area shape="rect" id="node1" title=" " alt="" coords="956,209,1095,236"/>
+<area shape="rect" id="node2" href="$class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="717,171,908,197"/>
+<area shape="rect" id="node13" href="$class_hotbar.html#a0c213365074f45fd1b1010eabe3f3d4d" title=" " alt="" coords="739,247,887,273"/>
+<area shape="rect" id="node3" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="496,132,665,159"/>
+<area shape="rect" id="node5" href="$class_essence_u_i.html#a26023c3d4977188014384a1a40eb3ad9" title=" " alt="" coords="509,208,652,235"/>
+<area shape="rect" id="node10" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="513,56,648,83"/>
+<area shape="rect" id="node4" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,233,207,260"/>
+<area shape="rect" id="node6" href="$class_combat_manager.html#a8d14cf9a8265e20264151a615e309f12" title=" " alt="" coords="255,259,444,285"/>
+<area shape="rect" id="node7" href="$class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="272,309,427,336"/>
+<area shape="rect" id="node8" href="$class_essence_u_i.html#a1fd3a11e5b47cd87758d337fe1f61384" title=" " alt="" coords="268,157,431,184"/>
+<area shape="rect" id="node9" href="$class_essence_u_i.html#a39b3c1ec97a29130e2e8ab4050921ed6" title=" " alt="" coords="256,208,443,235"/>
+<area shape="rect" id="node11" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="285,5,413,32"/>
+<area shape="rect" id="node12" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="17,23,195,65"/>
+<area shape="rect" id="node14" href="$class_cast_options_u_i.html#a78fb30f53f8da2443cb801bd878dc149" title=" " alt="" coords="492,309,669,336"/>
+<area shape="rect" id="node15" href="$class_shortcut_u_i.html#ab2181e3a43736c065ce2ff0d8066903e" title=" " alt="" coords="282,360,417,387"/>
+</map>

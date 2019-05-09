@@ -1,0 +1,4 @@
+<map id="Bag.Remove" name="Bag.Remove">
+<area shape="rect" id="node1" title="Removes an item from the bag." alt="" coords="5,5,100,32"/>
+<area shape="rect" id="node2" href="$class_bag.html#a0f77c6c4e4e4782d81256fa81e7d18f4" title="Finds an item within the bag." alt="" coords="148,5,271,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="CastOptionsUI.ShowUI" name="CastOptionsUI.ShowUI">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node2" href="$class_hotbar.html#a2f8af9863292223ae00d361121164160" title=" " alt="" coords="208,5,347,32"/>
+<area shape="rect" id="node3" href="$class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a" title=" " alt="" coords="395,5,529,32"/>
+</map>

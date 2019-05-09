@@ -1,0 +1,12 @@
+<map id="Hotkey.PreviewCast" name="Hotkey.PreviewCast">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,144,133"/>
+<area shape="rect" id="node2" href="$class_spell.html#a65c49405edc86456dfdace46c81b1530" title=" " alt="" coords="202,31,353,57"/>
+<area shape="rect" id="node6" href="$class_essence_u_i.html#abe39202e5f4c5134bd6a16ddfd8bb017" title=" " alt="" coords="192,81,363,108"/>
+<area shape="rect" id="node7" href="$class_cast_options_u_i.html#a37c4fa85c666ede5418cd5d7e524ce35" title=" " alt="" coords="200,132,355,159"/>
+<area shape="rect" id="node10" href="$class_spell.html#ad49f8d3af9c5a885120ca85b510eae75" title=" " alt="" coords="202,183,353,209"/>
+<area shape="rect" id="node3" href="$class_spell.html#aee08370358e033af2bf7e0c4c2f2b2bd" title=" " alt="" coords="411,31,572,57"/>
+<area shape="rect" id="node4" href="$class_effect.html#a5c751c4432cf967c74fe16befbdbbe2e" title=" " alt="" coords="629,5,795,32"/>
+<area shape="rect" id="node5" href="$class_effect.html#a476b569a5adf97f1b691dcbb7e5cb325" title=" " alt="" coords="620,56,804,83"/>
+<area shape="rect" id="node8" href="$class_hotbar.html#a2f8af9863292223ae00d361121164160" title=" " alt="" coords="422,132,561,159"/>
+<area shape="rect" id="node9" href="$class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a" title=" " alt="" coords="645,132,779,159"/>
+</map>

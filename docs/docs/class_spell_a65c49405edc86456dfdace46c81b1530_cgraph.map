@@ -1,0 +1,6 @@
+<map id="Spell.SyncWithCaster" name="Spell.SyncWithCaster">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,156,57"/>
+<area shape="rect" id="node2" href="$class_spell.html#aee08370358e033af2bf7e0c4c2f2b2bd" title=" " alt="" coords="204,31,365,57"/>
+<area shape="rect" id="node3" href="$class_effect.html#a5c751c4432cf967c74fe16befbdbbe2e" title=" " alt="" coords="422,5,589,32"/>
+<area shape="rect" id="node4" href="$class_effect.html#a476b569a5adf97f1b691dcbb7e5cb325" title=" " alt="" coords="413,56,597,83"/>
+</map>

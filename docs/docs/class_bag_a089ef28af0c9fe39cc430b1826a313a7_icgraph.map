@@ -1,0 +1,7 @@
+<map id="Bag.FindItemWithID" name="Bag.FindItemWithID">
+<area shape="rect" id="node1" title="Finds an item within the bag by its ID." alt="" coords="627,56,765,83"/>
+<area shape="rect" id="node2" href="$class_bag.html#a85aa679243be4a24a6278d5f68c2ed5e" title="Uses a consumable item from the bag." alt="" coords="475,5,579,32"/>
+<area shape="rect" id="node4" href="$class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="5,49,193,90"/>
+<area shape="rect" id="node5" href="$class_bag_behaviour.html#a22439e4f35b9173c64d16c2534c4b388" title=" " alt="" coords="257,107,411,133"/>
+<area shape="rect" id="node3" href="$class_bag_behaviour.html#a407231bcd34e96129c9ae624a484a045" title=" " alt="" coords="241,5,427,32"/>
+</map>
