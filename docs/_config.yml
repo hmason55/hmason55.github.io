@@ -4,7 +4,7 @@
 # IMPORTANT: Set the URL of your site.
 # Set to https://<username>.github.io when hosting on GitHub Pages
 # (unless you are using a custom domain).
-url:                   https://hmason55.github.io/FTD
+url:                   https://hmason55.github.io
 
 # IMPORTANT: Set The "base URL" of your site.
 # When your site sits in a subdirectory, set to /<name of directory>
@@ -51,11 +51,11 @@ author:
 # Add links to the sidebar.
 menu:
   - title:             Example
-    url:               https://hmason55.github.io/FTD/example
+    url:               /example
   - title:             Patch Notes
     url:               /patch-notes
   - title:             Documentation
-    url:               https://hmason55.github.io/FTD/docs/
+    url:               /docs
 
 
 # Add links to the footer.
