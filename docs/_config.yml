@@ -4,7 +4,7 @@
 # IMPORTANT: Set the URL of your site.
 # Set to https://<username>.github.io when hosting on GitHub Pages
 # (unless you are using a custom domain).
-url:                   https://hmason55.github.io
+url:                   https://hmason55.github.io/FTD
 
 # IMPORTANT: Set The "base URL" of your site.
 # When your site sits in a subdirectory, set to /<name of directory>
@@ -53,7 +53,7 @@ menu:
   - title:             Example
     url:               /example/
   - title:             Documentation
-    url:               https://hydejack.com/docs/
+    url:               https://hmason55.github.io/FTD/documentation/
   - title:             About
     url:               /about/
 
