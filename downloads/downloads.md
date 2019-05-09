@@ -1,7 +1,7 @@
 ---
 # This page uses Hydejack's `about` layout, which shows the primary author's picture and about text at the top.
 # You can change it to the regular `page` layout if you want.
-layout: about
+layout: page
 
 # The title of the page.
 title: Downloads
@@ -15,18 +15,13 @@ description: >
 # You can show the description on the page by deleting this line:
 hide_description: true
 
-[**Download Launcher**]()
+[**Download Launcher**](/launcher.zip)
 
 # TODO
 # image: /assets/img/blog/hydejack-8.png
 ---
 
-# The "Best Jekyll Theme by a Mile".
-# {:.lead}
-
-# ![Screenshot](assets/img/blog/hydejack-8.png){:.lead}
 # Hydejack's cover page on a variety of screens.
-# {:.figure}
 
 # **Hydejack** is your presence on the web. It gives you a *blog* that is suitable for both prose and technical documentation, a *portfolio* to showcase your projects, and a beautiful *resume* template that looks amazing on the web and in print.
 
