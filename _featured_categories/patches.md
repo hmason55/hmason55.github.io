@@ -6,7 +6,7 @@ layout: list
 title: Patch Notes
 
 # The name of the tag, used in a post's front matter (e.g. tags: [<slug>]).
-slug: patchnotes
+slug: patches
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
