@@ -52,6 +52,8 @@ author:
 menu:
   - title:             Example
     url:               /example/
+  - title:             Downloads
+    url:               /downloads/
   - title:             Patch Notes
     url:               /patches/
   - title:             Documentation
