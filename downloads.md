@@ -16,7 +16,14 @@ hide_description: true
 
 ---
 
+### Downloads
+
 [**Download Launcher**](/launcher.zip)
+
+
+### Installation Guide
+
+asdfs
 
 [blog]: https://hydejack.com/blog/
 [portfolio]: https://hydejack.com/projects/
