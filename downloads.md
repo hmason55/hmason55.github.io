@@ -18,7 +18,7 @@ hide_description: true
 
 ### Downloads
 
-[**Download Launcher**](/launcher.zip)
+[**Download Launcher**](/downloads/launcher.zip)
 
 
 ### Installation Guide
