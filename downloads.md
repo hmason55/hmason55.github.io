@@ -16,11 +16,15 @@ hide_description: true
 
 ---
 
-### Downloads
+<!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://hmason55.github.com/downloads/launcher.zip" data-icon="octicon-cloud-download" data-size="large" aria-label="Download From the Dregs Game Launcher">Download Launcher</a>
 
 [**Download Launcher**](/downloads/launcher.zip)
 
 
-### Installation Guide
+## Installation Guide
 
 asd
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
