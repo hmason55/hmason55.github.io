@@ -11,5 +11,3 @@ slug: patches
 description: >
   Here you can view a history of the changes to the game client.
 ---
-
-<img src="/assets/img/tome.png"  width="96" height="96">
