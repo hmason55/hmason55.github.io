@@ -23,12 +23,13 @@ Units can move in 4 directions but not through other units, walls, or other obje
 
 <br/>
 The default key bindings for movement actions are:
-```
-Up:    W Key
-Down:  S Key
-Left:  A Key
-Right: D Key
-```
+
+| Direction | Key |
+|-----------|-----|
+| Up        | W   |
+| Down      | S   |
+| Left      | A   |
+| Right     | D   |
 
 <br/>
 ## User Interface
@@ -62,18 +63,18 @@ Clicking one of the available tiles will display an area where that the spell wi
 When a tile in this area is clicked, the spell will be cast and corresponding Essence will be spent.
 The default key bindings for spell actions are:
 
-| Spell 1 |  1 Key |
-| Spell 2 |  2 Key |
-| Spell 3 |  3 Key |
-Spell 2:  2 Key
-Spell 3:  3 Key
-Spell 4:  4 Key
-Spell 5:  5 Key
-Spell 6:  6 Key
-Spell 7:  7 Key
-Spell 8:  8 Key
-Spell 9:  9 Key
-Spell 10: 10 Key
+| Spell | Key |
+|-------|-----|
+| 1     | 1   |
+| 2     | 2   |
+| 3     | 3   |
+| 4     | 4   |
+| 5     | 5   |
+| 6     | 6   |
+| 7     | 7   |
+| 8     | 8   |
+| 9     | 9   |
+| 10    | 10  |
 
 
 ## Objects
