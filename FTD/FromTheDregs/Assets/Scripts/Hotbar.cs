@@ -11,6 +11,7 @@ public class Hotbar : MonoBehaviour {
 	CombatManager _combatManager;
 	List<Hotkey> _hotkeys;
 	ShortcutUI _shortcutUI;
+	HelpUI _helpUI;
 	MenuUI _menuUI;
 	BaseUnit _baseUnit;
 	Spell _activeSpell;
@@ -38,6 +39,7 @@ public class Hotbar : MonoBehaviour {
 		_combatManager = FindObjectOfType<CombatManager>();
 		_shortcutUI = FindObjectOfType<ShortcutUI>();
 		_menuUI = FindObjectOfType<MenuUI>();
+		_helpUI = FindObjectOfType<HelpUI>();
 		InitHotkeys();
 	}
 
@@ -58,12 +60,18 @@ public class Hotbar : MonoBehaviour {
 			} else {
 				if(_shortcutUI.IsPlayerTurn()) {
 					if(!_shortcutUI.bagBehaviour.hidden || !_shortcutUI.attributesUI.hidden) {
-						_shortcutUI.HideAll();
+						if(_helpUI.hidden) {
+							_shortcutUI.HideAll();
+						}
 					} else {
-						_menuUI.ToggleUI();
+						if(_helpUI.hidden) {
+							_menuUI.ToggleUI();
+						}
 					}
 				} else {
-					_menuUI.ToggleUI();
+					if(_helpUI.hidden) {
+						_menuUI.ToggleUI();
+					}
 				}
 				
 			}

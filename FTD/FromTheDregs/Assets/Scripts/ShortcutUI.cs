@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class ShortcutUI : UIBehaviour {
 
+	[SerializeField] Button _helpShortcut;
 	[SerializeField] Button _menuShortcut;
 	[SerializeField] Button _characterShortcut;
 	[SerializeField] Button _bagShortcut;
 	[SerializeField] Button _endTurnShortcut;
-	[SerializeField] MenuUI _menuUI;
+	HelpUI _helpUI;
+	MenuUI _menuUI;
 
-	[SerializeField] AttributesUI _attributesUI;
-	[SerializeField] BagBehaviour _bagBehaviour;
+	AttributesUI _attributesUI;
+	BagBehaviour _bagBehaviour;
 
 
 	CombatManager _combatManager;
@@ -36,11 +38,15 @@ public class ShortcutUI : UIBehaviour {
 		_combatManager = FindObjectOfType<CombatManager>();
 		_hotbar = FindObjectOfType<Hotbar>();
 		_castOptionsUI = FindObjectOfType<CastOptionsUI>();
+		_attributesUI = FindObjectOfType<AttributesUI>();
+		_bagBehaviour = FindObjectOfType<BagBehaviour>();
+		_helpUI = FindObjectOfType<HelpUI>();
+		_menuUI = FindObjectOfType<MenuUI>();
 	}
 
 	void Update() {
 		if(Input.GetKeyDown(KeyCode.T)) {
-			if(IsPlayerTurn()) {
+			if(IsPlayerTurn() && _endTurnShortcut.interactable) {
 				OnEndTurnShortcut();
 			}
 		} else if(Input.GetKeyDown(KeyCode.B)) {
@@ -69,6 +75,12 @@ public class ShortcutUI : UIBehaviour {
 		}
 
 		return false;
+	}
+
+	public void OnHelpShortcut() {
+		if(_shortcutsEnabled) {
+			_helpUI.ToggleUI();
+		}
 	}
 
 	public void OnMenuShortcut() {

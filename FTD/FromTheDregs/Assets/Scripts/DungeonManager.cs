@@ -46,8 +46,6 @@ public class DungeonManager : MonoBehaviour {
 	public static int chunkDimension = 16;
 	public static int dimension = dungeonDimension * chunkDimension;
 
-	public static Biome biome;
-
 	Vector2Int entrancePosition = new Vector2Int(-1, -1);
 	public Vector2Int exitPosition = new Vector2Int(-1, -1);
 	[SerializeField] int minimumPathSize = 4;
@@ -78,7 +76,7 @@ public class DungeonManager : MonoBehaviour {
 
 	Vector2Int _renderOrigin;
 
-	[SerializeField] Biome.BiomeType biomeType = Biome.BiomeType.forsaken;
+	Biome.BiomeType biomeType = Biome.BiomeType.forsaken;
 	Biome _biome;
 
 	List<Biome> biomes;

@@ -93,7 +93,6 @@ public class ContainerBehaviour : MonoBehaviour {
     }
 
 	void RemoveLootContainer() {
-		Debug.Log("Removing Container");
 		if(_bag.items[0] == null) {
 			if(_tile != null) {
 				if(_tile.baseDecoration.decorationType == BaseDecoration.DecorationType.Loot) {
