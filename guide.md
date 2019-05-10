@@ -9,17 +9,29 @@ title: Play Guide
 # Write a short (~150 characters) description of each blog post.
 # This description is used to preview the page on search engines, social media, etc.
 description: >
-  **Download the launcher to receive the latest updates to the game client!**
+  **Here you can learn the gameplay basics.**
 
 hide_description: false
 
 ---
 
+## Table of Contents
+
+1. [**Movement**](/guide/#movement)
+2. [**User Interface**](/guide/#user-interface)
+	* [**Resources**](/guide/#resources)
+	* [**Menu Shortcuts**](/guide/#menu-shortcuts)
+	* [**Profile**](/guide/#profile)
+	* [**Bag**](/guide/#bag)
+	* [**Spells**](/guide/#spells)
+3. [**Items**](/guide/#bag)
+4.
+5.
 
 ## Movement
 Units can move in 4 directions but not through other units, walls, or other objects. Movement is available both in and out of combat but only on the unit's turn. Moving while in combat costs **1 Essence** for each tile moved.
 
-![Directional Movement]()
+![Directional Movement](/assets/img/directional_movement.png)
 
 <br/>
 The default key bindings for movement actions are:
@@ -35,30 +47,65 @@ The default key bindings for movement actions are:
 ## User Interface
 user interface
 
+### Resources
+resources
+
+![Resources](/assets/img/resources.png)
+
+<br/>
+
+### Menu Shortcuts
+menu shortcuts
+
+![Shortcuts](/assets/img/shortcuts.png)
+
+<br/>
+Help shortcut information
+
+![Help Shortcut](/assets/img/help_shortcut.png)
+
+</br>
+### Profile
+profile information
+
+![Profile](/assets/img/profile.png)
+
+</br>
+### Bag
+bag information
+
+![Bag](/assets/img/bag.png)
+
+</br>
+Interface panels such as the [**Bag**](/guide/#bag) or [**Profile**](/guide/#profile) can either be closed by clicking the red button at the upper right corner, or by pressing the **Escape** key.
+
+![Close UI](/assets/img/close_ui.png)
+
+</br>
 ### Spells
 Spells are acquired from items that the player equips throughout their adventure. The currently available spells will appear at the bottom of the screen.
 
-![Spell Hotbar]()
+![Spell Hotbar](/assets/img/spell_hotbar.png)
 
 <br/>
 Clicking on spells or pressing the corresponding key binding will ready the spell, showing an area in which the spell can be cast.
 
-![Ready Tiles]()
+![Ready Tiles](/assets/img/ready_cast.png)
 
 <br/>
 Clicking one of the available tiles will display an area where that the spell will affect.
 
-![Confirm Tiles]()
+![Confirm Tiles](/assets/img/confirm_cast.png)
 
 <br/>
 When a tile in this area is clicked, the spell will be cast and corresponding Essence will be spent.
 
-![Confirm Cast]()
+![Cast Spell](/assets/img/cast_spell.png)
 
 <br/>
 Spell information can be displayed by hovering over the `+` icon in the upper right corner of each spell button.
 
-![Spell Info]()
+![Spell Info](/assets/img/spell_tooltip.png)
 
 <br/>
 The default key bindings for spell actions are:

@@ -37,7 +37,7 @@ public class DataSlot : MonoBehaviour {
     public void AssignPlayerData(PlayerData playerData) {
         _portrait.LoadCharacter(playerData.character);
         nameText.text = playerData.character.name;
-        locationText.text = playerData.currentZone.ToString();
+        locationText.text = LocationToString(playerData.currentZone);
     }
 
     public void UnsetPlayerData() {
@@ -55,5 +55,24 @@ public class DataSlot : MonoBehaviour {
         SaveLoadData.Save();
         Debug.Log("Deleted save slot " + ndx);
         loadDataUI.UpdateDataSlots();
+    }
+
+    string LocationToString(DungeonManager.Zone zone) {
+        switch(zone) {
+            case DungeonManager.Zone.A1:
+                return "Dungeon Floor 1";
+                
+            case DungeonManager.Zone.A2:
+                return "Dungeon Floor 2";
+
+            case DungeonManager.Zone.A3:
+                return "Dungeon Floor 3";
+
+            case DungeonManager.Zone.Hub:
+                return "Hub";
+
+            default:
+                return "Unknown";
+        }
     }
 }

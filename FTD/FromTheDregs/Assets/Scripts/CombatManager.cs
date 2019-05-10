@@ -24,7 +24,7 @@ public class CombatManager : MonoBehaviour {
 
 	int _turnCount = 0;
 	bool _preCombatDelay = false;
-	float _preCombatDelayDuration = 1.5f;
+	float _preCombatDelayDuration = 1f;
 	
 
 	public bool inCombat {
@@ -90,10 +90,10 @@ public class CombatManager : MonoBehaviour {
 				
 				// Turn select
 				BaseUnit baseUnit = _turnQueue.queue[0].baseUnit;
-				
 				if(_turnCount == -1 && !_preCombatDelay) {
 					yield return new WaitForSeconds(_preCombatDelayDuration);
 					_preCombatDelay = true;
+					_turnCount = 0;
 				}
 				
 				if(!baseUnit.tickedStatuses) {
