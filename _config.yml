@@ -51,6 +51,8 @@ author:
 menu:
   - title:             Downloads
     url:               /downloads/
+  - title:             Play Guide
+    url:               /guide/
   - title:             Patch Notes
     url:               /patches/
   - title:             Feedback
