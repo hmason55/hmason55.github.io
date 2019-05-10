@@ -35,15 +35,6 @@ The default key bindings for movement actions are:
 ## User Interface
 user interface
 
-
-## Items
-items
-
-<br/>
-## Combat
-Combat begins when a unit moves too close to, or deals damage to another unit. Both units involved will enter combat, and units near those involved will be drawn into combat as well. Combat will conclude if the player dies, all enemies involved in combat are defeated, or the player exits the level.
-
-<br/>
 ### Spells
 Spells are acquired from items that the player equips throughout their adventure. The currently available spells will appear at the bottom of the screen.
 
@@ -61,6 +52,15 @@ Clicking one of the available tiles will display an area where that the spell wi
 
 <br/>
 When a tile in this area is clicked, the spell will be cast and corresponding Essence will be spent.
+
+![Confirm Cast]()
+
+<br/>
+Spell information can be displayed by hovering over the `+` icon in the upper right corner of each spell button.
+
+![Spell Info]()
+
+<br/>
 The default key bindings for spell actions are:
 
 | Spell | Key |
@@ -76,7 +76,18 @@ The default key bindings for spell actions are:
 | 9     | 9   |
 | 10    | 10  |
 
+</br>
+## Items
+items
 
+<br/>
+## Combat
+Combat begins when a unit moves too close to, or deals damage to another unit. Both units involved will enter combat, and units near those involved will be drawn into combat as well. Combat will conclude if the player dies, all enemies involved in combat are defeated, or the player exits the level.
+
+<br/>
+
+
+<br/>
 ## Objects
 objects
 
