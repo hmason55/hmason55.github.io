@@ -49,12 +49,12 @@ author:
 
 # Add links to the sidebar.
 menu:
-  - title:             Example
-    url:               /example/
   - title:             Downloads
     url:               /downloads/
   - title:             Patch Notes
     url:               /patches/
+  - title:             Feedback
+    url:               /feedback/
   - title:             Documentation
     url:               https://hmason55.github.io/FTD/docs/
   - title:             About
