@@ -22,7 +22,7 @@ hide_description: true
 **Download the launcher to receive the latest updates to the game client!**
 
 
-## Installation Guide ![Red Potion](/assets/img/potion_red.png)<img src="/assets/img/potion_red.png"  width="96" height="96">
+## Installation Guide <img src="/assets/img/potion_red.png"  width="96" height="96">
 
 **1.** Download the game launcher using the above button, then navigate to the directory where `launcher.zip` can be found.
 
