@@ -22,4 +22,4 @@ Community is extremely important to this project’s design, and player feedback
 
 You are encouraged to fill out an anonymous survey about your experience with the game after each new version. Responses will be recorded for evaluation but will only be used for development purposes and your responses will __never__ be distributed.
 
-[Version 0.1 Survey](https://forms.gle/gv9UGU2o8NZTsJ4x7)
+[**Version 0.1 Survey**](https://forms.gle/gv9UGU2o8NZTsJ4x7)
