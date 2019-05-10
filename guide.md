@@ -15,7 +15,7 @@ hide_description: false
 
 ---
 
-## Table of Contents
+# Table of Contents
 
 1. [**Movement**](/guide/#movement)
 2. [**User Interface**](/guide/#user-interface)
@@ -25,10 +25,10 @@ hide_description: false
 	* [**Bag**](/guide/#bag)
 	* [**Spells**](/guide/#spells)
 3. [**Items**](/guide/#bag)
-4.
-5.
+4. [**Combat**](/guide/#combat)
+5. [**Objects**](/guide/#objects)
 
-## Movement
+# Movement
 Units can move in 4 directions but not through other units, walls, or other objects. Movement is available both in and out of combat but only on the unit's turn. Moving while in combat costs **1 Essence** for each tile moved.
 
 ![Directional Movement](/assets/img/directional_movement.png)
@@ -44,17 +44,17 @@ The default key bindings for movement actions are:
 | Right     | D   |
 
 <br/>
-## User Interface
+# User Interface
 user interface
 
-### Resources
+## Resources
 resources
 
 ![Resources](/assets/img/resources.png)
 
 <br/>
 
-### Menu Shortcuts
+## Menu Shortcuts
 menu shortcuts
 
 ![Shortcuts](/assets/img/shortcuts.png)
@@ -64,25 +64,25 @@ Help shortcut information
 
 ![Help Shortcut](/assets/img/help_shortcut.png)
 
-</br>
-### Profile
+<br/>
+## Profile
 profile information
 
 ![Profile](/assets/img/profile.png)
 
-</br>
-### Bag
+<br/>
+## Bag
 bag information
 
 ![Bag](/assets/img/bag.png)
 
-</br>
+<br/>
 Interface panels such as the [**Bag**](/guide/#bag) or [**Profile**](/guide/#profile) can either be closed by clicking the red button at the upper right corner, or by pressing the **Escape** key.
 
 ![Close UI](/assets/img/close_ui.png)
 
 </br>
-### Spells
+## Spells
 Spells are acquired from items that the player equips throughout their adventure. The currently available spells will appear at the bottom of the screen.
 
 ![Spell Hotbar](/assets/img/spell_hotbar.png)
@@ -123,19 +123,16 @@ The default key bindings for spell actions are:
 | 9     | 9   |
 | 10    | 10  |
 
-</br>
-## Items
+<br/>
+# Items
 items
 
 <br/>
-## Combat
+# Combat
 Combat begins when a unit moves too close to, or deals damage to another unit. Both units involved will enter combat, and units near those involved will be drawn into combat as well. Combat will conclude if the player dies, all enemies involved in combat are defeated, or the player exits the level.
 
 <br/>
-
-
-<br/>
-## Objects
+# Objects
 objects
 
 
