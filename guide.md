@@ -55,7 +55,7 @@ The default key bindings for movement actions are:
 The user interface displays relevant information to the player about their current status.
 
 ## Resources
-Your character's Health and Essence are displayed here at the bottom of the screen. Health is displayed as a red bar and can be restored by returning to the Hub, or by using healing [**Items**](/guide/#items). If your Health reaches Essence is displayed as solid blue spheres above the Health bar, and it is restored at the beginning of each turn. Essence 
+Your character's Health and Essence are displayed here at the bottom of the screen. Health is displayed as a red bar and can be restored by returning to the Hub, or by using healing [**Items**](/guide/#items). If your character's Health reaches 0, they will be defeated and taken back to the Hub after dropping all Gold they are carrying. Essence is displayed as solid blue spheres above the Health bar, and it is restored at the beginning of each turn. Essence 
 
 ![Resources](/assets/img/guide/resources.png)
 
