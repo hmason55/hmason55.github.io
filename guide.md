@@ -25,11 +25,17 @@ hide_description: false
 	* [**Bag**](/guide/#bag)
 	* [**Spells**](/guide/#spells)
 3. [**Items**](/guide/#bag)
+	* [**Equipment**](/guide/#equipment)
+	* [**Consumables**](/guide/#consumables)
 4. [**Combat**](/guide/#combat)
+	* [**Status Effects**](/guide/#status-effects)
 5. [**Objects**](/guide/#objects)
+	* [**Containers**](/guide/#containers)
+	* [**Loot**](/guide/#loot)
+	* [**Exits**](/guide/#exits)
 
 # Movement
-Units can move in 4 directions but not through other units, walls, or other objects. Movement is available both in and out of combat but only on the unit's turn. Moving while in combat costs 1 [Essence](/guide/#resources) for each tile moved.
+Units can move in 4 directions but not through other units, walls, or other objects. Movement is available both in and out of combat but only on the unit's turn. Moving while in combat costs 1 [**Essence**](/guide/#resources) for each tile moved.
 
 ![Directional Movement](/assets/img/guide/directional_movement.png)
 
@@ -45,10 +51,10 @@ The default key bindings for movement actions are:
 
 <br/>
 # User Interface
-user interface
+The user interface displays relevant information to the player about their current status.
 
 ## Resources
-Your character's Health and Essence are displayed here at the bottom of the screen. Health is displayed as a red bar and can be restored by returning to the Hub, or by using healing [Items](/guide/#items). If your Health reaches Essence is displayed as solid blue spheres above the Health bar, and it is restored at the beginning of each turn. Essence 
+Your character's Health and Essence are displayed here at the bottom of the screen. Health is displayed as a red bar and can be restored by returning to the Hub, or by using healing [**Items**](/guide/#items). If your Health reaches Essence is displayed as solid blue spheres above the Health bar, and it is restored at the beginning of each turn. Essence 
 
 ![Resources](/assets/img/guide/resources.png)
 
@@ -107,7 +113,7 @@ Clicking one of the available tiles will display an area where that the spell wi
 ![Confirm Tiles](/assets/img/guide/confirm_cast.png)
 
 <br/>
-When a tile in this area is clicked, the spell will be cast and corresponding Essence will be spent.
+When a tile in this area is clicked, the spell will be cast and corresponding [**Essence**](/guide/#resources) will be spent.
 
 ![Cast Spell](/assets/img/guide/cast_spell.png)
 
@@ -134,10 +140,10 @@ The default key bindings for spell actions are:
 
 <br/>
 # Items
-Items can be found in [Containers](/guide/#containers) and dropped from enemies inside [Loot Bags](/guide/#loot).
+Items can be found in [**Containers**](/guide/#containers) and dropped from enemies inside [**Loot Bags**](/guide/#loot). Hovering the mouse of items will display a tool tip containing more information about that item.
 
 ## Equipment
-Equipment items grant the wearer spells and bonus attributes. Players can view their equipment in the [Bag](/guide/#bag) interface. Clicking on equipment will equip or unequip the item.
+Equipment items grant the wearer spells and bonus attributes. Players can view their equipment in the [**Bag**](/guide/#bag) interface. Clicking on equipment will equip or unequip the item.
 
 ![Equipment](/assets/img/guide/equipment.png)
 
@@ -149,8 +155,8 @@ Consumable items have various effects and can be used while in or out of combat 
 # Combat
 Combat begins when a unit moves too close to, or deals damage to another unit. Both units involved will enter combat, and units near those involved will be drawn into combat as well. Combat will conclude if the player dies, all enemies involved in combat are defeated, or the player exits the level.
 
-## Status
-Units can gain status effects through the use of [Spells](/guide/#spells). There are a variety of status effects, some of which can be removed through the use of [Consumable Items](/guide/#consumables).
+## Status Effects
+Units can gain status effects through the use of [**Spells**](/guide/#spells). There are a variety of status effects, some of which can be removed through the use of [**Consumable Items**](/guide/#consumables).
 
 ![Status Effects](/assets/img/guide/status_effects.png)
 
@@ -162,7 +168,7 @@ Enemies will display an icon above themselves after each turn. This icon represe
 
 <br/>
 # Objects
-Objects such as [Containers](/guide/#containers), [Loot Bags](/guide/#loot), and Exits can be found inside every dungeon. They can be interacted with by hovering over with the mouse and clicking.
+Objects such as [**Containers**](/guide/#containers), [**Loot Bags**](/guide/#loot), and Exits can be found inside every dungeon. They can be interacted with by hovering over with the mouse and clicking.
 
 ## Containers
 Containers often hold treasures such as gold, items, and keys.
@@ -171,7 +177,7 @@ Containers often hold treasures such as gold, items, and keys.
 
 <br/>
 ## Loot
-Loot is occasionally dropped by enemy units when defeated. Loot bags will usually contain gold or [Items](/guide/#items).
+Loot is occasionally dropped by enemy units when defeated. Loot bags will usually contain gold or [**Items**](/guide/#items).
 
 ![Loot Bag](/assets/img/guide/loot.png)
 
