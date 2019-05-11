@@ -48,31 +48,40 @@ The default key bindings for movement actions are:
 user interface
 
 ## Resources
-resources
+Your character's Health and Essence are displayed here at the bottom of the screen. Health is displayed as a red bar and can be restored by returning to the Hub, or by using healing [Items](). If your Health reaches Essence is displayed as solid blue spheres above the Health bar, and it is restored at the beginning of each turn. Essence 
 
 ![Resources](/assets/img/guide/resources.png)
 
 <br/>
-
 ## Menu Shortcuts
-menu shortcuts
+The menu shortcuts can be found at the top of the screen, and can be used to open the Menu, [**Profile**](/guide/#profile), and [**Bag**](/guide/#bag) interfaces. You can also end your turn here.
 
 ![Shortcuts](/assets/img/guide/shortcuts.png)
 
 <br/>
-Help shortcut information
+The default key bindings for movement actions are:
+
+| Interface | Key |
+|-----------|-----|
+| Menu      | Esc |
+| Profile   | C   |
+| Bag       | B   |
+| End Turn  | T   |
+
+<br/>
+The **Help** shortcut can be used to open this Play Guide at any time while playing the game.
 
 ![Help Shortcut](/assets/img/guide/help_shortcut.png)
 
 <br/>
 ## Profile
-profile information
+The profile interface displays your character's current attributes.
 
 ![Profile](/assets/img/guide/profile.png)
 
 <br/>
 ## Bag
-bag information
+The bag interface displays all the items your character is carrying, and equipment they are wearing.
 
 ![Bag](/assets/img/guide/bag.png)
 
@@ -81,7 +90,7 @@ Interface panels such as the [**Bag**](/guide/#bag) or [**Profile**](/guide/#pro
 
 ![Close UI](/assets/img/guide/close_ui.png)
 
-</br>
+<br/>
 ## Spells
 Spells are acquired from items that the player equips throughout their adventure. The currently available spells will appear at the bottom of the screen.
 
