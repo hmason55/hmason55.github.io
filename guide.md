@@ -29,6 +29,7 @@ hide_description: false
 	* [**Consumables**](/guide/#consumables)
 4. [**Combat**](/guide/#combat)
 	* [**Status Effects**](/guide/#status-effects)
+	* [**Telegraphs**](/guide/#telegraphs)
 5. [**Objects**](/guide/#objects)
 	* [**Containers**](/guide/#containers)
 	* [**Loot**](/guide/#loot)
