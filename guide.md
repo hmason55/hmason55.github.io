@@ -134,11 +134,31 @@ The default key bindings for spell actions are:
 
 <br/>
 # Items
-Items can be found in Containers and dropped from enemies inside [Loot Bags](/guide/#loot).
+Items can be found in [Containers](/guide/#containers) and dropped from enemies inside [Loot Bags](/guide/#loot).
+
+## Equipment
+Equipment items grant the wearer spells and bonus attributes. Players can view their equipment in the [Bag](/guide/#bag) interface. Clicking on equipment will equip or unequip the item.
+
+![Equipment](/assets/img/guide/equipment.png)
+
+<br/>
+## Consumables
+Consumable items have various effects and can be used while in or out of combat during the player's turn.
 
 <br/>
 # Combat
 Combat begins when a unit moves too close to, or deals damage to another unit. Both units involved will enter combat, and units near those involved will be drawn into combat as well. Combat will conclude if the player dies, all enemies involved in combat are defeated, or the player exits the level.
+
+## Status
+Units can gain status effects through the use of [Spells](/guide/#spells). There are a variety of status effects, some of which can be removed through the use of [Consumable Items](/guide/#consumables).
+
+![Status Effects](/assets/img/guide/status_effects.png)
+
+<br/>
+## Telegraphs
+Enemies will display an icon above themselves after each turn. This icon represents what the enemy will attempt to do on their next turn. For instance, this skeleton will attempt to attack for 4 damage assuming it can reach its target.
+
+![Telegraph](/assets/img/guide/enemy_telegraph.png)
 
 <br/>
 # Objects
@@ -151,7 +171,7 @@ Containers often hold treasures such as gold, items, and keys.
 
 <br/>
 ## Loot
-Loot is occasionally dropped by enemy units when defeated. Loot bags will usually container gold or [Items](/guide/#items).
+Loot is occasionally dropped by enemy units when defeated. Loot bags will usually contain gold or [Items](/guide/#items).
 
 ![Loot Bag](/assets/img/guide/loot.png)
 
