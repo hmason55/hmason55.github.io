@@ -90,7 +90,7 @@ public class Portrait : MonoBehaviour {
 	void InitStartingClasses() {
 		_startingClasses = new List<BaseUnit.Preset>();
 		_startingClasses.Add(BaseUnit.Preset.Warrior);
-		_startingClasses.Add(BaseUnit.Preset.Rogue);
+		//_startingClasses.Add(BaseUnit.Preset.Rogue);
 		_startingClasses.Add(BaseUnit.Preset.Mage);
 	}
 
