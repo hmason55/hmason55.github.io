@@ -29,7 +29,7 @@ hide_description: false
 5. [**Objects**](/guide/#objects)
 
 # Movement
-Units can move in 4 directions but not through other units, walls, or other objects. Movement is available both in and out of combat but only on the unit's turn. Moving while in combat costs **1 Essence** for each tile moved.
+Units can move in 4 directions but not through other units, walls, or other objects. Movement is available both in and out of combat but only on the unit's turn. Moving while in combat costs 1 [Essence](/guide/#resources) for each tile moved.
 
 ![Directional Movement](/assets/img/guide/directional_movement.png)
 
@@ -48,7 +48,7 @@ The default key bindings for movement actions are:
 user interface
 
 ## Resources
-Your character's Health and Essence are displayed here at the bottom of the screen. Health is displayed as a red bar and can be restored by returning to the Hub, or by using healing [Items](). If your Health reaches Essence is displayed as solid blue spheres above the Health bar, and it is restored at the beginning of each turn. Essence 
+Your character's Health and Essence are displayed here at the bottom of the screen. Health is displayed as a red bar and can be restored by returning to the Hub, or by using healing [Items](/guide/#items). If your Health reaches Essence is displayed as solid blue spheres above the Health bar, and it is restored at the beginning of each turn. Essence 
 
 ![Resources](/assets/img/guide/resources.png)
 
@@ -134,7 +134,7 @@ The default key bindings for spell actions are:
 
 <br/>
 # Items
-items
+Items can be found in Containers and dropped from enemies inside [Loot Bags](/guide/#loot).
 
 <br/>
 # Combat
@@ -142,6 +142,28 @@ Combat begins when a unit moves too close to, or deals damage to another unit. B
 
 <br/>
 # Objects
-objects
+Objects such as [Containers](/guide/#containers), [Loot Bags](/guide/#loot), and Exits can be found inside every dungeon. They can be interacted with by hovering over with the mouse and clicking.
+
+## Containers
+Containers often hold treasures such as gold, items, and keys.
+
+![Container](/assets/img/guide/container.png)
+
+<br/>
+## Loot
+Loot is occasionally dropped by enemy units when defeated. Loot bags will usually container gold or [Items](/guide/#items).
+
+![Loot Bag](/assets/img/guide/loot.png)
+
+<br/>
+## Exits
+Exits are initially locked, and require a specific key to open.
+
+![Exit Sealed](/assets/img/guide/exit_sealed.png)
+
+<br/>
+Clicking on the exit with the corresponding key in your inventory will unlock the exit and allow you to proceed to the next level.
+
+![Exit Activated](/assets/img/guide/exit_activated.png)
 
 
