@@ -16,7 +16,7 @@ hide_description: false
 ---
 
 <!-- Place this tag where you want the button to render. -->
-<!--<a class="github-button" href="/downloads/launcher.zip" data-icon="octicon-cloud-download" data-size="large" aria-label="Download From the Dregs Game Launcher">Download Launcher</a> -->
+<a class="github-button" href="https://hmason.github.io/downloads/launcher.zip" data-icon="octicon-cloud-download" data-size="large" aria-label="Download Launcher">Download Launcher</a>
 [**Launcher Download Link**](/downloads/launcher.zip)
 
 ## Installation Guide <img src="/assets/img/potion_red.png"  width="96" height="96">
