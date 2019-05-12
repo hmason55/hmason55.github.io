@@ -16,7 +16,8 @@ hide_description: false
 ---
 
 <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://hmason55.github.io/downloads/launcher.zip" data-icon="octicon-cloud-download" data-size="large" aria-label="Download Launcher">Download Launcher</a>
+<a class="download-button" href="https://hmason55.github.io/downloads/launcher.zip">Download Launcher 1</a>
+<a class="download-button" href="/downloads/launcher.zip">Download Launcher 2</a>
 [**Launcher Download Link**](/downloads/launcher.zip)
 
 ## Installation Guide <img src="/assets/img/potion_red.png"  width="96" height="96">
