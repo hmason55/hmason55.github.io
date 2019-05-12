@@ -15,7 +15,7 @@ hide_description: false
 
 ---
 
-<a class="download-button" href="https://hmason55.github.io/downloads/launcher.zip">Download Launcher 1</a>
+<a class="download-button" href="https://hmason55.github.io/downloads/launcher.zip">Download Launcher</a>
 
 ## Installation Guide <img src="/assets/img/potion_red.png"  width="96" height="96">
 
