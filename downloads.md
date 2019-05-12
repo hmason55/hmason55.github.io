@@ -15,10 +15,7 @@ hide_description: false
 
 ---
 
-<!-- Place this tag where you want the button to render. -->
 <a class="download-button" href="https://hmason55.github.io/downloads/launcher.zip">Download Launcher 1</a>
-<a class="download-button" href="/downloads/launcher.zip">Download Launcher 2</a>
-[**Launcher Download Link**](/downloads/launcher.zip)
 
 ## Installation Guide <img src="/assets/img/potion_red.png"  width="96" height="96">
 
@@ -48,5 +45,3 @@ hide_description: false
 
 <br/>
 **6.** You now have everything you need to play the game! Be sure to check for updates each time you run the launcher, email notifications will also be sent to alpha testers when a new update is available.
-
-<script async defer src="https://buttons.github.io/buttons.js"></script>
