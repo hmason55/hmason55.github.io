@@ -1,8 +1,0 @@
-<map id="Portrait.LoadCharacter" name="Portrait.LoadCharacter">
-<area shape="rect" id="node1" title=" " alt="" coords="927,31,1079,57"/>
-<area shape="rect" id="node2" href="$class_data_slot.html#a104284ff9c03da56e871e2f39d345e0b" title=" " alt="" coords="699,31,879,57"/>
-<area shape="rect" id="node3" href="$class_load_data_u_i.html#a2a36a17c6455a8ca8ee3b92dbbce0503" title=" " alt="" coords="460,31,651,57"/>
-<area shape="rect" id="node4" href="$class_data_slot.html#aae68b8b9d2f07c2d634e82493d29c05d" title=" " alt="" coords="235,5,412,32"/>
-<area shape="rect" id="node5" href="$class_load_data_u_i.html#ac0ab99a18f93b2092d30e1ecea86154d" title=" " alt="" coords="255,56,392,83"/>
-<area shape="rect" id="node6" href="$class_main_menu_u_i.html#ab97fc6c28c9bfe985c650c7572aec0fc" title=" " alt="" coords="5,56,187,83"/>
-</map>

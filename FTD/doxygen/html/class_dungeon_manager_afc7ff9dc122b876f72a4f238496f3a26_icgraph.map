@@ -1,4 +1,0 @@
-<map id="DungeonManager.InitZone" name="DungeonManager.InitZone">
-<area shape="rect" id="node1" title=" " alt="" coords="208,5,380,32"/>
-<area shape="rect" id="node2" href="$class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="5,5,160,32"/>
-</map>

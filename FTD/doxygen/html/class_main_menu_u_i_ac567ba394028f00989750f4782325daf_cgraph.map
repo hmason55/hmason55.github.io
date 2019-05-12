@@ -1,7 +1,0 @@
-<map id="MainMenuUI.OnStartButton" name="MainMenuUI.OnStartButton">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,187,57"/>
-<area shape="rect" id="node2" href="$class_main_menu_u_i.html#a880a33ba6d600fee9ee4635b94bded8c" title=" " alt="" coords="260,5,396,32"/>
-<area shape="rect" id="node3" href="$class_character_creation_u_i.html#a5e683c30d28a4c97d8f84de3de2062cd" title=" " alt="" coords="235,56,421,83"/>
-<area shape="rect" id="node4" href="$class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="469,56,629,83"/>
-<area shape="rect" id="node5" href="$class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="677,56,847,83"/>
-</map>

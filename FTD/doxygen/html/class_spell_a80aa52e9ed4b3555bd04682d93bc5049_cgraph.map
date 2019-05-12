@@ -1,5 +1,0 @@
-<map id="Spell.PlayDamageSound" name="Spell.PlayDamageSound">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,172,57"/>
-<area shape="rect" id="node2" href="$class_audio_manager.html#a1520faf231d9b58d63a794f6b8040b99" title=" " alt="" coords="220,5,395,32"/>
-<area shape="rect" id="node3" href="$class_audio_manager.html#ac0f0dc189806848c224581b363b87396" title=" " alt="" coords="221,56,393,83"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="Hotbar.Recast" name="Hotbar.Recast">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,111,83"/>
-<area shape="rect" id="node2" href="$class_spell.html#a267e0b312732b826127c2d58ba64d90d" title=" " alt="" coords="178,5,294,32"/>
-<area shape="rect" id="node3" href="$class_cast_options_u_i.html#a37c4fa85c666ede5418cd5d7e524ce35" title=" " alt="" coords="159,56,313,83"/>
-<area shape="rect" id="node6" href="$class_spell.html#ad49f8d3af9c5a885120ca85b510eae75" title=" " alt="" coords="161,107,311,133"/>
-<area shape="rect" id="node4" href="$class_hotbar.html#a2f8af9863292223ae00d361121164160" title=" " alt="" coords="361,56,500,83"/>
-<area shape="rect" id="node5" href="$class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a" title=" " alt="" coords="548,56,683,83"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="BagBehaviour.SyncUnit" name="BagBehaviour.SyncUnit">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,164,83"/>
-<area shape="rect" id="node2" href="$class_base_unit.html#a15ea3ea70ab13cf8aa582b848cd0531b" title=" " alt="" coords="212,56,359,83"/>
-<area shape="rect" id="node3" href="$class_hotbar.html#a1e796a0a133ee0743aa8585c05980f9b" title=" " alt="" coords="425,31,542,57"/>
-<area shape="rect" id="node6" href="$class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856" title=" " alt="" coords="407,81,560,108"/>
-<area shape="rect" id="node4" href="$class_hotkey.html#a0b90f1841f8cbe70bf62447affd70bd1" title=" " alt="" coords="608,5,719,32"/>
-<area shape="rect" id="node5" href="$class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="610,56,717,83"/>
-</map>

@@ -1,9 +1,0 @@
-1 or more required per chunk.
-black	- wall
-green	- floor
-blue	- entrance/exit
-
-Optional
-red	- enemy
-magenta	- trap
-yellow	- container

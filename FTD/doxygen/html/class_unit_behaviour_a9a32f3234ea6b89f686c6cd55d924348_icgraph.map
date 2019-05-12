@@ -1,6 +1,0 @@
-<map id="UnitBehaviour.Kill" name="UnitBehaviour.Kill">
-<area shape="rect" id="node1" title=" " alt="" coords="548,5,671,32"/>
-<area shape="rect" id="node2" href="$class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="403,5,500,32"/>
-<area shape="rect" id="node3" href="$class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="183,5,355,32"/>
-<area shape="rect" id="node4" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,5,135,32"/>
-</map>
