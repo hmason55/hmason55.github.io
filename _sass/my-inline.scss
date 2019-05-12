@@ -1,1 +1,33 @@
 // You can add CSS rules here that will be inlined into each document.
+.button {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 8px;
+    border: 1px solid #1c4347;
+    border-radius: 8px;
+    background: #4fb1ba;
+    background: -webkit-gradient(linear, left top, left bottom, from(#4fb1ba), to(#1c4347));
+    background: -moz-linear-gradient(top, #4fb1ba, #1c4347);
+    background: linear-gradient(to bottom, #4fb1ba, #1c4347);
+    text-shadow: #000000 1px 1px 1px;
+    font: normal normal bold 20px arial;
+    color: #ffffff;
+    text-decoration: none;
+}
+.button:hover,
+.button:focus {
+    border: 1px solid #2d6b72;
+    background: #5fd4df;
+    background: -webkit-gradient(linear, left top, left bottom, from(#5fd4df), to(#225055));
+    background: -moz-linear-gradient(top, #5fd4df, #225055);
+    background: linear-gradient(to bottom, #5fd4df, #225055);
+    color: #ffffff;
+    text-decoration: none;
+}
+.button:active {
+    background: #2f6a70;
+    background: -webkit-gradient(linear, left top, left bottom, from(#2f6a70), to(#1c4347));
+    background: -moz-linear-gradient(top, #2f6a70, #1c4347);
+    background: linear-gradient(to bottom, #2f6a70, #1c4347);
+}
