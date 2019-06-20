@@ -1,0 +1,7 @@
+<map id="Biome.GetEnemySpawn" name="Biome.GetEnemySpawn">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,169,57"/>
+<area shape="rect" id="node2" href="$class_database.html#a82bad315c196dd89980ebc746971e382" title=" " alt="" coords="217,31,376,57"/>
+<area shape="rect" id="node3" href="$class_attributes.html#a4752b5df4138d9eb1b2ed5a5e2df3e13" title=" " alt="" coords="424,31,539,57"/>
+<area shape="rect" id="node4" href="$class_attributes.html#a1821e0b3d7eff63215bba4e8d68d3740" title=" " alt="" coords="587,5,725,32"/>
+<area shape="rect" id="node5" href="$class_attributes.html#a6ed4914f59536bdf6c8e9066e930a3fb" title=" " alt="" coords="773,31,872,57"/>
+</map>

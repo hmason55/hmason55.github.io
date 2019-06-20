@@ -24,9 +24,6 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "From the Dregs", "index.html", [
-    [ "Packages", "namespaces.html", [
-      [ "Packages", "namespaces.html", "namespaces_dup" ]
-    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -34,7 +31,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Properties", "functions_prop.html", "functions_prop" ]
       ] ]
@@ -45,10 +42,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_base_item.html#afd59d6b5168af724211f54ad3692ea73",
-"class_chunk_sprites.html#a8ba71bfadb5b574f85b165ac1664fdd9",
-"class_portrait.html#a08a64694ad71d1f822acbf63845ae130",
-"class_unit_behaviour.html#a8e85eeaf7ce34b0b04a96258aacf02d7"
+"class_base_item.html#add9920d2f5a4fa91752714a8f3ab424ba01f4d7e7c954497d7b25cb16c377b9a8",
+"class_chunk.html#a90851ff2883364a1e00753d1fd35461b",
+"class_effect.html#af0ada789de40f58c24c46bf8ed2f300caa8747f5acdc2352d39f455bdd1689273",
+"class_spell.html#a497e137d2a37c828be4954f10fa00f02",
+"functions_d.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

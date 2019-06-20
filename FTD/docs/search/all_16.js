@@ -1,6 +1,19 @@
 var searchData=
 [
-  ['validatemovetile',['ValidateMoveTile',['../class_combat_manager.html#a6f648795292255b600e92eefcf960ded',1,'CombatManager']]],
-  ['value',['value',['../class_base_item.html#ac246c2f3f1b1b6e3cae9bef5c26268a2',1,'BaseItem']]],
-  ['velocity',['velocity',['../class_projectile.html#a2d9755facfa238e047de85c626587cd2',1,'Projectile']]]
+  ['walkable',['walkable',['../class_base_terrain.html#a403d7a199581bc910ecbf15009b532a6',1,'BaseTerrain.walkable()'],['../class_path_node.html#a954f777fd998af56c4acc5f78cbf41ca',1,'PathNode.walkable()']]],
+  ['wall_5fhidden',['wall_hidden',['../class_base_terrain.html#a5b782f4de5e1a2ca1343b4aa89a7dc9aafc32e3a8457bbaec473b09d4462c1ecd',1,'BaseTerrain']]],
+  ['wall_5fside',['wall_side',['../class_base_terrain.html#a5b782f4de5e1a2ca1343b4aa89a7dc9aa3efe6e3a4e45b10c24fca4149a87a786',1,'BaseTerrain']]],
+  ['wall_5ftop',['wall_top',['../class_base_terrain.html#a5b782f4de5e1a2ca1343b4aa89a7dc9aaffe15f42468128e48325cf9206ab42e8',1,'BaseTerrain']]],
+  ['wallsidecommon',['wallSideCommon',['../class_terrain_sprite.html#a53510c22f7f9d45f8f1211e989265915',1,'TerrainSprite']]],
+  ['wallsiderare',['wallSideRare',['../class_terrain_sprite.html#a1e61395096a49826df69a63d30cdbfa1',1,'TerrainSprite']]],
+  ['walltopcommon',['wallTopCommon',['../class_terrain_sprite.html#a8caed0c797fe4f4bf9941e11a476000f',1,'TerrainSprite']]],
+  ['walltoprare',['wallTopRare',['../class_terrain_sprite.html#ae79413dfd8c6925d7d16a8b7272ea9b4',1,'TerrainSprite']]],
+  ['warrior',['warrior',['../class_unit_sprite_library.html#af63dcd35eb6a28a4c5455ffeac3b2c4d',1,'UnitSpriteLibrary.warrior()'],['../class_attributes.html#a7b053ea5da66acb460f9f1cd1d627403a7ee7fa010d64b90a36803a8445f2e943',1,'Attributes.Warrior()'],['../class_base_unit.html#a22badcb8e74526c712a5f503d4814d83a7ee7fa010d64b90a36803a8445f2e943',1,'BaseUnit.Warrior()']]],
+  ['weaponitemspritelibrary',['WeaponItemSpriteLibrary',['../class_weapon_item_sprite_library.html',1,'']]],
+  ['weapons',['weapons',['../class_item_sprite_library.html#adbaacaec2a2588d6bf5bf090b8148bec',1,'ItemSpriteLibrary']]],
+  ['whirling_5fsteel',['Whirling_Steel',['../class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa569fcdbbf39a93139c55b1218db95934',1,'Spell']]],
+  ['white',['White',['../class_character.html#a7940fffce9bfadb9e7abf15490cf8bb0a25a81701fbfa4a1efdf660a950c1d006',1,'Character']]],
+  ['widowling',['Widowling',['../class_attributes.html#a7b053ea5da66acb460f9f1cd1d627403a40cc9940cf65d0a1a2da6a41f2046e36',1,'Attributes.Widowling()'],['../class_base_unit.html#a22badcb8e74526c712a5f503d4814d83a40cc9940cf65d0a1a2da6a41f2046e36',1,'BaseUnit.Widowling()'],['../class_unit_sprite_library.html#ae4696316a3081fc48e7f68c9641c4535',1,'UnitSpriteLibrary.widowling()']]],
+  ['wisdom',['wisdom',['../class_attributes.html#a48ec0beacd46bb9b9e206becde146d69',1,'Attributes']]],
+  ['wisdomrunestone',['wisdomRunestone',['../class_misc_item_sprite_library.html#aafa4929f175155a59ca2cc9843c152f6',1,'MiscItemSpriteLibrary']]]
 ];

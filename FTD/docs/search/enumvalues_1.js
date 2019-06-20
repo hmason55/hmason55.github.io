@@ -1,6 +1,8 @@
 var searchData=
 [
   ['bag',['Bag',['../class_bag.html#a5a827c44705d57202edc93b9a39316c7ad3ab3d5184fe9b1b4428e4ffb797bdca',1,'Bag']]],
+  ['baseitems',['BaseItems',['../class_database.html#a0dd33192423ee1dc91763968f71200e4a517be5f58291c708270207b056f31c9e',1,'Database']]],
+  ['baselard',['Baselard',['../class_base_item.html#add9920d2f5a4fa91752714a8f3ab424ba811c51298e64b27d02baf71e9c59bb25',1,'BaseItem']]],
   ['beard_5f0',['Beard_0',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81ab8cdcd9acdceac22252517aa9a816a01',1,'Character']]],
   ['beard_5f1',['Beard_1',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81a0851930551823ac3b21b499fd8763bd4',1,'Character']]],
   ['beard_5f2',['Beard_2',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81a838e63548f79761de7869ccf7439e701',1,'Character']]],
@@ -10,14 +12,18 @@ var searchData=
   ['beard_5f6',['Beard_6',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81aef2d4395372775f26d9d803311996884',1,'Character']]],
   ['beard_5f7',['Beard_7',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81a116cf87a1571ff2f43bd5fdbecf60e11',1,'Character']]],
   ['beard_5f8',['Beard_8',['../class_character.html#afc1fe7f790870a92fe62d3e57296de81a1cc77dfa5d8fca74576ba6e75445dd07',1,'Character']]],
-  ['bite',['Bite',['../class_spell.html#a5520e850e7000a6156b3456672b72ed1a7e545ff517bca0397924c67f6cdb4324',1,'Spell']]],
-  ['bleed',['Bleed',['../class_effect.html#a28d85888db94ec53ee9cb75e9706f6e4a99b8f374158489a4358bfa2fc1b462c1',1,'Effect']]],
-  ['block',['Block',['../class_effect.html#a28d85888db94ec53ee9cb75e9706f6e4ae1e4c8c9ccd9fc39c391da4bcd093fb2',1,'Effect.Block()'],['../class_effect.html#af0ada789de40f58c24c46bf8ed2f300cae1e4c8c9ccd9fc39c391da4bcd093fb2',1,'Effect.Block()'],['../class_spell.html#a5520e850e7000a6156b3456672b72ed1ae1e4c8c9ccd9fc39c391da4bcd093fb2',1,'Spell.Block()'],['../class_spell.html#a602b82de554076b542544262e7a95f19ae1e4c8c9ccd9fc39c391da4bcd093fb2',1,'Spell.Block()']]],
+  ['bite',['Bite',['../class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa7e545ff517bca0397924c67f6cdb4324',1,'Spell']]],
+  ['bleed',['Bleed',['../class_effect.html#a28d85888db94ec53ee9cb75e9706f6e4a99b8f374158489a4358bfa2fc1b462c1',1,'Effect.Bleed()'],['../class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa99b8f374158489a4358bfa2fc1b462c1',1,'Spell.Bleed()'],['../class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa99b8f374158489a4358bfa2fc1b462c1',1,'Spell.Bleed()']]],
+  ['bleedmodifier',['BleedModifier',['../class_bag.html#a6f06dfa13207d47e308b759af0279c60aee6fd63b44d0958afabad3909032de39',1,'Bag']]],
+  ['block',['Block',['../class_effect.html#a28d85888db94ec53ee9cb75e9706f6e4ae1e4c8c9ccd9fc39c391da4bcd093fb2',1,'Effect.Block()'],['../class_effect.html#af0ada789de40f58c24c46bf8ed2f300cae1e4c8c9ccd9fc39c391da4bcd093fb2',1,'Effect.Block()'],['../class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fae1e4c8c9ccd9fc39c391da4bcd093fb2',1,'Spell.Block()'],['../class_spell.html#a602b82de554076b542544262e7a95f19ae1e4c8c9ccd9fc39c391da4bcd093fb2',1,'Spell.Block()']]],
   ['blockdamage',['BlockDamage',['../class_effect.html#ab13a718053e330a11f9f66a9b16f4686aa96807f01058e07625b8211b1326801f',1,'Effect']]],
+  ['blockmodifier',['BlockModifier',['../class_bag.html#a6f06dfa13207d47e308b759af0279c60a3c997c57db20c289596188f100d82917',1,'Bag']]],
   ['blonde',['Blonde',['../class_character.html#a7940fffce9bfadb9e7abf15490cf8bb0a2a6ef591687a14d276872bedab511ead',1,'Character']]],
   ['body_5farmor',['Body_Armor',['../class_base_item.html#a882a2962396f880c2e23755437245d37ab8e594fa02cd8d424bbf612e650bb494',1,'BaseItem']]],
+  ['bool',['Bool',['../class_database.html#ae9ac02321d241765c92aa4197b3613bfac26f15e86e3de4c398a8273272aba034',1,'Database']]],
+  ['boss_5f0',['Boss_0',['../class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431a2de54c1a56a88f67b01ce62a4e223709',1,'DungeonManager']]],
   ['buff',['Buff',['../class_spell.html#a602b82de554076b542544262e7a95f19a536e1a5d9f4fe868e6ea5ff628f51f25',1,'Spell']]],
   ['burn',['Burn',['../class_effect.html#a28d85888db94ec53ee9cb75e9706f6e4a11635778f116ce6922f6068638a39028',1,'Effect']]],
-  ['burninghands',['BurningHands',['../class_spell.html#a5520e850e7000a6156b3456672b72ed1a7de3088f4fdf3f3c4ecfbee2eceaecd1',1,'Spell']]],
+  ['burning_5fhands',['Burning_Hands',['../class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fac56572a31e70d11db432d6db9972c259',1,'Spell']]],
   ['buy',['Buy',['../class_container_behaviour.html#a8ad6b6c9b34c2e0abdaaf0627f87b036a831a28f1e8df07c553fcd59546465d13',1,'ContainerBehaviour.Buy()'],['../class_transfer_u_i.html#acb894008318cb07b7144beb2d6d81606a831a28f1e8df07c553fcd59546465d13',1,'TransferUI.Buy()']]]
 ];

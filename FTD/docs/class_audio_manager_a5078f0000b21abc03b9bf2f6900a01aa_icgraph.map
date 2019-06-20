@@ -1,0 +1,5 @@
+<map id="AudioManager.PlayAmbientBGM" name="AudioManager.PlayAmbientBGM">
+<area shape="rect" id="node1" title=" " alt="" coords="243,31,456,57"/>
+<area shape="rect" id="node2" href="$class_combat_manager.html#a8d14cf9a8265e20264151a615e309f12" title=" " alt="" coords="5,5,195,32"/>
+<area shape="rect" id="node3" href="$class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="23,56,177,83"/>
+</map>

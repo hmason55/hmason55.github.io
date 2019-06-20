@@ -1,6 +1,7 @@
 <map id="UnitBehaviour.Clear" name="UnitBehaviour.Clear">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,140,32"/>
-<area shape="rect" id="node2" href="$class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="188,5,327,32"/>
-<area shape="rect" id="node3" href="$class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="375,5,529,32"/>
-<area shape="rect" id="node4" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="577,5,740,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,140,57"/>
+<area shape="rect" id="node2" href="$class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="188,31,327,57"/>
+<area shape="rect" id="node3" href="$class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="375,31,529,57"/>
+<area shape="rect" id="node4" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="581,5,744,32"/>
+<area shape="rect" id="node5" href="$class_unit_behaviour.html#aa355d5e4ae0043f69458a58af9316231" title=" " alt="" coords="577,56,748,83"/>
 </map>

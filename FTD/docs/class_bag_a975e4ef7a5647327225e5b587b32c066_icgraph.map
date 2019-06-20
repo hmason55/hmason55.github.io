@@ -1,10 +1,29 @@
 <map id="Bag.Equip" name="Bag.Equip">
-<area shape="rect" id="node1" title="Equips an item from the bag." alt="" coords="1133,64,1216,91"/>
-<area shape="rect" id="node2" href="$class_bag_behaviour.html#a472cbdd4764a3f7980c19d83b3789651" title=" " alt="" coords="923,64,1085,91"/>
+<area shape="rect" id="node1" title="Equips an item from the bag." alt="" coords="1185,325,1268,352"/>
+<area shape="rect" id="node2" href="$class_bag_behaviour.html#a472cbdd4764a3f7980c19d83b3789651" title=" " alt="" coords="949,93,1111,120"/>
+<area shape="rect" id="node9" href="$class_portrait.html#a326285a38ad084c87d13492278124f7e" title=" " alt="" coords="923,557,1137,584"/>
 <area shape="rect" id="node3" href="$class_bag_behaviour.html#ab7a8add6e04a204513a05f0d312df676" title=" " alt="" coords="677,35,875,61"/>
 <area shape="rect" id="node8" href="$class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="682,86,870,127"/>
 <area shape="rect" id="node4" href="$class_bag_behaviour.html#aed83310e460fbfb0fa033cfd9fa41ba5" title=" " alt="" coords="480,35,629,61"/>
 <area shape="rect" id="node5" href="$class_bag_behaviour.html#a830725c05ecdc1a1a637d26cf5cff0dc" title=" " alt="" coords="253,5,408,32"/>
 <area shape="rect" id="node7" href="$class_decoration_behaviour.html#a94a1b5e492f096e3f121d05105e16c37" title=" " alt="" coords="229,57,432,98"/>
 <area shape="rect" id="node6" href="$class_shortcut_u_i.html#a2434bf0b041a115161fda12022d69f0b" title=" " alt="" coords="5,5,181,32"/>
+<area shape="rect" id="node10" href="$class_portrait.html#aaa0da57aae916077e97d6c9d0a48aa4d" title=" " alt="" coords="714,152,838,179"/>
+<area shape="rect" id="node11" href="$class_portrait.html#aa550ccd7202589090d88e812743da74a" title=" " alt="" coords="715,203,837,229"/>
+<area shape="rect" id="node12" href="$class_portrait.html#ae5ff256c7c14879853d221dfd9df2d63" title=" " alt="" coords="711,253,841,280"/>
+<area shape="rect" id="node13" href="$class_portrait.html#ac81c66115ce3df6a35af825e43742211" title=" " alt="" coords="711,304,841,331"/>
+<area shape="rect" id="node14" href="$class_portrait.html#a357f23630fd1689f2de8ef7a114c151e" title=" " alt="" coords="711,355,841,381"/>
+<area shape="rect" id="node15" href="$class_portrait.html#ada91686eb3d44e5771a81dc147462258" title=" " alt="" coords="713,405,839,432"/>
+<area shape="rect" id="node16" href="$class_portrait.html#a7fc2c7d9f078303182503c717c05b9d5" title=" " alt="" coords="713,456,839,483"/>
+<area shape="rect" id="node17" href="$class_portrait.html#afc5cd84e6086e462adb30f0d988c76b6" title=" " alt="" coords="715,507,837,533"/>
+<area shape="rect" id="node18" href="$class_portrait.html#a6390e5c0ba5e52e4913703caf40682cd" title=" " alt="" coords="700,557,852,584"/>
+<area shape="rect" id="node19" href="$class_portrait.html#abce38ec7263bad9ae029b40e585fe6b1" title=" " alt="" coords="701,608,851,635"/>
+<area shape="rect" id="node20" href="$class_portrait.html#ae14081edd428a837484936bc56350a12" title=" " alt="" coords="717,659,835,685"/>
+<area shape="rect" id="node21" href="$class_portrait.html#af7fdde58c645c6e4fa5195ed3547b3d9" title=" " alt="" coords="718,709,834,736"/>
+<area shape="rect" id="node22" href="$class_portrait.html#a8117eeefced674e0a4a483745ea0053d" title=" " alt="" coords="702,760,850,787"/>
+<area shape="rect" id="node23" href="$class_portrait.html#a29b9670f2b653ffe43cf81e94e90062a" title=" " alt="" coords="703,811,849,837"/>
+<area shape="rect" id="node24" href="$class_portrait.html#a601ece8887c692a5a9f6d910fd3a2cec" title=" " alt="" coords="701,861,851,888"/>
+<area shape="rect" id="node25" href="$class_portrait.html#acbaf5360b4efe38e96ae08816ee94ccb" title=" " alt="" coords="701,912,851,939"/>
+<area shape="rect" id="node26" href="$class_portrait.html#a2df1c03b9cbe058716f0812283df1822" title=" " alt="" coords="695,963,857,1005"/>
+<area shape="rect" id="node27" href="$class_portrait.html#a88fe019f6fd864a138ddc3d3e8d281c7" title=" " alt="" coords="689,1029,863,1056"/>
 </map>

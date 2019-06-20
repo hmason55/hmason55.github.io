@@ -1,8 +1,9 @@
 <map id="CameraController.MoveToTarget" name="CameraController.MoveToTarget">
-<area shape="rect" id="node1" title=" " alt="" coords="727,56,933,83"/>
-<area shape="rect" id="node2" href="$class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="477,31,673,57"/>
-<area shape="rect" id="node6" href="$class_camera_controller.html#a9e2d7df7c696c1c2ce48384933c5d1ab" title=" " alt="" coords="472,81,679,108"/>
-<area shape="rect" id="node3" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="285,5,394,32"/>
-<area shape="rect" id="node4" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,56,424,83"/>
-<area shape="rect" id="node5" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="477,107,684,133"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="228,56,424,83"/>
+<area shape="rect" id="node5" href="$class_camera_controller.html#a9e2d7df7c696c1c2ce48384933c5d1ab" title=" " alt="" coords="223,107,429,133"/>
+<area shape="rect" id="node7" href="$class_camera_controller.html#abec3c6e41eb014e53328a3471a3e1bdb" title=" " alt="" coords="245,157,407,184"/>
+<area shape="rect" id="node3" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="35,5,145,32"/>
+<area shape="rect" id="node4" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,56,175,83"/>
+<area shape="rect" id="node6" href="$class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="13,107,167,133"/>
 </map>

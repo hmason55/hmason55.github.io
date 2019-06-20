@@ -1,5 +1,11 @@
 <map id="UIBehaviour.HideUI" name="UIBehaviour.HideUI">
-<area shape="rect" id="node1" title=" " alt="" coords="197,31,329,57"/>
-<area shape="rect" id="node2" href="$class_u_i_behaviour.html#a058150104cbc5deee5bb2d2c8811380a" title=" " alt="" coords="5,5,149,32"/>
-<area shape="rect" id="node3" href="$class_u_i_behaviour.html#a508b07927b86c1f75ab1eeb45674f040" title=" " alt="" coords="5,56,149,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="463,132,595,159"/>
+<area shape="rect" id="node2" href="$class_u_i_behaviour.html#a058150104cbc5deee5bb2d2c8811380a" title=" " alt="" coords="255,5,399,32"/>
+<area shape="rect" id="node3" href="$class_u_i_behaviour.html#a508b07927b86c1f75ab1eeb45674f040" title=" " alt="" coords="255,56,399,83"/>
+<area shape="rect" id="node5" href="$class_menu_u_i.html#a7cbdadd90afa7ab4e0859e8e13018475" title=" " alt="" coords="259,107,394,133"/>
+<area shape="rect" id="node6" href="$class_menu_u_i.html#ad6294a77fc850ee2522208c861680ccd" title=" " alt="" coords="267,157,387,184"/>
+<area shape="rect" id="node8" href="$class_shortcut_u_i.html#a2434bf0b041a115161fda12022d69f0b" title=" " alt="" coords="239,208,415,235"/>
+<area shape="rect" id="node9" href="$class_shortcut_u_i.html#a09fc14c30bd9cb1e1eb6c819d3d2ec97" title=" " alt="" coords="263,259,391,285"/>
+<area shape="rect" id="node4" href="$class_shortcut_u_i.html#a0aac1124abf578678479c5c8c8705753" title=" " alt="" coords="9,56,187,83"/>
+<area shape="rect" id="node7" href="$class_shortcut_u_i.html#a71824a1037ebef08af0938c0d731a498" title=" " alt="" coords="5,157,191,184"/>
 </map>

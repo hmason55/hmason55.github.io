@@ -1,0 +1,6 @@
+<map id="Tile.AnimateDecoration" name="Tile.AnimateDecoration">
+<area shape="rect" id="node1" title=" " alt="" coords="5,46,161,73"/>
+<area shape="rect" id="node2" href="$class_base_decoration.html#a9e9cfc5e741b09f01d91198dd43995e2" title=" " alt="" coords="215,5,389,47"/>
+<area shape="rect" id="node3" href="$class_decoration_behaviour.html#ab0c95dcefbc9c58d2f96a43729eda8ca" title=" " alt="" coords="209,71,395,112"/>
+<area shape="rect" id="node4" href="$class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="443,71,624,112"/>
+</map>

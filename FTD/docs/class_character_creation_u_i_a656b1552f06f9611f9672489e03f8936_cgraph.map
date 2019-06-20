@@ -1,6 +1,7 @@
 <map id="CharacterCreationUI.OnStart" name="CharacterCreationUI.OnStart">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,192,32"/>
-<area shape="rect" id="node2" href="$class_character_creation_u_i.html#a1724d7136e40f03376f720ec0ecb2d83" title=" " alt="" coords="240,5,420,32"/>
-<area shape="rect" id="node3" href="$class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="468,5,623,32"/>
-<area shape="rect" id="node4" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="671,5,833,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,192,57"/>
+<area shape="rect" id="node2" href="$class_character_creation_u_i.html#a1724d7136e40f03376f720ec0ecb2d83" title=" " alt="" coords="240,31,420,57"/>
+<area shape="rect" id="node3" href="$class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="468,31,623,57"/>
+<area shape="rect" id="node4" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="675,5,837,32"/>
+<area shape="rect" id="node5" href="$class_unit_behaviour.html#aa355d5e4ae0043f69458a58af9316231" title=" " alt="" coords="671,56,841,83"/>
 </map>

@@ -1,0 +1,8 @@
+<map id="Effect.GetPotency" name="Effect.GetPotency">
+<area shape="rect" id="node1" title=" " alt="" coords="621,56,749,83"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a181927c2b7d2f4ff6e38596657d243ed" title=" " alt="" coords="223,31,385,57"/>
+<area shape="rect" id="node5" href="$class_effect.html#a81689f18a4d3ae57ca39b71592be76ef" title=" " alt="" coords="457,56,549,83"/>
+<area shape="rect" id="node6" href="$class_spell.html#a497e137d2a37c828be4954f10fa00f02" title=" " alt="" coords="433,107,573,133"/>
+<area shape="rect" id="node3" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,5,175,32"/>
+<area shape="rect" id="node4" href="$class_spell.html#aa020942716a6504fc6b23351a4baa3b6" title=" " alt="" coords="27,56,153,83"/>
+</map>

@@ -1,4 +1,10 @@
 <map id="ContainerBehaviour.HideUI" name="ContainerBehaviour.HideUI">
-<area shape="rect" id="node1" title=" " alt="" coords="240,5,415,32"/>
-<area shape="rect" id="node2" href="$class_container_behaviour.html#a12b621fb47599b10bec679acb4cbe24e" title=" " alt="" coords="5,5,192,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="721,107,896,133"/>
+<area shape="rect" id="node2" href="$class_bag_behaviour.html#a731b060bd01b971246839664dfd86530" title=" " alt="" coords="509,81,651,108"/>
+<area shape="rect" id="node8" href="$class_container_behaviour.html#a12b621fb47599b10bec679acb4cbe24e" title=" " alt="" coords="487,132,673,159"/>
+<area shape="rect" id="node3" href="$class_bag_behaviour.html#a830725c05ecdc1a1a637d26cf5cff0dc" title=" " alt="" coords="257,5,411,32"/>
+<area shape="rect" id="node5" href="$class_shortcut_u_i.html#aa9dca9d0598a36d8df6555d26e75f176" title=" " alt="" coords="229,56,439,83"/>
+<area shape="rect" id="node6" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="233,107,435,133"/>
+<area shape="rect" id="node7" href="$class_shortcut_u_i.html#a09fc14c30bd9cb1e1eb6c819d3d2ec97" title=" " alt="" coords="270,157,398,184"/>
+<area shape="rect" id="node4" href="$class_shortcut_u_i.html#a2434bf0b041a115161fda12022d69f0b" title=" " alt="" coords="5,5,181,32"/>
 </map>

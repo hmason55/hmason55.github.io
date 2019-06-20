@@ -1,7 +1,10 @@
 <map id="Hotbar.DisableHotkeys" name="Hotbar.DisableHotkeys">
-<area shape="rect" id="node1" title=" " alt="" coords="657,56,812,83"/>
-<area shape="rect" id="node2" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="441,31,576,57"/>
-<area shape="rect" id="node5" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="408,81,609,108"/>
-<area shape="rect" id="node3" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,5,360,32"/>
-<area shape="rect" id="node4" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,23,184,65"/>
+<area shape="rect" id="node1" title=" " alt="" coords="860,93,1015,119"/>
+<area shape="rect" id="node2" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="644,67,779,94"/>
+<area shape="rect" id="node8" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="611,118,812,145"/>
+<area shape="rect" id="node3" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="208,5,387,47"/>
+<area shape="rect" id="node4" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="435,67,563,94"/>
+<area shape="rect" id="node5" href="$class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="228,71,367,98"/>
+<area shape="rect" id="node6" href="$class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="5,71,160,98"/>
+<area shape="rect" id="node7" href="$class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="5,122,160,149"/>
 </map>

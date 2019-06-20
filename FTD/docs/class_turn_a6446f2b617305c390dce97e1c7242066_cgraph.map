@@ -1,5 +1,6 @@
 <map id="Turn.Turn" name="Turn.Turn">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,81,32"/>
-<area shape="rect" id="node2" href="$class_base_unit.html#a94ba01b61de9b22ba2431a47caf13cd5" title=" " alt="" coords="129,5,287,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,81,57"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a94ba01b61de9b22ba2431a47caf13cd5" title=" " alt="" coords="129,31,287,57"/>
 <area shape="rect" id="node3" href="$class_base_unit.html#a8b9c4263f81ef40c1841d26ee0573bce" title=" " alt="" coords="335,5,491,32"/>
+<area shape="rect" id="node4" href="$class_moveset.html#a616c9865fd69d008903372ff20c51f14" title=" " alt="" coords="362,56,463,83"/>
 </map>

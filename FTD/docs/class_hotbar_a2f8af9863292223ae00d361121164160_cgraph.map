@@ -1,4 +1,5 @@
 <map id="Hotbar.HideHotkeys" name="Hotbar.HideHotkeys">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,144,32"/>
-<area shape="rect" id="node2" href="$class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a" title=" " alt="" coords="192,5,327,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,144,57"/>
+<area shape="rect" id="node2" href="$class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a" title=" " alt="" coords="202,5,337,32"/>
+<area shape="rect" id="node3" href="$class_hotkey.html#af9f4781de6f767ddfb7b530be3343023" title=" " alt="" coords="192,56,347,83"/>
 </map>

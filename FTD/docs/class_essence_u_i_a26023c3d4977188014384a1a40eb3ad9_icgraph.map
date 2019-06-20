@@ -1,7 +1,0 @@
-<map id="EssenceUI.UpdateUI" name="EssenceUI.UpdateUI">
-<area shape="rect" id="node1" title=" " alt="" coords="243,81,385,108"/>
-<area shape="rect" id="node2" href="$class_combat_manager.html#a8d14cf9a8265e20264151a615e309f12" title=" " alt="" coords="5,5,195,32"/>
-<area shape="rect" id="node3" href="$class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="23,56,177,83"/>
-<area shape="rect" id="node4" href="$class_essence_u_i.html#a1fd3a11e5b47cd87758d337fe1f61384" title=" " alt="" coords="19,107,181,133"/>
-<area shape="rect" id="node5" href="$class_essence_u_i.html#a39b3c1ec97a29130e2e8ab4050921ed6" title=" " alt="" coords="7,157,193,184"/>
-</map>

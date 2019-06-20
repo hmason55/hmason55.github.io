@@ -1,5 +1,6 @@
 <map id="Effect.Apply" name="Effect.Apply">
-<area shape="rect" id="node1" title=" " alt="" coords="391,5,483,32"/>
-<area shape="rect" id="node2" href="$class_base_unit.html#a0f900d0c70a2436dd81d8127f8d43336" title=" " alt="" coords="180,5,343,32"/>
-<area shape="rect" id="node3" href="$class_spell.html#aa020942716a6504fc6b23351a4baa3b6" title=" " alt="" coords="5,5,132,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="433,31,525,57"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a181927c2b7d2f4ff6e38596657d243ed" title=" " alt="" coords="223,31,385,57"/>
+<area shape="rect" id="node3" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,5,175,32"/>
+<area shape="rect" id="node4" href="$class_spell.html#aa020942716a6504fc6b23351a4baa3b6" title=" " alt="" coords="27,56,153,83"/>
 </map>

@@ -12,6 +12,7 @@ var class_dungeon_manager =
       [ "A2", "class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431ac6bdf6f65f3845da9085e9ae5790b494", null ],
       [ "A3", "class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431a6593d7b12fd418cdb35bbf438de72f66", null ],
       [ "A4", "class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431a0c2f3adf2a48bab3adb470f4da57f3d0", null ],
+      [ "Boss_0", "class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431a2de54c1a56a88f67b01ce62a4e223709", null ],
       [ "Debug", "class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431aa603905470e2a5b8c13e96b579ef0dba", null ]
     ] ],
     [ "AllocateObjects", "class_dungeon_manager.html#a196f2f6754dae0d38307197bbbf033c4", null ],
@@ -28,8 +29,10 @@ var class_dungeon_manager =
     [ "containerDecorationDensity", "class_dungeon_manager.html#ac8121ec063d2906a27e427909dda7b98", null ],
     [ "enemyUnitDensity", "class_dungeon_manager.html#a5c9f7b979abf6f84f53207534b4411fd", null ],
     [ "exitPosition", "class_dungeon_manager.html#aadb66fc96231fe5b03f36fe52d602d23", null ],
+    [ "fountainDecorationDensity", "class_dungeon_manager.html#ab919d8cca490a8f62c9294a38f11a948", null ],
     [ "smallDecorationDensity", "class_dungeon_manager.html#ae78f0aa119dcc211708cf8f3424534a6", null ],
     [ "trapDecorationDensity", "class_dungeon_manager.html#afe07ede1aa21fca0021660f0c0b1a536", null ],
+    [ "cameraController", "class_dungeon_manager.html#acb1312ca0ffbd5a95851aef73f6dfffe", null ],
     [ "limitRendering", "class_dungeon_manager.html#a6f04a65ae61dd9b11d58489272b5fa70", null ],
     [ "renderOrigin", "class_dungeon_manager.html#af1c37437d9ec1f72c4dc6a0300d226df", null ],
     [ "tiles", "class_dungeon_manager.html#a35b1117b28fd54ff805320dc50fd206d", null ],

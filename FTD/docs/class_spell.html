@@ -89,7 +89,6 @@ $(document).ready(function(){initNavTree('class_spell.html','');});
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_spell-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -101,32 +100,48 @@ Collaboration diagram for Spell:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell__coll__graph.png" border="0" usemap="#_spell_coll__map" alt="Collaboration graph"/></div>
 <map name="_spell_coll__map" id="_spell_coll__map">
-<area shape="rect"  title=" " alt="" coords="5,5,192,391"/>
+<area shape="rect"  title=" " alt="" coords="5,5,192,376"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a5520e850e7000a6156b3456672b72ed1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Preset</a> { <br />
-&#160;&#160;<a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1a7e545ff517bca0397924c67f6cdb4324">Preset.Bite</a>, 
-<a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1a358cfe58715d680d9ab09f82e4010cbc">Preset.Slash</a>, 
-<a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1a7de3088f4fdf3f3c4ecfbee2eceaecd1">Preset.BurningHands</a>, 
-<a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1a2ba21df265456583717bc5b35077e97a">Preset.FeintSwipe</a>, 
+<tr class="memitem:a31295cdd96e3fa76b7ad22a3d926c13f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">ID</a> { <br />
+&#160;&#160;<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13faa28f99aa6db96c1ff598686a90300cf1">ID.Aimed_Throw</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa7e545ff517bca0397924c67f6cdb4324">ID.Bite</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa99b8f374158489a4358bfa2fc1b462c1">ID.Bleed</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fae1e4c8c9ccd9fc39c391da4bcd093fb2">ID.Block</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1aa8155b0ea02bae01cd41369018837d6b">Preset.Fireball</a>, 
-<a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1a6bc362dbf494c61ea117fe3c71ca48a5">Preset.Move</a>, 
-<a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1ae1e4c8c9ccd9fc39c391da4bcd093fb2">Preset.Block</a>
+&#160;&#160;<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fac56572a31e70d11db432d6db9972c259">ID.Burning_Hands</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13faeed465b0a8599543712e30ea765e9777">ID.Eviscerate</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa2029ce1e1d31d15a49df10f95c0f7653">ID.Feint_Swipe</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13faa8155b0ea02bae01cd41369018837d6b">ID.Fireball</a>, 
+<br />
+&#160;&#160;<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fac5bb793446f0904263702b3c1186036f">ID.Lightning_Strike</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa6bc362dbf494c61ea117fe3c71ca48a5">ID.Move</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa3a9d1818d0d7f5646e63465baf7d366f">ID.Poison</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13faf8fa5c331a88b6399c1c53c57cfa0e15">ID.Poison_Fang</a>, 
+<br />
+&#160;&#160;<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa002b7d7f2ba0a8c167fc24f4839fd46e">ID.Severing_Strike</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fad4c4a8afbf31c9cb1113d9d1693d9f3c">ID.Skeletal_Claws</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa358cfe58715d680d9ab09f82e4010cbc">ID.Slash</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa2e921750cd209ef2419cbf70206a4f00">ID.Summon_Minor_Undead</a>, 
+<br />
+&#160;&#160;<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa4eae64bfb4de1563f82b333f98ea3ffe">ID.Devour</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa6ac49ced955837aa35975050f75dcfed">ID.Summon_Vile_Undead</a>, 
+<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa569fcdbbf39a93139c55b1218db95934">ID.Whirling_Steel</a>
 <br />
  }</td></tr>
-<tr class="separator:a5520e850e7000a6156b3456672b72ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a31295cdd96e3fa76b7ad22a3d926c13f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e228beaf92e2c035e6599aaf0ac2d2a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2a">DamageType</a> { <br />
-&#160;&#160;<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa8c5d5b09768823ed63d3d3a95a7a962a">DamageType.Slashing</a>, 
-<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa71b82d588f8ca5360dd8f79f4452f61a">DamageType.Piercing</a>, 
-<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aad312850039f757c26cb4f03c4aa0edef">DamageType.Crushing</a>, 
+&#160;&#160;<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa99b8f374158489a4358bfa2fc1b462c1">DamageType.Bleed</a>, 
 <a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aabd2b7e5f85a6ea65065c4ebc6d7c95bb">DamageType.Fire</a>, 
+<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa583d6a9fe10d672474e2cdca476113b7">DamageType.Ice</a>, 
+<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa457ba641340a812b28f949a26fca3e7b">DamageType.Lightning</a>, 
 <br />
-&#160;&#160;<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa583d6a9fe10d672474e2cdca476113b7">DamageType.Ice</a>, 
-<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa457ba641340a812b28f949a26fca3e7b">DamageType.Lightning</a>
+&#160;&#160;<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aace898d62ed9ca7653a01fe0c781e97e9">DamageType.Physical</a>, 
+<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa3a9d1818d0d7f5646e63465baf7d366f">DamageType.Poison</a>, 
+<a class="el" href="class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa968ae4f03d7e0c30fe4eb26b83c855dd">DamageType.Spell</a>
 <br />
  }</td></tr>
 <tr class="separator:a3e228beaf92e2c035e6599aaf0ac2d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,12 +190,12 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a34acc5591bc0b3c8a1d9468e952be3c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a34acc5591bc0b3c8a1d9468e952be3c4">Spell</a> (<a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Preset</a> spell)</td></tr>
-<tr class="separator:a34acc5591bc0b3c8a1d9468e952be3c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a555a02d92d6de53a3b6d39bfda11c2cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a555a02d92d6de53a3b6d39bfda11c2cc">Spell</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> <a class="el" href="class_spell.html#a682bd6dfb1e3dd20ef44711ca10c0f05">caster</a>, <a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Preset</a> spell)</td></tr>
-<tr class="separator:a555a02d92d6de53a3b6d39bfda11c2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee08370358e033af2bf7e0c4c2f2b2bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#aee08370358e033af2bf7e0c4c2f2b2bd">CreateFromPreset</a> (<a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Preset</a> spell, bool sync=false)</td></tr>
-<tr class="separator:aee08370358e033af2bf7e0c4c2f2b2bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaff487aa659b54c1cedcc9eb0ef64c3d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#aaff487aa659b54c1cedcc9eb0ef64c3d">Spell</a> (<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">ID</a> spell)</td></tr>
+<tr class="separator:aaff487aa659b54c1cedcc9eb0ef64c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ef03129e2ed1a5c6f324711f7770fcd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a6ef03129e2ed1a5c6f324711f7770fcd">Spell</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> <a class="el" href="class_spell.html#a682bd6dfb1e3dd20ef44711ca10c0f05">caster</a>, <a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">ID</a> spell)</td></tr>
+<tr class="separator:a6ef03129e2ed1a5c6f324711f7770fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6edfcd211ba63cfc837516160d47ca4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a6edfcd211ba63cfc837516160d47ca4b">CreateFromPreset</a> (<a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">ID</a> spell, bool sync=false)</td></tr>
+<tr class="separator:a6edfcd211ba63cfc837516160d47ca4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a267e0b312732b826127c2d58ba64d90d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a267e0b312732b826127c2d58ba64d90d">ResetTiles</a> ()</td></tr>
 <tr class="separator:a267e0b312732b826127c2d58ba64d90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad49f8d3af9c5a885120ca85b510eae75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#ad49f8d3af9c5a885120ca85b510eae75">ShowCastRange</a> ()</td></tr>
@@ -195,6 +210,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaaea2d98c141ffd0838bac9ac5641349"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac96caa87a4e57a75bd70672a7cd9b83c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#ac96caa87a4e57a75bd70672a7cd9b83c">SpawnEffectParticles</a> (Vector2Int position, float zrotation)</td></tr>
 <tr class="separator:ac96caa87a4e57a75bd70672a7cd9b83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb263788226e378bf350e7d9a7f305d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#abb263788226e378bf350e7d9a7f305d6">PlayProjectileSound</a> (Vector2Int position)</td></tr>
+<tr class="separator:abb263788226e378bf350e7d9a7f305d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1dfbc90153df551bd995b8b852f808f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a1dfbc90153df551bd995b8b852f808f0">PlayEffectSound</a> (Vector2Int position)</td></tr>
 <tr class="separator:a1dfbc90153df551bd995b8b852f808f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80aa52e9ed4b3555bd04682d93bc5049"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a80aa52e9ed4b3555bd04682d93bc5049">PlayDamageSound</a> (Vector2Int position)</td></tr>
@@ -203,22 +220,31 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a14ec832bc720a2763ff8a09f81d7c5d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5a9b6a6b13fcd1cfed9eb43e123ca23"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#aa5a9b6a6b13fcd1cfed9eb43e123ca23">EstimateDamage</a> (<a class="el" href="class_effect.html">Effect</a> e)</td></tr>
 <tr class="separator:aa5a9b6a6b13fcd1cfed9eb43e123ca23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a497e137d2a37c828be4954f10fa00f02"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a497e137d2a37c828be4954f10fa00f02">EstimateBlock</a> (<a class="el" href="class_effect.html">Effect</a> e)</td></tr>
+<tr class="separator:a497e137d2a37c828be4954f10fa00f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731241b635a60169b89c57cba8057e2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a731241b635a60169b89c57cba8057e2c">DealHealing</a> (<a class="el" href="class_effect.html">Effect</a> e, bool sound=false)</td></tr>
+<tr class="separator:a731241b635a60169b89c57cba8057e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2e4f64f1f7ced4b69c55619d5fdb0b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0">DealDamage</a> (<a class="el" href="class_effect.html">Effect</a> e, bool sound=false)</td></tr>
 <tr class="separator:ad2e4f64f1f7ced4b69c55619d5fdb0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa020942716a6504fc6b23351a4baa3b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#aa020942716a6504fc6b23351a4baa3b6">ApplyStatus</a> (<a class="el" href="class_effect.html">Effect</a> e, bool sound=false)</td></tr>
 <tr class="separator:aa020942716a6504fc6b23351a4baa3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc4017df912f5c93e7aa48c9edf54da5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#afc4017df912f5c93e7aa48c9edf54da5">PostSpellEffect</a> ()</td></tr>
+<tr class="separator:afc4017df912f5c93e7aa48c9edf54da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65c49405edc86456dfdace46c81b1530"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a65c49405edc86456dfdace46c81b1530">SyncWithCaster</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> <a class="el" href="class_spell.html#a682bd6dfb1e3dd20ef44711ca10c0f05">caster</a>)</td></tr>
 <tr class="separator:a65c49405edc86456dfdace46c81b1530"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:abb6d2a96c06ac7e85d1e315e257a106a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#abb6d2a96c06ac7e85d1e315e257a106a">id</a></td></tr>
-<tr class="separator:abb6d2a96c06ac7e85d1e315e257a106a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f8283f4c9175d61db26053f39168ac0"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a2f8283f4c9175d61db26053f39168ac0">TargetingAttributesToString</a> ()</td></tr>
+<tr class="separator:a2f8283f4c9175d61db26053f39168ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afebca8a79f6e3ee237ef75c199bef325"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#afebca8a79f6e3ee237ef75c199bef325">TargetingValuesToString</a> ()</td></tr>
+<tr class="separator:afebca8a79f6e3ee237ef75c199bef325"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abda349c27b9316c09e44c43c4e7e258b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#abda349c27b9316c09e44c43c4e7e258b">PotencyAttributesToString</a> (<a class="el" href="class_bag.html">Bag</a> bag, <a class="el" href="class_attributes.html">Attributes</a> attributes)</td></tr>
+<tr class="separator:abda349c27b9316c09e44c43c4e7e258b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3abfd97d19b4b49f5697ff1676a32d40"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a3abfd97d19b4b49f5697ff1676a32d40">PotencyValuesToString</a> (<a class="el" href="class_bag.html">Bag</a> bag, <a class="el" href="class_attributes.html">Attributes</a> attributes)</td></tr>
+<tr class="separator:a3abfd97d19b4b49f5697ff1676a32d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a5f19de819de784c8f273d52417009f54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Preset</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a5f19de819de784c8f273d52417009f54">preset</a><code> [get, set]</code></td></tr>
-<tr class="separator:a5f19de819de784c8f273d52417009f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b8d669d226d391bc235ec1964444a56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">ID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a5b8d669d226d391bc235ec1964444a56">id</a><code> [get, set]</code></td></tr>
+<tr class="separator:a5b8d669d226d391bc235ec1964444a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a682bd6dfb1e3dd20ef44711ca10c0f05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_base_unit.html">BaseUnit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a682bd6dfb1e3dd20ef44711ca10c0f05">caster</a><code> [get]</code></td></tr>
 <tr class="separator:a682bd6dfb1e3dd20ef44711ca10c0f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57762a8a1ff7a3b2c901fedc517035e9"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a57762a8a1ff7a3b2c901fedc517035e9">spellName</a><code> [get]</code></td></tr>
@@ -229,14 +255,16 @@ Properties</h2></td></tr>
 <tr class="separator:a213cc910c2cc43b2ac27d4524c90722c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa868e1b844177f20440e0b15f7d42692"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#aa868e1b844177f20440e0b15f7d42692">castRadius</a><code> [get, set]</code></td></tr>
 <tr class="separator:aa868e1b844177f20440e0b15f7d42692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d79659cf4a135d0f8e859e07c695df9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a8d79659cf4a135d0f8e859e07c695df9">chargesRemaining</a><code> [get, set]</code></td></tr>
-<tr class="separator:a8d79659cf4a135d0f8e859e07c695df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13096b0c79d853c52e9d69ff6c913563"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a13096b0c79d853c52e9d69ff6c913563">chargesMax</a><code> [get]</code></td></tr>
-<tr class="separator:a13096b0c79d853c52e9d69ff6c913563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37d88b4a2de6cd210ee900b8519d08de"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a37d88b4a2de6cd210ee900b8519d08de">castOutsideCombat</a><code> [get]</code></td></tr>
+<tr class="separator:a37d88b4a2de6cd210ee900b8519d08de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af96caea62499b1c627e611cf91c43d64"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#af96caea62499b1c627e611cf91c43d64">castImmediate</a><code> [get]</code></td></tr>
+<tr class="separator:af96caea62499b1c627e611cf91c43d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7af1a010c8b8bff70bba88de6f474c1b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a7af1a010c8b8bff70bba88de6f474c1b">effectRadius</a><code> [get]</code></td></tr>
 <tr class="separator:a7af1a010c8b8bff70bba88de6f474c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b207b63bd2f3bf16543af1252bbcc7b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a0b207b63bd2f3bf16543af1252bbcc7b">requireCastConfirmation</a><code> [get]</code></td></tr>
 <tr class="separator:a0b207b63bd2f3bf16543af1252bbcc7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2293654e2d72a130c198abfe65d1c266"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_spell.html#ad6592ed902a6627b69d56b0c78ca1b8b">TargetUnitType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a2293654e2d72a130c198abfe65d1c266">castTargetUnitType</a><code> [get]</code></td></tr>
+<tr class="separator:a2293654e2d72a130c198abfe65d1c266"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f1ffc008aa15b87555869f751d0563b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a1f1ffc008aa15b87555869f751d0563b">projCount</a><code> [get]</code></td></tr>
 <tr class="separator:a1f1ffc008aa15b87555869f751d0563b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a960bdb4e2ddb566e01ebd89ce94e383e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a960bdb4e2ddb566e01ebd89ce94e383e">projPreSpawnDelay</a><code> [get]</code></td></tr>
@@ -259,6 +287,8 @@ Properties</h2></td></tr>
 <tr class="separator:abe2debb79464b4f7a9985005efe98ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0829aca41b73bbbd14adea27fc373c80"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a0829aca41b73bbbd14adea27fc373c80">intentValue</a><code> [get]</code></td></tr>
 <tr class="separator:a0829aca41b73bbbd14adea27fc373c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b1e13d1b6c3e5fc5e17bf3db5a7f227"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_spell.html#a7b1e13d1b6c3e5fc5e17bf3db5a7f227">description</a><code> [get, set]</code></td></tr>
+<tr class="separator:a7b1e13d1b6c3e5fc5e17bf3db5a7f227"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a3e228beaf92e2c035e6599aaf0ac2d2a"></a>
@@ -281,12 +311,13 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aa8c5d5b09768823ed63d3d3a95a7a962a"></a>Slashing&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aa71b82d588f8ca5360dd8f79f4452f61a"></a>Piercing&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aad312850039f757c26cb4f03c4aa0edef"></a>Crushing&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aa99b8f374158489a4358bfa2fc1b462c1"></a>Bleed&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aabd2b7e5f85a6ea65065c4ebc6d7c95bb"></a>Fire&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aa583d6a9fe10d672474e2cdca476113b7"></a>Ice&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aa457ba641340a812b28f949a26fca3e7b"></a>Lightning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aace898d62ed9ca7653a01fe0c781e97e9"></a>Physical&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aa3a9d1818d0d7f5646e63465baf7d366f"></a>Poison&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3e228beaf92e2c035e6599aaf0ac2d2aa968ae4f03d7e0c30fe4eb26b83c855dd"></a>Spell&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -348,6 +379,49 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a31295cdd96e3fa76b7ad22a3d926c13f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31295cdd96e3fa76b7ad22a3d926c13f">&#9670;&nbsp;</a></span>ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">Spell.ID</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13faa28f99aa6db96c1ff598686a90300cf1"></a>Aimed_Throw&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa7e545ff517bca0397924c67f6cdb4324"></a>Bite&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa99b8f374158489a4358bfa2fc1b462c1"></a>Bleed&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fae1e4c8c9ccd9fc39c391da4bcd093fb2"></a>Block&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fac56572a31e70d11db432d6db9972c259"></a>Burning_Hands&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13faeed465b0a8599543712e30ea765e9777"></a>Eviscerate&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa2029ce1e1d31d15a49df10f95c0f7653"></a>Feint_Swipe&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13faa8155b0ea02bae01cd41369018837d6b"></a>Fireball&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fac5bb793446f0904263702b3c1186036f"></a>Lightning_Strike&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa6bc362dbf494c61ea117fe3c71ca48a5"></a>Move&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa3a9d1818d0d7f5646e63465baf7d366f"></a>Poison&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13faf8fa5c331a88b6399c1c53c57cfa0e15"></a>Poison_Fang&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa002b7d7f2ba0a8c167fc24f4839fd46e"></a>Severing_Strike&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fad4c4a8afbf31c9cb1113d9d1693d9f3c"></a>Skeletal_Claws&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa358cfe58715d680d9ab09f82e4010cbc"></a>Slash&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa2e921750cd209ef2419cbf70206a4f00"></a>Summon_Minor_Undead&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa4eae64bfb4de1563f82b333f98ea3ffe"></a>Devour&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa6ac49ced955837aa35975050f75dcfed"></a>Summon_Vile_Undead&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a31295cdd96e3fa76b7ad22a3d926c13fa569fcdbbf39a93139c55b1218db95934"></a>Whirling_Steel&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="a602b82de554076b542544262e7a95f19"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a602b82de554076b542544262e7a95f19">&#9670;&nbsp;</a></span>IntentType</h2>
 
@@ -374,37 +448,6 @@ Properties</h2></td></tr>
 <tr><td class="fieldname"><a id="a602b82de554076b542544262e7a95f19a536e1a5d9f4fe868e6ea5ff628f51f25"></a>Buff&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a602b82de554076b542544262e7a95f19a941c9c4ecaa0bb3ab530f13b0078be01"></a>Debuff&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a602b82de554076b542544262e7a95f19a88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-<a id="a5520e850e7000a6156b3456672b72ed1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5520e850e7000a6156b3456672b72ed1">&#9670;&nbsp;</a></span>Preset</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Spell.Preset</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5520e850e7000a6156b3456672b72ed1a7e545ff517bca0397924c67f6cdb4324"></a>Bite&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5520e850e7000a6156b3456672b72ed1a358cfe58715d680d9ab09f82e4010cbc"></a>Slash&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5520e850e7000a6156b3456672b72ed1a7de3088f4fdf3f3c4ecfbee2eceaecd1"></a>BurningHands&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5520e850e7000a6156b3456672b72ed1a2ba21df265456583717bc5b35077e97a"></a>FeintSwipe&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5520e850e7000a6156b3456672b72ed1aa8155b0ea02bae01cd41369018837d6b"></a>Fireball&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5520e850e7000a6156b3456672b72ed1a6bc362dbf494c61ea117fe3c71ca48a5"></a>Move&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5520e850e7000a6156b3456672b72ed1ae1e4c8c9ccd9fc39c391da4bcd093fb2"></a>Block&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -466,8 +509,8 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a34acc5591bc0b3c8a1d9468e952be3c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34acc5591bc0b3c8a1d9468e952be3c4">&#9670;&nbsp;</a></span>Spell() <span class="overload">[1/2]</span></h2>
+<a id="aaff487aa659b54c1cedcc9eb0ef64c3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaff487aa659b54c1cedcc9eb0ef64c3d">&#9670;&nbsp;</a></span>Spell() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -475,7 +518,7 @@ Properties</h2></td></tr>
         <tr>
           <td class="memname">Spell.Spell </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Preset</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">ID</a>&#160;</td>
           <td class="paramname"><em>spell</em></td><td>)</td>
           <td></td>
         </tr>
@@ -484,10 +527,10 @@ Properties</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_spell_a34acc5591bc0b3c8a1d9468e952be3c4_cgraph.png" border="0" usemap="#class_spell_a34acc5591bc0b3c8a1d9468e952be3c4_cgraph" alt=""/></div>
-<map name="class_spell_a34acc5591bc0b3c8a1d9468e952be3c4_cgraph" id="class_spell_a34acc5591bc0b3c8a1d9468e952be3c4_cgraph">
+<div class="center"><img src="class_spell_aaff487aa659b54c1cedcc9eb0ef64c3d_cgraph.png" border="0" usemap="#class_spell_aaff487aa659b54c1cedcc9eb0ef64c3d_cgraph" alt=""/></div>
+<map name="class_spell_aaff487aa659b54c1cedcc9eb0ef64c3d_cgraph" id="class_spell_aaff487aa659b54c1cedcc9eb0ef64c3d_cgraph">
 <area shape="rect"  title=" " alt="" coords="5,31,89,57"/>
-<area shape="rect"  href="class_spell.html#aee08370358e033af2bf7e0c4c2f2b2bd" title=" " alt="" coords="137,31,299,57"/>
+<area shape="rect"  href="class_spell.html#a6edfcd211ba63cfc837516160d47ca4b" title=" " alt="" coords="137,31,299,57"/>
 <area shape="rect"  href="class_effect.html#a5c751c4432cf967c74fe16befbdbbe2e" title=" " alt="" coords="355,5,522,32"/>
 <area shape="rect"  href="class_effect.html#a476b569a5adf97f1b691dcbb7e5cb325" title=" " alt="" coords="347,56,531,83"/>
 </map>
@@ -495,8 +538,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a555a02d92d6de53a3b6d39bfda11c2cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a555a02d92d6de53a3b6d39bfda11c2cc">&#9670;&nbsp;</a></span>Spell() <span class="overload">[2/2]</span></h2>
+<a id="a6ef03129e2ed1a5c6f324711f7770fcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ef03129e2ed1a5c6f324711f7770fcd">&#9670;&nbsp;</a></span>Spell() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -510,7 +553,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Preset</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">ID</a>&#160;</td>
           <td class="paramname"><em>spell</em>&#160;</td>
         </tr>
         <tr>
@@ -523,10 +566,10 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_spell_a555a02d92d6de53a3b6d39bfda11c2cc_cgraph.png" border="0" usemap="#class_spell_a555a02d92d6de53a3b6d39bfda11c2cc_cgraph" alt=""/></div>
-<map name="class_spell_a555a02d92d6de53a3b6d39bfda11c2cc_cgraph" id="class_spell_a555a02d92d6de53a3b6d39bfda11c2cc_cgraph">
+<div class="center"><img src="class_spell_a6ef03129e2ed1a5c6f324711f7770fcd_cgraph.png" border="0" usemap="#class_spell_a6ef03129e2ed1a5c6f324711f7770fcd_cgraph" alt=""/></div>
+<map name="class_spell_a6ef03129e2ed1a5c6f324711f7770fcd_cgraph" id="class_spell_a6ef03129e2ed1a5c6f324711f7770fcd_cgraph">
 <area shape="rect"  title=" " alt="" coords="5,31,89,57"/>
-<area shape="rect"  href="class_spell.html#aee08370358e033af2bf7e0c4c2f2b2bd" title=" " alt="" coords="137,31,299,57"/>
+<area shape="rect"  href="class_spell.html#a6edfcd211ba63cfc837516160d47ca4b" title=" " alt="" coords="137,31,299,57"/>
 <area shape="rect"  href="class_effect.html#a5c751c4432cf967c74fe16befbdbbe2e" title=" " alt="" coords="355,5,522,32"/>
 <area shape="rect"  href="class_effect.html#a476b569a5adf97f1b691dcbb7e5cb325" title=" " alt="" coords="347,56,531,83"/>
 </map>
@@ -566,14 +609,16 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="class_spell_aa020942716a6504fc6b23351a4baa3b6_cgraph.png" border="0" usemap="#class_spell_aa020942716a6504fc6b23351a4baa3b6_cgraph" alt=""/></div>
 <map name="class_spell_aa020942716a6504fc6b23351a4baa3b6_cgraph" id="class_spell_aa020942716a6504fc6b23351a4baa3b6_cgraph">
 <area shape="rect"  title=" " alt="" coords="5,81,132,108"/>
-<area shape="rect"  href="class_spell.html#a80aa52e9ed4b3555bd04682d93bc5049" title=" " alt="" coords="180,56,347,83"/>
-<area shape="rect"  href="class_base_unit.html#a0f900d0c70a2436dd81d8127f8d43336" title=" " alt="" coords="182,132,345,159"/>
-<area shape="rect"  href="class_audio_manager.html#a1520faf231d9b58d63a794f6b8040b99" title=" " alt="" coords="403,5,577,32"/>
-<area shape="rect"  href="class_audio_manager.html#ac0f0dc189806848c224581b363b87396" title=" " alt="" coords="404,56,576,83"/>
-<area shape="rect"  href="class_effect.html#a5af13ce8f65df2bfbba422a46e627fc0" title=" " alt="" coords="633,132,761,159"/>
-<area shape="rect"  href="class_effect.html#a81689f18a4d3ae57ca39b71592be76ef" title=" " alt="" coords="444,157,536,184"/>
-<area shape="rect"  href="class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="395,208,585,235"/>
-<area shape="rect"  href="class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="639,208,755,235"/>
+<area shape="rect"  href="class_spell.html#a80aa52e9ed4b3555bd04682d93bc5049" title=" " alt="" coords="180,31,347,57"/>
+<area shape="rect"  href="class_base_unit.html#a181927c2b7d2f4ff6e38596657d243ed" title=" " alt="" coords="182,132,345,159"/>
+<area shape="rect"  href="class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="432,5,591,32"/>
+<area shape="rect"  href="class_bag.html#a0800ca04bdc44d7f9b16419dc7183b38" title=" " alt="" coords="427,56,596,83"/>
+<area shape="rect"  href="class_effect.html#af5b390a450cbe2433bd8bad79e669a41" title=" " alt="" coords="693,132,821,159"/>
+<area shape="rect"  href="class_base_unit.html#a732bdd48e6a9c74c059bffd4092ac1b5" title=" " alt="" coords="395,208,628,235"/>
+<area shape="rect"  href="class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="887,233,1077,260"/>
+<area shape="rect"  href="class_effect.html#a81689f18a4d3ae57ca39b71592be76ef" title=" " alt="" coords="465,157,557,184"/>
+<area shape="rect"  href="class_base_unit.html#af36bde8493a9c0e16e1171bf942504ca" title=" " alt="" coords="676,208,839,235"/>
+<area shape="rect"  href="class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="1125,233,1241,260"/>
 </map>
 </div>
 
@@ -598,21 +643,36 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_a89146285dc4dadf46398da2683bcc869_cgraph.png" border="0" usemap="#class_spell_a89146285dc4dadf46398da2683bcc869_cgraph" alt=""/></div>
 <map name="class_spell_a89146285dc4dadf46398da2683bcc869_cgraph" id="class_spell_a89146285dc4dadf46398da2683bcc869_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,129,160,156"/>
+<area shape="rect"  title=" " alt="" coords="5,159,160,185"/>
 <area shape="rect"  href="class_spell.html#a46dfa81169863ddb791b3c7d5121fcb8" title=" " alt="" coords="208,5,387,32"/>
 <area shape="rect"  href="class_unit_behaviour.html#a2eee29cede96c8d2aa45e89eda7c0c3c" title=" " alt="" coords="211,57,384,98"/>
 <area shape="rect"  href="class_unit_behaviour.html#a558929aaa9173e1a3b9dfecd8674660f" title=" " alt="" coords="211,122,384,163"/>
-<area shape="rect"  href="class_spell.html#a267e0b312732b826127c2d58ba64d90d" title=" " alt="" coords="239,188,355,215"/>
-<area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="228,239,367,265"/>
-<area shape="rect"  href="class_spell.html#a65c49405edc86456dfdace46c81b1530" title=" " alt="" coords="445,163,595,189"/>
-<area shape="rect"  href="class_essence_u_i.html#abe39202e5f4c5134bd6a16ddfd8bb017" title=" " alt="" coords="435,213,605,240"/>
-<area shape="rect"  href="class_cast_options_u_i.html#a37c4fa85c666ede5418cd5d7e524ce35" title=" " alt="" coords="443,264,597,291"/>
-<area shape="rect"  href="class_spell.html#ad49f8d3af9c5a885120ca85b510eae75" title=" " alt="" coords="445,315,595,341"/>
-<area shape="rect"  href="class_spell.html#aee08370358e033af2bf7e0c4c2f2b2bd" title=" " alt="" coords="653,163,815,189"/>
-<area shape="rect"  href="class_effect.html#a5c751c4432cf967c74fe16befbdbbe2e" title=" " alt="" coords="871,137,1038,164"/>
-<area shape="rect"  href="class_effect.html#a476b569a5adf97f1b691dcbb7e5cb325" title=" " alt="" coords="863,188,1047,215"/>
-<area shape="rect"  href="class_hotbar.html#a2f8af9863292223ae00d361121164160" title=" " alt="" coords="665,264,803,291"/>
-<area shape="rect"  href="class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a" title=" " alt="" coords="887,264,1022,291"/>
+<area shape="rect"  href="class_spell.html#a267e0b312732b826127c2d58ba64d90d" title=" " alt="" coords="936,289,1052,316"/>
+<area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="228,391,367,417"/>
+<area shape="rect"  href="class_spell.html#a65c49405edc86456dfdace46c81b1530" title=" " alt="" coords="463,391,613,417"/>
+<area shape="rect"  href="class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="435,340,641,367"/>
+<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="474,289,602,316"/>
+<area shape="rect"  href="class_essence_u_i.html#abe39202e5f4c5134bd6a16ddfd8bb017" title=" " alt="" coords="453,441,623,468"/>
+<area shape="rect"  href="class_cast_options_u_i.html#a37c4fa85c666ede5418cd5d7e524ce35" title=" " alt="" coords="461,543,615,569"/>
+<area shape="rect"  href="class_spell.html#ad49f8d3af9c5a885120ca85b510eae75" title=" " alt="" coords="463,492,613,519"/>
+<area shape="rect"  href="class_spell.html#a6edfcd211ba63cfc837516160d47ca4b" title=" " alt="" coords="689,391,851,417"/>
+<area shape="rect"  href="class_effect.html#a5c751c4432cf967c74fe16befbdbbe2e" title=" " alt="" coords="911,340,1077,367"/>
+<area shape="rect"  href="class_effect.html#a476b569a5adf97f1b691dcbb7e5cb325" title=" " alt="" coords="902,391,1086,417"/>
+<area shape="rect"  href="class_spell.html#af7f2944573b064a7f561227d6f6fc601" title=" " alt="" coords="691,340,849,367"/>
+<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="703,188,837,215"/>
+<area shape="rect"  href="class_base_unit.html#a5fb838313b1a61dbf38d440c2a12667e" title=" " alt="" coords="941,239,1047,265"/>
+<area shape="rect"  href="class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="899,36,1089,63"/>
+<area shape="rect"  href="class_shortcut_u_i.html#a00f6fd2d64d2e5e978b749eafbe8f949" title=" " alt="" coords="929,87,1059,113"/>
+<area shape="rect"  href="class_hotbar.html#a914ca0c61c4d64b0bde6e829064f71a9" title=" " alt="" coords="917,137,1071,164"/>
+<area shape="rect"  href="class_cast_options_u_i.html#affc98e48b03c51f4dddda5cb96920697" title=" " alt="" coords="920,188,1068,215"/>
+<area shape="rect"  href="class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="1173,36,1311,63"/>
+<area shape="rect"  href="class_hotkey.html#a0b90f1841f8cbe70bf62447affd70bd1" title=" " alt="" coords="1187,137,1297,164"/>
+<area shape="rect"  href="class_hotbar.html#a989b6728a8d86d60a851f68954edab90" title=" " alt="" coords="1170,188,1314,215"/>
+<area shape="rect"  href="class_cast_options_u_i.html#a4d26576fdbfc81183a727b02a33b033d" title=" " alt="" coords="1137,387,1347,429"/>
+<area shape="rect"  href="class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="1395,387,1576,429"/>
+<area shape="rect"  href="class_hotbar.html#a2f8af9863292223ae00d361121164160" title=" " alt="" coords="701,492,839,519"/>
+<area shape="rect"  href="class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a" title=" " alt="" coords="927,441,1061,468"/>
+<area shape="rect"  href="class_hotkey.html#af9f4781de6f767ddfb7b530be3343023" title=" " alt="" coords="917,492,1071,519"/>
 </map>
 </div>
 <div class="dynheader">
@@ -620,17 +680,19 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_a89146285dc4dadf46398da2683bcc869_icgraph.png" border="0" usemap="#class_spell_a89146285dc4dadf46398da2683bcc869_icgraph" alt=""/></div>
 <map name="class_spell_a89146285dc4dadf46398da2683bcc869_icgraph" id="class_spell_a89146285dc4dadf46398da2683bcc869_icgraph">
-<area shape="rect"  title=" " alt="" coords="591,31,745,57"/>
-<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,31,543,57"/>
-<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,5,360,32"/>
-<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,23,184,65"/>
+<area shape="rect"  title=" " alt="" coords="793,78,948,105"/>
+<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="611,53,745,79"/>
+<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="208,5,387,47"/>
+<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="435,53,563,79"/>
+<area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="228,82,367,109"/>
+<area shape="rect"  href="class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="5,82,160,109"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="aee08370358e033af2bf7e0c4c2f2b2bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee08370358e033af2bf7e0c4c2f2b2bd">&#9670;&nbsp;</a></span>CreateFromPreset()</h2>
+<a id="a6edfcd211ba63cfc837516160d47ca4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6edfcd211ba63cfc837516160d47ca4b">&#9670;&nbsp;</a></span>CreateFromPreset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -638,7 +700,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void Spell.CreateFromPreset </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Preset</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">ID</a>&#160;</td>
           <td class="paramname"><em>spell</em>, </td>
         </tr>
         <tr>
@@ -657,8 +719,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_spell_aee08370358e033af2bf7e0c4c2f2b2bd_cgraph.png" border="0" usemap="#class_spell_aee08370358e033af2bf7e0c4c2f2b2bd_cgraph" alt=""/></div>
-<map name="class_spell_aee08370358e033af2bf7e0c4c2f2b2bd_cgraph" id="class_spell_aee08370358e033af2bf7e0c4c2f2b2bd_cgraph">
+<div class="center"><img src="class_spell_a6edfcd211ba63cfc837516160d47ca4b_cgraph.png" border="0" usemap="#class_spell_a6edfcd211ba63cfc837516160d47ca4b_cgraph" alt=""/></div>
+<map name="class_spell_a6edfcd211ba63cfc837516160d47ca4b_cgraph" id="class_spell_a6edfcd211ba63cfc837516160d47ca4b_cgraph">
 <area shape="rect"  title=" " alt="" coords="5,31,167,57"/>
 <area shape="rect"  href="class_effect.html#a5c751c4432cf967c74fe16befbdbbe2e" title=" " alt="" coords="223,5,390,32"/>
 <area shape="rect"  href="class_effect.html#a476b569a5adf97f1b691dcbb7e5cb325" title=" " alt="" coords="215,56,399,83"/>
@@ -667,17 +729,17 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_spell_aee08370358e033af2bf7e0c4c2f2b2bd_icgraph.png" border="0" usemap="#class_spell_aee08370358e033af2bf7e0c4c2f2b2bd_icgraph" alt=""/></div>
-<map name="class_spell_aee08370358e033af2bf7e0c4c2f2b2bd_icgraph" id="class_spell_aee08370358e033af2bf7e0c4c2f2b2bd_icgraph">
+<div class="center"><img src="class_spell_a6edfcd211ba63cfc837516160d47ca4b_icgraph.png" border="0" usemap="#class_spell_a6edfcd211ba63cfc837516160d47ca4b_icgraph" alt=""/></div>
+<map name="class_spell_a6edfcd211ba63cfc837516160d47ca4b_icgraph" id="class_spell_a6edfcd211ba63cfc837516160d47ca4b_icgraph">
 <area shape="rect"  title=" " alt="" coords="1179,31,1340,57"/>
-<area shape="rect"  href="class_spell.html#a34acc5591bc0b3c8a1d9468e952be3c4" title=" " alt="" coords="1013,5,1097,32"/>
+<area shape="rect"  href="class_spell.html#aaff487aa659b54c1cedcc9eb0ef64c3d" title=" " alt="" coords="1013,5,1097,32"/>
 <area shape="rect"  href="class_spell.html#a65c49405edc86456dfdace46c81b1530" title=" " alt="" coords="980,56,1131,83"/>
 <area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="793,56,932,83"/>
-<area shape="rect"  href="class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="591,31,745,57"/>
-<area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="591,81,745,108"/>
-<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,81,543,108"/>
-<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,56,360,83"/>
+<area shape="rect"  href="class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="591,5,745,32"/>
+<area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="591,56,745,83"/>
+<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,56,543,83"/>
 <area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,74,184,115"/>
+<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,107,360,133"/>
 </map>
 </div>
 
@@ -713,35 +775,134 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_ad2e4f64f1f7ced4b69c55619d5fdb0b0_cgraph.png" border="0" usemap="#class_spell_ad2e4f64f1f7ced4b69c55619d5fdb0b0_cgraph" alt=""/></div>
 <map name="class_spell_ad2e4f64f1f7ced4b69c55619d5fdb0b0_cgraph" id="class_spell_ad2e4f64f1f7ced4b69c55619d5fdb0b0_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,412,135,439"/>
-<area shape="rect"  href="class_base_unit.html#af140c1094709a0a90f84d52a4ee80d90" title=" " alt="" coords="198,115,339,141"/>
-<area shape="rect"  href="class_spell.html#a80aa52e9ed4b3555bd04682d93bc5049" title=" " alt="" coords="185,519,352,545"/>
-<area shape="rect"  href="class_spell.html#a14ec832bc720a2763ff8a09f81d7c5d4" title=" " alt="" coords="193,569,344,596"/>
-<area shape="rect"  href="class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="183,304,355,331"/>
-<area shape="rect"  href="class_base_unit.html#a15cf13fa9b4b776f474ad03b42939139" title=" " alt="" coords="423,5,585,32"/>
-<area shape="rect"  href="class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="653,81,844,108"/>
-<area shape="rect"  href="class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="923,81,1039,108"/>
-<area shape="rect"  href="class_audio_manager.html#a1520faf231d9b58d63a794f6b8040b99" title=" " alt="" coords="417,544,591,571"/>
-<area shape="rect"  href="class_audio_manager.html#ac0f0dc189806848c224581b363b87396" title=" " alt="" coords="418,595,590,621"/>
-<area shape="rect"  href="class_base_unit.html#a01c63c5cd0d41b5ca787470fd0c19472" title=" " alt="" coords="411,443,597,469"/>
-<area shape="rect"  href="class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="417,493,591,520"/>
-<area shape="rect"  href="class_turn_queue.html#a7f1a7e7055e613cbd17f1d76d9bfd261" title=" " alt="" coords="424,56,584,83"/>
-<area shape="rect"  href="class_turn_queue.html#aa677cc3ae9812e45a5b7e8932c199e27" title=" " alt="" coords="448,107,560,133"/>
-<area shape="rect"  href="class_combat_manager.html#aea6dfda807c4ec793ed26c5d220b84fb" title=" " alt="" coords="403,326,605,367"/>
-<area shape="rect"  href="class_combat_manager.html#a02eb44e3f4fab4f210d4ecda54fa1272" title=" " alt="" coords="411,209,597,250"/>
-<area shape="rect"  href="class_base_unit.html#a38fdc01e0ff77bcc22f10d4ce06d0e25" title=" " alt="" coords="416,275,592,301"/>
-<area shape="rect"  href="class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="455,392,553,419"/>
-<area shape="rect"  href="class_turn_queue.html#ae1c735b715ec963c76f0291cb9629338" title=" " alt="" coords="675,291,823,317"/>
-<area shape="rect"  href="class_bag.html#a4efd17483fce361ea8a01dcda349b3b4" title="Adds an item to the bag." alt="" coords="713,493,785,520"/>
-<area shape="rect"  href="class_bag.html#a2f11a414bf3edfd7f380f30b71f34104" title="Removes an item at a specific slot in the bag." alt="" coords="695,341,803,368"/>
-<area shape="rect"  href="class_turn_queue.html#af6ee9af337f42a417812f4bc96f8d600" title=" " alt="" coords="665,392,832,419"/>
-<area shape="rect"  href="class_unit_behaviour.html#a9a32f3234ea6b89f686c6cd55d924348" title=" " alt="" coords="687,443,810,469"/>
-<area shape="rect"  href="class_unit_behaviour.html#a17b46e508ee650f487d4bf79608da4eb" title=" " alt="" coords="892,494,1071,535"/>
-<area shape="rect"  href="class_unit_behaviour.html#a4b2664ef7a33e795220d587cb789d169" title=" " alt="" coords="910,392,1053,419"/>
-<area shape="rect"  href="class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="912,443,1051,469"/>
-<area shape="rect"  href="class_loading_u_i.html#ada368f60f70e94bc04f0cbf47455306a" title=" " alt="" coords="1135,392,1257,419"/>
-<area shape="rect"  href="class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="1119,443,1273,469"/>
-<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="1321,443,1484,469"/>
+<area shape="rect"  title=" " alt="" coords="5,337,135,364"/>
+<area shape="rect"  href="class_bag.html#a0800ca04bdc44d7f9b16419dc7183b38" title=" " alt="" coords="199,236,368,263"/>
+<area shape="rect"  href="class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,337,384,364"/>
+<area shape="rect"  href="class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="658,284,830,311"/>
+<area shape="rect"  href="class_spell.html#a80aa52e9ed4b3555bd04682d93bc5049" title=" " alt="" coords="200,388,367,415"/>
+<area shape="rect"  href="class_spell.html#a14ec832bc720a2763ff8a09f81d7c5d4" title=" " alt="" coords="208,439,359,465"/>
+<area shape="rect"  href="class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,341,609,368"/>
+<area shape="rect"  href="class_unit_behaviour.html#a558929aaa9173e1a3b9dfecd8674660f" title=" " alt="" coords="657,335,831,377"/>
+<area shape="rect"  href="class_base_unit.html#af36bde8493a9c0e16e1171bf942504ca" title=" " alt="" coords="663,444,825,471"/>
+<area shape="rect"  href="class_base_unit.html#a01c63c5cd0d41b5ca787470fd0c19472" title=" " alt="" coords="887,132,1073,159"/>
+<area shape="rect"  href="class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="885,487,1075,513"/>
+<area shape="rect"  href="class_unit_behaviour.html#aa702cb5b130976950574b1fb96a50ac3" title=" " alt="" coords="905,183,1055,209"/>
+<area shape="rect"  href="class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="893,233,1067,260"/>
+<area shape="rect"  href="class_base_unit.html#a83a2b7ba4f39a2987e6efdff6e707657" title=" " alt="" coords="880,284,1080,311"/>
+<area shape="rect"  href="class_turn_queue.html#a7f1a7e7055e613cbd17f1d76d9bfd261" title="Searches the queue for Turns associated with the given BaseUnit." alt="" coords="900,335,1060,361"/>
+<area shape="rect"  href="class_turn_queue.html#aa677cc3ae9812e45a5b7e8932c199e27" title="Adds a Turn to the queue." alt="" coords="924,385,1036,412"/>
+<area shape="rect"  href="class_combat_manager.html#ab5d0c356fd55e86d62b03c015754abee" title=" " alt="" coords="881,436,1079,463"/>
+<area shape="rect"  href="class_combat_manager.html#aea6dfda807c4ec793ed26c5d220b84fb" title=" " alt="" coords="879,15,1081,57"/>
+<area shape="rect"  href="class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="931,81,1029,108"/>
+<area shape="rect"  href="class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="1177,512,1293,539"/>
+<area shape="rect"  href="class_camera_controller.html#a6076e5b3f40af8b29fbc810f844b5476" title=" " alt="" coords="1149,208,1320,235"/>
+<area shape="rect"  href="class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="1131,411,1338,437"/>
+<area shape="rect"  href="class_turn_text_u_i.html#a72dc3c34c864390bc8fccfb674d5dcee" title=" " alt="" coords="1171,461,1299,488"/>
+<area shape="rect"  href="class_audio_manager.html#aa144cf0d5ce900e9a977a619492b9ba6" title=" " alt="" coords="1129,360,1340,387"/>
+<area shape="rect"  href="class_bag.html#a4efd17483fce361ea8a01dcda349b3b4" title="Adds an item to the bag." alt="" coords="1671,52,1743,79"/>
+<area shape="rect"  href="class_bag.html#a2f11a414bf3edfd7f380f30b71f34104" title="Removes an item at a specific slot in the bag." alt="" coords="1181,5,1289,32"/>
+<area shape="rect"  href="class_unit_behaviour.html#a9a32f3234ea6b89f686c6cd55d924348" title=" " alt="" coords="1173,157,1296,184"/>
+<area shape="rect"  href="class_loot_table.html#a6497d96bbaff0605eb59b4c58404beac" title=" " alt="" coords="1404,157,1551,184"/>
+<area shape="rect"  href="class_unit_behaviour.html#a17b46e508ee650f487d4bf79608da4eb" title=" " alt="" coords="1388,209,1567,250"/>
+<area shape="rect"  href="class_turn_queue.html#af6ee9af337f42a417812f4bc96f8d600" title="Removes all turns from the queue associated with this BaseUnit." alt="" coords="1394,275,1561,301"/>
+<area shape="rect"  href="class_unit_behaviour.html#a4b2664ef7a33e795220d587cb789d169" title=" " alt="" coords="1406,325,1549,352"/>
+<area shape="rect"  href="class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="1408,107,1547,133"/>
+<area shape="rect"  href="class_loot_table.html#acab53120f654edacde8b3bf3fd932e44" title=" " alt="" coords="1643,271,1772,297"/>
+<area shape="rect"  href="class_database.html#a01e9ed0687e671dde148d1a7cdcfa27f" title=" " alt="" coords="1860,220,2017,247"/>
+<area shape="rect"  href="class_decoration_behaviour.html#ab0c95dcefbc9c58d2f96a43729eda8ca" title=" " alt="" coords="1615,154,1800,195"/>
+<area shape="rect"  href="class_loot_table.html#a77d9b4fb3dd1ccf00183fd13a2a10ed4" title=" " alt="" coords="1861,271,2017,297"/>
+<area shape="rect"  href="class_loot_table.html#a5d6171eed40e3cc72c1dddead4526cc3" title=" " alt="" coords="1873,321,2004,348"/>
+<area shape="rect"  href="class_base_item.html#acbfe01460ec8781b7e05437a1b611a90" title=" " alt="" coords="2077,220,2192,247"/>
+<area shape="rect"  href="class_base_item.html#a23a2c8165ea932a095b124eaeddf5e61" title=" " alt="" coords="2240,220,2383,247"/>
+<area shape="rect"  href="class_base_item.html#a8c1fb2ae49ad1b2fd53baf3dac1a9467" title=" " alt="" coords="2431,213,2616,254"/>
+<area shape="rect"  href="class_swatch.html#aa6e64b48c8403d88179beb90da11c2f8" title=" " alt="" coords="2664,220,2809,247"/>
+<area shape="rect"  href="class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="1848,154,2029,195"/>
+<area shape="rect"  href="class_loading_u_i.html#ada368f60f70e94bc04f0cbf47455306a" title=" " alt="" coords="1646,325,1769,352"/>
+<area shape="rect"  href="class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="1630,103,1785,129"/>
+<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="1857,52,2020,79"/>
+<area shape="rect"  href="class_unit_behaviour.html#aa355d5e4ae0043f69458a58af9316231" title=" " alt="" coords="1853,103,2024,129"/>
+<area shape="rect"  href="class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="441,417,600,444"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a731241b635a60169b89c57cba8057e2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731241b635a60169b89c57cba8057e2c">&#9670;&nbsp;</a></span>DealHealing()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Spell.DealHealing </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_effect.html">Effect</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>sound</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_spell_a731241b635a60169b89c57cba8057e2c_cgraph.png" border="0" usemap="#class_spell_a731241b635a60169b89c57cba8057e2c_cgraph" alt=""/></div>
+<map name="class_spell_a731241b635a60169b89c57cba8057e2c_cgraph" id="class_spell_a731241b635a60169b89c57cba8057e2c_cgraph">
+<area shape="rect"  title=" " alt="" coords="5,113,129,140"/>
+<area shape="rect"  href="class_bag.html#a0800ca04bdc44d7f9b16419dc7183b38" title=" " alt="" coords="193,63,363,89"/>
+<area shape="rect"  href="class_base_unit.html#acdc00f9ae2db67fb8f1ee18df5aa509e" title=" " alt="" coords="655,107,822,133"/>
+<area shape="rect"  href="class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="177,189,379,216"/>
+<area shape="rect"  href="class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="879,5,1070,32"/>
+<area shape="rect"  href="class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="895,56,1054,83"/>
+<area shape="rect"  href="class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="887,107,1062,133"/>
+<area shape="rect"  href="class_base_unit.html#a83a2b7ba4f39a2987e6efdff6e707657" title=" " alt="" coords="875,157,1075,184"/>
+<area shape="rect"  href="class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="1171,5,1287,32"/>
+<area shape="rect"  href="class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="427,240,604,267"/>
+<area shape="rect"  href="class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="653,252,825,279"/>
+<area shape="rect"  href="class_unit_behaviour.html#a558929aaa9173e1a3b9dfecd8674660f" title=" " alt="" coords="652,303,825,345"/>
+<area shape="rect"  href="class_base_unit.html#af36bde8493a9c0e16e1171bf942504ca" title=" " alt="" coords="657,31,820,57"/>
+<area shape="rect"  href="class_base_unit.html#a01c63c5cd0d41b5ca787470fd0c19472" title=" " alt="" coords="881,208,1068,235"/>
+<area shape="rect"  href="class_unit_behaviour.html#aa702cb5b130976950574b1fb96a50ac3" title=" " alt="" coords="900,259,1049,285"/>
+<area shape="rect"  href="class_turn_queue.html#a7f1a7e7055e613cbd17f1d76d9bfd261" title="Searches the queue for Turns associated with the given BaseUnit." alt="" coords="895,309,1055,336"/>
+<area shape="rect"  href="class_turn_queue.html#aa677cc3ae9812e45a5b7e8932c199e27" title="Adds a Turn to the queue." alt="" coords="919,360,1031,387"/>
+<area shape="rect"  href="class_combat_manager.html#ab5d0c356fd55e86d62b03c015754abee" title=" " alt="" coords="875,411,1074,437"/>
+<area shape="rect"  href="class_combat_manager.html#aea6dfda807c4ec793ed26c5d220b84fb" title=" " alt="" coords="873,462,1076,503"/>
+<area shape="rect"  href="class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="926,563,1023,589"/>
+<area shape="rect"  href="class_camera_controller.html#a6076e5b3f40af8b29fbc810f844b5476" title=" " alt="" coords="1144,259,1315,285"/>
+<area shape="rect"  href="class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="1126,335,1333,361"/>
+<area shape="rect"  href="class_turn_text_u_i.html#a72dc3c34c864390bc8fccfb674d5dcee" title=" " alt="" coords="1165,385,1293,412"/>
+<area shape="rect"  href="class_audio_manager.html#aa144cf0d5ce900e9a977a619492b9ba6" title=" " alt="" coords="1124,436,1335,463"/>
+<area shape="rect"  href="class_bag.html#a4efd17483fce361ea8a01dcda349b3b4" title="Adds an item to the bag." alt="" coords="1666,487,1738,513"/>
+<area shape="rect"  href="class_bag.html#a2f11a414bf3edfd7f380f30b71f34104" title="Removes an item at a specific slot in the bag." alt="" coords="1175,647,1283,673"/>
+<area shape="rect"  href="class_unit_behaviour.html#a9a32f3234ea6b89f686c6cd55d924348" title=" " alt="" coords="1168,596,1291,623"/>
+<area shape="rect"  href="class_loot_table.html#a6497d96bbaff0605eb59b4c58404beac" title=" " alt="" coords="1399,537,1545,564"/>
+<area shape="rect"  href="class_unit_behaviour.html#a17b46e508ee650f487d4bf79608da4eb" title=" " alt="" coords="1383,589,1561,630"/>
+<area shape="rect"  href="class_turn_queue.html#af6ee9af337f42a417812f4bc96f8d600" title="Removes all turns from the queue associated with this BaseUnit." alt="" coords="1389,655,1555,681"/>
+<area shape="rect"  href="class_unit_behaviour.html#a4b2664ef7a33e795220d587cb789d169" title=" " alt="" coords="1401,705,1543,732"/>
+<area shape="rect"  href="class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="1403,756,1541,783"/>
+<area shape="rect"  href="class_loot_table.html#acab53120f654edacde8b3bf3fd932e44" title=" " alt="" coords="1637,588,1767,615"/>
+<area shape="rect"  href="class_database.html#a01e9ed0687e671dde148d1a7cdcfa27f" title=" " alt="" coords="1855,537,2012,564"/>
+<area shape="rect"  href="class_decoration_behaviour.html#ab0c95dcefbc9c58d2f96a43729eda8ca" title=" " alt="" coords="1609,639,1795,681"/>
+<area shape="rect"  href="class_loot_table.html#a77d9b4fb3dd1ccf00183fd13a2a10ed4" title=" " alt="" coords="1855,588,2011,615"/>
+<area shape="rect"  href="class_loot_table.html#a5d6171eed40e3cc72c1dddead4526cc3" title=" " alt="" coords="1868,639,1999,665"/>
+<area shape="rect"  href="class_base_item.html#acbfe01460ec8781b7e05437a1b611a90" title=" " alt="" coords="2072,537,2187,564"/>
+<area shape="rect"  href="class_base_item.html#a23a2c8165ea932a095b124eaeddf5e61" title=" " alt="" coords="2235,537,2377,564"/>
+<area shape="rect"  href="class_base_item.html#a8c1fb2ae49ad1b2fd53baf3dac1a9467" title=" " alt="" coords="2425,530,2611,571"/>
+<area shape="rect"  href="class_swatch.html#aa6e64b48c8403d88179beb90da11c2f8" title=" " alt="" coords="2659,537,2804,564"/>
+<area shape="rect"  href="class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="1843,690,2024,731"/>
+<area shape="rect"  href="class_loading_u_i.html#ada368f60f70e94bc04f0cbf47455306a" title=" " alt="" coords="1641,705,1763,732"/>
+<area shape="rect"  href="class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="1625,756,1779,783"/>
+<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="1852,756,2015,783"/>
+<area shape="rect"  href="class_unit_behaviour.html#aa355d5e4ae0043f69458a58af9316231" title=" " alt="" coords="1848,807,2019,833"/>
 </map>
 </div>
 
@@ -766,15 +927,45 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_a46dfa81169863ddb791b3c7d5121fcb8_icgraph.png" border="0" usemap="#class_spell_a46dfa81169863ddb791b3c7d5121fcb8_icgraph" alt=""/></div>
 <map name="class_spell_a46dfa81169863ddb791b3c7d5121fcb8_icgraph" id="class_spell_a46dfa81169863ddb791b3c7d5121fcb8_icgraph">
-<area shape="rect"  title=" " alt="" coords="865,31,1044,57"/>
-<area shape="rect"  href="class_hotbar.html#a0c213365074f45fd1b1010eabe3f3d4d" title=" " alt="" coords="666,5,814,32"/>
-<area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="663,56,817,83"/>
-<area shape="rect"  href="class_cast_options_u_i.html#a78fb30f53f8da2443cb801bd878dc149" title=" " alt="" coords="437,5,615,32"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ab2181e3a43736c065ce2ff0d8066903e" title=" " alt="" coords="255,5,389,32"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,5,207,32"/>
-<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="459,56,593,83"/>
-<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="258,56,386,83"/>
-<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="17,78,195,119"/>
+<area shape="rect"  title=" " alt="" coords="1068,53,1247,80"/>
+<area shape="rect"  href="class_hotbar.html#a0c213365074f45fd1b1010eabe3f3d4d" title=" " alt="" coords="869,24,1017,51"/>
+<area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="865,81,1020,108"/>
+<area shape="rect"  href="class_cast_options_u_i.html#a78fb30f53f8da2443cb801bd878dc149" title=" " alt="" coords="640,12,817,39"/>
+<area shape="rect"  href="class_shortcut_u_i.html#ab2181e3a43736c065ce2ff0d8066903e" title=" " alt="" coords="457,5,592,32"/>
+<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="208,5,409,32"/>
+<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="661,81,796,108"/>
+<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="219,65,398,106"/>
+<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="461,107,589,133"/>
+<area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="239,148,378,175"/>
+<area shape="rect"  href="class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="5,148,160,175"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a497e137d2a37c828be4954f10fa00f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a497e137d2a37c828be4954f10fa00f02">&#9670;&nbsp;</a></span>EstimateBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Spell.EstimateBlock </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_effect.html">Effect</a>&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_spell_a497e137d2a37c828be4954f10fa00f02_cgraph.png" border="0" usemap="#class_spell_a497e137d2a37c828be4954f10fa00f02_cgraph" alt=""/></div>
+<map name="class_spell_a497e137d2a37c828be4954f10fa00f02_cgraph" id="class_spell_a497e137d2a37c828be4954f10fa00f02_cgraph">
+<area shape="rect"  title=" " alt="" coords="5,31,145,57"/>
+<area shape="rect"  href="class_bag.html#a0800ca04bdc44d7f9b16419dc7183b38" title=" " alt="" coords="193,5,363,32"/>
+<area shape="rect"  href="class_effect.html#af5b390a450cbe2433bd8bad79e669a41" title=" " alt="" coords="214,56,342,83"/>
 </map>
 </div>
 
@@ -795,6 +986,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_spell_aa5a9b6a6b13fcd1cfed9eb43e123ca23_cgraph.png" border="0" usemap="#class_spell_aa5a9b6a6b13fcd1cfed9eb43e123ca23_cgraph" alt=""/></div>
+<map name="class_spell_aa5a9b6a6b13fcd1cfed9eb43e123ca23_cgraph" id="class_spell_aa5a9b6a6b13fcd1cfed9eb43e123ca23_cgraph">
+<area shape="rect"  title=" " alt="" coords="5,5,160,32"/>
+<area shape="rect"  href="class_bag.html#a0800ca04bdc44d7f9b16419dc7183b38" title=" " alt="" coords="208,5,377,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -818,9 +1018,8 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_a14ec832bc720a2763ff8a09f81d7c5d4_cgraph.png" border="0" usemap="#class_spell_a14ec832bc720a2763ff8a09f81d7c5d4_cgraph" alt=""/></div>
 <map name="class_spell_a14ec832bc720a2763ff8a09f81d7c5d4_cgraph" id="class_spell_a14ec832bc720a2763ff8a09f81d7c5d4_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,31,156,57"/>
-<area shape="rect"  href="class_audio_manager.html#a1520faf231d9b58d63a794f6b8040b99" title=" " alt="" coords="204,5,379,32"/>
-<area shape="rect"  href="class_audio_manager.html#ac0f0dc189806848c224581b363b87396" title=" " alt="" coords="205,56,377,83"/>
+<area shape="rect"  title=" " alt="" coords="5,5,156,32"/>
+<area shape="rect"  href="class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="204,5,363,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -855,9 +1054,8 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_a80aa52e9ed4b3555bd04682d93bc5049_cgraph.png" border="0" usemap="#class_spell_a80aa52e9ed4b3555bd04682d93bc5049_cgraph" alt=""/></div>
 <map name="class_spell_a80aa52e9ed4b3555bd04682d93bc5049_cgraph" id="class_spell_a80aa52e9ed4b3555bd04682d93bc5049_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,31,172,57"/>
-<area shape="rect"  href="class_audio_manager.html#a1520faf231d9b58d63a794f6b8040b99" title=" " alt="" coords="220,5,395,32"/>
-<area shape="rect"  href="class_audio_manager.html#ac0f0dc189806848c224581b363b87396" title=" " alt="" coords="221,56,393,83"/>
+<area shape="rect"  title=" " alt="" coords="5,5,172,32"/>
+<area shape="rect"  href="class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="220,5,379,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -893,9 +1091,143 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_a1dfbc90153df551bd995b8b852f808f0_cgraph.png" border="0" usemap="#class_spell_a1dfbc90153df551bd995b8b852f808f0_cgraph" alt=""/></div>
 <map name="class_spell_a1dfbc90153df551bd995b8b852f808f0_cgraph" id="class_spell_a1dfbc90153df551bd995b8b852f808f0_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,31,156,57"/>
-<area shape="rect"  href="class_audio_manager.html#a1520faf231d9b58d63a794f6b8040b99" title=" " alt="" coords="204,5,379,32"/>
-<area shape="rect"  href="class_audio_manager.html#ac0f0dc189806848c224581b363b87396" title=" " alt="" coords="205,56,377,83"/>
+<area shape="rect"  title=" " alt="" coords="5,5,156,32"/>
+<area shape="rect"  href="class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="204,5,363,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abb263788226e378bf350e7d9a7f305d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb263788226e378bf350e7d9a7f305d6">&#9670;&nbsp;</a></span>PlayProjectileSound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Spell.PlayProjectileSound </td>
+          <td>(</td>
+          <td class="paramtype">Vector2Int&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_spell_abb263788226e378bf350e7d9a7f305d6_cgraph.png" border="0" usemap="#class_spell_abb263788226e378bf350e7d9a7f305d6_cgraph" alt=""/></div>
+<map name="class_spell_abb263788226e378bf350e7d9a7f305d6_cgraph" id="class_spell_abb263788226e378bf350e7d9a7f305d6_cgraph">
+<area shape="rect"  title=" " alt="" coords="5,5,177,32"/>
+<area shape="rect"  href="class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="225,5,384,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afc4017df912f5c93e7aa48c9edf54da5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc4017df912f5c93e7aa48c9edf54da5">&#9670;&nbsp;</a></span>PostSpellEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Spell.PostSpellEffect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_spell_afc4017df912f5c93e7aa48c9edf54da5_cgraph.png" border="0" usemap="#class_spell_afc4017df912f5c93e7aa48c9edf54da5_cgraph" alt=""/></div>
+<map name="class_spell_afc4017df912f5c93e7aa48c9edf54da5_cgraph" id="class_spell_afc4017df912f5c93e7aa48c9edf54da5_cgraph">
+<area shape="rect"  title=" " alt="" coords="5,81,149,108"/>
+<area shape="rect"  href="class_database.html#a82bad315c196dd89980ebc746971e382" title=" " alt="" coords="219,31,378,57"/>
+<area shape="rect"  href="class_tile.html#a183188c193a2ba5b62c8cdfc6d63471d" title=" " alt="" coords="245,81,353,108"/>
+<area shape="rect"  href="class_combat_manager.html#aea6dfda807c4ec793ed26c5d220b84fb" title=" " alt="" coords="197,133,400,174"/>
+<area shape="rect"  href="class_attributes.html#a4752b5df4138d9eb1b2ed5a5e2df3e13" title=" " alt="" coords="465,31,579,57"/>
+<area shape="rect"  href="class_attributes.html#a1821e0b3d7eff63215bba4e8d68d3740" title=" " alt="" coords="644,5,783,32"/>
+<area shape="rect"  href="class_attributes.html#a6ed4914f59536bdf6c8e9066e930a3fb" title=" " alt="" coords="831,31,929,57"/>
+<area shape="rect"  href="class_base_unit.html#ab3bb3a100a4e99d71e6b1e13e4198456" title=" " alt="" coords="448,81,596,108"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abda349c27b9316c09e44c43c4e7e258b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abda349c27b9316c09e44c43c4e7e258b">&#9670;&nbsp;</a></span>PotencyAttributesToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Spell.PotencyAttributesToString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_bag.html">Bag</a>&#160;</td>
+          <td class="paramname"><em>bag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_attributes.html">Attributes</a>&#160;</td>
+          <td class="paramname"><em>attributes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_spell_abda349c27b9316c09e44c43c4e7e258b_icgraph.png" border="0" usemap="#class_spell_abda349c27b9316c09e44c43c4e7e258b_icgraph" alt=""/></div>
+<map name="class_spell_abda349c27b9316c09e44c43c4e7e258b_icgraph" id="class_spell_abda349c27b9316c09e44c43c4e7e258b_icgraph">
+<area shape="rect"  title=" " alt="" coords="421,5,595,47"/>
+<area shape="rect"  href="class_spell_tooltip.html#ac1a84f1170b3f209ccc213380a4e0fc3" title=" " alt="" coords="201,13,373,39"/>
+<area shape="rect"  href="class_hotkey.html#ae8ab38a3ddf49344ede61f8fb67892c5" title=" " alt="" coords="5,13,153,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3abfd97d19b4b49f5697ff1676a32d40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3abfd97d19b4b49f5697ff1676a32d40">&#9670;&nbsp;</a></span>PotencyValuesToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Spell.PotencyValuesToString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_bag.html">Bag</a>&#160;</td>
+          <td class="paramname"><em>bag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_attributes.html">Attributes</a>&#160;</td>
+          <td class="paramname"><em>attributes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_spell_a3abfd97d19b4b49f5697ff1676a32d40_icgraph.png" border="0" usemap="#class_spell_a3abfd97d19b4b49f5697ff1676a32d40_icgraph" alt=""/></div>
+<map name="class_spell_a3abfd97d19b4b49f5697ff1676a32d40_icgraph" id="class_spell_a3abfd97d19b4b49f5697ff1676a32d40_icgraph">
+<area shape="rect"  title=" " alt="" coords="421,5,612,32"/>
+<area shape="rect"  href="class_spell_tooltip.html#ac1a84f1170b3f209ccc213380a4e0fc3" title=" " alt="" coords="201,5,373,32"/>
+<area shape="rect"  href="class_hotkey.html#ae8ab38a3ddf49344ede61f8fb67892c5" title=" " alt="" coords="5,5,153,32"/>
 </map>
 </div>
 
@@ -920,16 +1252,18 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_a267e0b312732b826127c2d58ba64d90d_icgraph.png" border="0" usemap="#class_spell_a267e0b312732b826127c2d58ba64d90d_icgraph" alt=""/></div>
 <map name="class_spell_a267e0b312732b826127c2d58ba64d90d_icgraph" id="class_spell_a267e0b312732b826127c2d58ba64d90d_icgraph">
-<area shape="rect"  title=" " alt="" coords="865,107,981,133"/>
-<area shape="rect"  href="class_hotbar.html#a0c213365074f45fd1b1010eabe3f3d4d" title=" " alt="" coords="666,5,814,32"/>
-<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="258,56,386,83"/>
-<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="459,107,593,133"/>
-<area shape="rect"  href="class_hotbar.html#acda305961d329d3b329dbe4247539ef5" title=" " alt="" coords="687,157,793,184"/>
-<area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="663,208,817,235"/>
-<area shape="rect"  href="class_cast_options_u_i.html#a78fb30f53f8da2443cb801bd878dc149" title=" " alt="" coords="437,5,615,32"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ab2181e3a43736c065ce2ff0d8066903e" title=" " alt="" coords="255,5,389,32"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,5,207,32"/>
-<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="17,78,195,119"/>
+<area shape="rect"  title=" " alt="" coords="1105,208,1221,235"/>
+<area shape="rect"  href="class_hotbar.html#a0c213365074f45fd1b1010eabe3f3d4d" title=" " alt="" coords="909,31,1057,57"/>
+<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="919,132,1047,159"/>
+<area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="481,208,636,235"/>
+<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="265,171,400,197"/>
+<area shape="rect"  href="class_hotbar.html#acda305961d329d3b329dbe4247539ef5" title=" " alt="" coords="931,309,1036,336"/>
+<area shape="rect"  href="class_cast_options_u_i.html#a78fb30f53f8da2443cb801bd878dc149" title=" " alt="" coords="684,5,861,32"/>
+<area shape="rect"  href="class_shortcut_u_i.html#ab2181e3a43736c065ce2ff0d8066903e" title=" " alt="" coords="491,5,626,32"/>
+<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="232,5,433,32"/>
+<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,87,184,129"/>
+<area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="703,157,842,184"/>
+<area shape="rect"  href="class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="481,157,636,184"/>
 </map>
 </div>
 
@@ -957,11 +1291,11 @@ Here is the caller graph for this function:</div>
 <area shape="rect"  title=" " alt="" coords="980,31,1131,57"/>
 <area shape="rect"  href="class_hotbar.html#acda305961d329d3b329dbe4247539ef5" title=" " alt="" coords="810,5,915,32"/>
 <area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="793,56,932,83"/>
-<area shape="rect"  href="class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="591,31,745,57"/>
-<area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="591,81,745,108"/>
-<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,81,543,108"/>
-<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,56,360,83"/>
+<area shape="rect"  href="class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="591,5,745,32"/>
+<area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="591,56,745,83"/>
+<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,56,543,83"/>
 <area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,74,184,115"/>
+<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,107,360,133"/>
 </map>
 </div>
 
@@ -987,9 +1321,13 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_af7f2944573b064a7f561227d6f6fc601_icgraph.png" border="0" usemap="#class_spell_af7f2944573b064a7f561227d6f6fc601_icgraph" alt=""/></div>
 <map name="class_spell_af7f2944573b064a7f561227d6f6fc601_icgraph" id="class_spell_af7f2944573b064a7f561227d6f6fc601_icgraph">
-<area shape="rect"  title=" " alt="" coords="408,13,565,39"/>
-<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,13,360,39"/>
-<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,5,184,47"/>
+<area shape="rect"  title=" " alt="" coords="980,45,1137,72"/>
+<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="804,45,932,72"/>
+<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,12,184,54"/>
+<area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="617,45,756,72"/>
+<area shape="rect"  href="class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="415,20,569,46"/>
+<area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="415,70,569,97"/>
+<area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="232,70,367,97"/>
 </map>
 </div>
 
@@ -1078,7 +1416,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="class_spell_a65c49405edc86456dfdace46c81b1530_cgraph.png" border="0" usemap="#class_spell_a65c49405edc86456dfdace46c81b1530_cgraph" alt=""/></div>
 <map name="class_spell_a65c49405edc86456dfdace46c81b1530_cgraph" id="class_spell_a65c49405edc86456dfdace46c81b1530_cgraph">
 <area shape="rect"  title=" " alt="" coords="5,31,156,57"/>
-<area shape="rect"  href="class_spell.html#aee08370358e033af2bf7e0c4c2f2b2bd" title=" " alt="" coords="204,31,365,57"/>
+<area shape="rect"  href="class_spell.html#a6edfcd211ba63cfc837516160d47ca4b" title=" " alt="" coords="204,31,365,57"/>
 <area shape="rect"  href="class_effect.html#a5c751c4432cf967c74fe16befbdbbe2e" title=" " alt="" coords="422,5,589,32"/>
 <area shape="rect"  href="class_effect.html#a476b569a5adf97f1b691dcbb7e5cb325" title=" " alt="" coords="413,56,597,83"/>
 </map>
@@ -1088,30 +1426,69 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_spell_a65c49405edc86456dfdace46c81b1530_icgraph.png" border="0" usemap="#class_spell_a65c49405edc86456dfdace46c81b1530_icgraph" alt=""/></div>
 <map name="class_spell_a65c49405edc86456dfdace46c81b1530_icgraph" id="class_spell_a65c49405edc86456dfdace46c81b1530_icgraph">
-<area shape="rect"  title=" " alt="" coords="980,31,1131,57"/>
-<area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="793,31,932,57"/>
+<area shape="rect"  title=" " alt="" coords="980,56,1131,83"/>
+<area shape="rect"  href="class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="793,56,932,83"/>
 <area shape="rect"  href="class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="591,5,745,32"/>
 <area shape="rect"  href="class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="591,56,745,83"/>
 <area shape="rect"  href="class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,56,543,83"/>
-<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,31,360,57"/>
-<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,49,184,90"/>
+<area shape="rect"  href="class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,74,184,115"/>
+<area shape="rect"  href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,107,360,133"/>
 </map>
 </div>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="abb6d2a96c06ac7e85d1e315e257a106a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb6d2a96c06ac7e85d1e315e257a106a">&#9670;&nbsp;</a></span>id</h2>
+<a id="a2f8283f4c9175d61db26053f39168ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f8283f4c9175d61db26053f39168ac0">&#9670;&nbsp;</a></span>TargetingAttributesToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int Spell.id</td>
+          <td class="memname">string Spell.TargetingAttributesToString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_spell_a2f8283f4c9175d61db26053f39168ac0_icgraph.png" border="0" usemap="#class_spell_a2f8283f4c9175d61db26053f39168ac0_icgraph" alt=""/></div>
+<map name="class_spell_a2f8283f4c9175d61db26053f39168ac0_icgraph" id="class_spell_a2f8283f4c9175d61db26053f39168ac0_icgraph">
+<area shape="rect"  title=" " alt="" coords="421,5,585,47"/>
+<area shape="rect"  href="class_spell_tooltip.html#ac1a84f1170b3f209ccc213380a4e0fc3" title=" " alt="" coords="201,13,373,39"/>
+<area shape="rect"  href="class_hotkey.html#ae8ab38a3ddf49344ede61f8fb67892c5" title=" " alt="" coords="5,13,153,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afebca8a79f6e3ee237ef75c199bef325"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afebca8a79f6e3ee237ef75c199bef325">&#9670;&nbsp;</a></span>TargetingValuesToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Spell.TargetingValuesToString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_spell_afebca8a79f6e3ee237ef75c199bef325_icgraph.png" border="0" usemap="#class_spell_afebca8a79f6e3ee237ef75c199bef325_icgraph" alt=""/></div>
+<map name="class_spell_afebca8a79f6e3ee237ef75c199bef325_icgraph" id="class_spell_afebca8a79f6e3ee237ef75c199bef325_icgraph">
+<area shape="rect"  title=" " alt="" coords="421,5,617,32"/>
+<area shape="rect"  href="class_spell_tooltip.html#ac1a84f1170b3f209ccc213380a4e0fc3" title=" " alt="" coords="201,5,373,32"/>
+<area shape="rect"  href="class_hotkey.html#ae8ab38a3ddf49344ede61f8fb67892c5" title=" " alt="" coords="5,5,153,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -1160,6 +1537,50 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="af96caea62499b1c627e611cf91c43d64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af96caea62499b1c627e611cf91c43d64">&#9670;&nbsp;</a></span>castImmediate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Spell.castImmediate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a37d88b4a2de6cd210ee900b8519d08de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37d88b4a2de6cd210ee900b8519d08de">&#9670;&nbsp;</a></span>castOutsideCombat</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Spell.castOutsideCombat</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa868e1b844177f20440e0b15f7d42692"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa868e1b844177f20440e0b15f7d42692">&#9670;&nbsp;</a></span>castRadius</h2>
 
@@ -1182,8 +1603,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a13096b0c79d853c52e9d69ff6c913563"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13096b0c79d853c52e9d69ff6c913563">&#9670;&nbsp;</a></span>chargesMax</h2>
+<a id="a2293654e2d72a130c198abfe65d1c266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2293654e2d72a130c198abfe65d1c266">&#9670;&nbsp;</a></span>castTargetUnitType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1192,34 +1613,12 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Spell.chargesMax</td>
+          <td class="memname"><a class="el" href="class_spell.html#ad6592ed902a6627b69d56b0c78ca1b8b">TargetUnitType</a> Spell.castTargetUnitType</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8d79659cf4a135d0f8e859e07c695df9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d79659cf4a135d0f8e859e07c695df9">&#9670;&nbsp;</a></span>chargesRemaining</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Spell.chargesRemaining</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1242,6 +1641,28 @@ Here is the caller graph for this function:</div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7b1e13d1b6c3e5fc5e17bf3db5a7f227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b1e13d1b6c3e5fc5e17bf3db5a7f227">&#9670;&nbsp;</a></span>description</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Spell.description</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1380,6 +1801,28 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a5b8d669d226d391bc235ec1964444a56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b8d669d226d391bc235ec1964444a56">&#9670;&nbsp;</a></span>id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13f">ID</a> Spell.id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abe2debb79464b4f7a9985005efe98ecb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe2debb79464b4f7a9985005efe98ecb">&#9670;&nbsp;</a></span>intentType</h2>
 
@@ -1418,28 +1861,6 @@ Here is the caller graph for this function:</div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5f19de819de784c8f273d52417009f54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f19de819de784c8f273d52417009f54">&#9670;&nbsp;</a></span>preset</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_spell.html#a5520e850e7000a6156b3456672b72ed1">Preset</a> Spell.preset</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

@@ -1,8 +1,10 @@
 <map id="UnitBehaviour.Transfer" name="UnitBehaviour.Transfer">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,156,57"/>
-<area shape="rect" id="node2" href="$class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="214,5,374,32"/>
-<area shape="rect" id="node4" href="$class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="204,56,384,83"/>
-<area shape="rect" id="node3" href="$class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="437,5,606,32"/>
-<area shape="rect" id="node5" href="$class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="432,56,611,83"/>
-<area shape="rect" id="node6" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="659,81,821,108"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,156,108"/>
+<area shape="rect" id="node2" href="$class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="214,56,374,83"/>
+<area shape="rect" id="node5" href="$class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="204,107,384,133"/>
+<area shape="rect" id="node3" href="$class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="441,56,610,83"/>
+<area shape="rect" id="node4" href="$class_unit_behaviour.html#a48097b808519b55bee5358d1afec4ce1" title=" " alt="" coords="437,5,614,32"/>
+<area shape="rect" id="node6" href="$class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="436,107,615,133"/>
+<area shape="rect" id="node7" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="667,132,829,159"/>
+<area shape="rect" id="node8" href="$class_unit_behaviour.html#a77c605cf2a160bf865de1b7041b7ccb8" title=" " alt="" coords="432,208,619,235"/>
 </map>

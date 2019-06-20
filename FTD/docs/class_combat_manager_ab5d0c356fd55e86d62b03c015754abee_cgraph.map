@@ -1,4 +1,6 @@
 <map id="CombatManager.BeginCombat" name="CombatManager.BeginCombat">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,204,32"/>
-<area shape="rect" id="node2" href="$class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="252,5,459,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,204,83"/>
+<area shape="rect" id="node2" href="$class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="254,5,461,32"/>
+<area shape="rect" id="node3" href="$class_turn_text_u_i.html#a72dc3c34c864390bc8fccfb674d5dcee" title=" " alt="" coords="293,56,421,83"/>
+<area shape="rect" id="node4" href="$class_audio_manager.html#aa144cf0d5ce900e9a977a619492b9ba6" title=" " alt="" coords="252,107,463,133"/>
 </map>

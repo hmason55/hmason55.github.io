@@ -5,6 +5,15 @@ var class_bag =
       [ "Container", "class_bag.html#a5a827c44705d57202edc93b9a39316c7a0e7278cda02a9c0446dcc75a4df34eb2", null ],
       [ "Shop", "class_bag.html#a5a827c44705d57202edc93b9a39316c7a9f82518d468b9fee614fcc92f76bb163", null ]
     ] ],
+    [ "EquipmentBonus", "class_bag.html#a6f06dfa13207d47e308b759af0279c60", [
+      [ "BleedModifier", "class_bag.html#a6f06dfa13207d47e308b759af0279c60aee6fd63b44d0958afabad3909032de39", null ],
+      [ "BlockModifier", "class_bag.html#a6f06dfa13207d47e308b759af0279c60a3c997c57db20c289596188f100d82917", null ],
+      [ "PhysicalDamage", "class_bag.html#a6f06dfa13207d47e308b759af0279c60a3bf159aaf5f9151caedb946948db6bf3", null ],
+      [ "PoisonModifier", "class_bag.html#a6f06dfa13207d47e308b759af0279c60a5c454d33c04a6c3233fa5c75b57dabd8", null ],
+      [ "SpellDamage", "class_bag.html#a6f06dfa13207d47e308b759af0279c60a02ed624b90d84b7c1d0b55d8628270f1", null ],
+      [ "HealModifier", "class_bag.html#a6f06dfa13207d47e308b759af0279c60a70a4c4b9297aced64139dcce16fdaa15", null ],
+      [ "AutoBlock", "class_bag.html#a6f06dfa13207d47e308b759af0279c60a81cd33262f4bbe78f915116cf871638d", null ]
+    ] ],
     [ "Bag", "class_bag.html#a3df4934de8cf1a5e5952a77160ee4ca8", null ],
     [ "Bag", "class_bag.html#a8d6e5dcefb12fc099b2b02347e5dacae", null ],
     [ "Add", "class_bag.html#a4efd17483fce361ea8a01dcda349b3b4", null ],
@@ -14,6 +23,7 @@ var class_bag =
     [ "FindItemWithID", "class_bag.html#a089ef28af0c9fe39cc430b1826a313a7", null ],
     [ "FindKey", "class_bag.html#ab913ca67bac7d4a740a470dbb1632311", null ],
     [ "Format", "class_bag.html#a3ee41396e25179a9c975c6f90d601bdd", null ],
+    [ "GetEquipmentBonus", "class_bag.html#a0800ca04bdc44d7f9b16419dc7183b38", null ],
     [ "Remove", "class_bag.html#a42a4319aa14d0b6bda7f91070ba57a47", null ],
     [ "RemoveAt", "class_bag.html#a2f11a414bf3edfd7f380f30b71f34104", null ],
     [ "Unequip", "class_bag.html#aacb4579a06f66e1578327635e2120b3e", null ],

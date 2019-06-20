@@ -92,6 +92,9 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 <li>radius
 : <a class="el" href="class_biome.html#a71b951bc82d85f930f9c6135a79a2bbc">Biome</a>
 </li>
+<li>RandomizeFace()
+: <a class="el" href="class_portrait.html#acf5fa7d76a4453a7492668101d294fbe">Portrait</a>
+</li>
 <li>ReadyCast()
 : <a class="el" href="class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf">Hotbar</a>
 </li>
@@ -102,10 +105,16 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 : <a class="el" href="class_hotbar.html#acda305961d329d3b329dbe4247539ef5">Hotbar</a>
 </li>
 <li>ReceiveDamage()
-: <a class="el" href="class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443">BaseUnit</a>
+: <a class="el" href="class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580">BaseUnit</a>
+</li>
+<li>ReceiveHealing()
+: <a class="el" href="class_base_unit.html#acdc00f9ae2db67fb8f1ee18df5aa509e">BaseUnit</a>
 </li>
 <li>ReceiveStatus()
-: <a class="el" href="class_base_unit.html#a0f900d0c70a2436dd81d8127f8d43336">BaseUnit</a>
+: <a class="el" href="class_base_unit.html#a181927c2b7d2f4ff6e38596657d243ed">BaseUnit</a>
+</li>
+<li>recoveryEssence
+: <a class="el" href="class_attributes.html#a3d26cdcde38c2890f665b378ec6668a2">Attributes</a>
 </li>
 <li>rectTransform
 : <a class="el" href="class_damage_text.html#ae6860819b6715004f9f05314039aa978">DamageText</a>
@@ -123,7 +132,10 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 : <a class="el" href="class_essence_u_i.html#a39b3c1ec97a29130e2e8ab4050921ed6">EssenceUI</a>
 </li>
 <li>RemoveStatus()
-: <a class="el" href="class_base_unit.html#a15cf13fa9b4b776f474ad03b42939139">BaseUnit</a>
+: <a class="el" href="class_base_unit.html#af36bde8493a9c0e16e1171bf942504ca">BaseUnit</a>
+</li>
+<li>RemoveStatusByCondition()
+: <a class="el" href="class_base_unit.html#a732bdd48e6a9c74c059bffd4092ac1b5">BaseUnit</a>
 </li>
 <li>RemoveTurns()
 : <a class="el" href="class_turn_queue.html#af6ee9af337f42a417812f4bc96f8d600">TurnQueue</a>
@@ -131,6 +143,9 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 <li>render
 : <a class="el" href="class_base_terrain.html#a845e9830b7282650856b64db83d7633b">BaseTerrain</a>
 , <a class="el" href="class_terrain_behaviour.html#a808f5cfaa6bd348c1ced34fe54912fce">TerrainBehaviour</a>
+</li>
+<li>renderDistance
+: <a class="el" href="class_dungeon_manager.html#a018070cd224e2414cb5a1f7d83bdc46e">DungeonManager</a>
 </li>
 <li>renderFlag
 : <a class="el" href="class_decoration_behaviour.html#a683b77b56bcac3f59bde61021b1592c0">DecorationBehaviour</a>
@@ -149,12 +164,16 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 </li>
 <li>Reset()
 : <a class="el" href="class_item_tooltip.html#a4db0f30912c9b31ac912dbac40b17185">ItemTooltip</a>
+, <a class="el" href="class_spell_tooltip.html#a1e51f0a91f96223f1b3536ce452c444a">SpellTooltip</a>
 </li>
 <li>ResetAll()
 : <a class="el" href="class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b">EssenceUI</a>
 </li>
 <li>ResetPosition()
 : <a class="el" href="class_unit_behaviour.html#a19e4ade6b8de90c269e3ed840d0c9f84">UnitBehaviour</a>
+</li>
+<li>ResetScale()
+: <a class="el" href="class_damage_text.html#ae764a1aaa979063ee8a5c787db99db80">DamageText</a>
 </li>
 <li>ResetTiles()
 : <a class="el" href="class_spell.html#a267e0b312732b826127c2d58ba64d90d">Spell</a>
@@ -172,11 +191,21 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 : <a class="el" href="class_base_unit.html#a3091e5ab7a6bd3488f9c0987208a1f4d">BaseUnit</a>
 , <a class="el" href="class_unit_behaviour.html#a4b2664ef7a33e795220d587cb789d169">UnitBehaviour</a>
 </li>
-<li>Roll()
-: <a class="el" href="class_dice.html#a35ef280974d277d579faaec918e8cecc">Dice</a>
+<li>returnPotion
+: <a class="el" href="class_consumable_item_sprite_library.html#ab448d75042bbaff7b1da0a3bac6309dc">ConsumableItemSpriteLibrary</a>
 </li>
-<li>runestones
-: <a class="el" href="class_item_sprites.html#ac41017b0ab64887f9dedbc827e78ce57">ItemSprites</a>
+<li>RollCommon()
+: <a class="el" href="class_loot_table.html#a77d9b4fb3dd1ccf00183fd13a2a10ed4">LootTable</a>
+</li>
+<li>RollLoot()
+: <a class="el" href="class_loot_table.html#acab53120f654edacde8b3bf3fd932e44">LootTable</a>
+</li>
+<li>RollRare()
+: <a class="el" href="class_loot_table.html#a5d6171eed40e3cc72c1dddead4526cc3">LootTable</a>
+</li>
+<li>Rumble()
+: <a class="el" href="class_camera_controller.html#a6076e5b3f40af8b29fbc810f844b5476">CameraController</a>
+, <a class="el" href="class_unit_behaviour.html#aa702cb5b130976950574b1fb96a50ac3">UnitBehaviour</a>
 </li>
 </ul>
 </div><!-- contents -->

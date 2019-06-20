@@ -1,0 +1,10 @@
+<map id="BaseUnit.ReceiveStatus" name="BaseUnit.ReceiveStatus">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,168,133"/>
+<area shape="rect" id="node2" href="$class_bag.html#a0800ca04bdc44d7f9b16419dc7183b38" title=" " alt="" coords="248,5,417,32"/>
+<area shape="rect" id="node3" href="$class_effect.html#af5b390a450cbe2433bd8bad79e669a41" title=" " alt="" coords="515,81,643,108"/>
+<area shape="rect" id="node4" href="$class_base_unit.html#a732bdd48e6a9c74c059bffd4092ac1b5" title=" " alt="" coords="216,157,449,184"/>
+<area shape="rect" id="node6" href="$class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="708,183,899,209"/>
+<area shape="rect" id="node8" href="$class_effect.html#a81689f18a4d3ae57ca39b71592be76ef" title=" " alt="" coords="287,107,379,133"/>
+<area shape="rect" id="node5" href="$class_base_unit.html#af36bde8493a9c0e16e1171bf942504ca" title=" " alt="" coords="497,157,660,184"/>
+<area shape="rect" id="node7" href="$class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="947,183,1063,209"/>
+</map>

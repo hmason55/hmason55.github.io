@@ -1,4 +1,5 @@
 <map id="BaseUnit.SelectAISpell" name="BaseUnit.SelectAISpell">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,163,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,163,57"/>
 <area shape="rect" id="node2" href="$class_base_unit.html#a8b9c4263f81ef40c1841d26ee0573bce" title=" " alt="" coords="211,5,367,32"/>
+<area shape="rect" id="node3" href="$class_moveset.html#a616c9865fd69d008903372ff20c51f14" title=" " alt="" coords="238,56,339,83"/>
 </map>

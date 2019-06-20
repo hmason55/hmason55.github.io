@@ -7,10 +7,11 @@ var class_biome =
       [ "forsaken", "class_biome.html#a7ddcfcc6d4e88c5eb73df6827df862daa035c88a67814485689ec861c3685c316", null ],
       [ "ruins", "class_biome.html#a7ddcfcc6d4e88c5eb73df6827df862daad5472cde0923fa02dce57c6a1bc9985c", null ]
     ] ],
-    [ "Biome", "class_biome.html#a0c6561c6514566b5170802d7699e761a", null ],
+    [ "Biome", "class_biome.html#a7bbe4a3aecb175bdd43ae276dde6efa0", null ],
     [ "GetEnemySpawn", "class_biome.html#abfb2b6d9c6ae23d0d7f247e10b568a9e", null ],
     [ "biomeType", "class_biome.html#a0b8fc33054a627c978fa9d81573a9e1d", null ],
     [ "radius", "class_biome.html#a71b951bc82d85f930f9c6135a79a2bbc", null ],
+    [ "terrainRarity", "class_biome.html#a9f55b3cd4b8b35992a40b8ceec33a49a", null ],
     [ "x", "class_biome.html#ae63d1400ef2eaa0c520bec593aa2e90d", null ],
     [ "y", "class_biome.html#a3793ddae113d9c2b545a2dc7c6b96f3a", null ]
 ];

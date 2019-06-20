@@ -1,0 +1,10 @@
+<map id="EssenceUI.SetTotalEssence" name="EssenceUI.SetTotalEssence">
+<area shape="rect" id="node1" title=" " alt="" coords="700,107,888,133"/>
+<area shape="rect" id="node2" href="$class_essence_u_i.html#a75a53ecfc61b800c928dd9ca137557b8" title=" " alt="" coords="471,107,652,133"/>
+<area shape="rect" id="node3" href="$class_base_unit.html#abae0a52156648495ea6e8487782f8636" title=" " alt="" coords="223,31,423,57"/>
+<area shape="rect" id="node6" href="$class_combat_manager.html#a8d14cf9a8265e20264151a615e309f12" title=" " alt="" coords="228,81,417,108"/>
+<area shape="rect" id="node7" href="$class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="245,132,400,159"/>
+<area shape="rect" id="node8" href="$class_essence_u_i.html#a39b3c1ec97a29130e2e8ab4050921ed6" title=" " alt="" coords="229,183,416,209"/>
+<area shape="rect" id="node4" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="35,5,145,32"/>
+<area shape="rect" id="node5" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,56,175,83"/>
+</map>

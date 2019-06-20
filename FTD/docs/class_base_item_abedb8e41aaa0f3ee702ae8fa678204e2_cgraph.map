@@ -1,5 +1,0 @@
-<map id="BaseItem.LoadSprite" name="BaseItem.LoadSprite">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,148,39"/>
-<area shape="rect" id="node2" href="$class_base_item.html#a0bb5888f3371b291645137272f417b30" title=" " alt="" coords="196,5,381,47"/>
-<area shape="rect" id="node3" href="$class_swatch.html#aa6e64b48c8403d88179beb90da11c2f8" title=" " alt="" coords="429,13,575,39"/>
-</map>

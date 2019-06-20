@@ -1,6 +1,8 @@
 <map id="Spell.ConfirmSpellCast" name="Spell.ConfirmSpellCast">
-<area shape="rect" id="node1" title=" " alt="" coords="591,31,745,57"/>
-<area shape="rect" id="node2" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,31,543,57"/>
-<area shape="rect" id="node3" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,5,360,32"/>
-<area shape="rect" id="node4" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,23,184,65"/>
+<area shape="rect" id="node1" title=" " alt="" coords="793,78,948,105"/>
+<area shape="rect" id="node2" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="611,53,745,79"/>
+<area shape="rect" id="node3" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="208,5,387,47"/>
+<area shape="rect" id="node4" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="435,53,563,79"/>
+<area shape="rect" id="node5" href="$class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="228,82,367,109"/>
+<area shape="rect" id="node6" href="$class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="5,82,160,109"/>
 </map>

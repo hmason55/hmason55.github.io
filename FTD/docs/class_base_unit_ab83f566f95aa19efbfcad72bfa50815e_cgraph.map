@@ -1,0 +1,44 @@
+<map id="BaseUnit.TickStatusImmediate" name="BaseUnit.TickStatusImmediate">
+<area shape="rect" id="node1" title=" " alt="" coords="5,208,207,235"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="255,208,432,235"/>
+<area shape="rect" id="node3" href="$class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="481,208,653,235"/>
+<area shape="rect" id="node41" href="$class_unit_behaviour.html#a558929aaa9173e1a3b9dfecd8674660f" title=" " alt="" coords="480,259,653,301"/>
+<area shape="rect" id="node42" href="$class_base_unit.html#af36bde8493a9c0e16e1171bf942504ca" title=" " alt="" coords="485,81,648,108"/>
+<area shape="rect" id="node4" href="$class_base_unit.html#a01c63c5cd0d41b5ca787470fd0c19472" title=" " alt="" coords="709,56,896,83"/>
+<area shape="rect" id="node5" href="$class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="707,5,898,32"/>
+<area shape="rect" id="node7" href="$class_unit_behaviour.html#aa702cb5b130976950574b1fb96a50ac3" title=" " alt="" coords="728,107,877,133"/>
+<area shape="rect" id="node9" href="$class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="715,157,890,184"/>
+<area shape="rect" id="node10" href="$class_base_unit.html#a83a2b7ba4f39a2987e6efdff6e707657" title=" " alt="" coords="703,208,903,235"/>
+<area shape="rect" id="node11" href="$class_turn_queue.html#a7f1a7e7055e613cbd17f1d76d9bfd261" title="Searches the queue for Turns associated with the given BaseUnit." alt="" coords="723,259,883,285"/>
+<area shape="rect" id="node12" href="$class_turn_queue.html#aa677cc3ae9812e45a5b7e8932c199e27" title="Adds a Turn to the queue." alt="" coords="747,309,859,336"/>
+<area shape="rect" id="node13" href="$class_combat_manager.html#ab5d0c356fd55e86d62b03c015754abee" title=" " alt="" coords="703,360,902,387"/>
+<area shape="rect" id="node17" href="$class_combat_manager.html#aea6dfda807c4ec793ed26c5d220b84fb" title=" " alt="" coords="701,411,904,453"/>
+<area shape="rect" id="node18" href="$class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="754,512,851,539"/>
+<area shape="rect" id="node6" href="$class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="999,5,1115,32"/>
+<area shape="rect" id="node8" href="$class_camera_controller.html#a6076e5b3f40af8b29fbc810f844b5476" title=" " alt="" coords="972,107,1143,133"/>
+<area shape="rect" id="node14" href="$class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="954,284,1161,311"/>
+<area shape="rect" id="node15" href="$class_turn_text_u_i.html#a72dc3c34c864390bc8fccfb674d5dcee" title=" " alt="" coords="993,335,1121,361"/>
+<area shape="rect" id="node16" href="$class_audio_manager.html#aa144cf0d5ce900e9a977a619492b9ba6" title=" " alt="" coords="952,385,1163,412"/>
+<area shape="rect" id="node19" href="$class_bag.html#a4efd17483fce361ea8a01dcda349b3b4" title="Adds an item to the bag." alt="" coords="1494,436,1566,463"/>
+<area shape="rect" id="node20" href="$class_bag.html#a2f11a414bf3edfd7f380f30b71f34104" title="Removes an item at a specific slot in the bag." alt="" coords="1003,596,1111,623"/>
+<area shape="rect" id="node21" href="$class_unit_behaviour.html#a9a32f3234ea6b89f686c6cd55d924348" title=" " alt="" coords="996,545,1119,572"/>
+<area shape="rect" id="node22" href="$class_loot_table.html#a6497d96bbaff0605eb59b4c58404beac" title=" " alt="" coords="1227,487,1373,513"/>
+<area shape="rect" id="node33" href="$class_unit_behaviour.html#a17b46e508ee650f487d4bf79608da4eb" title=" " alt="" coords="1211,538,1389,579"/>
+<area shape="rect" id="node34" href="$class_turn_queue.html#af6ee9af337f42a417812f4bc96f8d600" title="Removes all turns from the queue associated with this BaseUnit." alt="" coords="1217,604,1383,631"/>
+<area shape="rect" id="node35" href="$class_unit_behaviour.html#a4b2664ef7a33e795220d587cb789d169" title=" " alt="" coords="1229,655,1371,681"/>
+<area shape="rect" id="node37" href="$class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="1231,705,1369,732"/>
+<area shape="rect" id="node23" href="$class_loot_table.html#acab53120f654edacde8b3bf3fd932e44" title=" " alt="" coords="1465,537,1595,564"/>
+<area shape="rect" id="node24" href="$class_database.html#a01e9ed0687e671dde148d1a7cdcfa27f" title=" " alt="" coords="1683,487,1840,513"/>
+<area shape="rect" id="node31" href="$class_decoration_behaviour.html#ab0c95dcefbc9c58d2f96a43729eda8ca" title=" " alt="" coords="1437,589,1623,630"/>
+<area shape="rect" id="node29" href="$class_loot_table.html#a77d9b4fb3dd1ccf00183fd13a2a10ed4" title=" " alt="" coords="1683,537,1839,564"/>
+<area shape="rect" id="node30" href="$class_loot_table.html#a5d6171eed40e3cc72c1dddead4526cc3" title=" " alt="" coords="1696,588,1827,615"/>
+<area shape="rect" id="node25" href="$class_base_item.html#acbfe01460ec8781b7e05437a1b611a90" title=" " alt="" coords="1900,487,2015,513"/>
+<area shape="rect" id="node26" href="$class_base_item.html#a23a2c8165ea932a095b124eaeddf5e61" title=" " alt="" coords="2063,487,2205,513"/>
+<area shape="rect" id="node27" href="$class_base_item.html#a8c1fb2ae49ad1b2fd53baf3dac1a9467" title=" " alt="" coords="2253,479,2439,521"/>
+<area shape="rect" id="node28" href="$class_swatch.html#aa6e64b48c8403d88179beb90da11c2f8" title=" " alt="" coords="2487,487,2632,513"/>
+<area shape="rect" id="node32" href="$class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="1671,639,1852,681"/>
+<area shape="rect" id="node36" href="$class_loading_u_i.html#ada368f60f70e94bc04f0cbf47455306a" title=" " alt="" coords="1469,655,1591,681"/>
+<area shape="rect" id="node38" href="$class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="1453,705,1607,732"/>
+<area shape="rect" id="node39" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="1680,705,1843,732"/>
+<area shape="rect" id="node40" href="$class_unit_behaviour.html#aa355d5e4ae0043f69458a58af9316231" title=" " alt="" coords="1676,756,1847,783"/>
+</map>

@@ -102,7 +102,7 @@ Inheritance diagram for DungeonManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_dungeon_manager__inherit__graph.png" border="0" usemap="#_dungeon_manager_inherit__map" alt="Inheritance graph"/></div>
 <map name="_dungeon_manager_inherit__map" id="_dungeon_manager_inherit__map">
-<area shape="rect"  title=" " alt="" coords="5,131,199,545"/>
+<area shape="rect"  title=" " alt="" coords="5,131,199,589"/>
 <area shape="rect"  title=" " alt="" coords="47,5,157,83"/>
 </map>
 </div>
@@ -111,7 +111,7 @@ Collaboration diagram for DungeonManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_dungeon_manager__coll__graph.png" border="0" usemap="#_dungeon_manager_coll__map" alt="Collaboration graph"/></div>
 <map name="_dungeon_manager_coll__map" id="_dungeon_manager_coll__map">
-<area shape="rect"  title=" " alt="" coords="5,131,199,545"/>
+<area shape="rect"  title=" " alt="" coords="5,131,199,589"/>
 <area shape="rect"  title=" " alt="" coords="47,5,157,83"/>
 </map>
 </div>
@@ -131,6 +131,7 @@ Public Types</h2></td></tr>
 <a class="el" href="class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431a6593d7b12fd418cdb35bbf438de72f66">Zone.A3</a>, 
 <br />
 &#160;&#160;<a class="el" href="class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431a0c2f3adf2a48bab3adb470f4da57f3d0">Zone.A4</a>, 
+<a class="el" href="class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431a2de54c1a56a88f67b01ce62a4e223709">Zone.Boss_0</a>, 
 <a class="el" href="class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431aa603905470e2a5b8c13e96b579ef0dba">Zone.Debug</a>
 <br />
  }</td></tr>
@@ -171,11 +172,15 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ae78f0aa119dcc211708cf8f3424534a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8121ec063d2906a27e427909dda7b98"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dungeon_manager.html#ac8121ec063d2906a27e427909dda7b98">containerDecorationDensity</a></td></tr>
 <tr class="separator:ac8121ec063d2906a27e427909dda7b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab919d8cca490a8f62c9294a38f11a948"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dungeon_manager.html#ab919d8cca490a8f62c9294a38f11a948">fountainDecorationDensity</a></td></tr>
+<tr class="separator:ab919d8cca490a8f62c9294a38f11a948"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe07ede1aa21fca0021660f0c0b1a536"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dungeon_manager.html#afe07ede1aa21fca0021660f0c0b1a536">trapDecorationDensity</a></td></tr>
 <tr class="separator:afe07ede1aa21fca0021660f0c0b1a536"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
+<tr class="memitem:a018070cd224e2414cb5a1f7d83bdc46e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dungeon_manager.html#a018070cd224e2414cb5a1f7d83bdc46e">renderDistance</a> = 8</td></tr>
+<tr class="separator:a018070cd224e2414cb5a1f7d83bdc46e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4090d1011387dda52819df07e9e76d6a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dungeon_manager.html#a4090d1011387dda52819df07e9e76d6a">TileWidth</a> = 48</td></tr>
 <tr class="separator:a4090d1011387dda52819df07e9e76d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa96f4d9660ed44bb2c21b8b11ec2dbc3"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dungeon_manager.html#aa96f4d9660ed44bb2c21b8b11ec2dbc3">TileHeight</a> = 48</td></tr>
@@ -197,6 +202,8 @@ Properties</h2></td></tr>
 <tr class="separator:a35b1117b28fd54ff805320dc50fd206d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a1b9933b14faea37aeb07bd6f290774"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431">Zone</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dungeon_manager.html#a4a1b9933b14faea37aeb07bd6f290774">zone</a><code> [get, set]</code></td></tr>
 <tr class="separator:a4a1b9933b14faea37aeb07bd6f290774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb1312ca0ffbd5a95851aef73f6dfffe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera_controller.html">CameraController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dungeon_manager.html#acb1312ca0ffbd5a95851aef73f6dfffe">cameraController</a><code> [get]</code></td></tr>
+<tr class="separator:acb1312ca0ffbd5a95851aef73f6dfffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="ab6a6a345cf2a16a039df2f5ca0039a35"></a>
@@ -252,6 +259,7 @@ Properties</h2></td></tr>
 <tr><td class="fieldname"><a id="a6558d4a01889674bf25c798f1b90a431ac6bdf6f65f3845da9085e9ae5790b494"></a>A2&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6558d4a01889674bf25c798f1b90a431a6593d7b12fd418cdb35bbf438de72f66"></a>A3&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6558d4a01889674bf25c798f1b90a431a0c2f3adf2a48bab3adb470f4da57f3d0"></a>A4&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a6558d4a01889674bf25c798f1b90a431a2de54c1a56a88f67b01ce62a4e223709"></a>Boss_0&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a6558d4a01889674bf25c798f1b90a431aa603905470e2a5b8c13e96b579ef0dba"></a>Debug&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -280,12 +288,15 @@ Here is the call graph for this function:</div>
 <area shape="rect"  title=" " alt="" coords="5,56,224,83"/>
 <area shape="rect"  href="class_terrain_behaviour.html#a97b6323eafb1c26361878bb1d37f4556" title=" " alt="" coords="284,5,451,32"/>
 <area shape="rect"  href="class_decoration_behaviour.html#a6f5bef52b05859295759318878ec9a1c" title=" " alt="" coords="272,56,463,83"/>
-<area shape="rect"  href="class_unit_behaviour.html#a7e978454f207985987f6088c037b9c5f" title=" " alt="" coords="292,107,443,133"/>
-<area shape="rect"  href="class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="521,81,681,108"/>
-<area shape="rect"  href="class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="511,132,691,159"/>
-<area shape="rect"  href="class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="743,81,913,108"/>
-<area shape="rect"  href="class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="739,132,917,159"/>
-<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="965,157,1128,184"/>
+<area shape="rect"  href="class_unit_behaviour.html#a7e978454f207985987f6088c037b9c5f" title=" " alt="" coords="292,111,443,137"/>
+<area shape="rect"  href="class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="511,45,692,86"/>
+<area shape="rect"  href="class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="521,111,681,137"/>
+<area shape="rect"  href="class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="511,161,691,188"/>
+<area shape="rect"  href="class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="749,111,918,137"/>
+<area shape="rect"  href="class_unit_behaviour.html#a48097b808519b55bee5358d1afec4ce1" title=" " alt="" coords="745,60,922,87"/>
+<area shape="rect"  href="class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="744,161,923,188"/>
+<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="975,187,1137,213"/>
+<area shape="rect"  href="class_unit_behaviour.html#a77c605cf2a160bf865de1b7041b7ccb8" title=" " alt="" coords="740,263,927,289"/>
 </map>
 </div>
 <div class="dynheader">
@@ -293,12 +304,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_dungeon_manager_a196f2f6754dae0d38307197bbbf033c4_icgraph.png" border="0" usemap="#class_dungeon_manager_a196f2f6754dae0d38307197bbbf033c4_icgraph" alt=""/></div>
 <map name="class_dungeon_manager_a196f2f6754dae0d38307197bbbf033c4_icgraph" id="class_dungeon_manager_a196f2f6754dae0d38307197bbbf033c4_icgraph">
-<area shape="rect"  title=" " alt="" coords="996,31,1215,57"/>
-<area shape="rect"  href="class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61" title=" " alt="" coords="716,31,948,57"/>
-<area shape="rect"  href="class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="472,31,668,57"/>
-<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="285,5,394,32"/>
-<area shape="rect"  href="class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,56,424,83"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
+<area shape="rect"  title=" " alt="" coords="747,31,965,57"/>
+<area shape="rect"  href="class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61" title=" " alt="" coords="467,31,699,57"/>
+<area shape="rect"  href="class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="223,31,419,57"/>
+<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="35,5,145,32"/>
+<area shape="rect"  href="class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,56,175,83"/>
 </map>
 </div>
 
@@ -399,7 +409,8 @@ Here is the call graph for this function:</div>
 <area shape="rect"  href="class_unit_behaviour.html#a89fa86241b11f695b89b7143fa4f88ec" title=" " alt="" coords="272,107,407,133"/>
 <area shape="rect"  href="class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="475,107,613,133"/>
 <area shape="rect"  href="class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="661,107,816,133"/>
-<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="864,107,1027,133"/>
+<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="868,81,1031,108"/>
+<area shape="rect"  href="class_unit_behaviour.html#aa355d5e4ae0043f69458a58af9316231" title=" " alt="" coords="864,132,1035,159"/>
 </map>
 </div>
 <div class="dynheader">
@@ -407,12 +418,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_dungeon_manager_ab7edf3b19e13892178a34ece10f4c5d5_icgraph.png" border="0" usemap="#class_dungeon_manager_ab7edf3b19e13892178a34ece10f4c5d5_icgraph" alt=""/></div>
 <map name="class_dungeon_manager_ab7edf3b19e13892178a34ece10f4c5d5_icgraph" id="class_dungeon_manager_ab7edf3b19e13892178a34ece10f4c5d5_icgraph">
-<area shape="rect"  title=" " alt="" coords="996,31,1195,57"/>
-<area shape="rect"  href="class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61" title=" " alt="" coords="716,31,948,57"/>
-<area shape="rect"  href="class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="472,31,668,57"/>
-<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="285,5,394,32"/>
-<area shape="rect"  href="class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,56,424,83"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
+<area shape="rect"  title=" " alt="" coords="747,31,945,57"/>
+<area shape="rect"  href="class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61" title=" " alt="" coords="467,31,699,57"/>
+<area shape="rect"  href="class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="223,31,419,57"/>
+<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="35,5,145,32"/>
+<area shape="rect"  href="class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,56,175,83"/>
 </map>
 </div>
 
@@ -464,12 +474,22 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_dungeon_manager_ac2c0ce668813e7b0a34b935364a5650f_cgraph.png" border="0" usemap="#class_dungeon_manager_ac2c0ce668813e7b0a34b935364a5650f_cgraph" alt=""/></div>
 <map name="class_dungeon_manager_ac2c0ce668813e7b0a34b935364a5650f_cgraph" id="class_dungeon_manager_ac2c0ce668813e7b0a34b935364a5650f_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,56,160,83"/>
-<area shape="rect"  href="class_dungeon_manager.html#afc7ff9dc122b876f72a4f238496f3a26" title=" " alt="" coords="209,5,381,32"/>
-<area shape="rect"  href="class_essence_u_i.html#a26023c3d4977188014384a1a40eb3ad9" title=" " alt="" coords="224,56,367,83"/>
-<area shape="rect"  href="class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="208,107,383,133"/>
-<area shape="rect"  href="class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="431,56,621,83"/>
-<area shape="rect"  href="class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="669,56,808,83"/>
+<area shape="rect"  title=" " alt="" coords="5,183,160,209"/>
+<area shape="rect"  href="class_dungeon_manager.html#afc7ff9dc122b876f72a4f238496f3a26" title=" " alt="" coords="239,5,411,32"/>
+<area shape="rect"  href="class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="245,56,405,83"/>
+<area shape="rect"  href="class_essence_u_i.html#a75a53ecfc61b800c928dd9ca137557b8" title=" " alt="" coords="235,107,416,133"/>
+<area shape="rect"  href="class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="238,157,413,184"/>
+<area shape="rect"  href="class_camera_controller.html#a9e2d7df7c696c1c2ce48384933c5d1ab" title=" " alt="" coords="222,208,429,235"/>
+<area shape="rect"  href="class_audio_manager.html#ac73ae9bb625ca73945b1aec2a4d1f647" title=" " alt="" coords="208,259,443,285"/>
+<area shape="rect"  href="class_audio_manager.html#a93deea5837f25364ff7451ec1cd88477" title=" " alt="" coords="209,309,441,336"/>
+<area shape="rect"  href="class_audio_manager.html#a5078f0000b21abc03b9bf2f6900a01aa" title=" " alt="" coords="219,360,432,387"/>
+<area shape="rect"  href="class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="509,5,679,32"/>
+<area shape="rect"  href="class_unit_behaviour.html#a48097b808519b55bee5358d1afec4ce1" title=" " alt="" coords="505,56,683,83"/>
+<area shape="rect"  href="class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="499,107,689,133"/>
+<area shape="rect"  href="class_essence_u_i.html#a14ebd4e6ce2abc42ca830bbfd261b64b" title=" " alt="" coords="500,157,688,184"/>
+<area shape="rect"  href="class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="788,132,927,159"/>
+<area shape="rect"  href="class_camera_controller.html#a79831008bb764801df46a3c91343a524" title=" " alt="" coords="491,208,697,235"/>
+<area shape="rect"  href="class_camera_controller.html#a34e1d9e9ce0ac6a2593b0374f3a4de7d" title=" " alt="" coords="745,208,969,235"/>
 </map>
 </div>
 
@@ -563,16 +583,20 @@ Here is the call graph for this function:</div>
 <area shape="rect"  href="class_terrain_behaviour.html#a23ffdd00ac2a41293dff38496a09663d" title=" " alt="" coords="572,5,723,32"/>
 <area shape="rect"  href="class_decoration_behaviour.html#aab39ad5614d361801ffc9168a830c3d7" title=" " alt="" coords="560,56,735,83"/>
 <area shape="rect"  href="class_unit_behaviour.html#a89fa86241b11f695b89b7143fa4f88ec" title=" " alt="" coords="580,107,715,133"/>
-<area shape="rect"  href="class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="811,132,950,159"/>
-<area shape="rect"  href="class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="1031,144,1185,171"/>
-<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="1245,259,1408,285"/>
+<area shape="rect"  href="class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="812,115,951,141"/>
+<area shape="rect"  href="class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="1036,140,1191,167"/>
+<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="1259,300,1421,327"/>
+<area shape="rect"  href="class_unit_behaviour.html#aa355d5e4ae0043f69458a58af9316231" title=" " alt="" coords="1255,140,1425,167"/>
 <area shape="rect"  href="class_terrain_behaviour.html#a97b6323eafb1c26361878bb1d37f4556" title=" " alt="" coords="564,157,731,184"/>
 <area shape="rect"  href="class_decoration_behaviour.html#a6f5bef52b05859295759318878ec9a1c" title=" " alt="" coords="552,208,743,235"/>
 <area shape="rect"  href="class_unit_behaviour.html#a7e978454f207985987f6088c037b9c5f" title=" " alt="" coords="572,259,723,285"/>
-<area shape="rect"  href="class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="801,208,961,235"/>
-<area shape="rect"  href="class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="791,259,971,285"/>
-<area shape="rect"  href="class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="1023,208,1193,235"/>
-<area shape="rect"  href="class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="1019,309,1197,336"/>
+<area shape="rect"  href="class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="791,183,972,225"/>
+<area shape="rect"  href="class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="801,249,961,276"/>
+<area shape="rect"  href="class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="791,300,971,327"/>
+<area shape="rect"  href="class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="1029,249,1198,276"/>
+<area shape="rect"  href="class_unit_behaviour.html#a48097b808519b55bee5358d1afec4ce1" title=" " alt="" coords="1025,199,1202,225"/>
+<area shape="rect"  href="class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="1024,351,1203,377"/>
+<area shape="rect"  href="class_unit_behaviour.html#a77c605cf2a160bf865de1b7041b7ccb8" title=" " alt="" coords="1020,401,1207,428"/>
 </map>
 </div>
 <div class="dynheader">
@@ -580,11 +604,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_dungeon_manager_a980762c66ae4ae92ce3d8caa42f7fe61_icgraph.png" border="0" usemap="#class_dungeon_manager_a980762c66ae4ae92ce3d8caa42f7fe61_icgraph" alt=""/></div>
 <map name="class_dungeon_manager_a980762c66ae4ae92ce3d8caa42f7fe61_icgraph" id="class_dungeon_manager_a980762c66ae4ae92ce3d8caa42f7fe61_icgraph">
-<area shape="rect"  title=" " alt="" coords="716,31,948,57"/>
-<area shape="rect"  href="class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="472,31,668,57"/>
-<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="285,5,394,32"/>
-<area shape="rect"  href="class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,56,424,83"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
+<area shape="rect"  title=" " alt="" coords="467,31,699,57"/>
+<area shape="rect"  href="class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="223,31,419,57"/>
+<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="35,5,145,32"/>
+<area shape="rect"  href="class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,56,175,83"/>
 </map>
 </div>
 
@@ -699,6 +722,42 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="ab919d8cca490a8f62c9294a38f11a948"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab919d8cca490a8f62c9294a38f11a948">&#9670;&nbsp;</a></span>fountainDecorationDensity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DungeonManager.fountainDecorationDensity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a018070cd224e2414cb5a1f7d83bdc46e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a018070cd224e2414cb5a1f7d83bdc46e">&#9670;&nbsp;</a></span>renderDistance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DungeonManager.renderDistance = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae78f0aa119dcc211708cf8f3424534a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae78f0aa119dcc211708cf8f3424534a6">&#9670;&nbsp;</a></span>smallDecorationDensity</h2>
 
@@ -772,6 +831,28 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
+<a id="acb1312ca0ffbd5a95851aef73f6dfffe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb1312ca0ffbd5a95851aef73f6dfffe">&#9670;&nbsp;</a></span>cameraController</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_camera_controller.html">CameraController</a> DungeonManager.cameraController</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6f04a65ae61dd9b11d58489272b5fa70"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f04a65ae61dd9b11d58489272b5fa70">&#9670;&nbsp;</a></span>limitRendering</h2>
 

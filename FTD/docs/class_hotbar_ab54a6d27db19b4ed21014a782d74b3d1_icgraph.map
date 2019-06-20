@@ -1,5 +1,4 @@
 <map id="Hotbar.ClearCharges" name="Hotbar.ClearCharges">
-<area shape="rect" id="node1" title=" " alt="" coords="472,5,615,32"/>
-<area shape="rect" id="node2" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,5,424,32"/>
-<area shape="rect" id="node3" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,5,207,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="223,5,365,32"/>
+<area shape="rect" id="node2" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,5,175,32"/>
 </map>

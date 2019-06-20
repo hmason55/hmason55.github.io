@@ -9,16 +9,17 @@ var searchData=
   ['unsetplayerdata',['UnsetPlayerData',['../class_data_slot.html#a2d8c55c9436701f7d2a12ab7388dcdec',1,'DataSlot']]],
   ['updatecost',['UpdateCost',['../class_hotkey.html#a15822d970e7f05f8ea8ef4069a4e245a',1,'Hotkey']]],
   ['updatedataslots',['UpdateDataSlots',['../class_load_data_u_i.html#a2a36a17c6455a8ca8ee3b92dbbce0503',1,'LoadDataUI']]],
+  ['updatedisplayhealth',['UpdateDisplayHealth',['../class_base_unit.html#a83a2b7ba4f39a2987e6efdff6e707657',1,'BaseUnit']]],
+  ['updateeffect',['UpdateEffect',['../class_effect_behaviour.html#af06fb2b54fe3e41374ec3508be1a0429',1,'EffectBehaviour']]],
+  ['updateeffects',['UpdateEffects',['../class_unit_behaviour.html#a77c605cf2a160bf865de1b7041b7ccb8',1,'UnitBehaviour']]],
+  ['updateessence',['UpdateEssence',['../class_essence_u_i.html#a75a53ecfc61b800c928dd9ca137557b8',1,'EssenceUI']]],
   ['updatehitpoints',['UpdateHitpoints',['../class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af',1,'HitpointUI']]],
   ['updatehotkeys',['UpdateHotkeys',['../class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856',1,'Hotbar']]],
   ['updateimage',['UpdateImage',['../class_bag_item_behaviour.html#aaedcc49f5d2def63dcde17d72fdb3b9d',1,'BagItemBehaviour']]],
   ['updateintent',['UpdateIntent',['../class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc',1,'UnitBehaviour']]],
-  ['updatemodifiers',['UpdateModifiers',['../class_attributes.html#a73fffc9279e2b2307003d347485ff77b',1,'Attributes']]],
-  ['updatename',['UpdateName',['../class_hotkey.html#a414aefec4d51bfa4b6fc68fcb8dce841',1,'Hotkey']]],
+  ['updatekeybind',['UpdateKeybind',['../class_hotkey.html#af9f4781de6f767ddfb7b530be3343023',1,'Hotkey']]],
   ['updateobjectpool',['UpdateObjectPool',['../class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61',1,'DungeonManager']]],
-  ['updateresolution',['UpdateResolution',['../class_camera_controller.html#a4894dc3111b871a8bf5ff422d30c1689',1,'CameraController']]],
   ['updatespells',['UpdateSpells',['../class_base_unit.html#a8b9c4263f81ef40c1841d26ee0573bce',1,'BaseUnit']]],
-  ['updatesprite',['UpdateSprite',['../class_terrain_behaviour.html#a1f1234296c90b45abf0ad3ee6f9e78ac',1,'TerrainBehaviour.UpdateSprite()'],['../class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5',1,'UnitBehaviour.UpdateSprite()']]],
-  ['updatetooltip',['UpdateTooltip',['../class_item_tooltip.html#a51e15cd0c208c14105cc8bedf452385b',1,'ItemTooltip']]],
-  ['updateui',['UpdateUI',['../class_essence_u_i.html#a26023c3d4977188014384a1a40eb3ad9',1,'EssenceUI']]]
+  ['updatesprite',['UpdateSprite',['../class_decoration_behaviour.html#ab0c95dcefbc9c58d2f96a43729eda8ca',1,'DecorationBehaviour.UpdateSprite()'],['../class_terrain_behaviour.html#a1f1234296c90b45abf0ad3ee6f9e78ac',1,'TerrainBehaviour.UpdateSprite()'],['../class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5',1,'UnitBehaviour.UpdateSprite()']]],
+  ['updatetooltip',['UpdateTooltip',['../class_item_tooltip.html#a51e15cd0c208c14105cc8bedf452385b',1,'ItemTooltip.UpdateTooltip()'],['../class_spell_tooltip.html#ac1a84f1170b3f209ccc213380a4e0fc3',1,'SpellTooltip.UpdateTooltip()']]]
 ];

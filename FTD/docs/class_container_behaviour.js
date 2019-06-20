@@ -11,6 +11,7 @@ var class_container_behaviour =
     [ "bag", "class_container_behaviour.html#ab0e91f3cfb15de3442dbef4ac2885c21", null ],
     [ "defaultAction", "class_container_behaviour.html#a1bcfbc4639219bfa29cec4b58101e589", null ],
     [ "hidden", "class_container_behaviour.html#a07f292b549e9dbe4ac987ab2d4140910", null ],
-    [ "name", "class_container_behaviour.html#a9b00a643652cbf6ce3806130747c126b", null ],
+    [ "name", "class_container_behaviour.html#a3cd8c0f0e6a0609e25b8e2c2105b97a3", null ],
+    [ "tile", "class_container_behaviour.html#a7b85d92c9638dcda523658a96fcfa39f", null ],
     [ "transferUI", "class_container_behaviour.html#adf93ff57ab81d2e86d555aad6a4dbb8c", null ]
 ];

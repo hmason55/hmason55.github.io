@@ -1,0 +1,10 @@
+<map id="LootTable.RollLoot" name="LootTable.RollLoot">
+<area shape="rect" id="node1" title=" " alt="" coords="5,63,135,90"/>
+<area shape="rect" id="node2" href="$class_database.html#a01e9ed0687e671dde148d1a7cdcfa27f" title=" " alt="" coords="183,13,340,39"/>
+<area shape="rect" id="node7" href="$class_loot_table.html#a77d9b4fb3dd1ccf00183fd13a2a10ed4" title=" " alt="" coords="183,63,339,90"/>
+<area shape="rect" id="node8" href="$class_loot_table.html#a5d6171eed40e3cc72c1dddead4526cc3" title=" " alt="" coords="196,114,327,141"/>
+<area shape="rect" id="node3" href="$class_base_item.html#acbfe01460ec8781b7e05437a1b611a90" title=" " alt="" coords="388,13,503,39"/>
+<area shape="rect" id="node4" href="$class_base_item.html#a23a2c8165ea932a095b124eaeddf5e61" title=" " alt="" coords="551,13,693,39"/>
+<area shape="rect" id="node5" href="$class_base_item.html#a8c1fb2ae49ad1b2fd53baf3dac1a9467" title=" " alt="" coords="741,5,927,47"/>
+<area shape="rect" id="node6" href="$class_swatch.html#aa6e64b48c8403d88179beb90da11c2f8" title=" " alt="" coords="975,13,1120,39"/>
+</map>

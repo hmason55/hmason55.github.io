@@ -1,11 +1,12 @@
 <map id="ShortcutUI.EndTurn" name="ShortcutUI.EndTurn">
-<area shape="rect" id="node1" title=" " alt="" coords="5,125,140,152"/>
-<area shape="rect" id="node2" href="$class_cast_options_u_i.html#a78fb30f53f8da2443cb801bd878dc149" title=" " alt="" coords="188,100,365,127"/>
-<area shape="rect" id="node9" href="$class_shortcut_u_i.html#a00f6fd2d64d2e5e978b749eafbe8f949" title=" " alt="" coords="211,151,342,177"/>
-<area shape="rect" id="node3" href="$class_hotbar.html#a0c213365074f45fd1b1010eabe3f3d4d" title=" " alt="" coords="413,69,561,96"/>
-<area shape="rect" id="node7" href="$class_cast_options_u_i.html#affc98e48b03c51f4dddda5cb96920697" title=" " alt="" coords="413,132,561,159"/>
-<area shape="rect" id="node4" href="$class_spell.html#a267e0b312732b826127c2d58ba64d90d" title=" " alt="" coords="641,5,757,32"/>
-<area shape="rect" id="node5" href="$class_spell.html#a46dfa81169863ddb791b3c7d5121fcb8" title=" " alt="" coords="609,56,788,83"/>
-<area shape="rect" id="node6" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="629,107,768,133"/>
-<area shape="rect" id="node8" href="$class_hotbar.html#a989b6728a8d86d60a851f68954edab90" title=" " alt="" coords="627,157,771,184"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,111,140,137"/>
+<area shape="rect" id="node2" href="$class_cast_options_u_i.html#a78fb30f53f8da2443cb801bd878dc149" title=" " alt="" coords="188,111,365,137"/>
+<area shape="rect" id="node3" href="$class_hotbar.html#a0c213365074f45fd1b1010eabe3f3d4d" title=" " alt="" coords="413,111,561,137"/>
+<area shape="rect" id="node4" href="$class_cast_options_u_i.html#affc98e48b03c51f4dddda5cb96920697" title=" " alt="" coords="625,35,773,61"/>
+<area shape="rect" id="node8" href="$class_spell.html#a267e0b312732b826127c2d58ba64d90d" title=" " alt="" coords="641,85,757,112"/>
+<area shape="rect" id="node9" href="$class_spell.html#a46dfa81169863ddb791b3c7d5121fcb8" title=" " alt="" coords="609,136,788,163"/>
+<area shape="rect" id="node10" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="629,187,768,213"/>
+<area shape="rect" id="node5" href="$class_hotbar.html#a989b6728a8d86d60a851f68954edab90" title=" " alt="" coords="869,5,1013,32"/>
+<area shape="rect" id="node6" href="$class_cast_options_u_i.html#a4d26576fdbfc81183a727b02a33b033d" title=" " alt="" coords="836,57,1045,98"/>
+<area shape="rect" id="node7" href="$class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="1093,57,1275,98"/>
 </map>

@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['mediumarmorbody',['mediumArmorBody',['../class_item_sprites.html#a6384680172497096a3ec7a5b251c0d8d',1,'ItemSprites']]],
-  ['mediumarmorfeet',['mediumArmorFeet',['../class_item_sprites.html#aece69dc2ef5775db624f59426c815882',1,'ItemSprites']]],
-  ['mediumarmorhands',['mediumArmorHands',['../class_item_sprites.html#a710c2203db265ba5ae45d5e194347105',1,'ItemSprites']]],
-  ['mediumarmorhead',['mediumArmorHead',['../class_item_sprites.html#a0d30c4c72b2dfe8d647835fbe61c98af',1,'ItemSprites']]],
-  ['mediumarmorlegs',['mediumArmorLegs',['../class_item_sprites.html#abe3254dfd4ed04f011fc2a9a396d0940',1,'ItemSprites']]],
-  ['messagecapacity',['messageCapacity',['../class_announcement_manager.html#aa23d155cc088be3437ef92cc337c0492',1,'AnnouncementManager']]]
+  ['name',['name',['../class_character.html#adbfa3b858f99f337203a1bec67b2fe45',1,'Character']]],
+  ['novicetome',['noviceTome',['../class_unit_weapon_sprite_library.html#ad92f31f41f250b38eb1b2f84fa23545c',1,'UnitWeaponSpriteLibrary.noviceTome()'],['../class_weapon_item_sprite_library.html#aa93c2ae0c9d1d216bf03e849d5194adc',1,'WeaponItemSpriteLibrary.noviceTome()']]]
 ];

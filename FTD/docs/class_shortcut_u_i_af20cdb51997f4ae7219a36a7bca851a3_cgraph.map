@@ -1,5 +1,6 @@
 <map id="ShortcutUI.BeginTurn" name="ShortcutUI.BeginTurn">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,151,32"/>
-<area shape="rect" id="node2" href="$class_hotbar.html#a37bca03a1dfd144a30bae3774eaab667" title=" " alt="" coords="199,5,351,32"/>
-<area shape="rect" id="node3" href="$class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="399,5,505,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,151,57"/>
+<area shape="rect" id="node2" href="$class_shortcut_u_i.html#ae39ab7b830aff78693a4ddbaa3c59c3e" title=" " alt="" coords="211,5,338,32"/>
+<area shape="rect" id="node3" href="$class_hotbar.html#a37bca03a1dfd144a30bae3774eaab667" title=" " alt="" coords="199,56,351,83"/>
+<area shape="rect" id="node4" href="$class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="399,56,505,83"/>
 </map>

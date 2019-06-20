@@ -99,7 +99,7 @@ Collaboration diagram for TurnQueue:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_turn_queue__coll__graph.png" border="0" usemap="#_turn_queue_coll__map" alt="Collaboration graph"/></div>
 <map name="_turn_queue_coll__map" id="_turn_queue_coll__map">
-<area shape="rect"  title=" " alt="" coords="5,5,125,229"/>
+<area shape="rect"  title=" " alt="" coords="5,5,125,185"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -108,29 +108,31 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a15bbf8315c0dc5ad3d211872f3de296b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#a15bbf8315c0dc5ad3d211872f3de296b">TurnQueue</a> ()</td></tr>
 <tr class="separator:a15bbf8315c0dc5ad3d211872f3de296b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa677cc3ae9812e45a5b7e8932c199e27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#aa677cc3ae9812e45a5b7e8932c199e27">Add</a> (<a class="el" href="class_turn.html">Turn</a> turn)</td></tr>
+<tr class="memdesc:aa677cc3ae9812e45a5b7e8932c199e27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a <a class="el" href="class_turn.html">Turn</a> to the queue.  <a href="#aa677cc3ae9812e45a5b7e8932c199e27">More...</a><br /></td></tr>
 <tr class="separator:aa677cc3ae9812e45a5b7e8932c199e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6ee9af337f42a417812f4bc96f8d600"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#af6ee9af337f42a417812f4bc96f8d600">RemoveTurns</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> baseUnit)</td></tr>
+<tr class="memdesc:af6ee9af337f42a417812f4bc96f8d600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all turns from the queue associated with this <a class="el" href="class_base_unit.html">BaseUnit</a>.  <a href="#af6ee9af337f42a417812f4bc96f8d600">More...</a><br /></td></tr>
 <tr class="separator:af6ee9af337f42a417812f4bc96f8d600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acae6f91ff8006307a04d4ee9362c1b7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#acae6f91ff8006307a04d4ee9362c1b7e">NextTurn</a> ()</td></tr>
+<tr class="memdesc:acae6f91ff8006307a04d4ee9362c1b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decreases the priority of all Turns currently in the queue, then sorts the <a class="el" href="class_turn.html">Turn</a> queue in ascending order. The <a class="el" href="class_base_unit.html">BaseUnit</a> associated with the <a class="el" href="class_turn.html">Turn</a> at the front of the queue then begins their <a class="el" href="class_turn.html">Turn</a>.  <a href="#acae6f91ff8006307a04d4ee9362c1b7e">More...</a><br /></td></tr>
 <tr class="separator:acae6f91ff8006307a04d4ee9362c1b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afadc89a92617f7b2ee4e93025d2f2217"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#afadc89a92617f7b2ee4e93025d2f2217">SortTurns</a> ()</td></tr>
+<tr class="memdesc:afadc89a92617f7b2ee4e93025d2f2217"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts Turns in the queue by ascending priority.  <a href="#afadc89a92617f7b2ee4e93025d2f2217">More...</a><br /></td></tr>
 <tr class="separator:afadc89a92617f7b2ee4e93025d2f2217"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f1a7e7055e613cbd17f1d76d9bfd261"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#a7f1a7e7055e613cbd17f1d76d9bfd261">UnitInQueue</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> b)</td></tr>
+<tr class="memdesc:a7f1a7e7055e613cbd17f1d76d9bfd261"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches the queue for Turns associated with the given <a class="el" href="class_base_unit.html">BaseUnit</a>.  <a href="#a7f1a7e7055e613cbd17f1d76d9bfd261">More...</a><br /></td></tr>
 <tr class="separator:a7f1a7e7055e613cbd17f1d76d9bfd261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadfdf0f72201cdc985ad2dbb9520eaee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#aadfdf0f72201cdc985ad2dbb9520eaee">EndTurn</a> ()</td></tr>
+<tr class="memdesc:aadfdf0f72201cdc985ad2dbb9520eaee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the <a class="el" href="class_turn.html">Turn</a> at the front of the queue.  <a href="#aadfdf0f72201cdc985ad2dbb9520eaee">More...</a><br /></td></tr>
 <tr class="separator:aadfdf0f72201cdc985ad2dbb9520eaee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7de50ac6b689f76c71d808962b6d1b86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#a7de50ac6b689f76c71d808962b6d1b86">BeginCombat</a> ()</td></tr>
-<tr class="separator:a7de50ac6b689f76c71d808962b6d1b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b3696b9a7672bbb8a79e3f0dc3ef393"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#a9b3696b9a7672bbb8a79e3f0dc3ef393">EndCombat</a> ()</td></tr>
-<tr class="separator:a9b3696b9a7672bbb8a79e3f0dc3ef393"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1c735b715ec963c76f0291cb9629338"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#ae1c735b715ec963c76f0291cb9629338">PrintTurns</a> ()</td></tr>
-<tr class="separator:ae1c735b715ec963c76f0291cb9629338"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:a55c5122a7e3ce31ec8b79e9feb14bd27"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_turn.html">Turn</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#a55c5122a7e3ce31ec8b79e9feb14bd27">queue</a><code> [get]</code></td></tr>
+<tr class="memdesc:a55c5122a7e3ce31ec8b79e9feb14bd27"><td class="mdescLeft">&#160;</td><td class="mdescRight">A queue containing the current turns.  <a href="#a55c5122a7e3ce31ec8b79e9feb14bd27">More...</a><br /></td></tr>
 <tr class="separator:a55c5122a7e3ce31ec8b79e9feb14bd27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5d7ed68bb4f7c1b6e93f55da966a7b3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_turn_queue.html#ac5d7ed68bb4f7c1b6e93f55da966a7b3">Length</a><code> [get]</code></td></tr>
+<tr class="memdesc:ac5d7ed68bb4f7c1b6e93f55da966a7b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The length of the queue.  <a href="#ac5d7ed68bb4f7c1b6e93f55da966a7b3">More...</a><br /></td></tr>
 <tr class="separator:ac5d7ed68bb4f7c1b6e93f55da966a7b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -167,52 +169,28 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds a <a class="el" href="class_turn.html">Turn</a> to the queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">turn</td><td>The <a class="el" href="class_turn.html">Turn</a> to be added to the queue.</td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_turn_queue_aa677cc3ae9812e45a5b7e8932c199e27_icgraph.png" border="0" usemap="#class_turn_queue_aa677cc3ae9812e45a5b7e8932c199e27_icgraph" alt=""/></div>
 <map name="class_turn_queue_aa677cc3ae9812e45a5b7e8932c199e27_icgraph" id="class_turn_queue_aa677cc3ae9812e45a5b7e8932c199e27_icgraph">
-<area shape="rect"  title=" " alt="" coords="475,31,587,57"/>
-<area shape="rect"  href="class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="255,5,427,32"/>
-<area shape="rect"  href="class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="256,56,425,83"/>
-<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="41,5,171,32"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
+<area shape="rect"  title="Adds a Turn to the queue." alt="" coords="877,56,989,83"/>
+<area shape="rect"  href="class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="657,31,829,57"/>
+<area shape="rect"  href="class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="659,81,828,108"/>
+<area shape="rect"  href="class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,5,609,32"/>
+<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect"  href="class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,5,384,32"/>
+<area shape="rect"  href="class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,5,132,32"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="a7de50ac6b689f76c71d808962b6d1b86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7de50ac6b689f76c71d808962b6d1b86">&#9670;&nbsp;</a></span>BeginCombat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void TurnQueue.BeginCombat </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9b3696b9a7672bbb8a79e3f0dc3ef393"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b3696b9a7672bbb8a79e3f0dc3ef393">&#9670;&nbsp;</a></span>EndCombat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void TurnQueue.EndCombat </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -230,14 +208,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Removes the <a class="el" href="class_turn.html">Turn</a> at the front of the queue. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_turn_queue_aadfdf0f72201cdc985ad2dbb9520eaee_icgraph.png" border="0" usemap="#class_turn_queue_aadfdf0f72201cdc985ad2dbb9520eaee_icgraph" alt=""/></div>
 <map name="class_turn_queue_aadfdf0f72201cdc985ad2dbb9520eaee_icgraph" id="class_turn_queue_aadfdf0f72201cdc985ad2dbb9520eaee_icgraph">
-<area shape="rect"  title=" " alt="" coords="472,5,609,32"/>
-<area shape="rect"  href="class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,5,424,32"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,5,207,32"/>
+<area shape="rect"  title="Removes the Turn at the front of the queue." alt="" coords="223,5,360,32"/>
+<area shape="rect"  href="class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,5,175,32"/>
 </map>
 </div>
 
@@ -257,13 +236,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Decreases the priority of all Turns currently in the queue, then sorts the <a class="el" href="class_turn.html">Turn</a> queue in ascending order. The <a class="el" href="class_base_unit.html">BaseUnit</a> associated with the <a class="el" href="class_turn.html">Turn</a> at the front of the queue then begins their <a class="el" href="class_turn.html">Turn</a>. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_turn_queue_acae6f91ff8006307a04d4ee9362c1b7e_cgraph.png" border="0" usemap="#class_turn_queue_acae6f91ff8006307a04d4ee9362c1b7e_cgraph" alt=""/></div>
 <map name="class_turn_queue_acae6f91ff8006307a04d4ee9362c1b7e_cgraph" id="class_turn_queue_acae6f91ff8006307a04d4ee9362c1b7e_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,5,147,32"/>
-<area shape="rect"  href="class_turn_queue.html#afadc89a92617f7b2ee4e93025d2f2217" title=" " alt="" coords="195,5,340,32"/>
+<area shape="rect"  title="Decreases the priority of all Turns currently in the queue, then sorts the Turn queue in ascending or..." alt="" coords="5,5,147,32"/>
+<area shape="rect"  href="class_turn_queue.html#afadc89a92617f7b2ee4e93025d2f2217" title="Sorts Turns in the queue by ascending priority." alt="" coords="195,5,340,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -271,38 +252,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_turn_queue_acae6f91ff8006307a04d4ee9362c1b7e_icgraph.png" border="0" usemap="#class_turn_queue_acae6f91ff8006307a04d4ee9362c1b7e_icgraph" alt=""/></div>
 <map name="class_turn_queue_acae6f91ff8006307a04d4ee9362c1b7e_icgraph" id="class_turn_queue_acae6f91ff8006307a04d4ee9362c1b7e_icgraph">
-<area shape="rect"  title=" " alt="" coords="472,5,613,32"/>
-<area shape="rect"  href="class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,5,424,32"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,5,207,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ae1c735b715ec963c76f0291cb9629338"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1c735b715ec963c76f0291cb9629338">&#9670;&nbsp;</a></span>PrintTurns()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void TurnQueue.PrintTurns </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_turn_queue_ae1c735b715ec963c76f0291cb9629338_icgraph.png" border="0" usemap="#class_turn_queue_ae1c735b715ec963c76f0291cb9629338_icgraph" alt=""/></div>
-<map name="class_turn_queue_ae1c735b715ec963c76f0291cb9629338_icgraph" id="class_turn_queue_ae1c735b715ec963c76f0291cb9629338_icgraph">
-<area shape="rect"  title=" " alt="" coords="653,31,801,57"/>
-<area shape="rect"  href="class_combat_manager.html#aea6dfda807c4ec793ed26c5d220b84fb" title=" " alt="" coords="403,23,605,65"/>
-<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="214,5,323,32"/>
-<area shape="rect"  href="class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="183,56,355,83"/>
-<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect"  title="Decreases the priority of all Turns currently in the queue, then sorts the Turn queue in ascending or..." alt="" coords="223,5,364,32"/>
+<area shape="rect"  href="class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,5,175,32"/>
 </map>
 </div>
 
@@ -323,15 +274,27 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Removes all turns from the queue associated with this <a class="el" href="class_base_unit.html">BaseUnit</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">baseUnit</td><td>Any Turns associated with this <a class="el" href="class_base_unit.html">BaseUnit</a> will be removed from the queue.</td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_turn_queue_af6ee9af337f42a417812f4bc96f8d600_icgraph.png" border="0" usemap="#class_turn_queue_af6ee9af337f42a417812f4bc96f8d600_icgraph" alt=""/></div>
 <map name="class_turn_queue_af6ee9af337f42a417812f4bc96f8d600_icgraph" id="class_turn_queue_af6ee9af337f42a417812f4bc96f8d600_icgraph">
-<area shape="rect"  title=" " alt="" coords="548,5,715,32"/>
-<area shape="rect"  href="class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="403,5,500,32"/>
-<area shape="rect"  href="class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="183,5,355,32"/>
-<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,5,135,32"/>
+<area shape="rect"  title="Removes all turns from the queue associated with this BaseUnit." alt="" coords="1193,31,1360,57"/>
+<area shape="rect"  href="class_unit_behaviour.html#a9a32f3234ea6b89f686c6cd55d924348" title=" " alt="" coords="1023,31,1145,57"/>
+<area shape="rect"  href="class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="877,31,975,57"/>
+<area shape="rect"  href="class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="657,31,829,57"/>
+<area shape="rect"  href="class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,5,609,32"/>
+<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect"  href="class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,5,384,32"/>
+<area shape="rect"  href="class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,5,132,32"/>
 </map>
 </div>
 
@@ -351,15 +314,16 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sorts Turns in the queue by ascending priority. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_turn_queue_afadc89a92617f7b2ee4e93025d2f2217_icgraph.png" border="0" usemap="#class_turn_queue_afadc89a92617f7b2ee4e93025d2f2217_icgraph" alt=""/></div>
 <map name="class_turn_queue_afadc89a92617f7b2ee4e93025d2f2217_icgraph" id="class_turn_queue_afadc89a92617f7b2ee4e93025d2f2217_icgraph">
-<area shape="rect"  title=" " alt="" coords="661,5,807,32"/>
-<area shape="rect"  href="class_turn_queue.html#acae6f91ff8006307a04d4ee9362c1b7e" title=" " alt="" coords="472,5,613,32"/>
-<area shape="rect"  href="class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,5,424,32"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,5,207,32"/>
+<area shape="rect"  title="Sorts Turns in the queue by ascending priority." alt="" coords="412,5,557,32"/>
+<area shape="rect"  href="class_turn_queue.html#acae6f91ff8006307a04d4ee9362c1b7e" title="Decreases the priority of all Turns currently in the queue, then sorts the Turn queue in ascending or..." alt="" coords="223,5,364,32"/>
+<area shape="rect"  href="class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,5,175,32"/>
 </map>
 </div>
 
@@ -380,14 +344,26 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Searches the queue for Turns associated with the given <a class="el" href="class_base_unit.html">BaseUnit</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>The <a class="el" href="class_base_unit.html">BaseUnit</a> to search for.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if there is one or more Turns associated with the given <a class="el" href="class_base_unit.html">BaseUnit</a>, otherwise returns False.</dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_turn_queue_a7f1a7e7055e613cbd17f1d76d9bfd261_icgraph.png" border="0" usemap="#class_turn_queue_a7f1a7e7055e613cbd17f1d76d9bfd261_icgraph" alt=""/></div>
 <map name="class_turn_queue_a7f1a7e7055e613cbd17f1d76d9bfd261_icgraph" id="class_turn_queue_a7f1a7e7055e613cbd17f1d76d9bfd261_icgraph">
-<area shape="rect"  title=" " alt="" coords="403,5,563,32"/>
-<area shape="rect"  href="class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="183,5,355,32"/>
-<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,5,135,32"/>
+<area shape="rect"  title="Searches the queue for Turns associated with the given BaseUnit." alt="" coords="877,31,1037,57"/>
+<area shape="rect"  href="class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="657,31,829,57"/>
+<area shape="rect"  href="class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,5,609,32"/>
+<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect"  href="class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,5,384,32"/>
+<area shape="rect"  href="class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,5,132,32"/>
 </map>
 </div>
 
@@ -414,6 +390,8 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>The length of the queue. </p>
+
 </div>
 </div>
 <a id="a55c5122a7e3ce31ec8b79e9feb14bd27"></a>
@@ -435,6 +413,8 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>A queue containing the current turns. </p>
 
 </div>
 </div>

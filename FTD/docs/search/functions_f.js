@@ -1,20 +1,27 @@
 var searchData=
 [
+  ['randomizeface',['RandomizeFace',['../class_portrait.html#acf5fa7d76a4453a7492668101d294fbe',1,'Portrait']]],
   ['readycast',['ReadyCast',['../class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf',1,'Hotbar']]],
   ['recast',['Recast',['../class_hotbar.html#acda305961d329d3b329dbe4247539ef5',1,'Hotbar']]],
-  ['receivedamage',['ReceiveDamage',['../class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443',1,'BaseUnit']]],
-  ['receivestatus',['ReceiveStatus',['../class_base_unit.html#a0f900d0c70a2436dd81d8127f8d43336',1,'BaseUnit']]],
+  ['receivedamage',['ReceiveDamage',['../class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580',1,'BaseUnit']]],
+  ['receivehealing',['ReceiveHealing',['../class_base_unit.html#acdc00f9ae2db67fb8f1ee18df5aa509e',1,'BaseUnit']]],
+  ['receivestatus',['ReceiveStatus',['../class_base_unit.html#a181927c2b7d2f4ff6e38596657d243ed',1,'BaseUnit']]],
   ['reload',['Reload',['../class_dungeon_manager.html#af5da9360e25192d468c5e8461ff19f20',1,'DungeonManager']]],
   ['remove',['Remove',['../class_bag.html#a42a4319aa14d0b6bda7f91070ba57a47',1,'Bag']]],
   ['removeat',['RemoveAt',['../class_bag.html#a2f11a414bf3edfd7f380f30b71f34104',1,'Bag']]],
   ['removeessence',['RemoveEssence',['../class_essence_u_i.html#a39b3c1ec97a29130e2e8ab4050921ed6',1,'EssenceUI']]],
-  ['removestatus',['RemoveStatus',['../class_base_unit.html#a15cf13fa9b4b776f474ad03b42939139',1,'BaseUnit']]],
+  ['removestatus',['RemoveStatus',['../class_base_unit.html#af36bde8493a9c0e16e1171bf942504ca',1,'BaseUnit']]],
+  ['removestatusbycondition',['RemoveStatusByCondition',['../class_base_unit.html#a732bdd48e6a9c74c059bffd4092ac1b5',1,'BaseUnit']]],
   ['removeturns',['RemoveTurns',['../class_turn_queue.html#af6ee9af337f42a417812f4bc96f8d600',1,'TurnQueue']]],
   ['rendertiles',['RenderTiles',['../class_dungeon_manager.html#a89bde2dbae3ffb1dd89635df4a8df153',1,'DungeonManager']]],
-  ['reset',['Reset',['../class_item_tooltip.html#a4db0f30912c9b31ac912dbac40b17185',1,'ItemTooltip']]],
+  ['reset',['Reset',['../class_item_tooltip.html#a4db0f30912c9b31ac912dbac40b17185',1,'ItemTooltip.Reset()'],['../class_spell_tooltip.html#a1e51f0a91f96223f1b3536ce452c444a',1,'SpellTooltip.Reset()']]],
   ['resetall',['ResetAll',['../class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b',1,'EssenceUI']]],
   ['resetposition',['ResetPosition',['../class_unit_behaviour.html#a19e4ade6b8de90c269e3ed840d0c9f84',1,'UnitBehaviour']]],
+  ['resetscale',['ResetScale',['../class_damage_text.html#ae764a1aaa979063ee8a5c787db99db80',1,'DamageText']]],
   ['resettiles',['ResetTiles',['../class_spell.html#a267e0b312732b826127c2d58ba64d90d',1,'Spell']]],
   ['return',['Return',['../class_base_unit.html#a3091e5ab7a6bd3488f9c0987208a1f4d',1,'BaseUnit.Return()'],['../class_unit_behaviour.html#a4b2664ef7a33e795220d587cb789d169',1,'UnitBehaviour.Return()']]],
-  ['roll',['Roll',['../class_dice.html#a35ef280974d277d579faaec918e8cecc',1,'Dice']]]
+  ['rollcommon',['RollCommon',['../class_loot_table.html#a77d9b4fb3dd1ccf00183fd13a2a10ed4',1,'LootTable']]],
+  ['rollloot',['RollLoot',['../class_loot_table.html#acab53120f654edacde8b3bf3fd932e44',1,'LootTable']]],
+  ['rollrare',['RollRare',['../class_loot_table.html#a5d6171eed40e3cc72c1dddead4526cc3',1,'LootTable']]],
+  ['rumble',['Rumble',['../class_unit_behaviour.html#aa702cb5b130976950574b1fb96a50ac3',1,'UnitBehaviour.Rumble()'],['../class_camera_controller.html#a6076e5b3f40af8b29fbc810f844b5476',1,'CameraController.Rumble()']]]
 ];

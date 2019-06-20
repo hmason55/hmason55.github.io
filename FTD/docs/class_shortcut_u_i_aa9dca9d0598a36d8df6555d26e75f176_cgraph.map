@@ -1,4 +1,7 @@
 <map id="ShortcutUI.OnCharacterShortcut" name="ShortcutUI.OnCharacterShortcut">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,215,32"/>
-<area shape="rect" id="node2" href="$class_attributes_u_i.html#a7cb7b0cebe1130576d6bbd279cb62ac1" title=" " alt="" coords="263,5,407,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,215,57"/>
+<area shape="rect" id="node2" href="$class_attributes_u_i.html#a091b75e2e46202abcdb977f8ab2358ba" title=" " alt="" coords="263,5,407,32"/>
+<area shape="rect" id="node3" href="$class_bag_behaviour.html#a731b060bd01b971246839664dfd86530" title=" " alt="" coords="263,56,406,83"/>
+<area shape="rect" id="node4" href="$class_container_behaviour.html#a0641e9fa2407bee1d83f4998b78f1fa3" title=" " alt="" coords="455,31,629,57"/>
+<area shape="rect" id="node5" href="$class_item_tooltip.html#a4db0f30912c9b31ac912dbac40b17185" title=" " alt="" coords="677,56,800,83"/>
 </map>

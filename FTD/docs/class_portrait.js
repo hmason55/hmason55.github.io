@@ -1,5 +1,6 @@
 var class_portrait =
 [
+    [ "ApplyToPreviewCharacter", "class_portrait.html#a326285a38ad084c87d13492278124f7e", null ],
     [ "HideCharacter", "class_portrait.html#a3a0b6a4d3c9909127c51c4c4f4b152f5", null ],
     [ "HideUI", "class_portrait.html#ac5ab4bb350640a35c516bffa2fc45fe3", null ],
     [ "LoadCharacter", "class_portrait.html#a003483e7707bbb34e09ef3736e5b5b41", null ],
@@ -11,14 +12,17 @@ var class_portrait =
     [ "NextMouth", "class_portrait.html#ae5ff256c7c14879853d221dfd9df2d63", null ],
     [ "NextNose", "class_portrait.html#a7fc2c7d9f078303182503c717c05b9d5", null ],
     [ "NextSkinColor", "class_portrait.html#a601ece8887c692a5a9f6d910fd3a2cec", null ],
+    [ "NextStartingClass", "class_portrait.html#a88fe019f6fd864a138ddc3d3e8d281c7", null ],
     [ "PrevBeard", "class_portrait.html#ada91686eb3d44e5771a81dc147462258", null ],
     [ "PrevEyebrows", "class_portrait.html#abce38ec7263bad9ae029b40e585fe6b1", null ],
     [ "PrevFace", "class_portrait.html#aa550ccd7202589090d88e812743da74a", null ],
     [ "PrevHair", "class_portrait.html#af7fdde58c645c6e4fa5195ed3547b3d9", null ],
     [ "PrevHairColor", "class_portrait.html#a29b9670f2b653ffe43cf81e94e90062a", null ],
+    [ "PreviousStartingClass", "class_portrait.html#a2df1c03b9cbe058716f0812283df1822", null ],
     [ "PrevMouth", "class_portrait.html#ac81c66115ce3df6a35af825e43742211", null ],
     [ "PrevNose", "class_portrait.html#afc5cd84e6086e462adb30f0d988c76b6", null ],
     [ "PrevSkinColor", "class_portrait.html#acbaf5360b4efe38e96ae08816ee94ccb", null ],
+    [ "RandomizeFace", "class_portrait.html#acf5fa7d76a4453a7492668101d294fbe", null ],
     [ "ShowCharacter", "class_portrait.html#ab8365d52d39bacdb043a5f707e9c17ef", null ],
     [ "ShowUI", "class_portrait.html#a5469fe5b40d6ac458f87f2748cb0805c", null ],
     [ "beardType", "class_portrait.html#acc7fbe447bbd427f26e0490b868febd3", null ],
@@ -28,5 +32,7 @@ var class_portrait =
     [ "hairType", "class_portrait.html#a7fbaf07b4f6d0fe0213e4b812fe90acc", null ],
     [ "mouthType", "class_portrait.html#a9ce977a3c3a8b9790abfaeb57dd16d78", null ],
     [ "noseType", "class_portrait.html#a08a64694ad71d1f822acbf63845ae130", null ],
-    [ "skinColor", "class_portrait.html#ac3ed63c9b306564506b4b96867990f84", null ]
+    [ "previewUnit", "class_portrait.html#a4ce65d753e028e3899c48a37c11bae3d", null ],
+    [ "skinColor", "class_portrait.html#ac3ed63c9b306564506b4b96867990f84", null ],
+    [ "startingClass", "class_portrait.html#a757aced52e6af060f4b5baf990958718", null ]
 ];

@@ -1,0 +1,10 @@
+<map id="Spell.PostSpellEffect" name="Spell.PostSpellEffect">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,149,108"/>
+<area shape="rect" id="node2" href="$class_database.html#a82bad315c196dd89980ebc746971e382" title=" " alt="" coords="219,31,378,57"/>
+<area shape="rect" id="node6" href="$class_tile.html#a183188c193a2ba5b62c8cdfc6d63471d" title=" " alt="" coords="245,81,353,108"/>
+<area shape="rect" id="node8" href="$class_combat_manager.html#aea6dfda807c4ec793ed26c5d220b84fb" title=" " alt="" coords="197,133,400,174"/>
+<area shape="rect" id="node3" href="$class_attributes.html#a4752b5df4138d9eb1b2ed5a5e2df3e13" title=" " alt="" coords="465,31,579,57"/>
+<area shape="rect" id="node4" href="$class_attributes.html#a1821e0b3d7eff63215bba4e8d68d3740" title=" " alt="" coords="644,5,783,32"/>
+<area shape="rect" id="node5" href="$class_attributes.html#a6ed4914f59536bdf6c8e9066e930a3fb" title=" " alt="" coords="831,31,929,57"/>
+<area shape="rect" id="node7" href="$class_base_unit.html#ab3bb3a100a4e99d71e6b1e13e4198456" title=" " alt="" coords="448,81,596,108"/>
+</map>

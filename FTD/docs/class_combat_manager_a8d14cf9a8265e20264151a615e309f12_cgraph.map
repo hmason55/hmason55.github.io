@@ -1,7 +1,11 @@
 <map id="CombatManager.EndCombat" name="CombatManager.EndCombat">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,195,57"/>
-<area shape="rect" id="node2" href="$class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="243,5,449,32"/>
-<area shape="rect" id="node3" href="$class_essence_u_i.html#a26023c3d4977188014384a1a40eb3ad9" title=" " alt="" coords="275,56,417,83"/>
-<area shape="rect" id="node4" href="$class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="497,56,688,83"/>
-<area shape="rect" id="node5" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="736,56,875,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,195,133"/>
+<area shape="rect" id="node2" href="$class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="246,5,453,32"/>
+<area shape="rect" id="node3" href="$class_essence_u_i.html#a75a53ecfc61b800c928dd9ca137557b8" title=" " alt="" coords="259,56,440,83"/>
+<area shape="rect" id="node7" href="$class_audio_manager.html#a6cddbf70f601136a79c462a3b51930b5" title=" " alt="" coords="266,107,433,133"/>
+<area shape="rect" id="node8" href="$class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="270,157,429,184"/>
+<area shape="rect" id="node9" href="$class_audio_manager.html#a5078f0000b21abc03b9bf2f6900a01aa" title=" " alt="" coords="243,208,456,235"/>
+<area shape="rect" id="node4" href="$class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="504,31,695,57"/>
+<area shape="rect" id="node6" href="$class_essence_u_i.html#a14ebd4e6ce2abc42ca830bbfd261b64b" title=" " alt="" coords="505,81,693,108"/>
+<area shape="rect" id="node5" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="743,56,881,83"/>
 </map>

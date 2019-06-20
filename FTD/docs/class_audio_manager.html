@@ -87,7 +87,7 @@ $(document).ready(function(){initNavTree('class_audio_manager.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_audio_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -99,8 +99,8 @@ Inheritance diagram for AudioManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_audio_manager__inherit__graph.png" border="0" usemap="#_audio_manager_inherit__map" alt="Inheritance graph"/></div>
 <map name="_audio_manager_inherit__map" id="_audio_manager_inherit__map">
-<area shape="rect"  title=" " alt="" coords="7,131,114,223"/>
-<area shape="rect"  title=" " alt="" coords="5,5,116,83"/>
+<area shape="rect"  title=" " alt="" coords="5,131,173,443"/>
+<area shape="rect"  title=" " alt="" coords="34,5,145,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -108,64 +108,192 @@ Collaboration diagram for AudioManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_audio_manager__coll__graph.png" border="0" usemap="#_audio_manager_coll__map" alt="Collaboration graph"/></div>
 <map name="_audio_manager_coll__map" id="_audio_manager_coll__map">
-<area shape="rect"  title=" " alt="" coords="7,131,114,223"/>
-<area shape="rect"  title=" " alt="" coords="5,5,116,83"/>
+<area shape="rect"  title=" " alt="" coords="5,131,173,443"/>
+<area shape="rect"  title=" " alt="" coords="34,5,145,83"/>
 </map>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a1520faf231d9b58d63a794f6b8040b99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a1520faf231d9b58d63a794f6b8040b99">LoadSound</a> (string soundPath)</td></tr>
-<tr class="separator:a1520faf231d9b58d63a794f6b8040b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0f0dc189806848c224581b363b87396"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#ac0f0dc189806848c224581b363b87396">PlaySound</a> (float volume=0.5f, float delay=0f)</td></tr>
-<tr class="separator:ac0f0dc189806848c224581b363b87396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ac73ae9bb625ca73945b1aec2a4d1f647"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#ac73ae9bb625ca73945b1aec2a4d1f647">PreLoadAmbientBGM</a> (string path)</td></tr>
+<tr class="separator:ac73ae9bb625ca73945b1aec2a4d1f647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93deea5837f25364ff7451ec1cd88477"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a93deea5837f25364ff7451ec1cd88477">PreLoadCombatBGM</a> (string path)</td></tr>
+<tr class="separator:a93deea5837f25364ff7451ec1cd88477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7803335798fd16f79609c894ac70b6e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#aa7803335798fd16f79609c894ac70b6e">VolumeBGM</a> (float volume)</td></tr>
+<tr class="separator:aa7803335798fd16f79609c894ac70b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5078f0000b21abc03b9bf2f6900a01aa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a5078f0000b21abc03b9bf2f6900a01aa">PlayAmbientBGM</a> (float volume=0.25f, float delay=0f, bool loop=true, float fade=1f)</td></tr>
+<tr class="separator:a5078f0000b21abc03b9bf2f6900a01aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa144cf0d5ce900e9a977a619492b9ba6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#aa144cf0d5ce900e9a977a619492b9ba6">PlayCombatBGM</a> (float volume=0.25f, float delay=0f, bool loop=true, float fade=1f)</td></tr>
+<tr class="separator:aa144cf0d5ce900e9a977a619492b9ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6089d5f4d7e3f3ef0b6728d3b18e7b1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1">PlaySFX</a> (string path, float volume=0.5f, float delay=0f)</td></tr>
+<tr class="separator:ad6089d5f4d7e3f3ef0b6728d3b18e7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cddbf70f601136a79c462a3b51930b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a6cddbf70f601136a79c462a3b51930b5">StopBGM</a> ()</td></tr>
+<tr class="separator:a6cddbf70f601136a79c462a3b51930b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a039201179f30b7221a2f7a59cca6a2ad"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a039201179f30b7221a2f7a59cca6a2ad">StopSFX</a> ()</td></tr>
+<tr class="separator:a039201179f30b7221a2f7a59cca6a2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a0c2aea6ea779d69228564aca9476ea80"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a0c2aea6ea779d69228564aca9476ea80">audioSource</a><code> [get]</code></td></tr>
-<tr class="separator:a0c2aea6ea779d69228564aca9476ea80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22b1b1a94ee423ccb2b142b4f5a70ad4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_audio_manager.html">AudioManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a22b1b1a94ee423ccb2b142b4f5a70ad4">instance</a><code> [get]</code></td></tr>
+<tr class="separator:a22b1b1a94ee423ccb2b142b4f5a70ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a662e19cb7db13a5a4e96a9aaadc7dfeb"><td class="memItemLeft" align="right" valign="top">Coroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a662e19cb7db13a5a4e96a9aaadc7dfeb">bgmCoroutine</a><code> [get, set]</code></td></tr>
+<tr class="separator:a662e19cb7db13a5a4e96a9aaadc7dfeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74246bb1849267386c852b5444633684"><td class="memItemLeft" align="right" valign="top">Coroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a74246bb1849267386c852b5444633684">sfxCoroutine</a><code> [get, set]</code></td></tr>
+<tr class="separator:a74246bb1849267386c852b5444633684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a7b64e898f7e7c37b86861aeb8a87b3"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a2a7b64e898f7e7c37b86861aeb8a87b3">bgmSource</a><code> [get]</code></td></tr>
+<tr class="separator:a2a7b64e898f7e7c37b86861aeb8a87b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20e9441762e9b8086842802fd93fd69"><td class="memItemLeft" align="right" valign="top">AudioSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#af20e9441762e9b8086842802fd93fd69">sfxSource</a><code> [get]</code></td></tr>
+<tr class="separator:af20e9441762e9b8086842802fd93fd69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a32efb415f1674a94bf2c278210ed8f"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a8a32efb415f1674a94bf2c278210ed8f">bgmAmbientIntroClip</a><code> [get, set]</code></td></tr>
+<tr class="separator:a8a32efb415f1674a94bf2c278210ed8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac23dafac398039e8b92fece3ad80007b"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#ac23dafac398039e8b92fece3ad80007b">bgmAmbientLoopClip</a><code> [get, set]</code></td></tr>
+<tr class="separator:ac23dafac398039e8b92fece3ad80007b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1f9ff6235ae0ce90603b1bb639f163b"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#aa1f9ff6235ae0ce90603b1bb639f163b">bgmCombatIntroClip</a><code> [get, set]</code></td></tr>
+<tr class="separator:aa1f9ff6235ae0ce90603b1bb639f163b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65a40d458831aaa6f921b155a78ed18"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#ab65a40d458831aaa6f921b155a78ed18">bgmCombatLoopClip</a><code> [get, set]</code></td></tr>
+<tr class="separator:ab65a40d458831aaa6f921b155a78ed18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c98f915137d7c34abe360feb364a9d7"><td class="memItemLeft" align="right" valign="top">AudioClip&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_audio_manager.html#a4c98f915137d7c34abe360feb364a9d7">sfxClip</a><code> [get, set]</code></td></tr>
+<tr class="separator:a4c98f915137d7c34abe360feb364a9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1520faf231d9b58d63a794f6b8040b99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1520faf231d9b58d63a794f6b8040b99">&#9670;&nbsp;</a></span>LoadSound()</h2>
+<a id="a5078f0000b21abc03b9bf2f6900a01aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5078f0000b21abc03b9bf2f6900a01aa">&#9670;&nbsp;</a></span>PlayAmbientBGM()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void AudioManager.LoadSound </td>
+          <td class="memname">static void AudioManager.PlayAmbientBGM </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>soundPath</em></td><td>)</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>volume</em> = <code>0.25f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>delay</em> = <code>0f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>loop</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fade</em> = <code>1f</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_audio_manager_a1520faf231d9b58d63a794f6b8040b99_icgraph.png" border="0" usemap="#class_audio_manager_a1520faf231d9b58d63a794f6b8040b99_icgraph" alt=""/></div>
-<map name="class_audio_manager_a1520faf231d9b58d63a794f6b8040b99_icgraph" id="class_audio_manager_a1520faf231d9b58d63a794f6b8040b99_icgraph">
-<area shape="rect"  title=" " alt="" coords="397,56,572,83"/>
-<area shape="rect"  href="class_spell.html#a1dfbc90153df551bd995b8b852f808f0" title=" " alt="" coords="191,5,341,32"/>
-<area shape="rect"  href="class_spell.html#a80aa52e9ed4b3555bd04682d93bc5049" title=" " alt="" coords="183,107,349,133"/>
-<area shape="rect"  href="class_spell.html#a14ec832bc720a2763ff8a09f81d7c5d4" title=" " alt="" coords="191,56,341,83"/>
-<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
-<area shape="rect"  href="class_spell.html#aa020942716a6504fc6b23351a4baa3b6" title=" " alt="" coords="7,107,133,133"/>
+<div class="center"><img src="class_audio_manager_a5078f0000b21abc03b9bf2f6900a01aa_icgraph.png" border="0" usemap="#class_audio_manager_a5078f0000b21abc03b9bf2f6900a01aa_icgraph" alt=""/></div>
+<map name="class_audio_manager_a5078f0000b21abc03b9bf2f6900a01aa_icgraph" id="class_audio_manager_a5078f0000b21abc03b9bf2f6900a01aa_icgraph">
+<area shape="rect"  title=" " alt="" coords="243,31,456,57"/>
+<area shape="rect"  href="class_combat_manager.html#a8d14cf9a8265e20264151a615e309f12" title=" " alt="" coords="5,5,195,32"/>
+<area shape="rect"  href="class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="23,56,177,83"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ac0f0dc189806848c224581b363b87396"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0f0dc189806848c224581b363b87396">&#9670;&nbsp;</a></span>PlaySound()</h2>
+<a id="aa144cf0d5ce900e9a977a619492b9ba6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa144cf0d5ce900e9a977a619492b9ba6">&#9670;&nbsp;</a></span>PlayCombatBGM()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void AudioManager.PlaySound </td>
+          <td class="memname">static void AudioManager.PlayCombatBGM </td>
           <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>volume</em> = <code>0.25f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>delay</em> = <code>0f</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>loop</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fade</em> = <code>1f</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_audio_manager_aa144cf0d5ce900e9a977a619492b9ba6_icgraph.png" border="0" usemap="#class_audio_manager_aa144cf0d5ce900e9a977a619492b9ba6_icgraph" alt=""/></div>
+<map name="class_audio_manager_aa144cf0d5ce900e9a977a619492b9ba6_icgraph" id="class_audio_manager_aa144cf0d5ce900e9a977a619492b9ba6_icgraph">
+<area shape="rect"  title=" " alt="" coords="1124,31,1335,57"/>
+<area shape="rect"  href="class_combat_manager.html#ab5d0c356fd55e86d62b03c015754abee" title=" " alt="" coords="877,31,1076,57"/>
+<area shape="rect"  href="class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="657,31,829,57"/>
+<area shape="rect"  href="class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,5,609,32"/>
+<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect"  href="class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,5,384,32"/>
+<area shape="rect"  href="class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,5,132,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad6089d5f4d7e3f3ef0b6728d3b18e7b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6089d5f4d7e3f3ef0b6728d3b18e7b1">&#9670;&nbsp;</a></span>PlaySFX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AudioManager.PlaySFX </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>volume</em> = <code>0.5f</code>, </td>
         </tr>
@@ -181,26 +309,39 @@ Here is the caller graph for this function:</div>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_audio_manager_ac0f0dc189806848c224581b363b87396_icgraph.png" border="0" usemap="#class_audio_manager_ac0f0dc189806848c224581b363b87396_icgraph" alt=""/></div>
-<map name="class_audio_manager_ac0f0dc189806848c224581b363b87396_icgraph" id="class_audio_manager_ac0f0dc189806848c224581b363b87396_icgraph">
-<area shape="rect"  title=" " alt="" coords="397,56,569,83"/>
-<area shape="rect"  href="class_spell.html#a1dfbc90153df551bd995b8b852f808f0" title=" " alt="" coords="191,5,341,32"/>
-<area shape="rect"  href="class_spell.html#a80aa52e9ed4b3555bd04682d93bc5049" title=" " alt="" coords="183,107,349,133"/>
-<area shape="rect"  href="class_spell.html#a14ec832bc720a2763ff8a09f81d7c5d4" title=" " alt="" coords="191,56,341,83"/>
-<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
-<area shape="rect"  href="class_spell.html#aa020942716a6504fc6b23351a4baa3b6" title=" " alt="" coords="7,107,133,133"/>
+<div class="center"><img src="class_audio_manager_ad6089d5f4d7e3f3ef0b6728d3b18e7b1_icgraph.png" border="0" usemap="#class_audio_manager_ad6089d5f4d7e3f3ef0b6728d3b18e7b1_icgraph" alt=""/></div>
+<map name="class_audio_manager_ad6089d5f4d7e3f3ef0b6728d3b18e7b1_icgraph" id="class_audio_manager_ad6089d5f4d7e3f3ef0b6728d3b18e7b1_icgraph">
+<area shape="rect"  title=" " alt="" coords="729,275,888,301"/>
+<area shape="rect"  href="class_base_unit.html#acdc00f9ae2db67fb8f1ee18df5aa509e" title=" " alt="" coords="503,93,670,120"/>
+<area shape="rect"  href="class_bag_behaviour.html#a407231bcd34e96129c9ae624a484a045" title=" " alt="" coords="250,5,435,32"/>
+<area shape="rect"  href="class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="5,82,193,123"/>
+<area shape="rect"  href="class_u_i_behaviour.html#aeb90cce943646dc599f17dc78334ec4c" title=" " alt="" coords="508,224,665,251"/>
+<area shape="rect"  href="class_combat_manager.html#a8d14cf9a8265e20264151a615e309f12" title=" " alt="" coords="492,275,681,301"/>
+<area shape="rect"  href="class_spell.html#abb263788226e378bf350e7d9a7f305d6" title=" " alt="" coords="501,325,673,352"/>
+<area shape="rect"  href="class_spell.html#a1dfbc90153df551bd995b8b852f808f0" title=" " alt="" coords="511,376,662,403"/>
+<area shape="rect"  href="class_spell.html#a80aa52e9ed4b3555bd04682d93bc5049" title=" " alt="" coords="503,477,670,504"/>
+<area shape="rect"  href="class_spell.html#a14ec832bc720a2763ff8a09f81d7c5d4" title=" " alt="" coords="511,427,662,453"/>
+<area shape="rect"  href="class_decoration_behaviour.html#a94a1b5e492f096e3f121d05105e16c37" title=" " alt="" coords="241,57,444,98"/>
+<area shape="rect"  href="class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="281,123,405,149"/>
+<area shape="rect"  href="class_u_i_behaviour.html#a7bb5f36ffd92fbbbefeda7e59082fbf1" title=" " alt="" coords="271,224,414,251"/>
+<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="278,427,407,453"/>
+<area shape="rect"  href="class_spell.html#aa020942716a6504fc6b23351a4baa3b6" title=" " alt="" coords="279,477,406,504"/>
 </map>
 </div>
 
 </div>
 </div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="a0c2aea6ea779d69228564aca9476ea80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c2aea6ea779d69228564aca9476ea80">&#9670;&nbsp;</a></span>audioSource</h2>
+<a id="ac73ae9bb625ca73945b1aec2a4d1f647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac73ae9bb625ca73945b1aec2a4d1f647">&#9670;&nbsp;</a></span>PreLoadAmbientBGM()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -209,7 +350,361 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">AudioSource AudioManager.audioSource</td>
+          <td class="memname">static void AudioManager.PreLoadAmbientBGM </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_audio_manager_ac73ae9bb625ca73945b1aec2a4d1f647_icgraph.png" border="0" usemap="#class_audio_manager_ac73ae9bb625ca73945b1aec2a4d1f647_icgraph" alt=""/></div>
+<map name="class_audio_manager_ac73ae9bb625ca73945b1aec2a4d1f647_icgraph" id="class_audio_manager_ac73ae9bb625ca73945b1aec2a4d1f647_icgraph">
+<area shape="rect"  title=" " alt="" coords="208,5,443,32"/>
+<area shape="rect"  href="class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="5,5,160,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a93deea5837f25364ff7451ec1cd88477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93deea5837f25364ff7451ec1cd88477">&#9670;&nbsp;</a></span>PreLoadCombatBGM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AudioManager.PreLoadCombatBGM </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_audio_manager_a93deea5837f25364ff7451ec1cd88477_icgraph.png" border="0" usemap="#class_audio_manager_a93deea5837f25364ff7451ec1cd88477_icgraph" alt=""/></div>
+<map name="class_audio_manager_a93deea5837f25364ff7451ec1cd88477_icgraph" id="class_audio_manager_a93deea5837f25364ff7451ec1cd88477_icgraph">
+<area shape="rect"  title=" " alt="" coords="208,5,440,32"/>
+<area shape="rect"  href="class_dungeon_manager.html#ac2c0ce668813e7b0a34b935364a5650f" title=" " alt="" coords="5,5,160,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6cddbf70f601136a79c462a3b51930b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cddbf70f601136a79c462a3b51930b5">&#9670;&nbsp;</a></span>StopBGM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AudioManager.StopBGM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_audio_manager_a6cddbf70f601136a79c462a3b51930b5_icgraph.png" border="0" usemap="#class_audio_manager_a6cddbf70f601136a79c462a3b51930b5_icgraph" alt=""/></div>
+<map name="class_audio_manager_a6cddbf70f601136a79c462a3b51930b5_icgraph" id="class_audio_manager_a6cddbf70f601136a79c462a3b51930b5_icgraph">
+<area shape="rect"  title=" " alt="" coords="243,5,409,32"/>
+<area shape="rect"  href="class_combat_manager.html#a8d14cf9a8265e20264151a615e309f12" title=" " alt="" coords="5,5,195,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a039201179f30b7221a2f7a59cca6a2ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a039201179f30b7221a2f7a59cca6a2ad">&#9670;&nbsp;</a></span>StopSFX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AudioManager.StopSFX </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7803335798fd16f79609c894ac70b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7803335798fd16f79609c894ac70b6e">&#9670;&nbsp;</a></span>VolumeBGM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void AudioManager.VolumeBGM </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>volume</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a8a32efb415f1674a94bf2c278210ed8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a32efb415f1674a94bf2c278210ed8f">&#9670;&nbsp;</a></span>bgmAmbientIntroClip</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.bgmAmbientIntroClip</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac23dafac398039e8b92fece3ad80007b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac23dafac398039e8b92fece3ad80007b">&#9670;&nbsp;</a></span>bgmAmbientLoopClip</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.bgmAmbientLoopClip</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1f9ff6235ae0ce90603b1bb639f163b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1f9ff6235ae0ce90603b1bb639f163b">&#9670;&nbsp;</a></span>bgmCombatIntroClip</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.bgmCombatIntroClip</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab65a40d458831aaa6f921b155a78ed18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab65a40d458831aaa6f921b155a78ed18">&#9670;&nbsp;</a></span>bgmCombatLoopClip</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.bgmCombatLoopClip</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a662e19cb7db13a5a4e96a9aaadc7dfeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a662e19cb7db13a5a4e96a9aaadc7dfeb">&#9670;&nbsp;</a></span>bgmCoroutine</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Coroutine AudioManager.bgmCoroutine</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a7b64e898f7e7c37b86861aeb8a87b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a7b64e898f7e7c37b86861aeb8a87b3">&#9670;&nbsp;</a></span>bgmSource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioSource AudioManager.bgmSource</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a22b1b1a94ee423ccb2b142b4f5a70ad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b1b1a94ee423ccb2b142b4f5a70ad4">&#9670;&nbsp;</a></span>instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_audio_manager.html">AudioManager</a> AudioManager.instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c98f915137d7c34abe360feb364a9d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c98f915137d7c34abe360feb364a9d7">&#9670;&nbsp;</a></span>sfxClip</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioClip AudioManager.sfxClip</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74246bb1849267386c852b5444633684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74246bb1849267386c852b5444633684">&#9670;&nbsp;</a></span>sfxCoroutine</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Coroutine AudioManager.sfxCoroutine</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af20e9441762e9b8086842802fd93fd69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af20e9441762e9b8086842802fd93fd69">&#9670;&nbsp;</a></span>sfxSource</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioSource AudioManager.sfxSource</td>
         </tr>
       </table>
   </td>

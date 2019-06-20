@@ -1,0 +1,8 @@
+<map id="ItemSpriteLibrary" name="ItemSpriteLibrary">
+<area shape="rect" id="node1" title=" " alt="" coords="284,419,404,496"/>
+<area shape="rect" id="node2" title=" " alt="" coords="285,5,403,83"/>
+<area shape="rect" id="node3" href="$class_misc_item_sprite_library.html" title=" " alt="" coords="61,161,224,327"/>
+<area shape="rect" id="node4" href="$class_consumable_item_sprite_library.html" title=" " alt="" coords="248,183,440,305"/>
+<area shape="rect" id="node5" href="$class_armor_item_sprite_library.html" title=" " alt="" coords="464,132,619,356"/>
+<area shape="rect" id="node6" href="$class_weapon_item_sprite_library.html" title=" " alt="" coords="643,154,811,334"/>
+</map>

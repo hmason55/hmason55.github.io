@@ -1,19 +1,12 @@
 var searchData=
 [
-  ['hairamber',['hairAmber',['../class_swatch.html#a17ef52dbfcba9d90906e6b1ecc4fe558',1,'Swatch']]],
-  ['hairauburn',['hairAuburn',['../class_swatch.html#aeb527e9ddf422537a7efc0448820e31c',1,'Swatch']]],
-  ['hairblonde',['hairBlonde',['../class_swatch.html#a17d4d5820f120cf74a8e95f4cc4bd352',1,'Swatch']]],
-  ['hairchestnut',['hairChestnut',['../class_swatch.html#aacb022b601c4257fa0990020ed041378',1,'Swatch']]],
-  ['hairchocolate',['hairChocolate',['../class_swatch.html#a48c6ebadeb847238247c01964e9ced1d',1,'Swatch']]],
-  ['hairgray',['hairGray',['../class_swatch.html#ac0e119119c07b48303e4ef6d906a0dd3',1,'Swatch']]],
-  ['hairplatinum',['hairPlatinum',['../class_swatch.html#aab6e6b044f591841d67e2e9c40a95681',1,'Swatch']]],
-  ['hairred',['hairRed',['../class_swatch.html#a1c0c7581bb1a37878ca2dc9e2c0c874d',1,'Swatch']]],
-  ['hairwhite',['hairWhite',['../class_swatch.html#ae3225b59ee4e0c86882b08b60341ca2d',1,'Swatch']]],
-  ['heavyarmorbody',['heavyArmorBody',['../class_item_sprites.html#a0f591387be8cc87947f8e63983b1f457',1,'ItemSprites']]],
-  ['heavyarmorfeet',['heavyArmorFeet',['../class_item_sprites.html#acb4b6688d9157be764e77fbcdfb3979f',1,'ItemSprites']]],
-  ['heavyarmorhands',['heavyArmorHands',['../class_item_sprites.html#ace92c2b0f1cc1f4230210652c17aa94a',1,'ItemSprites']]],
-  ['heavyarmorhead',['heavyArmorHead',['../class_item_sprites.html#ab8cbbbf0055846461df6f9d67202b36d',1,'ItemSprites']]],
-  ['heavyarmorlegs',['heavyArmorLegs',['../class_item_sprites.html#a2d27605263179ba8026d8cb53da8f07a',1,'ItemSprites']]],
-  ['hedgedoor',['hedgeDoor',['../class_sprite_manager.html#ae9ce272224734b0bbeee411220ee61a9',1,'SpriteManager']]],
-  ['hit',['hit',['../class_unit_sprites.html#a04dea1b07a4c9d2268e710338281d8f6',1,'UnitSprites']]]
+  ['giantspider',['giantSpider',['../class_unit_sprite_library.html#a7208b62f913e28018f950db06a692749',1,'UnitSpriteLibrary']]],
+  ['giantwidow',['giantWidow',['../class_unit_sprite_library.html#a215637eb30950e2bec783b01f2cecac6',1,'UnitSpriteLibrary']]],
+  ['gladius',['gladius',['../class_unit_weapon_sprite_library.html#a22797434f3b2953e1b991e712a0cd6f3',1,'UnitWeaponSpriteLibrary.gladius()'],['../class_weapon_item_sprite_library.html#a1fb4d3cb765479824a60739a7db81bed',1,'WeaponItemSpriteLibrary.gladius()']]],
+  ['gold',['gold',['../class_misc_item_sprite_library.html#a8a30b71b700b250d7ca0cc7d720d3553',1,'MiscItemSpriteLibrary']]],
+  ['grantconsititution',['grantConsititution',['../class_status_sprite_library.html#a6a0fad1c6b2fbfc6b933976f8fff2dc1',1,'StatusSpriteLibrary']]],
+  ['grantstrength',['grantStrength',['../class_status_sprite_library.html#a429a187f0168fb4a6229afc3e658568f',1,'StatusSpriteLibrary']]],
+  ['greenslime',['greenSlime',['../class_unit_sprite_library.html#a3ca8a1b6d6d092823b5308ecb96785d9',1,'UnitSpriteLibrary']]],
+  ['groundcommon',['groundCommon',['../class_terrain_sprite.html#a5f7d4025e0568aafec2bfcedc7473e24',1,'TerrainSprite']]],
+  ['groundrare',['groundRare',['../class_terrain_sprite.html#aa279221d2ef05a95ea7e870080abfbff',1,'TerrainSprite']]]
 ];

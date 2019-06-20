@@ -1,9 +1,8 @@
 <map id="UnitBehaviour.Clear" name="UnitBehaviour.Clear">
-<area shape="rect" id="node1" title=" " alt="" coords="1243,31,1377,57"/>
-<area shape="rect" id="node2" href="$class_dungeon_manager.html#ab7edf3b19e13892178a34ece10f4c5d5" title=" " alt="" coords="996,31,1195,57"/>
-<area shape="rect" id="node3" href="$class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61" title=" " alt="" coords="716,31,948,57"/>
-<area shape="rect" id="node4" href="$class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="472,31,668,57"/>
-<area shape="rect" id="node5" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="285,5,394,32"/>
-<area shape="rect" id="node6" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,56,424,83"/>
-<area shape="rect" id="node7" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="993,31,1128,57"/>
+<area shape="rect" id="node2" href="$class_dungeon_manager.html#ab7edf3b19e13892178a34ece10f4c5d5" title=" " alt="" coords="747,31,945,57"/>
+<area shape="rect" id="node3" href="$class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61" title=" " alt="" coords="467,31,699,57"/>
+<area shape="rect" id="node4" href="$class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="223,31,419,57"/>
+<area shape="rect" id="node5" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="35,5,145,32"/>
+<area shape="rect" id="node6" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,56,175,83"/>
 </map>

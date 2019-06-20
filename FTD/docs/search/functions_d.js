@@ -1,19 +1,23 @@
 var searchData=
 [
   ['onbagshortcut',['OnBagShortcut',['../class_shortcut_u_i.html#a2434bf0b041a115161fda12022d69f0b',1,'ShortcutUI']]],
-  ['onbegindrag',['OnBeginDrag',['../class_swipe_controller.html#a6f7b3f648901c5cc45a9da620ec7ccfa',1,'SwipeController']]],
   ['oncharactershortcut',['OnCharacterShortcut',['../class_shortcut_u_i.html#aa9dca9d0598a36d8df6555d26e75f176',1,'ShortcutUI']]],
-  ['onclose',['OnClose',['../class_character_creation_u_i.html#a3a3792f0c251839acb08848c3bf0e6e0',1,'CharacterCreationUI.OnClose()'],['../class_load_data_u_i.html#a5d74ebc8dc0756974c13087df72872f0',1,'LoadDataUI.OnClose()'],['../class_u_i_behaviour.html#a058150104cbc5deee5bb2d2c8811380a',1,'UIBehaviour.OnClose()']]],
-  ['ondrag',['OnDrag',['../class_swipe_controller.html#a5d6462d855ab4cd7496dde16c7eba5f3',1,'SwipeController']]],
-  ['onenddrag',['OnEndDrag',['../class_swipe_controller.html#a59530aa6a8d5a2de12d7f39851ce3d2b',1,'SwipeController']]],
+  ['onclose',['OnClose',['../class_u_i_behaviour.html#a058150104cbc5deee5bb2d2c8811380a',1,'UIBehaviour.OnClose()'],['../class_character_creation_u_i.html#a3a3792f0c251839acb08848c3bf0e6e0',1,'CharacterCreationUI.OnClose()'],['../class_load_data_u_i.html#a5d74ebc8dc0756974c13087df72872f0',1,'LoadDataUI.OnClose()']]],
+  ['onconfirm',['OnConfirm',['../class_help_u_i.html#a4e7dcd492aa846d760c33675959dfd36',1,'HelpUI']]],
   ['onendturnshortcut',['OnEndTurnShortcut',['../class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958',1,'ShortcutUI']]],
+  ['onhelpshortcut',['OnHelpShortcut',['../class_shortcut_u_i.html#a0aac1124abf578678479c5c8c8705753',1,'ShortcutUI']]],
+  ['onhover',['OnHover',['../class_u_i_behaviour.html#a7bb5f36ffd92fbbbefeda7e59082fbf1',1,'UIBehaviour']]],
   ['onloadbutton',['OnLoadButton',['../class_main_menu_u_i.html#ab97fc6c28c9bfe985c650c7572aec0fc',1,'MainMenuUI']]],
+  ['onmainmenu',['OnMainMenu',['../class_menu_u_i.html#aee97f9d5b6e9f0b3e8df26ba0b72bad4',1,'MenuUI']]],
   ['onmenushortcut',['OnMenuShortcut',['../class_shortcut_u_i.html#a71824a1037ebef08af0938c0d731a498',1,'ShortcutUI']]],
   ['onnamechanged',['OnNameChanged',['../class_character_creation_u_i.html#a07db6ab68cff5c8d43ed3809e45efe0c',1,'CharacterCreationUI']]],
-  ['onpointerclick',['OnPointerClick',['../class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708',1,'BagItemBehaviour.OnPointerClick()'],['../class_decoration_behaviour.html#a94a1b5e492f096e3f121d05105e16c37',1,'DecorationBehaviour.OnPointerClick()'],['../class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef',1,'Hotkey.OnPointerClick()'],['../class_tap_controller.html#ac66ecd378ed27b1ded7402b758204bec',1,'TapController.OnPointerClick()'],['../class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9',1,'TerrainBehaviour.OnPointerClick()']]],
+  ['onoptions',['OnOptions',['../class_menu_u_i.html#a189674f2ca3f1462a7a5748c501e665b',1,'MenuUI']]],
+  ['onpointerclick',['OnPointerClick',['../class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708',1,'BagItemBehaviour.OnPointerClick()'],['../class_decoration_behaviour.html#a94a1b5e492f096e3f121d05105e16c37',1,'DecorationBehaviour.OnPointerClick()'],['../class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9',1,'TerrainBehaviour.OnPointerClick()'],['../class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef',1,'Hotkey.OnPointerClick()'],['../class_tap_controller.html#ac66ecd378ed27b1ded7402b758204bec',1,'TapController.OnPointerClick()']]],
   ['onpointerenter',['OnPointerEnter',['../class_bag_item_behaviour.html#a9dd6c0fb07dd87363f0198070a16cff7',1,'BagItemBehaviour.OnPointerEnter()'],['../class_decoration_behaviour.html#abc5e3d4f07a6da052203565037d8b535',1,'DecorationBehaviour.OnPointerEnter()']]],
   ['onpointerexit',['OnPointerExit',['../class_bag_item_behaviour.html#a94a401c7a518b7ed17e5648153d6f1b6',1,'BagItemBehaviour.OnPointerExit()'],['../class_decoration_behaviour.html#a7c33b0d7ccac7ff55a4acb49b6fa3c83',1,'DecorationBehaviour.OnPointerExit()']]],
+  ['onquit',['OnQuit',['../class_menu_u_i.html#a0468fb3f044d01213b4d701e7d459002',1,'MenuUI.OnQuit()'],['../class_main_menu_u_i.html#a9418d85c0b970bfa2eb9a39a45e4facf',1,'MainMenuUI.OnQuit()']]],
+  ['onresume',['OnResume',['../class_menu_u_i.html#a7cbdadd90afa7ab4e0859e8e13018475',1,'MenuUI']]],
   ['onstart',['OnStart',['../class_character_creation_u_i.html#a656b1552f06f9611f9672489e03f8936',1,'CharacterCreationUI']]],
   ['onstartbutton',['OnStartButton',['../class_main_menu_u_i.html#ac567ba394028f00989750f4782325daf',1,'MainMenuUI']]],
-  ['optimize',['Optimize',['../class_base_terrain.html#abda1c3ac02dc72095eb8c50ef68f8a2e',1,'BaseTerrain']]]
+  ['optimize',['Optimize',['../class_base_terrain.html#ae1e89e93cbb0ed08b03cf7e6bef09dd7',1,'BaseTerrain']]]
 ];

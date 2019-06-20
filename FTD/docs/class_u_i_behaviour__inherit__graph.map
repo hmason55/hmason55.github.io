@@ -1,5 +1,9 @@
 <map id="UIBehaviour" name="UIBehaviour">
-<area shape="rect" id="node1" title=" " alt="" coords="15,131,107,252"/>
-<area shape="rect" id="node3" href="$class_attributes_u_i.html" title=" " alt="" coords="15,300,107,377"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,116,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="253,131,362,340"/>
+<area shape="rect" id="node3" href="$class_attributes_u_i.html" title=" " alt="" coords="5,476,97,553"/>
+<area shape="rect" id="node4" href="$class_help_u_i.html" title=" " alt="" coords="121,476,224,553"/>
+<area shape="rect" id="node5" href="$class_menu_u_i.html" title=" " alt="" coords="248,447,367,583"/>
+<area shape="rect" id="node6" href="$class_options_menu_u_i.html" title=" " alt="" coords="391,469,544,561"/>
+<area shape="rect" id="node7" href="$class_shortcut_u_i.html" title=" " alt="" coords="569,388,745,641"/>
+<area shape="rect" id="node2" title=" " alt="" coords="252,5,363,83"/>
 </map>

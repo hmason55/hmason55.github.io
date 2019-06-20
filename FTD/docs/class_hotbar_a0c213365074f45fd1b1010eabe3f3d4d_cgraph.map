@@ -1,6 +1,10 @@
 <map id="Hotbar.CancelPreview" name="Hotbar.CancelPreview">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,153,83"/>
-<area shape="rect" id="node2" href="$class_spell.html#a267e0b312732b826127c2d58ba64d90d" title=" " alt="" coords="233,5,349,32"/>
-<area shape="rect" id="node3" href="$class_spell.html#a46dfa81169863ddb791b3c7d5121fcb8" title=" " alt="" coords="201,56,380,83"/>
-<area shape="rect" id="node4" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="221,107,360,133"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,111,153,137"/>
+<area shape="rect" id="node2" href="$class_cast_options_u_i.html#affc98e48b03c51f4dddda5cb96920697" title=" " alt="" coords="217,35,365,61"/>
+<area shape="rect" id="node6" href="$class_spell.html#a267e0b312732b826127c2d58ba64d90d" title=" " alt="" coords="233,85,349,112"/>
+<area shape="rect" id="node7" href="$class_spell.html#a46dfa81169863ddb791b3c7d5121fcb8" title=" " alt="" coords="201,136,380,163"/>
+<area shape="rect" id="node8" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="221,187,360,213"/>
+<area shape="rect" id="node3" href="$class_hotbar.html#a989b6728a8d86d60a851f68954edab90" title=" " alt="" coords="461,5,605,32"/>
+<area shape="rect" id="node4" href="$class_cast_options_u_i.html#a4d26576fdbfc81183a727b02a33b033d" title=" " alt="" coords="428,57,637,98"/>
+<area shape="rect" id="node5" href="$class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="685,57,867,98"/>
 </map>

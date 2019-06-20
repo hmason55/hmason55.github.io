@@ -1,0 +1,5 @@
+<map id="UnitArmorSpriteLibrary" name="UnitArmorSpriteLibrary">
+<area shape="rect" id="node1" title=" " alt="" coords="5,316,159,393"/>
+<area shape="rect" id="node2" title=" " alt="" coords="28,5,147,83"/>
+<area shape="rect" id="node3" href="$class_unit_sprite.html" title=" " alt="" coords="99,132,177,224"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="DecorationBehaviour.UpdateSprite" name="DecorationBehaviour.UpdateSprite">
+<area shape="rect" id="node1" title=" " alt="" coords="1397,49,1583,90"/>
+<area shape="rect" id="node2" href="$class_loot_table.html#a6497d96bbaff0605eb59b4c58404beac" title=" " alt="" coords="1198,31,1345,57"/>
+<area shape="rect" id="node10" href="$class_tile.html#a334498a38789bdab57a3fe17daa26c29" title=" " alt="" coords="1193,81,1349,108"/>
+<area shape="rect" id="node3" href="$class_unit_behaviour.html#a9a32f3234ea6b89f686c6cd55d924348" title=" " alt="" coords="1023,31,1145,57"/>
+<area shape="rect" id="node4" href="$class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="877,31,975,57"/>
+<area shape="rect" id="node5" href="$class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="657,31,829,57"/>
+<area shape="rect" id="node6" href="$class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,5,609,32"/>
+<area shape="rect" id="node9" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect" id="node7" href="$class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,5,384,32"/>
+<area shape="rect" id="node8" href="$class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,5,132,32"/>
+</map>

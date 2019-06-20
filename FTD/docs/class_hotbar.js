@@ -14,6 +14,5 @@ var class_hotbar =
     [ "activeSpell", "class_hotbar.html#ab8c1abafc83f793590f0bf08981d50ef", null ],
     [ "baseUnit", "class_hotbar.html#a4a0bb9b20e1c7c8df122470fd540768b", null ],
     [ "castOptionsUI", "class_hotbar.html#a5712a8564c6cdbae01f3900648ce9fae", null ],
-    [ "essenceUI", "class_hotbar.html#a02baa28776d8464929571a32904d78a5", null ],
-    [ "tapController", "class_hotbar.html#a0281562a5bf5e3224f4d88f090bf3a84", null ]
+    [ "essenceUI", "class_hotbar.html#a02baa28776d8464929571a32904d78a5", null ]
 ];

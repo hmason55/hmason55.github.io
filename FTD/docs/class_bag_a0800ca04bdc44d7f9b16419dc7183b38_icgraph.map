@@ -1,0 +1,10 @@
+<map id="Bag.GetEquipmentBonus" name="Bag.GetEquipmentBonus">
+<area shape="rect" id="node1" title=" " alt="" coords="433,132,603,159"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a181927c2b7d2f4ff6e38596657d243ed" title=" " alt="" coords="223,56,385,83"/>
+<area shape="rect" id="node3" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,5,175,32"/>
+<area shape="rect" id="node5" href="$class_spell.html#aa5a9b6a6b13fcd1cfed9eb43e123ca23" title=" " alt="" coords="227,107,381,133"/>
+<area shape="rect" id="node6" href="$class_spell.html#a497e137d2a37c828be4954f10fa00f02" title=" " alt="" coords="234,157,374,184"/>
+<area shape="rect" id="node7" href="$class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="242,208,366,235"/>
+<area shape="rect" id="node8" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="239,259,369,285"/>
+<area shape="rect" id="node4" href="$class_spell.html#aa020942716a6504fc6b23351a4baa3b6" title=" " alt="" coords="27,56,153,83"/>
+</map>

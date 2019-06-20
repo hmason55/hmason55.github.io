@@ -1,0 +1,25 @@
+var class_armor_item_sprite_library =
+[
+    [ "cottonBody", "class_armor_item_sprite_library.html#a6912ca8380582e8295f02bc4cfdee3b9", null ],
+    [ "cottonFeet", "class_armor_item_sprite_library.html#aac7902bdf3e270a49ea34d93714edf4f", null ],
+    [ "cottonHands", "class_armor_item_sprite_library.html#a2542278b07d7155d37b0de25bdc3e7c8", null ],
+    [ "cottonHead", "class_armor_item_sprite_library.html#aa13dfc3a6557f181fc969e550c3451c7", null ],
+    [ "cottonLegs", "class_armor_item_sprite_library.html#a99382e9e0166a5e6d6ee8777dc51597b", null ],
+    [ "ironChainBody", "class_armor_item_sprite_library.html#a5f53ed8ef3ebf4a74d1ebe7f5411977a", null ],
+    [ "ironChainFeet", "class_armor_item_sprite_library.html#a69da152593cfe502a96ea86a4b1f7fb7", null ],
+    [ "ironChainHands", "class_armor_item_sprite_library.html#ad42b51b2adecb3c82ea1af79aa70f9e3", null ],
+    [ "ironChainHead", "class_armor_item_sprite_library.html#a7c0e601d2a12d4f3ebb2d90ba1299d68", null ],
+    [ "ironChainLegs", "class_armor_item_sprite_library.html#a88f9d5bf3ec3a40ec588ce9123c2d14d", null ],
+    [ "leatherBody", "class_armor_item_sprite_library.html#a8e3d46098073f425641d4b867b1fe905", null ],
+    [ "leatherFeet", "class_armor_item_sprite_library.html#aa810ba8999ed8ed902644b6d89877b77", null ],
+    [ "leatherHands", "class_armor_item_sprite_library.html#a1fd6cd0f5a8cf0ae958519180c4284e6", null ],
+    [ "leatherHead", "class_armor_item_sprite_library.html#ab797ac63807dc1ed3203c792ce7f7dc6", null ],
+    [ "leatherLegs", "class_armor_item_sprite_library.html#ac3dee5bbb294de4789ea8b91db49e1ce", null ],
+    [ "unknownBody", "class_armor_item_sprite_library.html#ab02968778b78c545d083e4282ff8abd8", null ],
+    [ "unknownFeet", "class_armor_item_sprite_library.html#a5b3cb4b90ae6ebaacf76e8e754d91644", null ],
+    [ "unknownFinger", "class_armor_item_sprite_library.html#abe2052fdf5225c6d94441727b7a3ca8b", null ],
+    [ "unknownHands", "class_armor_item_sprite_library.html#a3c53f67c3a932b6e7f4ed0b0bf6e2812", null ],
+    [ "unknownHead", "class_armor_item_sprite_library.html#aaee3711e3bffc334c0a0853e769e6d1f", null ],
+    [ "unknownLegs", "class_armor_item_sprite_library.html#af3eba508b28a5df971914eff80d2e6e9", null ],
+    [ "unknownNeck", "class_armor_item_sprite_library.html#a1ee7e9a1d636e77d94419cdbca789b0e", null ]
+];

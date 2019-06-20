@@ -1,5 +1,9 @@
 <map id="Spell.ShowEffectRange" name="Spell.ShowEffectRange">
-<area shape="rect" id="node1" title=" " alt="" coords="408,13,565,39"/>
-<area shape="rect" id="node2" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,13,360,39"/>
-<area shape="rect" id="node3" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="980,45,1137,72"/>
+<area shape="rect" id="node2" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="804,45,932,72"/>
+<area shape="rect" id="node3" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,12,184,54"/>
+<area shape="rect" id="node4" href="$class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="617,45,756,72"/>
+<area shape="rect" id="node5" href="$class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="415,20,569,46"/>
+<area shape="rect" id="node6" href="$class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="415,70,569,97"/>
+<area shape="rect" id="node7" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="232,70,367,97"/>
 </map>

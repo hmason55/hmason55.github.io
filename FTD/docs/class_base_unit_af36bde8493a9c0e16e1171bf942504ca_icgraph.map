@@ -1,0 +1,13 @@
+<map id="BaseUnit.RemoveStatus" name="BaseUnit.RemoveStatus">
+<area shape="rect" id="node1" title=" " alt="" coords="772,108,935,135"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="519,69,696,96"/>
+<area shape="rect" id="node6" href="$class_base_unit.html#a732bdd48e6a9c74c059bffd4092ac1b5" title=" " alt="" coords="491,145,724,172"/>
+<area shape="rect" id="node3" href="$class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="241,56,443,83"/>
+<area shape="rect" id="node4" href="$class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="37,5,161,32"/>
+<area shape="rect" id="node5" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="35,56,164,83"/>
+<area shape="rect" id="node7" href="$class_base_unit.html#a181927c2b7d2f4ff6e38596657d243ed" title=" " alt="" coords="261,157,423,184"/>
+<area shape="rect" id="node8" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="15,107,184,133"/>
+<area shape="rect" id="node10" href="$class_bag_behaviour.html#a407231bcd34e96129c9ae624a484a045" title=" " alt="" coords="249,212,435,239"/>
+<area shape="rect" id="node9" href="$class_spell.html#aa020942716a6504fc6b23351a4baa3b6" title=" " alt="" coords="36,157,163,184"/>
+<area shape="rect" id="node11" href="$class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="5,209,193,250"/>
+</map>

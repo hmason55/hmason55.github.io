@@ -1,7 +1,6 @@
 <map id="DungeonManager.UpdateObjectPool" name="DungeonManager.UpdateObjectPool">
-<area shape="rect" id="node1" title=" " alt="" coords="716,31,948,57"/>
-<area shape="rect" id="node2" href="$class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="472,31,668,57"/>
-<area shape="rect" id="node3" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="285,5,394,32"/>
-<area shape="rect" id="node4" href="$class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa" title=" " alt="" coords="255,56,424,83"/>
-<area shape="rect" id="node5" href="$class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,56,207,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="467,31,699,57"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="223,31,419,57"/>
+<area shape="rect" id="node3" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="35,5,145,32"/>
+<area shape="rect" id="node4" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="5,56,175,83"/>
 </map>

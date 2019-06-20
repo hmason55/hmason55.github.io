@@ -1,9 +1,13 @@
 <map id="BaseUnit.SetAsInterfaceTarget" name="BaseUnit.SetAsInterfaceTarget">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,205,108"/>
-<area shape="rect" id="node2" href="$class_base_unit.html#a15ea3ea70ab13cf8aa582b848cd0531b" title=" " alt="" coords="267,56,414,83"/>
-<area shape="rect" id="node7" href="$class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="253,107,428,133"/>
-<area shape="rect" id="node3" href="$class_hotbar.html#a1e796a0a133ee0743aa8585c05980f9b" title=" " alt="" coords="494,31,611,57"/>
-<area shape="rect" id="node6" href="$class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856" title=" " alt="" coords="476,81,629,108"/>
-<area shape="rect" id="node4" href="$class_hotkey.html#a0b90f1841f8cbe70bf62447affd70bd1" title=" " alt="" coords="677,5,788,32"/>
-<area shape="rect" id="node5" href="$class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="679,56,786,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,93,205,120"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a15ea3ea70ab13cf8aa582b848cd0531b" title=" " alt="" coords="271,43,417,69"/>
+<area shape="rect" id="node7" href="$class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="257,93,431,120"/>
+<area shape="rect" id="node8" href="$class_essence_u_i.html#a75a53ecfc61b800c928dd9ca137557b8" title=" " alt="" coords="253,144,435,171"/>
+<area shape="rect" id="node3" href="$class_hotbar.html#a1e796a0a133ee0743aa8585c05980f9b" title=" " alt="" coords="519,17,637,44"/>
+<area shape="rect" id="node6" href="$class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856" title=" " alt="" coords="501,68,655,95"/>
+<area shape="rect" id="node4" href="$class_hotkey.html#a0b90f1841f8cbe70bf62447affd70bd1" title=" " alt="" coords="735,5,846,32"/>
+<area shape="rect" id="node5" href="$class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="737,56,844,83"/>
+<area shape="rect" id="node9" href="$class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="483,119,673,145"/>
+<area shape="rect" id="node11" href="$class_essence_u_i.html#a14ebd4e6ce2abc42ca830bbfd261b64b" title=" " alt="" coords="484,169,672,196"/>
+<area shape="rect" id="node10" href="$class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="721,132,860,159"/>
 </map>

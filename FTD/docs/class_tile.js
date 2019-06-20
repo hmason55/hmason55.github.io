@@ -1,6 +1,7 @@
 var class_tile =
 [
     [ "Tile", "class_tile.html#ac4b178062ea8879968150b8a79830267", null ],
+    [ "AnimateDecoration", "class_tile.html#a334498a38789bdab57a3fe17daa26c29", null ],
     [ "AnimateUnit", "class_tile.html#a87c523416006468a2791d61bf3be54ca", null ],
     [ "DisableRendering", "class_tile.html#abf58797ff0c2df3eddfc9854c3f61dd2", null ],
     [ "EnableRendering", "class_tile.html#a1baa5fe3ab8f887e8985a85fba21210a", null ],
@@ -14,7 +15,6 @@ var class_tile =
     [ "decoration", "class_tile.html#a22382e29b7dc7171420e4df600ad3ea4", null ],
     [ "dungeonManager", "class_tile.html#adcabb3e4a403331969c0b2c08c79ff1c", null ],
     [ "position", "class_tile.html#aa4046f981671278e33441b6f001b3e9e", null ],
-    [ "spriteManager", "class_tile.html#a4a7a173c171f17656e7aa129ed46c17c", null ],
     [ "terrain", "class_tile.html#af45cdc1d322c30f61893f1e7de16e668", null ],
     [ "unit", "class_tile.html#ac8a152fbb0fd0aec60d876b86bf1cb66", null ]
 ];

@@ -1,0 +1,4 @@
+<map id="Spell.PlayProjectileSound" name="Spell.PlayProjectileSound">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,177,32"/>
+<area shape="rect" id="node2" href="$class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="225,5,384,32"/>
+</map>

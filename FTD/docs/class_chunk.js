@@ -16,7 +16,8 @@ var class_chunk =
       [ "c1101", "class_chunk.html#ab2e9c44541a726c19e8f0afbcf82894ca97fbf7c43ef2f54f00291ba6540c63ea", null ],
       [ "c1110", "class_chunk.html#ab2e9c44541a726c19e8f0afbcf82894ca3bb8f2d9511b121dda2923041d3c15c1", null ],
       [ "c1111", "class_chunk.html#ab2e9c44541a726c19e8f0afbcf82894ca9e8ec7bc0f7942c2c9bc32bfbbd3b591", null ],
-      [ "cHub", "class_chunk.html#ab2e9c44541a726c19e8f0afbcf82894ca7c5516c9c767eb37d179548e7e42eee8", null ]
+      [ "cHub", "class_chunk.html#ab2e9c44541a726c19e8f0afbcf82894ca7c5516c9c767eb37d179548e7e42eee8", null ],
+      [ "cBoss", "class_chunk.html#ab2e9c44541a726c19e8f0afbcf82894cad4cf6e9ebd1dea644af6f6b767efd118", null ]
     ] ],
     [ "Chunk", "class_chunk.html#a2cf36203919b3a5512c2dd5dc60c446b", null ],
     [ "template", "class_chunk.html#a90851ff2883364a1e00753d1fd35461b", null ]

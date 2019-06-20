@@ -2,10 +2,13 @@
 <area shape="rect" id="node1" title=" " alt="" coords="5,56,224,83"/>
 <area shape="rect" id="node2" href="$class_terrain_behaviour.html#a97b6323eafb1c26361878bb1d37f4556" title=" " alt="" coords="284,5,451,32"/>
 <area shape="rect" id="node3" href="$class_decoration_behaviour.html#a6f5bef52b05859295759318878ec9a1c" title=" " alt="" coords="272,56,463,83"/>
-<area shape="rect" id="node4" href="$class_unit_behaviour.html#a7e978454f207985987f6088c037b9c5f" title=" " alt="" coords="292,107,443,133"/>
-<area shape="rect" id="node5" href="$class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="521,81,681,108"/>
-<area shape="rect" id="node7" href="$class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="511,132,691,159"/>
-<area shape="rect" id="node6" href="$class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="743,81,913,108"/>
-<area shape="rect" id="node8" href="$class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="739,132,917,159"/>
-<area shape="rect" id="node9" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="965,157,1128,184"/>
+<area shape="rect" id="node5" href="$class_unit_behaviour.html#a7e978454f207985987f6088c037b9c5f" title=" " alt="" coords="292,111,443,137"/>
+<area shape="rect" id="node4" href="$class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="511,45,692,86"/>
+<area shape="rect" id="node6" href="$class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="521,111,681,137"/>
+<area shape="rect" id="node9" href="$class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="511,161,691,188"/>
+<area shape="rect" id="node7" href="$class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="749,111,918,137"/>
+<area shape="rect" id="node8" href="$class_unit_behaviour.html#a48097b808519b55bee5358d1afec4ce1" title=" " alt="" coords="745,60,922,87"/>
+<area shape="rect" id="node10" href="$class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="744,161,923,188"/>
+<area shape="rect" id="node11" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="975,187,1137,213"/>
+<area shape="rect" id="node12" href="$class_unit_behaviour.html#a77c605cf2a160bf865de1b7041b7ccb8" title=" " alt="" coords="740,263,927,289"/>
 </map>

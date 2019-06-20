@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['tapcontroller',['TapController',['../class_tap_controller.html',1,'']]],
-  ['terrainbehaviour',['TerrainBehaviour',['../class_terrain_behaviour.html',1,'']]],
-  ['tile',['Tile',['../class_tile.html',1,'']]],
-  ['transferui',['TransferUI',['../class_transfer_u_i.html',1,'']]],
-  ['turn',['Turn',['../class_turn.html',1,'']]],
-  ['turnqueue',['TurnQueue',['../class_turn_queue.html',1,'']]]
+  ['shadowsprite',['ShadowSprite',['../class_shadow_sprite.html',1,'']]],
+  ['shortcutui',['ShortcutUI',['../class_shortcut_u_i.html',1,'']]],
+  ['spell',['Spell',['../class_spell.html',1,'']]],
+  ['spellname',['SpellName',['../class_spell_name.html',1,'']]],
+  ['spelltooltip',['SpellTooltip',['../class_spell_tooltip.html',1,'']]],
+  ['spritelibrary',['SpriteLibrary',['../class_sprite_library.html',1,'']]],
+  ['spriteutility',['SpriteUtility',['../class_sprite_utility.html',1,'']]],
+  ['statusspritelibrary',['StatusSpriteLibrary',['../class_status_sprite_library.html',1,'']]],
+  ['swatch',['Swatch',['../class_swatch.html',1,'']]]
 ];

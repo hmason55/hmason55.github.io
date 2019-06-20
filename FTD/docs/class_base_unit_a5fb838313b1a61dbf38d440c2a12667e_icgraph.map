@@ -1,6 +1,10 @@
 <map id="BaseUnit.Cast" name="BaseUnit.Cast">
-<area shape="rect" id="node1" title=" " alt="" coords="591,31,697,57"/>
-<area shape="rect" id="node2" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="408,31,543,57"/>
-<area shape="rect" id="node3" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="232,5,360,32"/>
-<area shape="rect" id="node4" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="5,23,184,65"/>
+<area shape="rect" id="node1" title=" " alt="" coords="793,42,900,69"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="623,17,733,43"/>
+<area shape="rect" id="node3" href="$class_hotbar.html#a535ef71789d10c417b86bdd194e3e5b7" title=" " alt="" coords="611,67,745,94"/>
+<area shape="rect" id="node4" href="$class_terrain_behaviour.html#a81acf1d578876b7a0870fdb0880c52a9" title=" " alt="" coords="208,5,387,47"/>
+<area shape="rect" id="node5" href="$class_hotbar.html#a5ac379c585126b8e0e35c061b3388ecf" title=" " alt="" coords="435,67,563,94"/>
+<area shape="rect" id="node6" href="$class_hotkey.html#a209f6726592cf69b7e21bd68ced48cb3" title=" " alt="" coords="228,71,367,98"/>
+<area shape="rect" id="node7" href="$class_hotkey.html#a86ced9a614ad8d537fcab4738abcb0ef" title=" " alt="" coords="5,71,160,98"/>
+<area shape="rect" id="node8" href="$class_spell.html#a89146285dc4dadf46398da2683bcc869" title=" " alt="" coords="5,122,160,149"/>
 </map>

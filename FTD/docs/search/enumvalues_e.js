@@ -1,9 +1,18 @@
 var searchData=
 [
+  ['parma',['Parma',['../class_base_item.html#add9920d2f5a4fa91752714a8f3ab424ba85bf516cb6ae2cc86249d1e7b9fa890c',1,'BaseItem']]],
   ['percentremaininghp',['PercentRemainingHP',['../class_effect.html#af0ada789de40f58c24c46bf8ed2f300cafaeb160eab4b2344e6c7cc960f55f22e',1,'Effect']]],
-  ['piercing',['Piercing',['../class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa71b82d588f8ca5360dd8f79f4452f61a',1,'Spell']]],
+  ['physical',['Physical',['../class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aace898d62ed9ca7653a01fe0c781e97e9',1,'Spell']]],
+  ['physicaldamage',['PhysicalDamage',['../class_bag.html#a6f06dfa13207d47e308b759af0279c60a3bf159aaf5f9151caedb946948db6bf3',1,'Bag']]],
   ['platinum',['Platinum',['../class_character.html#a7940fffce9bfadb9e7abf15490cf8bb0abf381e2261c6d3b5b91866d8c966df3d',1,'Character']]],
+  ['poison',['Poison',['../class_effect.html#a28d85888db94ec53ee9cb75e9706f6e4a3a9d1818d0d7f5646e63465baf7d366f',1,'Effect.Poison()'],['../class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13fa3a9d1818d0d7f5646e63465baf7d366f',1,'Spell.Poison()'],['../class_spell.html#a3e228beaf92e2c035e6599aaf0ac2d2aa3a9d1818d0d7f5646e63465baf7d366f',1,'Spell.Poison()']]],
+  ['poison_5ffang',['Poison_Fang',['../class_spell.html#a31295cdd96e3fa76b7ad22a3d926c13faf8fa5c331a88b6399c1c53c57cfa0e15',1,'Spell']]],
+  ['poisonmodifier',['PoisonModifier',['../class_bag.html#a6f06dfa13207d47e308b759af0279c60a5c454d33c04a6c3233fa5c75b57dabd8',1,'Bag']]],
   ['poisonous_5fconsumable',['Poisonous_Consumable',['../class_base_item.html#a882a2962396f880c2e23755437245d37a05b2550470d7e9b6202afdcb323c5cd2',1,'BaseItem']]],
+  ['postturnexpiration',['PostTurnExpiration',['../class_effect.html#ab13a718053e330a11f9f66a9b16f4686a3b72c8781cb738ebd0a5ff7dcc2c81b6',1,'Effect']]],
+  ['potion_5fof_5fclotting',['Potion_of_Clotting',['../class_base_item.html#add9920d2f5a4fa91752714a8f3ab424bacfddc55e39dfc6c2b7ee1a34041dc6de',1,'BaseItem']]],
+  ['potion_5fof_5fcuring',['Potion_of_Curing',['../class_base_item.html#add9920d2f5a4fa91752714a8f3ab424ba174572d97943c0482bcd74ed58bc93ca',1,'BaseItem']]],
+  ['potion_5fof_5fhealing',['Potion_of_Healing',['../class_base_item.html#add9920d2f5a4fa91752714a8f3ab424badf9ab94cf9c7b877d70c2fdd4688745d',1,'BaseItem']]],
   ['potion_5fof_5freturn',['Potion_of_Return',['../class_base_item.html#add9920d2f5a4fa91752714a8f3ab424ba229052f6f2000aca61db50513bceac1c',1,'BaseItem']]],
   ['primary_5fweapon',['Primary_Weapon',['../class_base_item.html#a882a2962396f880c2e23755437245d37a3d24fcb653cb7598fc2fd41817e4f137',1,'BaseItem']]],
   ['puddle',['Puddle',['../class_base_decoration.html#a8adb8095439bd24fd3c2058b2ecbbf11a3304b5cf02faed21daa8e1ba758d2c12',1,'BaseDecoration']]]

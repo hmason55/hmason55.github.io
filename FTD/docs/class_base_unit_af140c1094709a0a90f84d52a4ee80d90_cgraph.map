@@ -1,6 +1,0 @@
-<map id="BaseUnit.TickStatus" name="BaseUnit.TickStatus">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,147,32"/>
-<area shape="rect" id="node2" href="$class_base_unit.html#a15cf13fa9b4b776f474ad03b42939139" title=" " alt="" coords="195,5,357,32"/>
-<area shape="rect" id="node3" href="$class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="405,5,596,32"/>
-<area shape="rect" id="node4" href="$class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="644,5,760,32"/>
-</map>

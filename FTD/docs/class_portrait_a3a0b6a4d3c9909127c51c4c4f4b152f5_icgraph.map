@@ -1,8 +1,8 @@
 <map id="Portrait.HideCharacter" name="Portrait.HideCharacter">
-<area shape="rect" id="node1" title=" " alt="" coords="699,56,849,83"/>
-<area shape="rect" id="node2" href="$class_load_data_u_i.html#a2a36a17c6455a8ca8ee3b92dbbce0503" title=" " alt="" coords="460,31,651,57"/>
-<area shape="rect" id="node6" href="$class_portrait.html#ac5ab4bb350640a35c516bffa2fc45fe3" title=" " alt="" coords="502,81,609,108"/>
-<area shape="rect" id="node3" href="$class_data_slot.html#aae68b8b9d2f07c2d634e82493d29c05d" title=" " alt="" coords="235,5,412,32"/>
-<area shape="rect" id="node4" href="$class_load_data_u_i.html#ac0ab99a18f93b2092d30e1ecea86154d" title=" " alt="" coords="255,56,392,83"/>
-<area shape="rect" id="node5" href="$class_main_menu_u_i.html#ab97fc6c28c9bfe985c650c7572aec0fc" title=" " alt="" coords="5,56,187,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="699,31,849,57"/>
+<area shape="rect" id="node2" href="$class_portrait.html#ac5ab4bb350640a35c516bffa2fc45fe3" title=" " alt="" coords="502,5,609,32"/>
+<area shape="rect" id="node3" href="$class_load_data_u_i.html#a2a36a17c6455a8ca8ee3b92dbbce0503" title=" " alt="" coords="460,56,651,83"/>
+<area shape="rect" id="node4" href="$class_data_slot.html#aae68b8b9d2f07c2d634e82493d29c05d" title=" " alt="" coords="235,31,412,57"/>
+<area shape="rect" id="node5" href="$class_load_data_u_i.html#ac0ab99a18f93b2092d30e1ecea86154d" title=" " alt="" coords="255,81,392,108"/>
+<area shape="rect" id="node6" href="$class_main_menu_u_i.html#ab97fc6c28c9bfe985c650c7572aec0fc" title=" " alt="" coords="5,81,187,108"/>
 </map>

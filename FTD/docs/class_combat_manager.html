@@ -88,6 +88,7 @@ $(document).ready(function(){initNavTree('class_combat_manager.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_combat_manager-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -99,8 +100,8 @@ Inheritance diagram for CombatManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_combat_manager__inherit__graph.png" border="0" usemap="#_combat_manager_inherit__map" alt="Inheritance graph"/></div>
 <map name="_combat_manager_inherit__map" id="_combat_manager_inherit__map">
-<area shape="rect"  title=" " alt="" coords="5,131,168,296"/>
-<area shape="rect"  title=" " alt="" coords="31,5,142,83"/>
+<area shape="rect"  title=" " alt="" coords="5,131,184,384"/>
+<area shape="rect"  title=" " alt="" coords="39,5,150,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -108,8 +109,8 @@ Collaboration diagram for CombatManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_combat_manager__coll__graph.png" border="0" usemap="#_combat_manager_coll__map" alt="Collaboration graph"/></div>
 <map name="_combat_manager_coll__map" id="_combat_manager_coll__map">
-<area shape="rect"  title=" " alt="" coords="5,131,168,296"/>
-<area shape="rect"  title=" " alt="" coords="31,5,142,83"/>
+<area shape="rect"  title=" " alt="" coords="5,131,184,384"/>
+<area shape="rect"  title=" " alt="" coords="39,5,150,83"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -121,8 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab5d0c356fd55e86d62b03c015754abee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d14cf9a8265e20264151a615e309f12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#a8d14cf9a8265e20264151a615e309f12">EndCombat</a> ()</td></tr>
 <tr class="separator:a8d14cf9a8265e20264151a615e309f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae306deb3898e096bf5ad6cdd705b82fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#ae306deb3898e096bf5ad6cdd705b82fa">EndTurn</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> b)</td></tr>
-<tr class="separator:ae306deb3898e096bf5ad6cdd705b82fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa1a6036d8fc0a2056d336af3761e8b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5">EndTurn</a> (<a class="el" href="class_base_unit.html">BaseUnit</a> b, bool endCombat=false)</td></tr>
+<tr class="separator:aaa1a6036d8fc0a2056d336af3761e8b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f648795292255b600e92eefcf960ded"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#a6f648795292255b600e92eefcf960ded">ValidateMoveTile</a> (<a class="el" href="class_tile.html">Tile</a> tile)</td></tr>
 <tr class="separator:a6f648795292255b600e92eefcf960ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea6dfda807c4ec793ed26c5d220b84fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#aea6dfda807c4ec793ed26c5d220b84fb">CheckCombatStatus</a> (List&lt; <a class="el" href="class_base_unit.html">BaseUnit</a> &gt; baseUnits)</td></tr>
@@ -130,8 +131,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a02eb44e3f4fab4f210d4ecda54fa1272"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_base_unit.html">BaseUnit</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#a02eb44e3f4fab4f210d4ecda54fa1272">GetAllBaseUnits</a> ()</td></tr>
 <tr class="separator:a02eb44e3f4fab4f210d4ecda54fa1272"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:af42a50f578e494b08a4c6a593be60d9f"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#af42a50f578e494b08a4c6a593be60d9f">turnUpdateDelayDuration</a> = 0.1f</td></tr>
+<tr class="separator:af42a50f578e494b08a4c6a593be60d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9be940c81358f5ef6fed26d3960db51d"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#a9be940c81358f5ef6fed26d3960db51d">preTurnDelayDuration</a> = 0.75f</td></tr>
+<tr class="separator:a9be940c81358f5ef6fed26d3960db51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd88141b74c13df111e99b1ce4520d2c"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#afd88141b74c13df111e99b1ce4520d2c">statusDelayDuration</a> = 0.35f</td></tr>
+<tr class="separator:afd88141b74c13df111e99b1ce4520d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1d39e2267c36f482b22e0da993da188"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#aa1d39e2267c36f482b22e0da993da188">actionDelayDuration</a> = 0.1f</td></tr>
+<tr class="separator:aa1d39e2267c36f482b22e0da993da188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a5ea29d6511676a24ce5dbead26d1bbd5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#a5ea29d6511676a24ce5dbead26d1bbd5">inCombat</a><code> [get]</code></td></tr>
+<tr class="separator:a5ea29d6511676a24ce5dbead26d1bbd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25129b0c3fc7bc99ab41da0dfe07051f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#a25129b0c3fc7bc99ab41da0dfe07051f">turnCount</a><code> [get]</code></td></tr>
+<tr class="separator:a25129b0c3fc7bc99ab41da0dfe07051f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6316ac49fbaf2e16426313d12749761d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_turn_queue.html">TurnQueue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_combat_manager.html#a6316ac49fbaf2e16426313d12749761d">turnQueue</a><code> [get]</code></td></tr>
 <tr class="separator:a6316ac49fbaf2e16426313d12749761d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -155,8 +171,23 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_combat_manager_ab5d0c356fd55e86d62b03c015754abee_cgraph.png" border="0" usemap="#class_combat_manager_ab5d0c356fd55e86d62b03c015754abee_cgraph" alt=""/></div>
 <map name="class_combat_manager_ab5d0c356fd55e86d62b03c015754abee_cgraph" id="class_combat_manager_ab5d0c356fd55e86d62b03c015754abee_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,5,204,32"/>
-<area shape="rect"  href="class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="252,5,459,32"/>
+<area shape="rect"  title=" " alt="" coords="5,56,204,83"/>
+<area shape="rect"  href="class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="254,5,461,32"/>
+<area shape="rect"  href="class_turn_text_u_i.html#a72dc3c34c864390bc8fccfb674d5dcee" title=" " alt="" coords="293,56,421,83"/>
+<area shape="rect"  href="class_audio_manager.html#aa144cf0d5ce900e9a977a619492b9ba6" title=" " alt="" coords="252,107,463,133"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_combat_manager_ab5d0c356fd55e86d62b03c015754abee_icgraph.png" border="0" usemap="#class_combat_manager_ab5d0c356fd55e86d62b03c015754abee_icgraph" alt=""/></div>
+<map name="class_combat_manager_ab5d0c356fd55e86d62b03c015754abee_icgraph" id="class_combat_manager_ab5d0c356fd55e86d62b03c015754abee_icgraph">
+<area shape="rect"  title=" " alt="" coords="877,31,1076,57"/>
+<area shape="rect"  href="class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="657,31,829,57"/>
+<area shape="rect"  href="class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,5,609,32"/>
+<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect"  href="class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,5,384,32"/>
+<area shape="rect"  href="class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,5,132,32"/>
 </map>
 </div>
 
@@ -195,23 +226,18 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_combat_manager_aea6dfda807c4ec793ed26c5d220b84fb_cgraph.png" border="0" usemap="#class_combat_manager_aea6dfda807c4ec793ed26c5d220b84fb_cgraph" alt=""/></div>
-<map name="class_combat_manager_aea6dfda807c4ec793ed26c5d220b84fb_cgraph" id="class_combat_manager_aea6dfda807c4ec793ed26c5d220b84fb_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,5,208,47"/>
-<area shape="rect"  href="class_turn_queue.html#ae1c735b715ec963c76f0291cb9629338" title=" " alt="" coords="256,13,404,39"/>
-</map>
-</div>
-<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_combat_manager_aea6dfda807c4ec793ed26c5d220b84fb_icgraph.png" border="0" usemap="#class_combat_manager_aea6dfda807c4ec793ed26c5d220b84fb_icgraph" alt=""/></div>
 <map name="class_combat_manager_aea6dfda807c4ec793ed26c5d220b84fb_icgraph" id="class_combat_manager_aea6dfda807c4ec793ed26c5d220b84fb_icgraph">
-<area shape="rect"  title=" " alt="" coords="403,23,605,65"/>
-<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="214,5,323,32"/>
-<area shape="rect"  href="class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="183,56,355,83"/>
-<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect"  title=" " alt="" coords="877,49,1080,90"/>
+<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="689,5,798,32"/>
+<area shape="rect"  href="class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="657,56,829,83"/>
+<area shape="rect"  href="class_spell.html#afc4017df912f5c93e7aa48c9edf54da5" title=" " alt="" coords="671,107,815,133"/>
+<area shape="rect"  href="class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,31,609,57"/>
+<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,81,135,108"/>
+<area shape="rect"  href="class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,31,384,57"/>
+<area shape="rect"  href="class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,31,132,57"/>
 </map>
 </div>
 
@@ -236,18 +262,22 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_combat_manager_a8d14cf9a8265e20264151a615e309f12_cgraph.png" border="0" usemap="#class_combat_manager_a8d14cf9a8265e20264151a615e309f12_cgraph" alt=""/></div>
 <map name="class_combat_manager_a8d14cf9a8265e20264151a615e309f12_cgraph" id="class_combat_manager_a8d14cf9a8265e20264151a615e309f12_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,31,195,57"/>
-<area shape="rect"  href="class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="243,5,449,32"/>
-<area shape="rect"  href="class_essence_u_i.html#a26023c3d4977188014384a1a40eb3ad9" title=" " alt="" coords="275,56,417,83"/>
-<area shape="rect"  href="class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="497,56,688,83"/>
-<area shape="rect"  href="class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="736,56,875,83"/>
+<area shape="rect"  title=" " alt="" coords="5,107,195,133"/>
+<area shape="rect"  href="class_announcement_manager.html#a931bdfbc829e1165fdbd7a3a848e95d1" title=" " alt="" coords="246,5,453,32"/>
+<area shape="rect"  href="class_essence_u_i.html#a75a53ecfc61b800c928dd9ca137557b8" title=" " alt="" coords="259,56,440,83"/>
+<area shape="rect"  href="class_audio_manager.html#a6cddbf70f601136a79c462a3b51930b5" title=" " alt="" coords="266,107,433,133"/>
+<area shape="rect"  href="class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="270,157,429,184"/>
+<area shape="rect"  href="class_audio_manager.html#a5078f0000b21abc03b9bf2f6900a01aa" title=" " alt="" coords="243,208,456,235"/>
+<area shape="rect"  href="class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="504,31,695,57"/>
+<area shape="rect"  href="class_essence_u_i.html#a14ebd4e6ce2abc42ca830bbfd261b64b" title=" " alt="" coords="505,81,693,108"/>
+<area shape="rect"  href="class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="743,56,881,83"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ae306deb3898e096bf5ad6cdd705b82fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae306deb3898e096bf5ad6cdd705b82fa">&#9670;&nbsp;</a></span>EndTurn()</h2>
+<a id="aaa1a6036d8fc0a2056d336af3761e8b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa1a6036d8fc0a2056d336af3761e8b5">&#9670;&nbsp;</a></span>EndTurn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -256,61 +286,76 @@ Here is the call graph for this function:</div>
           <td class="memname">void CombatManager.EndTurn </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_base_unit.html">BaseUnit</a>&#160;</td>
-          <td class="paramname"><em>b</em></td><td>)</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>endCombat</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_combat_manager_ae306deb3898e096bf5ad6cdd705b82fa_cgraph.png" border="0" usemap="#class_combat_manager_ae306deb3898e096bf5ad6cdd705b82fa_cgraph" alt=""/></div>
-<map name="class_combat_manager_ae306deb3898e096bf5ad6cdd705b82fa_cgraph" id="class_combat_manager_ae306deb3898e096bf5ad6cdd705b82fa_cgraph">
-<area shape="rect"  title=" " alt="" coords="5,259,175,285"/>
-<area shape="rect"  href="class_hotbar.html#ab54a6d27db19b4ed21014a782d74b3d1" title=" " alt="" coords="251,5,394,32"/>
-<area shape="rect"  href="class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="1493,107,1672,133"/>
-<area shape="rect"  href="class_turn_queue.html#aadfdf0f72201cdc985ad2dbb9520eaee" title=" " alt="" coords="254,157,391,184"/>
-<area shape="rect"  href="class_turn_queue.html#acae6f91ff8006307a04d4ee9362c1b7e" title=" " alt="" coords="252,208,393,235"/>
-<area shape="rect"  href="class_turn_queue.html#aa677cc3ae9812e45a5b7e8932c199e27" title=" " alt="" coords="267,259,379,285"/>
+<div class="center"><img src="class_combat_manager_aaa1a6036d8fc0a2056d336af3761e8b5_cgraph.png" border="0" usemap="#class_combat_manager_aaa1a6036d8fc0a2056d336af3761e8b5_cgraph" alt=""/></div>
+<map name="class_combat_manager_aaa1a6036d8fc0a2056d336af3761e8b5_cgraph" id="class_combat_manager_aaa1a6036d8fc0a2056d336af3761e8b5_cgraph">
+<area shape="rect"  title=" " alt="" coords="5,335,175,361"/>
+<area shape="rect"  href="class_base_unit.html#a732bdd48e6a9c74c059bffd4092ac1b5" title=" " alt="" coords="471,5,704,32"/>
+<area shape="rect"  href="class_bag.html#a0800ca04bdc44d7f9b16419dc7183b38" title=" " alt="" coords="503,208,672,235"/>
+<area shape="rect"  href="class_base_unit.html#a181927c2b7d2f4ff6e38596657d243ed" title=" " alt="" coords="241,107,404,133"/>
+<area shape="rect"  href="class_hotbar.html#ab54a6d27db19b4ed21014a782d74b3d1" title=" " alt="" coords="251,208,394,235"/>
+<area shape="rect"  href="class_unit_behaviour.html#a38efbe995d8d2f3c522cb2fa076e79cc" title=" " alt="" coords="1496,259,1675,285"/>
+<area shape="rect"  href="class_turn_queue.html#aadfdf0f72201cdc985ad2dbb9520eaee" title="Removes the Turn at the front of the queue." alt="" coords="254,360,391,387"/>
+<area shape="rect"  href="class_turn_queue.html#acae6f91ff8006307a04d4ee9362c1b7e" title="Decreases the priority of all Turns currently in the queue, then sorts the Turn queue in ascending or..." alt="" coords="252,411,393,437"/>
+<area shape="rect"  href="class_turn_queue.html#aa677cc3ae9812e45a5b7e8932c199e27" title="Adds a Turn to the queue." alt="" coords="267,461,379,488"/>
 <area shape="rect"  href="class_base_unit.html#ac4b2eaeb4641fc124d36d413b6193c56" title=" " alt="" coords="225,309,421,336"/>
-<area shape="rect"  href="class_base_unit.html#abae0a52156648495ea6e8487782f8636" title=" " alt="" coords="223,360,423,387"/>
-<area shape="rect"  href="class_shortcut_u_i.html#af20cdb51997f4ae7219a36a7bca851a3" title=" " alt="" coords="514,461,659,488"/>
-<area shape="rect"  href="class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="227,499,418,525"/>
-<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="1720,157,1883,184"/>
-<area shape="rect"  href="class_turn_queue.html#afadc89a92617f7b2ee4e93025d2f2217" title=" " alt="" coords="514,208,659,235"/>
-<area shape="rect"  href="class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61" title=" " alt="" coords="471,259,703,285"/>
-<area shape="rect"  href="class_camera_controller.html#a79831008bb764801df46a3c91343a524" title=" " alt="" coords="483,309,690,336"/>
-<area shape="rect"  href="class_dungeon_manager.html#ab7edf3b19e13892178a34ece10f4c5d5" title=" " alt="" coords="765,259,964,285"/>
-<area shape="rect"  href="class_dungeon_manager.html#a196f2f6754dae0d38307197bbbf033c4" title=" " alt="" coords="755,183,974,209"/>
-<area shape="rect"  href="class_terrain_behaviour.html#a23ffdd00ac2a41293dff38496a09663d" title=" " alt="" coords="1047,309,1197,336"/>
-<area shape="rect"  href="class_decoration_behaviour.html#aab39ad5614d361801ffc9168a830c3d7" title=" " alt="" coords="1035,360,1209,387"/>
-<area shape="rect"  href="class_unit_behaviour.html#a89fa86241b11f695b89b7143fa4f88ec" title=" " alt="" coords="1055,259,1189,285"/>
-<area shape="rect"  href="class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="1286,259,1425,285"/>
-<area shape="rect"  href="class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="1505,259,1660,285"/>
-<area shape="rect"  href="class_terrain_behaviour.html#a97b6323eafb1c26361878bb1d37f4556" title=" " alt="" coords="1039,107,1205,133"/>
-<area shape="rect"  href="class_decoration_behaviour.html#a6f5bef52b05859295759318878ec9a1c" title=" " alt="" coords="1027,157,1217,184"/>
-<area shape="rect"  href="class_unit_behaviour.html#a7e978454f207985987f6088c037b9c5f" title=" " alt="" coords="1047,208,1197,235"/>
-<area shape="rect"  href="class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="1275,208,1435,235"/>
-<area shape="rect"  href="class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="1265,157,1445,184"/>
-<area shape="rect"  href="class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="1498,208,1667,235"/>
-<area shape="rect"  href="class_camera_controller.html#a4894dc3111b871a8bf5ff422d30c1689" title=" " alt="" coords="751,309,979,336"/>
-<area shape="rect"  href="class_base_unit.html#a15ea3ea70ab13cf8aa582b848cd0531b" title=" " alt="" coords="513,360,660,387"/>
-<area shape="rect"  href="class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="499,411,674,437"/>
-<area shape="rect"  href="class_hotbar.html#a1e796a0a133ee0743aa8585c05980f9b" title=" " alt="" coords="806,411,923,437"/>
-<area shape="rect"  href="class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856" title=" " alt="" coords="788,360,941,387"/>
-<area shape="rect"  href="class_hotkey.html#a0b90f1841f8cbe70bf62447affd70bd1" title=" " alt="" coords="1067,411,1177,437"/>
-<area shape="rect"  href="class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="1069,461,1175,488"/>
-<area shape="rect"  href="class_hotbar.html#a37bca03a1dfd144a30bae3774eaab667" title=" " alt="" coords="789,461,941,488"/>
-<area shape="rect"  href="class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="517,512,656,539"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_combat_manager_ae306deb3898e096bf5ad6cdd705b82fa_icgraph.png" border="0" usemap="#class_combat_manager_ae306deb3898e096bf5ad6cdd705b82fa_icgraph" alt=""/></div>
-<map name="class_combat_manager_ae306deb3898e096bf5ad6cdd705b82fa_icgraph" id="class_combat_manager_ae306deb3898e096bf5ad6cdd705b82fa_icgraph">
-<area shape="rect"  title=" " alt="" coords="255,5,424,32"/>
-<area shape="rect"  href="class_shortcut_u_i.html#ac6c1705acfb6d8393f36a73810d94958" title=" " alt="" coords="5,5,207,32"/>
+<area shape="rect"  href="class_base_unit.html#abae0a52156648495ea6e8487782f8636" title=" " alt="" coords="223,588,423,615"/>
+<area shape="rect"  href="class_essence_u_i.html#aac12f1c82310ceb94e259d9b6aa9bdfd" title=" " alt="" coords="769,715,959,741"/>
+<area shape="rect"  href="class_shortcut_u_i.html#af20cdb51997f4ae7219a36a7bca851a3" title=" " alt="" coords="250,512,395,539"/>
+<area shape="rect"  href="class_base_unit.html#af36bde8493a9c0e16e1171bf942504ca" title=" " alt="" coords="783,5,945,32"/>
+<area shape="rect"  href="class_base_unit.html#aacee7b4acfdd28621f3a1b66bf8d646a" title=" " alt="" coords="1024,31,1215,57"/>
+<area shape="rect"  href="class_damage_text.html#ab66ed998f41cdeb84c22449950170f67" title=" " alt="" coords="1295,31,1411,57"/>
+<area shape="rect"  href="class_effect.html#af5b390a450cbe2433bd8bad79e669a41" title=" " alt="" coords="800,132,928,159"/>
+<area shape="rect"  href="class_effect.html#a81689f18a4d3ae57ca39b71592be76ef" title=" " alt="" coords="541,107,633,133"/>
+<area shape="rect"  href="class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="1727,309,1889,336"/>
+<area shape="rect"  href="class_turn_queue.html#afadc89a92617f7b2ee4e93025d2f2217" title="Sorts Turns in the queue by ascending priority." alt="" coords="515,411,660,437"/>
+<area shape="rect"  href="class_dungeon_manager.html#a980762c66ae4ae92ce3d8caa42f7fe61" title=" " alt="" coords="471,360,703,387"/>
+<area shape="rect"  href="class_camera_controller.html#a79831008bb764801df46a3c91343a524" title=" " alt="" coords="484,309,691,336"/>
+<area shape="rect"  href="class_dungeon_manager.html#ab7edf3b19e13892178a34ece10f4c5d5" title=" " alt="" coords="765,360,963,387"/>
+<area shape="rect"  href="class_dungeon_manager.html#a196f2f6754dae0d38307197bbbf033c4" title=" " alt="" coords="755,461,973,488"/>
+<area shape="rect"  href="class_terrain_behaviour.html#a23ffdd00ac2a41293dff38496a09663d" title=" " alt="" coords="1044,360,1195,387"/>
+<area shape="rect"  href="class_decoration_behaviour.html#aab39ad5614d361801ffc9168a830c3d7" title=" " alt="" coords="1032,411,1207,437"/>
+<area shape="rect"  href="class_unit_behaviour.html#a89fa86241b11f695b89b7143fa4f88ec" title=" " alt="" coords="1052,309,1187,336"/>
+<area shape="rect"  href="class_unit_behaviour.html#adf2d07785a2cc3076363ad5dd0962b9c" title=" " alt="" coords="1284,309,1423,336"/>
+<area shape="rect"  href="class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="1508,309,1663,336"/>
+<area shape="rect"  href="class_terrain_behaviour.html#a97b6323eafb1c26361878bb1d37f4556" title=" " alt="" coords="1036,512,1203,539"/>
+<area shape="rect"  href="class_decoration_behaviour.html#a6f5bef52b05859295759318878ec9a1c" title=" " alt="" coords="1024,563,1215,589"/>
+<area shape="rect"  href="class_unit_behaviour.html#a7e978454f207985987f6088c037b9c5f" title=" " alt="" coords="1044,461,1195,488"/>
+<area shape="rect"  href="class_decoration_behaviour.html#a86197035d1080537c00cd9cf3c060be7" title=" " alt="" coords="1263,555,1444,597"/>
+<area shape="rect"  href="class_unit_behaviour.html#a41b8d7f5a98e21449eafe21a31707b1d" title=" " alt="" coords="1273,461,1433,488"/>
+<area shape="rect"  href="class_unit_behaviour.html#a559fdec9ef2c1c1a6c1a863cb868bce5" title=" " alt="" coords="1263,411,1443,437"/>
+<area shape="rect"  href="class_unit_behaviour.html#a0cf70610b8aef46ef592819496ac7950" title=" " alt="" coords="1501,461,1670,488"/>
+<area shape="rect"  href="class_unit_behaviour.html#a48097b808519b55bee5358d1afec4ce1" title=" " alt="" coords="1497,512,1674,539"/>
+<area shape="rect"  href="class_unit_behaviour.html#a77c605cf2a160bf865de1b7041b7ccb8" title=" " alt="" coords="1492,360,1679,387"/>
+<area shape="rect"  href="class_camera_controller.html#a34e1d9e9ce0ac6a2593b0374f3a4de7d" title=" " alt="" coords="752,309,976,336"/>
+<area shape="rect"  href="class_base_unit.html#a15ea3ea70ab13cf8aa582b848cd0531b" title=" " alt="" coords="514,563,661,589"/>
+<area shape="rect"  href="class_hitpoint_u_i.html#a276f8fb6a38204f4155f32c48c6322af" title=" " alt="" coords="500,613,675,640"/>
+<area shape="rect"  href="class_essence_u_i.html#a75a53ecfc61b800c928dd9ca137557b8" title=" " alt="" coords="497,664,678,691"/>
+<area shape="rect"  href="class_hotbar.html#a1e796a0a133ee0743aa8585c05980f9b" title=" " alt="" coords="805,613,923,640"/>
+<area shape="rect"  href="class_hotbar.html#a1b1cab633f4bf2347af2c0f04fa4b856" title=" " alt="" coords="787,563,941,589"/>
+<area shape="rect"  href="class_hotkey.html#a0b90f1841f8cbe70bf62447affd70bd1" title=" " alt="" coords="1064,664,1175,691"/>
+<area shape="rect"  href="class_hotkey.html#ae078d4716dbd3a3c703a3ef341e56562" title=" " alt="" coords="1066,613,1173,640"/>
+<area shape="rect"  href="class_essence_u_i.html#a14ebd4e6ce2abc42ca830bbfd261b64b" title=" " alt="" coords="770,664,958,691"/>
+<area shape="rect"  href="class_essence_u_i.html#a82a6c20070b4fd052eae20ba6e05487b" title=" " alt="" coords="1050,715,1189,741"/>
+<area shape="rect"  href="class_shortcut_u_i.html#ae39ab7b830aff78693a4ddbaa3c59c3e" title=" " alt="" coords="524,461,651,488"/>
+<area shape="rect"  href="class_hotbar.html#a37bca03a1dfd144a30bae3774eaab667" title=" " alt="" coords="788,512,940,539"/>
 </map>
 </div>
 
@@ -335,10 +380,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_combat_manager_a02eb44e3f4fab4f210d4ecda54fa1272_icgraph.png" border="0" usemap="#class_combat_manager_a02eb44e3f4fab4f210d4ecda54fa1272_icgraph" alt=""/></div>
 <map name="class_combat_manager_a02eb44e3f4fab4f210d4ecda54fa1272_icgraph" id="class_combat_manager_a02eb44e3f4fab4f210d4ecda54fa1272_icgraph">
-<area shape="rect"  title=" " alt="" coords="403,23,589,65"/>
-<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="214,5,323,32"/>
-<area shape="rect"  href="class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="183,56,355,83"/>
-<area shape="rect"  href="class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect"  title=" " alt="" coords="163,5,349,47"/>
+<area shape="rect"  href="class_base_unit.html#af7d5e0c6e087b3e5c8af203dfb11268b" title=" " alt="" coords="5,13,115,39"/>
 </map>
 </div>
 
@@ -362,7 +405,140 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa1d39e2267c36f482b22e0da993da188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1d39e2267c36f482b22e0da993da188">&#9670;&nbsp;</a></span>actionDelayDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CombatManager.actionDelayDuration = 0.1f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9be940c81358f5ef6fed26d3960db51d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9be940c81358f5ef6fed26d3960db51d">&#9670;&nbsp;</a></span>preTurnDelayDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CombatManager.preTurnDelayDuration = 0.75f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd88141b74c13df111e99b1ce4520d2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd88141b74c13df111e99b1ce4520d2c">&#9670;&nbsp;</a></span>statusDelayDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CombatManager.statusDelayDuration = 0.35f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af42a50f578e494b08a4c6a593be60d9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af42a50f578e494b08a4c6a593be60d9f">&#9670;&nbsp;</a></span>turnUpdateDelayDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CombatManager.turnUpdateDelayDuration = 0.1f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Property Documentation</h2>
+<a id="a5ea29d6511676a24ce5dbead26d1bbd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ea29d6511676a24ce5dbead26d1bbd5">&#9670;&nbsp;</a></span>inCombat</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CombatManager.inCombat</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25129b0c3fc7bc99ab41da0dfe07051f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25129b0c3fc7bc99ab41da0dfe07051f">&#9670;&nbsp;</a></span>turnCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CombatManager.turnCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6316ac49fbaf2e16426313d12749761d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6316ac49fbaf2e16426313d12749761d">&#9670;&nbsp;</a></span>turnQueue</h2>
 

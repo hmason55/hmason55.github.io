@@ -1,5 +1,6 @@
 <map id="CharacterCreationUI.HideUI" name="CharacterCreationUI.HideUI">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,185,32"/>
-<area shape="rect" id="node2" href="$class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="233,5,388,32"/>
-<area shape="rect" id="node3" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="436,5,599,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,185,57"/>
+<area shape="rect" id="node2" href="$class_unit_behaviour.html#aaf48af005978a326a61c98905630e469" title=" " alt="" coords="233,31,388,57"/>
+<area shape="rect" id="node3" href="$class_unit_behaviour.html#a9ba9de594c111333c048b477dd295025" title=" " alt="" coords="440,5,603,32"/>
+<area shape="rect" id="node4" href="$class_unit_behaviour.html#aa355d5e4ae0043f69458a58af9316231" title=" " alt="" coords="436,56,607,83"/>
 </map>

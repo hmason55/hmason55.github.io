@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['usage',['Usage',['../class_base_decoration.html#ad8b9ff9e5d7dc488ca94fed2efa45a6e',1,'BaseDecoration']]]
+  ['zone',['Zone',['../class_dungeon_manager.html#a6558d4a01889674bf25c798f1b90a431',1,'DungeonManager']]]
 ];

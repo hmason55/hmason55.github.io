@@ -1,5 +1,4 @@
 <map id="Spell.PlayEffectSound" name="Spell.PlayEffectSound">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,156,57"/>
-<area shape="rect" id="node2" href="$class_audio_manager.html#a1520faf231d9b58d63a794f6b8040b99" title=" " alt="" coords="204,5,379,32"/>
-<area shape="rect" id="node3" href="$class_audio_manager.html#ac0f0dc189806848c224581b363b87396" title=" " alt="" coords="205,56,377,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,156,32"/>
+<area shape="rect" id="node2" href="$class_audio_manager.html#ad6089d5f4d7e3f3ef0b6728d3b18e7b1" title=" " alt="" coords="204,5,363,32"/>
 </map>

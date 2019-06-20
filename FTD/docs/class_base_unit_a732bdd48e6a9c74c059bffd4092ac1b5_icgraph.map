@@ -1,0 +1,8 @@
+<map id="BaseUnit.RemoveStatusByCondition" name="BaseUnit.RemoveStatusByCondition">
+<area shape="rect" id="node1" title=" " alt="" coords="475,56,708,83"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#a181927c2b7d2f4ff6e38596657d243ed" title=" " alt="" coords="253,56,415,83"/>
+<area shape="rect" id="node3" href="$class_combat_manager.html#aaa1a6036d8fc0a2056d336af3761e8b5" title=" " alt="" coords="15,5,184,32"/>
+<area shape="rect" id="node5" href="$class_bag_behaviour.html#a407231bcd34e96129c9ae624a484a045" title=" " alt="" coords="241,111,427,137"/>
+<area shape="rect" id="node4" href="$class_spell.html#aa020942716a6504fc6b23351a4baa3b6" title=" " alt="" coords="36,56,163,83"/>
+<area shape="rect" id="node6" href="$class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="5,107,193,149"/>
+</map>

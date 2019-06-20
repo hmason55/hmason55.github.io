@@ -1,0 +1,8 @@
+<map id="UnitBehaviour.Rumble" name="UnitBehaviour.Rumble">
+<area shape="rect" id="node1" title=" " alt="" coords="877,31,1027,57"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="657,31,829,57"/>
+<area shape="rect" id="node3" href="$class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,5,609,32"/>
+<area shape="rect" id="node6" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,56,135,83"/>
+<area shape="rect" id="node4" href="$class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,5,384,32"/>
+<area shape="rect" id="node5" href="$class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,5,132,32"/>
+</map>

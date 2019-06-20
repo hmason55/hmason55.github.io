@@ -1,0 +1,9 @@
+<map id="UnitSpriteLibrary" name="UnitSpriteLibrary">
+<area shape="rect" id="node1" title=" " alt="" coords="205,603,352,680"/>
+<area shape="rect" id="node2" title=" " alt="" coords="187,5,306,83"/>
+<area shape="rect" id="node3" href="$class_shadow_sprite.html" title=" " alt="" coords="26,248,129,355"/>
+<area shape="rect" id="node4" href="$class_unit_weapon_sprite_library.html" title=" " alt="" coords="130,421,297,498"/>
+<area shape="rect" id="node5" href="$class_unit_sprite.html" title=" " alt="" coords="306,132,385,224"/>
+<area shape="rect" id="node6" href="$class_unit_skin_sprite_library.html" title=" " alt="" coords="469,421,613,498"/>
+<area shape="rect" id="node7" href="$class_unit_armor_sprite_library.html" title=" " alt="" coords="638,421,791,498"/>
+</map>

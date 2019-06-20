@@ -1,0 +1,12 @@
+<map id="BaseUnit.UpdateDisplayHealth" name="BaseUnit.UpdateDisplayHealth">
+<area shape="rect" id="node1" title=" " alt="" coords="903,141,1103,167"/>
+<area shape="rect" id="node2" href="$class_base_unit.html#acdc00f9ae2db67fb8f1ee18df5aa509e" title=" " alt="" coords="685,101,852,127"/>
+<area shape="rect" id="node7" href="$class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="683,181,855,207"/>
+<area shape="rect" id="node3" href="$class_bag_behaviour.html#a407231bcd34e96129c9ae624a484a045" title=" " alt="" coords="441,13,626,39"/>
+<area shape="rect" id="node5" href="$class_decoration_behaviour.html#a94a1b5e492f096e3f121d05105e16c37" title=" " alt="" coords="432,64,635,105"/>
+<area shape="rect" id="node6" href="$class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,155,132,182"/>
+<area shape="rect" id="node4" href="$class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="189,5,377,47"/>
+<area shape="rect" id="node8" href="$class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="445,181,622,207"/>
+<area shape="rect" id="node10" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,206,135,233"/>
+<area shape="rect" id="node9" href="$class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,181,384,207"/>
+</map>

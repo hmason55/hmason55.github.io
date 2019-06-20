@@ -1,11 +1,14 @@
 <map id="Bag.RemoveAt" name="Bag.RemoveAt">
-<area shape="rect" id="node1" title="Removes an item at a specific slot in the bag." alt="" coords="640,81,748,108"/>
-<area shape="rect" id="node2" href="$class_bag.html#a3ee41396e25179a9c975c6f90d601bdd" title="Removes key items from the bag and prepares it for saving." alt="" coords="467,5,558,32"/>
-<area shape="rect" id="node3" href="$class_bag_behaviour.html#a22439e4f35b9173c64d16c2534c4b388" title=" " alt="" coords="436,56,589,83"/>
-<area shape="rect" id="node5" href="$class_base_decoration.html#a820de02d0bb917f7cee59a4759da6251" title=" " alt="" coords="433,107,592,133"/>
-<area shape="rect" id="node7" href="$class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="464,161,561,188"/>
-<area shape="rect" id="node4" href="$class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="190,34,378,75"/>
-<area shape="rect" id="node6" href="$class_decoration_behaviour.html#a94a1b5e492f096e3f121d05105e16c37" title=" " alt="" coords="183,99,385,141"/>
-<area shape="rect" id="node8" href="$class_base_unit.html#a8412f2b3e8ec9c3ff75b41b830fde443" title=" " alt="" coords="198,165,370,192"/>
-<area shape="rect" id="node9" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,165,135,192"/>
+<area shape="rect" id="node1" title="Removes an item at a specific slot in the bag." alt="" coords="1115,81,1223,108"/>
+<area shape="rect" id="node2" href="$class_bag.html#a3ee41396e25179a9c975c6f90d601bdd" title="Removes key items from the bag and prepares it for saving." alt="" coords="942,5,1033,32"/>
+<area shape="rect" id="node3" href="$class_base_decoration.html#a820de02d0bb917f7cee59a4759da6251" title=" " alt="" coords="908,56,1067,83"/>
+<area shape="rect" id="node5" href="$class_base_unit.html#ae32912e26fcd7ea4b251045742064af4" title=" " alt="" coords="939,107,1036,133"/>
+<area shape="rect" id="node11" href="$class_bag_behaviour.html#aa9744eb9020ccbb125361130f2b63396" title=" " alt="" coords="911,161,1064,188"/>
+<area shape="rect" id="node4" href="$class_decoration_behaviour.html#a94a1b5e492f096e3f121d05105e16c37" title=" " alt="" coords="657,41,860,82"/>
+<area shape="rect" id="node6" href="$class_base_unit.html#ad73ca8325e9f0426d97e35b2654b4580" title=" " alt="" coords="673,107,845,133"/>
+<area shape="rect" id="node7" href="$class_base_unit.html#a32fe7e1d94083443ff4482b7f9f56b2d" title=" " alt="" coords="432,81,609,108"/>
+<area shape="rect" id="node10" href="$class_spell.html#ad2e4f64f1f7ced4b69c55619d5fdb0b0" title=" " alt="" coords="5,132,135,159"/>
+<area shape="rect" id="node8" href="$class_base_unit.html#ab83f566f95aa19efbfcad72bfa50815e" title=" " alt="" coords="183,81,384,108"/>
+<area shape="rect" id="node9" href="$class_spell.html#a731241b635a60169b89c57cba8057e2c" title=" " alt="" coords="8,81,132,108"/>
+<area shape="rect" id="node12" href="$class_bag_item_behaviour.html#a81455fb5bdcd5a14ca9440c0f9581708" title=" " alt="" coords="665,158,853,199"/>
 </map>
